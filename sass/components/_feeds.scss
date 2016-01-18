@@ -1,0 +1,30 @@
+.region-feed {
+  padding-bottom: $gap-section;
+
+  .spinner-container {
+    position: absolute;
+    bottom: 13px;
+    width: 100%;
+  }
+
+  .spinner {
+    margin: 0 auto;
+  }
+
+  .infinite-more-link {
+    display: none;
+  }
+
+  .fade.in {
+    @include transition-delay(0.2s);
+    @include transition-duration($transition-duration*3);
+  }
+
+  .infinite-item {
+    //@include animation(fadeIn $transition-duration $transition-easing $transition-duration);
+  }
+}
+
+.infinite-loading {
+
+}

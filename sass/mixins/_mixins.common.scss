@@ -1,0 +1,36 @@
+@mixin clear-gutter-gap() {
+  margin-left: -$grid-gutter-width;
+  margin-right: -$grid-gutter-width;
+
+  //@media (max-width: $screen-sm-max) {
+    //margin-left: -$padding;
+    //margin-right: -$padding;
+  //}
+}
+
+@mixin padding-gutter-gap() {
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+
+  //@media (max-width: $screen-sm-max) {
+    //padding-left: $padding;
+    //padding-right: $padding;
+  //}
+}
+
+@mixin gap-section-lined($gap: $gap-section) {
+  border-top: $h-line-style;
+  padding-top: $gap;
+  margin-top: $gap;
+}
+
+@mixin gap-section-lined-reset() {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+@mixin disabled() {
+  @include opacity($opacity-disabled);
+  pointer-events: none;
+}

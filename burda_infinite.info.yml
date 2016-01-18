@@ -1,0 +1,49 @@
+name: BurdaInfinite
+description: 'burda_infinite Theme'
+type: theme
+base theme: false
+package: BurdaInfinite
+core: 8.x
+screenshot: images/burda_infinite.png
+libraries:
+  - burda_infinite/global-styling
+regions:
+  header_large: 'Header large'
+  header: 'Header'
+#  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  sidebar: 'Sidebar'
+  help: Help
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  breadcrumb: Breadcrumb
+  highlighted: 'Highlighted'
+  content: Content
+  modal: Modal
+  hidden: Hidden
+stylesheets-remove:
+  - core/modules/system/css/system.module.css
+  - core/modules/system/css/system.theme.css
+  - core/modules/system/css/components/menu.theme.css
+  - core/modules/system/css/components/tabs.theme.css
+  - core/modules/system/css/components/ajax-progress.module.css
+  - core/modules/system/css/components/align.module.css
+  - core/modules/system/css/components/autocomplete-loading.module.css
+  - core/modules/system/css/components/fieldgroup.module.css
+  - core/modules/system/css/components/container-inline.module.css
+  - core/modules/system/css/components/clearfix.module.css
+  - core/modules/system/css/components/details.module.css
+  - core/modules/system/css/components/hidden.module.css
+  - core/modules/system/css/components/item-list.module.css
+  - core/modules/system/css/components/js.module.css
+  - core/modules/system/css/components/nowrap.module.css
+  - core/modules/system/css/components/progress.module.css
+  - core/modules/system/css/components/reset-appearance.module.css
+  - core/modules/system/css/components/resize.module.css
+  - core/modules/system/css/components/sticky-header.module.css
+  - core/modules/system/css/components/tabledrag.module.css
+  - core/modules/system/css/components/tablesort.module.css
+  - core/modules/system/css/components/tree-child.module.css
+  - core/modules/views/css/views.module.css
+  - core/modules/system/css/components/position-container.module.css
+  - modules/custom/paragraphs_starterkit/css/paragraphs_starterkit.css

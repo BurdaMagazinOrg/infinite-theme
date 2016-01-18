@@ -1,0 +1,42 @@
+{% set body_classes = [
+logged_in ? 'user-logged-in',
+not root_path ? 'page-front' : 'page-' ~ root_path|clean_class,
+node_type ? 'page-' ~ node_type|clean_class,
+db_offline ? 'db-offline',
+] %}
+
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <head-placeholder token="{{ placeholder_token|raw }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <css-placeholder token="{{ placeholder_token|raw }}">
+        <js-placeholder token="{{ placeholder_token|raw }}">
+        {#<script type="text/javascript" src="https://scripts.tracdelight.com/tracdelight.js?accesskey=xCnKosIRHPivYv7rdYAzs7msw0JySFaU"></script>#}
+    </head>
+    <body class="{{ attributes.addClass(body_classes).class }}">
+        <script>
+            dataLayer = [];
+        </script>
+
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWFQ37"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PWFQ37');</script>
+        <!-- End Google Tag Manager -->
+
+        <div id="page-wrapper">
+            {{ page_top }}
+            {{ page }}
+            {{ page_bottom }}
+
+        </div>
+        <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    </body>
+</html>

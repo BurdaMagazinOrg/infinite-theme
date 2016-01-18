@@ -1,0 +1,42 @@
+.item-block-tags {
+  @extend %text-tiny;
+  @extend %text-tiny-size-large;
+
+  .label {
+    display: inline-block;
+    margin-right: 7px;
+  }
+
+  ul {
+    display: inline;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    font-style: italic;
+
+    &:last-child {
+      a:after {
+        content: none;
+      }
+    }
+  }
+
+  a {
+    color: $color-highlighted;
+
+    &:after {
+      content: ",";
+      position: absolute;
+      right: -4px;
+      color: $text-highlighted;
+    }
+
+    &:hover {
+      color: $color-highlighted-hover;
+    }
+  }
+}

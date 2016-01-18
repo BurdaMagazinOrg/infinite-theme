@@ -1,0 +1,14 @@
+<article class="teaser teaser-square-small contextual-region" data-nid="{{ nid }}" data-internal-url="{{ url }}">
+    <div class="img-container" itemscope=""
+         itemtype="http://schema.org/imageObject">
+        {{ content.field_teaser_media }}
+    </div>
+    <div class="caption caption-teaser">
+        <h2 class="text-headline">
+            <a href="{{ url }}" target="_self">{{ label }}</a>
+        </h2>
+    </div>
+    {% if (show_contextual_links) %}
+        {{ title_suffix.contextual_links }}
+    {% endif %}
+</article>

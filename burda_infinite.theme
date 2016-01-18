@@ -1,0 +1,86 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
+use Drupal\image\Entity\ImageStyle;
+
+function burda_infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
+  // TODO: find a better way to extract media bundle from paragraph item.
+  if (!empty($variables['elements']['field_media']['0']['#media'])) {
+
+    /* @var Drupal\media_entity\Entity\Media $media */
+    $media = $variables['elements']['field_media']['0']['#media'];
+    $suggestions[] = $hook . '__' . $media->getEntityTypeId() . '__' . $media->bundle();
+    $suggestions[] = $hook . '__' . $media->getEntityTypeId() . '__' . $media->bundle() . '__default';  // TODO: Fix static view mode.
+  }
+}
+
+function burda_infinite_theme_suggestions_user_alter(array &$suggestions, array $variables, $hook) {
+  if (!empty($variables['elements']['#view_mode'])) {
+    $suggestions[] = $hook . '__' . $variables['elements']['#view_mode'];
+  }
+}
+
+function burda_infinite_preprocess_page(&$variables) {
+  $variables['theme_burda_infinite_path'] = '/' . drupal_get_path('theme', 'burda_infinite');
+}
+
+function burda_infinite_preprocess_block(&$variables) {
+  $variables['front_page'] = \Drupal::url('<front>');
+  $variables['logo'] = theme_get_setting('logo.url');
+}
+
+function burda_infinite_preprocess_region(&$variables) {
+  $variables ['front_page'] = \Drupal::url('<front>');
+  $variables ['logo'] = theme_get_setting('logo.url');
+}
+
+function burda_infinite_preprocess_node(&$variables) {
+  /* @var Node $node */
+  $node = &$variables['elements']['#node'];
+  $bundle = $node->bundle();
+  if ($bundle == "article" || $bundle == "page") {
+    // todo: switch later to publish date.
+    $variables['datetime'] = \Drupal::service('date.formatter')
+      ->format($node->created->value, 'html_datetime');
+    $variables['timestamp'] = \Drupal::service('date.formatter')
+      ->format($node->created->value, 'infinite_timestamp');
+
+    // Get absolute URL from node alias URL.
+    $absolute_url = \Drupal::service('path.alias_manager')
+      ->getAliasByPath('/node/' . $node->id());
+    $absolute_url = Url::fromUri('base:/' . $absolute_url, array('absolute' => TRUE));
+
+    // Override TWIG url with absolute alias URL.
+    $variables['path'] = $variables['url'];  // used for lazy loading history API.
+    $variables['url'] = $absolute_url->toString();
+    $variables['nid'] = $node->id();
+    
+    // Get share image URL from teaser media.
+    if ($node->hasField('field_teaser_media') &&
+        !$node->field_teaser_media->isEmpty()) {
+
+      if (!empty($node->field_teaser_media->entity) &&  // todo: check wyh some media entity reference seems to be empty here after isEmpty() check? example: node 6001
+          $node->field_teaser_media->entity->hasField('field_image') &&
+          !$node->field_teaser_media->entity->field_image->isEmpty()) {
+
+        $share_img_path = $node->field_teaser_media->entity->field_image->entity->getFileUri();
+        $share_img = ImageStyle::load('inline_l');
+        if (is_object($share_img)) {
+          $url = $share_img->buildUrl($share_img_path);
+          $variables['share_img_url'] = $url;
+        }
+      }
+    }
+
+
+    // Add 'show_contextual_links' variable.
+    /* @var User $user */
+    $user = Drupal::currentUser();
+    if ($user->hasPermission('access contextual links')) {
+      $variables['show_contextual_links'] = TRUE;
+    }
+  }
+
+}

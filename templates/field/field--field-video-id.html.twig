@@ -1,0 +1,4 @@
+{% if not label_hidden %}
+    <div class="label">{{ label }}</div>
+{% endif %}
+{% for item in items %}{{ item.content }}{% endfor %}

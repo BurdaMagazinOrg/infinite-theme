@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a media entity.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+    <div class="swiper-slide">
+        <div class="item-media item-media-image {{ calculated_dimension }}">
+            {{ include('media--image-base.html.twig') }}
+        </div>
+    </div>
+{% endif %}

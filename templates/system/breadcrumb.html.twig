@@ -1,0 +1,20 @@
+<div class="region-breadcrumb">
+    <nav class="breadcrumb" itemprop="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        {% if breadcrumb %}
+            <ol itemprop="itemListElement">
+                {% for item in breadcrumb %}
+                    <li itemscope  itemtype="http://schema.org/ListItem">
+                        {% if item.url %}
+                            <a class="text-category" href="{{ item.url }}" itemprop="url">
+                                <span itemprop="title">{{ item.text }}</span>
+                            </a>
+                        {% else %}
+                            <span class="text-category">{{ item.text }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+
+    </nav>
+</div>

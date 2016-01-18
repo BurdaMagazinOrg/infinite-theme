@@ -1,0 +1,31 @@
+.swiper-container-horizontal {
+  //width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-container-no-flexbox {
+  .swiper-slide, .teaser {
+    float: left;
+  }
+}
+
+.swiper-slide {
+  @extend %flex-shrink-0;
+}
+
+.swiper-wrapper {
+  @extend %flexbox;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}

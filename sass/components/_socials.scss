@@ -1,0 +1,227 @@
+.socials {
+
+  .item-social {
+    @include transition-property(color, background-color, border-color);
+    @include transition-duration(.35s);
+    @include transition-timing-function(ease);
+    font-size: $icon-size-tiny;
+    color: $white;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .icon-facebook {
+    background-color: $color-facebook;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-twitter {
+    background-color: $color-twitter;
+    font-size: $icon-size-tiny;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-pinterest {
+    background-color: $color-pinterest;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-instagram {
+    background-color: $color-instagram;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-email {
+    background-color: $color-email;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-whatsapp {
+    background-color: $color-whatsapp;
+
+    &:before {
+      margin-right: -1px;
+    }
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+}
+
+.socials-bar-clean {
+  .item-social {
+    background-color: transparent;
+    border: 1px solid $text-color;
+    color: $text-color;
+
+    -webkit-transform: rotate(0.0001deg); //smoothing
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .icon-facebook {
+    &:hover {
+      color: $color-facebook;
+      border-color: $color-facebook;
+    }
+  }
+
+  .icon-twitter {
+    &:hover {
+      color: $color-twitter;
+      border-color: $color-twitter;
+    }
+  }
+
+  .icon-pinterest {
+    &:hover {
+      color: $color-pinterest;
+      border-color: $color-pinterest;
+    }
+  }
+
+  .icon-instagram {
+    &:hover {
+      color: $color-instagram;
+      border-color: $color-instagram;
+    }
+  }
+
+  .icon-email {
+    &:hover {
+      color: $color-email;
+      border-color: $color-email;
+    }
+  }
+
+  .icon-whatsapp {
+    &:hover {
+      color: $color-whatsapp;
+      border-color: $color-whatsapp;
+    }
+  }
+}
+
+.socials-bar {
+  overflow: hidden;
+
+  .item-social {
+    display: inline-block;
+    margin-left: 4px; //-4px inline-block
+    min-width: $item-social-size;
+    height: $item-social-size;
+    text-align: center;
+    line-height: $item-social-size;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.socials-horizontal-bar {
+  .item-social {
+    min-width: $item-social-article-size;
+    height: $item-social-article-size;
+    border-radius: floor($item-social-article-size / 2);
+    line-height: $item-social-article-size + 2px;
+    font-size: $icon-size-medium;
+    padding: 0 22px;
+    margin-top: $padding;
+
+    span {
+      @extend %text-headline;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+
+  @media (max-width: $screen-xs-min) {
+    .item-social {
+      padding: 0;
+
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+.socials-vertical-bar {
+  .item-social {
+    display: block;
+    margin-top: 8px;
+    margin-left: 0;
+    width: $item-social-article-size;
+    height: $item-social-article-size;
+    font-size: $icon-size-medium;
+    line-height: $item-social-article-size + 2px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: $screen-sm-min) {
+    margin-top: $grid-gutter-width;
+
+    .item-social {
+      display: inline-block;
+      margin-left: 8px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.item-instagram {
+  iframe {
+    @include center-block();
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+.item-pinterest {
+  text-align: center;
+}
+
+.item-twitter {
+  & > iframe {
+    @include center-block();
+    max-width: 500px !important;
+  }
+}
+
+.socials-bar {
+  .item-social.icon-whatsapp {
+    display: none;
+  }
+}

@@ -1,0 +1,9 @@
+@mixin region-fixed-content {
+  @include center-block();
+  max-width: $content-max-width;
+}
+
+@mixin region-full-content {
+  @include clear-gutter-gap();
+  @include padding-gutter-gap();
+}

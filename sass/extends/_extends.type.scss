@@ -1,0 +1,183 @@
+/**
+* Text-Label
+**/
+
+%text-label {
+  @include text-label();
+}
+
+%text-label-size-tiny {
+  @include text-label-size($label-size-tiny);
+}
+
+%text-label-size-small {
+  @include text-label-size($label-size-small);
+}
+
+%text-label-size-medium {
+  @include text-label-size($label-size-medium);
+}
+
+%text-label-size-large {
+  @include text-label-size($label-size-large);
+}
+
+%text-label-size-xl {
+  @include text-label-size($label-size-xl);
+}
+
+%text-label-size-xxl {
+  @include text-label-size($label-size-xxl);
+}
+
+%text-label-size-navigation {
+  @include text-label-size($font-size-navigation);
+}
+
+/**
+* Text-Headline
+**/
+
+%text-headline {
+  @include text-headline();
+}
+
+%text-headline-size-h6 {
+  @include text-headline-size($headline-size-h6);
+}
+
+%text-headline-size-h5 {
+  @include text-headline-size($headline-size-h5);
+}
+
+%text-headline-size-h4 {
+  @include text-headline-size($headline-size-h4);
+}
+
+%text-headline-size-h3 {
+  @include text-headline-size($headline-size-h3);
+}
+
+%text-headline-size-h2 {
+  @include text-headline-size($headline-size-h2);
+}
+
+%text-headline-size-h1 {
+  @include text-headline-size($headline-size-h1);
+}
+
+/**
+* Tex-Headline Responsive
+**/
+
+%text-headline-size-responsive-h6 {
+  @include text-headline-size($headline-size-h6, true);
+}
+
+%text-headline-size-responsive-h5 {
+  @include text-headline-size($headline-size-h5, true);
+}
+
+%text-headline-size-responsive-h4 {
+  @include text-headline-size($headline-size-h4, true);
+}
+
+%text-headline-size-responsive-h3 {
+  @include text-headline-size($headline-size-h3, true);
+}
+
+%text-headline-size-responsive-h2 {
+  @include text-headline-size($headline-size-h2, true);
+}
+
+%text-headline-size-responsive-h1 {
+  @include text-headline-size($headline-size-h1, true);
+}
+
+/**
+* Text-Tiny
+**/
+
+%text-tiny {
+  @include text-tiny();
+}
+
+%text-tiny-size-tiny {
+  @include text-tiny-size($font-size-tiny);
+}
+
+%text-tiny-size-small {
+  @include text-tiny-size($font-size-small);
+}
+
+%text-tiny-size-medium {
+  @include text-tiny-size($font-size-medium);
+}
+
+%text-tiny-size-large {
+  @include text-tiny-size($font-size-large);
+}
+
+%text-tiny-size-xl {
+  @include text-tiny-size($font-size-xl);
+}
+
+/**
+* Text-Content
+**/
+
+%text-content {
+  @include text-content();
+}
+
+%text-content-size-tiny {
+  @include text-content-size($font-size-tiny);
+}
+
+%text-content-size-small {
+  @include text-content-size($font-size-small);
+}
+
+%text-content-size-medium {
+  @include text-content-size($font-size-medium);
+}
+
+%text-content-size-large {
+  @include text-content-size($font-size-large);
+}
+
+%text-content-size-xl {
+  @include text-content-size($font-size-xl);
+}
+
+%text-content-html {
+  @include text-content-html();
+}
+
+/**
+* Text-Content Responsive
+**/
+
+%text-content-size-responsive-tiny {
+  @include text-content-size($font-size-tiny, true);
+}
+
+%text-content-size-responsive-small {
+  @include text-content-size($font-size-small, true);
+}
+
+%text-content-size-responsive-medium {
+  @include text-content-size($font-size-medium, true);
+}
+
+%text-content-size-responsive-large {
+  @include text-content-size($font-size-large, true);
+}
+
+%text-content-size-responsive-xl {
+  @include text-content-size($font-size-xl, true);
+}
+
+%text-content-html {
+  @include text-content-html();
+}

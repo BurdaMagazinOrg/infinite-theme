@@ -1,0 +1,19 @@
+#toolbar-administration .toolbar-bar {
+  position: fixed;
+  z-index: 9999;
+}
+
+@media (max-width: $screen-sm-max) {
+  #toolbar-administration .toolbar-bar {
+
+    .menu-item {
+      width: 50%;
+      text-align: center;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,115 @@
+.region-full-content.region-marketing {
+  @include transition-property(background-color, opacity, visibility);
+  @include transition-duration($transition-duration);
+  @include transition-timing-function($transition-easing);
+  background-color: $white;
+  //max-height: 0;
+  overflow: hidden;
+
+  &.ad-active {
+    background-color: $bg-color-gray-light;
+    padding-top: 0;
+    border-bottom: $h-line-style;
+    //max-height: 1000px;
+  }
+
+  &.ad-inactive {
+
+    //max-height: 0;
+  }
+
+  .container-marketing {
+    padding: $gap-section 0;
+  }
+
+  .item-marketing {
+    text-align: center;
+  }
+
+  .item-label {
+    position: absolute;
+    left: 0;
+    top: $gap-section;
+    text-align: left;
+  }
+
+  .ad-container {
+    background-color: $white;
+    border: $h-line-style;
+    max-width: 100%;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    .item-label {
+      top: 10px;
+    }
+  }
+}
+
+.container-marketing {
+  position: relative;
+
+  .item-label {
+    @extend %text-tiny;
+    @extend %text-tiny-size-small;
+    margin-bottom: 5px;
+    display: block;
+  }
+}
+
+[data-view-type="marketingView"] {
+  @extend %transition-fade;
+  @extend %fade-out;
+
+  &.ad-active {
+    @extend %fade-in;
+  }
+}
+
+.container-marketing-sidebar {
+
+}
+
+.container-row-sidebar .item-marketing {
+
+}
+
+.ad-active {
+
+}
+
+.region-full-content.region-marketing.ad-bsad {
+  padding: 0;
+  border: 0;
+  overflow: visible;
+
+  .container-marketing {
+    max-width: none;
+    padding: 0px;
+  }
+
+  .ad-container {
+    display: block;
+    border: 0;
+  }
+
+  .item-label {
+    display: none;
+  }
+}
+
+.ad-inactive {
+  overflow: hidden;
+  height: 0;
+}
+
+//tracdelight widget
+.td-widget iframe {
+
+}
+
+
+
+

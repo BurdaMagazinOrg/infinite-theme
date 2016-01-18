@@ -1,0 +1,7 @@
+.container-avatar {
+  overflow: hidden;
+
+  img {
+    @extend %img-full-responsive;
+  }
+}

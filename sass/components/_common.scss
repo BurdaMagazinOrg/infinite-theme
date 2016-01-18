@@ -1,0 +1,25 @@
+.item-section-lined {
+  @extend %gap-section-lined;
+}
+
+#page-wrapper {
+  .stuck {
+    -webkit-transform: translateZ(0);
+    position:fixed;
+    top:0;
+  }
+
+  .stuck-stop {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0;
+  }
+}
+
+.sticky-wrapper, .item-sticky {
+  &.shrink {
+    height: auto !important;
+  }
+}
+
+

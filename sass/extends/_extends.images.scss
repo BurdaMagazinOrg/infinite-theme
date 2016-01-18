@@ -1,0 +1,11 @@
+%img-responsive {
+  @include img-responsive();
+}
+
+%img-full-responsive {
+  @include img-full-responsive();
+}
+
+%img-full-responsive-inline-block {
+  @include img-full-responsive(inline-block);
+}

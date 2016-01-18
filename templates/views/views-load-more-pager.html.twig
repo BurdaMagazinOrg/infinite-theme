@@ -1,0 +1,6 @@
+{% if next_url %}
+    <a class="infinite-more-link" href="{{ next_url }}" title="{{ 'Lazy loading of next page'|t }}" rel="next">
+        <span class="visually-hidden">{{ 'Next page'|t }}</span>
+        <span aria-hidden="true">{{ more_button_text }}</span>
+    </a>
+{% endif %}

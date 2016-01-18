@@ -1,0 +1,104 @@
+global-styling:
+  css:
+    base:
+      css/burda-infinite-global.css: {}
+
+  js:
+    js/burda_infinite/backbone-manager.js: {}
+
+    js/burda_infinite/libs/jquery.browser.js: {}
+    js/burda_infinite/libs/jquery.waypoints.js: {}
+    js/burda_infinite/libs/shortcuts/infinite_custom.js: {}
+    js/burda_infinite/libs/shortcuts/sticky.js: {}
+    js/burda_infinite/libs/shortcuts/inview.js: {}
+    js/burda_infinite/libs/jquery.easing.1.3.js: {}
+    js/burda_infinite/libs/jquery.timeago.js: {}
+    js/burda_infinite/libs/swiper.jquery.js: {}
+    js/burda_infinite/libs/jquery.browser.min.js: {}
+    js/burda_infinite/libs/bootstrap/modal.js: {}
+    js/burda_infinite/libs/bootstrap/transition.js: {}
+
+    js/burda_infinite/burda-infinite.js: {}
+    js/burda_infinite/adIntegration.js: {}
+    js/burda_infinite/consts/app-config.js: {}
+    js/burda_infinite/consts/view-ids.js: {}
+    js/burda_infinite/consts/model-ids.js: {}
+    js/burda_infinite/consts/manager-ids.js: {}
+
+    # brand base overrides
+    js/burda_infinite/views/base/base-view.js: {}
+    js/brand/views/base/base-view.js: {}
+    js/burda_infinite/views/base/base-inview-view.js: {}
+    js/brand/views/base/base-inview-view.js: {}
+    js/burda_infinite/views/base/base-dynamic-view.js: {}
+    js/brand/views/base/base-dynamic-view.js: {}
+    js/burda_infinite/views/base/base-feed-view.js: {}
+    js/brand/views/base/base-feed-view.js: {}
+    js/burda_infinite/views/base/base-sidebar-view.js: {}
+    js/brand/views/base/base-sidebar-view.js: {}
+    js/burda_infinite/views/base/base-newsletter-view.js: {}
+    js/brand/views/base/base-newsletter-view.js: {}
+
+
+    js/burda_infinite/managers/tracking-manager.js: {}
+    js/brand/managers/tracking-manager.js: {}
+    js/burda_infinite/managers/scroll-manager.js: {}
+    js/brand/managers/scroll-manager.js: {}
+
+    js/burda_infinite/views/main-view.js: {}
+    js/burda_infinite/views/infinite-block-view.js: {}
+    js/burda_infinite/views/list-swipeable-view.js: {}
+    js/burda_infinite/views/menu-sidebar-view.js: {}
+    js/burda_infinite/views/menu-main-view.js: {}
+    js/burda_infinite/views/modal-search-view.js: {}
+    js/burda_infinite/views/article-view.js: {}
+    js/burda_infinite/views/gallery-view.js: {}
+    js/burda_infinite/views/sticky-view.js: {}
+    js/burda_infinite/views/marketing-view.js: {}
+    js/burda_infinite/views/components/spinner-cube-view.js: {}
+
+    js/burda_infinite/models/base/base-model.js: {}
+    js/brand/models/base/base-model.js: {}
+
+    js/burda_infinite/models/base/base-collection-model.js: {}
+    js/brand/models/base/base-collection-model.js: {}
+
+    js/burda_infinite/models/base/base-dynamic-view-model.js: {}
+    js/brand/models/base/base-dynamic-view-model.js: {}
+
+    js/burda_infinite/models/ajax-model.js: {}
+    js/burda_infinite/models/page-offsets-model.js: {}
+    js/burda_infinite/models/sidebar-model.js: {}
+    js/burda_infinite/models/modal-search-model.js: {}
+    js/burda_infinite/models/device-model.js: {}
+    js/burda_infinite/models/adsc-model.js: {}
+
+    # brand overrides
+    js/brand/views/main-view.js: {}
+    js/brand/views/infinite-block-view.js: {}
+    js/brand/views/list-swipeable-view.js: {}
+    js/brand/views/menu-sidebar-view.js: {}
+    js/brand/views/menu-main-view.js: {}
+    js/brand/views/modal-search-view.js: {}
+    js/brand/views/article-view.js: {}
+    js/brand/views/gallery-view.js: {}
+    js/brand/views/sticky-view.js: {}
+    js/brand/views/marketing-view.js: {}
+    js/brand/views/components/spinner-cube-view.js: {}
+
+    js/brand/models/ajax-model.js: {}
+    js/brand/models/page-offsets-model.js: {}
+    js/brand/models/sidebar-model.js: {}
+    js/brand/models/modal-search-model.js: {}
+    js/brand/models/device-model.js: {}
+    js/brand/models/adsc-model.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/backbone
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/jquery.once
+    - core/picturefill
+    - core/jquery.cookie

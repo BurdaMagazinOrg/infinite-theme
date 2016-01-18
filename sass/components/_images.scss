@@ -1,0 +1,8 @@
+.img-responsive-container {
+  padding-left: 0;
+  padding-right: 0;
+
+  img {
+    @extend %img-full-responsive;
+  }
+}

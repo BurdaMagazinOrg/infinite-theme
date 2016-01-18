@@ -1,0 +1,13 @@
+@mixin transition-default($types: all, $duration: $transition-duration, $easing: $transition-easing) {
+  @include transition($types $duration $easing);
+}
+
+@mixin fade-out() {
+  @include opacity(0);
+  visibility: hidden;
+}
+
+@mixin fade-in() {
+  @include opacity(1);
+  visibility: visible;
+}

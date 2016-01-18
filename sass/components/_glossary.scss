@@ -1,0 +1,13 @@
+.views-view-grid {
+  @extend %clearfix;
+
+  &.cols-4 {
+    .views-col {
+      @include make-xs-column($grid-columns/4);
+    }
+  }
+
+  .views-col {
+    margin-top: $padding;
+  }
+}

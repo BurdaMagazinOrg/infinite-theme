@@ -1,0 +1,12 @@
+<article {{ attributes.addClass('item-content item-content-article') }} data-view-type="articleView">
+    <div class="item-content-header">
+        <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    </div>
+    <div class="item-content-column region-fixed-content">
+        <div class="item-content-highlighted">
+            <div class="item-block item-text">
+                {{ content }}  {# see TWIG files in paragraphs directory#}
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,49 @@
+{{ title_prefix }}
+{% if title %}
+    {{ title }}
+{% endif %}
+{{ title_suffix }}
+
+{% if attachment_before and view.getCurrentPage == 0 %}
+    {{ attachment_before }}
+{% endif %}
+{% if header %}
+    {{ header }}
+{% endif %}
+{% if exposed %}
+    {{ exposed }}
+{% endif %}
+
+{% if rows %}
+    <div class="region-full-content region-teaser-list">
+        <div class="container-content container-fixed-content container-row">
+            <div class="container-row-body teaser-list teaser-list-large teaser-list-vertical"
+                 data-view-type="feedTeaserView">
+                {{ rows }}
+            </div>
+            <div class="container-row-sidebar">
+                {% if sidebar %}
+                    <div class="item-sticky" data-view-type="stickyView">
+                        {{ sidebar }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% elseif empty %}
+    {{ empty }}
+{% endif %}
+
+{% if pager %}
+    {{ pager }}
+{% endif %}
+
+{% if attachment_after %}
+    {{ attachment_after }}
+{% endif %}
+{% if more %}
+    {{ more }}
+{% endif %}
+{% if footer %}
+    {{ footer }}
+{% endif %}

@@ -1,0 +1,43 @@
+%flexbox {
+  @include flexbox();
+}
+
+%flexbox-inline {
+  @include flexbox(horizontal, true);
+}
+
+%flexbox-horizontal {
+  @include vendor(flex-direction, row);
+}
+
+%flexbox-vertical {
+  @include vendor(flex-direction, column);
+}
+
+%flexbox-wrap-wrap {
+  @include flex-wrap(wrap);
+}
+
+%flexbox-wrap-nowrap {
+  @include flex-wrap(nowrap);
+}
+
+%justify-content-center {
+  @include justify-content();
+}
+
+%align-self-center {
+  @include align-self();
+}
+
+%align-items-center {
+  @include align-items();
+}
+
+%flex-item-1 {
+  @include flex-item();
+}
+
+%flex-shrink-0 {
+  @include flex-shrink(0);
+}

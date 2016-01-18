@@ -1,0 +1,27 @@
+.page-article {
+
+  #main {
+    padding-bottom: 0; //feed gap
+  }
+
+  .author {
+    margin-top: $gap-section;
+  }
+
+  .item-content-header h1 {
+    max-width: $full-headlines-max-width;
+  }
+
+  .region-breadcrumb {
+    @extend %region-full-content;
+    margin-bottom: $grid-gutter-width;
+  }
+
+  .breadcrumb {
+    @extend %region-fixed-content;
+  }
+
+  .region-breadcrumb + .item-content-article {
+    @extend %gap-section-lined-reset;
+  }
+}

@@ -1,0 +1,8 @@
+.fade {
+  @include transition(opacity $transition-duration $transition-easing);
+  opacity: 0;
+
+  &.in {
+    opacity: 1;
+  }
+}

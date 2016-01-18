@@ -1,0 +1,23 @@
+button {
+  @include transition(color $transition-duration $transition-easing);
+  background: none;
+  border: 0;
+  color: inherit;
+  outline: 0 !important;
+
+  &:hover {
+    color: $color-hover;
+  }
+
+  &:focus {
+    outline: 0 !important;
+  }
+}
+
+.btn {
+  @extend %btn;
+}
+
+.btn-lg {
+  padding: $padding $padding-large-horizontal 6px;
+}

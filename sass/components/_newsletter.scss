@@ -1,0 +1,250 @@
+.region-newsletter {
+  height: 367px;
+  overflow: hidden;
+  text-align: center;
+  color: $white;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+
+  &.state-privacy {
+    .container-content-item {
+      @extend %fade-out;
+    }
+
+    .container-privacy {
+      @extend %fade-in;
+      //@include transition-delay($transition-duration);
+    }
+  }
+
+  &.state-success {
+    .container-content-item {
+      @extend %fade-out;
+    }
+
+    .container-success {
+      @extend %fade-in;
+    }
+  }
+
+  .container-content {
+    padding: 0 $grid-gutter-width;
+    position: relative;
+    background-image: url(../images/static/block-newsletter-sm_Tram.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    &:before {
+      content: " ";
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      background-image: url(../images/static/block-newsletter-md_Tram.jpg);
+    }
+
+    @media (min-width: $screen-lg-min) {
+      background-image: url(../images/static/block-newsletter-xl_Tram.jpg);
+    }
+  }
+
+  .container-content-item {
+    @extend %transition-fade;
+    @extend %fade-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $bg-color-gray-light;
+  }
+
+  .container-privacy, .container-success {
+    @extend %text-content-html;
+    color: $text-color;
+    font-size: $font-size-medium;
+  }
+
+  .container-privacy {
+    text-align: left;
+    padding: $grid-gutter-width;
+    overflow-y: scroll;
+
+    strong {
+      @extend %text-headline;
+      @extend %text-headline-size-h5;
+    }
+
+    .container-content-dynamic {
+      p:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .container-success {
+    padding: 77px $grid-gutter-width $grid-gutter-width;
+  }
+
+  .container-form {
+    @extend %fade-in;
+    display: block;
+    background-color: transparent;
+    padding: 77px $grid-gutter-width $grid-gutter-width;
+
+    .text-headline, .text-description {
+      margin-bottom: $gap-section;
+    }
+
+    .input-email {
+      width: 455px;
+      padding-right: 135px;
+    }
+
+    button {
+      width: 125px;
+      margin-left: -140px;
+    }
+
+    .checkbox {
+      margin-top: $gap-section;
+    }
+  }
+
+  .icon-close {
+    position: absolute;
+    font-size: $icon-size-medium;
+    color: $text-color;
+    top: $padding;
+    right: $grid-gutter-width;
+    z-index: 2;
+  }
+
+  .text-headline {
+    text-transform: uppercase;
+  }
+
+  .checkbox {
+    font-size: $font-size-small;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .container-form {
+      .input-email {
+        width: 390px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-min) {
+    .container-form {
+
+      .input-email {
+        width: 100%;
+        padding-right: $padding-large-horizontal;
+        height: 48px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: $padding;
+        margin-left: 0;
+        padding: 13px $padding-large-horizontal;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-min) {
+    .container-content-item {
+      padding-top: 44px;
+
+      .text-headline {
+        @include text-headline-size($headline-size-h5);
+      }
+
+      p {
+        margin-top: $padding;
+      }
+    }
+  }
+}
+
+/**
+* Lading Page
+**/
+.region-newsletter-page {
+  position: relative;
+  min-height: 500px;
+  height: 0;
+  padding-bottom: 100%;
+
+  &.instyle-men {
+    .container-content {
+      background-image: url(../images/static/newsletter_landingpage_men_xs.jpg);
+
+      @media (min-width: $screen-sm-min) {
+        background-image: url(../images/static/newsletter_landingpage_men_sm.jpg);
+      }
+
+      @media (min-width: $screen-lg-min) {
+        background-image: url(../images/static/newsletter_landingpage_men_lg.jpg);
+      }
+
+      @media (min-width: $screen-xl-min) {
+        background-image: url(../images/static/newsletter_landingpage_men_xl.jpg);
+      }
+    }
+  }
+
+  .container-content {
+    background-position: top center;
+    background-image: url(../images/static/newsletter_landingpage_xs.jpg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @media (min-width: $screen-sm-min) {
+      background-image: url(../images/static/newsletter_landingpage_sm.jpg);
+    }
+
+    @media (min-width: $screen-lg-min) {
+      background-image: url(../images/static/newsletter_landingpage_lg.jpg);
+    }
+
+    @media (min-width: $screen-xl-min) {
+      background-image: url(../images/static/newsletter_landingpage_xl.jpg);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+
+    .container-content-item {
+      background-color: rgba($white, 0.8);
+      width: $screen-sm-min;
+      height: 400px;
+      margin-left: - floor($screen-sm-min/2);
+      margin-top: -200px;
+      top: 50%;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      color: $text-color;
+    }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    height: 0;
+    padding-bottom: 65%;
+  }
+}

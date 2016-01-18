@@ -1,0 +1,75 @@
+#tabs {
+  @extend %clear-gutter-gap;
+  border-bottom: $h-line-style;
+  margin-bottom: $gap-section;
+
+  ul {
+    @extend %flexbox;
+    width: 100%;
+    background-color: $bg-color-gray-light;
+  }
+
+  li {
+    @extend %transition-default;
+    @extend %flex-item-1;
+    border-left: $h-line-style;
+    text-align: center;
+    cursor: pointer;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:hover {
+      background-color: $white;
+      color: $color-hover;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      padding: 15px 15px 13px;
+    }
+  }
+}
+
+.user-login-form {
+  margin: 20% auto;
+  max-width: 500px;
+
+  *:-webkit-autofill,
+  *:-webkit-autofill:hover,
+  *:-webkit-autofill:focus,
+  *:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: $text-color !important;
+  }
+
+  label {
+    display: block;
+  }
+
+  .js-form-item {
+    margin-top: $padding;
+
+    input {
+      height: 31px;
+      padding: 5px 10px;
+      border: $h-line-style;
+      width: 100%;
+    }
+  }
+
+  .description {
+    @extend %text-content-size-small;
+    color: $gray-dark;
+    margin-top: 5px;
+  }
+
+  .button {
+    @extend .btn;
+    @extend .btn-lg;
+    margin-top: $padding;
+    float: right;
+  }
+}

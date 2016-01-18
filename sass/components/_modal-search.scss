@@ -1,0 +1,127 @@
+#modal-search {
+  & > .spinner-container {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    margin-left: -$spinner-size/2;
+  }
+
+  .container-input {
+    position: relative;
+    overflow: hidden;
+    height: $headline-size-h1*2;
+    bottom: -11px;
+  }
+
+  .container-description {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: $label-size-medium;
+  }
+
+  .modal-content {
+    padding-top: 110px;
+    text-align: center;
+    position: relative;
+  }
+
+  .h-line {
+    @include transition(all 1s $transition-easing $transition-duration);
+    display: inline-block;
+    border-bottom: $h-line-style;
+    width: 0;
+  }
+}
+
+#feed-modal-search {
+  @extend %padding-gutter-gap;
+  text-align: left;
+  padding-top: $gap-section;
+  margin-top: $gap-section;
+
+  .region-lazy-loading:first-child {
+    .region-teaser-list {
+      @extend %gap-section-lined-reset;
+    }
+  }
+
+}
+
+#modal-search-input {
+  @include transition(all 0.5s $transition-easing 1s);
+  @include opacity(0);
+  @include translateY(200%);
+  width: 100%;
+  text-align: center;
+}
+
+#modal-search-description {
+  @include transition(all 0.5s $transition-easing 1s);
+  @include translateY(-(200%));
+  @include opacity(0);
+  color: $gray-base;
+
+  .message-default {
+
+  }
+
+  .message-active {
+    display: none;
+  }
+
+  .message-char-length {
+    @include transition(all $transition-duration $transition-easing);
+    @include fade-out();
+
+    font-size: $font-size-small;
+    margin-top: 5px;
+    color: $gray-dark;
+
+    &:before {
+      font-size: 17px;
+      vertical-align: text-bottom;
+      margin-right: 4px;
+    }
+  }
+}
+
+/**
+* CSS STATES
+**/
+
+#modal-search {
+  &.in {
+    .h-line {
+      width: 100%;
+    }
+
+    #modal-search-input {
+      @include opacity(1);
+      @include translateY(0);
+    }
+
+    #modal-search-description {
+      @include opacity(1);
+      @include translateY($label-size-medium);
+    }
+  }
+
+  &.is_info_char {
+    .message-char-length {
+      @include fade-in();
+    }
+  }
+
+  &.is_search_enabled {
+    #modal-search-description {
+      .message-default, .message-char-length {
+        display: none;
+      }
+
+      .message-active {
+        display: block;
+      }
+    }
+  }
+}
+

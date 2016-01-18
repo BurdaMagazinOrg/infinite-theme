@@ -1,0 +1,41 @@
+.author {
+  @extend %clearfix;
+  cursor: pointer;
+  color: $gray-base;
+  display: inline-block;
+  min-width: 235px;
+
+  &:hover {
+    .img-container {
+      @include opacity($teaser-hover-opacity);
+    }
+
+    .text-author span {
+      color: $text-highlighted;
+      border-bottom-color: $color-hover;
+    }
+  }
+
+  .text-author {
+    @extend %text-tiny-size-medium;
+    margin-top: 3px;
+    //margin-bottom: 3px;
+    line-height: 1;
+    white-space: nowrap;
+
+    span {
+      border-bottom: 1px solid $gray-base;
+      height: 16px;
+      display: inline-block;
+      font-style: italic;
+    }
+  }
+
+}
+
+.container-avatar {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: $padding;
+}

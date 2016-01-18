@@ -1,0 +1,13 @@
+.page-front {
+  #menu-main-navigation {
+    @extend %sticky-logo-animated;
+
+    .menu-item .is-active {
+      color: inherit;
+
+      &:hover {
+        color: $color-hover;
+      }
+    }
+  }
+}

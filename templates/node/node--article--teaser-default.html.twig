@@ -1,0 +1,35 @@
+<div class="img-container" itemscope="" itemtype="http://schema.org/imageObject" data-internal-url="{{ url }}">
+    {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
+        {{ content.field_presenter_media }}
+    {% else %}
+        {{ content.field_teaser_media }}
+    {% endif %}
+</div>
+
+<div class="caption caption-teaser">
+    {{ content.field_channel }}
+
+    <h2 class="text-headline">
+        <a href="{{ url }}" target="_self" rel="bookmark">{{ label }}</a>
+    </h2>
+
+    <header>
+        {{ author_teaser }}
+        <div class="socials socials-bar">
+            <a class="item-social icon-facebook" href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
+               target="_blank" data-social-type="facebook"></a>
+            <a class="item-social icon-whatsapp"
+               href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
+               data-social-type="whatsapp"></a>
+            <div class="item-social icon-pinterest"
+                 data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
+                 data-social-type="pinterest"></div>
+            <a class="item-social icon-twitter" href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany" target="_blank" data-social-type="twitter"></a>
+
+            <div class="item-social icon-email" data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}" data-social-type="email"></div>
+        </div>
+    </header>
+</div>
+{% if (show_contextual_links) %}
+    {{ title_suffix.contextual_links }}
+{% endif %}

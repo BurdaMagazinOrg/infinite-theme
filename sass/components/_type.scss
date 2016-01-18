@@ -1,0 +1,125 @@
+body {
+  color: $text-color;
+  font-size: $font-size-base;
+  font-family: $font-content;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  @media screen and (max-device-width: $screen-xs-min) {
+    -webkit-text-size-adjust: none;
+  }
+}
+
+p {
+  line-height: floor($font-size-base * $line-height-content);
+}
+
+a {
+  @include transition-property(color, background-color, border-color);
+  @include transition-duration(.35s);
+  @include transition-timing-function(ease);
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: $text-highlighted;
+  }
+}
+
+.text-headline {
+  @extend %text-headline;
+}
+
+.text-headline-size-h1 {
+  @extend %text-headline-size-h1;
+}
+
+.text-headline-size-h2 {
+  @extend %text-headline-size-h2;
+}
+
+.text-headline-size-h3 {
+  @extend %text-headline-size-h3;
+}
+
+.text-headline-size-h4 {
+  @extend %text-headline-size-h4;
+}
+
+.text-headline-size-h5 {
+  @extend %text-headline-size-h5;
+}
+
+.text-headline-size-h6 {
+  @extend %text-headline-size-h6;
+}
+
+.text-label {
+  @extend %text-label;
+}
+
+.text-label-size-xxl {
+  @extend %text-label-size-xxl;
+}
+
+.text-label-size-xl {
+  @extend %text-label-size-xl;
+}
+
+.text-label-size-large {
+  @extend %text-label-size-large;
+}
+
+.text-label-size-medium {
+  @extend %text-label-size-medium;
+}
+
+.text-label-size-small {
+  @extend %text-label-size-small;
+}
+
+.text-label-size-tiny {
+  @extend %text-label-size-tiny;
+}
+
+.text-tiny {
+  @extend %text-tiny;
+}
+
+.text-category {
+  @extend %text-label;
+  @extend %text-label-size-medium;
+  text-transform: uppercase;
+  color: $color-highlighted;
+}
+
+.text-copyright {
+  @extend %icon-copyright;
+  @extend %text-tiny;
+  @include text-tiny-size($font-size-small);
+  color: $gray-base;
+  text-transform: uppercase;
+
+  span + span {
+    &:before {
+      content: ",";
+      margin-left: -4px;
+      margin-right: 3px;
+    }
+  }
+}
+
+.text-description a {
+  text-decoration: underline;
+}
+
+.text-content-html {
+  @extend %text-content-html;
+}
+
+strong, b {
+  font-family: $font-content-bold;
+}
+
+i, em {
+  font-style: italic;
+}

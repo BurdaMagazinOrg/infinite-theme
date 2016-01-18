@@ -1,0 +1,40 @@
+@mixin icon-copyright($size: '') {
+  &:before {
+    content: "\00A9\00a0";
+  }
+}
+
+@mixin icon-return($size: '') {
+  &:before {
+    content: '\21A9';
+    vertical-align: middle;
+    display: inline-block;
+
+    @if ($size != '') {
+      font-size: $size;
+    }
+  }
+}
+
+@mixin icon-create($icon-variable, $size: '', $color: '', $hover-color: '', $container: '&:before') {
+
+  #{$container} {
+    @extend %ion;
+    content: $icon-variable;
+
+    @if ($color != '') {
+      color: $color;
+    }
+    @if ($size != '') {
+      font-size: $size;
+    }
+  }
+
+  @if ($hover-color != '') {
+    &:hover, &.active, &.swiper-active-switch {
+      #{$container} {
+        color: $hover-color;
+      }
+    }
+  }
+}

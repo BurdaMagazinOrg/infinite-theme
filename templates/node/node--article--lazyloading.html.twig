@@ -1,0 +1,11 @@
+<div class="region-full-content region-lazy-loading region-infinite-block infinite-item" data-view-type="infiniteBlockView"
+     data-history-url="{{ path }}"
+     data-history-title="{{ content.field_seo_title | plain_text | replace({'"': ''}) }}"
+     data-adsc-adunit1="{{ adsc_adunit1 }}"  data-adsc-adunit2="{{ adsc_adunit2 }}"
+     data-adsc-adunit3="{{ adsc_adunit3 }}" data-adsc-keyword="{{ adsc_keyword }}"
+     >
+
+    {{ content.field_header_blocks }}
+    {{ include('node--article.html.twig') }}
+    {{ content.field_footer_blocks }}
+</div>

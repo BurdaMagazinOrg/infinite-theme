@@ -1,0 +1,48 @@
+input {
+  outline: 0;
+  border: 0;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+.input-blank {
+  border: 0;
+}
+
+.checkbox {
+  input[type="checkbox"] {
+    margin-top: 0;
+  }
+}
+
+form {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.has-error {
+  input {
+    border: 2px solid $alert-danger-border;
+  }
+}
+
+.container-alerts {
+  font-size: $font-size-small;
+
+  .alert {
+    @extend %ion-ios-circle-filled;
+
+    &:before {
+      margin-right: 5px;
+    }
+  }
+
+  .alert-danger {
+    &:before {
+      color: $alert-danger-text;
+    }
+  }
+}

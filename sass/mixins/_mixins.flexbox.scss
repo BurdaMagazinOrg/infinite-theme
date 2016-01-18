@@ -1,0 +1,53 @@
+@mixin flexbox($orientation: horizontal, $inline: false) {
+  @if ($inline) {
+    display: -webkit-inline-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-inline-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-inline-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-inline-flex; /* NEW - Chrome */
+    display: inline-flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  } @else {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  }
+
+  @if ($orientation == horizontal) {
+    @include vendor(flex-direction, row);
+  } @else {
+    @include vendor(flex-direction, column);
+  }
+}
+
+@mixin justify-content($orientation: center) {
+  @include vendor(justify-content, $orientation);
+  -ms-flex-pack: $orientation;
+}
+
+@mixin align-self($orientation: center) {
+  @include vendor(align-self, $orientation);
+}
+
+@mixin align-items($orientation: center) {
+  @include vendor(align-items, $orientation);
+  -ms-flex-align: $orientation;
+}
+
+@mixin flex-wrap($type: wrap) {
+  @include vendor(flex-wrap, $type);
+}
+
+@mixin flex-shrink($weight: 0) {
+  -webkit-flex-shrink: $weight;
+  -ms-flex: $weight $weight auto;
+  flex-shrink: $weight;
+}
+
+@mixin flex-item($weight: 1) {
+  -webkit-box-flex: $weight;
+  -moz-box-flex: $weight;
+  -webkit-flex: $weight;
+  -ms-flex: $weight;
+  flex: $weight;
+}
