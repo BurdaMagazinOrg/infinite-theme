@@ -1,0 +1,12 @@
+{
+    "name": "burdamagazinorg/infinite-theme",
+    "type": "drupal-theme",
+    "authors": [
+        {
+            "name": "Steffen Schlaer",
+            "email": "steffen.schlaer@it-cru.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
