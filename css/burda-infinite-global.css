@@ -7339,7 +7339,7 @@ form a {
   vertical-align: middle;
   display: inline-block;
 }
-@media (max-width: 480px) {
+@media (max-width: 479px) {
   /* line 165, ../sass/components/_socials.scss */
   .socials-horizontal-bar .item-social {
     padding: 0;
@@ -7364,7 +7364,7 @@ form a {
 .socials-vertical-bar .item-social:first-child {
   margin-top: 0;
 }
-@media (max-width: 767px) {
+@media (max-width: 766px) {
   /* line 175, ../sass/components/_socials.scss */
   .socials-vertical-bar {
     margin-top: 24px;

@@ -250,7 +250,9 @@
             console.log(">> trackPageView >>", document.title, tmpPath);
         },
         trackIVW: function (iamDataObject) {
-            iamDataObject = iamDataObject || iam_data;
+            if(window.iam_data == undefined) return;
+
+            iamDataObject = iamDataObject || window.iam_data;
             iom.c(iamDataObject, 1);
         },
         getCurrentPath: function () {
