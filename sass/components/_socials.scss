@@ -161,7 +161,7 @@
     }
   }
 
-  @media (max-width: $screen-xs-min) {
+  @media (max-width: $screen-xxs-max) {
     .item-social {
       padding: 0;
 
@@ -187,7 +187,7 @@
     }
   }
 
-  @media (max-width: $screen-sm-min) {
+  @media (max-width: $screen-xs-max) {
     margin-top: $grid-gutter-width;
 
     .item-social {
