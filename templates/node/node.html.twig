@@ -70,67 +70,42 @@
 <article {{ attributes.addClass('item-content item-content-article') }}
     data-view-type="articleView">
   <div class="item-content-header">
-    <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% block content_header %}
+      <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% endblock %}
   </div>
 
   <div class="item-content-column region-fixed-content">
-
     <aside class="socials socials-bar socials-vertical-bar"
            data-view-type="stickyView">
-      <a class="item-social icon-facebook"
-         href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
-         target="_blank" data-social-type="facebook"></a>
-      <a class="item-social icon-whatsapp"
-         href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
-         data-social-type="whatsapp"></a>
-      <div class="item-social icon-pinterest"
-           data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
-           data-social-type="pinterest"></div>
-      <a class="item-social icon-twitter"
-         href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
-         target="_blank" data-social-type="twitter"></a>
-      <div class="item-social icon-email"
-           data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
-           data-social-type="email"></div>
+      {% block socials_vertical_bar %}
+        {% embed '/themes/custom/infinite/burda_infinite/templates/embeds/social_icons_default.html.twig' %}
+        {% endembed %}
+      {% endblock %}
     </aside>
+    {% block content_highlighted %}{% endblock %}
+
     <div class="container-row">
       <div class="container-row-body item-content-body">
-        {{ content }}
-
+        {% block content_body %}
+          {{ content }}
+        {% endblock %}
         <div class="socials socials-bar socials-horizontal-bar item-block">
-          <a class="item-social icon-facebook"
-             href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
-             target="_blank" data-social-type="facebook">
-            <span>Teilen</span>
-          </a>
-          <a class="item-social icon-whatsapp"
-             href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
-             data-social-type="whatsapp">
-            <span>Teilen</span>
-          </a>
-          <div class="item-social icon-pinterest"
-               data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
-               data-social-type="pinterest">
-            <span>Pin</span>
-          </div>
-          <a class="item-social icon-twitter"
-             href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
-             target="_blank" data-social-type="twitter">
-            <span>Tweet</span>
-          </a>
-          <div class="item-social icon-email"
-               data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
-               data-social-type="email">
-            <span>Mail</span>
+          {% block socials_horizontal_bar %}
+            {% embed '/themes/custom/infinite/burda_infinite/templates/embeds/social_icons_horizontal.html.twig' %}
+            {% endembed %}
+          {% endblock %}
           </div>
         </div>
       </div>
       <div class="container-row-sidebar item-content-sidebar">
-        {% if content.field_sidebar_blocks %}
-          <div class="item-sticky" data-view-type="stickyView">
-            {{ content.field_sidebar_blocks }}
-          </div>
-        {% endif %}
+        {% block content_sidebar %}
+          {% if content.field_sidebar_blocks %}
+            <div class="item-sticky" data-view-type="stickyView">
+              {{ content.field_sidebar_blocks }}
+            </div>
+          {% endif %}
+        {% endblock %}
       </div>
     </div>
   </div>

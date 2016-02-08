@@ -1,167 +1,29 @@
-{#
-/**
- * @file
- * Default theme implementation to display a node.
- *
- * Available variables:
- * - node: Full node entity.
- *   - id: The node ID.
- *   - bundle: The type of the node, for example, "page" or "article".
- *   - authorid: The user ID of the node author.
- *   - createdtime: Time the node was published formatted in Unix timestamp.
- *   - changedtime: Time the node was changed formatted in Unix timestamp.
- * - label: The title of the node.
- * - content: All node items. Use {{ content }} to print them all,
- *   or print a subset such as {{ content.field_example }}. Use
- *   {{ content|without('field_example') }} to temporarily suppress the printing
- *   of a given child element.
- * - author_picture: The node author user entity, rendered using the "compact"
- *   view mode.
- * - metadata: Metadata for this node.
- * - date: Themed creation date field.
- * - author_name: Themed author name field.
- * - url: Direct URL of the current node.
- * - display_submitted: Whether submission information should be displayed.
- * - attributes: HTML attributes for the containing element.
- *   The attributes.class element may contain one or more of the following
- *   classes:
- *   - node: The current template type (also known as a "theming hook").
- *   - node--type-[type]: The current node type. For example, if the node is an
- *     "Article" it would result in "node--type-article". Note that the machine
- *     name will often be in a short form of the human readable label.
- *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
- *     teaser would result in: "node--view-mode-teaser", and
- *     full: "node--view-mode-full".
- *   The following are controlled through the node publishing options.
- *   - node--promoted: Appears on nodes promoted to the front page.
- *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
- *     teaser listings.
- *   - node--unpublished: Appears on unpublished nodes visible only to site
- *     admins.
- * - title_attributes: Same as attributes, except applied to the main title
- *   tag that appears in the template.
- * - content_attributes: Same as attributes, except applied to the main
- *   content tag that appears in the template.
- * - author_attributes: Same as attributes, except applied to the author of
- *   the node tag that appears in the template.
- * - title_prefix: Additional output populated by modules, intended to be
- *   displayed in front of the main title tag that appears in the template.
- * - title_suffix: Additional output populated by modules, intended to be
- *   displayed after the main title tag that appears in the template.
- * - view_mode: View mode; for example, "teaser" or "full".
- * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
- * - page: Flag for the full page state. Will be true if view_mode is 'full'.
- * - readmore: Flag for more state. Will be true if the teaser content of the
- *   node cannot hold the main body content.
- * - logged_in: Flag for authenticated user status. Will be true when the
- *   current user is a logged-in member.
- * - is_admin: Flag for admin user status. Will be true when the current user
- *   is an administrator.
- *
- * @see template_preprocess_node()
- *
- * @todo Remove the id attribute (or make it a class), because if that gets
- *   rendered twice on a page this is invalid CSS for example: two lists
- *   in different view modes.
- *
- * @ingroup themeable
- */
-#}
-
-
 {% if content.field_top_paragraphs | render is not empty or content.field_paragraphs | render is not empty %}
+  {% extends "/themes/custom/infinite/burda_infinite/templates/node/node.html.twig" %}
 
-  <article {{ attributes.addClass('item-content item-content-article') }}
-      data-view-type="articleView">
+  {% block content_header %}
+    {% block sponsored %}
+      {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
+    {% endblock %}
 
-    <div class="item-content-header">
-      {% block sponsored %}
-        {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
-      {% endblock %}
+    {% if has_header_block %}
+      <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
+    {% else %}
+      <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% endif %}
+    {{ author_teaser }}
+  {% endblock %}
 
-      {% if has_header_block %}
-        <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
-      {% else %}
-        <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
-      {% endif %}
-      {{ author_teaser }}
-
+  {% block content_highlighted %}
+    <div class="item-content-highlighted">
+      {{ content.field_top_paragraphs }}
     </div>
+  {% endblock %}
 
-    <div class="item-content-column region-fixed-content">
-      <aside class="socials socials-bar socials-vertical-bar"
-             data-view-type="stickyView">
-        <a class="item-social icon-facebook"
-           href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
-           target="_blank" data-social-type="facebook"></a>
-        <a class="item-social icon-whatsapp"
-           href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
-           data-social-type="whatsapp"></a>
-
-        <div class="item-social icon-pinterest"
-             data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
-             data-social-type="pinterest"></div>
-        <a class="item-social icon-twitter"
-           href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
-           target="_blank" data-social-type="twitter"></a>
-
-        <div class="item-social icon-email"
-             data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
-             data-social-type="email"></div>
-      </aside>
-
-      <div class="item-content-highlighted">
-        {{ content.field_top_paragraphs }}  {# see TWIG files in paragraphs directory#}
-      </div>
-
-      {% if content.field_paragraphs['#items'] %}
-        <div class="container-row">
-          <div class="container-row-body item-content-body">
-            {{ content.field_paragraphs }}  {# see TWIG files in paragraphs directory#}
-            {{ content.field_tags }}
-            <div class="socials socials-bar socials-horizontal-bar item-block">
-              <a class="item-social icon-facebook"
-                 href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
-                 target="_blank"
-                 data-social-type="facebook">
-                <span>Teilen</span>
-              </a>
-              <a class="item-social icon-whatsapp"
-                 href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
-                 data-social-type="whatsapp">
-                <span>Teilen</span>
-              </a>
-
-              <div class="item-social icon-pinterest"
-                   data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
-                   data-social-type="pinterest">
-                <span>Pin</span>
-              </div>
-              <a class="item-social icon-twitter"
-                 href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
-                 target="_blank" data-social-type="twitter">
-                <span>Tweet</span>
-              </a>
-
-              <div class="item-social icon-email"
-                   data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
-                   data-social-type="email">
-                <span>Mail</span>
-              </div>
-            </div>
-          </div>
-          <div class="container-row-sidebar item-content-sidebar">
-            {% if content.field_sidebar_blocks %}
-              <div class="item-sticky" data-view-type="stickyView">
-                {{ content.field_sidebar_blocks }}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-
-    </div>
-
-  </article>
+  {% if content.field_paragraphs['#items'] %}
+    {% block content_body %}
+      {{ content.field_paragraphs }}
+      {{ content.field_tags }}
+    {% endblock %}
+  {% endif %}
 {% endif %}
-
