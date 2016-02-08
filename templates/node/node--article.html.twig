@@ -70,164 +70,170 @@
 
 
 {% if content.field_top_paragraphs | render is not empty or content.field_paragraphs | render is not empty %}
-    <article {{ attributes.addClass('item-content item-content-article') }} data-view-type="articleView">
-        <div class="item-content-header">
-            {% block sponsored %}
-                {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
-            {% endblock %}
 
-            {% if has_header_block %}
-                <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
-            {% else %}
-                <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
-            {% endif %}
-            {{ author_teaser }}
-        </div>
+  <article {{ attributes.addClass('item-content item-content-article') }}
+      data-view-type="articleView">
 
-        <div class="item-content-column region-fixed-content">
+    <div class="item-content-header">
+      {% block sponsored %}
+        {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
+      {% endblock %}
 
-            <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
-                <a class="item-social icon-facebook" href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
-                   target="_blank" data-social-type="facebook"></a>
-                <a class="item-social icon-whatsapp"
-                   href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
-                   data-social-type="whatsapp"></a>
+      {% if has_header_block %}
+        <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
+      {% else %}
+        <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+      {% endif %}
+      {{ author_teaser }}
 
-                <div class="item-social icon-pinterest"
-                     data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
-                     data-social-type="pinterest"></div>
-                <a class="item-social icon-twitter"
-                   href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
-                   target="_blank" data-social-type="twitter"></a>
+    </div>
 
-                <div class="item-social icon-email"
-                     data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
-                     data-social-type="email"></div>
-            </aside>
+    <div class="item-content-column region-fixed-content">
+      <aside class="socials socials-bar socials-vertical-bar"
+             data-view-type="stickyView">
+        <a class="item-social icon-facebook"
+           href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
+           target="_blank" data-social-type="facebook"></a>
+        <a class="item-social icon-whatsapp"
+           href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
+           data-social-type="whatsapp"></a>
 
-            <div class="item-content-highlighted">
-                {{ content.field_top_paragraphs }}  {# see TWIG files in paragraphs directory#}
+        <div class="item-social icon-pinterest"
+             data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
+             data-social-type="pinterest"></div>
+        <a class="item-social icon-twitter"
+           href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
+           target="_blank" data-social-type="twitter"></a>
+
+        <div class="item-social icon-email"
+             data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
+             data-social-type="email"></div>
+      </aside>
+
+      <div class="item-content-highlighted">
+        {{ content.field_top_paragraphs }}  {# see TWIG files in paragraphs directory#}
+      </div>
+
+      {% if content.field_paragraphs['#items'] %}
+        <div class="container-row">
+          <div class="container-row-body item-content-body">
+            {{ content.field_paragraphs }}  {# see TWIG files in paragraphs directory#}
+            {{ content.field_tags }}
+
+            {#<div class="item-block item-products" data-view-type="productsView">#}
+            {#<div class="text-headline item-title">Produkte</div>#}
+            {#<div class="container-content">#}
+            {#<div class="item-product" data-external-url="#">#}
+            {#<div class="img-container">#}
+            {#<img src="/themes/custom/burda_infinite/images/static/product-1.png"/>#}
+            {#</div>#}
+            {#<div class="caption">#}
+            {#<div class="text-brand">Brand</div>#}
+            {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
+            {#<div class="text-price">240,00 €</div>#}
+            {#<div class="text-shipping">5,00 € Versand</div>#}
+            {#<div class="text-shop">Zum Shop</div>#}
+            {#</div>#}
+            {#</div>#}
+
+            {#<div class="item-product" data-external-url="#">#}
+            {#<div class="img-container">#}
+            {#<img src="/themes/custom/burda_infinite/images/static/product-2.png"/>#}
+            {#</div>#}
+            {#<div class="caption">#}
+            {#<div class="text-brand">Brand</div>#}
+            {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
+            {#<div class="text-price">240,00 €</div>#}
+            {#<div class="text-shipping">5,00 € Versand</div>#}
+            {#<div class="text-shop">Zum Shop</div>#}
+            {#</div>#}
+
+            {#</div>#}
+
+            {#<div class="item-product" data-external-url="#">#}
+            {#<div class="img-container">#}
+            {#<img src="/themes/custom/burda_infinite/images/static/product-3.png"/>#}
+            {#</div>#}
+            {#<div class="caption">#}
+            {#<div class="text-brand">Brand</div>#}
+            {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
+            {#<div class="text-price">240,00 €</div>#}
+            {#<div class="text-shipping">5,00 € Versand</div>#}
+            {#<div class="text-shop">Zum Shop</div>#}
+            {#</div>#}
+            {#</div>#}
+
+            {#<div class="item-product" data-external-url="#">#}
+            {#<div class="img-container">#}
+            {#<img src="/themes/custom/burda_infinite/images/static/product-4.png"/>#}
+            {#</div>#}
+            {#<div class="caption">#}
+            {#<div class="text-brand">Brand</div>#}
+            {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
+            {#<div class="text-price">240,00 €</div>#}
+            {#<div class="text-shipping">5,00 € Versand</div>#}
+            {#<div class="text-shop">Zum Shop</div>#}
+            {#</div>#}
+            {#</div>#}
+
+            {#<div class="item-product" data-external-url="#">#}
+            {#<div class="img-container">#}
+            {#<img src="/themes/custom/burda_infinite/images/static/product-5.png"/>#}
+            {#</div>#}
+            {#<div class="caption">#}
+            {#<div class="text-brand">Brand</div>#}
+            {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
+            {#<div class="text-price">240,00 €</div>#}
+            {#<div class="text-shipping">5,00 € Versand</div>#}
+            {#<div class="text-shop">Zum Shop</div>#}
+            {#</div>#}
+            {#</div>#}
+            {#</div>#}
+            {#</div>#}
+
+            <div class="socials socials-bar socials-horizontal-bar item-block">
+              <a class="item-social icon-facebook"
+                 href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
+                 target="_blank"
+                 data-social-type="facebook">
+                <span>Teilen</span>
+              </a>
+              <a class="item-social icon-whatsapp"
+                 href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
+                 data-social-type="whatsapp">
+                <span>Teilen</span>
+              </a>
+
+              <div class="item-social icon-pinterest"
+                   data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
+                   data-social-type="pinterest">
+                <span>Pin</span>
+              </div>
+              <a class="item-social icon-twitter"
+                 href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
+                 target="_blank" data-social-type="twitter">
+                <span>Tweet</span>
+              </a>
+
+              <div class="item-social icon-email"
+                   data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
+                   data-social-type="email">
+                <span>Mail</span>
+              </div>
             </div>
-
-            {% if content.field_paragraphs['#items'] %}
-                <div class="container-row">
-                    <div class="container-row-body item-content-body">
-                        {{ content.field_paragraphs }}  {# see TWIG files in paragraphs directory#}
-                        {{ content.field_tags }}
-
-                        {#<div class="item-block item-products" data-view-type="productsView">#}
-                        {#<div class="text-headline item-title">Produkte</div>#}
-                        {#<div class="container-content">#}
-                        {#<div class="item-product" data-external-url="#">#}
-                        {#<div class="img-container">#}
-                        {#<img src="/themes/custom/burda_infinite/images/static/product-1.png"/>#}
-                        {#</div>#}
-                        {#<div class="caption">#}
-                        {#<div class="text-brand">Brand</div>#}
-                        {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
-                        {#<div class="text-price">240,00 €</div>#}
-                        {#<div class="text-shipping">5,00 € Versand</div>#}
-                        {#<div class="text-shop">Zum Shop</div>#}
-                        {#</div>#}
-                        {#</div>#}
-
-                        {#<div class="item-product" data-external-url="#">#}
-                        {#<div class="img-container">#}
-                        {#<img src="/themes/custom/burda_infinite/images/static/product-2.png"/>#}
-                        {#</div>#}
-                        {#<div class="caption">#}
-                        {#<div class="text-brand">Brand</div>#}
-                        {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
-                        {#<div class="text-price">240,00 €</div>#}
-                        {#<div class="text-shipping">5,00 € Versand</div>#}
-                        {#<div class="text-shop">Zum Shop</div>#}
-                        {#</div>#}
-
-                        {#</div>#}
-
-                        {#<div class="item-product" data-external-url="#">#}
-                        {#<div class="img-container">#}
-                        {#<img src="/themes/custom/burda_infinite/images/static/product-3.png"/>#}
-                        {#</div>#}
-                        {#<div class="caption">#}
-                        {#<div class="text-brand">Brand</div>#}
-                        {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
-                        {#<div class="text-price">240,00 €</div>#}
-                        {#<div class="text-shipping">5,00 € Versand</div>#}
-                        {#<div class="text-shop">Zum Shop</div>#}
-                        {#</div>#}
-                        {#</div>#}
-
-                        {#<div class="item-product" data-external-url="#">#}
-                        {#<div class="img-container">#}
-                        {#<img src="/themes/custom/burda_infinite/images/static/product-4.png"/>#}
-                        {#</div>#}
-                        {#<div class="caption">#}
-                        {#<div class="text-brand">Brand</div>#}
-                        {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
-                        {#<div class="text-price">240,00 €</div>#}
-                        {#<div class="text-shipping">5,00 € Versand</div>#}
-                        {#<div class="text-shop">Zum Shop</div>#}
-                        {#</div>#}
-                        {#</div>#}
-
-                        {#<div class="item-product" data-external-url="#">#}
-                        {#<div class="img-container">#}
-                        {#<img src="/themes/custom/burda_infinite/images/static/product-5.png"/>#}
-                        {#</div>#}
-                        {#<div class="caption">#}
-                        {#<div class="text-brand">Brand</div>#}
-                        {#<div class="text-headline"><a href="#">Hier ist die Produkt-beschreibung</a></div>#}
-                        {#<div class="text-price">240,00 €</div>#}
-                        {#<div class="text-shipping">5,00 € Versand</div>#}
-                        {#<div class="text-shop">Zum Shop</div>#}
-                        {#</div>#}
-                        {#</div>#}
-                        {#</div>#}
-                        {#</div>#}
-
-                        <div class="socials socials-bar socials-horizontal-bar item-block">
-                            <a class="item-social icon-facebook"
-                               href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}" target="_blank"
-                               data-social-type="facebook">
-                                <span>Teilen</span>
-                            </a>
-                            <a class="item-social icon-whatsapp"
-                               href="whatsapp://send?text=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: {{ label | plain_text }} - {{ url }}"
-                               data-social-type="whatsapp">
-                                <span>Teilen</span>
-                            </a>
-
-                            <div class="item-social icon-pinterest"
-                                 data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
-                                 data-social-type="pinterest">
-                                <span>Pin</span>
-                            </div>
-                            <a class="item-social icon-twitter"
-                               href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0Avia @InStyleGermany"
-                               target="_blank" data-social-type="twitter">
-                                <span>Tweet</span>
-                            </a>
-
-                            <div class="item-social icon-email"
-                                 data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body=Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren: %0D%0A%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
-                                 data-social-type="email">
-                                <span>Mail</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-row-sidebar item-content-sidebar">
-                        {% if content.field_sidebar_blocks %}
-                            <div class="item-sticky" data-view-type="stickyView">
-                                {{ content.field_sidebar_blocks }}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+          </div>
+          <div class="container-row-sidebar item-content-sidebar">
+            {% if content.field_sidebar_blocks %}
+              <div class="item-sticky" data-view-type="stickyView">
+                {{ content.field_sidebar_blocks }}
+              </div>
             {% endif %}
-
+          </div>
         </div>
+      {% endif %}
 
-    </article>
+    </div>
+
+  </article>
 {% endif %}
 
