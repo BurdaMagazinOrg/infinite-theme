@@ -1,0 +1,45 @@
+{% block social_facebook %}
+  <a class="item-social icon-facebook"
+     href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url }}"
+     target="_blank" data-social-type="facebook">
+    {% if facebook_share_button %}
+       <span>{{ facebook_share_button }}</span>
+    {% endif %}
+  </a>
+{% endblock %}
+{% block social_whatsapp %}
+  <a class="item-social icon-whatsapp"
+     href="whatsapp://send?text={{ whatsapp_share_text | plain_text | url_encode }} {{ label | plain_text }} - {{ url }}"
+     data-social-type="whatsapp">
+    {% if whatsapp_share_button %}
+      <span>{{ whatsapp_share_button }}</span>
+    {% endif %}
+  </a>
+{% endblock %}
+{% block social_pinterest %}
+  <div class="item-social icon-pinterest"
+       data-href="https://pinterest.com/pin/create/button/?url={{ url }}&media={{ share_img_url }}&description={{ label | plain_text | url_encode }}"
+       data-social-type="pinterest">
+    {% if pinterest_share_button %}
+      <span>{{ pinterest_share_button }}</span>
+    {% endif %}
+  </div>
+{% endblock %}
+{% block social_twitter %}
+  <a class="item-social icon-twitter"
+     href="https://twitter.com/intent/tweet?text={{ label | plain_text | url_encode }}%0D%0A{{ url }}%0D%0A{{ twitter_share_via }}"
+     target="_blank" data-social-type="twitter">
+    {% if twitter_share_button %}
+      <span>{{ twitter_share_button }}</span>
+    {% endif %}
+  </a>
+{% endblock %}
+{% block social_email %}
+  <div class="item-social icon-email"
+       data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body={{ email_share_text | plain_text | url_encode }}%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
+       data-social-type="email">
+    {% if email_share_button %}
+      <span>{{ email_share_button }}</span>
+    {% endif %}
+  </div>
+{% endblock %}
