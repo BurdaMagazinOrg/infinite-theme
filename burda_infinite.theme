@@ -96,7 +96,6 @@ function burda_infinite_preprocess_node(&$variables) {
       }
     }
 
-
     // Add 'show_contextual_links' variable.
     /* @var User $user */
     $user = Drupal::currentUser();
@@ -105,19 +104,21 @@ function burda_infinite_preprocess_node(&$variables) {
     }
   }
 
-  // Define custom attributes for article teasers based on view mode.
-  $article_view_mode_attributes = [
-    'teaser_landscape_l' => ['teaser', 'teaser-landscape-large', 'contextual-region'],
-    'teaser_landscape_m' => ['teaser', 'teaser-content-right', 'teaser-landscape-medium', 'contextual-region'],
-    'teaser_portrait_m' => ['teaser', 'teaser-content-right', 'teaser-portrait-medium', 'contextual-region'],
-    'teaser_portrait_s' => ['teaser', 'teaser-content-right', 'teaser-portrait-small', 'contextual-region'],
-    'teaser_square_m' => ['teaser', 'teaser-content-right', 'teaser-square-medium', 'contextual-region'],
-  ];
+  // Preprocessing for content type article.
+  if ($bundle == "article") {
+    // Define custom attributes for article teasers based on view mode.
+    $article_view_mode_attributes = [
+      'teaser_landscape_l' => ['teaser', 'teaser-landscape-large', 'contextual-region'],
+      'teaser_landscape_m' => ['teaser', 'teaser-content-right', 'teaser-landscape-medium', 'contextual-region'],
+      'teaser_portrait_m' => ['teaser', 'teaser-content-right', 'teaser-portrait-medium', 'contextual-region'],
+      'teaser_portrait_s' => ['teaser', 'teaser-content-right', 'teaser-portrait-small', 'contextual-region'],
+      'teaser_square_m' => ['teaser', 'teaser-content-right', 'teaser-square-medium', 'contextual-region'],
+    ];
 
-  //kint($variables);
-  // Check for view mode and add attributes to template variables.
-  if (in_array($view_mode, array_keys($article_view_mode_attributes))) {
-    $variables['attributes']['class'] = $article_view_mode_attributes[$view_mode];
-    $variables['attributes']['data-nid'] = $variables['nid'];
+    // Check for view mode and add attributes to template variables.
+    if (in_array($view_mode, array_keys($article_view_mode_attributes))) {
+      $variables['attributes']['class'] = $article_view_mode_attributes[$view_mode];
+      $variables['attributes']['data-nid'] = $variables['nid'];
+    }
   }
 }
