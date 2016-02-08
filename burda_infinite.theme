@@ -22,6 +22,26 @@ function burda_infinite_theme_suggestions_user_alter(array &$suggestions, array 
   }
 }
 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function burda_infinite_theme_suggestions_node_alter(array &$suggestions, array $variables, $hook) {
+  $view_mode = &$variables['elements']['#view_mode'];
+  // Set custom teaser template for the following view modes.
+  $article_view_modes_teaser = [
+    'teaser_landscape_l',
+    'teaser_landscape_m',
+    'teaser_portrait_m',
+    'teaser_portrait_s',
+    'teaser_square_m',
+  ];
+  // Check if actual view-mode matches teasers.
+  if (in_array($view_mode, $article_view_modes_teaser)) {
+    $suggestions[] = 'node__article__teaser_default';
+  }
+}
+
+
 function burda_infinite_preprocess_page(&$variables) {
   $variables['theme_burda_infinite_path'] = '/' . drupal_get_path('theme', 'burda_infinite');
 }
@@ -39,6 +59,8 @@ function burda_infinite_preprocess_region(&$variables) {
 function burda_infinite_preprocess_node(&$variables) {
   /* @var Node $node */
   $node = &$variables['elements']['#node'];
+  $view_mode = &$variables['elements']['#view_mode'];
+
   $bundle = $node->bundle();
   if ($bundle == "article" || $bundle == "page") {
     // todo: switch later to publish date.
@@ -83,4 +105,19 @@ function burda_infinite_preprocess_node(&$variables) {
     }
   }
 
+  // Define custom attributes for article teasers based on view mode.
+  $article_view_mode_attributes = [
+    'teaser_landscape_l' => ['teaser', 'teaser-landscape-large', 'contextual-region'],
+    'teaser_landscape_m' => ['teaser', 'teaser-content-right', 'teaser-landscape-medium', 'contextual-region'],
+    'teaser_portrait_m' => ['teaser', 'teaser-content-right', 'teaser-portrait-medium', 'contextual-region'],
+    'teaser_portrait_s' => ['teaser', 'teaser-content-right', 'teaser-portrait-small', 'contextual-region'],
+    'teaser_square_m' => ['teaser', 'teaser-content-right', 'teaser-square-medium', 'contextual-region'],
+  ];
+
+  //kint($variables);
+  // Check for view mode and add attributes to template variables.
+  if (in_array($view_mode, array_keys($article_view_mode_attributes))) {
+    $variables['attributes']['class'] = $article_view_mode_attributes[$view_mode];
+    $variables['attributes']['data-nid'] = $variables['nid'];
+  }
 }

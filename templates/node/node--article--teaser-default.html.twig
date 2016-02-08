@@ -1,16 +1,18 @@
-<div class="img-container" itemscope="" itemtype="http://schema.org/imageObject" data-internal-url="{{ url }}">
+<article{{ attributes }}>
+  <div class="img-container" itemscope=""
+       itemtype="http://schema.org/imageObject" data-internal-url="{{ url }}">
     {% block teaser_img_container %}
-    {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
+      {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
         {{ content.field_presenter_media }}
-    {% else %}
+      {% else %}
         {{ content.field_teaser_media }}
-    {% endif %}
+      {% endif %}
     {% endblock %}
-</div>
+  </div>
 
-<div class="caption caption-teaser">
+  <div class="caption caption-teaser">
     {% block teaser_caption_channel %}
-        {{ content.field_channel }}
+      {{ content.field_channel }}
     {% endblock %}
 
     {% block sponsored %}
@@ -18,24 +20,25 @@
     {% endblock %}
 
     {% block teaser_text_headline %}
-    <h2 class="text-headline">
+      <h2 class="text-headline">
         <a href="{{ url }}" target="_self" rel="bookmark">{{ label }}</a>
-    </h2>
+      </h2>
     {% endblock %}
 
     <header>
-        {% block teaser_author %}
-            {{ author_teaser }}
-        {% endblock %}
-        {% block teaser_content %}{% endblock %}
-        {% block teaser_social_bar %}
-            <div class="socials socials-bar">
-              {% embed '/themes/custom/infinite/burda_infinite/templates/embeds/social_icons_default.html.twig' %}
-              {% endembed %}
-            </div>
-        {% endblock %}
+      {% block teaser_author %}
+        {{ author_teaser }}
+      {% endblock %}
+      {% block teaser_content %}{% endblock %}
+      {% block teaser_social_bar %}
+        <div class="socials socials-bar">
+          {% embed '/themes/custom/infinite/burda_infinite/templates/embeds/social_icons_default.html.twig' %}
+          {% endembed %}
+        </div>
+      {% endblock %}
     </header>
-</div>
-{% if (show_contextual_links) %}
+  </div>
+  {% if (show_contextual_links) %}
     {{ title_suffix.contextual_links }}
-{% endif %}
+  {% endif %}
+</article>
