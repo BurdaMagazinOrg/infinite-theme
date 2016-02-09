@@ -67,24 +67,20 @@
  * @ingroup themeable
  */
 #}
-<article {{ attributes.addClass('item-content item-content-article') }}
-    data-view-type="articleView">
+<article {{ attributes.addClass('item-content item-content-article') }} data-view-type="articleView">
   <div class="item-content-header">
     {% block content_header %}
       <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
     {% endblock %}
   </div>
-
   <div class="item-content-column region-fixed-content">
-    <aside class="socials socials-bar socials-vertical-bar"
-           data-view-type="stickyView">
+    <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
       {% block socials_vertical_bar %}
         {% embed '@burda_infinite/embeds/social_icons_default.html.twig' %}
         {% endembed %}
       {% endblock %}
     </aside>
     {% block content_highlighted %}{% endblock %}
-
     <div class="container-row">
       <div class="container-row-body item-content-body">
         {% block content_body %}
@@ -95,19 +91,18 @@
             {% embed '@burda_infinite/embeds/social_icons_horizontal.html.twig' %}
             {% endembed %}
           {% endblock %}
-          </div>
         </div>
       </div>
-      <div class="container-row-sidebar item-content-sidebar">
-        {% block content_sidebar %}
-          {% if content.field_sidebar_blocks %}
-            <div class="item-sticky" data-view-type="stickyView">
-              {{ content.field_sidebar_blocks }}
-            </div>
-          {% endif %}
-        {% endblock %}
-      </div>
+    </div>
+    <div class="container-row-sidebar item-content-sidebar">
+      {% block content_sidebar %}
+        {% if content.field_sidebar_blocks %}
+          <div class="item-sticky" data-view-type="stickyView">
+            {{ content.field_sidebar_blocks }}
+          </div>
+        {% endif %}
+      {% endblock %}
     </div>
   </div>
-
+  </div>
 </article>

@@ -65,20 +65,20 @@
 #}
 
 <article class="teaser teaser-full-content contextual-region" data-nid="{{ nid }}" data-internal-url="{{ url }}">
-    <div class="img-container" itemprop="associatedMedia">
-        {% if content.field_presenter_media['#items'] is not empty %}
-            {{ content.field_presenter_media }}
-        {% else %}
-            {{ content.field_teaser_media }}
-        {% endif %}
-    </div>
-    <div class="caption caption-teaser">
-        <h2 class="text-headline">
-            <a href="{{ url }}" target="_self">{{ label }}</a>
-        </h2>
-    </div>
-    {% if (show_contextual_links) %}
-        {{ title_suffix.contextual_links }}
+  <div class="img-container" itemprop="associatedMedia">
+    {% if content.field_presenter_media['#items'] is not empty %}
+      {{ content.field_presenter_media }}
+    {% else %}
+      {{ content.field_teaser_media }}
     {% endif %}
+  </div>
+  <div class="caption caption-teaser">
+    <h2 class="text-headline">
+      <a href="{{ url }}" target="_self">{{ label }}</a>
+    </h2>
+  </div>
+  {% if (show_contextual_links) %}
+    {{ title_suffix.contextual_links }}
+  {% endif %}
 </article>
 

@@ -1,0 +1,7 @@
+{% extends "@burda_infinite/node/node--article--full.html.twig" %}
+
+{% set attributes = attributes.addClass('region-lazy-loading') %}
+
+{% block article_footer_blocks_lazyloading %}
+  {{ content.field_footer_blocks }}
+{% endblock %}

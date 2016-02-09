@@ -1,29 +1,29 @@
-{% if content.field_top_paragraphs | render is not empty or content.field_paragraphs | render is not empty %}
-  {% extends "@burda_infinite/node/node.html.twig" %}
+{% extends "@burda_infinite/node/node.html.twig" %}
 
-  {% block content_header %}
-    {% block sponsored %}
-      {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
-    {% endblock %}
-
-    {% if has_header_block %}
-      <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
-    {% else %}
-      <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
-    {% endif %}
-    {{ author_teaser }}
+{% block content_header %}
+  {% block sponsored %}
+    {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
   {% endblock %}
 
-  {% block content_highlighted %}
+  {% if has_header_block %}
+    <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
+  {% else %}
+    <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+  {% endif %}
+  {{ author_teaser }}
+{% endblock %}
+
+{% block content_highlighted %}
+  {% if content.field_top_paragraphs %}
     <div class="item-content-highlighted">
       {{ content.field_top_paragraphs }}
     </div>
-  {% endblock %}
-
-  {% if content.field_paragraphs['#items'] %}
-    {% block content_body %}
-      {{ content.field_paragraphs }}
-      {{ content.field_tags }}
-    {% endblock %}
   {% endif %}
-{% endif %}
+{% endblock %}
+
+{% block content_body %}
+  {% if content.field_paragraphs['#items'] %}
+    {{ content.field_paragraphs }}
+    {{ content.field_tags }}
+  {% endif %}
+{% endblock %}

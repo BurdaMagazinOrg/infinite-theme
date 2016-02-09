@@ -67,23 +67,43 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes }}>
-  {% block header_blocks %}
+{# Add wrapper classes #}
+{% set wrapper_classes = [
+  'region-full-content',
+  'infinite-item',
+  'region-infinite-block',
+ ]
+%}
+
+{# Add data attributes #}
+{% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set attributes = attributes.setAttribute('data-history-url', path) %}
+{% set attributes = attributes.setAttribute('data-history-title', node_seo_title) %}
+{% set attributes = attributes.setAttribute('data-adsc-adunit1', adsc_adunit1) %}
+{% set attributes = attributes.setAttribute('data-adsc-adunit2', adsc_adunit2) %}
+{% set attributes = attributes.setAttribute('data-adsc-adunit3', adsc_adunit3) %}
+{% set attributes = attributes.setAttribute('data-adsc-keyword', adsc_keyword) %}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{# Add data attribute data-no-track only for view mode full #}
+{% if view_mode == 'full' %}
+  {% set attributes = attributes.setAttribute('data-no-track', 'true') %}
+{% endif %}
+
+<div{{ attributes.addClass(wrapper_classes) }}  >
+  {% block article_header_blocks %}
     {{ content.field_header_blocks }}
   {% endblock %}
   {{ include('@burda_infinite/node/node--article.html.twig') }}
-  {% if view_mode == 'lazyloading' %}
-    {% block footer_blocks_lazyloading %}
-      {{ content.field_footer_blocks }}
-    {% endblock %}
-  {% endif %}
+  {% block article_footer_blocks_lazyloading %}{% endblock %}
 </div>
-{% if view_mode == 'full' and content.field_footer_blocks | render %}
+
+{% if block('article_footer_blocks_full') is not empty %}
   <div class="region-full-content region-feed" data-view-type="feedView">
-    {% block footer_blocks_full %}
-      {{ content.field_footer_blocks }}
+    {% block article_footer_blocks_full %}
+      {% if view_mode == 'full' and content.field_footer_blocks | render %}
+        {{ content.field_footer_blocks }}
+        <div class="container-content container-content-dynamic container-feed-items"></div>
+      {% endif %}
     {% endblock %}
-    <div
-        class="container-content container-content-dynamic container-feed-items"></div>
   </div>
 {% endif %}
