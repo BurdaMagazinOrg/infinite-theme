@@ -1,5 +1,5 @@
 {% if content.field_top_paragraphs | render is not empty or content.field_paragraphs | render is not empty %}
-  {% extends "/themes/custom/infinite/burda_infinite/templates/node/node.html.twig" %}
+  {% extends "@burda_infinite/node/node.html.twig" %}
 
   {% block content_header %}
     {% block sponsored %}

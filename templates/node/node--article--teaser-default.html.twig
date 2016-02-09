@@ -30,12 +30,12 @@
         {{ author_teaser }}
       {% endblock %}
       {% block teaser_content %}{% endblock %}
-      {% block teaser_social_bar %}
-        <div class="socials socials-bar">
-          {% embed '/themes/custom/infinite/burda_infinite/templates/embeds/social_icons_default.html.twig' %}
+      <div class="socials socials-bar">
+        {% block teaser_social_bar %}
+          {% embed '@burda_infinite/embeds/social_icons_default.html.twig' %}
           {% endembed %}
-        </div>
-      {% endblock %}
+        {% endblock %}
+      </div>
     </header>
   </div>
   {% if (show_contextual_links) %}
