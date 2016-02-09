@@ -37,6 +37,16 @@
     @extend %text-headline-size-h5;
   }
 
+  .item-marketing-sponsored {
+    margin-bottom: $grid-gutter-width;
+  }
+
+  .item-marketing-native {
+    .logo, .brand {
+      height: 14px;
+    }
+  }
+
   @media (max-width: $screen-sm-min) {
     .caption-teaser {
       padding-top: floor($grid-gutter-width / 2);

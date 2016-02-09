@@ -9,9 +9,9 @@
 
   .logo {
     display: block;
-    width: 25%;
+    width: 35%;
     min-width: 180px;
-    padding: 3.7% 0;
+    padding: $grid-gutter-width 0;
 
     img {
       @extend %img-full-responsive;
@@ -22,7 +22,7 @@
     @extend %transition-default;
     @extend %fade-in;
     position: absolute;
-    top: $padding;
+    top: $grid-gutter-width;
     right: 0;
   }
 

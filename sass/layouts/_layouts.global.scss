@@ -37,6 +37,12 @@ body {
   #page {
     left: $menu-sidebar-width;
   }
+
+  #content .stuck {
+    @include opacity(0);
+    @include transition-delay(0s);
+    @include transition-duration(0.1s);
+  }
 }
 
 #page-wrapper {
@@ -62,6 +68,14 @@ body {
         padding-top: $gap-section;
       }
     }
+  }
+
+  .stuck {
+    @include transition-property(opacity);
+    @include transition-duration($transition-duration);
+    @include transition-delay($transition-duration);
+    @include transition-timing-function($transition-easing);
+    @include opacity(1);
   }
 }
 

@@ -8,8 +8,10 @@
     margin-top: $gap-section;
   }
 
-  .item-content-header h1 {
-    max-width: $full-headlines-max-width;
+  .item-content-header {
+    h1 {
+      max-width: $full-headlines-max-width;
+    }
   }
 
   .region-breadcrumb {

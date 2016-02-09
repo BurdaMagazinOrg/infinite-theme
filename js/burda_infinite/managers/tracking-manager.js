@@ -16,15 +16,15 @@
                 throw new Error("TrackingManager Model Error > initialLocation | gtmEventName | gtmIndexEvent | gtmIndexPosEvent > needed");
             }
 
-
             this.initialLocation = this.model.get('initialLocation');
             this.gtmEventName = TrackingManager.gtmEventName = this.model.get('gtmEventName');
             this.gtmIndexEvent = this.model.get('gtmIndexEvent');
             this.gtmIndexPosEvent = this.model.get('gtmIndexPosEvent');
             this.scrollTopPos = $(window).scrollTop();
 
-            this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.inviewChangeHandler, 150), this);
+            this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.inviewChangeHandler, 10), this);
             this.parseTrackingElements(this.$el);
+
             this.listenTo(this.infiniteModel, 'change:infiniteBlock', function (pModel) {
                 if (pModel.get('infiniteBlock') === true) {
                     this.parseTrackingElements(pModel.get('el'));

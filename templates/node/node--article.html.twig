@@ -72,6 +72,10 @@
 {% if content.field_top_paragraphs | render is not empty or content.field_paragraphs | render is not empty %}
     <article {{ attributes.addClass('item-content item-content-article') }} data-view-type="articleView">
         <div class="item-content-header">
+            {% block sponsored %}
+                {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
+            {% endblock %}
+
             {% if has_header_block %}
                 <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
             {% else %}

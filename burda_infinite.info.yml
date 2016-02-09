@@ -6,7 +6,39 @@ package: BurdaInfinite
 core: 8.x
 screenshot: images/burda_infinite.png
 libraries:
-  - burda_infinite/global-styling
+  - burda_infinite/burda_infite.libs
+  - burda_infinite/burda_infite.init
+  - burda_infinite/burda_infite.manager.tracking-manager
+  - burda_infinite/burda_infite.manager.scroll-manager
+
+  - burda_infinite/burda_infite.models.base.base-model
+  - burda_infinite/burda_infite.models.base.base-collection-model
+
+  - burda_infinite/burda_infite.models.ajax-model
+  - burda_infinite/burda_infite.models.page-offsets-model
+  - burda_infinite/burda_infite.models.device-model
+  - burda_infinite/burda_infite.models.adsc-model
+
+  - burda_infinite/burda_infite.views.base.base-view
+  - burda_infinite/burda_infite.views.base.base-inview-view
+  - burda_infinite/burda_infite.views.base.base-dynamic-view
+  - burda_infinite/burda_infite.views.base.base-feed-view
+  - burda_infinite/burda_infite.views.base.base-sidebar-view
+  - burda_infinite/burda_infite.views.base.base-newsletter-view
+
+  - burda_infinite/burda_infite.views.main-view
+  - burda_infinite/burda_infite.views.infinite-block-view
+  - burda_infinite/burda_infite.views.list-swipeable-view
+  - burda_infinite/burda_infite.views.menu-main-view
+  - burda_infinite/burda_infite.views.menu-sidebar-view
+  - burda_infinite/burda_infite.views.modal-search-view
+  - burda_infinite/burda_infite.views.article-view
+  - burda_infinite/burda_infite.views.gallery-view
+  - burda_infinite/burda_infite.views.sticky-view
+  - burda_infinite/burda_infite.views.products-view
+  - burda_infinite/burda_infite.views.marketing-view
+  - burda_infinite/burda_infite.views.spinner
+
 regions:
   header_large: 'Header large'
   header: 'Header'

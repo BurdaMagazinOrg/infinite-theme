@@ -69,7 +69,7 @@
         },
         createModels: function () {
             this.adscModel = new AdscModel(); //{render: true}
-            this.menuSidebarModel = new SidebarModel();
+            this.menuSidebarModel = new BaseSidebarModel();
             this.infiniteViewsModel = new BaseCollectionModel();
             this.modalSearchModel = new ModalSearchModel();
             this.pageOffsetsModel = new PageOffsetsModel();

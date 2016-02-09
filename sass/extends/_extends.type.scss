@@ -103,23 +103,27 @@
 }
 
 %text-tiny-size-tiny {
-  @include text-tiny-size($font-size-tiny);
+  @include text-tiny-size($tiny-size-tiny);
 }
 
 %text-tiny-size-small {
-  @include text-tiny-size($font-size-small);
+  @include text-tiny-size($tiny-size-small);
 }
 
 %text-tiny-size-medium {
-  @include text-tiny-size($font-size-medium);
+  @include text-tiny-size($tiny-size-medium);
 }
 
 %text-tiny-size-large {
-  @include text-tiny-size($font-size-large);
+  @include text-tiny-size($tiny-size-large);
 }
 
 %text-tiny-size-xl {
-  @include text-tiny-size($font-size-xl);
+  @include text-tiny-size($tiny-size-xl);
+}
+
+%text-tiny-size-xxl {
+  @include text-tiny-size($tiny-size-xxl);
 }
 
 /**

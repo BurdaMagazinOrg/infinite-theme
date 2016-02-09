@@ -23,10 +23,18 @@
                 tmpAdkeyWord = $pElement.data('adsc-keyword'),
                 tmpCurrentAdsc = _.clone(this.get('adsc'));
 
-            tmpCurrentAdsc.adsc_adunit1 = tmpAdUnit_1;
-            tmpCurrentAdsc.adsc_adunit2 = tmpAdUnit_2;
-            tmpCurrentAdsc.adsc_adunit3 = tmpAdUnit_3;
-            tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
+            if(tmpAdUnit_1 != undefined) {
+                tmpCurrentAdsc.adsc_adunit1 = tmpAdUnit_1;
+            }
+            if(tmpAdUnit_2 != undefined) {
+                tmpCurrentAdsc.adsc_adunit2 = tmpAdUnit_2;
+            }
+            if(tmpAdUnit_3 != undefined) {
+                tmpCurrentAdsc.adsc_adunit3 = tmpAdUnit_3;
+            }
+            if(tmpAdkeyWord != undefined) {
+                tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
+            }
 
             this.set('adsc', tmpCurrentAdsc);
         },

@@ -80,7 +80,6 @@
             var tmpAdURL = 'http://cdn-tags.orbyd.com/' + this.adFormat.toString(),
                 tmpAdscModel = {},
                 tmpReferer = window.location.host + AppConfig.initialLocation,
-            //tmpReferer = "instyle.de",
                 tmpDataStr = '';
 
             this.$dynamicIframe = document.createElement('iframe');
@@ -94,7 +93,7 @@
 
             this.$adSlotContainer.append(this.$dynamicIframe);
 
-            if (this.dynamicAdscModel == undefined) {
+            if (this.dynamicAdscModel == undefined || this.dynamicAdscModel == null) {
                 tmpAdscModel = this.globalAdscModel;
             } else {
                 tmpAdscModel = this.dynamicAdscModel;
@@ -117,6 +116,8 @@
                 + '<script type="text/javascript" src="' + tmpAdURL + '">'
                 + '<\/script>'
                 + '</body></html>';
+
+            //console.log(">>> AD aplus_data", tmpDataStr, this.adFormat.toString(), this.$el);
 
             this.$dynamicIframe.contentWindow.contents = content;
             this.$dynamicIframe.src = 'javascript:window["contents"]';
@@ -149,7 +150,7 @@
             }
         },
         enableView: function () {
-            this.enabled = true;
+            if(this.enabled) return;
 
             if (this.adProvider == AppConfig.ad_fag && !_.isNull(this.adModel)) {
                 if (this.$el.hasClass('ad-bsad')) return;
@@ -159,11 +160,11 @@
             } else if (this.adProvider == AppConfig.ad_orbyd) {
                 this.buildAd();
             }
+            this.enabled = true;
         },
         disableView: function () {
-            if (this.$el.hasClass('ad-bsad')) return;
+            if (this.$el.hasClass('ad-bsad') || !this.enabled) return;
 
-            this.enabled = false;
             if (this.$el.hasClass('region-full-content') && tmpHeight != 0) {
                 var tmpHeight = this.$adSlotContainer.height();
                 this.$adSlotContainer.css('height', this.$adSlotContainer.height());
@@ -172,6 +173,8 @@
                 this.hide();
                 this.$adSlotContainer.empty();
             }
+
+            this.enabled = false;
         },
         removeFixHeight: function () {
             if (this.$adSlotContainer.prop("style")["height"] !== '') this.$adSlotContainer.css('height', 'auto');

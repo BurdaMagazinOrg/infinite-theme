@@ -67,6 +67,9 @@
                 case 'newsletterView':
                     tmpView = new BaseNewsletterView(tmpSettings);
                     break;
+                case 'productsView':
+                    tmpView = new ProductsView(tmpSettings);
+                    break;
                 default:
                     tmpView = new BaseView(tmpSettings);
                     break;

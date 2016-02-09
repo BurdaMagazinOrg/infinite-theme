@@ -12,8 +12,13 @@
 
             this.scrollTopAdSettings = $(window).scrollTop();
             this.scrollTopUrl = $(window).scrollTop();
-            this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.urlChangeHandler, 100), this);
-            this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.adSettingsChangeHandler, 10), this);
+            //this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.urlChangeHandler, 10), this);
+            //this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.adSettingsChangeHandler, 10), this);
+            this.listenTo(this.infiniteModel, 'change:inview', this.onInviewChangeHandler, this);
+        },
+        onInviewChangeHandler: function (pModel) {
+            this.adSettingsChangeHandler(pModel);
+            this.urlChangeHandler(pModel);
         },
         adSettingsChangeHandler: function (pModel) {
             if (this.scrollTopAdSettings == $(window).scrollTop()) return;
@@ -35,12 +40,15 @@
                 tmpHistoryURL = $tmpElement.data('history-url'),
                 tmpDocumentTitle = '';
 
-            if (!_.isUndefined(tmpHistoryURL) && !_.isEmpty(tmpHistoryURL)) {
-                ScrollManager.pushHistory(tmpHistoryURL, {replace: true});
-                tmpDocumentTitle = $tmpElement.data('history-title');
+            if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
 
-                if (!_.isUndefined(tmpDocumentTitle) && !_.isEmpty(tmpDocumentTitle)) {
-                    document.title = decodeURIComponent(tmpDocumentTitle);
+                if (!_.isUndefined(tmpHistoryURL) && !_.isEmpty(tmpHistoryURL)) {
+                    ScrollManager.pushHistory(tmpHistoryURL, {replace: true});
+                    tmpDocumentTitle = $tmpElement.data('history-title');
+
+                    if (!_.isUndefined(tmpDocumentTitle) && !_.isEmpty(tmpDocumentTitle)) {
+                        document.title = decodeURIComponent(tmpDocumentTitle);
+                    }
                 }
             }
 

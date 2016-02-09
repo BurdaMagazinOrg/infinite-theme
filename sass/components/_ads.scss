@@ -48,6 +48,35 @@
   }
 }
 
+.item-marketing-sponsored {
+  margin-bottom: $gap-section;
+}
+
+.item-marketing-advertorial {
+  @extend %text-content-size-small;
+  color: $gray-base;
+  text-transform: uppercase;
+}
+
+.item-marketing-native {
+
+  .logo, .brand {
+    display: inline-block;
+    height: 20px;
+  }
+
+  .separator {
+    margin: 0 3px;
+    font-family: $font-content-bold;
+    vertical-align: text-bottom;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
 .container-marketing {
   position: relative;
 

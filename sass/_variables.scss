@@ -57,6 +57,13 @@ $headline-size-h4: 24px !default;
 $headline-size-h5: 18px !default;
 $headline-size-h6: 15px !default;
 
+$tiny-size-xxl: 24px !default;
+$tiny-size-xl: 21px !default;
+$tiny-size-large: 18px !default;
+$tiny-size-medium: 16px !default;
+$tiny-size-small: 14px !default;
+$tiny-size-tiny: 12px !default;
+
 $icon-size-xxl: 56px !default;
 $icon-size-xl: 44px !default;
 $icon-size-large: 37px !default;
@@ -72,6 +79,7 @@ $bg-color-gray-light: #f9f9f9 !default;
 $color-brand: #7d8482 !default;
 
 $white: #ffffff !default;
+$black: #000000 !default;
 $text-color: #383838 !default;
 $text-highlighted: $color-brand;
 $color-highlighted: #ea331e;
@@ -106,11 +114,15 @@ $logo-sticky-width: 110px !default;
 $navigation-padding-top-bottom: 20px !default;
 $item-image-socials-width: 70px;
 $item-social-size: 32px !default;
-$item-social-article-size: 40px !default;
+$item-social-size-md: 40px !default;
+$item-socials-icon-sm: $icon-size-tiny !default;
+$item-socials-icon-md: $icon-size-small !default;
 $article-socials-column-width: 96px !default;
 $full-headlines-max-width: 840px !default;
+$product-headline-height: 70px !default;   
 
 /** animation **/
+$menu-home-animated-logo: true !default;
 $transition-duration: 0.35s !default;
 $transition-easing: ease !default;
 
@@ -130,6 +142,9 @@ $alert-danger-text: $state-danger-text;
 
 $modal-backdrop-bg: $white;
 $modal-backdrop-opacity: 0.85;
+
+$round-socials-border-radius: 50%;
+$horizontal-socials-border-radius: floor($item-social-size-md / 2);
 
 $input-border-radius: 0;
 $input-border-radius-large: 0;

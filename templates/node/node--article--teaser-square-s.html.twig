@@ -4,6 +4,9 @@
         {{ content.field_teaser_media }}
     </div>
     <div class="caption caption-teaser">
+        {% block sponsored %}
+            {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
+        {% endblock %}
         <h2 class="text-headline">
             <a href="{{ url }}" target="_self">{{ label }}</a>
         </h2>
