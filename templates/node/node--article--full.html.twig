@@ -67,20 +67,23 @@
  * @ingroup themeable
  */
 #}
-<div class="region-full-content infinite-item region-infinite-block" data-view-type="infiniteBlockView"
-     data-no-track="true" data-history-url="{{ path }}"
-     data-history-title="{{ content.field_seo_title | render}}"
-     data-adsc-adunit1="{{ adsc_adunit1 }}"  data-adsc-adunit2="{{ adsc_adunit2 }}"
-     data-adsc-adunit3="{{ adsc_adunit3 }}" data-adsc-keyword="{{ adsc_keyword }}"
-        >
-
+<div{{ attributes }}>
+  {% block header_blocks %}
     {{ content.field_header_blocks }}
-    {{ include('/themes/custom/infinite/burda_infinite/templates/node/node--article.html.twig') }}
+  {% endblock %}
+  {{ include('@burda_infinite/node/node--article.html.twig') }}
+  {% if view_mode == 'lazyloading' %}
+    {% block footer_blocks_lazyloading %}
+      {{ content.field_footer_blocks }}
+    {% endblock %}
+  {% endif %}
 </div>
-
-{% if content.field_footer_blocks | render %}
-<div class="region-full-content region-feed" data-view-type="feedView">
-    {{ content.field_footer_blocks }}
-    <div class="container-content container-content-dynamic container-feed-items"></div>
-</div>
+{% if view_mode == 'full' and content.field_footer_blocks | render %}
+  <div class="region-full-content region-feed" data-view-type="feedView">
+    {% block footer_blocks_full %}
+      {{ content.field_footer_blocks }}
+    {% endblock %}
+    <div
+        class="container-content container-content-dynamic container-feed-items"></div>
+  </div>
 {% endif %}

@@ -39,8 +39,16 @@ function burda_infinite_theme_suggestions_node_alter(array &$suggestions, array 
   if (in_array($view_mode, $article_view_modes_teaser)) {
     $suggestions[] = 'node__article__teaser_default';
   }
+  // Set custom teaser template for the following view modes.
+  $article_view_modes_full = [
+    'full',
+    'lazyloading'
+  ];
+  // Check if actual view-mode matches teasers.
+  if (in_array($view_mode, $article_view_modes_full)) {
+    $suggestions[] = 'node__article__full';
+  }
 }
-
 
 function burda_infinite_preprocess_page(&$variables) {
   $variables['theme_burda_infinite_path'] = '/' . drupal_get_path('theme', 'burda_infinite');
@@ -106,19 +114,40 @@ function burda_infinite_preprocess_node(&$variables) {
 
   // Preprocessing for content type article.
   if ($bundle == "article") {
-    // Define custom attributes for article teasers based on view mode.
-    $article_view_mode_attributes = [
+    // Add special attributes for view mode full and lazyloading.
+    if ($view_mode == 'full' || $view_mode == 'lazyloading') {
+      $field_seo_title = !empty($node->field_seo_title->getValue()[0]) ? $node->field_seo_title->getValue()[0]['value'] : '';
+      // Replace double quotes.
+      // @toDo check, where we have this case!
+      $node_seo_title = str_replace('"','',$field_seo_title);
+      $variables['attributes'] = [
+        'data-view-type' => 'infiniteBlockView',
+        'data-history-url' => $variables['path'],
+        'data-history-title' => $node_seo_title,
+        'data-adsc-adunit1' => $variables['adsc_adunit1'],
+        'data-adsc-adunit2' => $variables['adsc_adunit2'],
+        'data-adsc-adunit3' => $variables['adsc_adunit3'],
+        'data-adsc-keyword' => $variables['adsc_keyword'],
+      ];
+    }
+    // Define custom classes for article view modes - used in attributes array.
+    $article_view_mode_classes = [
       'teaser_landscape_l' => ['teaser', 'teaser-landscape-large', 'contextual-region'],
       'teaser_landscape_m' => ['teaser', 'teaser-content-right', 'teaser-landscape-medium', 'contextual-region'],
       'teaser_portrait_m' => ['teaser', 'teaser-content-right', 'teaser-portrait-medium', 'contextual-region'],
       'teaser_portrait_s' => ['teaser', 'teaser-content-right', 'teaser-portrait-small', 'contextual-region'],
       'teaser_square_m' => ['teaser', 'teaser-content-right', 'teaser-square-medium', 'contextual-region'],
+      'full'  => ['region-full-content', 'infinite-item', 'region-infinite-block'],
+      'lazyloading'  => ['region-full-content', 'region-lazy-loading', 'region-infinite-block', 'infinite-item'],
     ];
-
     // Check for view mode and add attributes to template variables.
-    if (in_array($view_mode, array_keys($article_view_mode_attributes))) {
-      $variables['attributes']['class'] = $article_view_mode_attributes[$view_mode];
+    if (in_array($view_mode, array_keys($article_view_mode_classes))) {
+      $variables['attributes']['class'] = $article_view_mode_classes[$view_mode];
       $variables['attributes']['data-nid'] = $variables['nid'];
+    }
+    // Add no track data attribute for view mode full
+    if ($view_mode == 'full') {
+      $variables['attributes']['data-no-track'] = 'true';
     }
   }
 }
