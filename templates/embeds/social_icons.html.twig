@@ -36,7 +36,7 @@
 {% endblock %}
 {% block social_email %}
   <div class="item-social icon-email"
-       data-href="mailto:?subject=InStyle.de: {{ label | plain_text | url_encode }}&body={{ email_share_text | plain_text | url_encode }}%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
+       data-href="mailto:?subject={{ email_subject | plain_text | url_encode }} {{ label | plain_text | url_encode }}&body={{ email_share_text | plain_text | url_encode }}%0D%0A{{ label | plain_text | url_encode }} %0D%0A{{ url }}"
        data-social-type="email">
     {% if email_share_button %}
       <span>{{ email_share_button }}</span>
