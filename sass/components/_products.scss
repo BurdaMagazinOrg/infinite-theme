@@ -94,6 +94,11 @@
       }
     }
 
+    .img-container {
+      height: auto;
+      margin-bottom: 0;  
+    }
+
     .img-container, .caption {
       @include make-xxs-column($grid-columns/2);
     }

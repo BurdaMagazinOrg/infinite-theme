@@ -8215,7 +8215,7 @@ form a {
 .item-marketing-native .separator {
   margin: 0 3px;
   font-family: "Arial";
-  vertical-align: text-bottom;
+  vertical-align: bottom;
 }
 /* line 74, ../sass/components/_ads.scss */
 .item-marketing-native img {
