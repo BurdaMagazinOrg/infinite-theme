@@ -131,6 +131,8 @@
 
                 if (tmpIFrameHeight > 0) {
                     this.show();
+                } else {
+                    this.hide();
                 }
             }, this));
 

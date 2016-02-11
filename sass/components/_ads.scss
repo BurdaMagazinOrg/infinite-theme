@@ -60,15 +60,21 @@
 
 .item-marketing-native {
 
+  .logo {
+    margin-bottom: 5px;
+  }
+
   .logo, .brand {
     display: inline-block;
     height: 20px;
   }
 
   .separator {
-    margin: 0 3px;
+    margin: 0 1px 0 3px;
     font-family: $font-content-bold;
-    vertical-align: bottom;
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 4px;
   }
 
   img {

@@ -6077,7 +6077,11 @@ form a {
 }
 /* line 40, ../sass/components/_teasers.scss */
 .teaser-list-horizontal .item-marketing-sponsored {
-  margin-bottom: 24px;
+  margin-bottom: 13px;
+}
+/* line 45, ../sass/components/_teasers.scss */
+.teaser-list-horizontal .item-marketing-native .logo, .teaser-list-horizontal .item-marketing-native .brand {
+  height: 17px;
 }
 @media (max-width: 767px) {
   /* line 51, ../sass/components/_teasers.scss */
@@ -7873,6 +7877,11 @@ form a {
     margin-top: 0;
   }
   /* line 97, ../sass/components/_products.scss */
+  .item-products .img-container {
+    height: auto;
+    margin-bottom: 0;
+  }
+  /* line 102, ../sass/components/_products.scss */
   .item-products .img-container, .item-products .caption {
     position: relative;
     float: left;
@@ -7881,13 +7890,13 @@ form a {
     padding-left: 12px;
     padding-right: 12px;
   }
-  /* line 101, ../sass/components/_products.scss */
+  /* line 106, ../sass/components/_products.scss */
   .item-products .caption {
     padding-left: 0;
   }
 }
 
-/* line 107, ../sass/components/_products.scss */
+/* line 112, ../sass/components/_products.scss */
 .item-products + .item-block {
   margin-top: 31px;
 }
@@ -8207,54 +8216,60 @@ form a {
 }
 
 /* line 63, ../sass/components/_ads.scss */
+.item-marketing-native .logo {
+  margin-bottom: 5px;
+}
+/* line 67, ../sass/components/_ads.scss */
 .item-marketing-native .logo, .item-marketing-native .brand {
   display: inline-block;
   height: 20px;
 }
-/* line 68, ../sass/components/_ads.scss */
+/* line 72, ../sass/components/_ads.scss */
 .item-marketing-native .separator {
-  margin: 0 3px;
+  margin: 0 1px 0 3px;
   font-family: "Arial";
-  vertical-align: bottom;
+  vertical-align: middle;
+  display: inline-block;
+  padding-top: 4px;
 }
-/* line 74, ../sass/components/_ads.scss */
+/* line 80, ../sass/components/_ads.scss */
 .item-marketing-native img {
   height: 100%;
   width: auto;
 }
 
-/* line 80, ../sass/components/_ads.scss */
+/* line 86, ../sass/components/_ads.scss */
 .container-marketing {
   position: relative;
 }
-/* line 83, ../sass/components/_ads.scss */
+/* line 89, ../sass/components/_ads.scss */
 .container-marketing .item-label {
   margin-bottom: 5px;
   display: block;
 }
 
-/* line 112, ../sass/components/_ads.scss */
+/* line 118, ../sass/components/_ads.scss */
 .region-full-content.region-marketing.ad-bsad {
   padding: 0;
   border: 0;
   overflow: visible;
 }
-/* line 117, ../sass/components/_ads.scss */
+/* line 123, ../sass/components/_ads.scss */
 .region-full-content.region-marketing.ad-bsad .container-marketing {
   max-width: none;
   padding: 0px;
 }
-/* line 122, ../sass/components/_ads.scss */
+/* line 128, ../sass/components/_ads.scss */
 .region-full-content.region-marketing.ad-bsad .ad-container {
   display: block;
   border: 0;
 }
-/* line 127, ../sass/components/_ads.scss */
+/* line 133, ../sass/components/_ads.scss */
 .region-full-content.region-marketing.ad-bsad .item-label {
   display: none;
 }
 
-/* line 132, ../sass/components/_ads.scss */
+/* line 138, ../sass/components/_ads.scss */
 .ad-inactive {
   overflow: hidden;
   height: 0;
