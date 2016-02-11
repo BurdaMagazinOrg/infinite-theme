@@ -93,7 +93,9 @@
   {% block article_header_blocks %}
     {{ content.field_header_blocks }}
   {% endblock %}
-  {% include '@burda_infinite/node/node--article.html.twig' %}
+  {% block article_node_content %}
+    {% include '@burda_infinite/node/node--article.html.twig' %}
+  {% endblock %}
   {% block article_footer_blocks_lazyloading %}{% endblock %}
 </div>
 
