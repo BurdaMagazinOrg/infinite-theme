@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Url;
+use Drupal\Core\Template\Attribute;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
 use Drupal\image\Entity\ImageStyle;
@@ -91,5 +92,11 @@ function burda_infinite_preprocess_node(&$variables) {
     $variables['node_seo_title'] = str_replace('"', '', $field_seo_title);
     // Clean up classes array - all classes will be added in
     $variables['attributes']['class'] = array();
+
+    // Instantiate 'wrapper_attributes' attribute object to avoid collisions
+    // with actual node attributes.
+    if ($variables['view_mode'] === 'full') {
+      $variables['wrapper_attributes'] = new Attribute();
+    }
   }
 }
