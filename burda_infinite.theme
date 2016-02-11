@@ -95,7 +95,7 @@ function burda_infinite_preprocess_node(&$variables) {
 
     // Instantiate 'wrapper_attributes' attribute object to avoid collisions
     // with actual node attributes.
-    if ($variables['view_mode'] === 'full') {
+    if ($variables['view_mode'] === 'full' || $variables['view_mode'] === 'lazyloading') {
       $variables['wrapper_attributes'] = new Attribute();
     }
   }
