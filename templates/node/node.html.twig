@@ -93,15 +93,15 @@
           {% endblock %}
         </div>
       </div>
-    </div>
-    <div class="container-row-sidebar item-content-sidebar">
-      {% block content_sidebar %}
-        {% if content.field_sidebar_blocks %}
-          <div class="item-sticky" data-view-type="stickyView">
-            {{ content.field_sidebar_blocks }}
-          </div>
-        {% endif %}
-      {% endblock %}
+      <div class="container-row-sidebar item-content-sidebar">
+        {% block content_sidebar %}
+          {% if content.field_sidebar_blocks %}
+            <div class="item-sticky" data-view-type="stickyView">
+              {{ content.field_sidebar_blocks }}
+            </div>
+          {% endif %}
+        {% endblock %}
+      </div>
     </div>
   </div>
 </article>
