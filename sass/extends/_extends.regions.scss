@@ -5,3 +5,19 @@
 %region-full-content {
   @include region-full-content();
 }
+
+%center-block {
+  @include center-block();
+}
+
+%region-infinite-block {
+  @include region-infinite-block();
+}
+
+%region-full-content-v-gap {
+  @include region-full-content-v-gap();
+}
+
+%reset-region-full-content-v-gap {
+  @include reset-region-full-content-v-gap();
+}

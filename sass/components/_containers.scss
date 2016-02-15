@@ -1,9 +1,9 @@
 .region-full-content {
   @extend %region-full-content;
-
-  &:first-child.region-full-content {
-    @extend %gap-section-lined-reset;
-  }
+  //
+  //&:first-child.region-full-content {
+  //  @extend %gap-section-lined-reset;
+  //}
 
   &:first-child.region-marketing.ad-active {
     margin-top: -$gap-section;
@@ -31,7 +31,11 @@
 //padded / lined teaser
 .region-content, .region-feed-teasers {
   .region-full-content {
-    @extend %gap-section-lined;
+    @extend %region-full-content-v-gap;
+
+    &:first-child.region-full-content {
+      @extend %reset-region-full-content-v-gap;
+    }
   }
 }
 

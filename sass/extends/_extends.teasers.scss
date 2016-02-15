@@ -1,7 +1,19 @@
+%teaser-default {
+  @include teaser-default();
+}
+
+%gap-teaser-feed-large {
+  @include gap-teaser-feed-large();
+}
+
 %teaser-feed-large {
   @include teaser-feed-large();
 }
 
 %teaser-list-h {
   @include teaser-list-h();
+}
+
+%teaser-full-content {
+  @include teaser-full-content();
 }

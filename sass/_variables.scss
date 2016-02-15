@@ -127,11 +127,21 @@ $feed-teaser-gap-top-desktop: $gap-section !default;
 $feed-teaser-gap-top-tablet: $gap-section !default;
 $feed-teaser-gap-top-mobile: $gap-section !default;
 
-$feed-teaser-headline-size-mobile: 28px;
-$feed-teaser-headline-size-tablet: 32px;
-$feed-teaser-headline-size-desktop: 40px;
+$feed-teaser-headline-size-mobile: 24px !default;
+$feed-teaser-headline-size-tablet: 28px !default;
+$feed-teaser-headline-size-desktop: 32px !default;
 
-/** infinite block **/
+/** full-content-teaser **/
+$fc-teaser-headline-size-mobile: 24px !default;
+$fc-teaser-headline-size-tablet: 32px !default;
+$fc-teaser-headline-size-desktop: 48px !default;
+
+/**region full content **/
+$rfc-gap-top-mobile: $gap-size-sm !default;
+$rfc-gap-top-tablet: $gap-size-md !default;
+$rfc-gap-top-desktop: $gap-size-md !default;
+
+/** region infinite block **/
 $rib-gap-bottom-mobile: 0 !default;
 $rib-gap-bottom-tablet: 0 !default;
 $rib-gap-bottom-desktop: 0 !default;
