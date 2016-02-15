@@ -18,7 +18,7 @@
 
             this.createView();
 
-            if (!_.isUndefined(this.deviceModel)) {
+            if (!_.isUndefined(this.deviceModel) && this.deviceModel.isActive) {
                 this.onDeviceBreakpointHandler(this.deviceModel.getDeviceBreakpoints().findWhere({active: true}));
                 this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
             }

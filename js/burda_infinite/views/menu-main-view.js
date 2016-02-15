@@ -25,16 +25,16 @@
             this.pageOffsetsModel = BM.reuseModel(ModelIds.pageOffsetsModel);
             this.modalSearchModel = BM.reuseModel(ModelIds.modalSearchModel);
             this.menuSidebarModel = BM.reuseModel(ModelIds.menuSidebarModel);
+            this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
 
             this.delegateEvents();
             this.createViews();
             _.delay(_.bind(this.createByContext, this), 10);
 
-            if (!_.isUndefined(this.deviceModel)) {
-                this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
+            if (this.deviceModel.isActive) {
                 this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
 
-                    //shitty drupal 8 js-menu-active
+                //shitty drupal 8 js-menu-active
                 _.delay(_.bind(function () {
                     this.onDeviceBreakpointHandler(this.deviceModel.getDeviceBreakpoints().findWhere({active: true}));
                 }, this), 20);

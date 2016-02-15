@@ -8,10 +8,20 @@
   }
 }
 
+/**
+* Teaser Default
+**/
+
+.teaser {
+  @extend %teaser-default;
+}
+
+//vertical feed list
 .teaser-list-large {
   .teaser {
     @extend %teaser-feed-large;
-    @extend %gap-teaser-feed-large;
+    @extend %teaser-feed-large-text;
+    @extend %teaser-feed-large-gap;
   }
 }
 
@@ -21,6 +31,7 @@
   .teaser {
     @include make-xs-column($grid-columns / $teaser-list-horizontal-count-default);
     @extend %teaser-list-h;
+    @extend %teaser-list-h-text;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -34,11 +45,12 @@
 }
 
 /**
-* Teaser Default
+* Teaser Landscape
 **/
 
-.teaser {
-  @extend %teaser-default;
+.teaser-landscape-medium {
+  @extend %teaser-feed-large;
+  @extend %teaser-feed-large-text;
 }
 
 /**
@@ -58,27 +70,6 @@
     display: none;
   }
 }
-
-/**
-* Teaser Landscape
-**/
-
-.teaser-landscape-medium {
-  @extend %teaser-feed-large;
-}
-
-//.teaser-landscape-medium {
-//
-//  .text-headline {
-//    @extend %text-headline-size-h3;
-//  }
-//
-//  @media (max-width: $screen-md-max) {
-//    .text-headline {
-//      @include text-headline-size($headline-size-h4);
-//    }
-//  }
-//}
 
 .teaser-landscape-large {
   & > .caption-teaser {

@@ -3,6 +3,7 @@
     "use strict";
 
     BurdaInfinite.models.DeviceModel = Backbone.Model.extend({
+        isActive: false,
         breakpoints: {},
         breakpointValues: [],
         breakpointKeys: [],
@@ -40,6 +41,8 @@
                 this.checkActiveBreakpoint();
                 this.checkActiveDevice();
             }, 200), this));
+
+            if(this.getBreakpoints().length > 0) this.isActive = true;
         },
         createBreakpoints: function () {
             var tmpModelItem = {},
