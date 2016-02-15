@@ -59,6 +59,12 @@
   padding-top: $feed-teaser-gap-top-mobile;
   margin-top: $feed-teaser-gap-top-mobile;
 
+  &:first-child {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     padding-top: $feed-teaser-gap-top-tablet;
     margin-top: $feed-teaser-gap-top-tablet;
@@ -154,25 +160,29 @@
   }
 
   .text-headline {
-    @include text-headline();
     @include text-headline($fc-teaser-headline-size-mobile);
     padding: 15px 0;
     max-width: $full-headlines-max-width;
     width: 100%;
   }
 
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+  @media (min-width: $screen-xs-min) {
     .img-container {
       padding-bottom: 43.1%;
       height: 0;
     }
 
     .text-headline {
-      @include text-headline($fc-teaser-headline-size-tablet);
       position: absolute;
       bottom: 0;
       padding: 15px ($grid-gutter-width - 3px) 10px;
       background-color: $white;
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-headline($fc-teaser-headline-size-tablet);
     }
   }
 

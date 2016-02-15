@@ -123,23 +123,23 @@ $full-headlines-max-width: 840px !default;
 $product-headline-height: 70px !default;
 
 /** feed-teaser **/
-$feed-teaser-gap-top-desktop: $gap-section !default;
-$feed-teaser-gap-top-tablet: $gap-section !default;
-$feed-teaser-gap-top-mobile: $gap-section !default;
+$feed-teaser-gap-top-desktop: 37px !default;
+$feed-teaser-gap-top-tablet: 37px !default;
+$feed-teaser-gap-top-mobile: $gap-size-lg !default;
 
-$feed-teaser-headline-size-mobile: 24px !default;
+$feed-teaser-headline-size-mobile: $gap-size-md !default;
 $feed-teaser-headline-size-tablet: 28px !default;
-$feed-teaser-headline-size-desktop: 32px !default;
+$feed-teaser-headline-size-desktop: $gap-size-lg !default;
 
 /** full-content-teaser **/
-$fc-teaser-headline-size-mobile: 24px !default;
-$fc-teaser-headline-size-tablet: 32px !default;
-$fc-teaser-headline-size-desktop: 48px !default;
+$fc-teaser-headline-size-mobile: $gap-size-md !default;
+$fc-teaser-headline-size-tablet: $gap-size-lg !default;
+$fc-teaser-headline-size-desktop: $gap-size-xl !default;
 
 /**region full content **/
-$rfc-gap-top-mobile: $gap-size-sm !default;
-$rfc-gap-top-tablet: $gap-size-md !default;
-$rfc-gap-top-desktop: $gap-size-md !default;
+$rfc-gap-top-mobile: $gap-size-lg !default;
+$rfc-gap-top-tablet: $gap-size-lg !default;
+$rfc-gap-top-desktop: $gap-size-lg !default;
 
 /** region infinite block **/
 $rib-gap-bottom-mobile: 0 !default;

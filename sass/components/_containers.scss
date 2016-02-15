@@ -91,8 +91,8 @@
 /**
 * if ad is visible - remove the next border and gap
 */
-.region-marketing + .region-breadcrumb,
-.region-marketing + .region-full-content {
+.region-content .region-marketing + .region-breadcrumb,
+.region-content .region-marketing + .region-full-content {
   @extend %gap-section-lined-reset;
 }
 

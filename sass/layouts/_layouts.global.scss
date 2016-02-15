@@ -63,10 +63,10 @@ body {
   & > .region-full-content, & > .region-fixed-content {
     &:first-child {
       //@extend %gap-section-lined-reset;
-      //
-      //.teaser-content-right {
-      //  padding-top: $gap-section;
-      //}
+
+      .teaser-content-right {
+        padding-top: $gap-section;
+      }
     }
   }
 
