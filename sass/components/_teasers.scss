@@ -21,40 +21,18 @@
   }
 }
 
+.teaser-list-large {
+  .teaser {
+    @extend %teaser-feed-large;
+  }
+}
+
 .teaser-list-horizontal {
   @include make-row();
 
   .teaser {
     @include make-xs-column($grid-columns / $teaser-list-horizontal-count-default);
-  }
-
-  .caption-teaser {
-    padding-top: $grid-gutter-width;
-  }
-
-  .text-headline {
-    @extend %text-content;
-    @extend %text-headline-size-h5;
-  }
-
-  .item-marketing-sponsored {
-    margin-bottom: 13px;
-  }
-
-  .item-marketing-native {
-    .logo, .brand {
-      height: 17px;
-    }
-  }
-
-  @media (max-width: $screen-sm-min) {
-    .caption-teaser {
-      padding-top: floor($grid-gutter-width / 2);
-    }
-
-    .text-headline {
-      @include text-headline-size($headline-size-h6);
-    }
+    @extend %teaser-list-h;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -63,26 +41,6 @@
     .teaser {
       @include flex-shrink(0);
       width: 40%;
-    }
-  }
-}
-
-.teaser-list-large {
-  .teaser {
-    .text-headline {
-      @extend %text-headline-size-h3;
-    }
-
-    @media (max-width: $screen-md-max) {
-      .text-headline {
-        @include text-headline-size($headline-size-h4);
-      }
-    }
-
-    @media (max-width: $screen-xxs-max) {
-      .caption-teaser {
-        padding-top: $gap-section;
-      }
     }
   }
 }
@@ -132,7 +90,7 @@
 
   .text-category {
     display: inline-block;
-    margin-bottom: $grid-gutter-width;
+    margin-bottom: $gap-size-md;
 
     &:hover {
       color: $text-highlighted;
@@ -140,22 +98,22 @@
   }
 
   .author {
-    margin-top: $gap-section;
+    margin-top: $gap-size-lg;
   }
 
   .socials-bar {
-    margin-top: $gap-section;
+    margin-top: $gap-size-lg;
   }
 
   @media (max-width: $screen-xs-min) {
 
     //@Harm need pixel perfect gaps :D
     .author {
-      margin-top: 10px;
+      margin-top: $gap-size-xs;
     }
 
     .socials-bar {
-      margin-top: 20px;
+      margin-top: $gap-size-sm;
     }
   }
 }

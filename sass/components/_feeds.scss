@@ -19,10 +19,6 @@
     @include transition-delay(0.2s);
     @include transition-duration($transition-duration*3);
   }
-
-  .infinite-item {
-    //@include animation(fadeIn $transition-duration $transition-easing $transition-duration);
-  }
 }
 
 .infinite-loading {

@@ -1,3 +1,7 @@
 %center-block {
   @include center-block();
 }
+
+%region-infinite-block {
+  @include region-infinite-block();
+}

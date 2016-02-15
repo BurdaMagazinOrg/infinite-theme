@@ -3,9 +3,13 @@
 /** colors **/
 /** borders **/
 /** sizes **/
+/** feed-teaser **/
+/** infinite block **/
+/** list horizontal teaser **/
+/** common **/
 /** animation **/
 /** bootstrap overrides **/
-/* line 5, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -27,45 +31,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../usr/local/rvm/gems/ruby-1.9.3-p551/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p598/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -5145,37 +5149,37 @@ hr {
 /* line 45, ../sass/extends/_extends.type.scss */
 .text-content-html h6, .item-text h6, .item-link h6, .region-newsletter .container-privacy h6, .region-newsletter .container-success h6, .text-headline-size-h6 {
   font-size: 15px;
-  line-height: 20px;
+  line-height: 21px;
 }
 
 /* line 49, ../sass/extends/_extends.type.scss */
-.text-content-html h5, .item-text h5, .item-link h5, .region-newsletter .container-privacy h5, .region-newsletter .container-success h5, .text-headline-size-h5, .teaser-list-horizontal .text-headline, .item-products .item-product .text-headline, .region-newsletter .container-privacy strong {
+.text-content-html h5, .item-text h5, .item-link h5, .region-newsletter .container-privacy h5, .region-newsletter .container-success h5, .text-headline-size-h5, .item-products .item-product .text-headline, .region-newsletter .container-privacy strong {
   font-size: 18px;
-  line-height: 23px;
+  line-height: 24px;
 }
 
 /* line 53, ../sass/extends/_extends.type.scss */
 .text-content-html h4, .item-text h4, .item-link h4, .region-newsletter .container-privacy h4, .region-newsletter .container-success h4, .text-headline-size-h4, .teaser-full-content .text-headline {
   font-size: 24px;
-  line-height: 27px;
+  line-height: 28px;
 }
 
 /* line 57, ../sass/extends/_extends.type.scss */
-.text-content-html h3, .item-text h3, .item-link h3, .region-newsletter .container-privacy h3, .region-newsletter .container-success h3, .text-headline-size-h3, .teaser-list-large .teaser .text-headline, .teaser-landscape-large .text-headline, .teaser-landscape-medium .text-headline, .item-title {
+.text-content-html h3, .item-text h3, .item-link h3, .region-newsletter .container-privacy h3, .region-newsletter .container-success h3, .text-headline-size-h3, .teaser-landscape-large .text-headline, .teaser-landscape-medium .text-headline, .item-title {
   font-size: 30px;
-  line-height: 34px;
+  line-height: 36px;
 }
 
 /* line 61, ../sass/extends/_extends.type.scss */
 .text-content-html h2, .item-text h2, .item-link h2, .region-newsletter .container-privacy h2, .region-newsletter .container-success h2, .text-headline-size-h2 {
   font-size: 36px;
-  line-height: 41px;
+  line-height: 43px;
 }
 
 /* line 65, ../sass/extends/_extends.type.scss */
 .text-headline-size-h1 {
   font-size: 40px;
-  line-height: 46px;
+  line-height: 48px;
 }
 
 /**
@@ -5211,12 +5215,6 @@ hr {
 /**
 * Text-Content
 **/
-/* line 133, ../sass/extends/_extends.type.scss */
-.teaser-list-horizontal .text-headline {
-  font-family: "Arial";
-  letter-spacing: 0px;
-}
-
 /* line 141, ../sass/extends/_extends.type.scss */
 .item-marketing-advertorial, .user-login-form .description, .user-pass .description {
   font-size: 14px;
@@ -5229,58 +5227,58 @@ hr {
   line-height: 32px;
 }
 
-/* line 115, ../sass/mixins/_mixins.type.scss */
+/* line 79, ../sass/mixins/_mixins.type.scss */
 .text-content-html > p:first-child, .item-text > p:first-child, .item-link > p:first-child, .region-newsletter .container-privacy > p:first-child, .region-newsletter .container-success > p:first-child, .text-content-html > .text-label:first-child, .item-text > .text-label:first-child, .item-link > .text-label:first-child, .region-newsletter .container-privacy > .text-label:first-child, .region-newsletter .container-success > .text-label:first-child {
   margin-top: 0;
 }
-/* line 120, ../sass/mixins/_mixins.type.scss */
+/* line 84, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2, .item-text h2, .item-link h2, .region-newsletter .container-privacy h2, .region-newsletter .container-success h2, .text-content-html h3, .item-text h3, .item-link h3, .region-newsletter .container-privacy h3, .region-newsletter .container-success h3, .text-content-html h4, .item-text h4, .item-link h4, .region-newsletter .container-privacy h4, .region-newsletter .container-success h4, .text-content-html h5, .item-text h5, .item-link h5, .region-newsletter .container-privacy h5, .region-newsletter .container-success h5, .text-content-html h6, .item-text h6, .item-link h6, .region-newsletter .container-privacy h6, .region-newsletter .container-success h6 {
   margin-top: 31px;
 }
-/* line 124, ../sass/mixins/_mixins.type.scss */
+/* line 88, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2:first-child, .item-text h2:first-child, .item-link h2:first-child, .region-newsletter .container-privacy h2:first-child, .region-newsletter .container-success h2:first-child, .text-content-html h3:first-child, .item-text h3:first-child, .item-link h3:first-child, .region-newsletter .container-privacy h3:first-child, .region-newsletter .container-success h3:first-child, .text-content-html h4:first-child, .item-text h4:first-child, .item-link h4:first-child, .region-newsletter .container-privacy h4:first-child, .region-newsletter .container-success h4:first-child, .text-content-html h5:first-child, .item-text h5:first-child, .item-link h5:first-child, .region-newsletter .container-privacy h5:first-child, .region-newsletter .container-success h5:first-child, .text-content-html h6:first-child, .item-text h6:first-child, .item-link h6:first-child, .region-newsletter .container-privacy h6:first-child, .region-newsletter .container-success h6:first-child {
   margin-top: 0;
 }
-/* line 128, ../sass/mixins/_mixins.type.scss */
+/* line 92, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2 + p, .item-text h2 + p, .item-link h2 + p, .region-newsletter .container-privacy h2 + p, .region-newsletter .container-success h2 + p, .text-content-html h3 + p, .item-text h3 + p, .item-link h3 + p, .region-newsletter .container-privacy h3 + p, .region-newsletter .container-success h3 + p, .text-content-html h4 + p, .item-text h4 + p, .item-link h4 + p, .region-newsletter .container-privacy h4 + p, .region-newsletter .container-success h4 + p, .text-content-html h5 + p, .item-text h5 + p, .item-link h5 + p, .region-newsletter .container-privacy h5 + p, .region-newsletter .container-success h5 + p, .text-content-html h6 + p, .item-text h6 + p, .item-link h6 + p, .region-newsletter .container-privacy h6 + p, .region-newsletter .container-success h6 + p {
   margin-top: 13px;
 }
-/* line 132, ../sass/mixins/_mixins.type.scss */
+/* line 96, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2 + h2, .item-text h2 + h2, .item-link h2 + h2, .region-newsletter .container-privacy h2 + h2, .region-newsletter .container-success h2 + h2, .text-content-html h2 + h3, .item-text h2 + h3, .item-link h2 + h3, .region-newsletter .container-privacy h2 + h3, .region-newsletter .container-success h2 + h3, .text-content-html h2 + h4, .item-text h2 + h4, .item-link h2 + h4, .region-newsletter .container-privacy h2 + h4, .region-newsletter .container-success h2 + h4, .text-content-html h2 + h5, .item-text h2 + h5, .item-link h2 + h5, .region-newsletter .container-privacy h2 + h5, .region-newsletter .container-success h2 + h5, .text-content-html h2 + h6, .item-text h2 + h6, .item-link h2 + h6, .region-newsletter .container-privacy h2 + h6, .region-newsletter .container-success h2 + h6, .text-content-html h3 + h2, .item-text h3 + h2, .item-link h3 + h2, .region-newsletter .container-privacy h3 + h2, .region-newsletter .container-success h3 + h2, .text-content-html h3 + h3, .item-text h3 + h3, .item-link h3 + h3, .region-newsletter .container-privacy h3 + h3, .region-newsletter .container-success h3 + h3, .text-content-html h3 + h4, .item-text h3 + h4, .item-link h3 + h4, .region-newsletter .container-privacy h3 + h4, .region-newsletter .container-success h3 + h4, .text-content-html h3 + h5, .item-text h3 + h5, .item-link h3 + h5, .region-newsletter .container-privacy h3 + h5, .region-newsletter .container-success h3 + h5, .text-content-html h3 + h6, .item-text h3 + h6, .item-link h3 + h6, .region-newsletter .container-privacy h3 + h6, .region-newsletter .container-success h3 + h6, .text-content-html h4 + h2, .item-text h4 + h2, .item-link h4 + h2, .region-newsletter .container-privacy h4 + h2, .region-newsletter .container-success h4 + h2, .text-content-html h4 + h3, .item-text h4 + h3, .item-link h4 + h3, .region-newsletter .container-privacy h4 + h3, .region-newsletter .container-success h4 + h3, .text-content-html h4 + h4, .item-text h4 + h4, .item-link h4 + h4, .region-newsletter .container-privacy h4 + h4, .region-newsletter .container-success h4 + h4, .text-content-html h4 + h5, .item-text h4 + h5, .item-link h4 + h5, .region-newsletter .container-privacy h4 + h5, .region-newsletter .container-success h4 + h5, .text-content-html h4 + h6, .item-text h4 + h6, .item-link h4 + h6, .region-newsletter .container-privacy h4 + h6, .region-newsletter .container-success h4 + h6, .text-content-html h5 + h2, .item-text h5 + h2, .item-link h5 + h2, .region-newsletter .container-privacy h5 + h2, .region-newsletter .container-success h5 + h2, .text-content-html h5 + h3, .item-text h5 + h3, .item-link h5 + h3, .region-newsletter .container-privacy h5 + h3, .region-newsletter .container-success h5 + h3, .text-content-html h5 + h4, .item-text h5 + h4, .item-link h5 + h4, .region-newsletter .container-privacy h5 + h4, .region-newsletter .container-success h5 + h4, .text-content-html h5 + h5, .item-text h5 + h5, .item-link h5 + h5, .region-newsletter .container-privacy h5 + h5, .region-newsletter .container-success h5 + h5, .text-content-html h5 + h6, .item-text h5 + h6, .item-link h5 + h6, .region-newsletter .container-privacy h5 + h6, .region-newsletter .container-success h5 + h6, .text-content-html h6 + h2, .item-text h6 + h2, .item-link h6 + h2, .region-newsletter .container-privacy h6 + h2, .region-newsletter .container-success h6 + h2, .text-content-html h6 + h3, .item-text h6 + h3, .item-link h6 + h3, .region-newsletter .container-privacy h6 + h3, .region-newsletter .container-success h6 + h3, .text-content-html h6 + h4, .item-text h6 + h4, .item-link h6 + h4, .region-newsletter .container-privacy h6 + h4, .region-newsletter .container-success h6 + h4, .text-content-html h6 + h5, .item-text h6 + h5, .item-link h6 + h5, .region-newsletter .container-privacy h6 + h5, .region-newsletter .container-success h6 + h5, .text-content-html h6 + h6, .item-text h6 + h6, .item-link h6 + h6, .region-newsletter .container-privacy h6 + h6, .region-newsletter .container-success h6 + h6 {
   margin-top: 16px;
 }
-/* line 137, ../sass/mixins/_mixins.type.scss */
+/* line 101, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2, .item-text h2, .item-link h2, .region-newsletter .container-privacy h2, .region-newsletter .container-success h2 {
   margin-bottom: 7px;
 }
-/* line 142, ../sass/mixins/_mixins.type.scss */
+/* line 106, ../sass/mixins/_mixins.type.scss */
 .text-content-html h3, .item-text h3, .item-link h3, .region-newsletter .container-privacy h3, .region-newsletter .container-success h3 {
   margin-bottom: 5px;
 }
-/* line 159, ../sass/mixins/_mixins.type.scss */
+/* line 123, ../sass/mixins/_mixins.type.scss */
 .text-content-html p, .item-text p, .item-link p, .region-newsletter .container-privacy p, .region-newsletter .container-success p {
   margin-top: 24px;
 }
-/* line 163, ../sass/mixins/_mixins.type.scss */
+/* line 127, ../sass/mixins/_mixins.type.scss */
 .text-content-html a, .item-text a, .item-link a, .region-newsletter .container-privacy a, .region-newsletter .container-success a {
   text-decoration: underline;
 }
-/* line 167, ../sass/mixins/_mixins.type.scss */
+/* line 131, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul, .item-text ul, .item-link ul, .region-newsletter .container-privacy ul, .region-newsletter .container-success ul, .text-content-html ol, .item-text ol, .item-link ol, .region-newsletter .container-privacy ol, .region-newsletter .container-success ol {
   margin-top: 5px;
 }
-/* line 170, ../sass/mixins/_mixins.type.scss */
+/* line 134, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul li, .item-text ul li, .item-link ul li, .region-newsletter .container-privacy ul li, .region-newsletter .container-success ul li, .text-content-html ol li, .item-text ol li, .item-link ol li, .region-newsletter .container-privacy ol li, .region-newsletter .container-success ol li {
   line-height: 1.5;
   overflow: hidden;
   padding-left: 20px;
 }
-/* line 175, ../sass/mixins/_mixins.type.scss */
+/* line 139, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul li:before, .item-text ul li:before, .item-link ul li:before, .region-newsletter .container-privacy ul li:before, .region-newsletter .container-success ul li:before, .text-content-html ol li:before, .item-text ol li:before, .item-link ol li:before, .region-newsletter .container-privacy ol li:before, .region-newsletter .container-success ol li:before {
   margin-right: 10px;
   margin-left: -20px;
 }
-/* line 181, ../sass/mixins/_mixins.type.scss */
+/* line 145, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul li:first-child, .item-text ul li:first-child, .item-link ul li:first-child, .region-newsletter .container-privacy ul li:first-child, .region-newsletter .container-success ul li:first-child, .text-content-html ol li:first-child, .item-text ol li:first-child, .item-link ol li:first-child, .region-newsletter .container-privacy ol li:first-child, .region-newsletter .container-success ol li:first-child {
   margin-top: 0;
 }
@@ -5288,58 +5286,58 @@ hr {
 /**
 * Text-Content Responsive
 **/
-/* line 115, ../sass/mixins/_mixins.type.scss */
+/* line 79, ../sass/mixins/_mixins.type.scss */
 .text-content-html > p:first-child, .item-text > p:first-child, .item-link > p:first-child, .region-newsletter .container-privacy > p:first-child, .region-newsletter .container-success > p:first-child, .text-content-html > .text-label:first-child, .item-text > .text-label:first-child, .item-link > .text-label:first-child, .region-newsletter .container-privacy > .text-label:first-child, .region-newsletter .container-success > .text-label:first-child {
   margin-top: 0;
 }
-/* line 120, ../sass/mixins/_mixins.type.scss */
+/* line 84, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2, .item-text h2, .item-link h2, .region-newsletter .container-privacy h2, .region-newsletter .container-success h2, .text-content-html h3, .item-text h3, .item-link h3, .region-newsletter .container-privacy h3, .region-newsletter .container-success h3, .text-content-html h4, .item-text h4, .item-link h4, .region-newsletter .container-privacy h4, .region-newsletter .container-success h4, .text-content-html h5, .item-text h5, .item-link h5, .region-newsletter .container-privacy h5, .region-newsletter .container-success h5, .text-content-html h6, .item-text h6, .item-link h6, .region-newsletter .container-privacy h6, .region-newsletter .container-success h6 {
   margin-top: 31px;
 }
-/* line 124, ../sass/mixins/_mixins.type.scss */
+/* line 88, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2:first-child, .item-text h2:first-child, .item-link h2:first-child, .region-newsletter .container-privacy h2:first-child, .region-newsletter .container-success h2:first-child, .text-content-html h3:first-child, .item-text h3:first-child, .item-link h3:first-child, .region-newsletter .container-privacy h3:first-child, .region-newsletter .container-success h3:first-child, .text-content-html h4:first-child, .item-text h4:first-child, .item-link h4:first-child, .region-newsletter .container-privacy h4:first-child, .region-newsletter .container-success h4:first-child, .text-content-html h5:first-child, .item-text h5:first-child, .item-link h5:first-child, .region-newsletter .container-privacy h5:first-child, .region-newsletter .container-success h5:first-child, .text-content-html h6:first-child, .item-text h6:first-child, .item-link h6:first-child, .region-newsletter .container-privacy h6:first-child, .region-newsletter .container-success h6:first-child {
   margin-top: 0;
 }
-/* line 128, ../sass/mixins/_mixins.type.scss */
+/* line 92, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2 + p, .item-text h2 + p, .item-link h2 + p, .region-newsletter .container-privacy h2 + p, .region-newsletter .container-success h2 + p, .text-content-html h3 + p, .item-text h3 + p, .item-link h3 + p, .region-newsletter .container-privacy h3 + p, .region-newsletter .container-success h3 + p, .text-content-html h4 + p, .item-text h4 + p, .item-link h4 + p, .region-newsletter .container-privacy h4 + p, .region-newsletter .container-success h4 + p, .text-content-html h5 + p, .item-text h5 + p, .item-link h5 + p, .region-newsletter .container-privacy h5 + p, .region-newsletter .container-success h5 + p, .text-content-html h6 + p, .item-text h6 + p, .item-link h6 + p, .region-newsletter .container-privacy h6 + p, .region-newsletter .container-success h6 + p {
   margin-top: 13px;
 }
-/* line 132, ../sass/mixins/_mixins.type.scss */
+/* line 96, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2 + h2, .item-text h2 + h2, .item-link h2 + h2, .region-newsletter .container-privacy h2 + h2, .region-newsletter .container-success h2 + h2, .text-content-html h2 + h3, .item-text h2 + h3, .item-link h2 + h3, .region-newsletter .container-privacy h2 + h3, .region-newsletter .container-success h2 + h3, .text-content-html h2 + h4, .item-text h2 + h4, .item-link h2 + h4, .region-newsletter .container-privacy h2 + h4, .region-newsletter .container-success h2 + h4, .text-content-html h2 + h5, .item-text h2 + h5, .item-link h2 + h5, .region-newsletter .container-privacy h2 + h5, .region-newsletter .container-success h2 + h5, .text-content-html h2 + h6, .item-text h2 + h6, .item-link h2 + h6, .region-newsletter .container-privacy h2 + h6, .region-newsletter .container-success h2 + h6, .text-content-html h3 + h2, .item-text h3 + h2, .item-link h3 + h2, .region-newsletter .container-privacy h3 + h2, .region-newsletter .container-success h3 + h2, .text-content-html h3 + h3, .item-text h3 + h3, .item-link h3 + h3, .region-newsletter .container-privacy h3 + h3, .region-newsletter .container-success h3 + h3, .text-content-html h3 + h4, .item-text h3 + h4, .item-link h3 + h4, .region-newsletter .container-privacy h3 + h4, .region-newsletter .container-success h3 + h4, .text-content-html h3 + h5, .item-text h3 + h5, .item-link h3 + h5, .region-newsletter .container-privacy h3 + h5, .region-newsletter .container-success h3 + h5, .text-content-html h3 + h6, .item-text h3 + h6, .item-link h3 + h6, .region-newsletter .container-privacy h3 + h6, .region-newsletter .container-success h3 + h6, .text-content-html h4 + h2, .item-text h4 + h2, .item-link h4 + h2, .region-newsletter .container-privacy h4 + h2, .region-newsletter .container-success h4 + h2, .text-content-html h4 + h3, .item-text h4 + h3, .item-link h4 + h3, .region-newsletter .container-privacy h4 + h3, .region-newsletter .container-success h4 + h3, .text-content-html h4 + h4, .item-text h4 + h4, .item-link h4 + h4, .region-newsletter .container-privacy h4 + h4, .region-newsletter .container-success h4 + h4, .text-content-html h4 + h5, .item-text h4 + h5, .item-link h4 + h5, .region-newsletter .container-privacy h4 + h5, .region-newsletter .container-success h4 + h5, .text-content-html h4 + h6, .item-text h4 + h6, .item-link h4 + h6, .region-newsletter .container-privacy h4 + h6, .region-newsletter .container-success h4 + h6, .text-content-html h5 + h2, .item-text h5 + h2, .item-link h5 + h2, .region-newsletter .container-privacy h5 + h2, .region-newsletter .container-success h5 + h2, .text-content-html h5 + h3, .item-text h5 + h3, .item-link h5 + h3, .region-newsletter .container-privacy h5 + h3, .region-newsletter .container-success h5 + h3, .text-content-html h5 + h4, .item-text h5 + h4, .item-link h5 + h4, .region-newsletter .container-privacy h5 + h4, .region-newsletter .container-success h5 + h4, .text-content-html h5 + h5, .item-text h5 + h5, .item-link h5 + h5, .region-newsletter .container-privacy h5 + h5, .region-newsletter .container-success h5 + h5, .text-content-html h5 + h6, .item-text h5 + h6, .item-link h5 + h6, .region-newsletter .container-privacy h5 + h6, .region-newsletter .container-success h5 + h6, .text-content-html h6 + h2, .item-text h6 + h2, .item-link h6 + h2, .region-newsletter .container-privacy h6 + h2, .region-newsletter .container-success h6 + h2, .text-content-html h6 + h3, .item-text h6 + h3, .item-link h6 + h3, .region-newsletter .container-privacy h6 + h3, .region-newsletter .container-success h6 + h3, .text-content-html h6 + h4, .item-text h6 + h4, .item-link h6 + h4, .region-newsletter .container-privacy h6 + h4, .region-newsletter .container-success h6 + h4, .text-content-html h6 + h5, .item-text h6 + h5, .item-link h6 + h5, .region-newsletter .container-privacy h6 + h5, .region-newsletter .container-success h6 + h5, .text-content-html h6 + h6, .item-text h6 + h6, .item-link h6 + h6, .region-newsletter .container-privacy h6 + h6, .region-newsletter .container-success h6 + h6 {
   margin-top: 16px;
 }
-/* line 137, ../sass/mixins/_mixins.type.scss */
+/* line 101, ../sass/mixins/_mixins.type.scss */
 .text-content-html h2, .item-text h2, .item-link h2, .region-newsletter .container-privacy h2, .region-newsletter .container-success h2 {
   margin-bottom: 7px;
 }
-/* line 142, ../sass/mixins/_mixins.type.scss */
+/* line 106, ../sass/mixins/_mixins.type.scss */
 .text-content-html h3, .item-text h3, .item-link h3, .region-newsletter .container-privacy h3, .region-newsletter .container-success h3 {
   margin-bottom: 5px;
 }
-/* line 159, ../sass/mixins/_mixins.type.scss */
+/* line 123, ../sass/mixins/_mixins.type.scss */
 .text-content-html p, .item-text p, .item-link p, .region-newsletter .container-privacy p, .region-newsletter .container-success p {
   margin-top: 24px;
 }
-/* line 163, ../sass/mixins/_mixins.type.scss */
+/* line 127, ../sass/mixins/_mixins.type.scss */
 .text-content-html a, .item-text a, .item-link a, .region-newsletter .container-privacy a, .region-newsletter .container-success a {
   text-decoration: underline;
 }
-/* line 167, ../sass/mixins/_mixins.type.scss */
+/* line 131, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul, .item-text ul, .item-link ul, .region-newsletter .container-privacy ul, .region-newsletter .container-success ul, .text-content-html ol, .item-text ol, .item-link ol, .region-newsletter .container-privacy ol, .region-newsletter .container-success ol {
   margin-top: 5px;
 }
-/* line 170, ../sass/mixins/_mixins.type.scss */
+/* line 134, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul li, .item-text ul li, .item-link ul li, .region-newsletter .container-privacy ul li, .region-newsletter .container-success ul li, .text-content-html ol li, .item-text ol li, .item-link ol li, .region-newsletter .container-privacy ol li, .region-newsletter .container-success ol li {
   line-height: 1.5;
   overflow: hidden;
   padding-left: 20px;
 }
-/* line 175, ../sass/mixins/_mixins.type.scss */
+/* line 139, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul li:before, .item-text ul li:before, .item-link ul li:before, .region-newsletter .container-privacy ul li:before, .region-newsletter .container-success ul li:before, .text-content-html ol li:before, .item-text ol li:before, .item-link ol li:before, .region-newsletter .container-privacy ol li:before, .region-newsletter .container-success ol li:before {
   margin-right: 10px;
   margin-left: -20px;
 }
-/* line 181, ../sass/mixins/_mixins.type.scss */
+/* line 145, ../sass/mixins/_mixins.type.scss */
 .text-content-html ul li:first-child, .item-text ul li:first-child, .item-link ul li:first-child, .region-newsletter .container-privacy ul li:first-child, .region-newsletter .container-success ul li:first-child, .text-content-html ol li:first-child, .item-text ol li:first-child, .item-link ol li:first-child, .region-newsletter .container-privacy ol li:first-child, .region-newsletter .container-success ol li:first-child {
   margin-top: 0;
 }
@@ -5401,6 +5399,23 @@ hr {
 /* line 19, ../sass/bootstrap/mixins/_clearfix.scss */
 #menu-main-navigation:after, .author:after, .views-view-grid:after {
   clear: both;
+}
+
+/* line 5, ../sass/extends/_extends.containers.scss */
+.region-infinite-block {
+  padding-bottom: 0;
+}
+@media (min-width: 480px) and (max-width: 991px) {
+  /* line 5, ../sass/extends/_extends.containers.scss */
+  .region-infinite-block {
+    padding-bottom: 0;
+  }
+}
+@media (min-width: 992px) {
+  /* line 5, ../sass/extends/_extends.containers.scss */
+  .region-infinite-block {
+    padding-bottom: 0;
+  }
 }
 
 /* line 1, ../sass/extends/_extends.animations.scss */
@@ -5561,7 +5576,7 @@ hr {
   font-family: "Arial";
   letter-spacing: 0px;
   font-size: 15px;
-  line-height: 20px;
+  line-height: 21px;
   outline: none;
   background-color: #ea331e;
   border-radius: 0;
@@ -5607,6 +5622,84 @@ hr {
   /* line 22, ../sass/extends/_extends.components.scss */
   .page-front #menu-main-navigation .label-menu {
     display: inline-block;
+  }
+}
+
+/* line 1, ../sass/extends/_extends.teasers.scss */
+.teaser-list-large .teaser {
+  border-top: 1px solid #e8e4e4;
+  padding-top: 31px;
+  margin-top: 31px;
+}
+/* line 6, ../sass/mixins/_mixins.teasers.scss */
+.teaser-list-large .teaser .text-headline {
+  font-size: 28px;
+  line-height: 33px;
+}
+@media (max-width: 479px) {
+  /* line 12, ../sass/mixins/_mixins.teasers.scss */
+  .teaser-list-large .teaser .caption-teaser {
+    padding-top: 31px;
+  }
+}
+@media (min-width: 480px) and (max-width: 991px) {
+  /* line 1, ../sass/extends/_extends.teasers.scss */
+  .teaser-list-large .teaser {
+    padding-top: 31px;
+    margin-top: 31px;
+  }
+  /* line 21, ../sass/mixins/_mixins.teasers.scss */
+  .teaser-list-large .teaser .text-headline {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 1, ../sass/extends/_extends.teasers.scss */
+  .teaser-list-large .teaser {
+    padding-top: 31px;
+    margin-top: 31px;
+  }
+  /* line 30, ../sass/mixins/_mixins.teasers.scss */
+  .teaser-list-large .teaser .text-headline {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+/* line 38, ../sass/mixins/_mixins.teasers.scss */
+.teaser-list-horizontal .teaser .caption-teaser {
+  padding-top: 12px;
+}
+/* line 42, ../sass/mixins/_mixins.teasers.scss */
+.teaser-list-horizontal .teaser .text-headline {
+  font-size: 15px;
+  line-height: 23px;
+}
+/* line 46, ../sass/mixins/_mixins.teasers.scss */
+.teaser-list-horizontal .teaser .item-marketing-sponsored {
+  margin-bottom: 13px;
+}
+/* line 51, ../sass/mixins/_mixins.teasers.scss */
+.teaser-list-horizontal .teaser .item-marketing-native .logo, .teaser-list-horizontal .teaser .item-marketing-native .brand {
+  height: 17px;
+}
+@media (min-width: 480px) and (max-width: 991px) {
+  /* line 57, ../sass/mixins/_mixins.teasers.scss */
+  .teaser-list-horizontal .teaser .text-headline {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 63, ../sass/mixins/_mixins.teasers.scss */
+  .teaser-list-horizontal .teaser .caption-teaser {
+    padding-top: 24px;
+  }
+  /* line 67, ../sass/mixins/_mixins.teasers.scss */
+  .teaser-list-horizontal .teaser .text-headline {
+    font-size: 18px;
+    line-height: 27px;
   }
 }
 
@@ -6043,7 +6136,7 @@ form a {
 /**
 * Teaser-List Styles
 **/
-/* line 24, ../sass/components/_teasers.scss */
+/* line 30, ../sass/components/_teasers.scss */
 .teaser-list-horizontal {
   margin-left: -12px;
   margin-right: -12px;
@@ -6057,7 +6150,7 @@ form a {
 .teaser-list-horizontal:after {
   clear: both;
 }
-/* line 27, ../sass/components/_teasers.scss */
+/* line 33, ../sass/components/_teasers.scss */
 .teaser-list-horizontal .teaser {
   position: relative;
   min-height: 1px;
@@ -6065,37 +6158,14 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 480px) {
-  /* line 27, ../sass/components/_teasers.scss */
+  /* line 33, ../sass/components/_teasers.scss */
   .teaser-list-horizontal .teaser {
     float: left;
     width: 25%;
   }
 }
-/* line 31, ../sass/components/_teasers.scss */
-.teaser-list-horizontal .caption-teaser {
-  padding-top: 24px;
-}
-/* line 40, ../sass/components/_teasers.scss */
-.teaser-list-horizontal .item-marketing-sponsored {
-  margin-bottom: 13px;
-}
-/* line 45, ../sass/components/_teasers.scss */
-.teaser-list-horizontal .item-marketing-native .logo, .teaser-list-horizontal .item-marketing-native .brand {
-  height: 17px;
-}
-@media (max-width: 767px) {
-  /* line 51, ../sass/components/_teasers.scss */
-  .teaser-list-horizontal .caption-teaser {
-    padding-top: 12px;
-  }
-  /* line 55, ../sass/components/_teasers.scss */
-  .teaser-list-horizontal .text-headline {
-    font-size: 15px;
-    line-height: 20px;
-  }
-}
 @media (max-width: 766px) {
-  /* line 24, ../sass/components/_teasers.scss */
+  /* line 30, ../sass/components/_teasers.scss */
   .teaser-list-horizontal {
     display: -webkit-box;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -6113,7 +6183,7 @@ form a {
     -o-flex-direction: row;
     flex-direction: row;
   }
-  /* line 63, ../sass/components/_teasers.scss */
+  /* line 41, ../sass/components/_teasers.scss */
   .teaser-list-horizontal .teaser {
     -webkit-flex-shrink: 0;
     -ms-flex: 0 0 auto;
@@ -6122,24 +6192,10 @@ form a {
   }
 }
 
-@media (max-width: 1127px) {
-  /* line 77, ../sass/components/_teasers.scss */
-  .teaser-list-large .teaser .text-headline {
-    font-size: 24px;
-    line-height: 27px;
-  }
-}
-@media (max-width: 479px) {
-  /* line 83, ../sass/components/_teasers.scss */
-  .teaser-list-large .teaser .caption-teaser {
-    padding-top: 31px;
-  }
-}
-
 /**
 * Teaser Default
 **/
-/* line 96, ../sass/components/_teasers.scss */
+/* line 54, ../sass/components/_teasers.scss */
 .teaser .img-container {
   -webkit-transition: opacity 0.35s ease;
   -o-transition: opacity 0.35s ease;
@@ -6149,52 +6205,52 @@ form a {
   overflow: hidden;
   cursor: pointer;
 }
-/* line 102, ../sass/components/_teasers.scss */
+/* line 60, ../sass/components/_teasers.scss */
 .teaser .img-container:hover {
   opacity: 0.85;
   filter: alpha(opacity=85);
 }
-/* line 111, ../sass/components/_teasers.scss */
+/* line 69, ../sass/components/_teasers.scss */
 .teaser .img-container:hover + .caption .text-headline {
   color: #7d8482;
 }
-/* line 127, ../sass/components/_teasers.scss */
+/* line 85, ../sass/components/_teasers.scss */
 .teaser .text-headline {
   display: block;
   max-width: 100%;
 }
-/* line 133, ../sass/components/_teasers.scss */
+/* line 91, ../sass/components/_teasers.scss */
 .teaser .text-category {
   display: inline-block;
   margin-bottom: 24px;
 }
-/* line 137, ../sass/components/_teasers.scss */
+/* line 95, ../sass/components/_teasers.scss */
 .teaser .text-category:hover {
   color: #7d8482;
 }
-/* line 142, ../sass/components/_teasers.scss */
+/* line 100, ../sass/components/_teasers.scss */
 .teaser .author {
   margin-top: 31px;
 }
-/* line 146, ../sass/components/_teasers.scss */
+/* line 104, ../sass/components/_teasers.scss */
 .teaser .socials-bar {
   margin-top: 31px;
 }
 @media (max-width: 480px) {
-  /* line 153, ../sass/components/_teasers.scss */
+  /* line 111, ../sass/components/_teasers.scss */
   .teaser .author {
-    margin-top: 10px;
+    margin-top: 8px;
   }
-  /* line 157, ../sass/components/_teasers.scss */
+  /* line 115, ../sass/components/_teasers.scss */
   .teaser .socials-bar {
-    margin-top: 20px;
+    margin-top: 16px;
   }
 }
 
 /**
 * Teaser Fullcontent
 **/
-/* line 167, ../sass/components/_teasers.scss */
+/* line 125, ../sass/components/_teasers.scss */
 .teaser-full-content {
   padding-top: 0;
   position: relative;
@@ -6203,30 +6259,30 @@ form a {
   * Large Screens
   **/
 }
-/* line 173, ../sass/components/_teasers.scss */
+/* line 131, ../sass/components/_teasers.scss */
 .teaser-full-content:hover .text-headline {
   color: #7d8482;
 }
-/* line 182, ../sass/components/_teasers.scss */
+/* line 140, ../sass/components/_teasers.scss */
 .teaser-full-content .caption-teaser {
   position: relative;
 }
-/* line 187, ../sass/components/_teasers.scss */
+/* line 145, ../sass/components/_teasers.scss */
 .teaser-full-content .text-headline {
   padding: 15px 0;
   max-width: 840px;
   width: 100%;
 }
 @media (min-width: 767px) {
-  /* line 196, ../sass/components/_teasers.scss */
+  /* line 154, ../sass/components/_teasers.scss */
   .teaser-full-content .img-container {
     padding-bottom: 43.1%;
     height: 0;
   }
-  /* line 202, ../sass/components/_teasers.scss */
+  /* line 160, ../sass/components/_teasers.scss */
   .teaser-full-content .text-headline {
     font-size: 36px;
-    line-height: 41px;
+    line-height: 43px;
     position: absolute;
     bottom: 0;
     padding: 15px 21px 10px;
@@ -6234,15 +6290,15 @@ form a {
   }
 }
 @media (min-width: 991px) {
-  /* line 216, ../sass/components/_teasers.scss */
+  /* line 174, ../sass/components/_teasers.scss */
   .teaser-full-content .text-headline {
     font-size: 40px;
-    line-height: 46px;
+    line-height: 48px;
     left: -24px;
   }
 }
 @media (max-width: 991px) {
-  /* line 223, ../sass/components/_teasers.scss */
+  /* line 181, ../sass/components/_teasers.scss */
   .teaser-full-content .text-headline {
     max-width: none;
   }
@@ -6251,7 +6307,7 @@ form a {
 /**
 * Presenter half
 **/
-/* line 234, ../sass/components/_teasers.scss */
+/* line 192, ../sass/components/_teasers.scss */
 .teaser-presenter-half .author {
   display: none;
 }
@@ -6260,14 +6316,14 @@ form a {
 * Teaser Landscape
 **/
 @media (max-width: 1127px) {
-  /* line 250, ../sass/components/_teasers.scss */
+  /* line 208, ../sass/components/_teasers.scss */
   .teaser-landscape-large .text-headline, .teaser-landscape-medium .text-headline {
     font-size: 24px;
-    line-height: 27px;
+    line-height: 28px;
   }
 }
 
-/* line 257, ../sass/components/_teasers.scss */
+/* line 215, ../sass/components/_teasers.scss */
 .teaser-landscape-large > .caption-teaser {
   padding-top: 31px;
 }
@@ -6275,7 +6331,7 @@ form a {
 /**
 * Teaser Content-Right
 **/
-/* line 267, ../sass/components/_teasers.scss */
+/* line 225, ../sass/components/_teasers.scss */
 .teaser-landscape-medium > .img-container {
   position: relative;
   min-height: 1px;
@@ -6283,13 +6339,13 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 992px) {
-  /* line 267, ../sass/components/_teasers.scss */
+  /* line 225, ../sass/components/_teasers.scss */
   .teaser-landscape-medium > .img-container {
     float: left;
     width: 62.5%;
   }
 }
-/* line 271, ../sass/components/_teasers.scss */
+/* line 229, ../sass/components/_teasers.scss */
 .teaser-landscape-medium > .caption-teaser {
   position: relative;
   min-height: 1px;
@@ -6297,13 +6353,13 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 992px) {
-  /* line 271, ../sass/components/_teasers.scss */
+  /* line 229, ../sass/components/_teasers.scss */
   .teaser-landscape-medium > .caption-teaser {
     float: left;
     width: 37.5%;
   }
 }
-/* line 275, ../sass/components/_teasers.scss */
+/* line 233, ../sass/components/_teasers.scss */
 .teaser-landscape-medium .text-headline {
   margin-left: -3px;
 }
@@ -6311,7 +6367,7 @@ form a {
 /**
   * Teaser Square
   **/
-/* line 285, ../sass/components/_teasers.scss */
+/* line 243, ../sass/components/_teasers.scss */
 .teaser-square-medium > .img-container, .teaser-square-medium .caption-teaser {
   position: relative;
   min-height: 1px;
@@ -6319,7 +6375,7 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 480px) {
-  /* line 285, ../sass/components/_teasers.scss */
+  /* line 243, ../sass/components/_teasers.scss */
   .teaser-square-medium > .img-container, .teaser-square-medium .caption-teaser {
     float: left;
     width: 50%;
@@ -6329,7 +6385,7 @@ form a {
 /**
 * Teaser Portrait
 **/
-/* line 295, ../sass/components/_teasers.scss */
+/* line 253, ../sass/components/_teasers.scss */
 .teaser-portrait-small > .img-container {
   position: relative;
   min-height: 1px;
@@ -6337,13 +6393,13 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 480px) {
-  /* line 295, ../sass/components/_teasers.scss */
+  /* line 253, ../sass/components/_teasers.scss */
   .teaser-portrait-small > .img-container {
     float: left;
     width: 33.33333%;
   }
 }
-/* line 299, ../sass/components/_teasers.scss */
+/* line 257, ../sass/components/_teasers.scss */
 .teaser-portrait-small .caption-teaser {
   position: relative;
   min-height: 1px;
@@ -6351,14 +6407,14 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 480px) {
-  /* line 299, ../sass/components/_teasers.scss */
+  /* line 257, ../sass/components/_teasers.scss */
   .teaser-portrait-small .caption-teaser {
     float: left;
     width: 66.66667%;
   }
 }
 
-/* line 305, ../sass/components/_teasers.scss */
+/* line 263, ../sass/components/_teasers.scss */
 .teaser-portrait-medium > .img-container {
   position: relative;
   min-height: 1px;
@@ -6366,13 +6422,13 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 480px) {
-  /* line 305, ../sass/components/_teasers.scss */
+  /* line 263, ../sass/components/_teasers.scss */
   .teaser-portrait-medium > .img-container {
     float: left;
     width: 45.83333%;
   }
 }
-/* line 309, ../sass/components/_teasers.scss */
+/* line 267, ../sass/components/_teasers.scss */
 .teaser-portrait-medium .caption-teaser {
   position: relative;
   min-height: 1px;
@@ -6380,7 +6436,7 @@ form a {
   padding-right: 12px;
 }
 @media (min-width: 480px) {
-  /* line 309, ../sass/components/_teasers.scss */
+  /* line 267, ../sass/components/_teasers.scss */
   .teaser-portrait-medium .caption-teaser {
     float: left;
     width: 54.16667%;
@@ -6388,17 +6444,17 @@ form a {
 }
 
 @media (max-width: 480px) {
-  /* line 316, ../sass/components/_teasers.scss */
+  /* line 274, ../sass/components/_teasers.scss */
   .teaser-portrait-small .img-container img, .teaser-portrait-medium .img-container img {
     width: 75%;
   }
-  /* line 320, ../sass/components/_teasers.scss */
+  /* line 278, ../sass/components/_teasers.scss */
   .teaser-portrait-small .caption-teaser, .teaser-portrait-medium .caption-teaser {
     width: 75%;
   }
 }
 
-/* line 326, ../sass/components/_teasers.scss */
+/* line 284, ../sass/components/_teasers.scss */
 .teaser-content-right {
   margin-left: -12px;
   margin-right: -12px;
@@ -6412,12 +6468,12 @@ form a {
 .teaser-content-right:after {
   clear: both;
 }
-/* line 329, ../sass/components/_teasers.scss */
+/* line 287, ../sass/components/_teasers.scss */
 .teaser-content-right .caption-teaser {
   padding-top: 0;
 }
 @media (max-width: 991px) {
-  /* line 335, ../sass/components/_teasers.scss */
+  /* line 293, ../sass/components/_teasers.scss */
   .teaser-content-right.teaser-landscape-medium > .caption-teaser {
     padding-top: 24px;
   }
@@ -6493,50 +6549,50 @@ form a {
   margin-top: -31px;
 }
 
-/* line 13, ../sass/components/_containers.scss */
+/* line 17, ../sass/components/_containers.scss */
 .no-horizontal-padding {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 19, ../sass/components/_containers.scss */
+/* line 23, ../sass/components/_containers.scss */
 #content > .region-full-content:first-child > .region-marketing:first-child {
   margin-top: 0;
 }
 
-/* line 34, ../sass/components/_containers.scss */
+/* line 38, ../sass/components/_containers.scss */
 .region-teaser-full-content {
   padding: 0;
   border-top: 0;
 }
 
-/* line 39, ../sass/components/_containers.scss */
+/* line 43, ../sass/components/_containers.scss */
 .region-teaser-list-horizontal {
   height: 100%;
   position: relative;
   overflow: hidden;
 }
 
-/* line 46, ../sass/components/_containers.scss */
+/* line 50, ../sass/components/_containers.scss */
 .region-lazy-loading:first-child.region-full-content {
   margin-top: 0;
 }
 
-/* line 51, ../sass/components/_containers.scss */
+/* line 55, ../sass/components/_containers.scss */
 #page-wrapper .container-row {
   position: relative;
 }
-/* line 55, ../sass/components/_containers.scss */
+/* line 59, ../sass/components/_containers.scss */
 #page-wrapper .container-row .container-row-body {
   width: 100%;
   overflow: hidden;
 }
-/* line 61, ../sass/components/_containers.scss */
+/* line 65, ../sass/components/_containers.scss */
 #page-wrapper .container-row .container-row-sidebar {
   display: none;
 }
 @media (min-width: 991px) {
-  /* line 67, ../sass/components/_containers.scss */
+  /* line 71, ../sass/components/_containers.scss */
   #page-wrapper .container-row .container-row-sidebar {
     display: block;
     position: relative;
@@ -6547,7 +6603,7 @@ form a {
   }
 }
 
-/* line 78, ../sass/components/_containers.scss */
+/* line 82, ../sass/components/_containers.scss */
 .region-no-gap + .region-full-content {
   border-top: 0;
   padding-top: 0;
@@ -6556,7 +6612,7 @@ form a {
 /**
 * if ad is visible - remove the next border and gap
 */
-/* line 91, ../sass/components/_containers.scss */
+/* line 95, ../sass/components/_containers.scss */
 .region-marketing.ad-active + .region-full-content,
 .region-marketing.ad-active + .region-fixed-content,
 .region-marketing.ad-active + .region-feed {
@@ -6846,7 +6902,7 @@ form a {
 /* line 22, ../sass/components/_header.scss */
 .item-media-header .text-headline {
   font-size: 58px;
-  line-height: 66px;
+  line-height: 69px;
   letter-spacing: -3px;
   position: absolute;
   top: 50%;
@@ -6863,7 +6919,7 @@ form a {
   /* line 38, ../sass/components/_header.scss */
   .item-media-header .text-headline {
     font-size: 40px;
-    line-height: 46px;
+    line-height: 48px;
     margin-top: -20px;
   }
 }
@@ -8047,7 +8103,7 @@ form a {
   /* line 170, ../sass/components/_newsletter.scss */
   .region-newsletter .container-content-item .text-headline {
     font-size: 18px;
-    line-height: 23px;
+    line-height: 24px;
   }
   /* line 174, ../sass/components/_newsletter.scss */
   .region-newsletter .container-content-item p {

@@ -10,6 +10,10 @@
   }
 }
 
+.region-infinite-block {
+  @extend %region-infinite-block;
+}
+
 .no-horizontal-padding {
   padding-left: 0;
   padding-right: 0;

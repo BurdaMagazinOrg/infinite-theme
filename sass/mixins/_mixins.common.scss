@@ -3,8 +3,8 @@
   margin-right: -$grid-gutter-width;
 
   //@media (max-width: $screen-sm-max) {
-    //margin-left: -$padding;
-    //margin-right: -$padding;
+  //margin-left: -$padding;
+  //margin-right: -$padding;
   //}
 }
 
@@ -13,13 +13,15 @@
   padding-right: $grid-gutter-width;
 
   //@media (max-width: $screen-sm-max) {
-    //padding-left: $padding;
-    //padding-right: $padding;
+  //padding-left: $padding;
+  //padding-right: $padding;
   //}
 }
 
 @mixin gap-section-lined($gap: $gap-section) {
-  border-top: $h-line-style;
+  @if ($full-content-region-lined) {
+    border-top: $h-line-style;
+  }
   padding-top: $gap;
   margin-top: $gap;
 }

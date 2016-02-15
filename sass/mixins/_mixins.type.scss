@@ -36,24 +36,6 @@
   } @else {
     line-height: floor($size * $line-height-headline) + 3px;
   }
-
-  @if ($responsive) {
-    @media (max-width: $screen-xs-min) {
-      $font-size: round($size*$phone-font-size-factor);
-      $line-height: round(round($line-height-headline*$font-size)*$phone-line-height-factor);
-
-      font-size: $font-size;
-      line-height: $line-height;
-    }
-
-    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-      $font-size: round($size*$tablet-font-size-factor);
-      $line-height: round(round($line-height-headline*$font-size)*$tablet-line-height-factor);
-
-      font-size: $font-size;
-      line-height: $line-height;
-    }
-  }
 }
 
 @mixin text-tiny($size: '', $color: '') {
@@ -90,24 +72,6 @@
 @mixin text-content-size($size, $responsive: false) {
   font-size: $size;
   line-height: floor($size * $line-height-content);
-
-  @if ($responsive) {
-    @media (max-width: $screen-xs-min) {
-      $font-size: round($size*$phone-font-size-factor);
-      $line-height: round(round($line-height-content*$font-size)*$phone-line-height-factor);
-
-      font-size: $font-size;
-      line-height: $line-height;
-    }
-
-    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-      $font-size: round($size*$tablet-font-size-factor);
-      $line-height: round(round($line-height-content*$font-size)*$tablet-line-height-factor);
-
-      font-size: $font-size;
-      line-height: $line-height;
-    }
-  }
 }
 
 @mixin text-content-html() {
