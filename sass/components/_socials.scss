@@ -129,92 +129,27 @@
   overflow: hidden;
 
   .item-social {
-    display: inline-block;
-    margin-left: 4px; //-4px inline-block
-    min-width: $item-social-size;
-    height: $item-social-size;
-    text-align: center;
-    line-height: $item-social-size;
-
     &:first-child {
       margin-left: 0;
     }
   }
 }
 
-.socials-horizontal-bar {
-  .item-social {
-    margin-top: $padding;
-
-    span {
-      text-transform: uppercase;
-      margin-left: 4px;
-      vertical-align: middle;
-    }
-  }
-
-  @media (min-width: $screen-xs-min) {
-    .item-social {
-      min-width: $item-social-size-md;
-      height: $item-social-size-md;
-      border-radius: $horizontal-socials-border-radius;
-      line-height: $item-social-size-md;
-      font-size: $item-socials-icon-md;
-      padding: 0 22px;
-
-      span {
-        @include text-headline();
-        font-size: $font-size-small;
-      }
-    }
-  }
-
-  @media (max-width: $screen-xxs-max) {
-    .item-social {
-      padding: 0;
-
-      span {
-        display: none;
-      }
-    }
-  }
+.teaser .socials-bar {
+  @extend %socials-teaser-horizontal-bar;
 }
 
-.socials-vertical-bar, .item-media {
-  @media (min-width: $screen-sm-min) {
-    .item-social {
-      width: $item-social-size-md;
-      height: $item-social-size-md;
-      font-size: $item-socials-icon-md;
-      //line-height: $item-social-size-md;
-      line-height: $item-social-size-md + 2px;
-    }
-  }
+.item-media .socials-bar {
+  @extend %socials-media-horizontal-bar;
+}
+
+.socials-horizontal-bar {
+  @extend %socials-horizontal-bar;
+  @extend %socials-horizontal-bar-text;
 }
 
 .socials-vertical-bar {
-  .item-social {
-    margin-left: 0;
-    display: block;
-    margin-top: 8px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  @media (max-width: $screen-xs-max) {
-    margin-top: $grid-gutter-width;
-
-    .item-social {
-      display: inline-block;
-      margin-left: 4px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
+  @extend %socials-vertical-bar;
 }
 
 .item-instagram {

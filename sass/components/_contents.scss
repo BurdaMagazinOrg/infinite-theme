@@ -59,6 +59,11 @@
 
 .item-content-highlighted {
   margin-top: $gap-section;
+  margin-bottom: $gap-size-xxl;
+
+  @media (max-width: $screen-sm-min) {
+    margin-top: $gap-size-lg;
+  }
 
   .item-media-gallery .item-media-image {
     .img-container {
@@ -78,19 +83,11 @@
 
   @media (min-width: $screen-sm-max) {
     margin-top: $gap-section * 2;
-
-    .item-content-body {
-      margin-top: 0;
-    }
   }
 }
 
 .item-content-body {
-  margin-top: $gap-section * 2;
 
-  @media (max-width: $screen-sm-min) {
-    margin-top: $gap-section;
-  }
 }
 
 .item-text, .item-link {

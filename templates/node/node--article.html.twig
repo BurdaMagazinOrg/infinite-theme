@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block content_highlighted %}
-  {% if content.field_top_paragraphs %}
+  {% if content.field_top_paragraphs|render %}
     <div class="item-content-highlighted">
       {{ content.field_top_paragraphs }}
     </div>

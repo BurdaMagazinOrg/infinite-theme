@@ -1,0 +1,189 @@
+@mixin socials-item-default-size-sm() {
+  .item-social {
+    display: inline-block;
+    min-width: $item-social-size;
+    height: $item-social-size;
+    line-height: $item-social-size;
+    text-align: center;
+  }
+}
+
+@mixin socials-item-default-size-md() {
+  .item-social {
+    display: inline-block;
+    min-width: $item-social-size-md;
+    height: $item-social-size-md;
+    line-height: $item-social-size-md;
+    font-size: $item-socials-icon-md;
+  }
+}
+
+/** vertical bar **/
+
+@mixin socials-vertical-bar() {
+  .item-social {
+    text-align: center;
+  }
+
+  @media (min-width: $screen-xxs-min) and (max-width: $screen-xs-max) {
+    @include socials-vertical-bar-mobile();
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+    @include socials-vertical-bar-tablet();
+  }
+
+  @media (min-width: $screen-lg-min) {
+    @include socials-vertical-bar-desktop();
+  }
+}
+
+@mixin socials-vertical-bar-mobile() {
+  @include socials-item-default-size-md();
+
+  .item-social {
+    display: inline-block;
+    margin-left: $socials-vertical-left-gap-mobile - 5px;
+  }
+}
+
+@mixin socials-vertical-bar-tablet() {
+  @include socials-vertical-bar-desktop();
+}
+
+@mixin socials-vertical-bar-desktop() {
+  @include socials-item-default-size-md();
+
+  .item-social {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+/** horizontal teaser bar **/
+@mixin socials-teaser-horizontal-bar() {
+  @include socials-item-default-size-sm();
+
+  .item-social {
+    display: inline-block;
+    margin-left: $socials-vertical-left-gap-mobile - 5px;
+  }
+}
+
+/** horizontal media bar **/
+@mixin socials-media-horizontal-bar() {
+
+  .item-social {
+    display: inline-block;
+    text-align: center;
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    @include socials-media-horizontal-bar-mobile();
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include socials-media-horizontal-bar-tablet();
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include socials-media-horizontal-bar-desktop();
+  }
+}
+
+@mixin socials-media-horizontal-bar-mobile() {
+  @include socials-item-default-size-sm();
+
+  .item-social {
+    margin-left: $socials-media-left-gap-mobile - 5px;
+  }
+}
+
+@mixin socials-media-horizontal-bar-tablet() {
+  @include socials-item-default-size-md();
+
+  .item-social {
+    margin-left: $socials-media-left-gap-tablet - 5px;
+  }
+}
+
+@mixin socials-media-horizontal-bar-desktop() {
+  @include socials-item-default-size-md();
+
+  .item-social {
+    margin-left: $socials-media-left-gap-desktop - 5px;
+  }
+}
+
+/** horizontal bar **/
+@mixin socials-horizontal-bar() {
+  .item-social {
+    margin-top: $padding;
+    text-align: center;
+
+    span {
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    @include socials-horizontal-bar-size-mobile();
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include socials-horizontal-bar-size-tablet();
+
+    .item-social {
+      span {
+        margin-left: $socials-horizontal-left-gap-tablet;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include socials-horizontal-bar-size-desktop();
+  }
+}
+
+@mixin socials-horizontal-bar-size-mobile() {
+  @include socials-item-default-size-md();
+
+  .item-social {
+    padding: 0;
+
+    span {
+      margin-left: $socials-horizontal-left-gap-mobile;
+      display: none;
+    }
+  }
+}
+
+@mixin socials-horizontal-bar-size-tablet() {
+  @include socials-horizontal-bar-size-desktop();
+}
+
+@mixin socials-horizontal-bar-size-desktop() {
+  @include socials-item-default-size-md();
+
+  .item-social {
+    border-radius: $horizontal-socials-border-radius;
+    padding: 0 22px;
+
+    span {
+      margin-left: $socials-horizontal-left-gap-desktop;
+    }
+  }
+}
+
+@mixin socials-horizontal-bar-text() {
+  .item-social span {
+    @include text-headline();
+    font-size: $font-size-small;
+  }
+}

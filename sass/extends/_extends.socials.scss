@@ -1,0 +1,27 @@
+%socials-teaser-horizontal-bar {
+  @include socials-teaser-horizontal-bar();
+}
+
+%socials-media-horizontal-bar {
+  @include socials-media-horizontal-bar();
+}
+
+%socials-horizontal-bar {
+  @include socials-horizontal-bar();
+}
+
+%socials-horizontal-bar-text {
+  @include socials-horizontal-bar-text();
+}
+
+%socials-vertical-bar {
+  @include socials-vertical-bar();
+}
+
+%socials-item-default-size-sm {
+  @include socials-item-default-size-sm()
+}
+
+%socials-item-default-size-md {
+  @include socials-item-default-size-md()
+}
