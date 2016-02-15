@@ -1,4 +1,5 @@
 .item-title {
+  //todo create mixin
   @extend %text-headline;
   @extend %text-headline-size-h3;
   margin-bottom: $gap-section;
@@ -15,6 +16,24 @@
 
 .item-content-header {
   @extend %region-fixed-content;
+
+  @media (max-width: $screen-xxs-max) {
+    .author {
+      margin-top: $gap-size-md;
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .author {
+      margin-top: $gap-size-lg;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .author {
+      margin-top: $gap-size-lg;
+    }
+  }
 }
 
 .item-content-column {

@@ -1,0 +1,14 @@
+@mixin item-article-title() {
+
+  @media (max-width: $screen-xxs-max) {
+    @include text-headline($item-article-title-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-headline($item-article-title-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-headline($item-article-title-desktop);
+  }
+}
