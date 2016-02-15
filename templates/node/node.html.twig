@@ -80,7 +80,11 @@
         {% endembed %}
       {% endblock %}
     </aside>
-    {% block content_highlighted %}{% endblock %}
+    {% if block('content_highlighted') is not empty %}
+      <div class="item-content-highlighted">
+        {% block content_highlighted %}{% endblock %}
+      </div>
+    {% endif %}
     <div class="container-row">
       <div class="container-row-body item-content-body">
         {% block content_body %}
