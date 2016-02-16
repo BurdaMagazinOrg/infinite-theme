@@ -34,7 +34,16 @@
     @extend %region-full-content-v-gap;
 
     &:first-child.region-full-content {
-      @extend %reset-region-full-content-v-gap;
+      border-top: 0;
+      margin-top: 0;
+
+      &.region-presenter {
+        padding-top: 0;
+
+        .teaser-content-right {
+          padding-top: $gap-size-lg;
+        }
+      }
     }
   }
 }

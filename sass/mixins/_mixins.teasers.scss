@@ -54,7 +54,7 @@
   }
 }
 
-@mixin teaser-feed-large-gap() {
+@mixin gap-teaser-feed-large() {
   border-top: $h-line-style;
   padding-top: $feed-teaser-gap-top-mobile;
   margin-top: $feed-teaser-gap-top-mobile;
@@ -76,12 +76,20 @@
   }
 }
 
-@mixin teaser-feed-large-text() {
+@mixin teaser-feed-large() {
   .text-headline {
     @include text-headline-size($feed-teaser-headline-size-mobile);
   }
 
+  //todo check this later
+  @media (max-width: $screen-xxs-max) {
+    .caption-teaser {
+      padding-top: $gap-size-sm;
+    }
+  }
+
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+
     .text-headline {
       @include text-headline-size($feed-teaser-headline-size-tablet);
     }
@@ -94,19 +102,19 @@
   }
 }
 
-@mixin teaser-feed-large() {
-  //todo check this later
-  @media (max-width: $screen-xxs-max) {
-    .caption-teaser {
-      padding-top: $gap-size-sm;
-    }
-  }
-}
-
 @mixin teaser-list-h() {
+  padding-left: $teaser-list-h-teaser-gap-mobile;
+
+  &:first-child {
+    padding-left: 0;
+  }
 
   .caption-teaser {
     padding-top: floor($grid-gutter-width / 2);
+  }
+
+  .text-headline {
+    @include text-content-size($teaser-list-h-headline-size-mobile);
   }
 
   .item-marketing-sponsored {
@@ -119,32 +127,26 @@
     }
   }
 
-  @media (min-width: $screen-md-min) {
-    .caption-teaser {
-      padding-top: $grid-gutter-width;
-    }
-  }
-}
-
-
-@mixin teaser-list-h-text() {
-  .text-headline {
-    @include text-content-size($teaser-list-h-headline-size-mobile);
-  }
-
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    padding-left: $teaser-list-h-teaser-gap-tablet;
+
     .text-headline {
       @include text-content-size($teaser-list-h-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
+    padding-left: $teaser-list-h-teaser-gap-desktop;
+
+    .caption-teaser {
+      padding-top: $grid-gutter-width;
+    }
+
     .text-headline {
       @include text-content-size($teaser-list-h-headline-size-desktop);
     }
   }
 }
-
 
 @mixin teaser-full-content() {
   padding-top: 0;

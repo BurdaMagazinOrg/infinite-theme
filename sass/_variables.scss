@@ -156,6 +156,10 @@ $teaser-list-h-headline-size-mobile: 15px !default;
 $teaser-list-h-headline-size-tablet: 18px !default;
 $teaser-list-h-headline-size-desktop: 18px !default;
 
+$teaser-list-h-teaser-gap-mobile: 16px !default;
+$teaser-list-h-teaser-gap-tablet: 28px !default;
+$teaser-list-h-teaser-gap-desktop: 35px !default;
+
 /** socials default bar **/
 $socials-bar-default-left-gap-mobile: 4px !default;
 $socials-bar-default-left-gap-tablet: 4px !default;
@@ -173,6 +177,7 @@ $socials-vertical-left-gap-mobile: 4px !default;
 $socials-media-left-gap-mobile: 4px !default;
 $socials-media-left-gap-tablet: 8px !default;
 $socials-media-left-gap-desktop: 8px !default;
+
 
 /** common **/
 $full-content-region-lined: true !default;
