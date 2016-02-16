@@ -1,0 +1,7 @@
+%list__images--horizontal {
+  @include list__images--horizontal();
+}
+
+%list__images--horizontal__item {
+  @include list__images--horizontal__item();
+}

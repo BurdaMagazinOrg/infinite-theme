@@ -25,10 +25,10 @@ libraries:
   - burda_infinite/burda_infite.views.base.base-feed-view
   - burda_infinite/burda_infite.views.base.base-sidebar-view
   - burda_infinite/burda_infite.views.base.base-newsletter-view
+  - burda_infinite/burda_infite.views.base.base-list-swipeable-view
 
   - burda_infinite/burda_infite.views.main-view
   - burda_infinite/burda_infite.views.infinite-block-view
-  - burda_infinite/burda_infite.views.list-swipeable-view
   - burda_infinite/burda_infite.views.menu-main-view
   - burda_infinite/burda_infite.views.menu-sidebar-view
   - burda_infinite/burda_infite.views.modal-search-view

@@ -151,6 +151,11 @@ burda_infite.views.base.base-newsletter-view:
     js/burda_infinite/views/base/base-newsletter-view.js: { }
     js/brand/views/base/base-newsletter-view.js: { }
 
+burda_infite.views.base.base-list-swipeable-view:
+  version: VERSION
+  js:
+    js/burda_infinite/views/base/base-list-swipeable-view.js: {}
+    js/brand/views/base/base-list-swipeable-view.js: {}
 
 
 ##### views #####
@@ -167,13 +172,6 @@ burda_infite.views.infinite-block-view:
   js:
     js/burda_infinite/views/infinite-block-view.js: {}
     js/brand/views/infinite-block-view.js: {}
-
-
-burda_infite.views.list-swipeable-view:
-  version: VERSION
-  js:
-    js/burda_infinite/views/list-swipeable-view.js: {}
-    js/brand/views/list-swipeable-view.js: {}
 
 
 burda_infite.views.menu-main-view:

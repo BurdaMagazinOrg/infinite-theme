@@ -1,0 +1,21 @@
+.seo-linker__title {
+  @extend %item-block-title;
+}
+
+.seo-linker {
+
+}
+
+.seo-linker--image {
+  @extend %swipeable__images--horizontal;
+  @extend %list__images--horizontal;
+
+  .swipeable__item {
+    @extend %list__images--horizontal__item;
+    @extend %swipeable__images--horizontal__item;
+  }
+
+  .img-container img {
+    @extend %img-full-responsive-inline-block;
+  }
+}

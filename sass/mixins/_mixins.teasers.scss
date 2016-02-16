@@ -103,41 +103,9 @@
   }
 }
 
-@mixin teaser-list-h-container() {
-  @include clearfix();
-
-  @media (max-width: $screen-xs-max) {
-    @include flexbox();
-  }
-
-  @media (min-width: $screen-xxs-min) and (max-width: $screen-xs-max) {
-    margin-left: -$teaser-list-h-teaser-gap-mobile;
-    margin-right: -$teaser-list-h-teaser-gap-mobile;
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    margin-left: -$teaser-list-h-teaser-gap-tablet;
-    margin-right: -$teaser-list-h-teaser-gap-tablet;
-  }
-
-  @media (min-width: $screen-md-min) {
-    margin-left: -$teaser-list-h-teaser-gap-desktop;
-    margin-right: -$teaser-list-h-teaser-gap-desktop;
-  }
-}
-
 @mixin teaser-list-h() {
   position: relative;
   min-height: 1px;
-
-  //not possible - wrong image dimension
-  //&:first-child {
-  //  padding-left: 0;
-  //}
-  //
-  //&:last-child {
-  //  padding-right: 0;
-  //}
 
   .caption-teaser {
     padding-top: floor($grid-gutter-width / 2);
@@ -156,35 +124,14 @@
       height: 17px;
     }
   }
-  @media (max-width: $screen-xs-max) {
-    @include flex-shrink(0);
-    width: $teaser-list-h-teaser-shrinked-width;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @media (min-width: $screen-xxs-min) and (max-width: $screen-xs-max) {
-    padding-left: $teaser-list-h-teaser-gap-mobile;
-    padding-right: $teaser-list-h-teaser-gap-mobile;
-  }
-
-  @media (min-width: $screen-sm-min) {
-    float: left;
-    width: percentage(($grid-columns / $teaser-list-horizontal-count-default) / $grid-columns);
-  }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    padding-left: $teaser-list-h-teaser-gap-tablet;
-    padding-right: $teaser-list-h-teaser-gap-tablet;
-
     .text-headline {
       @include text-content-size($teaser-list-h-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
-    padding-left: $teaser-list-h-teaser-gap-desktop;
-    padding-right: $teaser-list-h-teaser-gap-desktop;
 
     .caption-teaser {
       padding-top: $grid-gutter-width;

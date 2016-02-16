@@ -2,15 +2,15 @@
 
     "use strict";
 
-    BurdaInfinite.views.ListSwipeableView = BaseView.extend({
+    BurdaInfinite.views.base.BaseListSwipeableView = BaseView.extend({
         $swiperContainer: [],
         swiperApi: null,
         isMobileMode: false,
         settings: {
-            selector: '.region-teaser-list-horizontal',
+            selector: '.swipeable--horizontal',
             slidesPerView: 'auto',
-            wrapperClass: 'teaser-list',
-            slideClass: 'teaser',
+            wrapperClass: 'swipeable__wrapper',
+            slideClass: 'swipeable__item',
             grabCursor: true
         },
         initialize: function (pOptions) {

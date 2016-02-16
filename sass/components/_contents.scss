@@ -1,8 +1,6 @@
 .item-title {
   //todo create mixin
-  @extend %text-headline;
-  @extend %text-headline-size-h3;
-  margin-bottom: $gap-section;
+  @extend %item-block-title;
 }
 
 .item-content-article .item-content-column {

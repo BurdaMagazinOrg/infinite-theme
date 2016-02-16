@@ -62,7 +62,7 @@
                     tmpView = new MarketingView(tmpSettings);
                     break;
                 case 'listSwipeableView':
-                    tmpView = new ListSwipeableView(tmpSettings);
+                    tmpView = new BaseListSwipeableView(tmpSettings);
                     break;
                 case 'newsletterView':
                     tmpView = new BaseNewsletterView(tmpSettings);

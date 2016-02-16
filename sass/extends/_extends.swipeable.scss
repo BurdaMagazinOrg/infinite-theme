@@ -1,0 +1,7 @@
+%swipeable__images--horizontal {
+  @include swipeable__images--horizontal();
+}
+
+%swipeable__images--horizontal__item {
+  @include swipeable__images--horizontal__item();
+}

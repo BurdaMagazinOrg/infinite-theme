@@ -1,0 +1,14 @@
+@mixin swipeable__images--horizontal() {
+  @media (max-width: $screen-xs-max) {
+    @include flexbox();
+  }
+}
+
+@mixin swipeable__images--horizontal__item() {
+  @media (max-width: $screen-xs-max) {
+    @include flex-shrink(0);
+    width: $teaser-list-h-teaser-shrinked-width;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

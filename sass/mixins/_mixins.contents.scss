@@ -1,5 +1,23 @@
-@mixin item-article-title() {
+@mixin item-block-title() {
+  text-align: center;
 
+  @media (max-width: $screen-xs-max) {
+    @include text-headline($item-block-title-mobile);
+    margin-bottom: $item-block-title-gap-bottom-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-headline($item-block-title-tablet);
+    margin-bottom: $item-block-title-gap-bottom-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-headline($item-block-title-desktop);
+    margin-bottom: $item-block-title-gap-bottom-desktop;
+  }
+}
+
+@mixin item-article-title() {
   @media (max-width: $screen-xs-max) {
     @include text-headline($item-article-title-mobile);
   }

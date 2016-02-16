@@ -122,7 +122,16 @@ $article-socials-column-width: 96px !default;
 $full-headlines-max-width: 840px !default;
 $product-headline-height: 70px !default;
 
-/** item-title **/
+/** article-title **/
+$item-block-title-mobile: 20px !default;
+$item-block-title-tablet: 24px !default;
+$item-block-title-desktop: 28px !default;
+
+$item-block-title-gap-bottom-mobile: 24px !default;
+$item-block-title-gap-bottom-tablet: 28px !default;
+$item-block-title-gap-bottom-desktop: 40px !default;
+
+/** article-title **/
 $item-article-title-mobile: 24px !default;
 $item-article-title-tablet: 28px !default;
 $item-article-title-desktop: 40px !default;

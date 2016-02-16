@@ -25,13 +25,20 @@
   }
 }
 
-.teaser-list-horizontal {
-  @extend %teaser-list-h-container;
+.list__images--horizontal {
+  @extend %swipeable__images--horizontal;
+  @extend %list__images--horizontal;
 
   .teaser {
+    @extend %list__images--horizontal__item;
+    @extend %swipeable__images--horizontal__item;
     @extend %teaser-list-h;
     @extend %teaser-list-h-text;
   }
+}
+
+.teaser-link-list-horizontal {
+
 }
 
 /**

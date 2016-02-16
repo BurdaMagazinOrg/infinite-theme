@@ -2,9 +2,9 @@
 
     "use strict";
 
-    window.ListSwipeableView = BurdaInfinite.views.ListSwipeableView.extend({
+    window.BaseListSwipeableView = BurdaInfinite.views.base.BaseListSwipeableView.extend({
         initialize: function (pOptions) {
-            BurdaInfinite.views.ListSwipeableView.prototype.initialize.call(this, pOptions);
+            BurdaInfinite.views.base.BaseListSwipeableView.prototype.initialize.call(this, pOptions);
         }
     });
 

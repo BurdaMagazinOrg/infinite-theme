@@ -14,10 +14,6 @@
   @include teaser-feed-large-text();
 }
 
-%teaser-list-h-container {
-  @include teaser-list-h-container();
-}
-
 %teaser-list-h {
   @include teaser-list-h();
 }
