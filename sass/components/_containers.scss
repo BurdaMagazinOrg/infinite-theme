@@ -1,12 +1,28 @@
 .region-full-content {
   @extend %region-full-content;
-  //
-  //&:first-child.region-full-content {
-  //  @extend %gap-section-lined-reset;
-  //}
 
-  &:first-child.region-marketing.ad-active {
-    margin-top: -$gap-section;
+  &:first-child.region-marketing {
+
+    &.ad-active {
+      margin-top: -$gap-section;
+    }
+
+    &.ad-inactive + .region-full-content {
+      @extend %gap-section-lined-reset;
+    }
+  }
+}
+
+//padded / lined teaser
+.region-content, .region-feed-teasers {
+  .region-full-content + .region-full-content {
+    @extend %region-full-content-v-gap;
+  }
+}
+
+body .region-marketing.ad-active + .region-full-content {
+  @if($full-content-region-lined) {
+    margin-top: -1px; //double line
   }
 }
 
@@ -20,19 +36,13 @@
 }
 
 //if ad is first child - remove negative margin-top
+//todo check this
 #content > .region-full-content:first-child > .region-marketing:first-child {
   margin-top: 0;
 }
 
 .region-fixed-content, .container-fixed-content {
   @extend %region-fixed-content;
-}
-
-//padded / lined teaser
-.region-content, .region-feed-teasers {
-  .region-full-content + .region-full-content {
-    @extend %region-full-content-v-gap;
-  }
 }
 
 .region-presenter {
@@ -56,11 +66,12 @@
 
 }
 
-.region-lazy-loading {
-  &:first-child.region-full-content {
-    margin-top: 0;
-  }
-}
+//todo check this
+//.region-lazy-loading {
+//  &:first-child.region-full-content {
+//    margin-top: 0;
+//  }
+//}
 
 #page-wrapper .container-row {
   @extend %flexbox;
@@ -92,19 +103,4 @@
 .region-no-gap + .region-full-content {
   border-top: 0;
   padding-top: 0;
-}
-
-/**
-* if ad is visible - remove the next border and gap
-*/
-//.region-content .region-marketing + .region-breadcrumb,
-.region-content .region-marketing + .region-full-content {
-  @extend %gap-section-lined-reset;
-}
-
-.region-marketing.ad-active + .region-full-content,
-.region-marketing.ad-active + .region-fixed-content,
-.region-marketing.ad-active + .region-feed {
-  //margin-top: -1px; //hide the doubled bottom line
-  margin-top: $gap-section;
 }

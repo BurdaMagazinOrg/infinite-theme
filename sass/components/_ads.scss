@@ -10,12 +10,6 @@
     background-color: $bg-color-gray-light;
     padding-top: 0;
     border-bottom: $h-line-style;
-    //max-height: 1000px;
-  }
-
-  &.ad-inactive {
-
-    //max-height: 0;
   }
 
   .container-marketing {
@@ -137,7 +131,9 @@
 
 .ad-inactive {
   overflow: hidden;
-  height: 0;
+  height: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 //tracdelight widget
