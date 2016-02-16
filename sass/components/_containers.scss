@@ -30,21 +30,14 @@
 
 //padded / lined teaser
 .region-content, .region-feed-teasers {
-  .region-full-content {
+  .region-full-content + .region-full-content {
     @extend %region-full-content-v-gap;
+  }
+}
 
-    &:first-child.region-full-content {
-      border-top: 0;
-      margin-top: 0;
-
-      &.region-presenter {
-        padding-top: 0;
-
-        .teaser-content-right {
-          padding-top: $gap-size-lg;
-        }
-      }
-    }
+.region-presenter {
+  .teaser-content-right {
+    padding-top: $gap-size-lg;
   }
 }
 
@@ -53,10 +46,14 @@
   border-top: 0;
 }
 
-.region-teaser-list-horizontal {
+.region-teaser-list-horizontal, .region-teaser-link-list {
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.region-teaser-link-list {
+
 }
 
 .region-lazy-loading {
@@ -100,7 +97,7 @@
 /**
 * if ad is visible - remove the next border and gap
 */
-.region-content .region-marketing + .region-breadcrumb,
+//.region-content .region-marketing + .region-breadcrumb,
 .region-content .region-marketing + .region-full-content {
   @extend %gap-section-lined-reset;
 }

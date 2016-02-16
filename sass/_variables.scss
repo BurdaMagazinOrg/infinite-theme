@@ -156,28 +156,71 @@ $teaser-list-h-headline-size-mobile: 15px !default;
 $teaser-list-h-headline-size-tablet: 18px !default;
 $teaser-list-h-headline-size-desktop: 18px !default;
 
-$teaser-list-h-teaser-gap-mobile: 16px !default;
+$teaser-list-h-teaser-gap-mobile: 6px !default;
 $teaser-list-h-teaser-gap-tablet: 28px !default;
 $teaser-list-h-teaser-gap-desktop: 35px !default;
+$teaser-list-h-teaser-shrinked-width: 61% !default;
 
-/** socials default bar **/
-$socials-bar-default-left-gap-mobile: 4px !default;
-$socials-bar-default-left-gap-tablet: 4px !default;
-$socials-bar-default-left-gap-desktop: 8px !default;
+/**
+**  socials **
+**/
 
-/** horizontal socials bar **/
-$socials-horizontal-left-gap-mobile: 4px !default;
-$socials-horizontal-left-gap-tablet: 4px !default;
-$socials-horizontal-left-gap-desktop: 4px !default;
+$socials-size-sm: 32px !default;
+$socials-size-md: 40px !default;
+$socials-icon-size-sm: 19px !default;
+$socials-icon-size-md: 22px !default;
+$socials-default-border-radius: 50% !default;
 
-/** vertical socials bar **/
-$socials-vertical-left-gap-mobile: 4px !default;
+/** socials horizontal clean bar **/
+$socials-clean-horizontal-bar-left-gap: 8px !default;
+$socials-clean-horizontal-bar-size-mobile: $socials-size-sm !default;
+$socials-clean-horizontal-bar-size-tablet: $socials-size-sm !default;
+$socials-clean-horizontal-bar-size-desktop: $socials-size-sm !default;
 
-/** horizontal media socials bar **/
-$socials-media-left-gap-mobile: 4px !default;
-$socials-media-left-gap-tablet: 8px !default;
-$socials-media-left-gap-desktop: 8px !default;
+$socials-clean-horizontal-bar-icon-size-mobile: $socials-icon-size-sm !default;
+$socials-clean-horizontal-bar-icon-size-tablet: $socials-icon-size-sm !default;
+$socials-clean-horizontal-bar-icon-size-desktop: $socials-icon-size-sm !default;
 
+/** socials horizontal bar **/
+$socials-labeled-horizontal-bar-left-gap: 8px !default;
+$socials-labeled-horizontal-bar-border-radius: floor($socials-size-md / 2) !default;
+$socials-labeled-horizontal-bar-size-mobile: $socials-size-md !default;
+$socials-labeled-horizontal-bar-size-tablet: $socials-size-md !default;
+$socials-labeled-horizontal-bar-size-desktop: $socials-size-md !default;
+
+$socials-labeled-horizontal-bar-icon-size-mobile: $socials-icon-size-md !default;
+$socials-labeled-horizontal-bar-icon-size-tablet: $socials-icon-size-md !default;
+$socials-labeled-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
+
+/** socials vertical bar **/
+$socials-vertical-bar-left-gap-mobile: 8px !default;
+$socials-vertical-bar-size-mobile: $socials-size-md !default;
+$socials-vertical-bar-size-tablet: $socials-size-md !default;
+$socials-vertical-bar-size-desktop: $socials-size-md !default;
+
+$socials-vertical-bar-icon-size-mobile: $socials-icon-size-md !default;
+$socials-vertical-bar-icon-size-tablet: $socials-icon-size-md !default;
+$socials-vertical-bar-icon-size-desktop: $socials-icon-size-md !default;
+
+/** socials teaser horizontal bar **/
+$socials-teaser-horizontal-bar-left-gap: 8px !default;
+$socials-teaser-horizontal-bar-size-mobile: $socials-size-sm !default;
+$socials-teaser-horizontal-bar-size-tablet: $socials-size-sm !default;
+$socials-teaser-horizontal-bar-size-desktop: $socials-size-sm !default;
+
+$socials-teaser-horizontal-bar-icon-size-mobile: $socials-icon-size-sm !default;
+$socials-teaser-horizontal-bar-icon-size-tablet: $socials-icon-size-sm !default;
+$socials-teaser-horizontal-bar-icon-size-desktop: $socials-icon-size-sm !default;
+
+/** socials horizontal media bar **/
+$socials-media-left-gap: 8px !default;
+$socials-media-horizontal-bar-size-mobile: $socials-size-md !default;
+$socials-media-horizontal-bar-size-tablet: $socials-size-md !default;
+$socials-media-horizontal-bar-size-desktop: $socials-size-md !default;
+
+$socials-media-horizontal-bar-icon-size-mobile: $socials-icon-size-md !default;
+$socials-media-horizontal-bar-icon-size-tablet: $socials-icon-size-md !default;
+$socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 
 /** common **/
 $full-content-region-lined: true !default;
@@ -203,9 +246,6 @@ $alert-danger-text: $state-danger-text;
 
 $modal-backdrop-bg: $white;
 $modal-backdrop-opacity: 0.85;
-
-$round-socials-border-radius: 50%;
-$horizontal-socials-border-radius: floor($item-social-size-md / 2);
 
 $input-border-radius: 0;
 $input-border-radius-large: 0;

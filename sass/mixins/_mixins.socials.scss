@@ -1,189 +1,214 @@
-@mixin socials-item-default-size-sm() {
-  .item-social {
-    display: inline-block;
-    min-width: $item-social-size;
-    height: $item-social-size;
-    line-height: $item-social-size;
-    text-align: center;
+@mixin socials-item-size($item-size, $font-size) {
+  min-width: $item-size;
+  height: $item-size;
+
+  &:before {
+    line-height: $item-size - 2px;
+    font-size: $font-size;
   }
 }
 
-@mixin socials-item-default-size-md() {
-  .item-social {
-    display: inline-block;
-    min-width: $item-social-size-md;
-    height: $item-social-size-md;
-    line-height: $item-social-size-md;
-    font-size: $item-socials-icon-md;
+@mixin socials-default-item() {
+  @include transition-property(color, background-color, border-color);
+  @include transition-duration(.35s);
+  @include transition-timing-function(ease);
+  font-size: $item-socials-icon-sm;
+  color: $white;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: $socials-default-border-radius;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+@mixin socials-default-items() {
+  .icon-facebook {
+    background-color: $color-facebook;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-twitter {
+    background-color: $color-twitter;
+    font-size: $icon-size-tiny;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-pinterest {
+    background-color: $color-pinterest;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-instagram {
+    background-color: $color-instagram;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-email {
+    background-color: $color-email;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  .icon-whatsapp {
+    background-color: $color-whatsapp;
+
+    &:before {
+      margin-right: -1px;
+    }
+
+    &:hover {
+      background-color: $color-hover;
+    }
   }
 }
 
 /** vertical bar **/
 
-@mixin socials-vertical-bar() {
-  .item-social {
-    text-align: center;
-  }
+@mixin socials-vertical-bar-item() {
+  text-align: center;
 
-  @media (min-width: $screen-xxs-min) and (max-width: $screen-xs-max) {
-    @include socials-vertical-bar-mobile();
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
-    @include socials-vertical-bar-tablet();
-  }
-
-  @media (min-width: $screen-lg-min) {
-    @include socials-vertical-bar-desktop();
-  }
-}
-
-@mixin socials-vertical-bar-mobile() {
-  @include socials-item-default-size-md();
-
-  .item-social {
-    display: inline-block;
-    margin-left: $socials-vertical-left-gap-mobile - 5px;
-  }
-}
-
-@mixin socials-vertical-bar-tablet() {
-  @include socials-vertical-bar-desktop();
-}
-
-@mixin socials-vertical-bar-desktop() {
-  @include socials-item-default-size-md();
-
-  .item-social {
+  @media (min-width: $screen-sm-min) {
     display: block;
-    text-align: center;
     margin-top: 8px;
 
     &:first-child {
       margin-top: 0;
     }
   }
+
+  @media (max-width: $screen-xs-max) {
+    @include socials-item-size($socials-vertical-bar-size-mobile, $socials-vertical-bar-icon-size-mobile);
+    margin-left: $socials-vertical-bar-left-gap-mobile - 4px;
+    display: inline-block;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include socials-item-size($socials-vertical-bar-size-tablet, $socials-vertical-bar-icon-size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include socials-item-size($socials-vertical-bar-size-desktop, $socials-vertical-bar-icon-size-desktop);
+  }
 }
 
 /** horizontal teaser bar **/
-@mixin socials-teaser-horizontal-bar() {
-  @include socials-item-default-size-sm();
+@mixin socials-teaser-horizontal-bar-item() {
+  margin-left: $socials-teaser-horizontal-bar-left-gap - 4px;
+  display: inline-block;
+  text-align: center;
 
-  .item-social {
-    display: inline-block;
-    margin-left: $socials-vertical-left-gap-mobile - 5px;
+  @media (max-width: $screen-xs-max) {
+    @include socials-item-size($socials-teaser-horizontal-bar-size-mobile, $socials-teaser-horizontal-bar-icon-size-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include socials-item-size($socials-teaser-horizontal-bar-size-tablet, $socials-teaser-horizontal-bar-icon-size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include socials-item-size($socials-teaser-horizontal-bar-size-desktop, $socials-teaser-horizontal-bar-icon-size-desktop);
+  }
+}
+
+/** horizontal clean bar **/
+@mixin socials-clean-horizontal-bar-item() {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid $text-color;
+  color: $text-color;
+  margin-left: $socials-clean-horizontal-bar-left-gap - 4px;
+  text-align: center;
+
+  -webkit-transform: rotate(0.0001deg); //smoothing
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include socials-item-size($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include socials-item-size($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include socials-item-size($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
   }
 }
 
 /** horizontal media bar **/
-@mixin socials-media-horizontal-bar() {
+@mixin socials-media-horizontal-bar-item() {
+  display: inline-block;
+  text-align: center;
+  margin-left: $socials-media-left-gap - 4px;
 
-  .item-social {
-    display: inline-block;
-    text-align: center;
+  @media (max-width: $screen-xs-max) {
+    @include socials-item-size($socials-media-horizontal-bar-size-mobile, $socials-media-horizontal-bar-icon-size-mobile);
   }
 
-  @media (max-width: $screen-xxs-max) {
-    @include socials-media-horizontal-bar-mobile();
-  }
-
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include socials-media-horizontal-bar-tablet();
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include socials-item-size($socials-media-horizontal-bar-size-tablet, $socials-media-horizontal-bar-icon-size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include socials-media-horizontal-bar-desktop();
-  }
-}
-
-@mixin socials-media-horizontal-bar-mobile() {
-  @include socials-item-default-size-sm();
-
-  .item-social {
-    margin-left: $socials-media-left-gap-mobile - 5px;
-  }
-}
-
-@mixin socials-media-horizontal-bar-tablet() {
-  @include socials-item-default-size-md();
-
-  .item-social {
-    margin-left: $socials-media-left-gap-tablet - 5px;
-  }
-}
-
-@mixin socials-media-horizontal-bar-desktop() {
-  @include socials-item-default-size-md();
-
-  .item-social {
-    margin-left: $socials-media-left-gap-desktop - 5px;
+    @include socials-item-size($socials-media-horizontal-bar-size-desktop, $socials-media-horizontal-bar-icon-size-desktop);
   }
 }
 
 /** horizontal bar **/
-@mixin socials-horizontal-bar() {
-  .item-social {
-    margin-top: $padding;
-    text-align: center;
+@mixin socials-labeled-horizontal-bar-item() {
+  margin-top: $padding;
+  text-align: center;
+  display: inline-block;
+  margin-left: $socials-labeled-horizontal-bar-left-gap - 4px;
 
-    span {
-      text-transform: uppercase;
-      vertical-align: middle;
-    }
+  span {
+    text-transform: uppercase;
+    vertical-align: middle;
   }
 
-  @media (max-width: $screen-xxs-max) {
-    @include socials-horizontal-bar-size-mobile();
-  }
-
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include socials-horizontal-bar-size-tablet();
-
-    .item-social {
-      span {
-        margin-left: $socials-horizontal-left-gap-tablet;
-      }
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-    @include socials-horizontal-bar-size-desktop();
-  }
-}
-
-@mixin socials-horizontal-bar-size-mobile() {
-  @include socials-item-default-size-md();
-
-  .item-social {
+  @media (max-width: $screen-xs-max) {
+    @include socials-item-size($socials-labeled-horizontal-bar-size-mobile, $socials-labeled-horizontal-bar-icon-size-mobile);
     padding: 0;
 
     span {
-      margin-left: $socials-horizontal-left-gap-mobile;
       display: none;
     }
   }
-}
 
-@mixin socials-horizontal-bar-size-tablet() {
-  @include socials-horizontal-bar-size-desktop();
-}
-
-@mixin socials-horizontal-bar-size-desktop() {
-  @include socials-item-default-size-md();
-
-  .item-social {
-    border-radius: $horizontal-socials-border-radius;
+  @media (min-width: $screen-sm-min) {
+    border-radius: $socials-labeled-horizontal-bar-border-radius;
     padding: 0 22px;
+  }
 
-    span {
-      margin-left: $socials-horizontal-left-gap-desktop;
-    }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include socials-item-size($socials-labeled-horizontal-bar-size-tablet, $socials-labeled-horizontal-bar-icon-size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include socials-item-size($socials-labeled-horizontal-bar-size-desktop, $socials-labeled-horizontal-bar-icon-size-desktop);
   }
 }
 
-@mixin socials-horizontal-bar-text() {
-  .item-social span {
-    @include text-headline();
-    font-size: $font-size-small;
-  }
+@mixin socials-labeled-horizontal-bar-text() {
+  @include text-headline();
+  font-size: $font-size-small;
 }

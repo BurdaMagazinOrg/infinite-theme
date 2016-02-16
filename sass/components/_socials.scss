@@ -1,127 +1,15 @@
 .socials {
-
   .item-social {
-    @include transition-property(color, background-color, border-color);
-    @include transition-duration(.35s);
-    @include transition-timing-function(ease);
-    font-size: $item-socials-icon-sm;
-    color: $white;
-    border: 1px solid transparent;
-    cursor: pointer;
-    border-radius: $round-socials-border-radius;
-
-    &:hover {
-      background-color: transparent;
-    }
+    @extend %socials-default-item;
   }
 
-  .icon-facebook {
-    background-color: $color-facebook;
-
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
-
-  .icon-twitter {
-    background-color: $color-twitter;
-    font-size: $icon-size-tiny;
-
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
-
-  .icon-pinterest {
-    background-color: $color-pinterest;
-
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
-
-  .icon-instagram {
-    background-color: $color-instagram;
-
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
-
-  .icon-email {
-    background-color: $color-email;
-
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
-
-  .icon-whatsapp {
-    background-color: $color-whatsapp;
-
-    &:before {
-      margin-right: -1px;
-    }
-
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
+  //fb / whatsapp / instagram / etc
+  @extend %socials-default-items;
 }
 
 .socials-bar-clean {
   .item-social {
-    background-color: transparent;
-    border: 1px solid $text-color;
-    color: $text-color;
-
-    -webkit-transform: rotate(0.0001deg); //smoothing
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
-  .icon-facebook {
-    &:hover {
-      color: $color-facebook;
-      border-color: $color-facebook;
-    }
-  }
-
-  .icon-twitter {
-    &:hover {
-      color: $color-twitter;
-      border-color: $color-twitter;
-    }
-  }
-
-  .icon-pinterest {
-    &:hover {
-      color: $color-pinterest;
-      border-color: $color-pinterest;
-    }
-  }
-
-  .icon-instagram {
-    &:hover {
-      color: $color-instagram;
-      border-color: $color-instagram;
-    }
-  }
-
-  .icon-email {
-    &:hover {
-      color: $color-email;
-      border-color: $color-email;
-    }
-  }
-
-  .icon-whatsapp {
-    &:hover {
-      color: $color-whatsapp;
-      border-color: $color-whatsapp;
-    }
+    @extend %socials-clean-horizontal-bar-item;
   }
 }
 
@@ -136,20 +24,31 @@
 }
 
 .teaser .socials-bar {
-  @extend %socials-teaser-horizontal-bar;
+  .item-social {
+    @extend %socials-teaser-horizontal-bar-item;
+  }
 }
 
 .item-media .socials-bar {
-  @extend %socials-media-horizontal-bar;
+  .item-social {
+    @extend %socials-media-horizontal-bar-item;
+  }
 }
 
 .socials-horizontal-bar {
-  @extend %socials-horizontal-bar;
-  @extend %socials-horizontal-bar-text;
+  .item-social {
+    @extend %socials-labeled-horizontal-bar-item;
+
+    span {
+      @extend %socials-labeled-horizontal-bar-text;
+    }
+  }
 }
 
 .socials-vertical-bar {
-  @extend %socials-vertical-bar;
+  .item-social {
+    @extend %socials-vertical-bar-item;
+  }
 }
 
 .item-instagram {

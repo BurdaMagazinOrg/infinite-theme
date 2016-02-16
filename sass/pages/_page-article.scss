@@ -1,22 +1,15 @@
 .page-article {
 
-  #main {
-    padding-bottom: 0; //feed gap
-  }
-
-  //.author {
-  //  margin-top: $gap-section;
-  //}
-
   .item-content-header {
     h1 {
+      @extend %item-article-title;
       max-width: $full-headlines-max-width;
+      margin-top: $gap-size-lg;
     }
   }
 
-  .region-breadcrumb {
-    @extend %region-full-content;
-    margin-bottom: $grid-gutter-width;
+  #main {
+    padding-bottom: 0; //feed gap
   }
 
   .breadcrumb {
@@ -25,5 +18,11 @@
 
   .region-breadcrumb + .item-content-article {
     @extend %gap-section-lined-reset;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-content-column .socials-vertical-bar {
+      margin-top: $gap-size-lg;
+    }
   }
 }

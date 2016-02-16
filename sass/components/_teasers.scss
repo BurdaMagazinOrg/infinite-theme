@@ -26,21 +26,11 @@
 }
 
 .teaser-list-horizontal {
-  @include make-row();
+  @extend %teaser-list-h-container;
 
   .teaser {
-    @include make-xs-column($grid-columns / $teaser-list-horizontal-count-default);
     @extend %teaser-list-h;
     @extend %teaser-list-h-text;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    @include flexbox();
-
-    .teaser {
-      @include flex-shrink(0);
-      width: 40%;
-    }
   }
 }
 
