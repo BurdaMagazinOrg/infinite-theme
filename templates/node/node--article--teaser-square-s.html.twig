@@ -1,16 +1,30 @@
-<article class="teaser teaser-square-small swipeable__item contextual-region" data-nid="{{ nid }}" data-internal-url="{{ url }}">
-  <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
-    {{ content.field_teaser_media }}
+{% set attributes = attributes.addClass('teaser-content-right', 'teaser-square-small', 'swipeable__item') %}
+
+<article{{ attributes.addClass(wrapper_classes) }}>
+  <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject" data-nid="{{ nid }}" data-internal-url="{{ url }}">
+    {% block teaser_img_container %}
+      {{ content.field_teaser_media }}
+    {% endblock %}
   </div>
+
   <div class="caption caption-teaser">
+
+    {% block teaser_caption_channel %}{% endblock %}
+
     {% block sponsored %}
       {% include '@burda_infinite/node/twig-block-sponsored.html.twig' %}
     {% endblock %}
-    <h2 class="text-headline">
-      <a href="{{ url }}" target="_self">{{ label }}</a>
-    </h2>
+
+    {% block teaser_text_headline %}
+      <h2 class="text-headline">
+        <a href="{{ url }}" target="_self">{{ label }}</a>
+      </h2>
+    {% endblock %}
+
   </div>
+
   {% if (show_contextual_links) %}
     {{ title_suffix.contextual_links }}
   {% endif %}
+
 </article>
