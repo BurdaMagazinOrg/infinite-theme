@@ -1,7 +1,7 @@
-{% set attributes = attributes.addClass('teaser-content-right', 'teaser-square-small', 'swipeable__item') %}
+{% set attributes = attributes.addClass('teaser', 'teaser-square-small', 'swipeable__item', 'contextual-region') %}
 
-<article{{ attributes.addClass(wrapper_classes) }}>
-  <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject" data-nid="{{ nid }}" data-internal-url="{{ url }}">
+<article{{ attributes.addClass(wrapper_classes) }} data-nid="{{ nid }}" data-internal-url="{{ url }}">
+  <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
     {% block teaser_img_container %}
       {{ content.field_teaser_media }}
     {% endblock %}
