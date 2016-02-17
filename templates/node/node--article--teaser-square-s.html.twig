@@ -1,6 +1,15 @@
-{% set attributes = attributes.addClass('teaser', 'teaser-square-small', 'swipeable__item', 'contextual-region') %}
+{%
+  set wrapper_classes = [
+    'teaser',
+    'teaser-square-small',
+    'swipeable__item',
+    'contextual-region',
+  ]
+%}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-internal-url', url) %}
 
-<article{{ attributes.addClass(wrapper_classes) }} data-nid="{{ nid }}" data-internal-url="{{ url }}">
+<article{{ attributes.addClass(wrapper_classes) }}>
   <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
     {% block teaser_img_container %}
       {{ content.field_teaser_media }}
