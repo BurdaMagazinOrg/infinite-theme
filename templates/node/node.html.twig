@@ -73,6 +73,12 @@
       <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
     {% endblock %}
   </div>
+  {% if block('content_highlighted_below_header') is not empty %}
+    <div class="item-content-highlighted-below-header container-fixed-content">
+      {% block content_highlighted_below_header %}
+      {% endblock %}
+    </div>
+  {% endif %}
   <div class="item-content-column region-fixed-content">
     <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
       {% block socials_vertical_bar %}
