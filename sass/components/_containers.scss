@@ -8,20 +8,50 @@
     }
 
     &.ad-inactive + .region-full-content {
-      @extend %gap-section-lined-reset;
+      @extend %reset-container-v-gap;
     }
   }
 }
 
 //padded / lined teaser
 .region-content, .region-feed-teasers {
+  & > .region-full-content:first-child {
+    @extend %container-v-padding;
+
+    //todo create a no gap modules mixin
+    &.region-presenter {
+      @extend .region-presenter;
+    }
+  }
+
   .region-full-content + .region-full-content {
-    @extend %region-full-content-v-gap;
+    @extend %container-v-padding;
+    @extend %container-v-margin;
+
+    &.region-presenter {
+      @extend .region-presenter;
+    }
+  }
+
+  //workaround for the standalone breadcrumb  
+  .region-breadcrumb + .region-full-content {
+    margin-top: 0;
+    border-top: 0;
   }
 }
 
+//todo create a no gap modules mixin
+.region-presenter {
+  padding-top: 0;
+
+  .teaser-content-right {
+    padding-top: $gap-size-md;
+  }
+}
+
+
 body .region-marketing.ad-active + .region-full-content {
-  @if($full-content-region-lined) {
+  @if ($container-v-lined) {
     margin-top: -1px; //double line
   }
 }
@@ -45,12 +75,6 @@ body .region-marketing.ad-active + .region-full-content {
   @extend %region-fixed-content;
 }
 
-.region-presenter {
-  .teaser-content-right {
-    padding-top: $gap-size-lg;
-  }
-}
-
 .region-teaser-full-content {
   padding: 0;
   border-top: 0;
@@ -65,13 +89,6 @@ body .region-marketing.ad-active + .region-full-content {
 .region-teaser-link-list {
 
 }
-
-//todo check this
-//.region-lazy-loading {
-//  &:first-child.region-full-content {
-//    margin-top: 0;
-//  }
-//}
 
 #page-wrapper .container-row {
   @extend %flexbox;

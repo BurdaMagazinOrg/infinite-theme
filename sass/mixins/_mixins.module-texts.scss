@@ -1,0 +1,58 @@
+@mixin seo-linker-text() {
+  .seo-linker__item-title {
+    @include text-headline-size($seo-linker-headline-size);
+  }
+
+  .seo-linker__link-list--image {
+    @include text-content-size($seo-linker__link-list-size);
+  }
+}
+
+/**
+** Teaser types
+**/
+
+@mixin teaser-feed-large-text() {
+  .text-headline {
+    @include text-headline-size($feed-teaser-headline-size-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-headline-size($feed-teaser-headline-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-headline-size($feed-teaser-headline-size-desktop);
+    }
+  }
+}
+
+@mixin teaser-list-h-text() {
+  .text-headline {
+    @include text-content-size($teaser-list-h-headline-size-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-content-size($teaser-list-h-headline-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-content-size($teaser-list-h-headline-size-desktop);
+    }
+  }
+}
+
+/**
+** Socials
+**/
+
+@mixin socials-labeled-horizontal-bar-text() {
+  @include text-headline();
+  font-size: $socials-labeled-horizontal-bar-label-size;
+}

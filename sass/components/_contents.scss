@@ -17,7 +17,7 @@
 
   @media (max-width: $screen-xxs-max) {
     .author {
-      margin-top: $gap-size-md;
+      margin-top: $gap-size-sm;
     }
   }
 
@@ -76,7 +76,7 @@
 
 .item-content-highlighted {
   margin-top: $gap-section;
-  margin-bottom: $gap-size-xxl;
+  margin-bottom: $gap-size-xxxl;
 
   @media (max-width: $screen-sm-min) {
     margin-top: $gap-size-lg;

@@ -207,8 +207,3 @@
     @include socials-item-size($socials-labeled-horizontal-bar-size-desktop, $socials-labeled-horizontal-bar-icon-size-desktop);
   }
 }
-
-@mixin socials-labeled-horizontal-bar-text() {
-  @include text-headline();
-  font-size: $font-size-small;
-}

@@ -10,16 +10,8 @@
   @include teaser-feed-large-gap();
 }
 
-%teaser-feed-large-text {
-  @include teaser-feed-large-text();
-}
-
 %teaser-list-h {
   @include teaser-list-h();
-}
-
-%teaser-list-h-text {
-  @include teaser-list-h-text();
 }
 
 %teaser-full-content {

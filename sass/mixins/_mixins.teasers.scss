@@ -28,7 +28,7 @@
 
   .text-category {
     display: inline-block;
-    margin-bottom: $gap-size-md;
+    margin-bottom: $gap-size-sm;
 
     &:hover {
       color: $text-highlighted;
@@ -45,24 +45,27 @@
 
   @media (max-width: $screen-xs-min) {
     .author {
-      margin-top: $gap-size-xs;
+      margin-top: $gap-size-xxs;
     }
 
     .socials-bar {
-      margin-top: $gap-size-sm;
+      margin-top: $gap-size-xs;
     }
   }
 }
 
 @mixin teaser-feed-large-gap() {
   border-top: $h-line-style;
-  padding-top: $feed-teaser-gap-top-mobile;
-  margin-top: $feed-teaser-gap-top-mobile;
 
   &:first-child {
     border-top: 0;
     padding-top: 0;
     margin-top: 0;
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    padding-top: $feed-teaser-gap-top-mobile;
+    margin-top: $feed-teaser-gap-top-mobile;
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
@@ -76,29 +79,11 @@
   }
 }
 
-@mixin teaser-feed-large-text() {
-  .text-headline {
-    @include text-headline-size($feed-teaser-headline-size-mobile);
-  }
-
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    .text-headline {
-      @include text-headline-size($feed-teaser-headline-size-tablet);
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-    .text-headline {
-      @include text-headline-size($feed-teaser-headline-size-desktop);
-    }
-  }
-}
-
 @mixin teaser-feed-large() {
   //todo check this later
   @media (max-width: $screen-xxs-max) {
     .caption-teaser {
-      padding-top: $gap-size-sm;
+      padding-top: $gap-size-xs;
     }
   }
 }
@@ -108,11 +93,7 @@
   min-height: 1px;
 
   .caption-teaser {
-    padding-top: floor($grid-gutter-width / 2);
-  }
-
-  .text-headline {
-    @include text-content-size($teaser-list-h-headline-size-mobile);
+    @include module__item-title-padding();
   }
 
   .item-marketing-sponsored {
@@ -125,30 +106,13 @@
     }
   }
 
+  @media (max-width: $screen-xs-max) {
+    .text-headline {
+      @include text-content-size($teaser-list-h-headline-size-mobile);
+    }
+  }
+
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-tablet);
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-
-    .caption-teaser {
-      padding-top: $grid-gutter-width;
-    }
-
-    .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-desktop);
-    }
-  }
-}
-
-@mixin teaser-list-h-text() {
-  .text-headline {
-    @include text-content-size($teaser-list-h-headline-size-mobile);
-  }
-
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .text-headline {
       @include text-content-size($teaser-list-h-headline-size-tablet);
     }
