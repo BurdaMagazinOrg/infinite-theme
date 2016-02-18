@@ -6,8 +6,8 @@
   @include container-v-padding();
 }
 
-%module__item-title-padding {
-  @include module__item-title-padding();
+%module__item-title-gap {
+  @include module__item-title-gap();
 }
 
 %clear-gutter-gap {

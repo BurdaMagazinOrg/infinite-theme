@@ -93,7 +93,7 @@
   min-height: 1px;
 
   .caption-teaser {
-    @include module__item-title-padding();
+    @include module__item-title-gap();
   }
 
   .item-marketing-sponsored {
