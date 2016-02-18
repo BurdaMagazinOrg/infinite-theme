@@ -53,6 +53,8 @@
 **/
 
 @mixin socials-labeled-horizontal-bar-text() {
-  @include text-headline();
-  font-size: $socials-labeled-horizontal-bar-label-size;
+  .item-social span {
+    @include text-headline();
+    font-size: $socials-labeled-horizontal-bar-label-size;
+  }
 }

@@ -15,6 +15,7 @@
 
 .socials-bar {
   overflow: hidden;
+  font-family: initial;
 
   .item-social {
     &:first-child {
@@ -36,12 +37,10 @@
 }
 
 .socials-horizontal-bar {
+  @extend %socials-labeled-horizontal-bar-text;
+
   .item-social {
     @extend %socials-labeled-horizontal-bar-item;
-
-    span {
-      @extend %socials-labeled-horizontal-bar-text;
-    }
   }
 }
 

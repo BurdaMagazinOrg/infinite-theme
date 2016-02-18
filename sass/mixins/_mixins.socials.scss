@@ -1,9 +1,9 @@
 @mixin socials-item-size($item-size, $font-size) {
   min-width: $item-size;
   height: $item-size;
+  line-height: $item-size; // - 2px;
 
   &:before {
-    line-height: $item-size - 2px;
     font-size: $font-size;
   }
 }
@@ -12,7 +12,7 @@
   @include transition-property(color, background-color, border-color);
   @include transition-duration(.35s);
   @include transition-timing-function(ease);
-  font-size: $item-socials-icon-sm;
+  font-size: $socials-icon-size-md;
   color: $white;
   border: 1px solid transparent;
   cursor: pointer;
@@ -85,7 +85,6 @@
 
   @media (min-width: $screen-sm-min) {
     display: block;
-    margin-top: 8px;
 
     &:first-child {
       margin-top: 0;
@@ -95,15 +94,18 @@
   @media (max-width: $screen-xs-max) {
     @include socials-item-size($socials-vertical-bar-size-mobile, $socials-vertical-bar-icon-size-mobile);
     margin-left: $socials-vertical-bar-left-gap-mobile - 4px;
+    margin-top: $socials-vertical-bar-top-gap-mobile;
     display: inline-block;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include socials-item-size($socials-vertical-bar-size-tablet, $socials-vertical-bar-icon-size-tablet);
+    margin-top: $socials-vertical-bar-top-gap-tablet;
   }
 
   @media (min-width: $screen-md-min) {
     @include socials-item-size($socials-vertical-bar-size-desktop, $socials-vertical-bar-icon-size-desktop);
+    margin-top: $socials-vertical-bar-top-gap-desktop;
   }
 }
 
@@ -175,18 +177,20 @@
 
 /** horizontal bar **/
 @mixin socials-labeled-horizontal-bar-item() {
-  margin-top: $padding;
+  //margin-top: $padding;
   text-align: center;
   display: inline-block;
-  margin-left: $socials-labeled-horizontal-bar-left-gap - 4px;
 
   span {
+    display: inline-block;
     text-transform: uppercase;
-    vertical-align: middle;
+    vertical-align: top;
+    padding-left: $gap-size-xxs;
   }
 
   @media (max-width: $screen-xs-max) {
     @include socials-item-size($socials-labeled-horizontal-bar-size-mobile, $socials-labeled-horizontal-bar-icon-size-mobile);
+    margin-left: $socials-labeled-horizontal-bar-left-gap-mobile - 4px;
     padding: 0;
 
     span {
@@ -201,9 +205,11 @@
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include socials-item-size($socials-labeled-horizontal-bar-size-tablet, $socials-labeled-horizontal-bar-icon-size-tablet);
+    margin-left: $socials-labeled-horizontal-bar-left-gap-tablet - 4px;
   }
 
   @media (min-width: $screen-md-min) {
     @include socials-item-size($socials-labeled-horizontal-bar-size-desktop, $socials-labeled-horizontal-bar-icon-size-desktop);
+    margin-left: $socials-labeled-horizontal-bar-left-gap-desktop - 4px;
   }
 }

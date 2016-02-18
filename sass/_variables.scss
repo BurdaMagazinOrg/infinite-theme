@@ -100,8 +100,8 @@ $h-line-style: 1px solid $gray !default;
 /** sizes **/
 //deprecated
 $gap-section: 31px !default;
-
 $padding: floor($grid-gutter-width / 2) !default;
+
 $feed-ad-column-width: 300px !default;
 $feed-ad-column-margin: 84px !default;
 $menu-sidebar-width: 275px !default;
@@ -109,12 +109,14 @@ $spinner-size: 30px !default;
 $logo-sticky-width: 110px !default;
 $navigation-padding-top-bottom: 20px !default;
 $item-image-socials-width: 70px;
-$item-social-size: 32px !default;
-$item-social-size-md: 40px !default;
-$item-socials-icon-sm: $icon-size-tiny !default;
-$item-socials-icon-md: $icon-size-small !default;
+
 $article-socials-column-width: 96px !default;
 $full-headlines-max-width: 840px !default;
+
+/**
+** products
+**/
+
 $product-headline-height: 70px !default;
 
 /** new variables **/
@@ -212,7 +214,10 @@ $socials-clean-horizontal-bar-icon-size-desktop: $socials-icon-size-sm !default;
 /** socials horizontal bar **/
 $socials-labeled-horizontal-bar-label-size: 13px !default;
 
-$socials-labeled-horizontal-bar-left-gap: 8px !default;
+$socials-labeled-horizontal-bar-left-gap-mobile: 8px !default;
+$socials-labeled-horizontal-bar-left-gap-tablet: 8px !default;
+$socials-labeled-horizontal-bar-left-gap-desktop: 8px !default;
+
 $socials-labeled-horizontal-bar-border-radius: floor($socials-size-md / 2) !default;
 $socials-labeled-horizontal-bar-size-mobile: $socials-size-md !default;
 $socials-labeled-horizontal-bar-size-tablet: $socials-size-md !default;
@@ -224,6 +229,9 @@ $socials-labeled-horizontal-bar-icon-size-desktop: $socials-icon-size-md !defaul
 
 /** socials vertical bar **/
 $socials-vertical-bar-left-gap-mobile: 8px !default;
+$socials-vertical-bar-top-gap-mobile: 8px !default;
+$socials-vertical-bar-top-gap-tablet: 8px !default;
+$socials-vertical-bar-top-gap-desktop: 8px !default;
 $socials-vertical-bar-size-mobile: $socials-size-md !default;
 $socials-vertical-bar-size-tablet: $socials-size-md !default;
 $socials-vertical-bar-size-desktop: $socials-size-md !default;
