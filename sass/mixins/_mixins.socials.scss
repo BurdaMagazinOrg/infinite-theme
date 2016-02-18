@@ -1,7 +1,7 @@
 @mixin socials-item-size($item-size, $font-size) {
   min-width: $item-size;
   height: $item-size;
-  line-height: $item-size; // - 2px;
+  line-height: $item-size - 2px;
 
   &:before {
     font-size: $font-size;
@@ -12,6 +12,7 @@
   @include transition-property(color, background-color, border-color);
   @include transition-duration(.35s);
   @include transition-timing-function(ease);
+
   font-size: $socials-icon-size-md;
   color: $white;
   border: 1px solid transparent;

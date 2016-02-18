@@ -1,5 +1,4 @@
 .item-title {
-  //todo create mixin
   @extend %item-block-title;
 }
 
@@ -110,14 +109,14 @@
 .item-text, .item-link {
   @extend %text-content-html;
   @extend %text-content-size-xl;
-  margin-top: $gap-section*2;
+  margin-top: $gap-size-xxxl;
 
   p {
     @extend %text-content-size-xl;
   }
 
   @media (max-width: $screen-sm-min) {
-    margin-top: $gap-section;
+    margin-top: $gap-size-lg;
   }
 
   & > iframe, .instagram-media {
