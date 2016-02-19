@@ -50,7 +50,7 @@
 
             if (this.adProvider == AppConfig.ad_orbyd) {
                 //i want the TFM API back :((( tfm ftw!! sounds sad/mad but it's true
-                //this.createOrbydAd();
+                this.createOrbydAd();
                 this.initialized = true;
             } else if (this.adProvider == AppConfig.ad_fag && typeof TFM != "undefined") {
                 //TODO change this after tfm API change
