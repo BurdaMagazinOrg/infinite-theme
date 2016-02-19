@@ -1,6 +1,6 @@
 @mixin seo-linker-text() {
   .seo-linker__item-title {
-    @include text-headline-size($seo-linker__item-title-size);
+    @include text-headline($seo-linker__item-title-size);
   }
 
   .seo-linker__link-list--image {
