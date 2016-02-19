@@ -32,18 +32,18 @@
 
 @mixin teaser-list-h-text() {
   .text-headline {
-    @include text-content-size($teaser-list-h-headline-size-mobile);
+    @include text-content($teaser-list-h-headline-size-mobile);
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-tablet);
+      @include text-content($teaser-list-h-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-desktop);
+      @include text-content($teaser-list-h-headline-size-desktop);
     }
   }
 }
