@@ -56,5 +56,6 @@
   .item-social span {
     @include text-headline();
     font-size: $socials-labeled-horizontal-bar-label-size;
+    line-height: $socials-labeled-horizontal-bar-label-size + 1px;
   }
 }

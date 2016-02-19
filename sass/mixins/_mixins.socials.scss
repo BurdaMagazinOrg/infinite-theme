@@ -1,10 +1,26 @@
-@mixin socials-item-size($item-size, $font-size) {
+@mixin socials-bar-container() {
+  overflow: hidden;
+  font-family: initial;
+  font-size: 0;
+
+  .item-social {
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+@mixin socials-item-settings($item-size, $font-size, $orientation: horizontal) {
+  @include flexbox($orientation, $orientation == horizontal);
+  @include align-items(center);
+  @include justify-content(center);
   min-width: $item-size;
   height: $item-size;
-  line-height: $item-size - 2px;
+  text-decoration: none;
 
   &:before {
     font-size: $font-size;
+    height: $font-size + 1px;
   }
 }
 
@@ -83,7 +99,6 @@
 
 @mixin socials-vertical-bar-item() {
   text-align: center;
-
   @media (min-width: $screen-sm-min) {
     display: block;
 
@@ -93,39 +108,39 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include socials-item-size($socials-vertical-bar-size-mobile, $socials-vertical-bar-icon-size-mobile);
-    margin-left: $socials-vertical-bar-left-gap-mobile - 4px;
+    @include socials-item-settings($socials-vertical-bar-size-mobile, $socials-vertical-bar-icon-size-mobile, vertical);
+    margin-left: $socials-vertical-bar-left-gap-mobile;
     margin-top: $socials-vertical-bar-top-gap-mobile;
     display: inline-block;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include socials-item-size($socials-vertical-bar-size-tablet, $socials-vertical-bar-icon-size-tablet);
+    @include socials-item-settings($socials-vertical-bar-size-tablet, $socials-vertical-bar-icon-size-tablet, vertical);
     margin-top: $socials-vertical-bar-top-gap-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    @include socials-item-size($socials-vertical-bar-size-desktop, $socials-vertical-bar-icon-size-desktop);
+    @include socials-item-settings($socials-vertical-bar-size-desktop, $socials-vertical-bar-icon-size-desktop, vertical);
     margin-top: $socials-vertical-bar-top-gap-desktop;
   }
 }
 
 /** horizontal teaser bar **/
 @mixin socials-teaser-horizontal-bar-item() {
-  margin-left: $socials-teaser-horizontal-bar-left-gap - 4px;
+  margin-left: $socials-teaser-horizontal-bar-left-gap;
   display: inline-block;
   text-align: center;
 
   @media (max-width: $screen-xs-max) {
-    @include socials-item-size($socials-teaser-horizontal-bar-size-mobile, $socials-teaser-horizontal-bar-icon-size-mobile);
+    @include socials-item-settings($socials-teaser-horizontal-bar-size-mobile, $socials-teaser-horizontal-bar-icon-size-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include socials-item-size($socials-teaser-horizontal-bar-size-tablet, $socials-teaser-horizontal-bar-icon-size-tablet);
+    @include socials-item-settings($socials-teaser-horizontal-bar-size-tablet, $socials-teaser-horizontal-bar-icon-size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include socials-item-size($socials-teaser-horizontal-bar-size-desktop, $socials-teaser-horizontal-bar-icon-size-desktop);
+    @include socials-item-settings($socials-teaser-horizontal-bar-size-desktop, $socials-teaser-horizontal-bar-icon-size-desktop);
   }
 }
 
@@ -135,7 +150,7 @@
   background-color: transparent;
   border: 1px solid $text-color;
   color: $text-color;
-  margin-left: $socials-clean-horizontal-bar-left-gap - 4px;
+  margin-left: $socials-clean-horizontal-bar-left-gap;
   text-align: center;
 
   -webkit-transform: rotate(0.0001deg); //smoothing
@@ -145,15 +160,15 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include socials-item-size($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
+    @include socials-item-settings($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include socials-item-size($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
+    @include socials-item-settings($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include socials-item-size($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
+    @include socials-item-settings($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
   }
 }
 
@@ -161,18 +176,18 @@
 @mixin socials-media-horizontal-bar-item() {
   display: inline-block;
   text-align: center;
-  margin-left: $socials-media-left-gap - 4px;
+  margin-left: $socials-media-left-gap;
 
   @media (max-width: $screen-xs-max) {
-    @include socials-item-size($socials-media-horizontal-bar-size-mobile, $socials-media-horizontal-bar-icon-size-mobile);
+    @include socials-item-settings($socials-media-horizontal-bar-size-mobile, $socials-media-horizontal-bar-icon-size-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include socials-item-size($socials-media-horizontal-bar-size-tablet, $socials-media-horizontal-bar-icon-size-tablet);
+    @include socials-item-settings($socials-media-horizontal-bar-size-tablet, $socials-media-horizontal-bar-icon-size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include socials-item-size($socials-media-horizontal-bar-size-desktop, $socials-media-horizontal-bar-icon-size-desktop);
+    @include socials-item-settings($socials-media-horizontal-bar-size-desktop, $socials-media-horizontal-bar-icon-size-desktop);
   }
 }
 
@@ -190,8 +205,8 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include socials-item-size($socials-labeled-horizontal-bar-size-mobile, $socials-labeled-horizontal-bar-icon-size-mobile);
-    margin-left: $socials-labeled-horizontal-bar-left-gap-mobile - 4px;
+    @include socials-item-settings($socials-labeled-horizontal-bar-size-mobile, $socials-labeled-horizontal-bar-icon-size-mobile);
+    margin-left: $socials-labeled-horizontal-bar-left-gap-mobile;
     padding: 0;
 
     span {
@@ -205,12 +220,12 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include socials-item-size($socials-labeled-horizontal-bar-size-tablet, $socials-labeled-horizontal-bar-icon-size-tablet);
-    margin-left: $socials-labeled-horizontal-bar-left-gap-tablet - 4px;
+    @include socials-item-settings($socials-labeled-horizontal-bar-size-tablet, $socials-labeled-horizontal-bar-icon-size-tablet);
+    margin-left: $socials-labeled-horizontal-bar-left-gap-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    @include socials-item-size($socials-labeled-horizontal-bar-size-desktop, $socials-labeled-horizontal-bar-icon-size-desktop);
-    margin-left: $socials-labeled-horizontal-bar-left-gap-desktop - 4px;
+    @include socials-item-settings($socials-labeled-horizontal-bar-size-desktop, $socials-labeled-horizontal-bar-icon-size-desktop);
+    margin-left: $socials-labeled-horizontal-bar-left-gap-desktop;
   }
 }
