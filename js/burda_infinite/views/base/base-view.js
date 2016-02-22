@@ -28,7 +28,8 @@
              * Pinterest override the Pin-Btn with an URLRegex
              */
             $pContainer.find('.icon-pinterest[data-href]').unbind('click.socialsPinterest').bind('click.socialsPinterest', function (pEvent) {
-                window.open($(this).data('href'), '_blank');
+                var tmpURL = $(this).data('href').replace(/&?itok=([^&]$|[^&]*)/i, "");
+                window.open(tmpURL, '_blank');
                 return false;
             });
 
@@ -74,10 +75,10 @@
                     window.open(url, target);
                 }, this));
         },
-        enableView: function() {
+        enableView: function () {
             this.enabled = true;
         },
-        disableView: function() {
+        disableView: function () {
             this.enabled = false;
         },
         destroy: function () {

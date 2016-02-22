@@ -17,7 +17,7 @@
   </a>
 {% endblock %}
 {% block social_pinterest %}
-  <div class="item-social icon-pinterest" data-href="https://pinterest.com/pin/create/button/?url={{ url | e('url') }}&media={{ share_img_url | e('url') }}&description={{ social_label | e('url') }}" data-social-type="pinterest">
+  <div class="item-social icon-pinterest" data-href="https://pinterest.com/pin/create/button/?url={{ url | e('url') }}&media={{ share_img_url }}&description={{ social_label | e('url') }}" data-social-type="pinterest">
     {% if pinterest_share_button %}
       <span>{{ pinterest_share_button }}</span>
     {% endif %}
