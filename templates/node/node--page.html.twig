@@ -1,11 +1,17 @@
-<article {{ attributes.addClass('item-content item-content-article') }} data-view-type="articleView">
+{% set attributes = attributes.setAttribute('data-view-type', 'articleView') %}
+
+<article{{ attributes.addClass('item-content item-content-article') }}>
   <div class="item-content-header">
-    <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% block page_headline %}
+      <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% endblock %}
   </div>
   <div class="item-content-column region-fixed-content">
     <div class="item-content-highlighted">
       <div class="item-block item-text">
-        {{ content }}  {# see TWIG files in paragraphs directory#}
+        {% block page_content %}
+          {{ content }}  {# see TWIG files in paragraphs directory#}
+        {% endblock %}
       </div>
     </div>
   </div>
