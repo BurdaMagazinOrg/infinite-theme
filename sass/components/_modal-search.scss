@@ -41,7 +41,7 @@
 
   .region-lazy-loading:first-child {
     .region-teaser-list {
-      @extend %gap-section-lined-reset;
+      @extend %reset-container-v-gap;
     }
   }
 

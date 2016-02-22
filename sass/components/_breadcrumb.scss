@@ -1,6 +1,4 @@
 .breadcrumb {
-  margin-top: $gap-section;
-
   li {
     @include inline-block();
     @extend %text-label;

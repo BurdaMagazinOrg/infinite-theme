@@ -122,7 +122,7 @@
             this.$dynamicIframe.contentWindow.contents = content;
             this.$dynamicIframe.src = 'javascript:window["contents"]';
 
-            $(this.$dynamicIframe).load(_.bind(function () {
+            $(this.$dynamicIframe).load(_.bind(function (pEvent) {
                 var tmpIFrameWidth = $(this.$dynamicIframe).contents().width(),
                     tmpIFrameHeight = $(this.$dynamicIframe).contents().height();
 
@@ -152,7 +152,7 @@
             }
         },
         enableView: function () {
-            if(this.enabled) return;
+            if (this.enabled) return;
 
             if (this.adProvider == AppConfig.ad_fag && !_.isNull(this.adModel)) {
                 if (this.$el.hasClass('ad-bsad')) return;

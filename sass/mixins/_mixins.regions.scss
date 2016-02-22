@@ -8,34 +8,6 @@
   @include padding-gutter-gap();
 }
 
-@mixin region-full-content-v-gap($lined: false) {
-  @if ($full-content-region-lined or $lined) {
-    border-top: $h-line-style;
-  }
-
-  padding-top: $rfc-gap-top-mobile;
-  margin-top: $rfc-gap-top-mobile;
-
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    padding-top: $rfc-gap-top-tablet;
-    margin-top: $rfc-gap-top-tablet;
-  }
-
-  @media (min-width: $screen-md-min) {
-    padding-top: $rfc-gap-top-desktop;
-    margin-top: $rfc-gap-top-desktop;
-  }
-}
-
-@mixin reset-region-full-content-v-gap($lined: false) {
-  @if ($full-content-region-lined or $lined) {
-    border-top: 0;
-  }
-
-  padding-top: 0;
-  margin-top: 0;
-}
-
 @mixin region-infinite-block() {
   padding-bottom: $rib-gap-bottom-mobile;
 

@@ -84,13 +84,14 @@
 
   @media (max-width: $screen-sm-min) {
     .item-product {
-      @include gap-section-lined($grid-gutter-width);
+      @include container-v-margin(true);
+      @include container-v-padding();
       display: block;
       width: auto;
       margin-right: 0;
 
       &:first-child {
-        @include gap-section-lined-reset();
+        @include reset-container-v-gap();
       }
     }
 

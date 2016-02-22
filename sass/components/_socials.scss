@@ -14,13 +14,7 @@
 }
 
 .socials-bar {
-  overflow: hidden;
-
-  .item-social {
-    &:first-child {
-      margin-left: 0;
-    }
-  }
+  @include socials-bar-container();
 }
 
 .teaser .socials-bar {
@@ -36,12 +30,10 @@
 }
 
 .socials-horizontal-bar {
+  @extend %socials-labeled-horizontal-bar-text;
+
   .item-social {
     @extend %socials-labeled-horizontal-bar-item;
-
-    span {
-      @extend %socials-labeled-horizontal-bar-text;
-    }
   }
 }
 

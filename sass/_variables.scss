@@ -98,15 +98,10 @@ $gray-lighter: #eee;
 $h-line-style: 1px solid $gray !default;
 
 /** sizes **/
+//deprecated
 $gap-section: 31px !default;
-$gap-size-xs: 8px !default;
-$gap-size-sm: 16px !default;
-$gap-size-md: 24px !default;
-$gap-size-lg: 31px !default;
-$gap-size-xl: 48px !default;
-$gap-size-xxl: 61px !default;
-
 $padding: floor($grid-gutter-width / 2) !default;
+
 $feed-ad-column-width: 300px !default;
 $feed-ad-column-margin: 84px !default;
 $menu-sidebar-width: 275px !default;
@@ -114,46 +109,72 @@ $spinner-size: 30px !default;
 $logo-sticky-width: 110px !default;
 $navigation-padding-top-bottom: 20px !default;
 $item-image-socials-width: 70px;
-$item-social-size: 32px !default;
-$item-social-size-md: 40px !default;
-$item-socials-icon-sm: $icon-size-tiny !default;
-$item-socials-icon-md: $icon-size-small !default;
+
 $article-socials-column-width: 96px !default;
 $full-headlines-max-width: 840px !default;
+
+/**
+** products
+**/
+
 $product-headline-height: 70px !default;
 
-/** article-title **/
-$item-block-title-mobile: 20px !default;
-$item-block-title-tablet: 24px !default;
-$item-block-title-desktop: 28px !default;
+/** new variables **/
+$title-size-xxxs: 15px !default;
+$title-size-xxs: 18px !default;
+$title-size-xs: 20px !default;
+$title-size-sm: 24px !default;
+$title-size-md: 28px !default;
+$title-size-lg: 32px !default;
+$title-size-xl: 40px !default;
+$title-size-xxl: 48px !default;
 
-$item-block-title-gap-bottom-mobile: 24px !default;
-$item-block-title-gap-bottom-tablet: 28px !default;
-$item-block-title-gap-bottom-desktop: 40px !default;
+$gap-size-xxs: 8px !default;
+$gap-size-xs: 16px !default;
+$gap-size-sm: 24px !default;
+$gap-size-md: 28px !default;
+$gap-size-lg: 31px !default;
+$gap-size-xl: 36px !default;
+$gap-size-xxl: 48px !default;
+$gap-size-xxxl: 61px !default;
 
 /** article-title **/
-$item-article-title-mobile: 24px !default;
-$item-article-title-tablet: 28px !default;
-$item-article-title-desktop: 40px !default;
+$item-block-title-mobile: $title-size-xs !default;
+$item-block-title-tablet: $title-size-sm !default;
+$item-block-title-desktop: $title-size-md !default;
+
+$item-block-title-gap-bottom-mobile: $gap-size-sm !default;
+$item-block-title-gap-bottom-tablet: $gap-size-md !default;
+$item-block-title-gap-bottom-desktop: $gap-size-xxl !default;
+
+/** article-title **/
+$item-article-title-mobile: $title-size-sm !default;
+$item-article-title-tablet: $title-size-md !default;
+$item-article-title-desktop: $title-size-xl !default;
 
 /** feed-teaser **/
-$feed-teaser-gap-top-desktop: 37px !default;
-$feed-teaser-gap-top-tablet: 37px !default;
-$feed-teaser-gap-top-mobile: $gap-size-lg !default;
+$feed-teaser-headline-size-mobile: $title-size-sm !default;
+$feed-teaser-headline-size-tablet: $title-size-md !default;
+$feed-teaser-headline-size-desktop: $title-size-lg !default;
 
-$feed-teaser-headline-size-mobile: $gap-size-md !default;
-$feed-teaser-headline-size-tablet: 28px !default;
-$feed-teaser-headline-size-desktop: $gap-size-lg !default;
+$feed-teaser-gap-top-mobile: $gap-size-md !default;
+$feed-teaser-gap-top-tablet: $gap-size-xl !default;
+$feed-teaser-gap-top-desktop: $gap-size-xl !default;
 
 /** full-content-teaser **/
-$fc-teaser-headline-size-mobile: $gap-size-md !default;
-$fc-teaser-headline-size-tablet: $gap-size-lg !default;
-$fc-teaser-headline-size-desktop: $gap-size-xl !default;
+$fc-teaser-headline-size-mobile: $title-size-sm !default;
+$fc-teaser-headline-size-tablet: $title-size-lg !default;
+$fc-teaser-headline-size-desktop: $title-size-xxl !default;
 
 /**region full content **/
-$rfc-gap-top-mobile: $gap-size-lg !default;
-$rfc-gap-top-tablet: $gap-size-lg !default;
-$rfc-gap-top-desktop: $gap-size-lg !default;
+$container-v-lined: true !default;
+$container-margin-top-mobile: $gap-size-lg !default;
+$container-margin-top-tablet: $gap-size-lg !default;
+$container-margin-top-desktop: $gap-size-lg !default;
+
+$container-padding-top-mobile: $gap-size-lg !default;
+$container-padding-top-tablet: $gap-size-lg !default;
+$container-padding-top-desktop: $gap-size-lg !default;
 
 /** region infinite block **/
 $rib-gap-bottom-mobile: 0 !default;
@@ -161,9 +182,9 @@ $rib-gap-bottom-tablet: 0 !default;
 $rib-gap-bottom-desktop: 0 !default;
 
 /** list horizontal teaser **/
-$teaser-list-h-headline-size-mobile: 15px !default;
-$teaser-list-h-headline-size-tablet: 18px !default;
-$teaser-list-h-headline-size-desktop: 18px !default;
+$teaser-list-h-headline-size-mobile: $title-size-xxxs !default;
+$teaser-list-h-headline-size-tablet: $title-size-xxs !default;
+$teaser-list-h-headline-size-desktop: $title-size-xxs !default;
 
 $teaser-list-h-teaser-gap-mobile: 6px !default;
 $teaser-list-h-teaser-gap-tablet: 28px !default;
@@ -191,7 +212,12 @@ $socials-clean-horizontal-bar-icon-size-tablet: $socials-icon-size-sm !default;
 $socials-clean-horizontal-bar-icon-size-desktop: $socials-icon-size-sm !default;
 
 /** socials horizontal bar **/
-$socials-labeled-horizontal-bar-left-gap: 8px !default;
+$socials-labeled-horizontal-bar-label-size: 13px !default;
+
+$socials-labeled-horizontal-bar-left-gap-mobile: 8px !default;
+$socials-labeled-horizontal-bar-left-gap-tablet: 8px !default;
+$socials-labeled-horizontal-bar-left-gap-desktop: 8px !default;
+
 $socials-labeled-horizontal-bar-border-radius: floor($socials-size-md / 2) !default;
 $socials-labeled-horizontal-bar-size-mobile: $socials-size-md !default;
 $socials-labeled-horizontal-bar-size-tablet: $socials-size-md !default;
@@ -203,6 +229,9 @@ $socials-labeled-horizontal-bar-icon-size-desktop: $socials-icon-size-md !defaul
 
 /** socials vertical bar **/
 $socials-vertical-bar-left-gap-mobile: 8px !default;
+$socials-vertical-bar-top-gap-mobile: 8px !default;
+$socials-vertical-bar-top-gap-tablet: 8px !default;
+$socials-vertical-bar-top-gap-desktop: 8px !default;
 $socials-vertical-bar-size-mobile: $socials-size-md !default;
 $socials-vertical-bar-size-tablet: $socials-size-md !default;
 $socials-vertical-bar-size-desktop: $socials-size-md !default;
@@ -231,8 +260,9 @@ $socials-media-horizontal-bar-icon-size-mobile: $socials-icon-size-md !default;
 $socials-media-horizontal-bar-icon-size-tablet: $socials-icon-size-md !default;
 $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 
-/** common **/
-$full-content-region-lined: true !default;
+/** seo linker **/
+$seo-linker__item-title-size: $title-size-xxs !default;
+$seo-linker__link-list-size: 15px !default;
 
 /** animation **/
 $menu-home-animated-logo: true !default;

@@ -1,0 +1,15 @@
+%seo-linker-text {
+  @include seo-linker-text();
+}
+
+%teaser-feed-large-text {
+  @include teaser-feed-large-text();
+}
+
+%teaser-list-h-text {
+  @include teaser-list-h-text();
+}
+
+%socials-labeled-horizontal-bar-text {
+  @include socials-labeled-horizontal-bar-text();
+}

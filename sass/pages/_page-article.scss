@@ -4,7 +4,6 @@
     h1 {
       @extend %item-article-title;
       max-width: $full-headlines-max-width;
-      margin-top: $gap-size-lg;
     }
   }
 
@@ -15,10 +14,10 @@
   .breadcrumb {
     @extend %region-fixed-content;
   }
-
-  .region-breadcrumb + .item-content-article {
-    @extend %gap-section-lined-reset;
-  }
+  //
+  //.region-breadcrumb + .item-content-article {
+  //  @extend %reset-container-v-gap;
+  //}
 
   @media (max-width: $screen-xs-max) {
     .item-content-column .socials-vertical-bar {

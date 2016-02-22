@@ -5,3 +5,7 @@
 %list__images--horizontal__item {
   @include list__images--horizontal__item();
 }
+
+%list__links--module {
+  @include list__links--module();
+}

@@ -38,3 +38,13 @@
     padding-right: $teaser-list-h-teaser-gap-desktop;
   }
 }
+
+@mixin list__links--module {
+  margin-top: $gap-size-xs;
+  padding-bottom: $gap-size-md;
+
+  li {
+    margin-top: 5px;
+    border-bottom: $h-line-style;
+  }
+}
