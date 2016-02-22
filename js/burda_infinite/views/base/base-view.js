@@ -21,14 +21,16 @@
              * Whatsapp
              */
             if (this.deviceModel != undefined && this.deviceModel.useWhatsapp) {
-                $pContainer.find('.icon-whatsapp').css('display', 'inline-block');
+                $pContainer.find('.icon-whatsapp').addClass('active');
+                $pContainer.find('.icon-whatsapp').css('display', 'inline-flex');
             }
 
             /**
              * Pinterest override the Pin-Btn with an URLRegex
              */
             $pContainer.find('.icon-pinterest[data-href]').unbind('click.socialsPinterest').bind('click.socialsPinterest', function (pEvent) {
-                var tmpURL = $(this).data('href').replace(/&?itok=([^&]$|[^&]*)/i, "");
+                var tmpURL = $(this).data('href').replace(/\?itok=([^&]$|[^&]*)/i, "");
+                //tmpURL = encodeURIComponent(tmpURL);
                 window.open(tmpURL, '_blank');
                 return false;
             });

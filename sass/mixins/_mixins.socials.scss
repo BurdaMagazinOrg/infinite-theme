@@ -108,10 +108,10 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include socials-item-settings($socials-vertical-bar-size-mobile, $socials-vertical-bar-icon-size-mobile, vertical);
+    @include socials-item-settings($socials-vertical-bar-size-mobile, $socials-vertical-bar-icon-size-mobile);
     margin-left: $socials-vertical-bar-left-gap-mobile;
     margin-top: $socials-vertical-bar-top-gap-mobile;
-    display: inline-block;
+    //display: inline-block;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
