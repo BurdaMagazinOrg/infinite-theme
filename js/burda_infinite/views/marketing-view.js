@@ -89,6 +89,8 @@
             this.$dynamicIframe.frameBorder = "0";
             this.$dynamicIframe.marginWidth = "0";
             this.$dynamicIframe.marginHeight = "0";
+            //this.$dynamicIframe.width = "0";
+            //this.$dynamicIframe.height = "0";
             this.$dynamicIframe.allowtransparency = "true";
 
             this.$adSlotContainer.append(this.$dynamicIframe);
