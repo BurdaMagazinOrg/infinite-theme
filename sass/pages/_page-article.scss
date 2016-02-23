@@ -2,7 +2,7 @@
 
   .item-content-header {
     h1 {
-      @extend %item-article-title;
+      @extend %title--article;
       max-width: $full-headlines-max-width;
     }
   }

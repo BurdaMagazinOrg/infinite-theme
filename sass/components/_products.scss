@@ -1,112 +1,11 @@
 .item-products {
+  .item-title {
+    @extend %title--content-block;
+  }
+
   .item-product {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    width: 170px;
-    overflow: hidden;
-    margin-right: $gap-section;
-    margin-bottom: $gap-section;
-
-    &:hover {
-      .text-shop {
-        background-color: $color-highlighted;
-        color: $white;
-      }
-    }
-
-    .text-headline {
-      @extend %text-headline-size-h5;
-      margin-top: 9px;
-      margin-bottom: 44px;
-      height: $product-headline-height;
-      overflow: hidden;
-    }
-  }
-
-  .img-container {
-    text-align: center;
-    margin-bottom: $padding;
-    height: 200px;
-    overflow: hidden;
-
-    img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      display: inline-block;
-    }
-  }
-
-  .caption {
-    position: relative;
-  }
-
-  .text-brand {
-    @extend %text-label;
-    @extend %text-label-size-small;
-    color: $gray-base;
-    text-transform: uppercase;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .text-shipping, .text-price {
-    @extend %text-headline;
-    @extend %text-label-size-small;
-    position: absolute;
-    bottom: 35px;
-  }
-
-  .text-price {
-    left: 0;
-  }
-
-  .text-shipping {
-    right: 0;
-    color: $gray-base;
-  }
-
-  .text-shop {
-    @extend %transition-default;
-    @extend %text-label;
-    @extend %text-label-size-small;
-    color: $color-highlighted;
-    border: 1px solid $color-highlighted;
-    border-radius: 10px;
-    padding: 4px 20px;
-    margin-top: $padding;
-    display: inline-block;
-    text-transform: uppercase;
-  }
-
-  @media (max-width: $screen-sm-min) {
-    .item-product {
-      @include container-v-margin(true);
-      @include container-v-padding();
-      display: block;
-      width: auto;
-      margin-right: 0;
-
-      &:first-child {
-        @include reset-container-v-gap();
-      }
-    }
-
-    .img-container {
-      height: auto;
-      margin-bottom: 0;
-    }
-
-    .img-container, .caption {
-      @include make-xxs-column($grid-columns/2);
-    }
-
-    .caption {
-      padding-left: 0;
-    }
+    @include product__item-text();
+    @include product__item--horizontal-block();
   }
 }
 

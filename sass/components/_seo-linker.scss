@@ -3,8 +3,7 @@
 }
 
 .seo-linker__title {
-  @extend %item-block-title;
-  @extend %container-v-padding;
+  @extend %title--horizontal-block;
 }
 
 .seo-linker--image {
@@ -23,7 +22,7 @@
 }
 
 .seo-linker__item-title {
-  @extend %module__item-title-gap;
+  @extend %title--caption-top-gap;
 }
 
 .seo-linker__link-list--image {

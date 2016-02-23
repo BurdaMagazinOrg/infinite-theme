@@ -117,7 +117,8 @@ $full-headlines-max-width: 840px !default;
 ** products
 **/
 
-$product-headline-height: 70px !default;
+$product__item-text-headline-height: 70px !default;
+$product__item-text-headline-size: 18px !default;
 
 /** new variables **/
 $title-size-xxxs: 15px !default;
@@ -138,19 +139,47 @@ $gap-size-xl: 36px !default;
 $gap-size-xxl: 48px !default;
 $gap-size-xxxl: 61px !default;
 
-/** article-title **/
-$item-block-title-mobile: $title-size-xs !default;
-$item-block-title-tablet: $title-size-sm !default;
-$item-block-title-desktop: $title-size-md !default;
 
-$item-block-title-gap-bottom-mobile: $gap-size-sm !default;
-$item-block-title-gap-bottom-tablet: $gap-size-md !default;
-$item-block-title-gap-bottom-desktop: $gap-size-xxl !default;
+/**
+** Titles
+**/
 
-/** article-title **/
-$item-article-title-mobile: $title-size-sm !default;
-$item-article-title-tablet: $title-size-md !default;
-$item-article-title-desktop: $title-size-xl !default;
+/** title--horizontal-block **/
+$title--horizontal-block-mobile: $title-size-xs !default;
+$title--horizontal-block-tablet: $title-size-sm !default;
+$title--horizontal-block-desktop: $title-size-md !default;
+
+$title--horizontal-block-gap-bottom-mobile: $gap-size-sm !default;
+$title--horizontal-block-gap-bottom-tablet: $gap-size-md !default;
+$title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
+
+/** title--content-block **/
+$title--content-block-mobile: $title-size-sm !default;
+$title--content-block-tablet: $title-size-md !default;
+$title--content-block-desktop: 30px !default; //fkn different design shizzl
+
+$title--content-block-gap-bottom-mobile: $gap-size-sm !default;
+$title--content-block-gap-bottom-tablet: $gap-size-md !default;
+$title--content-block-gap-bottom-desktop: $gap-size-xxl !default;
+
+/** title--article **/
+$title--article-mobile: $title-size-sm !default;
+$title--article-tablet: $title-size-md !default;
+$title--article-desktop: $title-size-xl !default;
+
+/** title--text-block **/
+$title--text-block-mobile: $title-size-sm !default;
+$title--text-block-tablet: $title-size-md !default;
+$title--text-block-desktop: 30px !default; //fkn different design shizzl
+
+/** copytext--text-block **/
+$copytext--text-block-mobile: 18px !default;
+$copytext--text-block-tablet: 19px !default;
+$copytext--text-block-desktop: 21px !default;
+
+/**
+** Teaser
+**/
 
 /** feed-teaser **/
 $feed-teaser-headline-size-mobile: $title-size-sm !default;

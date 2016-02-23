@@ -1,0 +1,11 @@
+%title--caption-top-gap {
+  @include title--caption-top-gap();
+}
+
+%title--text-block {
+  @include title--text-block();
+}
+
+%title--content-block {
+  @include title--content-block();
+}

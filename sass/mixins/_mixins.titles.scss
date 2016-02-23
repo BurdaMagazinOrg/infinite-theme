@@ -1,0 +1,95 @@
+@mixin title--horizontal-block() {
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (max-width: $screen-xs-max) {
+    @include text-headline($title--horizontal-block-mobile);
+    margin-bottom: $title--horizontal-block-gap-bottom-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-headline($title--horizontal-block-tablet);
+    margin-bottom: $title--horizontal-block-gap-bottom-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-headline($title--horizontal-block-desktop);
+    margin-bottom: $title--horizontal-block-gap-bottom-desktop;
+  }
+}
+
+@mixin title--article() {
+  @media (max-width: $screen-xs-max) {
+    @include text-headline($title--article-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-headline($title--article-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-headline($title--article-desktop);
+  }
+}
+
+@mixin title--caption-top-gap($type: margin) {
+  @media (max-width: $screen-xs-max) {
+    #{$type}-top: $gap-size-xxs;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    #{$type}-top: $gap-size-xs;
+  }
+
+  @media (min-width: $screen-md-min) {
+    #{$type}-top: $gap-size-sm;
+  }
+}
+
+@mixin title--text-block() {
+  @include text-label();
+  margin-top: $gap-size-lg;
+
+  @media (max-width: $screen-xs-max) {
+    @include text-label-size($title--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-label-size($title--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-label-size($title--text-block-desktop);
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  & + p {
+    margin-top: 13px;
+  }
+
+  & + h2, & + h3, & + h4, & + h5, & + h6 {
+    margin-top: 16px;
+  }
+}
+
+@mixin title--content-block() {
+  @include text-label();
+
+  @media (max-width: $screen-xs-max) {
+    @include text-label-size($title--content-block-mobile);
+    margin-bottom: $title--content-block-gap-bottom-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-label-size($title--content-block-tablet);
+    margin-bottom: $title--content-block-gap-bottom-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-label-size($title--content-block-desktop);
+    margin-bottom: $title--content-block-gap-bottom-desktop;
+  }
+}

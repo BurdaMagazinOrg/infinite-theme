@@ -1,7 +1,7 @@
-%item-block-title {
-  @include item-block-title();
+%title--horizontal-block {
+  @include title--horizontal-block();
 }
 
-%item-article-title {
-  @include item-article-title();
+%title--article {
+  @include title--article();
 }

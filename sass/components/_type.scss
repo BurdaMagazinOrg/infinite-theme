@@ -9,9 +9,9 @@ body {
   }
 }
 
-p {
-  line-height: floor($font-size-base * $line-height-content);
-}
+//p {
+//  line-height: floor($font-size-base * $line-height-content);
+//}
 
 a {
   @include transition-property(color, background-color, border-color);

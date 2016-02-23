@@ -1,0 +1,15 @@
+@mixin copytext--text-block() {
+  @extend %text-content;
+
+  @media (max-width: $screen-xs-max) {
+    @include text-content-size($copytext--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-content-size($copytext--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-content-size($copytext--text-block-desktop);
+  }
+}

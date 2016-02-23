@@ -1,5 +1,5 @@
 .item-title {
-  @extend %item-block-title;
+  //@extend %title--horizontal-block;
 }
 
 .item-content-article .item-content-column {
@@ -70,6 +70,10 @@
     &:first-child {
       margin-top: 0;
     }
+
+    .item-title {
+      text-align: left;
+    }
   }
 }
 
@@ -108,12 +112,13 @@
 
 .item-text, .item-link {
   @extend %text-content-html;
-  @extend %text-content-size-xl;
+  //@extend %text-content-size-xl;
+  @extend %copytext--text-block;
   margin-top: $gap-size-xxxl;
 
-  p {
-    @extend %text-content-size-xl;
-  }
+  //p {
+  //  @extend %text-content-size-xl;
+  //}
 
   @media (max-width: $screen-sm-min) {
     margin-top: $gap-size-lg;
