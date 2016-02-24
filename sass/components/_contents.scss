@@ -60,7 +60,7 @@
 .item-content-body, .item-content-highlighted {
   position: relative;
 
-  .item-block, & > .region-full-content {  
+  .item-block, & > .region-full-content {
     margin-top: $gap-section * 2;
 
     @media (max-width: $screen-sm-min) {

@@ -1,11 +1,15 @@
+@mixin products--horizontal-block {
+  @media (min-width: $screen-sm-min) {
+    @include make-row();
+  }
+}
+
 @mixin product__item--horizontal-block {
-  display: inline-block;
-  vertical-align: top;
+  @include make-sm-column($grid-columns/3);
+
   position: relative;
-  width: 170px;
   overflow: hidden;
-  margin-right: $gap-section;
-  margin-bottom: $gap-section;
+  margin-bottom: $gap-size-lg;
 
   &:hover {
     .text-shop {
@@ -33,7 +37,7 @@
     position: relative;
   }
 
-  @media (max-width: $screen-sm-min) {
+  @media (max-width: $screen-xs-max) {
     @include container-v-margin(true);
     @include container-v-padding();
     display: block;

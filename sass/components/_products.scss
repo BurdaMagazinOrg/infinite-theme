@@ -1,4 +1,6 @@
 .item-products {
+  @include products--horizontal-block();
+
   .item-title {
     @extend %title--content-block;
   }
