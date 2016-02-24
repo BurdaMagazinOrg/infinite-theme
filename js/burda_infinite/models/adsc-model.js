@@ -63,13 +63,13 @@
         },
         getCurrentAdscInfos: function () {
             return {
-                'adsc_adunit1': window.adsc_adunit1,
-                'adsc_adunit2': window.adsc_adunit2,
-                'adsc_adunit3': window.adsc_adunit3,
-                'adsc_keyword': window.adsc_keyword,
+                'adsc_adunit1': window.adunit1,
+                'adsc_adunit2': window.adunit2,
+                'adsc_adunit3': window.adunit3,
+                'adsc_keyword': window.adkeyword,
                 'adsc_mode': window.adsc_mode,
-                'adsc_mobile': window.adsc_mobile,
-                'adsc_device': window.adsc_device
+                'adsc_mobile': window.admobile,
+                'adsc_device': window.addevice
             }
         }
     });
