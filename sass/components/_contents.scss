@@ -60,7 +60,7 @@
 .item-content-body, .item-content-highlighted {
   position: relative;
 
-  .item-block {
+  .item-block, & > .region-full-content {  
     margin-top: $gap-section * 2;
 
     @media (max-width: $screen-sm-min) {
@@ -70,7 +70,9 @@
     &:first-child {
       margin-top: 0;
     }
+  }
 
+  .item-block {
     .item-title {
       text-align: left;
     }
