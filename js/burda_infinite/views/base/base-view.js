@@ -28,10 +28,68 @@
             /**
              * Pinterest override the Pin-Btn with an URLRegex
              */
-            $pContainer.find('.icon-pinterest[data-href]').unbind('click.socialsPinterest').bind('click.socialsPinterest', function (pEvent) {
-                var tmpURL = $(this).data('href').replace(/\?itok=([^&]$|[^&]*)/i, "");
+            $pContainer.find('.icon-pinterest[data-url]').unbind('click.socialsPinterest').bind('click.socialsPinterest', function (pEvent) {
+                //var tmpURL = $(this).data('href').replace(/\?itok=([^&]$|[^&]*)/i, ""),
                 //tmpURL = encodeURIComponent(tmpURL);
-                window.open(tmpURL, '_blank');
+
+                var tmpURL = $(this).data('url'),
+                    tmpMedia = $(this).data('media-url'),
+                    tmpDescription = $(this).data('description'),
+                    tmpPinterestDefaultURL = 'https://pinterest.com/pin/create/button/';
+
+                if (typeof PinUtils != 'undefined') {
+                    PinUtils.pinOne({
+                        url: decodeURIComponent(tmpURL),
+                        media: decodeURIComponent(tmpMedia),
+                        description: decodeURIComponent(tmpDescription)
+                    });
+                } else {
+                    tmpPinterestDefaultURL += '?url=' + tmpURL;
+                    tmpPinterestDefaultURL += '&media=' + tmpMedia;
+                    tmpPinterestDefaultURL += '&description=' + tmpDescription;
+                    window.open(tmpPinterestDefaultURL, '_blank');
+                }
+
+                return false;
+            });
+
+            $pContainer.find('.icon-facebook[data-url]').unbind('click.socialsFacebook').bind('click.socialsFacebook', function (pEvent) {
+                var tmpURL = $(this).data('url'),
+                    tmpMedia = $(this).data('media-url'),
+                    tmpDescription = $(this).data('description'),
+                    tmpFacebookURL = 'https://www.facebook.com/sharer/sharer.php?m2w&u=',
+                    tmpCaption = '',
+                    $tmpItemMedia = [],
+                    $tmpArticleHeadline = [];
+
+                if (typeof FB != 'undefined') {
+
+                    $tmpItemMedia = $(this).parents('.item-media');
+                    if ($tmpItemMedia.length > 0) {
+
+                        tmpCaption = $tmpItemMedia.find('.text-description').text();
+                        $tmpArticleHeadline = $(this).parents('.item-content-article').find('h1');
+                        if (tmpDescription == "" && $tmpArticleHeadline.length > 0) {
+                            tmpDescription = $tmpArticleHeadline.text();
+                        }
+                    }
+
+
+                    var fbParams = {
+                        method: 'feed',
+                        name: decodeURIComponent(tmpDescription),
+                        href: decodeURIComponent(tmpURL),
+                        picture: decodeURIComponent(tmpMedia)
+                    };
+
+                    if (tmpCaption.length > 0) fbParams.caption = decodeURIComponent(tmpDescription);
+
+                    FB.ui(fbParams);
+                } else {
+                    tmpFacebookURL += '?url=' + tmpURL;
+                    window.open(tmpFacebookURL, '_blank');
+                }
+
                 return false;
             });
 

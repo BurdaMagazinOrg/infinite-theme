@@ -1,0 +1,203 @@
+@mixin newsletter--horizontal() {
+  overflow: hidden;
+  text-align: center;
+  color: $white;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+
+  &.state-privacy {
+    .container-content-item {
+      @extend %fade-out;
+    }
+
+    .container-privacy {
+      @extend %fade-in;
+    }
+  }
+
+  &.state-success {
+    .container-content-item {
+      @extend %fade-out;
+    }
+
+    .container-success {
+      @extend %fade-in;
+    }
+  }
+
+  .container-content, .container-content-item {
+    padding: 70px $gap-size-sm;
+  }
+
+  .container-content {
+    position: relative;
+    background-image: url(../images/static/block-newsletter-sm_Tram.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    &:before {
+      content: " ";
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      background-image: url(../images/static/block-newsletter-md_Tram.jpg);
+    }
+
+    @media (min-width: $screen-lg-min) {
+      background-image: url(../images/static/block-newsletter-xl_Tram.jpg);
+    }
+  }
+
+  .container-content-item {
+    @extend %transition-fade;
+    @extend %fade-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $bg-color-gray-light;
+  }
+
+  .container-privacy, .container-success {
+    @extend %text-content-html;
+    color: $text-color;
+    font-size: $font-size-small;
+    line-height: 1.5;
+  }
+
+  .container-privacy {
+    text-align: left;
+    padding: $grid-gutter-width;
+    overflow-y: scroll;
+
+    strong {
+      @extend %text-headline;
+      @extend %text-headline-size-h5;
+    }
+
+    .container-content-dynamic {
+      p:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .container-form {
+    @extend %fade-in;
+    display: block;
+    background-color: transparent;
+
+    .text-description {
+      margin-bottom: $gap-section;
+    }
+
+    .input-email {
+      width: 455px;
+      padding-right: 135px;
+    }
+
+    button {
+      width: 125px;
+      margin-left: -140px;
+    }
+  }
+
+  .icon-close {
+    position: absolute;
+    font-size: $icon-size-medium;
+    color: $text-color;
+    top: $padding;
+    right: $grid-gutter-width;
+    z-index: 2;
+  }
+
+  .text-headline {
+    @extend %title--horizontal-block;
+  }
+
+  .checkbox {
+    text-align: center;
+    margin-top: $gap-size-md;
+
+    label {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    .container-content, .container-content-item {
+      padding-top: $gap-size-sm;
+    }
+
+    .container-form {
+
+      .input-email {
+        width: 100%;
+        padding-right: $padding-large-horizontal;
+        height: 48px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: $padding;
+        margin-left: 0;
+        padding: 13px $padding-large-horizontal;
+      }
+    }
+
+    .container-content-item {
+      p {
+        margin-top: $padding;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    height: $newsletter--horizontal--height-mobile;
+
+    .checkbox {
+      @include text-content-size($newsletter__checkbox-label--horizontal-mobile, 1.1);
+      margin-top: $gap-size-xs;
+
+      label {
+        max-width: $newsletter__checkbox-label-width--horizontal-mobile;
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    height: $newsletter--horizontal--height-tablet;
+    margin-top: $gap-size-xs;
+
+    .checkbox {
+      @include text-content-size($newsletter__checkbox-label--horizontal-tablet, 1.1);
+
+      label {
+        max-width: $newsletter__checkbox-label-width--horizontal-tablet;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    height: $newsletter--horizontal--height-desktop;
+
+    .checkbox {
+      @include text-content-size($newsletter__checkbox-label--horizontal-desktop, 1.1);
+
+      label {
+        max-width: $newsletter__checkbox-label-width--horizontal-desktop;
+      }
+    }
+  }
+}

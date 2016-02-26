@@ -67,34 +67,6 @@
 }
 
 /**
-* Tex-Headline Responsive
-**/
-
-%text-headline-size-responsive-h6 {
-  @include text-headline-size($headline-size-h6, true);
-}
-
-%text-headline-size-responsive-h5 {
-  @include text-headline-size($headline-size-h5, true);
-}
-
-%text-headline-size-responsive-h4 {
-  @include text-headline-size($headline-size-h4, true);
-}
-
-%text-headline-size-responsive-h3 {
-  @include text-headline-size($headline-size-h3, true);
-}
-
-%text-headline-size-responsive-h2 {
-  @include text-headline-size($headline-size-h2, true);
-}
-
-%text-headline-size-responsive-h1 {
-  @include text-headline-size($headline-size-h1, true);
-}
-
-/**
 * Text-Tiny
 **/
 
@@ -152,34 +124,6 @@
 
 %text-content-size-xl {
   @include text-content-size($font-size-xl);
-}
-
-%text-content-html {
-  @include text-content-html();
-}
-
-/**
-* Text-Content Responsive
-**/
-
-%text-content-size-responsive-tiny {
-  @include text-content-size($font-size-tiny, true);
-}
-
-%text-content-size-responsive-small {
-  @include text-content-size($font-size-small, true);
-}
-
-%text-content-size-responsive-medium {
-  @include text-content-size($font-size-medium, true);
-}
-
-%text-content-size-responsive-large {
-  @include text-content-size($font-size-large, true);
-}
-
-%text-content-size-responsive-xl {
-  @include text-content-size($font-size-xl, true);
 }
 
 %text-content-html {

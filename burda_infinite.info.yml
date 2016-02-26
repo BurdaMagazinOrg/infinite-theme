@@ -6,6 +6,7 @@ package: BurdaInfinite
 core: 8.x
 screenshot: images/burda_infinite.png
 libraries:
+  - burda_infinite/burda_infite.external
   - burda_infinite/burda_infite.libs
   - burda_infinite/burda_infite.init
   - burda_infinite/burda_infite.manager.tracking-manager

@@ -3,11 +3,11 @@
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 
 {% block social_facebook %}
-  <a class="item-social icon-facebook" href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ url | e('url') }}" target="_blank" data-social-type="facebook">
+  <div class="item-social icon-facebook" data-url="{{ url | e('url')}}" data-media-url="{{ share_img_url | e('url')}}" data-description="{{ label | e('url') }}"  data-social-type="facebook">
     {% if facebook_share_button %}
       <span>{{ facebook_share_button }}</span>
     {% endif %}
-  </a>
+  </div>
 {% endblock %}
 {% block social_whatsapp %}
   <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
@@ -17,7 +17,7 @@
   </a>
 {% endblock %}
 {% block social_pinterest %}
-  <div class="item-social icon-pinterest" data-href="https://pinterest.com/pin/create/button/?url={{ url | e('url') }}&media={{ share_img_url }}&description={{ social_label | e('url') }}" data-social-type="pinterest">
+  <div class="item-social icon-pinterest" data-url="{{ url | e('url')}}" data-media-url="{{ share_img_url | e('url')}}" data-description="{{ label | e('url') }}" data-social-type="pinterest">
     {% if pinterest_share_button %}
       <span>{{ pinterest_share_button }}</span>
     {% endif %}

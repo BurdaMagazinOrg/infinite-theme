@@ -12,6 +12,8 @@
  * @ingroup themeable
  */
 #}
+
+
 {% if content %}
     <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
         {{ content.field_image }}
@@ -32,13 +34,8 @@
         {% endif %}
 
         <div class="socials socials-bar">
-            <a class="item-social icon-facebook"
-               href="https://www.facebook.com/sharer/sharer.php?m2w&u={{ share_img_url }}" target="_blank"
-               data-social-type="facebook"></a>
-
-            <div class="item-social icon-pinterest"
-                 data-href="https://pinterest.com/pin/create/button/?url={{ absolute_node_url }}&media={{ share_img_url }}&description={{ content.field_description | plain_text | url_encode }}"
-                 data-social-type="pinterest"></div>
+            <div class="item-social icon-facebook" data-url="{{ absolute_node_url | e('url')}}" data-media-url="{{ share_img_url | e('url')}}" data-description="{{ content.field_description | plain_text | e('url') }}" target="_blank" data-social-type="facebook"></div>
+            <div class="item-social icon-pinterest" data-url="{{ absolute_node_url | e('url')}}" data-media-url="{{ share_img_url | e('url')}}" data-description="{{ content.field_description | plain_text | e('url') }}" data-social-type="pinterest"></div>
         </div>
     </div>
 {% endif %}

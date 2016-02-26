@@ -14,22 +14,19 @@ db_offline ? 'db-offline',
         <title>{{ head_title|safe_join(' | ') }}</title>
         <css-placeholder token="{{ placeholder_token|raw }}">
         <js-placeholder token="{{ placeholder_token|raw }}">
-        {#<script type="text/javascript" src="https://scripts.tracdelight.com/tracdelight.js?accesskey=xCnKosIRHPivYv7rdYAzs7msw0JySFaU"></script>#}
+
     </head>
     <body class="{{ attributes.addClass(body_classes).class }}">
-        <script>
-            dataLayer = [];
-        </script>
+        {% set gtm_vars = {gtm_id: 'GTM-PWFQ37'} %}
+        {% set fb_vars = {fb_app_id: '1561246427480606'} %}
 
-        <!-- Google Tag Manager -->
-        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWFQ37"
-                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PWFQ37');</script>
-        <!-- End Google Tag Manager -->
+        {% block api_gtm %}
+            {% embed '@burda_infinite/embeds/api_gtm.html.twig' with gtm_vars %}{% endembed %}
+        {% endblock %}
+
+        {% block api_fb %}
+            {% embed '@burda_infinite/embeds/api_fb.html.twig' with fb_vars %}{% endembed %}
+        {% endblock %}
 
         <div id="page-wrapper">
             {{ page_top }}

@@ -113,12 +113,6 @@ $item-image-socials-width: 70px;
 $article-socials-column-width: 96px !default;
 $full-headlines-max-width: 840px !default;
 
-/**
-** products
-**/
-
-$product__item-text-headline-height: 70px !default;
-$product__item-text-headline-size: 18px !default;
 
 /** new variables **/
 $title-size-xxxs: 15px !default;
@@ -139,6 +133,27 @@ $gap-size-xl: 36px !default;
 $gap-size-xxl: 48px !default;
 $gap-size-xxxl: 61px !default;
 
+/**
+** Newsletter
+**/
+$newsletter--horizontal--height-mobile: 367px !default;
+$newsletter--horizontal--height-tablet: 367px !default;
+$newsletter--horizontal--height-desktop: 367px !default;
+
+$newsletter__checkbox-label--horizontal-mobile: 11px !default;
+$newsletter__checkbox-label--horizontal-tablet: 11px !default;
+$newsletter__checkbox-label--horizontal-desktop: 11px !default;
+
+$newsletter__checkbox-label-width--horizontal-mobile: 440px !default;
+$newsletter__checkbox-label-width--horizontal-tablet: 440px !default;
+$newsletter__checkbox-label-width--horizontal-desktop: 440px !default;
+
+/**
+** Products
+**/
+
+$product__item-text-headline-height: 70px !default;
+$product__item-text-headline-size: 18px !default;
 
 /**
 ** Titles
