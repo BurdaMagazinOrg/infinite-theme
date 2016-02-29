@@ -1,25 +1,25 @@
 .icon-facebook {
-  @extend %ion-social-facebook;
+  @extend %icon-facebook;
 }
 
 .icon-twitter {
-  @extend %ion-social-twitter;
+  @extend %icon-twitter;
 }
 
 .icon-pinterest {
-  @extend %ion-social-pinterest;
+  @extend %icon-pinterest;
 }
 
 .icon-instagram {
-  @extend %ion-social-instagram;
+  //@extend %icon-instagram;
 }
 
 .icon-email {
-  @extend %ion-email;
+  @extend %icon-email;
 }
 
 .icon-whatsapp {
-  @extend %ion-social-whatsapp;
+  @extend %icon-whatsapp;
 }
 
 .icon-menu {
@@ -42,6 +42,18 @@
   @extend %icon-arrow-right-small;
 }
 
+.icon-small-arrow-left {
+  @extend %icon-arrow-left-small;
+}
+
+.icon-small-arrow-up {
+  @extend %icon-arrow-up-small;
+}
+
+.icon-small-arrow-down {
+  @extend %icon-arrow-down-small;
+}
+
 .icon-gallery-arrow-left {
   @extend %icon-arrow-large-left;
 }
@@ -59,57 +71,14 @@
   @extend %icon-info;
 }
 
-.icon-load {
-  @extend %ion-load-c;
-}
-
 .icon-return {
   @extend %icon-return;
 }
 
-//
-//%icon-arrow-left-small:before {
-//  content: "\e900";
-//}
-//
-//%icon-arrow-right-small:before {
-//  content: "\e901";
-//}
-//
-//%icon-arrow-left-large:before {
-//  content: "\e902";
-//}
-//
-//%icon-arrow-right-large:before {
-//  content: "\e903";
-//}
-//
-//%icon-pinterest:before {
-//  content: "\e904";
-//}
-//
-//%icon-twitter:before {
-//  content: "\e905";
-//}
-//
-//%icon-email:before {
-//  content: "\e906";
-//}
-//
-//%icon-facebook:before {
-//  content: "\e907";
-//}
-//
-//%icon-menu:before {
-//  content: "\e908";
-//}
-//
-//%icon-whatsapp:before {
-//  content: "\e909";
-//}
-//
-//%icon-search:before {
-//  content: "\e90a";
-//}
-//
-//
+.icon-circle-filled {
+  @extend %icon-circle-filled;
+}
+
+.icon-circle-outlined {
+  @extend %icon-circle-outlined;
+}

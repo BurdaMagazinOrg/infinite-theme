@@ -30,7 +30,7 @@
         }
 
         .is-active {
-          @include ion-ios-arrow-up();
+          @include icon-arrow-up-small();
         }
       }
 
@@ -57,7 +57,9 @@
 
     .menu-item {
       .is-active {
-        @include ion-ios-arrow-down();
+        @include icon-arrow-down-small();
+        @include icon();
+
         display: block;
         position: absolute;
         top: 0;

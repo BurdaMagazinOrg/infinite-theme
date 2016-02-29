@@ -2,44 +2,79 @@
   @include icon();
 }
 
-%icon-copyright {
-  @include icon-copyright();
+%icon-arrow-left-small {
+  @include icon-arrow-left-small();
+  @extend %icon;
 }
 
 %icon-arrow-right-small {
   @include icon-arrow-right-small();
+  @extend %icon;
+}
+
+%icon-arrow-up-small {
+  @include icon-arrow-up-small();
+  @extend %icon;
+}
+
+%icon-arrow-down-small {
+  @include icon-arrow-down-small();
+  @extend %icon;
+}
+
+%icon-whatsapp {
+  @include icon-whatsapp();
+  @extend %icon;
 }
 
 %icon-menu {
   @include icon-menu();
+  @extend %icon;
 }
 
 %icon-close {
   @include icon-close();
+  @extend %icon;
 }
 
 %icon-search {
   @include icon-search();
+  @extend %icon;
 }
 
-%icon-info{
+%icon-info {
   @include icon-info();
+  @extend %icon;
 }
 
 %icon-facebook {
   @include icon-facebook();
+  @extend %icon;
+}
+
+%icon-instagram {
+  @include icon-instagram();
+  @extend %icon;
 }
 
 %icon-twitter {
   @include icon-twitter();
+  @extend %icon;
 }
 
 %icon-pinterest {
   @include icon-pinterest();
+  @extend %icon;
 }
 
 %icon-email {
   @include icon-email();
+  @extend %icon;
+}
+
+%icon-whatsapp {
+  @include icon-whatsapp();
+  @extend %icon;
 }
 
 %icon-search {
@@ -48,12 +83,28 @@
 
 %icon-arrow-large-left {
   @include icon-arrow-large-left();
+  @extend %icon;
 }
 
 %icon-arrow-large-right {
   @include icon-arrow-large-right();
+  @extend %icon;
+}
+
+%icon-circle-filled {
+  @include icon-circle-filled();
+  @extend %icon;
+}
+
+%icon-circle-outlined {
+  @include icon-circle-outlined();
+  @extend %icon;
 }
 
 %icon-return {
   @include icon-return();
+}
+
+%icon-copyright {
+  @include icon-copyright();
 }

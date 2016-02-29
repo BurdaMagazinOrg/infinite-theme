@@ -68,7 +68,7 @@
   }
 
   .icon-instagram {
-    //@extend %icon-instagram;
+    @extend %icon-instagram;
     background-color: $color-instagram;
 
     &:hover {

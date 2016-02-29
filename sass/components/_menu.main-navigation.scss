@@ -9,7 +9,8 @@
   border-bottom: $h-line-style;
   background-color: $white;
   height: $navigation-min-height;
-  padding: $navigation-padding-top-bottom ($icon-size-medium + $navigation-item-space + $grid-gutter-width);
+  padding-left: ($navigation-menu-icon-size + $navigation-item-space + $grid-gutter-width);
+  padding-right: ($navigation-search-icon-size + $navigation-item-space + $grid-gutter-width);
 
   &.stuck {
     position: fixed;
@@ -32,14 +33,10 @@
     height: 100%;
   }
 
-  .container-wrapper {
-  }
-
   /** animated properties in page-front.scss **/
   .logo {
     width: $logo-sticky-width;
     margin-right: $navigation-item-space;
-    height: 130%;
     float: left;
 
     img {
@@ -61,15 +58,9 @@
     display: inline-block;
     text-transform: uppercase;
     margin-left: $navigation-item-space;
-    vertical-align: top;
-    line-height: 15px;
 
     &:first-child {
       margin-left: 0;
-    }
-
-    a {
-      vertical-align: top;
     }
 
     .is-active {
@@ -81,12 +72,13 @@
     color: $color-hover;
   }
 
-  .icon {
-    cursor: pointer;
-  }
-
   @media (max-width: $screen-sm-max) {
-    padding: $navigation-padding-top-bottom ($icon-size-medium + $navigation-item-space + $padding);
+    padding-left: ($navigation-menu-icon-size + $navigation-item-space + $padding);
+    padding-right: ($navigation-search-icon-size + $navigation-item-space + $padding);
+
+    .logo {
+      margin-left: $gap-size-sm - 4px;
+    }
   }
 }
 
@@ -106,9 +98,7 @@
     @include inline-block();
     @extend %text-label;
     @extend %text-label-size-navigation;
-    line-height: 30px;
-    margin-left: $navigation-item-space;
-    vertical-align: top;
+    margin-left: $gap-size-sm;
     display: none;
     text-transform: uppercase;
   }
