@@ -1,35 +1,57 @@
+%icon {
+  @include icon();
+}
+
 %icon-copyright {
   @include icon-copyright();
 }
 
-%small-arrow-left {
-  @extend %ion-ios-arrow-back;
+%icon-arrow-right-small {
+  @include icon-arrow-right-small();
 }
 
-%small-arrow-down {
-  @extend %ion-ios-arrow-down;
+%icon-menu {
+  @include icon-menu();
 }
 
-%small-arrow-right {
-  @extend %ion-ios-arrow-forward;
+%icon-close {
+  @include icon-close();
 }
 
-%gallery-arrow-left {
-  @extend %transition-color;
-  @extend %ion-android-arrow-back;
-
-  &:hover {
-    color: $color-hover;
-  }
+%icon-search {
+  @include icon-search();
 }
 
-%gallery-arrow-right {
-  @extend %transition-color;
-  @extend %ion-android-arrow-forward;
+%icon-info{
+  @include icon-info();
+}
 
-  &:hover {
-    color: $color-hover;
-  }
+%icon-facebook {
+  @include icon-facebook();
+}
+
+%icon-twitter {
+  @include icon-twitter();
+}
+
+%icon-pinterest {
+  @include icon-pinterest();
+}
+
+%icon-email {
+  @include icon-email();
+}
+
+%icon-search {
+  @include icon-search();
+}
+
+%icon-arrow-large-left {
+  @include icon-arrow-large-left();
+}
+
+%icon-arrow-large-right {
+  @include icon-arrow-large-right();
 }
 
 %icon-return {

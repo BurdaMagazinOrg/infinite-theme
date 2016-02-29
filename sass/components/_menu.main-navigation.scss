@@ -82,12 +82,7 @@
   }
 
   .icon {
-    @include user-select(none);
     cursor: pointer;
-
-    &:before {
-      font-size: $icon-size-medium;
-    }
   }
 
   @media (max-width: $screen-sm-max) {
@@ -104,8 +99,7 @@
   z-index: 2;
 
   &:before {
-    font-size: $icon-size-medium;
-    line-height: 30px;
+    font-size: $navigation-menu-icon-size;
   }
 
   .label-menu {
@@ -126,6 +120,10 @@
   top: 0;
   bottom: 0;
   padding: 0;
+
+  &:before {
+    font-size: $navigation-search-icon-size;
+  }
 }
 
 /**

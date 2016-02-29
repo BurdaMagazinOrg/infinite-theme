@@ -4,8 +4,8 @@
 $content-max-width: 1128px !default;
 
 $fonts-path: '../fonts/' !default;
-$ionicons-font-family: "Ionicons" !default;
-$ionicons-font-path: '../../../contrib/infinite_theme/fonts/';
+$icons-font-path: '../fonts/icons/' !default;
+$icons-font-family: "icons" !default;
 
 $font-navigation: 'Verdana' !default;
 $font-label: 'Verdana' !default;
@@ -15,7 +15,6 @@ $font-headline-bold: 'Arial' !default;
 $font-content: 'Arial' !default;
 $font-content-bold: 'Arial' !default;
 
-$navigation-letter-spacing: 1px !default;
 $label-letter-spacing: 1px !default;
 $headline-letter-spacing: 0px !default;
 $tiny-letter-spacing: 0px !default;
@@ -26,9 +25,6 @@ $line-height-content: 1.55 !default;
 $line-height-text-tiny: 1.4 !default;
 
 $font-size-navigation: 15px !default;
-$navigation-item-space: 28px !default;
-$navigation-item-space-lg: 1% !default;
-$navigation-min-height: 60px !default;
 
 $font-size-base: 16px;
 $font-size-xl: 21px;
@@ -58,12 +54,12 @@ $tiny-size-medium: 16px !default;
 $tiny-size-small: 14px !default;
 $tiny-size-tiny: 12px !default;
 
-$icon-size-xxl: 56px !default;
-$icon-size-xl: 44px !default;
-$icon-size-large: 37px !default;
-$icon-size-medium: 28px !default;
-$icon-size-small: 24px !default;
-$icon-size-tiny: 21px !default;
+$icon-size-xxl: 35px !default;
+$icon-size-xl: 30px !default;
+$icon-size-large: 24px !default;
+$icon-size-medium: 17px !default;
+$icon-size-small: 15px !default;
+$icon-size-tiny: 13px !default;
 
 /** backgrounds **/
 $bg-color: #ffffff !default;
@@ -132,6 +128,18 @@ $gap-size-lg: 31px !default;
 $gap-size-xl: 36px !default;
 $gap-size-xxl: 48px !default;
 $gap-size-xxxl: 61px !default;
+
+/**
+** Main Navigation
+**/
+
+$navigation-fade-delay: 0.05s !default;
+$navigation-letter-spacing: 1px !default;
+$navigation-item-space: 28px !default;
+$navigation-item-space-lg: 1% !default;
+$navigation-min-height: 60px !default;
+$navigation-menu-icon-size: 17px !default;
+$navigation-search-icon-size: 19px !default;
 
 /**
 ** Newsletter
@@ -241,8 +249,8 @@ $teaser-list-h-teaser-shrinked-width: 61% !default;
 
 $socials-size-sm: 32px !default;
 $socials-size-md: 40px !default;
-$socials-icon-size-sm: 19px !default;
-$socials-icon-size-md: 22px !default;
+$socials-icon-size-sm: 16px !default;
+$socials-icon-size-md: 19px !default;
 $socials-default-border-radius: 50% !default;
 
 /** socials horizontal clean bar **/
@@ -314,7 +322,6 @@ $transition-duration: 0.35s !default;
 $transition-easing: ease !default;
 
 $opacity-disabled: 0.4 !default;
-$navigation-fade-delay: 0.05s !default;
 $zindex-menu-sidebar: 100 !default;
 $zindex-modal-background: 10;
 $zindex-modal: 11;

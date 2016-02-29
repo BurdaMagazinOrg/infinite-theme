@@ -1,4 +1,144 @@
-@mixin icon-copyright($size: '') {
+@mixin icon() {
+  @include user-select(none);
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: $icons-font-family !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon-arrow-right-small() {
+  content: ">";
+}
+
+@mixin icon-menu($hover: true) {
+  &:before {
+    @extend %icon;
+    content: "\e908";
+  }
+
+  @if ($hover) {
+    &:hover {
+      color: $color-hover;
+      cursor: pointer;
+    }
+  }
+}
+
+@mixin icon-close($hover: true) {
+  &:before {
+    @extend %icon;
+    content: "\e90b";
+  }
+
+  @if ($hover) {
+    @extend %transition-color;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-hover;
+    }
+  }
+}
+
+@mixin icon-search($hover: true) {
+  &:before {
+    @extend %icon;
+    content: "\e90a";
+  }
+
+  @if ($hover) {
+    @extend %transition-color;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-hover;
+    }
+  }
+}
+
+@mixin icon-info() {
+  &:before {
+    @extend %icon;
+    content: "\e90e";
+  }
+}
+
+@mixin icon-pinterest() {
+  &:before {
+    @extend %icon;
+    content: "\e904";
+  }
+}
+
+@mixin icon-twitter() {
+  &:before {
+    @extend %icon;
+    content: "\e905";
+  }
+}
+
+@mixin icon-email() {
+  &:before {
+    @extend %icon;
+    content: "\e906";
+  }
+}
+
+@mixin icon-facebook() {
+  &:before {
+    @extend %icon;
+    content: "\e907";
+  }
+}
+
+@mixin icon-arrow-large-left() {
+  &:before {
+    @extend %icon;
+    content: "\e902";
+  }
+}
+
+@mixin icon-arrow-large-left($hover: true) {
+  &:before {
+    @extend %icon;
+    content: "\e902";
+  }
+
+  @if ($hover) {
+    @extend %transition-color;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-hover;
+    }
+  }
+}
+
+@mixin icon-arrow-large-right($hover: true) {
+  &:before {
+    @extend %icon;
+    content: "\e903";
+  }
+
+  @if ($hover) {
+    @extend %transition-color;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-hover;
+    }
+  }
+}
+
+@mixin icon-copyright() {
   &:before {
     content: "\00A9\00a0";
   }

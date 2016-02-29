@@ -11,24 +11,6 @@
   height: 0;
   padding-bottom: 100%;
 
-  &.instyle-men {
-    .container-content {
-      background-image: url(../images/static/newsletter_landingpage_men_xs.jpg);
-
-      @media (min-width: $screen-sm-min) {
-        background-image: url(../images/static/newsletter_landingpage_men_sm.jpg);
-      }
-
-      @media (min-width: $screen-lg-min) {
-        background-image: url(../images/static/newsletter_landingpage_men_lg.jpg);
-      }
-
-      @media (min-width: $screen-xl-min) {
-        background-image: url(../images/static/newsletter_landingpage_men_xl.jpg);
-      }
-    }
-  }
-
   .container-content {
     background-position: top center;
     background-image: url(../images/static/newsletter_landingpage_xs.jpg);

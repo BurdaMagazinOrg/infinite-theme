@@ -103,7 +103,7 @@
       margin-top: 10px;
 
       &:before {
-        @extend %small-arrow-right;
+        @extend %icon-arrow-right-small;
         margin-right: $padding;
         margin-left: -20px;
       }

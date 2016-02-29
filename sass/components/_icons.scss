@@ -23,53 +23,40 @@
 }
 
 .icon-menu {
-  @extend %ion-android-menu;
+  @extend %icon-menu;
 }
 
-.icon-small-arrow-left {
-  @extend %small-arrow-left;
+.icon-close {
+  @extend %icon-close;
 }
 
-.icon-small-arrow-down {
-  @extend %small-arrow-down;
+.icon-search {
+  @extend %icon-search;
 }
+
+//.icon-small-arrow-down {
+//  @extend %small-arrow-down;
+//}
 
 .icon-small-arrow-right {
-  @extend %small-arrow-right;
+  @extend %icon-arrow-right-small;
 }
 
 .icon-gallery-arrow-left {
-  @extend %gallery-arrow-left;
+  @extend %icon-arrow-large-left;
 }
 
 .icon-gallery-arrow-right {
-  @extend %gallery-arrow-right;
+  @extend %icon-arrow-large-right;
 }
 
 .icon-copyright {
   @extend %icon-copyright;
 }
 
-.icon-close {
-  @extend %ion-ios-close-empty;
-  cursor: pointer;
-
-  &:hover {
-    color: $color-hover;
-  }
-}
-
-.icon-search {
-  @extend %ion-ios-search;
-  cursor: pointer;
-
-  &:hover {
-    color: $color-hover;
-  }
-}
 
 .icon-info {
-  @extend %ion-ios-information;
+  @extend %icon-info;
 }
 
 .icon-load {
@@ -79,3 +66,50 @@
 .icon-return {
   @extend %icon-return;
 }
+
+//
+//%icon-arrow-left-small:before {
+//  content: "\e900";
+//}
+//
+//%icon-arrow-right-small:before {
+//  content: "\e901";
+//}
+//
+//%icon-arrow-left-large:before {
+//  content: "\e902";
+//}
+//
+//%icon-arrow-right-large:before {
+//  content: "\e903";
+//}
+//
+//%icon-pinterest:before {
+//  content: "\e904";
+//}
+//
+//%icon-twitter:before {
+//  content: "\e905";
+//}
+//
+//%icon-email:before {
+//  content: "\e906";
+//}
+//
+//%icon-facebook:before {
+//  content: "\e907";
+//}
+//
+//%icon-menu:before {
+//  content: "\e908";
+//}
+//
+//%icon-whatsapp:before {
+//  content: "\e909";
+//}
+//
+//%icon-search:before {
+//  content: "\e90a";
+//}
+//
+//

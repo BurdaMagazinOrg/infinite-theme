@@ -5,7 +5,6 @@ require 'compass/import-once/activate'
 http_path = "/"
 css_dir = "css"
 sass_dir = "sass"
-add_import_path = "../instyle_infinite/sass"
 images_dir = "images"
 javascripts_dir = "javascripts"
 
