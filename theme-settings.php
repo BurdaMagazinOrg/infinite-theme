@@ -5,7 +5,7 @@
  *
  * Custom theme settings
  */
-function burda_infinite_form_system_theme_settings_alter(&$form, &$form_state) {
+function infinite_form_system_theme_settings_alter(&$form, &$form_state) {
 
   /*--------------- Share button Settings --------------*/
   $form['share'] = array(

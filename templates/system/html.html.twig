@@ -21,11 +21,11 @@ db_offline ? 'db-offline',
         {% set fb_vars = {fb_app_id: '1561246427480606'} %}
 
         {% block api_gtm %}
-            {% embed '@burda_infinite/embeds/api_gtm.html.twig' with gtm_vars %}{% endembed %}
+            {% embed '@infinite/embeds/api_gtm.html.twig' with gtm_vars %}{% endembed %}
         {% endblock %}
 
         {% block api_fb %}
-            {% embed '@burda_infinite/embeds/api_fb.html.twig' with fb_vars %}{% endembed %}
+            {% embed '@infinite/embeds/api_fb.html.twig' with fb_vars %}{% endembed %}
         {% endblock %}
 
         <div id="page-wrapper">
