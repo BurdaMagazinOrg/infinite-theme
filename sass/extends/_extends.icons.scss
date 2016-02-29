@@ -1,5 +1,6 @@
 %icon {
   @include icon();
+  @extend %transition-color;  
 }
 
 %icon-arrow-left-small {

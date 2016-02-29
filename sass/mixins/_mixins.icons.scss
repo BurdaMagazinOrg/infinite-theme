@@ -1,4 +1,4 @@
-@mixin icon($hover: true, $container: '&:before') {
+@mixin icon($container: '&:before') {
   #{$container} {
     @include user-select(none);
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -15,12 +15,6 @@
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    @if ($hover) {
-      @include transition-property(color);
-      @include transition-duration($transition-duration);
-      @include transition-timing-function($transition-easing);
-    }
   }
 }
 
