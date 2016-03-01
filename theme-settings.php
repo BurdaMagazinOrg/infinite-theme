@@ -97,10 +97,10 @@ function infinite_form_system_theme_settings_alter(&$form, &$form_state) {
 
   $form['share']['email_share_text'] = array(
     '#type' => 'textfield',
-    '#title' => t('Email share button text'),
-    '#default_value' => theme_get_setting('email_share_button'),
+    '#title' => t('Email share text'),
+    '#default_value' => theme_get_setting('email_share_text'),
     '#size' => 80,
-    '#description' => t('Enter the the text, that will be shown on the email share button.'),
+    '#description' => t('Enter the the text, that will be shown in the email.'),
     '#prefix' => '<div id="email-share-button-wrapper">',
     '#suffix' => '</div>',
   );
