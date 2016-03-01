@@ -4775,8 +4775,8 @@ hr {
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../../../contrib/infinite_theme/fonts/ionicons/ionicons.eot?v=2.0.0");
-  src: url("../../../contrib/infinite_theme/fonts/ionicons/ionicons.eot?v=2.0.0#iefix") format("embedded-opentype"), url("../../../contrib/infinite_theme/fonts/ionicons/ionicons.ttf?v=2.0.0") format("truetype"), url("../../../contrib/infinite_theme/fonts/ionicons/ionicons.woff?v=2.0.0") format("woff"), url("../../../contrib/infinite_theme/fonts/ionicons/ionicons.svg?v=2.0.0#Ionicons") format("svg");
+  src: url("../fonts/ionicons/ionicons.eot?v=2.0.0");
+  src: url("../fonts/ionicons/ionicons.eot?v=2.0.0#iefix") format("embedded-opentype"), url("../fonts/ionicons/ionicons.ttf?v=2.0.0") format("truetype"), url("../fonts/ionicons/ionicons.woff?v=2.0.0") format("woff"), url("../fonts/ionicons/ionicons.svg?v=2.0.0#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal;
 }

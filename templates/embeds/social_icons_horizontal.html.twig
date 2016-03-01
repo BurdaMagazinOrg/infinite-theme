@@ -1,13 +1,13 @@
 {% set vars = {
-facebook_share_button: 'Teilen',
-whatsapp_share_button: 'Teilen',
+facebook_share_button: 'Share',
+whatsapp_share_button: 'Share',
 pinterest_share_button: 'Pin',
 twitter_share_button: 'Tweet',
-twitter_share_via: 'via @InStyleGermany',
+twitter_share_via: '',
 email_share_button: 'Mail',
-whatsapp_share_text: 'Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren:',
-email_share_text: 'Ich habe diesen Artikel auf http://www.instyle.de entdeckt und dachte, er könnte Dich interessieren:',
-email_subject: 'InStyle:'
+whatsapp_share_text: 'I read this article and thought you might like it:',
+email_share_text: 'I read this article and thought you might like it:',
+email_subject: 'An article you might like:'
 }
 %}
-{% include '@burda_infinite/embeds/social_icons.html.twig' with vars %}
+{% include '@infinite/embeds/social_icons.html.twig' with vars %}

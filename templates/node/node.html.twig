@@ -82,7 +82,7 @@
   <div class="item-content-column region-fixed-content">
     <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
       {% block socials_vertical_bar %}
-        {% embed '@burda_infinite/embeds/social_icons_default.html.twig' %}
+        {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''}  %}
         {% endembed %}
       {% endblock %}
     </aside>
@@ -98,7 +98,7 @@
         {% endblock %}
         <div class="socials socials-bar socials-horizontal-bar item-block">
           {% block socials_horizontal_bar %}
-            {% embed '@burda_infinite/embeds/social_icons_horizontal.html.twig' %}
+            {% embed '@infinite/embeds/social_icons.html.twig' %}
             {% endembed %}
           {% endblock %}
         </div>

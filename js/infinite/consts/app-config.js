@@ -1,5 +1,5 @@
 var AppConfig = {
-    //searchApiUrl: '/themes/custom/burda_infinite/dummy-content/lazy-loading-article.html',
+    //searchApiUrl: '/themes/custom/infinite/dummy-content/lazy-loading-article.html',
     searchApiUrl: '/suche',
     padding: 10,
     feedTrackingOffset: 150,

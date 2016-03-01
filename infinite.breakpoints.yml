@@ -1,40 +1,40 @@
-burda_infinite.xxs:
+infinite.xxs:
   label: xxs
   mediaQuery: 'all and (min-width: 0px)'
   weight: 0
   multipliers:
     - 1x
-burda_infinite.xs:
+infinite.xs:
   label: xs
   mediaQuery: 'all and (min-width: 480px)'
   weight: 0
   multipliers:
     - 1x
-burda_infinite.sm:
+infinite.sm:
   label: sm
   mediaQuery: 'all and (min-width: 767px)'
   weight: 1
   multipliers:
     - 1x
-burda_infinite.md:
+infinite.md:
   label: md
   mediaQuery: 'all and (min-width: 992px)'
   weight: 2
   multipliers:
     - 1x
-burda_infinite.lg:
+infinite.lg:
   label: lg
   mediaQuery: 'all and (min-width: 1128px)'
   weight: 3
   multipliers:
     - 1x
-burda_infinite.xl:
+infinite.xl:
   label: xl
   mediaQuery: 'all and (min-width: 1450px)'
   weight: 4
   multipliers:
     - 1x
-burda_infinite.xxl:
+infinite.xxl:
   label: xxl
   mediaQuery: 'all and (min-width: 1800px)'
   weight: 5
