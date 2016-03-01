@@ -41,6 +41,17 @@ function infinite_preprocess_node(&$variables) {
   /* @var Node $node */
   $node = &$variables['elements']['#node'];
 
+  // share buttons received from theme settings
+  $variables['facebook_share_button'] = theme_get_setting('facebook_share_button');
+  $variables['whatsapp_share_button'] = theme_get_setting('whatsapp_share_button');
+  $variables['pinterest_share_button'] = theme_get_setting('pinterest_share_button');
+  $variables['twitter_share_button'] = theme_get_setting('twitter_share_button');
+  $variables['twitter_share_via'] = theme_get_setting('twitter_share_via');
+  $variables['email_share_button'] = theme_get_setting('email_share_button');
+  $variables['whatsapp_share_text'] = theme_get_setting('whatsapp_share_text');
+  $variables['email_share_text'] = theme_get_setting('email_share_text');
+  $variables['email_subject'] = theme_get_setting('email_subject');
+
   $bundle = $node->bundle();
   if ($bundle == "article" || $bundle == "page") {
     // todo: switch later to publish date.

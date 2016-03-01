@@ -40,7 +40,7 @@
       {% block teaser_content %}{% endblock %}
       <div class="socials socials-bar">
         {% block teaser_social_bar %}
-          {% embed '@infinite/embeds/social_icons_default.html.twig' %}
+          {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''}  %}
           {% endembed %}
         {% endblock %}
       </div>
