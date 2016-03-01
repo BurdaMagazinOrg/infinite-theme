@@ -111,3 +111,16 @@ function infinite_preprocess_node(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_views().
+ */
+function infinite_views_preprocess_views_view(&$variables) {
+
+  // todo: replace with configurable sidebar views UI plugin.
+  /* @var Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+
+  // Render title for all other views, because we aren't using pagetitle block. // todo: check how to add pagetitle block as default?
+  $variables['title']['#markup'] = $view->getTitle();
+}
