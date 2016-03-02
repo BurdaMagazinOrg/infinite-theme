@@ -1,15 +1,15 @@
+.item-content {
+  //.item-content__header + .item-content__item {
+  //  @include container-v-padding();
+  //  border-top: $h-line-style;
+  //}
+}
+
 .item-content--article .item-content-column {
   min-height: 500px;
 }
 
-//.item-content {
-//  padding-top: $grid-gutter-width;
-//  padding-bottom: $grid-gutter-width;
-//}
-
 .item-content__header {
-  //@extend %region-fixed-content;
-
   @media (max-width: $screen-xxs-max) {
     .author {
       margin-top: $gap-size-sm;

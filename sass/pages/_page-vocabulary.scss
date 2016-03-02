@@ -8,13 +8,18 @@
     @extend %title--page-center;
   }
 
+  .item-content__content {
+
+  }
+
   .item-content__row {
-    @extend %region-fixed-content;
+
   }
 
   .list__glossary {
     @extend %list__glossary;
     display: inline-block;
+    text-align: left;
   }
 
   .list__alphabetical {
@@ -36,8 +41,8 @@
   }
 
   @media (min-width: $screen-xs-min) {
-    .item-content__header {
-      margin-bottom: $gap-size-xxxl;
+    .item-content__content {
+      margin-top: $gap-size-xxxl;
     }
 
     .item-content__row {

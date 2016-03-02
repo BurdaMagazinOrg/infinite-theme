@@ -1,6 +1,4 @@
 @mixin content__header-center() {
   @include container-v-padding();
-  @include container-v-padding(padding, bottom);
-  @include region-full-content();
-  border-bottom: $h-line-style;
+  //@include region-full-content();
 }

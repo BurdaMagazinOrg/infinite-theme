@@ -36,7 +36,7 @@
 <div class="region-full-content region-vocabulary item-content item-content--vocabulary">
     {{ title_prefix }}
 
-    <div class="item-content__header">
+    <div class="region-full-content item-content__header">
         <h1 class="title--page">{{ title }}</h1>
 
         {% if header %}
@@ -45,24 +45,26 @@
             </header>
         {% endif %}
     </div>
-    <div class="item-content__content fixed-content">
-        <div class="item-content__row">
-            <div class="item-content__row-col">
-                {{ attachment_before }}
+    <div class="region-full-content item-content__content">
+        <div class="container-fixed-content">
+            <div class="item-content__row">
+                <div class="item-content__row-col">
+                    {{ attachment_before }}
+                </div>
+
+                <div class="item-content__row-col">
+                    {{ rows }}
+                </div>
+
+                {{ empty }}
+
+                {% if footer %}
+                    <footer>
+                        {{ footer }}
+                    </footer>
+                {% endif %}
+
             </div>
-
-            <div class="item-content__row-col">
-                {{ rows }}
-            </div>
-
-            {{ empty }}
-
-            {% if footer %}
-                <footer>
-                    {{ footer }}
-                </footer>
-            {% endif %}
-
         </div>
     </div>
     {{ title_suffix }}
