@@ -67,10 +67,10 @@
  * @ingroup themeable
  */
 #}
-<article {{ attributes.addClass('region-full-content item-content item-content-article') }} data-view-type="articleView">
-  <div class="item-content-header">
+<article {{ attributes.addClass('region-full-content item-content item-content--article') }} data-view-type="articleView">
+  <div class="item-content__header">
     {% block content_header %}
-      <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+      <h1 class="title--article">{{ label }}</h1>
     {% endblock %}
   </div>
   {% if block('content_highlighted_below_header') is not empty %}

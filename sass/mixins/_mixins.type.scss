@@ -15,9 +15,9 @@
   font-size: $size;
 }
 
-@mixin text-headline($size: '', $color: '') {
+@mixin text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
   font-family: $font-headline;
-  letter-spacing: $headline-letter-spacing;
+  letter-spacing: $letter-spacing;
 
   @if ($size!= '') {
     @include text-headline-size($size);

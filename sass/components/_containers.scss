@@ -11,6 +11,10 @@
       @extend %reset-container-v-gap;
     }
   }
+
+  & > .item-content__header:first-child {
+    padding-top: 0;
+  }
 }
 
 //padded / lined teaser
@@ -49,7 +53,6 @@
   }
 }
 
-
 body .region-marketing.ad-active + .region-full-content {
   @if ($container-v-lined) {
     margin-top: -1px; //double line
@@ -71,7 +74,7 @@ body .region-marketing.ad-active + .region-full-content {
   margin-top: 0;
 }
 
-.region-fixed-content, .container-fixed-content {
+.region-fixed-content, .container-fixed-content, .fixed-content {
   @extend %region-fixed-content;
 }
 

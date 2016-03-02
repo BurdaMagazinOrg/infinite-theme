@@ -118,3 +118,11 @@
     text-transform: uppercase;
   }
 }
+
+/**
+** Lists
+**/
+
+@mixin list__glossary-text() {
+  @include text-label($list__glossary-font-size);
+}

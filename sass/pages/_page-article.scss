@@ -1,9 +1,10 @@
 .page-article {
 
-  .item-content-header {
+  .item-content__header {
+    @extend %region-fixed-content;
+
     h1 {
       @extend %title--article;
-      max-width: $full-headlines-max-width;
     }
   }
 
@@ -14,10 +15,6 @@
   .breadcrumb {
     @extend %region-fixed-content;
   }
-  //
-  //.region-breadcrumb + .item-content-article {
-  //  @extend %reset-container-v-gap;
-  //}
 
   @media (max-width: $screen-xs-max) {
     .item-content-column .socials-vertical-bar {

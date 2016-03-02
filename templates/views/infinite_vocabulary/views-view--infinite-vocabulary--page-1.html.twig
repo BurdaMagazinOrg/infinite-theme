@@ -32,37 +32,38 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
-    dom_id ? 'js-view-dom-id-' ~ dom_id,
-  ]
-%}
-<div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title }}
-  {{ title_suffix }}
 
-  {% if header %}
-    <header>
-      {{ header }}
-    </header>
-  {% endif %}
+<div class="region-full-content region-vocabulary item-content item-content--vocabulary">
+    {{ title_prefix }}
 
-  {{ exposed }}
-  {{ attachment_before }}
+    <div class="item-content__header">
+        <h1 class="title--page">{{ title }}</h1>
 
-  {{ rows }}
-  {{ empty }}
-  {{ pager }}
+        {% if header %}
+            <header>
+                {{ header }}
+            </header>
+        {% endif %}
+    </div>
+    <div class="item-content__content fixed-content">
+        <div class="item-content__row">
+            <div class="item-content__row-col">
+                {{ attachment_before }}
+            </div>
 
-  {{ attachment_after }}
-  {{ more }}
+            <div class="item-content__row-col">
+                {{ rows }}
+            </div>
 
-  {% if footer %}
-    <footer>
-      {{ footer }}
-    </footer>
-  {% endif %}
+            {{ empty }}
 
-  {{ feed_icons }}
+            {% if footer %}
+                <footer>
+                    {{ footer }}
+                </footer>
+            {% endif %}
+
+        </div>
+    </div>
+    {{ title_suffix }}
 </div>

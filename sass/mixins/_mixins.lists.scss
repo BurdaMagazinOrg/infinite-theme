@@ -48,3 +48,44 @@
     border-bottom: $h-line-style;
   }
 }
+
+@mixin list__alphabetical {
+  h2, h3 {
+    padding: $list--alphabetical-headline-padding;
+    margin: $list--alphabetical-headline-margin;
+    border-top: $h-line-style;
+    border-bottom: $h-line-style;
+    color: $list--alphabetical-headline-color;
+  }
+
+  li {
+    margin: $list--alphabetical-list-item-margin;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+@mixin list__glossary {
+  @include list__glossary-text();
+
+  li {
+    margin: $list__glossary-margin;
+    display: inline-block;
+    text-align: center;
+    min-width: $list__glossary-item-min-width;
+  }
+
+  a {
+    border: $list__glossary-border;
+    padding: $list__glossary-padding;
+    background-color: $list__glossary-background-color;
+    display: inline-block;
+    width: 100%;
+
+    &.active {
+      background-color: $list__glossary-background-color-active;
+    }
+  }
+}

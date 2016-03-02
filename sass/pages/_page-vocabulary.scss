@@ -1,0 +1,89 @@
+.page-vocabulary {
+
+  .item-content__header {
+    @extend %content__header-center;
+  }
+
+  .title--page {
+    @extend %title--page-center;
+  }
+
+  .item-content__row {
+    @extend %region-fixed-content;
+  }
+
+  .list__glossary {
+    @extend %list__glossary;
+    display: inline-block;
+  }
+
+  .list__alphabetical {
+    @extend %list__alphabetical;
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    .list__glossary {
+      margin-top: $gap-size-sm;
+    }
+
+    .list__alphabetical {
+      margin-top: $gap-size-xs;
+
+      h2, h3 {
+        @include region-full-content();
+      }
+    }
+  }
+
+  @media (min-width: $screen-xs-min) {
+    .item-content__header {
+      margin-bottom: $gap-size-xxxl;
+    }
+
+    .item-content__row {
+      @include make-row();
+    }
+
+    .item-content__row-col {
+      @include make-xxs-column($grid-columns/2);
+
+      &:first-child {
+        text-align: right;
+      }
+    }
+
+    .list__glossary {
+      width: 280px;
+    }
+
+    .list__alphabetical {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .item-content__row-col {
+      &:first-child {
+        padding-right: $gap-size-xl;
+      }
+    }
+
+    .list__alphabetical {
+      margin-top: $gap-size-xl;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .item-content__row-col {
+      &:first-child {
+        padding-right: $gap-size-xxxl;
+      }
+    }
+
+    .list__alphabetical {
+      margin-top: $gap-size-xxxl;
+    }
+  }
+}

@@ -28,15 +28,15 @@
   }
 }
 
-@mixin container-v-padding($type: padding) {
-  #{$type}-top: $container-padding-top-mobile;
+@mixin container-v-padding($type: padding, $direction: top) {
+  #{$type}-#{$direction}: $container-padding-top-mobile;
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    #{$type}-top: $container-padding-top-tablet;
+    #{$type}-#{$direction}: $container-padding-top-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    #{$type}-top: $container-padding-top-desktop;
+    #{$type}-#{$direction}: $container-padding-top-desktop;
   }
 }
 

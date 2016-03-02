@@ -25,12 +25,12 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass('item-content') }}>
-    <div class="item-content-header">
+<div{{ attributes.addClass('region-full-content item-content item-content--taxonomy') }}>
+    <div class="item-content__header">
         {% if has_header_block %}
-            <h2 class="text-headline text-headline-size-h1">{{ name }}</h2>
+            <h2 class="title--page">{{ name }}</h2>
         {% else %}
-            <h1 class="text-headline text-headline-size-h1">{{ name }}</h1>
+            <h1 class="title--page">{{ name }}</h1>
         {% endif %}
     </div>
 

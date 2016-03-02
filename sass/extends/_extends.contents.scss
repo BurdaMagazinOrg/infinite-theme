@@ -1,7 +1,3 @@
-%title--horizontal-block {
-  @include title--horizontal-block();
-}
-
-%title--article {
-  @include title--article();
+%content__header-center {
+  @include content__header-center();
 }

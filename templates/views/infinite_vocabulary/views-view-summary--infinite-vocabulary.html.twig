@@ -20,7 +20,7 @@
  * @ingroup themeable
  */
 #}
-<ul>
+<ul class="list__glossary">
   {% for row in rows %}
     <li><a href="{{ row.url }}"{{ row.attributes.addClass(row.active ? 'is-active')|without('href') }}>{{ row.link }}</a>
       {% if options.count %}

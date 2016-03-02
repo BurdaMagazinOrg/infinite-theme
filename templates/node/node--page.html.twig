@@ -1,7 +1,7 @@
 {% set attributes = attributes.setAttribute('data-view-type', 'articleView') %}
 
 <article{{ attributes.addClass('item-content item-content-article') }}>
-  <div class="item-content-header">
+  <div class="item-content__header">
     {% block page_headline %}
       <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
     {% endblock %}
