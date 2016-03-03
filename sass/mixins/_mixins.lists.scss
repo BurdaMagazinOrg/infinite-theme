@@ -39,7 +39,7 @@
   }
 }
 
-@mixin list__links--module {
+@mixin list__links--module() {
   margin-top: $gap-size-xs;
   padding-bottom: $gap-size-md;
 
@@ -49,7 +49,7 @@
   }
 }
 
-@mixin list__alphabetical {
+@mixin list__alphabetical() {
   h2, h3 {
     padding: $list--alphabetical-headline-padding;
     margin: $list--alphabetical-headline-margin;
@@ -67,14 +67,13 @@
   }
 }
 
-@mixin list__glossary {
+@mixin list__glossary() {
   @include list__glossary-text();
 
   li {
     margin: $list__glossary-margin;
     display: inline-block;
     text-align: center;
-    min-width: $list__glossary-item-min-width;
   }
 
   a {
@@ -84,8 +83,14 @@
     display: inline-block;
     width: 100%;
 
-    &.active {
+    &.active, &:hover {
       background-color: $list__glossary-background-color-active;
+      color: $list__glossary-color-active;
     }
   }
+}
+
+@mixin list__item--teasers-square-xs() {
+  @include gap--v-sm();
+  border-top: $h-line-style;
 }

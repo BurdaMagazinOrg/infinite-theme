@@ -1,0 +1,94 @@
+@mixin page-archive() {
+  .item-content__header {
+    @extend %content__header-center;
+  }
+
+  .title--page {
+    @extend %title--page-center;
+  }
+
+  .title--list {
+    @include text-label($title-size-xs);
+    text-align: left;
+    display: block;
+    padding-bottom: $gap-size-xs;
+    text-transform: uppercase;
+  }
+
+  .col--left {
+    .title--list {
+      color: $color-brand;
+    }
+
+    .block--archive-tree-ym > ul, ol {
+      display: inline-block;
+      text-align: left;
+
+      & > li {
+        margin-top: $gap-size-xl;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        & > ul, ol {
+          @extend %list__glossary;
+
+          li {
+            min-width: 69px;
+          }
+        }
+      }
+    }
+  }
+
+  .list__teasers {
+    li {
+      @extend %list__item--teasers-square-xs;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .item-content__row {
+      @include make-row();
+      margin-top: $gap-size-xxxl;
+    }
+
+    .col--left {
+      @include make-xxs-column(9);
+      text-align: right;
+
+      .block--archive-tree-ym > ul, ol {
+        width: 220px;
+      }
+    }
+
+    .col--right {
+      @include make-xxs-column(15);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .col--left {
+      padding-right: $gap-size-xl;
+    }
+
+    .col--right {
+
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .col--left {
+      padding-right: $gap-size-xxxl;
+    }
+  }
+}

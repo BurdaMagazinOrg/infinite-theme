@@ -13,3 +13,7 @@
 %padding-gutter-gap {
   @include padding-gutter-gap();
 }
+
+%gap--v-sm {
+  @include gap--v-sm();
+}

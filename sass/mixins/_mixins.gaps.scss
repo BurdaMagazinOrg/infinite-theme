@@ -40,6 +40,31 @@
   }
 }
 
+/** Lists Gaps **/
+@mixin gap--v-sm($gaps: ($gap-v-sm-mobile, $gap-v-sm-tablet, $gap-v-sm-desktop)) {
+  @include _gap($gaps);
+}
+
+@mixin _gap($gaps) {
+  $gap-mobile: nth($gaps, 1);
+  $gap-tablet: nth($gaps, 2);
+  $gap-desktop: nth($gaps, 3);
+
+  @media (max-width: $screen-xxs-max) {
+    margin-top: round($gap-mobile);
+    padding-top: round($gap-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    margin-top: round($gap-tablet);
+    padding-top: round($gap-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-top: round($gap-desktop);
+    padding-top: round($gap-desktop);
+  }
+}
 
 /**
 ** Common

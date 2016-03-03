@@ -129,6 +129,12 @@ $gap-size-xl: 36px !default;
 $gap-size-xxl: 48px !default;
 $gap-size-xxxl: 61px !default;
 
+
+/** Lists Gaps **/
+$gap-v-sm-mobile: $gap-size-xs !default;
+$gap-v-sm-tablet: $gap-size-sm !default;
+$gap-v-sm-desktop: $gap-size-sm !default;
+
 /**
 ** Main Navigation
 **/
@@ -243,24 +249,27 @@ $rib-gap-bottom-desktop: 0 !default;
 $teaser-list-h-headline-size-mobile: $title-size-xxxs !default;
 $teaser-list-h-headline-size-tablet: $title-size-xxs !default;
 $teaser-list-h-headline-size-desktop: $title-size-xxs !default;
-
 $teaser-list-h-teaser-gap-mobile: 6px !default;
 $teaser-list-h-teaser-gap-tablet: 28px !default;
 $teaser-list-h-teaser-gap-desktop: 35px !default;
 $teaser-list-h-teaser-shrinked-width: 61% !default;
+
+/** teaser square xs **/
+$teaser-square-xs-headline-size-mobile: $title-size-xxxs !default;
+$teaser-square-xs-headline-size-tablet: $title-size-sm !default;
+$teaser-square-xs-headline-size-desktop: $title-size-md !default;
 
 /**
 **  Lists **
 **/
 
 $list__glossary-font-size: $title-size-xxs;
-$list__glossary-margin: 0 3px 8px 0;
+$list__glossary-margin: 0 4px 4px 0;
 $list__glossary-padding: 5px 8px;
 $list__glossary-border: $h-line-style;
 $list__glossary-background-color: $bg-color-gray-light;
-$list__glossary-background-color-active: $color-highlighted-hover;
+$list__glossary-background-color-active: $color-highlighted;
 $list__glossary-color-active: $white;
-$list__glossary-item-min-width: 37px;
 
 /** list--alphabetical **/
 

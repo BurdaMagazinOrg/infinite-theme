@@ -6,6 +6,10 @@
 @media (max-width: $screen-sm-max) {
   #toolbar-administration .toolbar-bar {
 
+    .toolbar-tray-horizontal > .toolbar-lining {
+      padding-right: 0;
+    }
+
     .menu-item {
       width: 50%;
       text-align: center;

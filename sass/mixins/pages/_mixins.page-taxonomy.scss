@@ -1,0 +1,13 @@
+@mixin page-taxonomy() {
+  .item-content__header {
+    @extend %content__header-center;
+  }
+
+  .title--page {
+    @extend %title--page-center;
+  }
+
+  .item-content__content {
+
+  }
+}

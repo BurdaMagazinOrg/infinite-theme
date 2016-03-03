@@ -80,7 +80,41 @@
 }
 
 @mixin teaser-feed-large() {
-  //todo check this later
+  @media (max-width: $screen-xxs-max) {
+    .caption-teaser {
+      padding-top: $gap-size-xs;
+    }
+  }
+}
+
+@mixin teaser-square-xs() {
+  @include make-row();
+  @include teaser-square-xs-text();
+
+  & > .img-container {
+    @include make-xxs-column(6);
+  }
+
+  & > .caption-teaser {
+    @include make-xxs-column(18);
+  }
+}
+
+@mixin teaser-landscape-medium() {
+  @include make-row();
+
+  & > .img-container {
+    @include make-md-column(15);
+  }
+
+  & > .caption-teaser {
+    @include make-md-column(9);
+  }
+
+  .text-headline {
+    margin-left: -3px;
+  }
+
   @media (max-width: $screen-xxs-max) {
     .caption-teaser {
       padding-top: $gap-size-xs;

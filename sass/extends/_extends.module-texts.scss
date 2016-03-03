@@ -6,6 +6,14 @@
   @include teaser-feed-large-text();
 }
 
+%teaser-landscape-medium-text {
+  @include teaser-landscape-medium-text();
+}
+
+%teaser-square-xs-text {
+  @include teaser-square-xs-text();
+}
+
 %teaser-list-h-text {
   @include teaser-list-h-text();
 }

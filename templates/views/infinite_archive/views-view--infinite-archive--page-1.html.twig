@@ -33,26 +33,23 @@
  */
 #}
 
-<div class="region-full-content region-vocabulary item-content item-content--vocabulary">
+<div class="region-full-content region-vocabulary item-content item-content--archive">
     {{ title_prefix }}
 
     <div class="region-full-content item-content__header">
-        <h1 class="title--page">{{ title }}</h1>
-
-        {% if header %}
-            <header>
-                {{ header }}
-            </header>
-        {% endif %}
+        <h1 class="title--page">Archiv</h1>
     </div>
     <div class="region-full-content item-content__content">
         <div class="container-fixed-content">
             <div class="item-content__row">
                 <div class="item-content__row-col col--left">
-                    {{ attachment_before }}
+                    {% if header %}
+                        {{ header }}
+                    {% endif %}
                 </div>
 
                 <div class="item-content__row-col col--right">
+                    <h2 class="title--list">{{ title }}</h2>
                     {{ rows }}
                 </div>
 

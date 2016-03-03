@@ -1,15 +1,3 @@
 .page-front {
-  #menu-main-navigation {
-    @if($menu-home-animated-logo) {
-      @extend %sticky-logo-animated;
-    }
-
-    .menu-item .is-active {
-      color: inherit;
-
-      &:hover {
-        color: $color-hover;
-      }
-    }
-  }
+  @include page-front();
 }

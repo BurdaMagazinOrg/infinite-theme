@@ -54,6 +54,34 @@
   }
 }
 
+@mixin teaser-landscape-medium-text() {
+  @include teaser-feed-large-text();
+}
+
+@mixin teaser-square-xs-text() {
+  .text-headline {
+    @include text-headline();
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .text-headline {
+      @include text-headline-size($teaser-square-xs-headline-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-headline-size($teaser-square-xs-headline-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-headline-size($teaser-square-xs-headline-size-desktop);
+    }
+  }
+}
+
 /**
 ** Socials
 **/

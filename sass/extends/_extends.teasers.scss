@@ -2,6 +2,10 @@
   @include teaser-default();
 }
 
+%teaser-landscape-medium {
+  @include teaser-landscape-medium();
+}
+
 %teaser-feed-large {
   @include teaser-feed-large();
 }
@@ -16,4 +20,8 @@
 
 %teaser-full-content {
   @include teaser-full-content();
+}
+
+%teaser-square-xs {
+  @include teaser-square-xs();
 }

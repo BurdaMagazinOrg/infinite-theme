@@ -46,8 +46,8 @@
 **/
 
 .teaser-landscape-medium {
-  @extend %teaser-feed-large;
-  @extend %teaser-feed-large-text;
+  @extend %teaser-landscape-medium;
+  @extend %teaser-landscape-medium-text;
 }
 
 /**
@@ -74,22 +74,8 @@
   }
 }
 
-/**
-* Teaser Content-Right
-**/
-
-.teaser-landscape-medium {
-  & > .img-container {
-    @include make-md-column(15);
-  }
-
-  & > .caption-teaser {
-    @include make-md-column(9);
-  }
-
-  .text-headline {
-    margin-left: -3px;
-  }
+.teaser-square-xs {
+  @extend %teaser-square-xs;
 }
 
 /**
