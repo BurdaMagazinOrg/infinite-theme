@@ -8,8 +8,12 @@
     @extend %title--page-center;
   }
 
-  .item-content__row {
-
+  .btn__open-tree {
+    @extend %region-full-content;
+    @extend %btn__open-tree--mobile;
+    display: none;
+    padding-bottom: $gap-size-md;
+    border-bottom: $h-line-style;
   }
 
   .list__glossary {
@@ -26,9 +30,34 @@
     @extend %list__alphabetical;
   }
 
+
+  /**
+  ** Responsive settings
+  **/
+
   @media (max-width: $screen-xs-max) {
+    &.btn__open-tree--is-open {
+      .col--left {
+        display: block;
+      }
+    }
+
+    .btn__open-tree {
+      display: block;
+    }
+
+    .col--left {
+      display: none;
+    }
+
     .list__glossary {
+      display: block;
       margin-top: $gap-size-sm;
+
+      li {
+        min-width: 24%;
+        margin-right: 1%;
+      }
     }
 
     .list__alphabetical {

@@ -68,11 +68,12 @@
 }
 
 @mixin list__glossary() {
+  @include clearfix();
   @include list__glossary-text();
 
   li {
     margin: $list__glossary-margin;
-    display: inline-block;
+    float: left;
     text-align: center;
   }
 

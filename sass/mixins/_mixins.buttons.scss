@@ -33,4 +33,8 @@
     right: 0;
     color: $text-color;
   }
+
+  &.is-active {
+    @include icon-arrow-up-small();
+  }
 }

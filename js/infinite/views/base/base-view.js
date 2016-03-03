@@ -117,6 +117,7 @@
                     switch (tmpAction) {
                         case 'class-extend':
                             $tmpTarget.toggleClass(tmpValue);
+                            $(this).toggleClass('is-active');
                             break;
                     }
                 }
