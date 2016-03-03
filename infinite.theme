@@ -37,6 +37,27 @@ function infinite_preprocess_region(&$variables) {
   $variables ['logo'] = theme_get_setting('logo.url');
 }
 
+function infinite_preprocess_html(&$variables) {
+  if (\Drupal::moduleHandler()->moduleExists('metatag')) {
+    /**
+     * TODO: Does metatag module provide some simpler api call to get metatags?
+     */
+    $metatag_manager = \Drupal::service('metatag.manager');
+    // First, get defaults.
+    $metatags = metatag_get_default_tags();
+    if (!$metatags) {
+      return;
+    }
+
+    $entity = metatag_get_route_entity();
+    if (!empty($entity) && $entity instanceof ContentEntityInterface) {
+      $metatags = array_merge($metatags, $metatag_manager->tagsFromEntity($entity));
+    }
+
+    $variables['fb_vars'] = ['fb_app_id' => $metatags['fb_app_id']];
+  }
+}
+
 function infinite_preprocess_node(&$variables) {
   /* @var Node $node */
   $node = &$variables['elements']['#node'];
