@@ -3,6 +3,15 @@
     @extend %content__header-center;
   }
 
+  .btn__open-tree {
+    @extend %region-full-content;
+    @extend %btn__open-tree--mobile;
+    display: none;
+    padding-bottom: $gap-size-md;
+    margin-bottom: $gap-size-md;
+    border-bottom: $h-line-style;
+  }
+
   .title--page {
     @extend %title--page-center;
   }
@@ -20,25 +29,29 @@
       color: $color-brand;
     }
 
-    .block--archive-tree-ym > ul, ol {
-      display: inline-block;
-      text-align: left;
+    .block--archive-tree-ym {
+      & > ul {
 
-      & > li {
-        margin-top: $gap-size-xl;
-
-        &:first-child {
-          margin-top: 0;
-        }
-
-        & > ul, ol {
-          @extend %list__glossary;
-
-          li {
-            min-width: 69px;
+        & > li {
+          &:first-child {
+            margin-top: 0;
           }
         }
       }
+    }
+
+    ul ul {
+      @extend %list__glossary;
+
+      li {
+        min-width: 69px;
+      }
+    }
+  }
+
+  .col--right {
+    .title--list {  
+      color: $gray-base;
     }
   }
 
@@ -52,8 +65,58 @@
     }
   }
 
-  @media (max-width: $screen-xs-max) {
+  /**
+  ** Responsive settings
+  **/
 
+  @media (max-width: $screen-xs-max) {
+    &.btn__open-tree--is-open {
+      .col--left {
+        display: block;
+      }
+
+      .col--right {
+        display: none;
+      }
+    }
+
+    .btn__open-tree {
+      display: block;
+    }
+
+    .col--left {
+      display: none;
+    }
+
+    .col--right {
+      margin-top: $gap-size-md;
+
+      .title--list {
+        display: none;
+      }
+    }
+
+    .list__teasers {
+      li:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+    }
+
+    .block--archive-tree-ym {
+      & > ul {
+        & > li {
+          margin-top: $gap-size-lg;
+        }
+      }
+
+      ul ul {
+        li {
+          margin-right: 1%;
+          min-width: 24%;
+        }
+      }
+    }
   }
 
   @media (min-width: $screen-sm-min) {
@@ -62,13 +125,16 @@
       margin-top: $gap-size-xxxl;
     }
 
+    .block--archive-tree-ym {
+      & > ul {
+        & > li {
+          margin-top: $gap-size-xl;
+        }
+      }
+    }
+
     .col--left {
       @include make-xxs-column(9);
-      text-align: right;
-
-      .block--archive-tree-ym > ul, ol {
-        width: 220px;
-      }
     }
 
     .col--right {
@@ -79,10 +145,6 @@
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .col--left {
       padding-right: $gap-size-xl;
-    }
-
-    .col--right {
-
     }
   }
 

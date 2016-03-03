@@ -57,8 +57,8 @@
 
     .menu-item {
       .is-active {
-        @include icon-arrow-down-small();
         @include icon();
+        @include icon-arrow-down-small();
 
         display: block;
         position: absolute;

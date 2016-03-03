@@ -1,3 +1,7 @@
 %btn {
   @include btn();
 }
+
+%btn__open-tree--mobile {
+  @include btn__open-tree--mobile();
+}

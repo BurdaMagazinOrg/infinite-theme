@@ -15,6 +15,7 @@
             this.updateTimeAgo(this.$el);
             this.loadResponsiveImages(this.$el);
             this.updateSocials(this.$el);
+            this.updateBtnActions(this.$el);
         },
         updateSocials: function ($pContainer) {
             /**
@@ -100,6 +101,25 @@
                     window.allowBeforeUnload = true;
                 }, 100);
                 return false;
+            });
+        },
+        updateBtnActions: function ($pContainer) {
+            $pContainer.find('[data-btn-action]').unbind('click.btnAction').bind('click.btnAction', function (pEvent) {
+                var tmpAction = $(this).data('btn-action'),
+                    tmpValue = $(this).data('btn-action-value'),
+                    tmpTarget = $(this).data('target'),
+                    $tmpTarget = [];
+
+                if (tmpTarget != "") $tmpTarget = $(this).parents(tmpTarget);
+                if ($tmpTarget.length <= 0) $tmpTarget = $('body');
+
+                if (tmpAction != "" && tmpValue != "") {
+                    switch (tmpAction) {
+                        case 'class-extend':
+                            $tmpTarget.toggleClass(tmpValue);
+                            break;
+                    }
+                }
             });
         },
         updateTimeAgo: function ($pContainer) {

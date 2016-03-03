@@ -22,3 +22,15 @@
     outline: 0 !important;
   }
 }
+
+@mixin btn__open-tree--mobile() {
+  @include icon();
+  @include icon-arrow-down-small();
+  display: block;
+
+  &:before {
+    position: absolute;
+    right: 0;
+    color: $text-color;
+  }
+}
