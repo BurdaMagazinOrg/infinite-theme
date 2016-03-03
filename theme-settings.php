@@ -15,13 +15,13 @@ function infinite_form_system_theme_settings_alter(&$form, &$form_state) {
     '#collapsible' => TRUE,
   );
 
-  $form['share']['facebook_app_id'] = array(
+  $form['share']['gtm_id'] = array(
     '#type' => 'textfield',
-    '#title' => t('Facebook APP Id'),
-    '#default_value' => theme_get_setting('facebook_app_id'),
+    '#title' => t('Google tag manager ID'),
+    '#default_value' => theme_get_setting('gtm_id'),
     '#size' => 80,
-    '#description' => t('Enter your Facebook app id.'),
-    '#prefix' => '<div id="facebook-app-id-wrapper">',
+    '#description' => t('Enter your Google tag manager ID.'),
+    '#prefix' => '<div id="gtm-id-wrapper">',
     '#suffix' => '</div>',
   );
 

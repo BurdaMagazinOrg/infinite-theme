@@ -55,6 +55,7 @@ function infinite_preprocess_html(&$variables) {
     }
 
     $variables['fb_vars'] = ['fb_app_id' => $metatags['fb_app_id']];
+    $variables['gtm_vars'] = ['gtm_id' => theme_get_setting('gtm_id')];
   }
 }
 

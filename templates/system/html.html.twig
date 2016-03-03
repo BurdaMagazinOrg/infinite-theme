@@ -17,12 +17,11 @@ db_offline ? 'db-offline',
 
     </head>
     <body class="{{ attributes.addClass(body_classes).class }}">
-        {% set gtm_vars = {gtm_id: 'GTM-PWFQ37'} %}
-
-        {% block api_gtm %}
-            {% embed '@infinite/embeds/api_gtm.html.twig' with gtm_vars %}{% endembed %}
-        {% endblock %}
-
+        {% if gtm_vars %}
+            {% block api_gtm %}
+                {% embed '@infinite/embeds/api_gtm.html.twig' with gtm_vars %}{% endembed %}
+            {% endblock %}
+        {% endif %}
         {% if fb_vars %}
             {% block api_fb %}
                 {% embed '@infinite/embeds/api_fb.html.twig' with fb_vars %}{% endembed %}
