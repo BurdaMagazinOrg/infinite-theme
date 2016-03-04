@@ -3,7 +3,7 @@
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 
 {% block social_facebook %}
-  <div class="item-social icon-facebook" data-url="{{ url | e('url')}}" data-media-url="{{ share_img_url | e('url')}}" data-description="{{ label | e('url') }}"  data-social-type="facebook">
+  <div class="item-social icon-facebook" data-url="{{ url | e('url')}}" data-description="{{ label | e('url') }}"  data-social-type="facebook">
     {% if facebook_share_button %}
       <span>{{ facebook_share_button }}</span>
     {% endif %}

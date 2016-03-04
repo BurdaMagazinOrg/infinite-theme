@@ -25,7 +25,7 @@
         {% endif %}
 
         <div class="socials socials-bar">
-            <a class="item-social icon-facebook" href="https://www.facebook.com/sharer/sharer.php?m2w&u=https://www.youtube.com/embed/{{ content.field_video_id }}" target="_blank" data-social-type="facebook"></a>
+            <div class="item-social icon-facebook" data-url="https://www.youtube.com/embed/{{ content.field_video_id | e('url')}}"  data-social-type="facebook"></div>
         </div>
     </div>
 {% endif %}

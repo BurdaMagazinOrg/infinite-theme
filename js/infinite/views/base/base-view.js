@@ -56,34 +56,34 @@
 
             $pContainer.find('.icon-facebook[data-url]').unbind('click.socialsFacebook').bind('click.socialsFacebook', function (pEvent) {
                 var tmpURL = $(this).data('url'),
-                    tmpMedia = $(this).data('media-url'),
-                    tmpDescription = $(this).data('description'),
+                    tmpMedia = $(this).data('media-url') || '',
+                    tmpMediaSource = $(this).data('media-source') || '',
+                    tmpShareName = $(this).data('description') || '',
                     tmpFacebookURL = 'https://www.facebook.com/sharer/sharer.php?m2w&u=',
-                    tmpCaption = '',
                     $tmpItemMedia = [],
                     $tmpArticleHeadline = [];
 
                 if (typeof FB != 'undefined') {
 
+                    /**
+                     * If shareName empty check if articleHeadline available
+                     */
                     $tmpItemMedia = $(this).parents('.item-media');
-                    if ($tmpItemMedia.length > 0) {
-
-                        tmpCaption = $tmpItemMedia.find('.text-description').text();
-                        $tmpArticleHeadline = $(this).parents('.item-content-article').find('h1');
-                        if (tmpDescription == "" && $tmpArticleHeadline.length > 0) {
-                            tmpDescription = $tmpArticleHeadline.text();
+                    if (tmpShareName == '' && $tmpItemMedia.length > 0) {
+                        $tmpArticleHeadline = $(this).parents('.item-content--article').find('h1');
+                        if ($tmpArticleHeadline.length > 0) {
+                            tmpShareName = $tmpArticleHeadline.text();
                         }
                     }
 
-
                     var fbParams = {
                         method: 'feed',
-                        name: decodeURIComponent(tmpDescription),
-                        href: decodeURIComponent(tmpURL),
-                        picture: decodeURIComponent(tmpMedia)
+                        caption: window.location.hostname,
+                        name: decodeURIComponent(tmpShareName),
+                        link: decodeURIComponent(tmpURL)
                     };
-
-                    if (tmpCaption.length > 0) fbParams.caption = decodeURIComponent(tmpDescription);
+                    
+                    if (tmpMedia != "") fbParams.picture = decodeURIComponent(tmpMedia);
 
                     FB.ui(fbParams);
                 } else {
