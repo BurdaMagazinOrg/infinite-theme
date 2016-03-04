@@ -70,19 +70,26 @@
 @mixin list__glossary() {
   @include clearfix();
   @include list__glossary-text();
+  line-height: $list__glossary-line-height;
+  color: $list__glossary-disabled-color;
 
   li {
     margin: $list__glossary-margin;
     float: left;
     text-align: center;
+    background-color: $list__glossary-background-disabled-color;
   }
 
   a {
-    border: $list__glossary-border;
-    padding: $list__glossary-padding;
-    background-color: $list__glossary-background-color;
+    color: inherit;
     display: inline-block;
+    cursor: pointer;
     width: 100%;
+    color: $text-color;
+    background-color: $list__glossary-background-color;
+    padding: $list__glossary-padding;
+    border: $list__glossary-border;
+    line-height: $list__glossary-line-height - 2px;
 
     &.active, &:hover {
       background-color: $list__glossary-background-color-active;

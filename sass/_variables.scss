@@ -263,13 +263,16 @@ $teaser-square-xs-headline-size-desktop: $title-size-md !default;
 **  Lists **
 **/
 
-$list__glossary-font-size: $title-size-xxs;
-$list__glossary-margin: 0 4px 4px 0;
-$list__glossary-padding: 5px 8px;
-$list__glossary-border: $h-line-style;
-$list__glossary-background-color: $bg-color-gray-light;
-$list__glossary-background-color-active: $color-highlighted;
-$list__glossary-color-active: $white;
+$list__glossary-font-size: $title-size-xxs !default;
+$list__glossary-line-height: 32px !default;
+$list__glossary-margin: 0 4px 4px 0 !default;
+$list__glossary-padding: 0 8px !default;
+$list__glossary-border: $h-line-style !default;
+$list__glossary-background-color: $bg-color-gray-light !default;
+$list__glossary-background-color-active: $color-highlighted !default;
+$list__glossary-background-disabled-color: $bg-color-gray-light !default;
+$list__glossary-disabled-color: $gray-base !default;
+$list__glossary-color-active: $white !default;
 
 /** list--alphabetical **/
 

@@ -125,32 +125,36 @@
       margin-top: $gap-size-xxxl;
     }
 
+    .col--left {
+      @include make-xxs-column(10);
+      text-align: right;
+    }
+
+    .col--right {
+      @include make-xxs-column(14);
+    }
+
     .block--archive-tree-ym {
+      width: 220px;
+      display: inline-block;
+
       & > ul {
         & > li {
           margin-top: $gap-size-xl;
         }
       }
     }
-
-    .col--left {
-      @include make-xxs-column(9);
-    }
-
-    .col--right {
-      @include make-xxs-column(15);
-    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .col--left {
-      padding-right: $gap-size-xl;
+      padding-right: $gap-size-xxxl;
     }
   }
 
   @media (min-width: $screen-md-min) {
     .col--left {
-      padding-right: $gap-size-xxxl;
+      padding-right: 140px;
     }
   }
 }
