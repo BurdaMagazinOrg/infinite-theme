@@ -82,7 +82,7 @@
                         name: decodeURIComponent(tmpShareName),
                         link: decodeURIComponent(tmpURL)
                     };
-                    
+
                     if (tmpMedia != "") fbParams.picture = decodeURIComponent(tmpMedia);
 
                     FB.ui(fbParams);

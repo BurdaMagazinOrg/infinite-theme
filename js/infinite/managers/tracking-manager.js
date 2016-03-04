@@ -23,14 +23,48 @@
             this.scrollTopPos = $(window).scrollTop();
 
             this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.inviewChangeHandler, 10), this);
+            this.initBaseElements();
             this.parseTrackingElements(this.$el);
 
-            this.listenTo(this.infiniteModel, 'change:infiniteBlock', function (pModel) {
-                if (pModel.get('infiniteBlock') === true) {
+
+            //parse on lazyloading
+            this.listenTo(this.infiniteModel, 'add', function (pModel) {
+                if (pModel.get('type') === 'infiniteBlockView' && pModel.get('initialDOMItem') === false) {
                     this.parseTrackingElements(pModel.get('el'));
                 }
             }, this);
 
+        },
+        inviewChangeHandler: function (pModel) {
+            if (this.scrollTopPos == $(window).scrollTop() || pModel.get('el').data('no-track') === true) return;
+
+            var $tmpElement = pModel.get('el'),
+                tmpInviewModel = pModel.get('inview'),
+                tmpHistoryURL = $tmpElement.data('history-url'),
+                tmpIndex = ($('.region-infinite-block').not('.region-infinite-block[data-no-track="true"]').index($tmpElement) + 1).toString(), //$tmpElement.parent('.infinite-item').addBack()
+                tmpTrackingObject = {};
+
+            if (tmpInviewModel.state == 'enter') {
+                /**
+                 * track pageView
+                 */
+                if (!_.isUndefined(tmpHistoryURL) && pModel.get('scrollDepthTracked') != true && pModel.get('initialDOMItem') != true) {
+                    TrackingManager.trackPageView(tmpHistoryURL);
+                }
+
+                if (pModel.get('scrollDepthTracked') != true) {
+                    tmpTrackingObject.event = tmpTrackingObject.category = 'scroll_depth';
+                    tmpTrackingObject.depth = 'index_' + tmpIndex;
+                    tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
+
+                    TrackingManager.trackEvent(tmpTrackingObject);
+                    pModel.set('scrollDepthTracked', true);
+                }
+            }
+
+            this.scrollTopPos = $(window).scrollTop();
+        },
+        initBaseElements: function () {
             $('#menu-open-btn', this.$el).click(function () {
                 TrackingManager.trackEvent({category: 'click', action: 'menu_sidebar', label: 'open'});
             });
@@ -68,35 +102,6 @@
                     tmpText = $tmpItem.text();
                 TrackingManager.trackEvent({category: 'click', action: 'sub_navigation', label: tmpText});
             });
-        },
-        inviewChangeHandler: function (pModel) {
-            if (this.scrollTopPos == $(window).scrollTop() || pModel.get('el').data('no-track') === true) return;
-
-            var $tmpElement = pModel.get('el'),
-                tmpInviewModel = pModel.get('inview'),
-                tmpHistoryURL = $tmpElement.data('history-url'),
-                tmpIndex = ($('.region-infinite-block').not('.region-infinite-block[data-no-track="true"]').index($tmpElement) + 1).toString(), //$tmpElement.parent('.infinite-item').addBack()
-                tmpTrackingObject = {};
-
-            if (tmpInviewModel.state == 'enter') {
-                /**
-                 * track pageView
-                 */
-                if (!_.isUndefined(tmpHistoryURL) && pModel.get('scrollDepthTracked') != true && pModel.get('initialDOMItem') != true) {
-                    TrackingManager.trackPageView(tmpHistoryURL);
-                }
-
-                if (pModel.get('scrollDepthTracked') != true) {
-                    tmpTrackingObject.event = tmpTrackingObject.category = 'scroll_depth';
-                    tmpTrackingObject.depth = 'index_' + tmpIndex;
-                    tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
-
-                    TrackingManager.trackEvent(tmpTrackingObject);
-                    pModel.set('scrollDepthTracked', true);
-                }
-            }
-
-            this.scrollTopPos = $(window).scrollTop();
         },
         parseTrackingElements: function ($pContainer) {
             var tmpSelector = '',
@@ -147,6 +152,14 @@
             tmpSelector = '.caption-teaser .text-category';
             $tmpItems = $pContainer.find(tmpSelector);
             if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onTeaserCategoryClickHandler).bind('click', $.proxy(this.onTeaserCategoryClickHandler, this));
+
+            /**
+             * Products
+             */
+            $tmpItems = $pContainer.find('[data-view-type="productsView"]');
+            $.each($tmpItems, $.proxy(function (pIndex, $pItem) {
+                this.onProductsHandler($pItem);
+            }, this));
         },
         onFeedTeaserClickHandler: function (pEvent) {
             var $tmpItem = $(pEvent.currentTarget).parents('.teaser'),
@@ -228,6 +241,37 @@
             tmpTrackingObject.label = TrackingManager.getItemType($tmpItem);
 
             TrackingManager.trackEvent(tmpTrackingObject);
+        },
+        onProductsHandler: function ($pContainer) {
+            var $tmpContainer = $($pContainer),
+                $tmpProductItem = $tmpContainer.find('.item-product');
+
+            //{
+            //    'ecommerce': {
+            //    'currencyCode': 'EUR',                       // Local currency is optional.
+            //        'impressions': [
+            //        {
+            //            'name': 'Triblend Android T-Shirt',       // Name or ID is required.
+            //            'id': '12345',
+            //            'price': '15.25',
+            //            'brand': 'Google',
+            //            'category': 'Apparel',
+            //            'variant': 'Gray',
+            //            'list': 'Search Results',
+            //            'position': 1
+            //        },
+            //        {
+            //            'name': 'Donut Friday Scented T-Shirt',
+            //            'id': '67890',
+            //            'price': '33.75',
+            //            'brand': 'Google',
+            //            'category': 'Apparel',
+            //            'variant': 'Black',
+            //            'list': 'Search Results',
+            //            'position': 2
+            //        }]
+            //}
+            //}
         }
     }, {
         trackEvent: function (pTrackingObject, pUseCurrentPath) {
@@ -250,7 +294,7 @@
             console.log(">> trackPageView >>", document.title, tmpPath);
         },
         trackIVW: function (iamDataObject) {
-            if(window.iam_data == undefined) return;
+            if (window.iam_data == undefined) return;
 
             iamDataObject = iamDataObject || window.iam_data;
             iom.c(iamDataObject, 1);
