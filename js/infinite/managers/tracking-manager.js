@@ -244,34 +244,43 @@
         },
         onProductsHandler: function ($pContainer) {
             var $tmpContainer = $($pContainer),
-                $tmpProductItem = $tmpContainer.find('.item-product');
+                $tmpProductItems = $tmpContainer.find('.item-product'),
+                tmpItemData = {},
+                tmpItemsData = [];
 
-            //{
-            //    'ecommerce': {
-            //    'currencyCode': 'EUR',                       // Local currency is optional.
-            //        'impressions': [
-            //        {
-            //            'name': 'Triblend Android T-Shirt',       // Name or ID is required.
-            //            'id': '12345',
-            //            'price': '15.25',
-            //            'brand': 'Google',
-            //            'category': 'Apparel',
-            //            'variant': 'Gray',
-            //            'list': 'Search Results',
-            //            'position': 1
-            //        },
-            //        {
-            //            'name': 'Donut Friday Scented T-Shirt',
-            //            'id': '67890',
-            //            'price': '33.75',
-            //            'brand': 'Google',
-            //            'category': 'Apparel',
-            //            'variant': 'Black',
-            //            'list': 'Search Results',
-            //            'position': 2
-            //        }]
-            //}
-            //}
+            if ($tmpProductItems.length == 0) return;
+
+            $.each($tmpProductItems, function (pIndex, pItem) {
+                var $tmpProductItem = $(pItem),
+                    tmpSKU = $tmpProductItem.data('sku'),
+                    tmpTitle = $tmpProductItem.data('title'),
+                    tmpBrand = $tmpProductItem.data('brand'),
+                    tmpPrice = $tmpProductItem.data('price'),
+                    tmpCurrency = $tmpProductItem.data('currency');
+
+                /**
+                 * Impression Data
+                 * @type {{name: *, id: *, price: *, brand: *, position: *}}
+                 */
+                tmpItemData = {
+                    name: tmpTitle,
+                    id: tmpSKU,
+                    price: tmpPrice,
+                    brand: tmpBrand,
+                    position: (pIndex + 1)
+                }
+                tmpItemsData.push(tmpItemData);
+
+                /**
+                 * Click Data
+                 */
+                $tmpProductItem.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', {clickData: tmpItemData}, $.proxy(function (pEvent) {
+                    var tmpData = pEvent.data.clickData;
+                    TrackingManager.trackEcommerce(tmpData, 'productClick');
+                }, this));
+            });
+
+            TrackingManager.trackEcommerce(tmpItemsData, 'impressions');
         }
     }, {
         trackEvent: function (pTrackingObject, pUseCurrentPath) {
@@ -298,6 +307,31 @@
 
             iamDataObject = iamDataObject || window.iam_data;
             iom.c(iamDataObject, 1);
+        },
+        trackEcommerce: function (pData, pType) {
+            var tmpTrackingObject = {}
+
+            switch (pType) {
+                case 'impressions':
+                    tmpTrackingObject.ecommerce = {
+                        'impressions': pData
+                    }
+                    break;
+                case 'productClick':
+                    tmpTrackingObject.event = 'productClick';
+                    tmpTrackingObject.ecommerce = {
+                        'click': {
+                            'products': [pData]
+                        }
+                    }
+                    break;
+                default:
+                    return;
+            }
+
+
+            console.log(">>> ecommerce", tmpTrackingObject);
+            window.dataLayer.push(tmpTrackingObject);
         },
         getCurrentPath: function () {
             return Backbone.history.location.pathname;

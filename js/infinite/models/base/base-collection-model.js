@@ -12,9 +12,9 @@
              */
             this.set('items', new Backbone.Collection());
 
-            this.listenTo(this.getItems(), 'all', _.debounce(function (pType, pModel) {
+            this.listenTo(this.getItems(), 'all', function (pType, pModel) {
                 this.trigger(pType, pModel);
-            }, 100, true), this);
+            }, this);
         },
         add: function (pItems, pOptions) {
             this.getItems().add(pItems, pOptions);
