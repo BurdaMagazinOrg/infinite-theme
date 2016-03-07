@@ -1,6 +1,8 @@
 @mixin products--horizontal-block {
   @media (min-width: $screen-sm-min) {
-    @include make-row();
+    .container-content {
+      @include make-row();
+    }
   }
 }
 
