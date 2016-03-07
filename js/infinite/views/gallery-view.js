@@ -28,13 +28,15 @@
                     this.el.find('.text-item-count span').text(tmpCurrentIndex);
                     this.resizeContent(pSwiper);
 
-                    BurdaInfinite.managers.TrackingManager.trackIVW();
-                    BurdaInfinite.managers.TrackingManager.trackPageView(Backbone.history.location.pathname + '/gallery_' + this.mediaId);
-                    BurdaInfinite.managers.TrackingManager.trackEvent({
-                        category: 'click',
-                        action: 'gallery',
-                        label: this.mediaId
-                    });
+                    if (typeof TrackingManager != 'undefined') {
+                        TrackingManager.trackIVW();
+                        TrackingManager.trackPageView(Backbone.history.location.pathname + '/gallery_' + this.mediaId);
+                        TrackingManager.trackEvent({
+                            category: 'click',
+                            action: 'gallery',
+                            label: this.mediaId
+                        });
+                    }
                 }, this)
             });
 
@@ -80,7 +82,7 @@
         fitImages: function (pSwiper) {
             //orientation render bug :(
             //if ($.browser.chrome || $.browser.android) {
-                this.$el.find('img').height(this.$el.find('.img-container').eq(0).outerHeight(true));
+            this.$el.find('img').height(this.$el.find('.img-container').eq(0).outerHeight(true));
             //}
         }
     });

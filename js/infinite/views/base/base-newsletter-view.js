@@ -153,12 +153,18 @@
                     //this.$formView.fadeOut(350);
                     //this.$successView.fadeIn(350);
                     this.setViewState(BaseNewsletterView.STATE_SUCCESS);
-                    BurdaInfinite.managers.TrackingManager.trackEvent({category: 'newsletter', action: 'success'});
+
+                    if(typeof TrackingManager != 'undefined') {
+                        TrackingManager.trackEvent({category: 'newsletter', action: 'success'});
+                    }
                 }, this),
                 error: $.proxy(function (err) {
                     var responseData = BaseNewsletterView.responseInterpreter(err);
                     this.addAlert('danger', responseData.field, responseData.message);
-                    BurdaInfinite.managers.TrackingManager.trackEvent({category: 'newsletter', action: 'error'});
+
+                    if(typeof TrackingManager != 'undefined') {
+                        TrackingManager.trackEvent({category: 'newsletter', action: 'error'});
+                    }
                 }, this)
             }]);
         },
@@ -180,8 +186,6 @@
         },
         addAlert: function (pType, pField, pMessage) {
             var tmpAlertString = "";
-
-            console.log("PTYPE", pType, pField);
 
             if (pType == 'danger' && pField !== undefined) this.setValidationState(this.formField(pField), 'has-error');
 
