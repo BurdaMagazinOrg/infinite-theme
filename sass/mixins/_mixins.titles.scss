@@ -112,3 +112,9 @@
     margin-bottom: $title--content-block-gap-bottom-desktop;
   }
 }
+
+@mixin title--category() {
+  @include text-label($label-size-medium);
+  text-transform: uppercase;
+  color: $color-highlighted;
+}

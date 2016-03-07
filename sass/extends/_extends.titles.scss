@@ -22,3 +22,7 @@
 %title--caption-top-gap {
   @include title--caption-top-gap();
 }
+
+%title--category {
+  @include title--category();
+}

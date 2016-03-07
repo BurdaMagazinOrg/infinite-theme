@@ -85,12 +85,15 @@
     {% endblock %}
   </div>
 
-  <div class="caption caption-teaser">
-    {% block presenter_headline %}
-      <h2 class="text-headline">
-        <a href="{{ url }}" target="_self">{{ label }}</a>
-      </h2>
-    {% endblock %}
+  <div class="caption__wrapper">
+    <div class="caption caption-teaser">
+      {% block presenter_headline %}
+        {#<div class="title-overhead--presenter-full">overhead</div>#}
+        <h2 class="title--presenter-full">
+          <a href="{{ url }}" target="_self">{{ label }}</a>
+        </h2>
+      {% endblock %}
+    </div>
   </div>
 
   {% if (show_contextual_links) %}

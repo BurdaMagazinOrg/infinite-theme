@@ -86,10 +86,7 @@ a {
 }
 
 .text-category {
-  @extend %text-label;
-  @extend %text-label-size-medium;
-  text-transform: uppercase;
-  color: $color-highlighted;
+  @extend %title--category;
 }
 
 .text-copyright {

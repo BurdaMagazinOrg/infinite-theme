@@ -165,44 +165,62 @@
   padding-bottom: 0;
 
   &:hover {
-    .text-headline {
+    .title--presenter-full {
       color: $text-highlighted;
     }
+  }
+
+  .caption__wrapper {
+    @include region-fixed-content();
+    position: relative;
   }
 
   .img-container {
     @include clear-gutter-gap();
   }
 
-  .caption-teaser {
-    @include region-fixed-content();
-    position: relative;
-  }
-
-  .text-headline {
-    @include text-headline($fc-teaser-headline-size-mobile);
-    padding: 15px 0;
+  .caption {
     max-width: $full-headlines-max-width;
     width: 100%;
+
+    & > * {
+      padding-top: 15px;
+    }
   }
 
-  @media (min-width: $screen-xs-min) {
+  .title-overhead--presenter-full {
+    @extend %title--category;
+  }
+
+  .title--presenter-full {
+    @include text-headline($fc-teaser-headline-size-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) {
+    padding-bottom: $gap-size-md;
+
+    .caption {
+      position: absolute;
+
+      & > * {
+        padding: 15px ($grid-gutter-width - 3px) 0;
+        background-color: $white;
+      }
+    }
+
     .img-container {
       padding-bottom: 43.1%;
       height: 0;
     }
-
-    .text-headline {
-      position: absolute;
-      bottom: 0;
-      padding: 15px ($grid-gutter-width - 3px) 10px;
-      background-color: $white;
-    }
   }
 
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    .text-headline {
-      @include text-headline($fc-teaser-headline-size-tablet);
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .caption {
+      bottom: - $gap-size-md;
+    }
+
+    .title--presenter-full {
+      @include text-headline-size($fc-teaser-headline-size-tablet);
     }
   }
 
@@ -210,14 +228,18 @@
   * Large Screens
   **/
   @media (min-width: $screen-md-min) {
-    .text-headline {
-      @include text-headline($fc-teaser-headline-size-desktop);
+    .caption {
       left: -$grid-gutter-width;
+      bottom: 0;
+    }
+
+    .title--presenter-full {
+      @include text-headline($fc-teaser-headline-size-desktop);
     }
   }
 
   @media (max-width: $screen-sm-max) {
-    .text-headline {
+    .title--presenter-full {
       max-width: none;
     }
   }
