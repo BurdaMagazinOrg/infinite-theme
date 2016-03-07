@@ -153,7 +153,7 @@ function infinite_preprocess_views_view(&$variables) {
 function infinite_preprocess_product(&$variables) {
   $product = $variables['elements']['#product'];
   $data_attributes = new Drupal\Core\Template\Attribute;
-  $data_attributes->setAttribute('data-uri', $product->detailpageurl->uri)
+  $data_attributes->setAttribute('data-external-url', $product->detailpageurl->uri)
     ->setAttribute('data-title', $product->title->value)
     ->setAttribute('data-shop', $product->shop->value)
     ->setAttribute('data-brand', $product->brand->value)
