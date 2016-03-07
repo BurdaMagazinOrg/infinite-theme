@@ -1,0 +1,31 @@
+{#
+/**
+ * @file product.html.twig
+ * Default theme implementation to present Product data.
+ *
+ * This template is used when viewing Product pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ * - data_attributes: HTML data-* attributes for tracking properties.
+ *
+ * @see template_preprocess_product()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if active %}
+    <div class="item-product" {{ data_attributes }}>
+        <div class="img-container">
+            {{ content.file }}
+        </div>
+        <div class="caption">
+            <div class="text-brand">{{ content.brand }}</div>
+            <div class="text-headline"><a href="#">{{ content.title }}</a></div>
+            <div class="text-price">{{ content.formattedprice }}</div>
+            <div class="text-shop">Zum Shop</div>
+        </div>
+    </div>
+{% endif %}
