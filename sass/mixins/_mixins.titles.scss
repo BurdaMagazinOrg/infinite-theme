@@ -1,7 +1,7 @@
 @mixin title--horizontal-block() {
   text-align: center;
   text-transform: uppercase;
-  padding-top: 6px;  //äöü fix
+  padding-top: 6px; //umlaute fix
 
   @media (max-width: $screen-xs-max) {
     @include text-headline($title--horizontal-block-mobile);
