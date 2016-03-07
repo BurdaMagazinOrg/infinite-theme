@@ -1,6 +1,7 @@
 @mixin title--horizontal-block() {
   text-align: center;
   text-transform: uppercase;
+  padding-top: 6px; //umlaute fix
 
   @media (max-width: $screen-xs-max) {
     @include text-headline($title--horizontal-block-mobile);
@@ -113,8 +114,8 @@
   }
 }
 
-@mixin title--category() {
-  @include text-label($label-size-medium);
+@mixin title--category($size: $title-category-size--default) {
+  @include text-label($size);
   text-transform: uppercase;
   color: $color-highlighted;
 }
