@@ -242,9 +242,10 @@
 
             TrackingManager.trackEvent(tmpTrackingObject);
         },
-        onProductsHandler: function ($pContainer) {
+        onProductsHandler: function ($pContainer, pOptions) {
             var $tmpContainer = $($pContainer),
                 $tmpProductItems = $tmpContainer.find('.item-product'),
+                tmpOptions = _.extend({provider: 'tracdelight', list: 'Product Widget'}, pOptions),
                 tmpItemData = {},
                 tmpItemsData = [];
 
@@ -256,6 +257,7 @@
                     tmpTitle = $tmpProductItem.data('title'),
                     tmpBrand = $tmpProductItem.data('brand'),
                     tmpPrice = $tmpProductItem.data('price'),
+                    tmpShop = $tmpProductItem.data('shop'),
                     tmpCurrency = $tmpProductItem.data('currency');
 
                 /**
@@ -263,6 +265,8 @@
                  * @type {{name: *, id: *, price: *, brand: *, position: *}}
                  */
                 tmpItemData = {
+                    category: tmpShop,
+                    list: tmpOptions.list,
                     name: tmpTitle,
                     id: tmpSKU,
                     price: tmpPrice,
