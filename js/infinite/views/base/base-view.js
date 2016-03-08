@@ -26,16 +26,11 @@
                 $pContainer.find('.icon-whatsapp').css('display', 'inline-flex');
             }
 
-            /**
-             * Pinterest override the Pin-Btn with an URLRegex
-             */
-            $pContainer.find('.icon-pinterest[data-url]').unbind('click.socialsPinterest').bind('click.socialsPinterest', function (pEvent) {
-                //var tmpURL = $(this).data('href').replace(/\?itok=([^&]$|[^&]*)/i, ""),
-                //tmpURL = encodeURIComponent(tmpURL);
-
-                var tmpURL = $(this).data('url'),
-                    tmpMedia = $(this).data('media-url'),
-                    tmpDescription = $(this).data('description'),
+            $pContainer.find('.icon-pinterest[data-url]').unbind('click.socialsPinterest').bind('click.socialsPinterest', $.proxy(function (pEvent) {
+                var $tmpItem = $(pEvent.currentTarget),
+                    tmpURL = $tmpItem.data('url'),
+                    tmpMedia = $tmpItem.data('media-url'),
+                    tmpDescription = $tmpItem.data('description'),
                     tmpPinterestDefaultURL = 'https://pinterest.com/pin/create/button/';
 
                 if (typeof PinUtils != 'undefined') {
@@ -48,17 +43,20 @@
                     tmpPinterestDefaultURL += '?url=' + tmpURL;
                     tmpPinterestDefaultURL += '&media=' + tmpMedia;
                     tmpPinterestDefaultURL += '&description=' + tmpDescription;
+
+                    this.disableBeforeUnloadHandler();
                     window.open(tmpPinterestDefaultURL, '_blank');
                 }
 
                 return false;
-            });
+            }, this));
 
-            $pContainer.find('.icon-facebook[data-url]').unbind('click.socialsFacebook').bind('click.socialsFacebook', function (pEvent) {
-                var tmpURL = $(this).data('url'),
-                    tmpMedia = $(this).data('media-url') || '',
-                    tmpMediaSource = $(this).data('media-source') || '',
-                    tmpShareName = $(this).data('description') || '',
+            $pContainer.find('.icon-facebook[data-url]').unbind('click.socialsFacebook').bind('click.socialsFacebook', $.proxy(function (pEvent) {
+                var $tmpItem = $(pEvent.currentTarget),
+                    tmpURL = $tmpItem.data('url'),
+                    tmpMedia = $tmpItem.data('media-url') || '',
+                    tmpMediaSource = $tmpItem.data('media-source') || '',
+                    tmpShareName = $tmpItem.data('description') || '',
                     tmpFacebookURL = 'https://www.facebook.com/sharer/sharer.php?m2w&u=',
                     $tmpItemMedia = [],
                     $tmpArticleHeadline = [];
@@ -68,9 +66,9 @@
                     /**
                      * If shareName empty check if articleHeadline available
                      */
-                    $tmpItemMedia = $(this).parents('.item-media');
+                    $tmpItemMedia = $tmpItem.parents('.item-media');
                     if (tmpShareName == '' && $tmpItemMedia.length > 0) {
-                        $tmpArticleHeadline = $(this).parents('.item-content--article').find('h1');
+                        $tmpArticleHeadline = $tmpItem.parents('.item-content--article').find('h1');
                         if ($tmpArticleHeadline.length > 0) {
                             tmpShareName = $tmpArticleHeadline.text();
                         }
@@ -86,22 +84,42 @@
                     if (tmpMedia != "") fbParams.picture = decodeURIComponent(tmpMedia);
 
                     FB.ui(fbParams);
-                } else {
-                    tmpFacebookURL += '?url=' + tmpURL;
-                    window.open(tmpFacebookURL, '_blank');
                 }
 
                 return false;
-            });
+            }, this));
 
-            $pContainer.find('.icon-email[data-href]').unbind('click.socialsEmail').bind('click.socialsEmail', function (pEvent) {
-                window.allowBeforeUnload = false;
-                window.open($(this).data('href'), '_top');
-                _.delay(function () {
-                    window.allowBeforeUnload = true;
-                }, 100);
+            $pContainer.find('.icon-email[data-url]').unbind('click.socialsEmail').bind('click.socialsEmail', $.proxy(function (pEvent) {
+                var $tmpItem = $(pEvent.currentTarget),
+                    tmpURL = $tmpItem.data('url'),
+                    tmpDescription = encodeURIComponent($tmpItem.data('description')),
+                    tmpEmailSubject = encodeURIComponent($tmpItem.data('email-subject')),
+                    tmpEmailShareText = encodeURIComponent($tmpItem.data('email-share-text')),
+                    tmpSpacer = encodeURIComponent("\r\n\r\n"),
+                    tmpEmailURL = "mailto:?subject=" + tmpEmailSubject + " " + tmpDescription + "&body="
+                        + tmpEmailShareText
+                        + tmpSpacer
+                        + tmpDescription
+                        + tmpSpacer
+                        + tmpURL;
+
+                this.disableBeforeUnloadHandler();
+                window.open(tmpEmailURL, '_top');
                 return false;
-            });
+            }, this));
+
+            $pContainer.find('.icon-twitter[data-url]').unbind('click.socialsTwitter').bind('click.socialsTwitter', $.proxy(function (pEvent) {
+                var $tmpItem = $(pEvent.currentTarget),
+                    tmpURL = $tmpItem.data('url'),
+                    tmpDescription = encodeURIComponent($tmpItem.data('description')),
+                    tmpShareVia = encodeURIComponent($tmpItem.data('share-via')),
+                    tmpTwitterURL = 'https://twitter.com/intent/tweet?text=',
+                    tmpShareURL = tmpTwitterURL + tmpDescription + tmpURL + tmpShareVia;
+
+                this.disableBeforeUnloadHandler();
+                window.open(tmpShareURL, '_blank');
+                return false;
+            }, this));
         },
         updateBtnActions: function ($pContainer) {
             $pContainer.find('[data-btn-action]').unbind('click.btnAction').bind('click.btnAction', function (pEvent) {
@@ -155,6 +173,12 @@
 
                     window.open(url, target);
                 }, this));
+        },
+        disableBeforeUnloadHandler: function () {
+            window.allowBeforeUnload = false;
+            _.delay(function () {
+                window.allowBeforeUnload = true;
+            }, 100);
         },
         enableView: function () {
             this.enabled = true;

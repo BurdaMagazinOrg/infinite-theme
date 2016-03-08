@@ -1,37 +1,39 @@
-{# Process label to be plain_text and trimmed always #}
-{% set label = label|plain_text|trim %}
+{# Process label_plain to be plain_text and trimmed always #}
+{#{% set label = label|plain_text|trim %}#}
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 
 {% block social_facebook %}
-  <div class="item-social icon-facebook" data-url="{{ url | e('url')}}" data-description="{{ label | e('url') }}"  data-social-type="facebook">
+  <div class="item-social icon-facebook" data-url="{{ url | e('html_attr')}}" data-description="{{ label | e('html_attr') }}"  data-social-type="facebook">
     {% if facebook_share_button %}
       <span>{{ facebook_share_button }}</span>
     {% endif %}
   </div>
 {% endblock %}
 {% block social_whatsapp %}
-  <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
+  <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label_plain ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
     {% if whatsapp_share_button %}
       <span>{{ whatsapp_share_button }}</span>
     {% endif %}
   </a>
 {% endblock %}
 {% block social_pinterest %}
-  <div class="item-social icon-pinterest" data-url="{{ url | e('url')}}" data-media-url="{{ share_img_url | e('url')}}" data-description="{{ label | e('url') }}" data-social-type="pinterest">
+  <div class="item-social icon-pinterest" data-url="{{ url | e('html_attr')}}" data-media-url="{{ share_img_url | e('html_attr')}}" data-description="{{ label | e('html_attr') }}" data-social-type="pinterest">
     {% if pinterest_share_button %}
       <span>{{ pinterest_share_button }}</span>
     {% endif %}
   </div>
 {% endblock %}
+
 {% block social_twitter %}
-  <a class="item-social icon-twitter" href="https://twitter.com/intent/tweet?text={{ (label ~ '\r\n' ~ url ~ '\r\n' ~ twitter_share_via) | e('url') }}" target="_blank" data-social-type="twitter">
+  <div class="item-social icon-twitter" data-url="{{url | e('html_attr')}}" data-share-via="{{ twitter_share_via | e('html_attr') }}" data-description="{{ label | e('html_attr') }}" target="_blank" data-social-type="twitter">
     {% if twitter_share_button %}
       <span>{{ twitter_share_button }}</span>
     {% endif %}
-  </a>
+  </div>
 {% endblock %}
+
 {% block social_email %}
-  <div class="item-social icon-email" data-href="mailto:?subject={{ (email_subject ~ label) | e('url') }}&body={{ (email_share_text  ~ '\r\n\r\n' ~ label ~ '\r\n\r\n' ~ url) | e('url') }}" data-social-type="email">
+  <div class="item-social icon-email" data-url="{{ url | e('html_attr') }}" data-email-share-text="{{ email_share_text | e('html_attr')}}" data-email-subject="{{ email_subject | e('html_attr') }}" data-description="{{ label | e('html_attr') }}" data-social-type="email">
     {% if email_share_button %}
       <span>{{ email_share_button }}</span>
     {% endif %}
