@@ -2,3 +2,280 @@
   @include container-v-padding();
   //@include region-full-content();
 }
+
+@mixin item-content--archive() {
+  .item-content__header {
+    @extend %content__header-center;
+  }
+
+  .btn__open-tree {
+    @extend %region-full-content;
+    @extend %btn__open-tree--mobile;
+    display: none;
+    padding-bottom: $gap-size-md;
+    margin-bottom: $gap-size-md;
+    border-bottom: $h-line-style;
+  }
+
+  .title--page {
+    @extend %title--page-center;
+  }
+
+  .title--list {
+    @include text-label($title-size-xs);
+    text-align: left;
+    display: block;
+    padding-bottom: $gap-size-xs;
+    text-transform: uppercase;
+  }
+
+  .col--left {
+    .title--list {
+      color: $color-brand;
+    }
+
+    .block--archive-tree-ym {
+      & > ul {
+
+        & > li {
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    ul ul {
+      @extend %list__glossary;
+
+      li {
+        min-width: 69px;
+      }
+    }
+  }
+
+  .col--right {
+    .title--list {
+      color: $gray-base;
+    }
+  }
+
+  .list__teasers {
+    li {
+      @extend %list__item--teasers-square-xs;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  /**
+  ** Responsive settings
+  **/
+
+  @media (max-width: $screen-xs-max) {
+    &.btn__open-tree--is-open {
+      .col--left {
+        display: block;
+      }
+
+      .col--right {
+        display: none;
+      }
+    }
+
+    .btn__open-tree {
+      display: block;
+    }
+
+    .col--left {
+      display: none;
+    }
+
+    .col--right {
+      margin-top: $gap-size-md;
+
+      .title--list {
+        display: none;
+      }
+    }
+
+    .list__teasers {
+      li:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+    }
+
+    .block--archive-tree-ym {
+      & > ul {
+        & > li {
+          margin-top: $gap-size-lg;
+        }
+      }
+
+      ul ul {
+        li {
+          margin-right: 1%;
+          min-width: 24%;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .item-content__row {
+      @include make-row();
+      margin-top: $gap-size-xxxl;
+    }
+
+    .col--left {
+      @include make-xxs-column(10);
+      text-align: right;
+    }
+
+    .col--right {
+      @include make-xxs-column(14);
+    }
+
+    .block--archive-tree-ym {
+      width: 220px;
+      display: inline-block;
+
+      & > ul {
+        & > li {
+          margin-top: $gap-size-xl;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .col--left {
+      padding-right: $gap-size-xxxl;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .col--left {
+      padding-right: 140px;
+    }
+  }
+}
+
+@mixin item-content--vocabulary() {
+  .item-content__header {
+    @extend %content__header-center;
+  }
+
+  .title--page {
+    @extend %title--page-center;
+  }
+
+  .btn__open-tree {
+    @extend %region-full-content;
+    @extend %btn__open-tree--mobile;
+    display: none;
+    padding-bottom: $gap-size-md;
+    border-bottom: $h-line-style;
+  }
+
+  .list__glossary {
+    @extend %list__glossary;
+    display: inline-block;
+    text-align: left;
+
+    li {
+      min-width: 37px;
+    }
+  }
+
+  .list__alphabetical {
+    @extend %list__alphabetical;
+  }
+
+
+  /**
+  ** Responsive settings
+  **/
+
+  @media (max-width: $screen-xs-max) {
+    &.btn__open-tree--is-open {
+      .col--left {
+        display: block;
+      }
+    }
+
+    .btn__open-tree {
+      display: block;
+    }
+
+    .col--left {
+      display: none;
+    }
+
+    .list__glossary {
+      display: block;
+      margin-top: $gap-size-sm;
+
+      li {
+        min-width: 24%;
+        margin-right: 1%;
+      }
+    }
+
+    .list__alphabetical {
+      margin-top: $gap-size-xs;
+
+      h2, h3 {
+        @include region-full-content();
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .item-content__row {
+      @include make-row();
+      margin-top: $gap-size-xxxl;
+    }
+
+    .item-content__row-col {
+      @include make-xxs-column($grid-columns/2);
+    }
+
+    .col--left {
+      text-align: right;
+    }
+
+    .list__glossary {
+      width: 280px;
+    }
+
+    .list__alphabetical {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .col--left {
+      padding-right: $gap-size-xl;
+    }
+
+    .list__alphabetical {
+      margin-top: $gap-size-xl;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .col--left {
+      padding-right: $gap-size-xxxl;
+    }
+
+    .list__alphabetical {
+      margin-top: $gap-size-xxxl;
+    }
+  }
+}

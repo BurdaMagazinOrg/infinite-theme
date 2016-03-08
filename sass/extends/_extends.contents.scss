@@ -1,3 +1,11 @@
 %content__header-center {
   @include content__header-center();
 }
+
+%item-content--archive {
+  @include item-content--archive();
+}
+
+%item-content--vocabulary {
+  @include item-content--vocabulary();
+}

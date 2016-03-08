@@ -29,6 +29,14 @@
   }
 }
 
+.item-content--archive {
+  @extend %item-content--archive;
+}
+
+.item-content--vocabulary {
+  @extend %item-content--vocabulary;
+}
+
 .item-content__row {
 
 }
