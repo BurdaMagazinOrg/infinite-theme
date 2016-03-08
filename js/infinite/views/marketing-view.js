@@ -131,7 +131,9 @@
                 $(this.$dynamicIframe).css({'height': tmpIFrameHeight, 'width': tmpIFrameWidth});
                 this.$adSlotContainer.height(tmpIFrameHeight);
 
-                if (tmpIFrameHeight > 0) {
+                //ad-shizzl bug ://
+                //todo check this after orbyd-fix | > 0
+                if (tmpIFrameHeight > 20) {
                     this.show();
                 } else {
                     this.hide();
