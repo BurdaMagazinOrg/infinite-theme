@@ -153,12 +153,22 @@ function infinite_preprocess_views_view(&$variables) {
 function infinite_preprocess_product(&$variables) {
   $product = $variables['elements']['#product'];
   $data_attributes = new Drupal\Core\Template\Attribute;
-  $data_attributes->setAttribute('data-external-url', $product->detailpageurl->uri)
-    ->setAttribute('data-title', $product->title->value)
+  $data_attributes->setAttribute('data-title', $product->title->value)
     ->setAttribute('data-shop', $product->shop->value)
     ->setAttribute('data-brand', $product->brand->value)
     ->setAttribute('data-price', $product->price->value)
     ->setAttribute('data-currency', $product->currency->value)
     ->setAttribute('data-sku', $product->sku->value);
+
+  if (Drupal::request()->attributes->has('node')) {
+    $node = Drupal::request()->attributes->get('node');
+    $sub_id = 'node-' . $node->id();
+  }
+  elseif (Drupal::request()->attributes->has('taxonomy_term')) {
+    $term = Drupal::request()->attributes->get('taxonomy_term');
+    $sub_id = 'term-' . $term->id();
+  }
+
+  $data_attributes->setAttribute('data-external-uri', $product->detailpageurl->uri . '&subid=' . $sub_id);
   $variables['data_attributes'] = $data_attributes;
 }
