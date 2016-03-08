@@ -169,6 +169,6 @@ function infinite_preprocess_product(&$variables) {
     $sub_id = 'term-' . $term->id();
   }
 
-  $data_attributes->setAttribute('data-external-uri', $product->detailpageurl->uri . '&subid=' . $sub_id);
+  $data_attributes->setAttribute('data-external-url', $product->detailpageurl->uri . '&subid=' . $sub_id);
   $variables['data_attributes'] = $data_attributes;
 }
