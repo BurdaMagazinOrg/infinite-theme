@@ -16,6 +16,7 @@
     {% endif %}
   </a>
 {% endblock %}
+
 {% block social_pinterest %}
   <div class="item-social icon-pinterest" data-url="{{ url | e('html_attr')}}" data-media-url="{{ share_img_url | e('html_attr')}}" data-description="{{ label | e('html_attr') }}" data-social-type="pinterest">
     {% if pinterest_share_button %}

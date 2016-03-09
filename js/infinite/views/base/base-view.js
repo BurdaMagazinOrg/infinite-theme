@@ -35,14 +35,14 @@
 
                 if (typeof PinUtils != 'undefined') {
                     PinUtils.pinOne({
-                        url: decodeURIComponent(tmpURL),
-                        media: decodeURIComponent(tmpMedia),
-                        description: decodeURIComponent(tmpDescription)
+                        url: tmpURL,
+                        media: tmpMedia,
+                        description: tmpDescription
                     });
                 } else {
-                    tmpPinterestDefaultURL += '?url=' + tmpURL;
-                    tmpPinterestDefaultURL += '&media=' + tmpMedia;
-                    tmpPinterestDefaultURL += '&description=' + tmpDescription;
+                    tmpPinterestDefaultURL += '?url=' + encodeURIComponent(tmpURL);
+                    tmpPinterestDefaultURL += '&media=' + encodeURIComponent(tmpMedia);
+                    tmpPinterestDefaultURL += '&description=' + encodeURIComponent(tmpDescription);
 
                     this.disableBeforeUnloadHandler();
                     window.open(tmpPinterestDefaultURL, '_blank');
@@ -56,7 +56,7 @@
                     tmpURL = $tmpItem.data('url'),
                     tmpMedia = $tmpItem.data('media-url') || '',
                     tmpMediaSource = $tmpItem.data('media-source') || '',
-                    tmpShareName = $tmpItem.data('description') || '',
+                    tmpDescription = $tmpItem.data('description') || '',
                     tmpFacebookURL = 'https://www.facebook.com/sharer/sharer.php?m2w&u=',
                     $tmpItemMedia = [],
                     $tmpArticleHeadline = [];
@@ -67,23 +67,26 @@
                      * If shareName empty check if articleHeadline available
                      */
                     $tmpItemMedia = $tmpItem.parents('.item-media');
-                    if (tmpShareName == '' && $tmpItemMedia.length > 0) {
+                    if (tmpDescription == '' && $tmpItemMedia.length > 0) {
                         $tmpArticleHeadline = $tmpItem.parents('.item-content--article').find('h1');
                         if ($tmpArticleHeadline.length > 0) {
-                            tmpShareName = $tmpArticleHeadline.text();
+                            tmpDescription = $tmpArticleHeadline.text();
                         }
                     }
 
                     var fbParams = {
                         method: 'feed',
                         caption: window.location.hostname,
-                        name: decodeURIComponent(tmpShareName),
-                        link: decodeURIComponent(tmpURL)
+                        name: tmpDescription,
+                        link: tmpURL
                     };
 
                     if (tmpMedia != "") fbParams.picture = decodeURIComponent(tmpMedia);
 
                     FB.ui(fbParams);
+                } else {
+                    this.disableBeforeUnloadHandler();
+                    window.open(tmpFacebookURL + encodeURIComponent(tmpURL), '_blank');
                 }
 
                 return false;
