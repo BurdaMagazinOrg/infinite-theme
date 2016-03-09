@@ -1,0 +1,130 @@
+@mixin menu--main-navigation() {
+  @extend %clearfix;
+  @extend %transition-duration;
+  @extend %transition-timing-function;
+  @include transition-property(left, right, opacity);
+
+  position: relative;
+  border-top: $h-line-style;
+  border-bottom: $h-line-style;
+  background-color: $white;
+  height: $navigation-min-height;
+
+  &.stuck {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: visible;
+
+    .label-menu {
+      display: none;
+    }
+  }
+
+  .container-content {
+    @extend %flexbox;
+    @extend %align-items-center;
+    position: relative;
+    height: 100%;
+  }
+
+  /** animated properties in page-front.scss **/
+  .logo {
+    width: $logo-sticky-width;
+    margin-right: $navigation-item-space;
+    float: left;
+
+    img {
+      width: $logo-sticky-width;
+      height: 100%;
+    }
+  }
+
+  .menu {
+    white-space: nowrap;
+  }
+
+  .menu-item {
+    @extend %text-label;
+    @extend %text-label-size-navigation;
+    @extend %transition-duration;
+    @extend %transition-timing-function;
+    @include transition-property(opacity, color, visibility);
+    display: inline-block;
+    text-transform: uppercase;
+    margin-left: $navigation-item-space;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    .is-active {
+      color: $color-hover;
+    }
+  }
+
+  .menu-item--active-trail {
+    color: $color-hover;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    padding: $menu--main-navigation-padding-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    padding: $menu--main-navigation-padding-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding: $menu--main-navigation-padding-desktop;
+  }
+
+  @media (max-width: $screen-md-max) {
+    .menu-item {
+      letter-spacing: 0px;
+    }
+  }
+
+  @media (max-width: $screen-sm-max) {
+    .menu {
+      display: none;
+    }
+  }
+}
+
+@mixin menu__sidebar-btn--main-navigation() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: $grid-gutter-width;
+  padding: 0;
+  z-index: 2;
+
+  &:before {
+    font-size: $navigation-menu-icon-size;
+  }
+
+  .label-menu {
+    @include inline-block();
+    @extend %text-label;
+    @extend %text-label-size-navigation;
+    margin-left: $gap-size-sm;
+    display: none;
+    text-transform: uppercase;
+  }
+}
+
+@mixin menu__search-btn--main-navigation() {
+  position: absolute;
+  right: $grid-gutter-width;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+
+  &:before {
+    font-size: $navigation-search-icon-size;
+  }
+}

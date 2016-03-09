@@ -139,6 +139,10 @@ $gap-v-sm-desktop: $gap-size-sm !default;
 ** Main Navigation
 **/
 
+$menu--main-navigation-padding-mobile: 0 80px 0 80px !default;
+$menu--main-navigation-padding-tablet: 0 80px 0 80px !default;
+$menu--main-navigation-padding-desktop: 0 80px 0 80px !default;
+
 $navigation-fade-delay: 0.05s !default;
 $navigation-letter-spacing: 1px !default;
 $navigation-item-space: 28px !default;

@@ -1,0 +1,11 @@
+%menu--main-navigation {
+  @include menu--main-navigation();
+}
+
+%menu__sidebar-btn--main-navigation {
+  @include menu__sidebar-btn--main-navigation();
+}
+
+%menu__search-btn--main-navigation {
+  @include menu__search-btn--main-navigation();
+}
