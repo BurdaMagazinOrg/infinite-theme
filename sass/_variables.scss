@@ -150,17 +150,26 @@ $navigation-search-icon-size: 19px !default;
 /**
 ** Newsletter
 **/
+
+$newsletter--horizontal--padding-mobile: $gap-size-sm $gap-size-sm !default;
+$newsletter--horizontal--padding-tablet: $gap-size-sm $gap-size-sm !default;
+$newsletter--horizontal--padding-desktop: $gap-size-sm $gap-size-sm !default;
+
 $newsletter--horizontal--height-mobile: 367px !default;
 $newsletter--horizontal--height-tablet: 367px !default;
 $newsletter--horizontal--height-desktop: 367px !default;
+
+$newsletter__bg-image--horizontal-mobile: "../images/static/block-newsletter-sm_Tram.jpg" !default;
+$newsletter__bg-image--horizontal-tablet: "../images/static/block-newsletter-md_Tram.jpg" !default;
+$newsletter__bg-image--horizontal-desktop: "../images/static/block-newsletter-xl_Tram.jpg" !default;
 
 $newsletter__checkbox-label--horizontal-mobile: 11px !default;
 $newsletter__checkbox-label--horizontal-tablet: 11px !default;
 $newsletter__checkbox-label--horizontal-desktop: 11px !default;
 
-$newsletter__checkbox-label-width--horizontal-mobile: 440px !default;
-$newsletter__checkbox-label-width--horizontal-tablet: 440px !default;
-$newsletter__checkbox-label-width--horizontal-desktop: 440px !default;
+$newsletter__checkbox-label--horizontal-width-mobile: none !default;
+$newsletter__checkbox-label--horizontal-width-tablet: 440px !default;
+$newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 
 /**
 ** Products
