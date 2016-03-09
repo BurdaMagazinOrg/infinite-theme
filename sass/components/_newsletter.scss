@@ -33,9 +33,22 @@
     }
   }
 
+
   @media (min-width: $screen-md-min) {
 
-    .container-content-item {
+    .container-success {
+      background-color: transparent;
+    }
+
+    .content-wrapper {
+      background-color: rgba($white, 0.8);
+      color: $text-color;
+      width: $screen-sm-min;
+      padding: $gap-size-md;
+      margin-top: -200px;
+    }
+
+    .container-privacy {
       background-color: rgba($white, 0.8);
       width: $screen-sm-min;
       height: 400px;
@@ -45,7 +58,6 @@
       left: 50%;
       bottom: auto;
       right: auto;
-      color: $text-color;
     }
   }
 
