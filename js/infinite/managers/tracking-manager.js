@@ -253,12 +253,12 @@
 
             $.each($tmpProductItems, function (pIndex, pItem) {
                 var $tmpProductItem = $(pItem),
-                    tmpSKU = $tmpProductItem.data('sku'),
-                    tmpTitle = $tmpProductItem.data('title'),
-                    tmpBrand = $tmpProductItem.data('brand'),
-                    tmpPrice = $tmpProductItem.data('price'),
-                    tmpShop = $tmpProductItem.data('shop'),
-                    tmpCurrency = $tmpProductItem.data('currency');
+                    tmpSKU = $tmpProductItem.data('sku') || '',
+                    tmpTitle = $tmpProductItem.data('title') || '',
+                    tmpBrand = $tmpProductItem.data('brand') || '',
+                    tmpPrice = $tmpProductItem.data('price') || '',
+                    tmpShop = $tmpProductItem.data('shop') || '',
+                    tmpCurrency = $tmpProductItem.data('currency') || '';
 
                 /**
                  * Impression Data
@@ -273,6 +273,7 @@
                     brand: tmpBrand,
                     position: (pIndex + 1)
                 }
+
                 tmpItemsData.push(tmpItemData);
 
                 /**
