@@ -97,15 +97,18 @@
     margin-top: 5px;
 
     li {
+      position: relative;
       line-height: 1.5;
       overflow: hidden;
-      padding-left: 20px;
+      padding-left: 22px;
       margin-top: 10px;
 
       &:before {
         @extend %icon-arrow-right-small;
-        margin-right: $padding;
-        margin-left: -20px;
+        left: 0;
+        top: 7px;
+        position: absolute;
+        font-size: 17px;
       }
 
       &:first-child {
