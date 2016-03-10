@@ -1,0 +1,14 @@
+
+@mixin container-v-padding($type: padding, $direction: top) {
+  @media (max-width: $screen-xxs-max) {
+    #{$type}-#{$direction}: $gap-v-region-mobile;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    #{$type}-#{$direction}: $gap-v-region-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    #{$type}-#{$direction}: $gap-v-region-desktop;
+  }
+}

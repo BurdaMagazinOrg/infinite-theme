@@ -1,11 +1,3 @@
-%container-v-margin {
-  @include container-v-margin();
-}
-
-%container-v-padding {
-  @include container-v-padding();
-}
-
 %clear-gutter-gap {
   @include clear-gutter-gap();
 }
@@ -16,4 +8,12 @@
 
 %gap--v-sm {
   @include gap--v-sm();
+}
+
+%gap--v-xl {
+  @include gap--v-xl();
+}
+
+%gap--v-region {
+  @include gap--v-region();
 }

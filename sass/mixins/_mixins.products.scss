@@ -40,8 +40,8 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include container-v-margin(true);
-    @include container-v-padding();
+    @include gap--v-xl();
+    border-top: $h-line-style;
     display: block;
     width: auto;
     margin-right: 0;

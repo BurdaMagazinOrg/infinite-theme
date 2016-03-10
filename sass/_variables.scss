@@ -135,6 +135,20 @@ $gap-v-sm-mobile: $gap-size-xs !default;
 $gap-v-sm-tablet: $gap-size-sm !default;
 $gap-v-sm-desktop: $gap-size-sm !default;
 
+$gap-v-xl-mobile: $gap-size-md !default;
+$gap-v-xl-tablet: $gap-size-lg !default;
+$gap-v-xl-desktop: $gap-size-lg !default;
+
+/**region full content **/
+$region-v-lined: true !default;
+$gap-v-region-mobile: $gap-v-xl-mobile !default;
+$gap-v-region-tablet: $gap-v-xl-tablet !default;
+$gap-v-region-desktop: $gap-v-xl-desktop !default;
+
+$container-padding-top-mobile: $gap-size-md !default;
+$container-padding-top-tablet: $gap-size-lg !default;
+$container-padding-top-desktop: $gap-size-lg !default;
+
 /**
 ** Main Navigation
 **/
@@ -245,16 +259,6 @@ $feed-teaser-gap-top-desktop: $gap-size-xl !default;
 $fc-teaser-headline-size-mobile: $title-size-sm !default;
 $fc-teaser-headline-size-tablet: $title-size-lg !default;
 $fc-teaser-headline-size-desktop: $title-size-xxl !default;
-
-/**region full content **/
-$container-v-lined: true !default;
-$container-margin-top-mobile: $gap-size-md !default;
-$container-margin-top-tablet: $gap-size-lg !default;
-$container-margin-top-desktop: $gap-size-lg !default;
-
-$container-padding-top-mobile: $gap-size-md !default;
-$container-padding-top-tablet: $gap-size-lg !default;
-$container-padding-top-desktop: $gap-size-lg !default;
 
 /** region infinite block **/
 $rib-gap-bottom-mobile: 0 !default;

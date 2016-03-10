@@ -21,40 +21,39 @@
 .region-content, .region-feed-teasers {
   & > .region-full-content:first-child {
     @extend %container-v-padding;
-
-    //todo create a no gap modules mixin
-    &.region-presenter {
-      @extend .region-presenter;
-    }
   }
 
   .region-full-content + .region-full-content {
-    @extend %container-v-padding;
-    @extend %container-v-margin;
+    @extend %gap--v-region;
+    @if ($region-v-lined) {
+      border-top: $h-line-style;
+    }
+  }
+}
 
-    &.region-presenter {
-      @extend .region-presenter;
+#page-wrapper {
+  .region-presenter {
+    padding-top: 0;
+
+    .teaser-content-right {
+      padding-top: $gap-size-md;
     }
   }
 
-  //workaround for the standalone breadcrumb  
   .region-breadcrumb + .region-full-content {
     margin-top: 0;
     border-top: 0;
   }
-}
 
-//todo create a no gap modules mixin
-.region-presenter {
-  padding-top: 0;
-
-  .teaser-content-right {
-    padding-top: $gap-size-md;
+  .region__teasers--horizontal + .region-full-content {
+    margin-top: 0;
   }
 }
 
+
+
 body .region-marketing.ad-active + .region-full-content {
-  @if ($container-v-lined) {
+  @if ($region-v-lined) {
     margin-top: -1px; //double line
   }
 }
