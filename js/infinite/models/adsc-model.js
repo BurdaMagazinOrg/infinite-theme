@@ -17,24 +17,20 @@
             }
         },
         setByElement: function ($pElement) {
-            var tmpAdUnit_1 = $pElement.data('adsc-adunit1'),
-                tmpAdUnit_2 = $pElement.data('adsc-adunit2'),
-                tmpAdUnit_3 = $pElement.data('adsc-adunit3'),
-                tmpAdkeyWord = $pElement.data('adsc-keyword'),
+            var tmpAdUnit_1 = $pElement.data('adsc-adunit1') || '',
+                tmpAdUnit_2 = $pElement.data('adsc-adunit2') || '',
+                tmpAdUnit_3 = $pElement.data('adsc-adunit3') || '',
+                tmpAdkeyWord = $pElement.data('adsc-keyword') || '',
                 tmpCurrentAdsc = _.clone(this.get('adsc'));
 
-            if(tmpAdUnit_1 != undefined) {
+            //important tag
+            if(tmpAdUnit_1 != '') {
                 tmpCurrentAdsc.adsc_adunit1 = tmpAdUnit_1;
             }
-            if(tmpAdUnit_2 != undefined) {
-                tmpCurrentAdsc.adsc_adunit2 = tmpAdUnit_2;
-            }
-            if(tmpAdUnit_3 != undefined) {
-                tmpCurrentAdsc.adsc_adunit3 = tmpAdUnit_3;
-            }
-            if(tmpAdkeyWord != undefined) {
-                tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
-            }
+
+            tmpCurrentAdsc.adsc_adunit2 = tmpAdUnit_2;
+            tmpCurrentAdsc.adsc_adunit3 = tmpAdUnit_3;
+            tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
 
             console.log(">>> tmpCurrentAdsc", tmpCurrentAdsc);
 
