@@ -36,6 +36,8 @@
                 tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
             }
 
+            console.log(">>> tmpCurrentAdsc", tmpCurrentAdsc);
+
             this.set('adsc', tmpCurrentAdsc);
         },
         render: function (pModel) {
