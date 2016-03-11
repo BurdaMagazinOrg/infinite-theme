@@ -1,10 +1,3 @@
-.item-content {
-  //.item-content__header + .item-content__item {
-  //  @include container-v-padding();
-  //  border-top: $h-line-style;
-  //}
-}
-
 .item-content--article .item-content-column {
   min-height: 500px;
 }
@@ -34,6 +27,10 @@
 }
 
 .item-content--vocabulary {
+  @extend %item-content--vocabulary;
+}
+
+.item-content--spotlight {
   @extend %item-content--vocabulary;
 }
 
@@ -120,19 +117,10 @@
   }
 }
 
-.item-content-body {
-
-}
-
 .item-text, .item-link {
   @extend %text-content-html;
-  //@extend %text-content-size-xl;
   @extend %copytext--text-block;
   margin-top: $gap-size-xxxl;
-
-  //p {
-  //  @extend %text-content-size-xl;
-  //}
 
   @media (max-width: $screen-sm-min) {
     margin-top: $gap-size-lg;
