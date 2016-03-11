@@ -98,6 +98,7 @@
 ** Products
 **/
 
+//todo only text
 @mixin product__item-text() {
   .text-headline {
     @include text-headline($product__item-text-headline-size);
@@ -154,4 +155,37 @@
 
 @mixin list__glossary-text() {
   @include text-label($list__glossary-font-size);
+}
+
+@mixin item-content--spotlight-text() {
+  text-align: center;
+
+  .title {
+    letter-spacing: $spotlight__title-letter-spacing;
+    text-shadow: $spotlight__caption-text-shadow;
+
+    @media (max-width: $screen-xs-max) {
+      @include text-headline($spotlight__title-size-mobile);
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      @include text-headline($spotlight__title-size-tablet);
+    }
+
+    @media (min-width: $screen-md-min) {
+      @include text-headline();
+      @include text-headline-size($spotlight__title-size-desktop, 1.1);
+    }
+  }
+
+  .subtitle {
+    @include text-content($spotlight__subtitle-size);
+    text-transform: uppercase;
+    text-shadow: $spotlight__caption-text-shadow;
+  }
+
+  .copytext {
+    @include text-tiny($spotlight__copytext-size);
+    text-shadow: $spotlight__caption-text-shadow;
+  }
 }

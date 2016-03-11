@@ -33,12 +33,6 @@ $font-size-medium: 16px;
 $font-size-small: 14px;
 $font-size-tiny: 12px;
 
-$label-size-xxl: 24px !default;
-$label-size-xl: 21px !default;
-$label-size-large: 18px !default;
-$label-size-medium: 16px !default;
-$label-size-small: 13px !default;
-$label-size-tiny: 11px !default;
 
 $headline-size-h1: 40px !default;
 $headline-size-h2: 36px !default;
@@ -196,12 +190,24 @@ $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 $product__item-text-headline-height: 70px !default;
 $product__item-text-headline-size: 18px !default;
 
+
+$label-size-xxl: 24px !default;
+$label-size-xl: 21px !default;
+$label-size-large: 18px !default;
+$label-size-medium: 16px !default;
+$label-size-small: 13px !default;
+$label-size-tiny: 11px !default;
+
+/**
+** Labels
+**/
+
+/** label-category **/
+$label-category-size--default: $label-size-medium !default;
+
 /**
 ** Titles
 **/
-
-/** Title Category **/
-$title-category-size--default: 16px !default;
 
 /** title--page-center **/
 $title--page-center-mobile: 36px !default;
@@ -321,6 +327,14 @@ $socials-clean-horizontal-bar-icon-size-mobile: $socials-icon-size-sm !default;
 $socials-clean-horizontal-bar-icon-size-tablet: $socials-icon-size-sm !default;
 $socials-clean-horizontal-bar-icon-size-desktop: $socials-icon-size-sm !default;
 
+/** socials horizontal clean bar -- light **/
+$socials-clean-horizontal-bar--light-bg-color: $gray !default;
+$socials-clean-horizontal-bar--light-color: $text-color !default;
+$socials-clean-horizontal-bar--light-border: 1px solid $text-color !default;
+$socials-clean-horizontal-bar--light-bg-color-hover: transparent !default;
+$socials-clean-horizontal-bar--light-color-hover: $white !default;
+$socials-clean-horizontal-bar--light-border-color-hover: $white !default;
+
 /** socials horizontal bar **/
 $socials-labeled-horizontal-bar-label-size: 13px !default;
 
@@ -369,6 +383,28 @@ $socials-media-horizontal-bar-size-desktop: $socials-size-md !default;
 $socials-media-horizontal-bar-icon-size-mobile: $socials-icon-size-md !default;
 $socials-media-horizontal-bar-icon-size-tablet: $socials-icon-size-md !default;
 $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
+
+/**
+** Item Contents
+**/
+
+/** spotlight **/
+$spotlight__title-size-mobile: $title-size-lg !default;
+$spotlight__title-margin: 0 0 $gap-size-sm 0 !default;
+$spotlight__title-size-tablet: $title-size-xxl !default;
+$spotlight__title-size-desktop: 59px !default;
+
+$spotlight__subtitle-size: $label-size-medium !default;
+$spotlight__subtitle-margin: 0 0 $gap-size-sm 0 !default;
+
+$spotlight__copytext-size: 19px !default;
+$spotlight__copytext-margin: 0 0 $gap-size-lg 0 !default;
+
+$spotlight__caption-color: $white !default;
+$spotlight__caption-width: 522px !default;
+$spotlight__caption-padding: $gap-size-sm $gap-size-xxxl 115px $gap-size-sm !default;
+$spotlight__title-letter-spacing: -1.4px !default;
+$spotlight__caption-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !default;
 
 /** seo linker **/
 $seo-linker__item-title-size: $title-size-xxs !default;

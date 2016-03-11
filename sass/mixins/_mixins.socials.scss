@@ -148,31 +148,49 @@
 }
 
 /** horizontal clean bar **/
-@mixin socials-clean-horizontal-bar-item() {
-  display: inline-block;
-  background-color: transparent;
-  border: 1px solid $text-color;
-  color: $text-color;
-  margin-left: $socials-clean-horizontal-bar-left-gap;
-  text-align: center;
+@mixin socials-clean-horizontal-bar-item($bg: transparent,
+  $color: $text-color,
+  $border: 1px solid $color,
+  $bg-hover: transparent,
+  $color-hover: inherit,
+  $border-color-hover: inherit) {
 
-  -webkit-transform: rotate(0.0001deg); //smoothing
+    display: inline-block;
+    background-color: $bg;
+    border: $border;
+    color: $color;
+    margin-left: $socials-clean-horizontal-bar-left-gap;
+    text-align: center;
 
-  &:hover {
-    background-color: transparent;
-  }
+    -webkit-transform: rotate(0.0001deg); //smoothing
 
-  @media (max-width: $screen-xs-max) {
-    @include socials-item-settings($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
-  }
+    &:hover {
+      background-color: $bg-hover;
+      color: $color-hover;
+      border-color: $border-color-hover;
+    }
 
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include socials-item-settings($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
-  }
+    @media (max-width: $screen-xs-max) {
+      @include socials-item-settings($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
+    }
 
-  @media (min-width: $screen-md-min) {
-    @include socials-item-settings($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
-  }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      @include socials-item-settings($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
+    }
+
+    @media (min-width: $screen-md-min) {
+      @include socials-item-settings($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
+    }
+}
+
+@mixin socials-clean-horizontal-bar-item--light($bg: $socials-clean-horizontal-bar--light-bg-color,
+  $color: $socials-clean-horizontal-bar--light-color,
+  $border: $socials-clean-horizontal-bar--light-border,
+  $bg-hover: $socials-clean-horizontal-bar--light-bg-color-hover,
+  $color-hover: $socials-clean-horizontal-bar--light-color-hover,
+  $border-color-hover: $socials-clean-horizontal-bar--light-border-color-hover) {
+
+  @include socials-clean-horizontal-bar-item($bg, $color, $border, $bg-hover, $color-hover, $border-color-hover);
 }
 
 /** horizontal media bar **/

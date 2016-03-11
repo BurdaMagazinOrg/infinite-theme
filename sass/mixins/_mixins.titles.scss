@@ -52,6 +52,7 @@
   }
 }
 
+//todo switch to gap mixins gap--caption-title-top
 @mixin title--caption-top-gap($type: margin) {
   @media (max-width: $screen-xs-max) {
     #{$type}-top: $gap-size-xxs;
@@ -112,10 +113,4 @@
     @include text-label-size($title--content-block-desktop);
     margin-bottom: $title--content-block-gap-bottom-desktop;
   }
-}
-
-@mixin title--category($size: $title-category-size--default) {
-  @include text-label($size);
-  text-transform: uppercase;
-  color: $color-highlighted;
 }

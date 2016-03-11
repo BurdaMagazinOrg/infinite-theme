@@ -279,3 +279,72 @@
     }
   }
 }
+
+
+@mixin item-content--spotlight() {
+  @extend %item-content--spotlight-text;
+  position: relative;
+
+  &:after {
+    content: " ";
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.6)), linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  img {
+    @extend %img-responsive;
+  }
+
+  .spotlight__caption {
+    @extend %flexbox-vertical;
+    @extend %align-items-center;
+    @extend %justify-content-flex-end;
+    color: $spotlight__caption-color;
+    width: $spotlight__caption-width;
+    max-width: 40%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: $spotlight__caption-padding;
+    z-index: 2;
+  }
+
+  .spotlight__title {
+    margin: $spotlight__title-margin;
+  }
+
+  .spotlight__subtitle {
+    margin: $spotlight__subtitle-margin;
+  }
+
+  .spotlight__copytext {
+    margin: $spotlight__copytext-margin;
+  }
+
+  .spotlight__socials {
+    .item-social {
+      @extend %socials-clean-horizontal-bar-item--light;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+
+  }
+
+  @media (min-width: $screen-sm-min) {
+
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+
+  }
+
+  @media (min-width: $screen-md-min) {
+
+  }
+}

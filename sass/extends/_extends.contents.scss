@@ -9,3 +9,7 @@
 %item-content--vocabulary {
   @include item-content--vocabulary();
 }
+
+%item-content--spotlight {
+  @include item-content--spotlight();
+}

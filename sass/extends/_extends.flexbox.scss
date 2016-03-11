@@ -2,15 +2,19 @@
   @include flexbox();
 }
 
+%flexbox-vertical {
+  @include flexbox(column);
+}
+
 %flexbox-inline {
   @include flexbox(horizontal, true);
 }
 
-%flexbox-horizontal {
+%flexbox-direction-horizontal {
   @include vendor(flex-direction, row);
 }
 
-%flexbox-vertical {
+%flexbox-direction-vertical {
   @include vendor(flex-direction, column);
 }
 
@@ -26,12 +30,20 @@
   @include justify-content();
 }
 
+%justify-content-flex-end {
+  @include justify-content(flex-end);
+}
+
 %align-self-center {
   @include align-self();
 }
 
 %align-items-center {
   @include align-items();
+}
+
+%align-items-flex-end {
+  @include align-items(flex-end);
 }
 
 %flex-item-1 {

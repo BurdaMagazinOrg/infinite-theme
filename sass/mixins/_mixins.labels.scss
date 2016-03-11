@@ -1,0 +1,5 @@
+@mixin label--category($size: $label-category-size--default) {
+  @include text-label($size);
+  text-transform: uppercase;
+  color: $color-highlighted;
+}

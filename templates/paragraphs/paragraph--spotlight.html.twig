@@ -38,11 +38,30 @@
 #}
 {%
 set classes = [
-'item-block',
-'item-block-' ~ paragraph.bundle|clean_class,
+'item-content',
+'item-content--' ~ paragraph.bundle|clean_class,
+'spotlight',
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
-    dasdasdasdsadsa
-    {{ content }}  {# see TWIG files in media directory #}
+    <div class="img-container spotlight__img-container">
+        {{ content.field_media }}
+    </div>
+    <div class="caption spotlight__caption">
+        <div class="title spotlight__title">
+            {{ content.field_title }}
+        </div>
+        <div class="subtitle spotlight__subtitle">
+            {{ content.field_subtitle }}
+        </div>
+        <div class="copytext spotlight__copytext">
+            {{ content.field_text }}
+        </div>
+        <div class="socials socials-bar spotlight__socials">
+            {% block teaser_social_bar %}
+                {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''}  %}
+                {% endembed %}
+            {% endblock %}
+        </div>
+    </div>
 </div>

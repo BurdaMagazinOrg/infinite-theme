@@ -28,14 +28,9 @@
   }
 }
 
-@mixin text-headline-size($size) {
+@mixin text-headline-size($size, $line-height: $line-height-headline) {
   font-size: $size;
-
-  @if ($size != $headline-size-h5 and $size != $headline-size-h6) {
-    line-height: floor($size * $line-height-headline);
-  } @else {
-    line-height: floor($size * $line-height-headline) + 3px;
-  }
+  line-height: $line-height;
 }
 
 @mixin text-tiny($size: '', $color: '') {
@@ -53,7 +48,7 @@
 
 @mixin text-tiny-size($size) {
   font-size: $size;
-  line-height: floor($size * $line-height-text-tiny);
+  line-height: $line-height-text-tiny;
 }
 
 @mixin text-content($size: '', $color: '') {
@@ -71,7 +66,7 @@
 
 @mixin text-content-size($size, $line-height: $line-height-content) {
   font-size: $size;
-  line-height: floor($size * $line-height);
+  line-height: $line-height;
 }
 
 @mixin text-content-html() {
