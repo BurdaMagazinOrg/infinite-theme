@@ -34,7 +34,7 @@
     margin-top: -29px;
   }
 
-  @media (max-width: $screen-xs-min) {
+  @media (max-width: $screen-xxs-max) {
     .text-headline {
       @include text-headline-size($headline-size-h1);
       margin-top: -($headline-size-h1/2);

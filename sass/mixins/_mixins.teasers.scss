@@ -43,7 +43,7 @@
     margin-top: $gap-size-lg;
   }
 
-  @media (max-width: $screen-xs-min) {
+  @media (max-width: $screen-xxs-max) {
     .author {
       margin-top: $gap-size-xxs;
     }

@@ -22,7 +22,7 @@
     color: $color-hover;
   }
 
-  @media (max-width: $screen-sm-min) {
+  @media (max-width: $screen-xs-max) {
     &.is-open {
       .menu-item {
         a {
