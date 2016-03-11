@@ -115,7 +115,7 @@
 .item-content .container-row {
   margin-top: $gap-section;
 
-  @media (min-width: $screen-sm-max) {
+  @media (min-width: $screen-md-min) {
     margin-top: $gap-section * 2;
   }
 }

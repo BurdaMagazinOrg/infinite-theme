@@ -107,7 +107,7 @@ body .region-marketing.ad-active + .region-full-content {
     //height: auto !important;
   }
 
-  @media (min-width: $screen-sm-max) {
+  @media (min-width: $screen-md-min) {
     .container-row-sidebar {
       display: block;
       position: relative;
