@@ -21,6 +21,11 @@
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
+            if(!drupalSettings.hasOwnProperty('AdProvider')  || !drupalSettings.hasOwnProperty('AdvertisingSlots')) {
+                console.log("marketingView needs drupalSettings.AdProvider && drupalSettings.AdvertisingSlots settings")
+                return;
+            }
+
             this.configureView();
             this.hide();
 
