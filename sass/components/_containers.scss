@@ -45,7 +45,8 @@
     border-top: 0;
   }
 
-  .region__teasers--horizontal + .region-full-content {
+  .region__teasers--horizontal + .region-full-content,
+  .region__teasers--horizontal + .region-full-content.ad-inactive + .region-full-content {
     margin-top: 0;
   }
 }
