@@ -1,7 +1,3 @@
-%content__header-center {
-  @include content__header-center();
-}
-
 %item-content--archive {
   @include item-content--archive();
 }
@@ -12,4 +8,12 @@
 
 %item-content--spotlight {
   @include item-content--spotlight();
+}
+
+%item-content__header {
+  @include item-content__header();
+}
+
+%content__header-center {
+  @include content__header-center();
 }

@@ -13,12 +13,6 @@
   {{ author_teaser }}
 {% endblock %}
 
-{% block content_highlighted %}
-  {% if content.field_top_paragraphs|render %}
-    {{ content.field_top_paragraphs }}
-  {% endif %}
-{% endblock %}
-
 {% block content_body %}
   {% if content.field_paragraphs['#items'] %}
     {{ content.field_paragraphs }}

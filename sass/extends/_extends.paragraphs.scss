@@ -1,0 +1,11 @@
+%item-paragraph--media {
+  @include item-paragraph--media();
+}
+
+%item-paragraph--gallery {
+  @include item-paragraph--gallery();
+}
+
+%item-paragraph--text {
+  @include item-paragraph--text();
+}

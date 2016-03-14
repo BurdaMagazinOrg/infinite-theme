@@ -1,0 +1,40 @@
+@mixin item-paragraph--media() {
+  &.item-paragraph--full {
+    .img-container {
+      @extend %clear-gutter-gap;
+    }
+  }
+
+  .caption {
+    @extend %region-fixed-content;
+  }
+}
+
+@mixin item-paragraph--gallery() {
+  @extend %item-paragraph--media;
+
+  &.item-paragraph--full {
+    .gallery-header {
+      margin-left: $gap-size-sm;
+      margin-right: $gap-size-sm;
+    }
+
+    .item-media--gallery {
+      @extend %clear-gutter-gap;
+    }
+  }
+}
+
+@mixin item-paragraph--text() {
+  @extend %text-content-html;
+  @extend %copytext--text-block;
+  margin-top: $gap-size-xxxl;
+
+  @media (max-width: $screen-xs-max) {
+    margin-top: $gap-size-lg;
+  }
+
+  & > iframe, .instagram-media {
+    margin-top: $gap-section !important;
+  }
+}

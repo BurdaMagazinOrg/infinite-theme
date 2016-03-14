@@ -73,47 +73,7 @@
       <h1 class="title--article">{{ label }}</h1>
     {% endblock %}
   </div>
-  {% if block('content_highlighted_below_header') is not empty %}
-    <div class="item-content-highlighted-below-header container-fixed-content">
-      {% block content_highlighted_below_header %}
-      {% endblock %}
-    </div>
-  {% endif %}
-  <div class="item-content-column region-fixed-content">
-    <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
-      {% block socials_vertical_bar %}
-        {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''}  %}
-        {% endembed %}
-      {% endblock %}
-    </aside>
-    {% if block('content_highlighted') is not empty %}
-      <div class="item-content-highlighted">
-        {% block content_highlighted %}{% endblock %}
-      </div>
-    {% endif %}
-    <div class="container-row">
-      <div class="container-row-body item-content-body">
-        {% block content_body %}
-          {{ content }}
-        {% endblock %}
-        <div class="socials socials-bar socials-horizontal-bar item-block">
-          {% block socials_horizontal_bar %}
-            {% embed '@infinite/embeds/social_icons.html.twig' %}
-            {% endembed %}
-          {% endblock %}
-        </div>
-      </div>
-      <div class="container-row-sidebar item-content-sidebar">
-        {% if block('content_sidebar') is not empty %}
-          <div class="item-sticky" data-view-type="stickyView">
-            {% block content_sidebar %}
-              {% if content.field_sidebar_blocks %}
-                {{ content.field_sidebar_blocks }}
-              {% endif %}
-            {% endblock %}
-          </div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
+  {% block content_body %}
+    {{ content }}
+  {% endblock %}
 </article>

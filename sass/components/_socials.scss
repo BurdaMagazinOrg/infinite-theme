@@ -58,6 +58,7 @@
 .item-twitter {
   & > iframe {
     @include center-block();
+    width: 100% !important;
     max-width: 500px !important;
   }
 }

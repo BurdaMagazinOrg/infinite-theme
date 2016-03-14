@@ -1,0 +1,16 @@
+.item-paragraph--full {
+
+}
+
+.item-paragraph--media {
+  @extend %item-paragraph--media;
+}
+
+.item-paragraph--gallery {
+  @extend %item-paragraph--gallery;
+}
+
+.item-paragraph--text {
+  @extend %item-paragraph--text;
+}
+

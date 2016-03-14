@@ -1,6 +1,27 @@
 @mixin content__header-center() {
   @include container-v-padding();
-  //@include region-full-content();
+}
+
+@mixin item-content__header() {
+  padding-bottom: $gap-size-lg;
+
+  @media (max-width: $screen-xxs-max) {
+    .author {
+      margin-top: $gap-size-sm;
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .author {
+      margin-top: $gap-size-lg;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .author {
+      margin-top: $gap-size-lg;
+    }
+  }
 }
 
 @mixin item-content--archive() {

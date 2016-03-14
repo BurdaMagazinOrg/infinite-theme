@@ -1,0 +1,35 @@
+<div class="item-content-column region-fixed-content region-paragraph-group">
+
+    <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
+        {% block socials_vertical_bar %}
+            {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''} %}
+            {% endembed %}
+        {% endblock %}
+    </aside>
+
+    <div class="container-row">
+        <div class="container-row-body item-content-body">
+
+            {{ children }}
+
+            <div class="socials socials-bar socials-horizontal-bar item-block">
+                {% block socials_horizontal_bar %}
+                    {% embed '@infinite/embeds/social_icons.html.twig' %}
+                    {% endembed %}
+                {% endblock %}
+            </div>
+
+        </div>
+        <div class="container-row-sidebar item-content-sidebar">
+            {% if block('content_sidebar') is not empty %}
+                <div class="item-sticky" data-view-type="stickyView">
+                    {% block content_sidebar %}
+                        {% if children.field_sidebar_blocks %}
+                            {{ children.field_sidebar_blocks }}
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

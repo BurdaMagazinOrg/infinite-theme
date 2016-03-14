@@ -26,7 +26,7 @@
  */
 #}
 <div{{ attributes.addClass('region-full-content item-content item-content--taxonomy') }}>
-    <div class="region-full-content item-content__item item-content__header">
+    <div class="region-full-content item-content__header">
         {% if has_header_block %}
             <h2 class="title--page">{{ name }}</h2>
         {% else %}
@@ -35,22 +35,13 @@
     </div>
 
     {% if content|render %}
-        <div class="region-full-content item-content__item item-content__content">
-            <div class="container-fixed-content">
-                {% if content.description|render %}
-                    <div class="item-content-highlighted">
-                        {{ content.description }}
-                    </div>
-                {% endif %}
+                {#{% if content.description|render %}#}
+                    {#<div class="item-content-highlighted">#}
+                        {#{{ content.description }}#}
+                    {#</div>#}
+                {#{% endif %}#}
 
-                {% if content.field_paragraph|render %}
-                    <div class="container-row">
-                        <div class="container-row-body item-content-body">
-                            {{ content.field_paragraph|render }}  {# see TWIG files in paragraphs directory#}
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+        {{ content.field_paragraph|render }}  {# see TWIG files in paragraphs directory#}
+
     {% endif %}
 </div>
