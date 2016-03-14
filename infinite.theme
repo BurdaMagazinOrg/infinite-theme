@@ -174,3 +174,13 @@ function infinite_preprocess_product(&$variables) {
   $data_attributes->setAttribute('data-external-url', $product->detailpageurl->uri . '&subid=' . $sub_id);
   $variables['data_attributes'] = $data_attributes;
 }
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function infinite_preprocess_paragraph(&$variables) {
+  if (!empty($variables['elements']['field_media']['0']['#media'])) {
+    $media = $variables['elements']['field_media']['0']['#media'];
+    $variables['media_bundle'] = $media->bundle();
+  }
+}
