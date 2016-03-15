@@ -37,8 +37,9 @@
  */
 #}
 {% set classes = [
-'item-block',
-'item-products',
+'item-paragraph',
+'item-paragraph--' ~ view_mode|clean_class,
+'item-paragraph--' ~ paragraph.bundle|clean_class,
 ] %}
 {% if content | render %}
 <div {{ attributes.addClass(classes) }} data-view-type="productsView">

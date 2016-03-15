@@ -45,6 +45,29 @@
   }
 }
 
+
+@mixin margin--v-item-content__item($gaps: ($margin-v-item-content__item-mobile, $margin-v-item-content__item-tablet, $margin-v-item-content__item-desktop)) {
+  @include _margin--v($gaps);
+}
+
+@mixin _margin--v($gaps) {
+  $gap-mobile: nth($gaps, 1);
+  $gap-tablet: nth($gaps, 2);
+  $gap-desktop: nth($gaps, 3);
+
+  @media (max-width: $screen-xxs-max) {
+    margin-top: round($gap-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    margin-top: round($gap-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-top: round($gap-desktop);
+  }
+}
+
 /**
 ** Common
 **/

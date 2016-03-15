@@ -1,3 +1,7 @@
+%item-content--taxonomy {
+  @include item-content--taxonomy();
+}
+
 %item-content--archive {
   @include item-content--archive();
 }
@@ -6,12 +10,20 @@
   @include item-content--vocabulary();
 }
 
-%item-content--spotlight {
-  @include item-content--spotlight();
-}
-
 %item-content__header {
   @include item-content__header();
+}
+
+%item-content__content {
+  @include item-content__content();
+}
+
+%item-content__block {
+  @include item-content__block();
+}
+
+%item-content__row--sidebar {
+  @include item-content__row--sidebar();
 }
 
 %content__header-center {

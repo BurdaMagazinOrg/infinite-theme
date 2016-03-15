@@ -1,7 +1,23 @@
+@mixin item-paragraph--small() {
+  @include clearfix();
+}
+
+
 @mixin item-paragraph--media() {
+  .img-container {
+    background-color: $bg-color-gray-light;
+  }
+
+  //mode - full
   &.item-paragraph--full {
     .img-container {
       @extend %clear-gutter-gap;
+    }
+
+    .item-media--image-portrait {
+      img {
+        max-width: 70%;
+      }
     }
   }
 
@@ -14,27 +30,238 @@
   @extend %item-paragraph--media;
 
   &.item-paragraph--full {
+    //todo check if possible in root // here
     .gallery-header {
       margin-left: $gap-size-sm;
       margin-right: $gap-size-sm;
     }
 
     .item-media--gallery {
+      //todo check if possible in root
       @extend %clear-gutter-gap;
     }
+
+    .img-container {
+      padding-bottom: $gallery-ratio-full;
+    }
+  }
+
+  &.item-paragraph--middle {
+    .img-container {
+      padding-bottom: $gallery-ratio-middle;
+    }
+
+    .item-media--image-landscape {
+      img {
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  &.item-paragraph--small {
+    .img-container {
+      padding-bottom: $gallery-ratio-small;
+    }
+  }
+
+  .swiper-slide {
+    width: 100%;
   }
 }
 
 @mixin item-paragraph--text() {
   @extend %text-content-html;
   @extend %copytext--text-block;
-  margin-top: $gap-size-xxxl;
-
-  @media (max-width: $screen-xs-max) {
-    margin-top: $gap-size-lg;
-  }
 
   & > iframe, .instagram-media {
     margin-top: $gap-section !important;
+  }
+}
+
+@mixin item-paragraph--spotlight() {
+  @include item-content--spotlight-text();
+
+  /** Defaults **/
+  position: relative;
+
+  img {
+    @include img-full-responsive();
+  }
+
+  .item-social {
+    @include socials-clean-horizontal-bar-item--light();
+  }
+
+  .spotlight__caption {
+    color: $spotlight__caption-color;
+  }
+
+  /** Layouts **/
+  &.item-paragraph--full {
+    @include item-paragraph--spotlight-full();
+  }
+
+  &.item-paragraph--middle {
+    @include item-paragraph--spotlight-middle();
+  }
+
+  &.item-paragraph--small {
+    @include item-paragraph--spotlight-small();
+  }
+}
+
+@mixin item-paragraph--spotlight-full() {
+  @include clear-gutter-gap();
+
+  @media (max-width: $screen-xs-max) {
+    @include _spotlight--small();
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include _spotlight--middle();
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include _spotlight--full();
+  }
+}
+
+@mixin item-paragraph--spotlight-middle() {
+  @media (max-width: $screen-xs-max) {
+    @include _spotlight--small();
+  }
+
+  @media (min-width: $screen-sm-min) {
+    @include _spotlight--middle();
+  }
+}
+
+@mixin item-paragraph--spotlight-small() {
+  @include _spotlight--small();
+}
+
+@mixin _spotlight--small() {
+  @include item-content--spotlight-small-text();
+
+  .spotlight__caption {
+    @include container-v-padding();
+    padding-left: $gap-size-sm;
+    padding-right: $gap-size-sm;
+    padding-bottom: $gap-size-sm;
+    background: $spotlight__caption-bg;
+    position: relative;
+  }
+
+  .spotlight__title {
+    margin-bottom: $gap-size-xxs;
+  }
+
+  .spotlight__subtitle {
+    margin-bottom: $gap-size-xs;
+  }
+
+  .spotlight__copytext {
+    margin-bottom: $gap-size-lg;
+  }
+}
+
+@mixin _spotlight--middle() {
+  @include item-content--spotlight-middle-text();
+
+  .spotlight__caption {
+    @include container-v-padding();
+    padding-left: $gap-size-sm;
+    padding-right: $gap-size-sm;
+    padding-bottom: $gap-size-sm;
+    background: $spotlight__caption-bg;
+    position: relative;
+  }
+
+  .spotlight__title, .spotlight__subtitle {
+    margin-bottom: $gap-size-xs;
+  }
+
+  .spotlight__copytext {
+    margin-bottom: $gap-size-md;
+  }
+}
+
+@mixin _spotlight--full() {
+  @include item-content--spotlight-full-text();
+
+  .spotlight__caption {
+    @include flexbox(vertical);
+    @include align-items(center);
+    @include justify-content(flex-end);
+    width: $spotlight__caption--full-width;
+    max-width: 40%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: $spotlight__caption-padding;
+    z-index: 2;
+  }
+
+  .spotlight__title, .spotlight__subtitle {
+    margin-bottom: $gap-size-sm;
+  }
+
+  .spotlight__copytext {
+    margin-bottom: $gap-size-lg;
+  }
+
+  &:after {
+    content: " ";
+    background: $spotlight__caption--full-bg;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin item-paragraph--instagram() {
+  padding: 10px;
+
+  iframe {
+    @include center-block();
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+@mixin item-paragraph--pinterest() {
+  text-align: center;
+}
+
+@mixin item-paragraph--twitter() {
+  & > iframe {
+    @include center-block();
+    width: 100% !important;
+    max-width: 500px !important;
+  }
+}
+
+@mixin item-paragraph--tracdelight() {
+  @include products--horizontal-block();
+
+  &.item-paragraph--full {
+    .item-title {
+      @extend %title--horizontal-block;
+    }
+  }
+
+  &.item-paragraph--small, &.item-paragraph--middle {
+    .item-title {
+      @extend %title--content-block;
+    }
+  }
+
+  .item-product {
+    @include product__item-text();
+    @include product__item--horizontal-block();
   }
 }

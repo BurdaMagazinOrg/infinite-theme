@@ -68,12 +68,14 @@
  */
 #}
 <article {{ attributes.addClass('region-full-content item-content item-content--article') }} data-view-type="articleView">
-  <div class="item-content__header">
-    {% block content_header %}
-      <h1 class="title--article">{{ label }}</h1>
-    {% endblock %}
-  </div>
-  {% block content_body %}
-    {{ content }}
-  {% endblock %}
+    <div class="item-content__header">
+        {% block content_header %}
+            <h1 class="title--article">{{ label }}</h1>
+        {% endblock %}
+    </div>
+    <div class="region-full-content item-content__content">
+        {% block content_body %}
+            {{ content }}
+        {% endblock %}
+    </div>
 </article>

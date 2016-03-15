@@ -88,33 +88,6 @@ body .region-marketing.ad-active + .region-full-content {
 
 }
 
-#page-wrapper .container-row {
-  @extend %flexbox;
-  position: relative;
-
-  .container-row-body {
-    @extend %flex-item-1;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .container-row-sidebar {
-    display: none;
-    //height: auto !important;
-  }
-
-  @media (min-width: $screen-md-min) {
-    .container-row-sidebar {
-      display: block;
-      position: relative;
-      min-height: 1px;
-      float: left;
-      width: $feed-ad-column-width;
-      margin-left: $feed-ad-column-margin;
-    }
-  }
-}
-
 .region-no-gap + .region-full-content {
   border-top: 0;
   padding-top: 0;

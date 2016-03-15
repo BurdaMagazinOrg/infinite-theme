@@ -163,19 +163,6 @@
   .title {
     letter-spacing: $spotlight__title-letter-spacing;
     text-shadow: $spotlight__caption-text-shadow;
-
-    @media (max-width: $screen-xs-max) {
-      @include text-headline($spotlight__title-size-mobile);
-    }
-
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-      @include text-headline($spotlight__title-size-tablet);
-    }
-
-    @media (min-width: $screen-md-min) {
-      @include text-headline();
-      @include text-headline-size($spotlight__title-size-desktop, 1.1);
-    }
   }
 
   .subtitle {
@@ -185,7 +172,38 @@
   }
 
   .copytext {
-    @include text-tiny($spotlight__copytext-size);
+    @include text-tiny();
     text-shadow: $spotlight__caption-text-shadow;
+  }
+}
+
+@mixin item-content--spotlight-small-text() {
+  .title {
+    @include text-headline($spotlight__title-size-mobile);
+  }
+
+  .copytext {
+    @include text-tiny-size($spotlight__copytext-size-mobile);
+  }
+}
+
+@mixin item-content--spotlight-middle-text() {
+  .title {
+    @include text-headline($spotlight__title-size-tablet);
+  }
+
+  .copytext {
+    @include text-tiny-size($spotlight__copytext-size-tablet);
+  }
+}
+
+@mixin item-content--spotlight-full-text() {
+  .title {
+    @include text-headline();
+    @include text-headline-size($spotlight__title-size-desktop, 1.1);
+  }
+
+  .copytext {
+    @include text-tiny-size($spotlight__copytext-size-desktop);
   }
 }

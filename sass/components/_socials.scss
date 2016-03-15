@@ -43,26 +43,6 @@
   }
 }
 
-.item-instagram {
-  iframe {
-    @include center-block();
-    max-width: 500px;
-    width: 100%;
-  }
-}
-
-.item-pinterest {
-  text-align: center;
-}
-
-.item-twitter {
-  & > iframe {
-    @include center-block();
-    width: 100% !important;
-    max-width: 500px !important;
-  }
-}
-
 .socials-bar {
   .item-social.icon-whatsapp {
     display: none;

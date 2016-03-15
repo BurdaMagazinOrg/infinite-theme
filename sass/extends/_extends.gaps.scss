@@ -17,3 +17,8 @@
 %gap--v-region {
   @include gap--v-region();
 }
+
+/** Margins **/
+%margin--v-item-content__item {
+  @include margin--v-item-content__item();
+}

@@ -38,8 +38,9 @@
 #}
 {%
 set classes = [
-'item-block',
-'item-' ~ paragraph.bundle|clean_class,
+'item-paragraph',
+'item-paragraph--' ~ view_mode|clean_class,
+'item-paragraph--' ~ paragraph.bundle|clean_class,
 ]
 %}
 {% if content.tweet %}

@@ -36,32 +36,21 @@
  * @ingroup themeable
  */
 #}
-{%
-set classes = [
+{% set classes = [
+'region-full-content',
 'item-paragraph',
 'item-paragraph--' ~ view_mode|clean_class,
 'item-paragraph--' ~ paragraph.bundle|clean_class,
-]
-%}
-<div{{ attributes.addClass(classes) }}>
-    <div class="img-container spotlight__img-container">
-        {{ content.field_media }}
-    </div>
-    <div class="caption spotlight__caption">
-        <div class="title spotlight__title">
-            {{ content.field_title }}
-        </div>
-        <div class="subtitle spotlight__subtitle">
-            {{ content.field_subtitle }}
-        </div>
-        <div class="copytext spotlight__copytext">
-            {{ content.field_text }}
-        </div>
-        <div class="socials socials-bar spotlight__socials">
-            {% block teaser_social_bar %}
-                {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''}  %}
-                {% endembed %}
-            {% endblock %}
+] %}
+{% if content | render %}
+<div {{ attributes.addClass(classes) }} data-view-type="productsView">
+    {%  if content.field_title|render %}
+        <div class="text-headline item-title">{{ content.field_title }}</div>
+    {% endif %}
+    <div class="container-fixed-content">
+        <div class="container-content">
+            {{ content|without('field_title') }}
         </div>
     </div>
 </div>
+{% endif %}

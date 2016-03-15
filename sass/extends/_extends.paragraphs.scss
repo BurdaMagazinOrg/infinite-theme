@@ -1,3 +1,7 @@
+%item-paragraph--small {
+  @include item-paragraph--small();
+}
+
 %item-paragraph--media {
   @include item-paragraph--media();
 }
@@ -8,4 +12,24 @@
 
 %item-paragraph--text {
   @include item-paragraph--text();
+}
+
+%item-paragraph--spotlight {
+  @include item-paragraph--spotlight();
+}
+
+%item-paragraph--instagram {
+  @include item-paragraph--instagram();
+}
+
+%item-paragraph--pinterest {
+  @include item-paragraph--pinterest();
+}
+
+%item-paragraph--twitter {
+  @include item-paragraph--twitter();
+}
+
+%item-paragraph--tracdelight {
+  @include item-paragraph--tracdelight();
 }

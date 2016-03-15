@@ -1,21 +1,21 @@
 {% extends "@infinite/node/node.html.twig" %}
 
 {% block content_header %}
-  {% block sponsored %}
-    {% include '@infinite/node/twig-block-sponsored.html.twig' %}
-  {% endblock %}
+    {% block sponsored %}
+        {% include '@infinite/node/twig-block-sponsored.html.twig' %}
+    {% endblock %}
 
-  {% if has_header_block %}
-    <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
-  {% else %}
-    <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
-  {% endif %}
-  {{ author_teaser }}
+    {% if has_header_block %}
+        <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
+    {% else %}
+        <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% endif %}
+    {{ author_teaser }}
 {% endblock %}
 
 {% block content_body %}
-  {% if content.field_paragraphs['#items'] %}
-    {{ content.field_paragraphs }}
-    {{ content.field_tags }}
-  {% endif %}
+    {% if content.field_paragraphs['#items'] %}
+        {{ content.field_paragraphs }}
+        {{ content.field_tags }}
+    {% endif %}
 {% endblock %}

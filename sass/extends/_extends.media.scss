@@ -1,0 +1,7 @@
+%item-media--image {
+  @include item-media--image();
+}
+
+%item-media--gallery {
+  @include item-media--gallery();
+}

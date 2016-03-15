@@ -73,11 +73,14 @@
             return Math.max(1, tmpActiveSlide - tmpSliderItems.slice(0, tmpActiveSlide).filter('.ads-container-gallery').length);
         },
         resizeContent: function (pSwiper) {
-            var $tmpGalleryWrapper = $(pSwiper.container).find('.swiper-wrapper'),
+            var $tmpContainer = $(pSwiper.container),
+                $tmpGalleryWrapper = $tmpContainer.find('.swiper-wrapper'),
                 $tmpCurrentElement = $tmpGalleryWrapper.find('.swiper-slide-active'),
                 tmpHeight = $tmpCurrentElement.find('.img-container').outerHeight(true) + $tmpCurrentElement.find('.caption').outerHeight(true);
 
+            //todo check if still relevant (orientation change bug)
             $tmpGalleryWrapper.height(tmpHeight);
+            $tmpContainer.height($tmpGalleryWrapper.position().top + tmpHeight);
         },
         fitImages: function (pSwiper) {
             //orientation render bug :(

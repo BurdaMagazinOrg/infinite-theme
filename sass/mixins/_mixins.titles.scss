@@ -3,6 +3,10 @@
   text-transform: uppercase;
   padding-top: 6px; //umlaute fix
 
+  .item-title {
+    text-align: center;  
+  }
+
   @media (max-width: $screen-xs-max) {
     @include text-headline($title--horizontal-block-mobile);
     margin-bottom: $title--horizontal-block-gap-bottom-mobile;
@@ -98,6 +102,10 @@
 
 @mixin title--content-block() {
   @include text-label();
+
+  .item-title {
+    text-align: left;
+  }
 
   @media (max-width: $screen-xs-max) {
     @include text-label-size($title--content-block-mobile);

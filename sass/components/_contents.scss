@@ -6,6 +6,18 @@
   @extend %item-content__header;
 }
 
+.item-content__content {
+  @extend %item-content__content;
+}
+
+.item-content__block {
+  @extend %item-content__block;
+}
+
+.item-content__row--sidebar {
+  @extend %item-content__row--sidebar;
+}
+
 .item-content--archive {
   @extend %item-content--archive;
 }
@@ -14,85 +26,9 @@
   @extend %item-content--vocabulary;
 }
 
-.item-content--spotlight {
-  @extend %item-content--spotlight;
+.item-content--taxonomy {
+  @extend %item-content--taxonomy;
 }
-
-.item-content__row {
-
-}
-
-.item-content__row-col {
-
-}
-
-.item-content-column {
-  position: relative;
-  padding-left: $article-socials-column-width;
-  min-height: 160px;
-
-  .socials-vertical-bar {
-    position: absolute;
-    top: 0;
-    margin-left: -$article-socials-column-width;
-    z-index: 10;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    padding-left: 0;
-
-    .socials-vertical-bar {
-      margin-left: 0;
-      position: relative;
-      top: 0;
-      bottom: auto;
-    }
-  }
-}
-
-.item-content-body, .item-content-highlighted {
-  position: relative;
-
-  .item-block, & > .region-full-content {
-    margin-top: $gap-section * 2;
-
-    @media (max-width: $screen-xs-max) {
-      margin-top: $gap-section;
-    }
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  .item-block {
-    .item-title {
-      text-align: left;
-    }
-  }
-}
-
-//deprecated
-//.item-content-highlighted {
-//  margin-top: $gap-section;
-//  margin-bottom: $gap-size-xxxl;
-//
-//  @media (max-width: $screen-xs-max) {
-//    margin-top: $gap-size-lg;
-//  }
-//
-//  .item-media--gallery .item-media--image {
-//    .img-container {
-//      padding-bottom: 57%;
-//    }
-//  }
-//
-//  .item-media--image.portrait {
-//    .img-container {
-//      padding-bottom: 61%;
-//    }
-//  }
-//}
 
 .item-content .container-row {
   margin-top: $gap-section;

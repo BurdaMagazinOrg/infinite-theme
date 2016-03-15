@@ -33,7 +33,6 @@ $font-size-medium: 16px;
 $font-size-small: 14px;
 $font-size-tiny: 12px;
 
-
 $headline-size-h1: 40px !default;
 $headline-size-h2: 36px !default;
 $headline-size-h3: 30px !default;
@@ -103,7 +102,6 @@ $item-image-socials-width: 70px;
 $article-socials-column-width: 96px !default;
 $full-headlines-max-width: 840px !default;
 
-
 /** new variables **/
 $title-size-xxxs: 15px !default;
 $title-size-xxs: 18px !default;
@@ -123,8 +121,11 @@ $gap-size-xl: 36px !default;
 $gap-size-xxl: 48px !default;
 $gap-size-xxxl: 61px !default;
 
+/**
+** Lists Gaps
+** padding + margin
+**/
 
-/** Lists Gaps **/
 $gap-v-sm-mobile: $gap-size-xs !default;
 $gap-v-sm-tablet: $gap-size-sm !default;
 $gap-v-sm-desktop: $gap-size-sm !default;
@@ -133,12 +134,20 @@ $gap-v-xl-mobile: $gap-size-md !default;
 $gap-v-xl-tablet: $gap-size-lg !default;
 $gap-v-xl-desktop: $gap-size-lg !default;
 
-/**region full content **/
-$region-v-lined: true !default;
 $gap-v-region-mobile: $gap-v-xl-mobile !default;
 $gap-v-region-tablet: $gap-v-xl-tablet !default;
 $gap-v-region-desktop: $gap-v-xl-desktop !default;
 
+/**
+** Lists Margins
+** only margin
+**/
+$margin-v-item-content__item-mobile: $gap-size-lg !default;
+$margin-v-item-content__item-tablet: $gap-size-lg !default;
+$margin-v-item-content__item-desktop: $gap-size-xxxl !default;
+
+/**region full content **/
+$region-v-lined: true !default;
 $container-padding-top-mobile: $gap-size-md !default;
 $container-padding-top-tablet: $gap-size-lg !default;
 $container-padding-top-desktop: $gap-size-lg !default;
@@ -190,7 +199,6 @@ $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 $product__item-text-headline-height: 70px !default;
 $product__item-text-headline-size: 18px !default;
 
-
 $label-size-xxl: 24px !default;
 $label-size-xl: 21px !default;
 $label-size-large: 18px !default;
@@ -227,7 +235,8 @@ $title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
 /** title--content-block **/
 $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
-$title--content-block-desktop: 30px !default; //fkn different design shizzl
+$title--content-block-desktop: 30px !default;
+//fkn different design shizzl
 
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
 $title--content-block-gap-bottom-tablet: $gap-size-md !default;
@@ -241,7 +250,8 @@ $title--article-desktop: $title-size-xl !default;
 /** title--text-block **/
 $title--text-block-mobile: $title-size-sm !default;
 $title--text-block-tablet: $title-size-md !default;
-$title--text-block-desktop: 30px !default; //fkn different design shizzl
+$title--text-block-desktop: 30px !default;
+//fkn different design shizzl
 
 /** copytext--text-block **/
 $copytext--text-block-mobile: 18px !default;
@@ -390,25 +400,33 @@ $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 
 /** spotlight **/
 $spotlight__title-size-mobile: $title-size-lg !default;
-$spotlight__title-margin: 0 0 $gap-size-sm 0 !default;
-$spotlight__title-size-tablet: $title-size-xxl !default;
+$spotlight__title-size-tablet: $title-size-xl !default;
 $spotlight__title-size-desktop: 59px !default;
 
 $spotlight__subtitle-size: $label-size-medium !default;
-$spotlight__subtitle-margin: 0 0 $gap-size-sm 0 !default;
 
-$spotlight__copytext-size: 19px !default;
-$spotlight__copytext-margin: 0 0 $gap-size-lg 0 !default;
+$spotlight__copytext-size-mobile: 19px !default;
+$spotlight__copytext-size-tablet: 19px !default;
+$spotlight__copytext-size-desktop: 21px !default;
+
+$spotlight__caption-bg: $black !default;
+
+$spotlight__caption--full-bg: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.6)), linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)) !default;
+$spotlight__caption--full-width: 522px !default;
 
 $spotlight__caption-color: $white !default;
-$spotlight__caption-width: 522px !default;
-$spotlight__caption-padding: $gap-size-sm $gap-size-xxxl 115px $gap-size-sm !default;
+$spotlight__caption-padding: $gap-size-sm $gap-size-xxxl 4% $gap-size-sm !default;
 $spotlight__title-letter-spacing: -1.4px !default;
 $spotlight__caption-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !default;
 
 /** seo linker **/
 $seo-linker__item-title-size: $title-size-xxs !default;
 $seo-linker__link-list-size: 15px !default;
+
+/** Gallery */
+$gallery-ratio-full: 75% !default;
+$gallery-ratio-middle: 56% !default;
+$gallery-ratio-small: 75% !default;
 
 /** animation **/
 $menu-home-animated-logo: true !default;

@@ -2,6 +2,10 @@
 
 }
 
+.item-paragraph--small {
+  @extend %item-paragraph--small;
+}
+
 .item-paragraph--media {
   @extend %item-paragraph--media;
 }
@@ -14,3 +18,27 @@
   @extend %item-paragraph--text;
 }
 
+.item-paragraph--spotlight {
+  @extend %item-paragraph--spotlight;
+}
+
+.item-paragraph--instagram {
+  @extend %item-paragraph--instagram;
+}
+
+.item-paragraph--pinterest {
+  @extend %item-paragraph--pinterest;
+}
+
+.item-paragraph--twitter {
+  @extend %item-paragraph--twitter;
+}
+
+.item-paragraph--tracdelight {
+  @extend %item-paragraph--tracdelight;
+}
+
+//todo check this
+//.item-products + .item-block {
+//  margin-top: $gap-section;
+//}
