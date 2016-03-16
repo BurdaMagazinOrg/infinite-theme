@@ -1,5 +1,5 @@
 {# Process label to be plain_text and trimmed always #}
-{#{% set label = label|plain_text|trim %}#}
+{% set label = label|plain_text|trim %}
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 
 {% block social_facebook %}
@@ -10,7 +10,7 @@
   </div>
 {% endblock %}
 {% block social_whatsapp %}
-  <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label | plain_text | trim ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
+  <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
     {% if whatsapp_share_button %}
       <span>{{ whatsapp_share_button }}</span>
     {% endif %}
@@ -26,11 +26,11 @@
 {% endblock %}
 
 {% block social_twitter %}
-  <div class="item-social icon-twitter" data-url="{{ url | e('html_attr') }}" data-share-via="{{ twitter_share_via | e('html_attr') }}" data-description="{{ label | e('html_attr') }}" target="_blank" data-social-type="twitter">
+  <a class="item-social icon-twitter" href="https://twitter.com/intent/tweet?text={{ (label ~ '\r\n' ~ url ~ '\r\n' ~ twitter_share_via) | e('url') }}" target="_blank" data-social-type="twitter">
     {% if twitter_share_button %}
       <span>{{ twitter_share_button }}</span>
     {% endif %}
-  </div>
+  </a>
 {% endblock %}
 
 {% block social_email %}
