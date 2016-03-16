@@ -54,17 +54,20 @@
             /**
              * fix the page reload problems
              */
-            window.allowBeforeUnload = true;
-            window.onbeforeunload = function (pEvent) {
-                if (!window.allowBeforeUnload) return;
 
-                Waypoint.disableAll();
+            if ($('body').hasClass('page-article')) {
+                window.allowBeforeUnload = true;
+                window.onbeforeunload = function (pEvent) {
+                    if (!window.allowBeforeUnload) return;
 
-                $('body').css({
-                    top: $(window).scrollTop() * -1 + 'px',
-                    left: $(window).scrollLeft() * -1 + 'px'
-                })
-                window.scrollTo(0, 0);
+                    Waypoint.disableAll();
+
+                    $('body').css({
+                        top: $(window).scrollTop() * -1 + 'px',
+                        left: $(window).scrollLeft() * -1 + 'px'
+                    })
+                    window.scrollTo(0, 0);
+                }
             }
         },
         createModels: function () {
