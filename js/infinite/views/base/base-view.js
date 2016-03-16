@@ -110,19 +110,6 @@
                 window.open(tmpEmailURL, '_top');
                 return false;
             }, this));
-
-            $pContainer.find('.icon-twitter[data-url]').unbind('click.socialsTwitter').bind('click.socialsTwitter', $.proxy(function (pEvent) {
-                var $tmpItem = $(pEvent.currentTarget),
-                    tmpURL = $tmpItem.data('url'),
-                    tmpDescription = encodeURIComponent($tmpItem.data('description')),
-                    tmpShareVia = encodeURIComponent($tmpItem.data('share-via')),
-                    tmpTwitterURL = 'https://twitter.com/intent/tweet?text=',
-                    tmpShareURL = tmpTwitterURL + tmpDescription + ' ' + tmpURL + ' ' + tmpShareVia;
-
-                this.disableBeforeUnloadHandler();
-                window.open(tmpShareURL, '_blank');
-                return false;
-            }, this));
         },
         updateBtnActions: function ($pContainer) {
             $pContainer.find('[data-btn-action]').unbind('click.btnAction').bind('click.btnAction', function (pEvent) {
