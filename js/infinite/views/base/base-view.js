@@ -117,7 +117,7 @@
                     tmpDescription = encodeURIComponent($tmpItem.data('description')),
                     tmpShareVia = encodeURIComponent($tmpItem.data('share-via')),
                     tmpTwitterURL = 'https://twitter.com/intent/tweet?text=',
-                    tmpShareURL = tmpTwitterURL + tmpDescription + tmpURL + tmpShareVia;
+                    tmpShareURL = tmpTwitterURL + tmpDescription + ' ' + tmpURL + ' ' + tmpShareVia;
 
                 this.disableBeforeUnloadHandler();
                 window.open(tmpShareURL, '_blank');

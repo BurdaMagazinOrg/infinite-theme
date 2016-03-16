@@ -10,7 +10,7 @@
   </div>
 {% endblock %}
 {% block social_whatsapp %}
-  <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
+  <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label | plain_text | trim ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
     {% if whatsapp_share_button %}
       <span>{{ whatsapp_share_button }}</span>
     {% endif %}
@@ -26,7 +26,7 @@
 {% endblock %}
 
 {% block social_twitter %}
-  <div class="item-social icon-twitter" data-url="{{url | e('html_attr')}}" data-share-via="{{ twitter_share_via | e('html_attr') }}" data-description="{{ label | e('html_attr') }}" target="_blank" data-social-type="twitter">
+  <div class="item-social icon-twitter" data-url="{{ url | e('html_attr') }}" data-share-via="{{ twitter_share_via | e('html_attr') }}" data-description="{{ label | e('html_attr') }}" target="_blank" data-social-type="twitter">
     {% if twitter_share_button %}
       <span>{{ twitter_share_button }}</span>
     {% endif %}
