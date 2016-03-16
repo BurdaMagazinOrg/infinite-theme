@@ -5,12 +5,14 @@
         {% include '@infinite/node/twig-block-sponsored.html.twig' %}
     {% endblock %}
 
-    {% if has_header_block %}
-        <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
-    {% else %}
-        <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+    {% if not has_spotlight_title %}
+        {% if has_header_block %}
+            <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
+        {% else %}
+            <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+        {% endif %}
+        {{ author_teaser }}
     {% endif %}
-    {{ author_teaser }}
 {% endblock %}
 
 {% block content_body %}
