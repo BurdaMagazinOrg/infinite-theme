@@ -58,13 +58,13 @@
             window.onbeforeunload = function (pEvent) {
                 if (!window.allowBeforeUnload) return;
 
-                Waypoint.disableAll();
-
-                $('body').css({
-                    top: $(window).scrollTop() * -1 + 'px',
-                    left: $(window).scrollLeft() * -1 + 'px'
-                })
-                window.scrollTo(0, 0);
+                //Waypoint.disableAll();
+                //
+                //$('body').css({
+                //    top: $(window).scrollTop() * -1 + 'px',
+                //    left: $(window).scrollLeft() * -1 + 'px'
+                //})
+                //window.scrollTo(0, 0);
             }
         },
         createModels: function () {

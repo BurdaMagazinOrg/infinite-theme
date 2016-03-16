@@ -6,6 +6,10 @@
   @include item-paragraph--media();
 }
 
+%item-paragraph--media--image {
+  @include item-paragraph--media--image();
+}
+
 %item-paragraph--gallery {
   @include item-paragraph--gallery();
 }

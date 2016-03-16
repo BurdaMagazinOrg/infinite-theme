@@ -351,7 +351,7 @@
                     tmpAction += '_presenter';
                 } else if ($pItem.parents('.teaser').length > 0) {
                     tmpAction += '_teaser';
-                } else if ($pItem.parents('.item-media').length > 0) {
+                } else if ($pItem.parents('.item-paragraph--media').length > 0) {
                     tmpAction += '_media';
                 } else if ($pItem.parents('.socials-horizontal-bar').length > 0) {
                     tmpAction += '_horizontal_bar';

@@ -10,6 +10,10 @@
   @extend %item-paragraph--media;
 }
 
+.item-paragraph--media--image {
+  @extend %item-paragraph--media--image;
+}
+
 .item-paragraph--gallery {
   @extend %item-paragraph--gallery;
 }
@@ -37,8 +41,3 @@
 .item-paragraph--tracdelight {
   @extend %item-paragraph--tracdelight;
 }
-
-//todo check this
-//.item-products + .item-block {
-//  margin-top: $gap-section;
-//}

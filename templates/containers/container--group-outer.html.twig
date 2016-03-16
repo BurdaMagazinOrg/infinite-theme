@@ -1,4 +1,10 @@
 <div class="region-full-content item-content__block item-group--outer">
+    <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
+        {% block socials_vertical_bar %}
+            {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''} %}
+            {% endembed %}
+        {% endblock %}
+    </aside>
 
     {{ children }}
 
@@ -9,10 +15,4 @@
         {% endblock %}
     </div>
 
-    <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
-        {% block socials_vertical_bar %}
-            {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''} %}
-            {% endembed %}
-        {% endblock %}
-    </aside>
 </div>

@@ -66,7 +66,7 @@
                     /**
                      * If shareName empty check if articleHeadline available
                      */
-                    $tmpItemMedia = $tmpItem.parents('.item-media');
+                    $tmpItemMedia = $tmpItem.parents('.item-paragraph--media');
                     if (tmpDescription == '' && $tmpItemMedia.length > 0) {
                         $tmpArticleHeadline = $tmpItem.parents('.item-content--article').find('h1');
                         if ($tmpArticleHeadline.length > 0) {

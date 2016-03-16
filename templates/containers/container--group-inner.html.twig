@@ -5,10 +5,10 @@
         </div>
 
         <div class="item-content__row-col col--right">
-            {% if field_sidebar_blocks is not empty %}
+            {% if parent.field_sidebar_blocks is not empty %}
                 <div class="item-sticky" data-view-type="stickyView">
                 {% block content_sidebar %}
-                    {{ field_sidebar_blocks }}
+                    {{ parent.field_sidebar_blocks }}
                     </div>
                 {% endblock %}
             {% endif %}
