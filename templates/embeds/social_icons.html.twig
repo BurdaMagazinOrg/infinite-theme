@@ -26,7 +26,7 @@
 {% endblock %}
 
 {% block social_twitter %}
-  <a class="item-social icon-twitter" href="https://twitter.com/intent/tweet?text={{ (label ~ '\r\n' ~ url ~ '\r\n' ~ twitter_share_via) | e('url') }}" target="_blank" data-social-type="twitter">
+  <a class="item-social icon-twitter" href="https://twitter.com/intent/tweet?text={{ label | e('url') ~ '&url=' ~ url | e('url') ~ '&via=' ~ twitter_share_via | e('url') }}" target="_blank" data-social-type="twitter">
     {% if twitter_share_button %}
       <span>{{ twitter_share_button }}</span>
     {% endif %}
