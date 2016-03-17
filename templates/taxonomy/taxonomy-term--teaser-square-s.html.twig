@@ -21,14 +21,9 @@
 
     {% block teaser_text_headline %}
       <h2 class="text-headline">
-        <a href="{{ url }}" target="_self">{{ label }}</a>
+        <a href="{{ url }}" target="_self">{{ name }}</a>
       </h2>
     {% endblock %}
 
   </div>
-
-  {% if (show_contextual_links) %}
-    {{ title_suffix.contextual_links }}
-  {% endif %}
-
 </article>
