@@ -308,8 +308,13 @@
         },
         trackPageView: function (pPath) {
             var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1");
-            window.dataLayer.push({event: 'page_view', 'location': tmpPath});
-            console.log(">> trackPageView >>", document.title, tmpPath);
+
+            if (typeof window.dataLayer != "undefined") {
+                window.dataLayer.push({event: 'page_view', 'location': tmpPath});
+                console.log(">> trackPageView >>", document.title, tmpPath);
+            } else {
+                console.log("No Google Tag Manager available");
+            }
         },
         trackIVW: function (iamDataObject) {
             if (window.iam_data == undefined) return;
