@@ -42,8 +42,11 @@
   @extend %item-paragraph--tracdelight;
 }
 
-
 .item-paragraph--content-teaser {
   @extend %item-paragraph--content-teaser;
+}
+
+.item-paragraph--term-teaser {
+  @extend %item-paragraph--term-teaser;
 }
 

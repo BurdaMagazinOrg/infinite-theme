@@ -285,7 +285,7 @@
 }
 
 @mixin item-paragraph--term-teaser() {
-  @include item-paragraph--content-teaser(); 
+  @include item-paragraph--content-teaser();
 }
 
 @mixin item-paragraph--content-teaser() {

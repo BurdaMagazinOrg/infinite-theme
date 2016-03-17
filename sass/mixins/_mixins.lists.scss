@@ -44,17 +44,19 @@
 
   @media (max-width: $screen-xs-max) {
     margin-left: -$list__content-teaser--horizontal-gap-h-mobile;
-    margin-right: -$list__content-teaser--horizontal-gap-h-mobile;
+    margin-right: -$list__content-teaser--horizontal-gap-h-mobile;  
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     margin-left: -$list__content-teaser--horizontal-gap-h-tablet;
     margin-right: -$list__content-teaser--horizontal-gap-h-tablet;
+    margin-top: -$list__content-teaser__item--horizontal-gap-top-tablet*2;
   }
 
   @media (min-width: $screen-md-min) {
     margin-left: -$list__content-teaser--horizontal-gap-h-desktop;
     margin-right: -$list__content-teaser--horizontal-gap-h-desktop;
+    margin-top: -$list__content-teaser__item--horizontal-gap-top-desktop*2;
   }
 }
 
