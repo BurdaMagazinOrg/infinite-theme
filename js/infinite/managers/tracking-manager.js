@@ -299,13 +299,22 @@
                 'value': ''
             }, tmpTrackingObject);
 
-            window.dataLayer.push(tmpTrackingObject);
-            console.log(">> trackEvent >>", tmpTrackingObject);
+            if (typeof window.dataLayer != "undefined") {
+                window.dataLayer.push(tmpTrackingObject);
+                console.log(">> trackEvent >>", tmpTrackingObject);
+            } else {
+                console.log("No Google Tag Manager available");
+            }
         },
         trackPageView: function (pPath) {
             var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1");
-            window.dataLayer.push({event: 'page_view', 'location': tmpPath});
-            console.log(">> trackPageView >>", document.title, tmpPath);
+
+            if (typeof window.dataLayer != "undefined") {
+                window.dataLayer.push({event: 'page_view', 'location': tmpPath});
+                console.log(">> trackPageView >>", document.title, tmpPath);
+            } else {
+                console.log("No Google Tag Manager available");
+            }
         },
         trackIVW: function (iamDataObject) {
             if (window.iam_data == undefined) return;
@@ -335,8 +344,12 @@
             }
 
 
-            console.log(">>> ecommerce", tmpTrackingObject);
-            window.dataLayer.push(tmpTrackingObject);
+            if (typeof window.dataLayer != "undefined") {
+                window.dataLayer.push(tmpTrackingObject);
+                console.log(">>> ecommerce", tmpTrackingObject);
+            } else {
+                console.log("No Google Tag Manager available");
+            }
         },
         getCurrentPath: function () {
             return Backbone.history.location.pathname;
