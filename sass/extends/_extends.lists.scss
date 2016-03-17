@@ -6,6 +6,14 @@
   @include list__images--horizontal__item();
 }
 
+%list__content-teaser--horizontal {
+  @include list__content-teaser--horizontal();
+}
+
+%list__content-teaser__item--horizontal {
+  @include list__content-teaser__item--horizontal();
+}
+
 %list__item--teasers-square-xs {
   @include list__item--teasers-square-xs();
 }

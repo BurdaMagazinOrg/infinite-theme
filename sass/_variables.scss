@@ -124,6 +124,10 @@ $gap-size-xxxl: 61px !default;
 ** padding + margin
 **/
 
+$gap-v-tiny-mobile: $gap-size-xxs !default;
+$gap-v-tiny-tablet: $gap-size-xs !default;
+$gap-v-tiny-desktop: $gap-size-xs !default;
+
 $gap-v-sm-mobile: $gap-size-xs !default;
 $gap-v-sm-tablet: $gap-size-sm !default;
 $gap-v-sm-desktop: $gap-size-sm !default;
@@ -313,6 +317,11 @@ $teaser-square-xs-headline-size-mobile: $title-size-xxxs !default;
 $teaser-square-xs-headline-size-tablet: $title-size-sm !default;
 $teaser-square-xs-headline-size-desktop: $title-size-md !default;
 
+/** teaser content **/
+$teaser--content-headline-size-mobile: $title-size-xxxs !default;
+$teaser--content-headline-size-tablet: $title-size-xxs !default;
+$teaser--content-headline-size-desktop: $title-size-xxs !default;
+
 /**
 **  Lists **
 **/
@@ -327,6 +336,15 @@ $list__glossary-background-color-active: $color-highlighted !default;
 $list__glossary-background-disabled-color: $bg-color-gray-light !default;
 $list__glossary-disabled-color: $gray-base !default;
 $list__glossary-color-active: $white !default;
+
+/** list--content-teaser **/
+$list__content-teaser--horizontal-count--small: 3 !default;
+$list__content-teaser--horizontal-count--middle: 4 !default;
+$list__content-teaser--horizontal-count--full: 5 !default;
+
+$list__content-teaser--horizontal-gap-mobile: 0 !default;
+$list__content-teaser--horizontal-gap-tablet: floor($gap-size-sm/2) !default;
+$list__content-teaser--horizontal-gap-desktop: floor($gap-size-sm/2) !default;
 
 /** list--alphabetical **/
 
@@ -452,7 +470,6 @@ $gallery-ratio-small: 75% !default;
 $media--header-height-mobile: 100px !default;
 $media--header-height-tablet: 150px !default;
 $media--header-height-desktop: 200px !default;
-
 
 /** animation **/
 $menu-home-animated-logo: true !default;

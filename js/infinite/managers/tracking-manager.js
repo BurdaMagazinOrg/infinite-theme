@@ -299,8 +299,12 @@
                 'value': ''
             }, tmpTrackingObject);
 
-            window.dataLayer.push(tmpTrackingObject);
-            console.log(">> trackEvent >>", tmpTrackingObject);
+            if (typeof window.dataLayer != "undefined") {
+                window.dataLayer.push(tmpTrackingObject);
+                console.log(">> trackEvent >>", tmpTrackingObject);
+            } else {
+                console.log("No Google Tag Manager available");
+            }
         },
         trackPageView: function (pPath) {
             var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1");
@@ -334,9 +338,12 @@
                     return;
             }
 
-
             console.log(">>> ecommerce", tmpTrackingObject);
-            window.dataLayer.push(tmpTrackingObject);
+            if (typeof window.dataLayer != "undefined") {
+                window.dataLayer.push(tmpTrackingObject);
+            } else {
+                console.log("No Google Tag Manager available");
+            }
         },
         getCurrentPath: function () {
             return Backbone.history.location.pathname;

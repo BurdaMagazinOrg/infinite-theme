@@ -159,6 +159,50 @@
   }
 }
 
+@mixin teaser--content() {
+  .caption {
+    @include title--caption-top-gap();
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include make-row();
+    margin-top: $gap-v-tiny-mobile;
+    padding-top: $gap-v-tiny-mobile;
+
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .img-container {
+      @include make-column(6);
+      padding-right: 0;
+    }
+
+    .caption {
+      @include make-column(18);
+      margin-top: 0;
+      padding-right: 0;
+    }
+
+    .text-headline {
+      @include text-content-size($teaser--content-headline-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-content-size($teaser--content-headline-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-content-size($teaser--content-headline-size-desktop);
+    }
+  }
+}
+
 @mixin teaser-full-content() {
   padding-top: 0;
   position: relative;

@@ -12,6 +12,10 @@
 }
 
 /** Lists Gaps **/
+@mixin gap--v-tiny($gaps: ($gap-v-tiny-mobile, $gap-v-tiny-tablet, $gap-v-tiny-desktop)) {
+  @include _gap($gaps);
+}
+
 @mixin gap--v-sm($gaps: ($gap-v-sm-mobile, $gap-v-sm-tablet, $gap-v-sm-desktop)) {
   @include _gap($gaps);
 }

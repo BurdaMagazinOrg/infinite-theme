@@ -18,6 +18,10 @@
   @include teaser-list-h();
 }
 
+%teaser--content {
+  @include teaser--content();
+}
+
 %teaser-full-content {
   @include teaser-full-content();
 }

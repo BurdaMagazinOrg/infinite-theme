@@ -12,3 +12,12 @@
     #{$type}-#{$direction}: $gap-v-region-desktop;
   }
 }
+
+@mixin make-column($columns, $gutter: $grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  float: left;
+  width: percentage(($columns / $grid-columns));
+}
