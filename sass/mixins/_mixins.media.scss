@@ -52,9 +52,6 @@
     }
   }
 
-  .item-media--image {
-  }
-
   .img-container {
     height: 0;
     padding-bottom: 75%; //default - overrides in paragraphs layoutswitcher
@@ -74,11 +71,6 @@
     @extend %align-items-center;
   }
 
-  img {
-    //max-height: 100%;
-    //max-width: 100%;
-  }
-
   .item-media--image-landscape {
     img {
       width: 100%;
@@ -95,5 +87,67 @@
 
   .text-description {
     min-height: (floor($font-size-large * $line-height-text-tiny)*2) + 5px;
+  }
+}
+
+/**
+** Media Header
+**/
+
+@mixin item-media--header() {
+  @include item-media--header-text();
+  @include clear-gutter-gap();
+  @include _item-media--header-height();
+  overflow: hidden;
+  position: relative;
+
+  .media-header-image {
+    position: static;
+  }
+
+  img {
+    @extend %img-full-responsive;
+    @include animation(fadeIn $transition-duration $transition-easing $transition-duration both);
+  }
+
+  .caption {
+    @extend %flexbox;
+    @extend %align-items-center;
+    @extend %justify-content-center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .text-headline {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@mixin item-media--header-image() {
+  @include _item-media--header-height();
+  position: relative;
+
+  .img-container {
+    img {
+      @extend %img-full-responsive;
+    }
+  }
+}
+
+@mixin _item-media--header-height() {
+  @media (max-width: $screen-xs-max) {
+    min-height: $media--header-height-mobile;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    min-height: $media--header-height-mobile;
+  }
+
+  @media (min-width: $screen-md-min) {
+    min-height: $media--header-height-mobile;
   }
 }

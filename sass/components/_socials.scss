@@ -30,7 +30,7 @@
 }
 
 .socials-horizontal-bar {
-  @extend %socials-labeled-horizontal-bar-text;
+  @include socials-labeled-horizontal-bar-text();
 
   .item-social {
     @extend %socials-labeled-horizontal-bar-item;

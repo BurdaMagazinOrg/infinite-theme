@@ -74,10 +74,7 @@
 }
 
 #menu-sidebar-main {
-  font-family: $font-navigation;
-  font-size: $font-size-navigation;
-  letter-spacing: $navigation-letter-spacing;
-  text-transform: uppercase;
+  @include menu--main-navigation-text();
 }
 
 #menu-sidebar-misc {

@@ -40,20 +40,10 @@
   @extend %item-media--gallery;
 }
 
-.media-header-image {
-  position: relative;
+.item-media--header {
+  @extend %item-media--header;
+}
 
-  .img-container {
-    img {
-      @extend %img-full-responsive;
-    }
-  }
-
-  .caption {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
+.item-media--header-image {
+  @extend %item-media--header-image;
 }

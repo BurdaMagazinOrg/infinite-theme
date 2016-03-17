@@ -1,3 +1,4 @@
+//todo swap in paragraphs
 .seo-linker {
 
 }
@@ -9,7 +10,8 @@
 .seo-linker--image {
   @extend %swipeable__images--horizontal;
   @extend %list__images--horizontal;
-  @extend %seo-linker-text;
+
+  @include seo-linker-text();
 }
 
 .seo-linker__item--image {

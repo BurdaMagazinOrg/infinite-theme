@@ -30,10 +30,6 @@
   @include text-label-size($label-size-xxl);
 }
 
-%text-label-size-navigation {
-  @include text-label-size($font-size-navigation);
-}
-
 /**
 * Text-Headline
 **/

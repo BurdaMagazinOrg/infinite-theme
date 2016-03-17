@@ -4,7 +4,7 @@
   &:first-child.region-marketing {
 
     &.ad-active {
-      margin-top: -$gap-section;
+      @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
     }
 
     &.ad-inactive + .region-full-content {

@@ -2,10 +2,35 @@
   @include menu--main-navigation();
 }
 
+%menu--main-navigation__item {
+  @include menu--main-navigation__item();
+}
+
+%menu--main-navigation__item--active {
+  @include menu--main-navigation__item--active();
+}
+
 %menu__sidebar-btn--main-navigation {
   @include menu__sidebar-btn--main-navigation();
 }
 
 %menu__search-btn--main-navigation {
   @include menu__search-btn--main-navigation();
+}
+
+/** Submenu **/
+%menu--submenu-navigation {
+  @include menu--submenu-navigation();
+}
+
+%menu--submenu-navigation--mobile {
+  @include menu--submenu-navigation--mobile();
+}
+
+%menu--submenu-navigation__item {
+  @include menu--submenu-navigation__item();
+}
+
+%menu--submenu-navigation__item--active {
+  @include menu--submenu-navigation__item--active();
 }

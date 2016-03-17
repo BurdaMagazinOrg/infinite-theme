@@ -17,6 +17,15 @@
 
 @mixin text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
   font-family: $font-headline;
+  @include _text-headline($size, $color, $letter-spacing);
+}
+
+@mixin text-headline-bold($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
+  font-family: $font-headline-bold;
+  @include _text-headline($size, $color, $letter-spacing);
+}
+
+@mixin _text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
   letter-spacing: $letter-spacing;
 
   @if ($size!= '') {

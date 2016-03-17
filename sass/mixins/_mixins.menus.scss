@@ -4,6 +4,8 @@
   @extend %transition-timing-function;
   @include transition-property(left, right, opacity);
 
+  @include menu--main-navigation-text();
+
   position: relative;
   border-top: $h-line-style;
   border-bottom: $h-line-style;
@@ -34,7 +36,7 @@
   /** animated properties in page-front.scss **/
   .logo {
     width: $logo-sticky-width;
-    margin-right: $navigation-item-space;
+    margin: $menu--main-navigation-logo-sticky-margin;
     float: left;
 
     img {
@@ -48,22 +50,7 @@
   }
 
   .menu-item {
-    @extend %text-label;
-    @extend %text-label-size-navigation;
-    @extend %transition-duration;
-    @extend %transition-timing-function;
-    @include transition-property(opacity, color, visibility);
-    display: inline-block;
-    text-transform: uppercase;
-    margin-left: $navigation-item-space;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    .is-active {
-      color: $color-hover;
-    }
+    @extend %menu--main-navigation__item;
   }
 
   .menu-item--active-trail {
@@ -83,9 +70,7 @@
   }
 
   @media (max-width: $screen-md-max) {
-    .menu-item {
-      letter-spacing: 0px;
-    }
+
   }
 
   @media (max-width: $screen-sm-max) {
@@ -93,6 +78,137 @@
       display: none;
     }
   }
+}
+
+@mixin menu--main-navigation__item() {
+  @extend %transition-duration;
+  @extend %transition-timing-function;
+  @include transition-property(opacity, color, visibility);
+  display: inline-block;
+  margin: $menu--main-navigation__item_margin;
+  padding: $menu--main-navigation__item_padding;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  .is-active, a:hover {
+    @extend %menu--main-navigation__item--active;
+  }
+
+  @media (max-width: $screen-md-max) {
+    letter-spacing: 0px;
+  }
+}
+
+@mixin menu--main-navigation__item--active() {
+  color: $menu--main-navigation-active-color;
+}
+
+/**
+** Submenu
+**/
+
+@mixin menu--submenu-navigation() {
+  @include menu--submenu-navigation-text();
+
+  .menu {
+    position: relative;
+    text-align: center;
+    margin: $grid-gutter-width 0;
+  }
+
+  .menu-item {
+    @include menu--submenu-navigation__item();
+  }
+
+  @include menu--submenu-navigation--mobile();
+}
+
+@mixin menu--submenu-navigation--mobile() {
+  @media (max-width: $screen-xs-max) {
+    &.is-open {
+      .menu-item {
+
+        a {
+          display: block;
+        }
+
+        .is-active {
+          @include icon-arrow-up-small();
+        }
+      }
+
+      .menu {
+        padding-top: $menu--submenu-navigation-size + $gap-size-md;
+      }
+    }
+
+    .menu {
+      padding-top: $menu--submenu-navigation-size;
+    }
+
+    .menu-item {
+      display: block;
+
+      a {
+        display: none;
+        text-align: left;
+        color: $menu--submenu-navigation-mobile-color;
+      }
+
+      .is-active {    
+        @include icon();
+        @include icon-arrow-down-small();
+
+        color: $menu--submenu-navigation-mobile-color-active;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-top: 0;
+
+        &:before {
+          color: $menu--submenu-navigation-mobile-color-active;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin menu--submenu-navigation__item() {
+  @include inline-block();
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  a {
+    padding: $menu--submenu-navigation__item_padding;
+  }
+
+  .is-active, a:hover {
+    @include menu--submenu-navigation__item--active();
+  }
+
+  @media (max-width: $screen-xs-max) {
+    margin: $menu--submenu-navigation__item_margin-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    margin: $menu--submenu-navigation__item_margin-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin: $menu--submenu-navigation__item_margin-desktop;
+  }
+}
+
+@mixin menu--submenu-navigation__item--active() {
+  @include menu--main-navigation__item--active();
 }
 
 @mixin menu__sidebar-btn--main-navigation() {
@@ -109,11 +225,8 @@
 
   .label-menu {
     @include inline-block();
-    @extend %text-label;
-    @extend %text-label-size-navigation;
     margin-left: $gap-size-sm;
     display: none;
-    text-transform: uppercase;
   }
 }
 

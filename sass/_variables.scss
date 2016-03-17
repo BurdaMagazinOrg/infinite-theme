@@ -24,8 +24,6 @@ $line-height-headline: 1.2 !default;
 $line-height-content: 1.55 !default;
 $line-height-text-tiny: 1.4 !default;
 
-$font-size-navigation: 15px !default;
-
 $font-size-base: 16px;
 $font-size-xl: 21px;
 $font-size-large: 18px;
@@ -156,17 +154,30 @@ $container-padding-top-desktop: $gap-size-lg !default;
 ** Main Navigation
 **/
 
+$menu--main-navigation-size: 14px !default;
 $menu--main-navigation-padding-mobile: 0 80px 0 80px !default;
 $menu--main-navigation-padding-tablet: 0 80px 0 80px !default;
 $menu--main-navigation-padding-desktop: 0 80px 0 80px !default;
+$menu--main-navigation-active-color: $color-hover !default;
+$menu--main-navigation__item_padding: 5px 7px !default;
+$menu--main-navigation__item_margin: 0 0px !default;
+
+$menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
 
 $navigation-fade-delay: 0.05s !default;
 $navigation-letter-spacing: 1px !default;
-$navigation-item-space: 28px !default;
-$navigation-item-space-lg: 1% !default;
 $navigation-min-height: 60px !default;
 $navigation-menu-icon-size: 17px !default;
 $navigation-search-icon-size: 19px !default;
+
+//submenu
+$menu--submenu-navigation-size: $menu--main-navigation-size - 2px !default;
+$menu--submenu-navigation__item_padding: 3px 7px !default;
+$menu--submenu-navigation-mobile-color: $gray-base !default;
+$menu--submenu-navigation-mobile-color-active: $gray-base !default;
+$menu--submenu-navigation__item_margin-mobile: 15px 0px !default;
+$menu--submenu-navigation__item_margin-tablet: 15px 0px !default;
+$menu--submenu-navigation__item_margin-desktop: 0 5px !default;
 
 /**
 ** Newsletter
@@ -217,11 +228,18 @@ $label-category-size--default: $label-size-medium !default;
 ** Titles
 **/
 
+$title--media-header-mobile: 48px !default;
+$title--media-header-tablet: 72px !default;
+$title--media-header-desktop: 72px !default;
+$title--media-header-text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 1px !default;
+$title--media-header-letter-spacing: -3px !default;
+$title--media-header-color: $white !default;
+
 /** title--page-center **/
 $title--page-center-mobile: 36px !default;
 $title--page-center-tablet: 59px !default;
 $title--page-center-desktop: 59px !default;
-$title--page-center-color: $gray-base;
+$title--page-center-color: $gray-base !default;
 
 /** title--horizontal-block **/
 $title--horizontal-block-mobile: $title-size-xs !default;
@@ -236,8 +254,8 @@ $title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
 $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
-//fkn different design shizzl
 
+//fkn different design shizzl
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
 $title--content-block-gap-bottom-tablet: $gap-size-md !default;
 $title--content-block-gap-bottom-desktop: $gap-size-xxl !default;
@@ -427,6 +445,14 @@ $seo-linker__link-list-size: 15px !default;
 $gallery-ratio-full: 75% !default;
 $gallery-ratio-middle: 56% !default;
 $gallery-ratio-small: 75% !default;
+
+/**
+** Media
+**/
+$media--header-height-mobile: 100px !default;
+$media--header-height-tablet: 150px !default;
+$media--header-height-desktop: 200px !default;
+
 
 /** animation **/
 $menu-home-animated-logo: true !default;

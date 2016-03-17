@@ -5,3 +5,11 @@
 %item-media--gallery {
   @include item-media--gallery();
 }
+
+%item-media--header {
+  @include item-media--header();
+}
+
+%item-media--header-image {
+  @include item-media--header-image();
+}

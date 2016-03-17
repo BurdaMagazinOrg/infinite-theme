@@ -46,6 +46,10 @@
 }
 
 
+@mixin margin--v-region($gaps: ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop)) {
+  @include _margin--v($gaps);
+}
+
 @mixin margin--v-item-content__item($gaps: ($margin-v-item-content__item-mobile, $margin-v-item-content__item-tablet, $margin-v-item-content__item-desktop)) {
   @include _margin--v($gaps);
 }

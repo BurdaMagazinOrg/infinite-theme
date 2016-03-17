@@ -5,11 +5,7 @@
     }
 
     .menu-item .is-active {
-      color: inherit;
-
-      &:hover {
-        color: $color-hover;
-      }
+      @extend %menu--main-navigation__item--active;
     }
   }
 }

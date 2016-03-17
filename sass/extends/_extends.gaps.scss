@@ -18,6 +18,10 @@
   @include gap--v-region();
 }
 
+%margin--v-region {
+  @include margin--v-region();
+}
+
 /** Margins **/
 %margin--v-item-content__item {
   @include margin--v-item-content__item();

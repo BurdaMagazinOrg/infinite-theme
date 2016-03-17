@@ -6,8 +6,7 @@
       @include transition-timing-function($transition-easing);
       @include fade-in();
       width: $logo-sticky-width;
-      margin-right: $navigation-item-space;
-      //height: 100%;
+      margin: $menu--main-navigation-logo-sticky-margin;
     }
   }
 
