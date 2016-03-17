@@ -342,16 +342,20 @@ $list__content-teaser--horizontal-count--small: 3 !default;
 $list__content-teaser--horizontal-count--middle: 4 !default;
 $list__content-teaser--horizontal-count--full: 5 !default;
 
-$list__content-teaser--horizontal-gap-mobile: 0 !default;
-$list__content-teaser--horizontal-gap-tablet: floor($gap-size-sm/2) !default;
-$list__content-teaser--horizontal-gap-desktop: floor($gap-size-sm/2) !default;
+$list__content-teaser--horizontal-gap-h-mobile: 0 !default;
+$list__content-teaser--horizontal-gap-h-tablet: floor($gap-size-sm/2) !default;
+$list__content-teaser--horizontal-gap-h-desktop: floor($gap-size-sm/2) !default;
+
+$list__content-teaser__item--horizontal-gap-top-mobile: $gap-size-xxs !default;
+$list__content-teaser__item--horizontal-gap-top-tablet: 12px !default;
+$list__content-teaser__item--horizontal-gap-top-desktop: $gap-size-md !default;
 
 /** list--alphabetical **/
 
-$list--alphabetical-headline-padding: 5px 0;
-$list--alphabetical-headline-margin: 0 0 $gap-size-xs 0;
-$list--alphabetical-headline-color: $color-brand;
-$list--alphabetical-list-item-margin: 10px 0 0 0;
+$list--alphabetical-headline-padding: 5px 0 !default;
+$list--alphabetical-headline-margin: 0 0 $gap-size-xs 0 !default;
+$list--alphabetical-headline-color: $color-brand !default;
+$list--alphabetical-list-item-margin: 10px 0 0 0 !default;
 
 /**
 **  socials **

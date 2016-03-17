@@ -41,3 +41,7 @@
 %item-paragraph--content-teaser {
   @include item-paragraph--content-teaser();
 }
+
+%item-paragraph--term-teaser {
+  @include item-paragraph--term-teaser();
+}

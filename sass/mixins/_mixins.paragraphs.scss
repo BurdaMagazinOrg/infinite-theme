@@ -284,21 +284,26 @@
   }
 }
 
+@mixin item-paragraph--term-teaser() {
+  @include item-paragraph--content-teaser(); 
+}
+
 @mixin item-paragraph--content-teaser() {
   @extend %region-fixed-content;
 
-  &.item-paragraph--small, &.item-paragraph--medium {
+  &.item-paragraph--small, &.item-paragraph--middle {
     .text-title {
       @include title--content-block();
     }
   }
 
   .list__content-teaser--horizontal {
-    @include list__content-teaser--horizontal();
+    @extend %list__content-teaser--horizontal;
   }
 
   .teaser {
     @extend %teaser--content;
+    @extend %list__content-teaser__item--horizontal;
   }
 
   @media (max-width: $screen-xs-max) {
