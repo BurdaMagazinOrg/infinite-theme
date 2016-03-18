@@ -1,18 +1,5 @@
-{%
-set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-]
-%}
+{% extends "@infinite/paragraphs/paragraph--term-teaser.html.twig" %}
 
-<div{{ attributes.addClass(classes) }}>
-
-    {% if content.field_title %}
-        <h3 class="text-title">{{ content.field_title }}</h3>
-    {% endif %}
-
-    <div class="list__content-teaser--horizontal">
-        {{ content.field_nodes }}
-    </div>
-</div>
+{% block list %}
+    {{ content.field_nodes }}
+{% endblock %}

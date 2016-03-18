@@ -16,6 +16,7 @@
             this.loadResponsiveImages(this.$el);
             this.updateSocials(this.$el);
             this.updateBtnActions(this.$el);
+            this.updateTextActions(this.$el);
         },
         updateSocials: function ($pContainer) {
             /**
@@ -129,6 +130,24 @@
                             break;
                     }
                 }
+            });
+        },
+        updateTextActions: function ($pContainer) {
+            $.each($pContainer.find('[data-text-action]'), function (pIndex, pItem) {
+                var tmpAction = $(pItem).data('text-action') || '',
+                    tmpTarget = $(pItem).data('target') || '',
+                    $tmpTarget = [];
+
+                if (tmpAction == "" || tmpTarget == "") return;
+
+                $tmpTarget = $(this).find(tmpTarget);
+                if ($tmpTarget.length <= 0) return;
+                switch (tmpAction) {
+                    case 'text-overflow':
+                        $tmpTarget.dotdotdot();
+                        break;
+                }
+
             });
         },
         updateTimeAgo: function ($pContainer) {

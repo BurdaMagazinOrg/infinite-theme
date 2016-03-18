@@ -315,6 +315,11 @@
   }
 
   @media (min-width: $screen-sm-min) {
+    .caption {
+      height: $teaser--content-caption-height;
+      overflow: hidden;
+    }
+
     &.item-paragraph--full {
       .teaser {
         @include list__content-teaser__item--horizontal($list__content-teaser--horizontal-count--full);
@@ -443,7 +448,7 @@
   }
 
   .col--right {
-    @include make-md-column(13, 0);  
+    @include make-md-column(13, 0);
   }
 }
 
