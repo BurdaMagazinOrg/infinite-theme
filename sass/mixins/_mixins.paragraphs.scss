@@ -420,16 +420,11 @@
   @include _profile--two-col();
 
   .col--left {
-    text-align: right;
+    padding-left: $article-socials-column-width;
 
     .img-container, .caption {
       max-width: 387px;
-      display: inline-block;
       width: 100%;
-    }
-
-    .caption {
-      text-align: left;
     }
   }
 }
@@ -440,15 +435,15 @@
   }
 
   .row {
-    @include make-row();
+    @include clearfix();
   }
 
   .col--left {
-    @include make-md-column(10);
+    @include make-md-column(11, 0);
   }
 
   .col--right {
-    @include make-md-column(14);
+    @include make-md-column(13, 0);  
   }
 }
 

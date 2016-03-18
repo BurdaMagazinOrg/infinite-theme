@@ -71,6 +71,7 @@
     .item-group--outer > .item-paragraph--small, & > .item-paragraph--small {
       @include region-fixed-content();
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
+      padding-left: $article-socials-column-width;
     }
   }
 }
