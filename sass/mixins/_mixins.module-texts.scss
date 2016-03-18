@@ -220,7 +220,6 @@
   }
 }
 
-
 @mixin menu--submenu-navigation-text() {
   .label-menu {
     @extend %text-label;
@@ -235,6 +234,32 @@
     text-transform: uppercase;
   }
 }
+
+@mixin item-paragraph--profile-text() {
+
+  .title {
+    @extend %text-label;
+    @include text-label-size($profile__title-size);
+    text-transform: uppercase;
+    color: $profile__title-color;
+  }
+
+  .col--right {
+    text-align: center;
+  }
+
+  th {
+    @extend %text-label;
+    @include text-label-size($profile__th-size);
+    color: $profile__th-color;
+    text-transform: uppercase;
+  }
+
+  td {
+    color: $profile__td-color;
+  }
+}
+
 @mixin item-media--header-text() {
   .text-headline {
     @include text-headline-bold();

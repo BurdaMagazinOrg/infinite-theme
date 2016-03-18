@@ -45,3 +45,10 @@
 %item-paragraph--term-teaser {
   @include item-paragraph--term-teaser();
 }
+%item-paragraph--recent-content {
+  @include item-paragraph--recent-content();
+}
+
+%item-paragraph--profile {
+  @include item-paragraph--profile();
+}

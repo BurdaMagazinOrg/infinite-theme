@@ -460,6 +460,17 @@ $spotlight__caption-padding: $gap-size-sm $gap-size-xxxl 4% $gap-size-sm !defaul
 $spotlight__title-letter-spacing: -1.4px !default;
 $spotlight__caption-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !default;
 
+/** profile **/
+$profile__title-size: $title-size-xxs !default;
+$profile__title-gap-bottom: $title-size-md !default;
+$profile__title-color: $gray-darker !default;
+
+$profile__fact-max-width: 360px !default;
+$profile__th-size: 16px !default;
+$profile__th-color: $gray-darker !default;
+$profile__td-size: 16px !default;
+$profile__td-color: $gray-darker !default;
+
 /** seo linker **/
 $seo-linker__item-title-size: $title-size-xxs !default;
 $seo-linker__link-list-size: 15px !default;

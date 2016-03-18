@@ -1,0 +1,36 @@
+{% set classes = [
+'item-paragraph',
+'item-paragraph--' ~ view_mode|clean_class,
+'item-paragraph--' ~ paragraph.bundle|clean_class,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+
+    <div class="wrapper profile__wrapper">
+        {% block profile_content %}
+            <div class="row profile__row">
+                <div class="col--left profile__col--left">
+                    <div class="img-container profile__img-container">
+                        {{ content.field_portrait }}
+                    </div>
+                    <div class="caption profile__caption">
+                        <div class="text-copyright profile__caption-copyright">
+                            {{ content.field_copyright }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col--right profile__col--right">
+                    {% if content.field_title %}
+                        <div class="title profile__title">
+                            {{ content.field_title }}
+                        </div>
+                    {% endif %}
+                    <div class="facts profile__facts">
+                        {{ content.field_key_facts }}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>
