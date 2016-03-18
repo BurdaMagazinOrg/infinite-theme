@@ -86,10 +86,14 @@
   @include transition-property(opacity, color, visibility);
   display: inline-block;
   margin: $menu--main-navigation__item_margin;
-  padding: $menu--main-navigation__item_padding;
 
   &:first-child {
     margin-left: 0;
+  }
+
+  a {
+    padding: $menu--main-navigation__item_padding;
+    display: inline-block;
   }
 
   .is-active, a:hover {
@@ -157,7 +161,7 @@
         color: $menu--submenu-navigation-mobile-color;
       }
 
-      .is-active {    
+      .is-active {
         @include icon();
         @include icon-arrow-down-small();
 

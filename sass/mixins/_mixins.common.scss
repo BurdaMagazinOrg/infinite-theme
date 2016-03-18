@@ -2,3 +2,35 @@
   @include opacity($opacity-disabled);
   pointer-events: none;
 }
+
+@mixin sticky-logo-animated() {
+  &.stuck {
+    .logo {
+      @include transition-property(width, opacity, visibility);
+      @include transition-duration($transition-duration);
+      @include transition-timing-function($transition-easing);
+      @include fade-in();
+      width: $logo-sticky-width;
+      margin: $menu--main-navigation-logo-sticky-margin;
+    }
+  }
+
+  .logo {
+    @include fade-out();
+    overflow: hidden;
+    width: 0;
+    margin-right: 0;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    &.stuck {
+      .label-menu {
+        display: none;
+      }
+    }
+
+    .label-menu {
+      display: inline-block;
+    }
+  }
+}

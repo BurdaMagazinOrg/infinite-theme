@@ -5,3 +5,7 @@
 %disabled {
   @include disabled();
 }
+
+%sticky-logo-animated {
+  @include sticky-logo-animated();
+}
