@@ -206,6 +206,10 @@
     bottom: 0;
     padding: $spotlight__caption-padding;
     z-index: 2;
+  
+    & > * {
+      max-width: 100%;
+    }
   }
 
   .spotlight__title, .spotlight__subtitle {
