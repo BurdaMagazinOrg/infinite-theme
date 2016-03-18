@@ -456,9 +456,11 @@ $spotlight__caption--full-bg: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba
 $spotlight__caption--full-width: 522px !default;
 
 $spotlight__caption-color: $white !default;
-$spotlight__caption-padding: $gap-size-sm $gap-size-xxxl 4% $gap-size-sm !default;
 $spotlight__title-letter-spacing: -1.4px !default;
 $spotlight__caption-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !default;
+$spotlight__caption-padding: $gap-size-sm $gap-size-xxxl 4% $gap-size-sm !default;
+/** left settings **/
+$spotlight__caption-padding--left: $gap-size-sm $gap-size-sm 4% $gap-size-xxxl !default;
 
 /** profile **/
 $profile__title-size: $title-size-xxs !default;

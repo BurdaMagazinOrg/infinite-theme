@@ -183,6 +183,18 @@
 @mixin _spotlight--full() {
   @include item-content--spotlight-full-text();
 
+  &.item-paragraph--spotlight-left {
+    &:after {
+      @include scaleX(-1);
+    }
+
+    .spotlight__caption {
+      right: auto;
+      left: 0;
+      padding: $spotlight__caption-padding--left;
+    }
+  }
+
   .spotlight__caption {
     @include flexbox(vertical);
     @include align-items(center);
