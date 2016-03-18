@@ -17,16 +17,16 @@ db_offline ? 'db-offline',
 
     </head>
     <body class="{{ attributes.addClass(body_classes).class }}">
-        {% if gtm_vars %}
-            {% block api_gtm %}
+        {% block api_gtm %}
+            {% if gtm_vars %}
                 {% embed '@infinite/embeds/api_gtm.html.twig' with gtm_vars %}{% endembed %}
-            {% endblock %}
-        {% endif %}
-        {% if fb_vars %}
-            {% block api_fb %}
+            {% endif %}
+        {% endblock %}
+        {% block api_fb %}
+            {% if fb_vars %}
                 {% embed '@infinite/embeds/api_fb.html.twig' with fb_vars %}{% endembed %}
-            {% endblock %}
-        {% endif %}
+            {% endif %}
+        {% endblock %}
         <div id="page-wrapper">
             {{ page_top }}
             {{ page }}
