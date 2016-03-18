@@ -233,8 +233,8 @@ $label-category-size--default: $label-size-medium !default;
 ** Titles
 **/
 
-$title--media-header-mobile: 48px !default;
-$title--media-header-tablet: 72px !default;
+$title--media-header-mobile: $title-size-lg !default;
+$title--media-header-tablet: $title-size-xxl !default;
 $title--media-header-desktop: 72px !default;
 $title--media-header-text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 1px !default;
 $title--media-header-letter-spacing: -3px !default;

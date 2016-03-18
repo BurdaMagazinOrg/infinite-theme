@@ -88,20 +88,20 @@
   @extend %flexbox;
   position: relative;
 
-  .col--left {
+  & > .col--left {
     @extend %flex-item-1;
     width: 100%;
     overflow: hidden;
   }
 
   @media (max-width: $screen-sm-max) {
-    .col--right {
+    & > .col--right {
       display: none;
     }
   }
 
   @media (min-width: $screen-md-min) {
-    .col--right {
+    & > .col--right {
       display: block;
       position: relative;
       min-height: 1px;
