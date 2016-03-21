@@ -245,7 +245,7 @@
 
   @media (max-height: $screen-sm-max) {
     .spotlight__copytext {
-      max-height: 260px;  
+      max-height: 260px;
     }
   }
 }
@@ -332,10 +332,25 @@
     @extend %list__content-teaser__item--horizontal;
   }
 
+  .item-marketing-native {
+    .logo, .brand {
+      height: 13px;  
+    }
+  }
+
+  .caption {
+    overflow: hidden;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .caption {
+      height: $teaser--content-caption-height-mobile;
+    }
+  }
+
   @media (min-width: $screen-sm-min) {
     .caption {
       height: $teaser--content-caption-height;
-      overflow: hidden;
     }
 
     &.item-paragraph--full {
