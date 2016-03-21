@@ -76,6 +76,11 @@
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
       padding-left: $article-socials-column-width;
     }
+
+    .item-group--outer > .item-paragraph--middle, & > .item-paragraph--middle {
+      @include region-fixed-content();
+      padding-left: $article-socials-column-width;
+    }
   }
 }
 

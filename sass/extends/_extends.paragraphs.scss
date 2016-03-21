@@ -2,8 +2,16 @@
   @include item-paragraph--small();
 }
 
+%item-paragraph--middle {
+  @include item-paragraph--middle();
+}
+
 %item-paragraph--media {
   @include item-paragraph--media();
+}
+
+%item-paragraph--media--video {
+  @include item-paragraph--media--video();
 }
 
 %item-paragraph--media--image {

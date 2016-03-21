@@ -6,8 +6,16 @@
   @extend %item-paragraph--small;
 }
 
+.item-paragraph--middle {
+  @extend %item-paragraph--middle;
+}
+
 .item-paragraph--media {
   @extend %item-paragraph--media;
+}
+
+.item-paragraph--media--video {
+  @extend %item-paragraph--media--video;
 }
 
 .item-paragraph--media--image {

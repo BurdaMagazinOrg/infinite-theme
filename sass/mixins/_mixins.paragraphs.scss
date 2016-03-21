@@ -2,9 +2,19 @@
   @include clearfix();
 }
 
+@mixin item-paragraph--middle() {
+  @include region-fixed-content();
+}
+
 @mixin item-paragraph--media() {
   .caption {
     @extend %region-fixed-content;
+  }
+}
+
+@mixin item-paragraph--media--video() {
+  &.item-paragraph--full {
+    @extend %clear-gutter-gap;
   }
 }
 
@@ -235,6 +245,7 @@
 
   @media (max-height: $screen-sm-max) {
     .spotlight__copytext {
+      max-height: 260px;  
     }
   }
 }
