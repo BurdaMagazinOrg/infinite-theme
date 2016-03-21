@@ -69,7 +69,14 @@
         {% if has_socials %}
             <div class="socials socials-bar spotlight__socials">
                 {% block teaser_social_bar %}
-                    {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''} %}
+                    {% embed '@infinite/embeds/social_icons.html.twig' with {
+                    'url': parent.url,
+                    'label': parent.label,
+                    'twitter_share_via': parent.twitter_share_via,
+                    'email_share_text': parent.email_share_text,
+                    'email_subject': parent.email_subject,
+                    'whatsapp_share_text': parent.whatsapp_share_text,
+                    } %}
                     {% endembed %}
                 {% endblock %}
             </div>
