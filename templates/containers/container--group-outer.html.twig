@@ -15,6 +15,10 @@
 
     {{ children }}
 
+    {% block content_tags %}
+            {{ parent.field_tags }}
+    {% endblock %}
+
     <div class="region-fixed-content socials socials-bar socials-horizontal-bar item-content__block">
         {% block socials_horizontal_bar %}
             {% embed '@infinite/embeds/social_icons.html.twig' with parent %}
