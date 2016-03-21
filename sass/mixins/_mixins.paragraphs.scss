@@ -332,9 +332,13 @@
     @extend %list__content-teaser__item--horizontal;
   }
 
+  .item-marketing-sponsored {
+    margin-bottom: 0px;   
+  }
+
   .item-marketing-native {
     .logo, .brand {
-      height: 13px;  
+      height: 13px;
     }
   }
 
