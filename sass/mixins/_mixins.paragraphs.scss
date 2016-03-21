@@ -19,11 +19,7 @@
 }
 
 @mixin item-paragraph--media--image() {
-  @extend %item-paragraph--media;
-
-  .img-container {
-    background-color: $bg-color-gray-light;
-  }
+  @extend %item-paragraph--media;  
 
   &.item-paragraph--full {
     .img-container {
