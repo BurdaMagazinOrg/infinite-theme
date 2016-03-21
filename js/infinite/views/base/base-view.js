@@ -144,7 +144,7 @@
                 if ($tmpTarget.length <= 0) return;
                 switch (tmpAction) {
                     case 'text-overflow':
-                        $tmpTarget.dotdotdot();
+                        $tmpTarget.dotdotdot({watch: 'window'});
                         break;
                 }
 

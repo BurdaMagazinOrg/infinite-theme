@@ -1,7 +1,7 @@
 #tabs {
   @extend %clear-gutter-gap;
   border-bottom: $h-line-style;
-  margin-bottom: $gap-section;
+  //margin-bottom: $gap-section;
 
   ul {
     @extend %flexbox;
