@@ -10,14 +10,7 @@
         {% block profile_content %}
             <div class="row profile__row">
                 <div class="col--left profile__col--left">
-                    <div class="img-container profile__img-container">
-                        {{ content.field_portrait }}
-                    </div>
-                    <div class="caption profile__caption">
-                        <div class="text-copyright profile__caption-copyright">
-                            {{ content.field_copyright }}
-                        </div>
-                    </div>
+                    {{ content.field_media }}
                 </div>
 
                 <div class="col--right profile__col--right">
