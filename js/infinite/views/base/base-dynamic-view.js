@@ -41,14 +41,14 @@
                 tmpViewType = $tmpItem.data('view-type'),
                 tmpModel = new BaseDynamicViewModel();
 
+            pSettings.modelList.add(tmpModel);
+
             tmpModel.createDynamicItem({
                 el: $tmpItem,
                 type: tmpViewType,
                 initialDOMItem: $tmpItem.parents('.region-feed').length <= 0,
                 'infiniteBlock': tmpViewType == 'infiniteBlockView'
             }, {deviceModel: this.deviceModel});
-
-            pSettings.modelList.add(tmpModel);
 
             $tmpItem.data('infiniteModel', tmpModel);
         },

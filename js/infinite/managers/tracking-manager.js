@@ -28,7 +28,7 @@
 
 
             //parse on lazyloading
-            this.listenTo(this.infiniteModel, 'add', function (pModel) {
+            this.listenTo(this.infiniteModel, 'change:infiniteBlock', function (pModel) {
                 if (pModel.get('type') === 'infiniteBlockView' && pModel.get('initialDOMItem') === false) {
                     this.parseTrackingElements(pModel.get('el'));
                 }
