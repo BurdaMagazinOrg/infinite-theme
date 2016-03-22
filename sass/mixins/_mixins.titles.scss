@@ -101,24 +101,24 @@
 }
 
 @mixin title--content-block() {
-  @include text-label();
+  @include text-helper($title--content-block-font);
 
   .item-title {
     text-align: left;
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-label-size($title--content-block-mobile);
+    @include text-helper-size($title--content-block-font, $title--content-block-mobile);
     margin-bottom: $title--content-block-gap-bottom-mobile;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-label-size($title--content-block-tablet);
+    @include text-helper-size($title--content-block-font, $title--content-block-tablet);
     margin-bottom: $title--content-block-gap-bottom-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-label-size($title--content-block-desktop);
+    @include text-helper-size($title--content-block-font, $title--content-block-desktop);
     margin-bottom: $title--content-block-gap-bottom-desktop;
   }
 }

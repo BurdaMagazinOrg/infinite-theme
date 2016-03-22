@@ -9,7 +9,7 @@
   .container-input {
     position: relative;
     overflow: hidden;
-    height: $headline-size-h1*2;
+    height: $title-size-xxl*2;
     bottom: -11px;
   }
 
@@ -48,6 +48,7 @@
 }
 
 #modal-search-input {
+  @include text-headline($title-size-xxl);
   @include transition(all 0.5s $transition-easing 1s);
   @include opacity(0);
   @include translateY(200%);
@@ -62,7 +63,8 @@
   color: $gray-base;
 
   .message-default {
-
+    @extend %text-label;
+    @include text-label-size($title-size-xxxs);
   }
 
   .message-active {

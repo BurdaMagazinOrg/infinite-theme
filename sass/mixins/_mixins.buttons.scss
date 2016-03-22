@@ -3,7 +3,7 @@
   @include transition-duration(.35s);
   @include transition-timing-function(ease);
   @include text-headline();
-  @include text-headline-size($headline-size-h6);
+  @include text-headline-size($title-size-xxxs);
 
   outline: none;
   background-color: $bg-color;

@@ -1,3 +1,7 @@
+%item-media--description {
+  @include item-media--description();
+}
+
 %item-media--image {
   @include item-media--image();
 }

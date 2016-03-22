@@ -11,14 +11,7 @@
   }
 
   .text-description {
-    @extend %text-tiny;
-    @extend %text-tiny-size-large;
-    margin-top: 5px;
-
-    p {
-      line-height: inherit;
-      font-size: inherit;
-    }
+    @extend %item-media--description;
   }
 
   .text-copyright {

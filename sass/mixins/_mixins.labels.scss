@@ -24,3 +24,18 @@
   @include text-helper($font, $size);
   color: $color;
 }
+
+@mixin label--copyright($size: $label--copyright-size-default, $font: $label--copyright-font, $color: $label--copyright-color) {
+  @extend %icon-copyright;
+  @include text-helper($font, $size);
+  color: $color;
+  text-transform: uppercase;
+
+  span + span {
+    &:before {
+      content: ",";
+      margin-left: -4px;
+      margin-right: 3px;
+    }
+  }
+}

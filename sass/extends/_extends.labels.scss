@@ -5,3 +5,7 @@
 %label--marketing {
   @include label--marketing();
 }
+
+%label--copyright {
+  @include label--copyright();
+}

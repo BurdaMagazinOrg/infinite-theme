@@ -1,3 +1,25 @@
+@mixin item-media--description() {
+  @include text-helper($media--description-font);
+  margin-top: 5px;
+
+  p {
+    line-height: inherit;
+    font-size: inherit;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($media--description-font, $media--description-size-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($media--description-font, $media--description-size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($media--description-font, $media--description-size-desktop);
+  }
+}
+
 @mixin item-media--image() {
   .img-container {
     text-align: center;
@@ -30,11 +52,6 @@
   .gallery-header {
     position: relative;
     margin-bottom: $grid-gutter-width;
-
-    .text-item-count {
-      @extend %text-label;
-      @extend %text-label-size-xxl;
-    }
   }
 
   .gallery-navigation {
@@ -87,6 +104,28 @@
 
   .text-description {
     min-height: (floor($font-size-large * $line-height-text-tiny)*2) + 5px;
+  }
+
+  .text-item-count {
+    @include text-helper($gallery__count-font);
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .text-item-count {
+      @include text-helper-size($gallery__count-font, $gallery__count-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-item-count {
+      @include text-helper-size($gallery__count-font, $gallery__count-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-item-count {
+      @include text-helper-size($gallery__count-font, $gallery__count-size-desktop);
+    }
   }
 }
 

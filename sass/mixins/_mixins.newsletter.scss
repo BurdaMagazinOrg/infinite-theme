@@ -85,7 +85,7 @@
 
     strong {
       @extend %text-headline;
-      @extend %text-headline-size-h5;
+      @include text-headline-size($title-size-xxs);
     }
 
     .container-content-dynamic {

@@ -25,56 +25,8 @@ a {
   @extend %text-headline;
 }
 
-.text-headline-size-h1 {
-  @extend %text-headline-size-h1;
-}
-
-.text-headline-size-h2 {
-  @extend %text-headline-size-h2;
-}
-
-.text-headline-size-h3 {
-  @extend %text-headline-size-h3;
-}
-
-.text-headline-size-h4 {
-  @extend %text-headline-size-h4;
-}
-
-.text-headline-size-h5 {
-  @extend %text-headline-size-h5;
-}
-
-.text-headline-size-h6 {
-  @extend %text-headline-size-h6;
-}
-
 .text-label {
   @extend %text-label;
-}
-
-.text-label-size-xxl {
-  @extend %text-label-size-xxl;
-}
-
-.text-label-size-xl {
-  @extend %text-label-size-xl;
-}
-
-.text-label-size-large {
-  @extend %text-label-size-large;
-}
-
-.text-label-size-medium {
-  @extend %text-label-size-medium;
-}
-
-.text-label-size-small {
-  @extend %text-label-size-small;
-}
-
-.text-label-size-tiny {
-  @extend %text-label-size-tiny;
 }
 
 .text-tiny {
@@ -86,19 +38,7 @@ a {
 }
 
 .text-copyright {
-  @extend %icon-copyright;
-  @extend %text-tiny;
-  @include text-tiny-size($font-size-small);
-  color: $gray-base;
-  text-transform: uppercase;
-
-  span + span {
-    &:before {
-      content: ",";
-      margin-left: -4px;
-      margin-right: 3px;
-    }
-  }
+  @extend %label--copyright;
 }
 
 .text-description a {

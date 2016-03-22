@@ -29,3 +29,30 @@
     }
   }
 }
+
+@mixin item-breadcrumb() {
+  li {
+    @include inline-block();
+    @include text-helper($breadcrumb-font);
+    position: relative;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 15px;
+
+    &:before {
+      content: ">";
+      color: $color-highlighted;
+      position: absolute;
+      left: -12px;
+      top: 0;
+    }
+
+    &:first-child {
+      margin-left: 0;
+
+      &:before {
+        content: none;
+      }
+    }
+  }
+}

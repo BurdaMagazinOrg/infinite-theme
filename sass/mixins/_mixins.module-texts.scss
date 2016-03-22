@@ -101,7 +101,7 @@
 //todo only text
 @mixin product__item-text() {
   .text-headline {
-    @include text-headline($product__item-text-headline-size);
+    @include text-helper($product__item-text-headline-font, $product__item-text-headline-size);
     margin-top: 9px;
     margin-bottom: 44px;
     height: $product__item-text-headline-height;
@@ -109,8 +109,7 @@
   }
 
   .text-brand {
-    @extend %text-label;
-    @extend %text-label-size-small;
+    @include text-helper($product__item-text-brand-font, $product__item-text-brand-size);
     color: $gray-base;
     text-transform: uppercase;
     text-overflow: ellipsis;
@@ -120,25 +119,24 @@
   }
 
   .text-shipping, .text-price {
-    @extend %text-headline;
-    @extend %text-label-size-small;
     position: absolute;
     bottom: 35px;
   }
 
   .text-price {
+    @include text-helper($product__item-text-price-font, $product__item-text-price-size);
     left: 0;
   }
 
   .text-shipping {
+    @include text-helper($product__item-text-shipping-font, $product__item-text-shipping-size);
     right: 0;
     color: $gray-base;
   }
 
   .text-shop {
+    @include text-helper($product__item-text-shop-font, $product__item-text-shop-size);
     @extend %transition-default;
-    @extend %text-label;
-    @extend %text-label-size-small;
     color: $color-highlighted;
     border: 1px solid $color-highlighted;
     border-radius: 10px;

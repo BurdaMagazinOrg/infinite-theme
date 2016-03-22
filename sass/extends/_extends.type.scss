@@ -5,30 +5,30 @@
 %text-label {
   @include text-label();
 }
-
-%text-label-size-tiny {
-  @include text-label-size($label-size-tiny);
-}
-
-%text-label-size-small {
-  @include text-label-size($label-size-small);
-}
-
-%text-label-size-medium {
-  @include text-label-size($label-size-medium);
-}
-
-%text-label-size-large {
-  @include text-label-size($label-size-large);
-}
-
-%text-label-size-xl {
-  @include text-label-size($label-size-xl);
-}
-
-%text-label-size-xxl {
-  @include text-label-size($label-size-xxl);
-}
+//
+//%text-label-size-tiny {
+//  @include text-label-size($label-size-tiny);
+//}
+//
+//%text-label-size-small {
+//  @include text-label-size($label-size-small);
+//}
+//
+//%text-label-size-medium {
+//  @include text-label-size($label-size-medium);
+//}
+//
+//%text-label-size-large {
+//  @include text-label-size($label-size-large);
+//}
+//
+//%text-label-size-xl {
+//  @include text-label-size($label-size-xl);
+//}
+//
+//%text-label-size-xxl {
+//  @include text-label-size($label-size-xxl);
+//}
 
 /**
 * Text-Headline
@@ -38,29 +38,6 @@
   @include text-headline();
 }
 
-%text-headline-size-h6 {
-  @include text-headline-size($headline-size-h6);
-}
-
-%text-headline-size-h5 {
-  @include text-headline-size($headline-size-h5);
-}
-
-%text-headline-size-h4 {
-  @include text-headline-size($headline-size-h4);
-}
-
-%text-headline-size-h3 {
-  @include text-headline-size($headline-size-h3);
-}
-
-%text-headline-size-h2 {
-  @include text-headline-size($headline-size-h2);
-}
-
-%text-headline-size-h1 {
-  @include text-headline-size($headline-size-h1);
-}
 
 /**
 * Text-Tiny
@@ -69,30 +46,30 @@
 %text-tiny {
   @include text-tiny();
 }
-
-%text-tiny-size-tiny {
-  @include text-tiny-size($tiny-size-tiny);
-}
-
-%text-tiny-size-small {
-  @include text-tiny-size($tiny-size-small);
-}
-
-%text-tiny-size-medium {
-  @include text-tiny-size($tiny-size-medium);
-}
-
-%text-tiny-size-large {
-  @include text-tiny-size($tiny-size-large);
-}
-
-%text-tiny-size-xl {
-  @include text-tiny-size($tiny-size-xl);
-}
-
-%text-tiny-size-xxl {
-  @include text-tiny-size($tiny-size-xxl);
-}
+//
+//%text-tiny-size-tiny {
+//  @include text-tiny-size($tiny-size-tiny);
+//}
+//
+//%text-tiny-size-small {
+//  @include text-tiny-size($tiny-size-small);
+//}
+//
+//%text-tiny-size-medium {
+//  @include text-tiny-size($tiny-size-medium);
+//}
+//
+//%text-tiny-size-large {
+//  @include text-tiny-size($tiny-size-large);
+//}
+//
+//%text-tiny-size-xl {
+//  @include text-tiny-size($tiny-size-xl);
+//}
+//
+//%text-tiny-size-xxl {
+//  @include text-tiny-size($tiny-size-xxl);
+//}
 
 /**
 * Text-Content

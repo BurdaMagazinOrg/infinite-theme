@@ -7,6 +7,11 @@ $gap-v-region-tablet: $gap-v-xl-tablet !default;
 $gap-v-region-desktop: $gap-v-xl-desktop !default;
 
 /**
+** Breadcrumb
+**/
+$breadcrumb-font: $font-label;
+
+/**
 ** Lists Margins
 ** only margin
 **/
@@ -85,7 +90,17 @@ $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 **/
 
 $product__item-text-headline-height: 70px !default;
-$product__item-text-headline-size: 18px !default;
+$product__item-text-headline-font: $font-headline !default;
+$product__item-text-brand-font: $font-label !default;
+$product__item-text-price-font: $font-label !default;
+$product__item-text-shipping-font: $font-label !default;
+$product__item-text-shop-font: $font-label !default;
+
+$product__item-text-headline-size: $title-size-xxs !default;
+$product__item-text-brand-size: 13px !default;
+$product__item-text-price-size: 13px !default;
+$product__item-text-shipping-size: 13px !default;
+$product__item-text-shop-size: 13px !default;
 
 /**
 ** Labels
@@ -98,9 +113,19 @@ $label--category-size--tablet: $label-size-medium !default;
 $label--category-size--desktop: $label-size-medium !default;
 
 /** label-marketing**/
-$label--marketing-color: $text-color !default;
 $label--marketing-font: $font-tiny !default;
+$label--marketing-color: $text-color !default;
 $label--marketing-size-default: 14px !default;
+
+/** label-marketing**/
+$label--advertorial-font: $font-content !default;
+$label--advertorial-color: $gray-base !default;
+$label--advertorial-size: 14px !default;
+
+/** label-copyright**/
+$label--copyright-font: $font-tiny !default;
+$label--copyright-size-default: 14px !default;
+$label--copyright-color: $gray-base !default;
 
 /**
 ** Titles
@@ -129,6 +154,7 @@ $title--horizontal-block-gap-bottom-tablet: $gap-size-md !default;
 $title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
 
 /** title--content-block **/
+$title--content-block-font: $font-label !default;
 $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
@@ -163,7 +189,7 @@ $teaser__author--default-gap-top-tablet: $gap-size-sm !default;
 $teaser__author--default-gap-top-desktop: $gap-size-lg !default;
 
 $teaser__socials--default-gap-top-mobile: $gap-size-sm !default;
-$teaser__socials--default-gap-top-tablet: $gap-size-sm !default;  
+$teaser__socials--default-gap-top-tablet: $gap-size-sm !default;
 $teaser__socials--default-gap-top-desktop: $gap-size-lg !default;
 
 /** feed-teaser **/
@@ -364,6 +390,10 @@ $seo-linker__link-list-size: 15px !default;
 $gallery-ratio-full: 75% !default;
 $gallery-ratio-middle: 56% !default;
 $gallery-ratio-small: 75% !default;
+$gallery__count-font: $font-label !default;
+$gallery__count-size-mobile: $title--content-block-mobile !default;
+$gallery__count-size-tablet: $title--content-block-tablet !default;
+$gallery__count-size-desktop: $title--content-block-desktop !default;
 
 /**
 ** Media
@@ -371,3 +401,14 @@ $gallery-ratio-small: 75% !default;
 $media--header-height-mobile: 100px !default;
 $media--header-height-tablet: 150px !default;
 $media--header-height-desktop: 200px !default;
+
+$media--description-font: $font-tiny !default;
+$media--description-size-mobile: 14px !default;
+$media--description-size-tablet: 14px !default;
+$media--description-size-desktop: 18px !default;
+
+/**
+** Tags
+**/
+$tags__article-font: $font-tiny !default;
+$tags__article-text-size: $title-size-xxs !default;

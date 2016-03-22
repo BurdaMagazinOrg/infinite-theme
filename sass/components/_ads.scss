@@ -47,8 +47,8 @@
 }
 
 .item-marketing-advertorial {
-  @extend %text-content-size-small;
-  color: $gray-base;
+  @include text-helper($label--advertorial-font, $label--advertorial-size);
+  color: $label--advertorial-color;
   text-transform: uppercase;
 }
 
