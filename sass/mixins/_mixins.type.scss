@@ -1,3 +1,34 @@
+@mixin text-helper($font, $size: '') {
+
+  @if ($font == $font-headline) {
+    @include text-headline();
+  } @else if ($font == $font-headline-bold) {
+    @include text-headline-bold();
+  } @else if ($font == $font-tiny) {
+    @include text-tiny();
+  } @else if ($font == $font-label) {
+    @include text-label();
+  } @else {
+    @include text-content();
+  }
+
+  @if ($size!= '') {
+    @include text-helper-size($font, $size);
+  }
+}
+
+@mixin text-helper-size($font, $size) {
+  @if ($font == $font-headline or $font == $font-headline-bold) {
+    @include text-headline-size($size);
+  } @else if ($font == $font-label) {
+    @include text-label-size($size);
+  } @else if ($font == $font-tiny) {
+    @include text-tiny-size($size);
+  } @else {
+    @include text-content-size($size);
+  }
+}
+
 @mixin text-label($size: '', $color: '') {
   font-family: $font-label;
   letter-spacing: $label-letter-spacing;

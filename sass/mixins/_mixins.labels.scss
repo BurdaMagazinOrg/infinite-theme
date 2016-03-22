@@ -1,5 +1,26 @@
-@mixin label--category($size: $label-category-size--default) {
-  @include text-label($size);
+@mixin label--category($sizes: ($label--category-size--mobile, $label--category-size--tablet, $label--category-size--desktop)) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @include text-helper($label--category-font);
   text-transform: uppercase;
   color: $color-highlighted;
+
+  @media (max-width: $screen-xxs-max) {
+    @include text-helper-size($label--category-font, $size-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($label--category-font, $size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($label--category-font, $size-desktop);
+  }
+}
+
+@mixin label--marketing($size: $label--marketing-size-default, $font: $label--marketing-font, $color: $label--marketing-color) {
+  @include text-helper($font, $size);
+  color: $color;
 }

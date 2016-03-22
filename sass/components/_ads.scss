@@ -81,8 +81,7 @@
   position: relative;
 
   .item-label {
-    @extend %text-tiny;
-    @extend %text-tiny-size-small;
+    @extend %label--marketing;
     margin-bottom: 5px;
     display: block;
   }
@@ -97,38 +96,6 @@
   }
 }
 
-.container-marketing-sidebar {
-
-}
-
-.container-row-sidebar .item-marketing {
-
-}
-
-.ad-active {
-
-}
-
-.region-full-content.region-marketing.ad-bsad {
-  padding: 0;
-  border: 0;
-  overflow: visible;
-
-  .container-marketing {
-    max-width: none;
-    padding: 0px;
-  }
-
-  .ad-container {
-    display: block;
-    border: 0;
-  }
-
-  .item-label {
-    display: none;
-  }
-}
-
 .ad-inactive {
   overflow: hidden;
   height: 0 !important;
@@ -136,12 +103,5 @@
   padding-top: 0 !important;
   border-top: 0 !important;
 }
-
-//tracdelight widget
-.td-widget iframe {
-
-}
-
-
 
 

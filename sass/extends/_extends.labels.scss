@@ -1,3 +1,7 @@
 %label--category {
   @include label--category();
 }
+
+%label--marketing {
+  @include label--marketing();
+}

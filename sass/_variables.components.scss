@@ -1,140 +1,6 @@
-@import "bootstrap/variables";
-@import "ionicons/ionicons-variables";
-
-$content-max-width: 1128px !default;
-
-$fonts-path: '../fonts/' !default;
-$icons-font-path: '../fonts/icons/' !default;
-$icons-font-family: "icons" !default;
-
-$font-navigation: 'Verdana' !default;
-$font-label: 'Verdana' !default;
-$font-tiny: 'Verdana' !default;
-$font-headline: 'Arial' !default;
-$font-headline-bold: 'Arial' !default;
-$font-content: 'Arial' !default;
-$font-content-bold: 'Arial' !default;
-
-$label-letter-spacing: 1px !default;
-$headline-letter-spacing: 0px !default;
-$tiny-letter-spacing: 0px !default;
-$content-letter-spacing: 0px !default;
-
-$line-height-headline: 1.2 !default;
-$line-height-content: 1.55 !default;
-$line-height-text-tiny: 1.4 !default;
-
-$font-size-base: 16px;
-$font-size-xl: 21px;
-$font-size-large: 18px;
-$font-size-medium: 16px;
-$font-size-small: 14px;
-$font-size-tiny: 12px;
-
-$headline-size-h1: 40px !default;
-$headline-size-h2: 36px !default;
-$headline-size-h3: 30px !default;
-$headline-size-h4: 24px !default;
-$headline-size-h5: 18px !default;
-$headline-size-h6: 15px !default;
-
-$tiny-size-xxl: 24px !default;
-$tiny-size-xl: 21px !default;
-$tiny-size-large: 18px !default;
-$tiny-size-medium: 16px !default;
-$tiny-size-small: 14px !default;
-$tiny-size-tiny: 12px !default;
-
-$icon-size-xxl: 35px !default;
-$icon-size-xl: 30px !default;
-$icon-size-large: 24px !default;
-$icon-size-medium: 17px !default;
-$icon-size-small: 15px !default;
-$icon-size-tiny: 13px !default;
-
-/** backgrounds **/
-$bg-color: #ffffff !default;
-$bg-color-gray-light: #f9f9f9 !default;
-
-/** colors **/
-$color-brand: #7d8482 !default;
-
-$white: #ffffff !default;
-$black: #000000 !default;
-$text-color: #383838 !default;
-$text-highlighted: $color-brand;
-$color-highlighted: #ea331e;
-$color-highlighted-hover: #000;
-$color-hover: $color-brand;
-
-$color-facebook: #325bb7 !default;
-$color-twitter: #589ded !default;
-$color-email: #50e3c2 !default;
-$color-pinterest: #cb061e !default;
-$color-instagram: #fbb4b4 !default;
-$color-whatsapp: #5cbe4a !default;
-
-$gray-darker: #383838;
-$gray-dark: lighten($gray-base, 20%);
-$gray-base: #7d8482;
-$gray: #e8e4e4;
-$gray-light: #e7e7e7;
-$gray-lighter: #eee;
-
-/** borders **/
-$h-line-style: 1px solid $gray !default;
-
-/** sizes **/
-//deprecated
-$gap-section: 31px !default;
-$padding: floor($grid-gutter-width / 2) !default;
-
-$feed-ad-column-width: 300px !default;
-$feed-ad-column-margin: 84px !default;
-$menu-sidebar-width: 275px !default;
-$spinner-size: 30px !default;
-$logo-sticky-width: 110px !default;
-$navigation-padding-top-bottom: 20px !default;
-$item-image-socials-width: 70px;
-
-$article-socials-column-width: 96px !default;
-$full-headlines-max-width: 840px !default;
-
-/** new variables **/
-$title-size-xxxs: 15px !default;
-$title-size-xxs: 18px !default;
-$title-size-xs: 20px !default;
-$title-size-sm: 24px !default;
-$title-size-md: 28px !default;
-$title-size-lg: 32px !default;
-$title-size-xl: 40px !default;
-$title-size-xxl: 48px !default;
-
-$gap-size-xxs: 8px !default;
-$gap-size-xs: 16px !default;
-$gap-size-sm: 24px !default;
-$gap-size-md: 28px !default;
-$gap-size-lg: 31px !default;
-$gap-size-xl: 36px !default;
-$gap-size-xxl: 48px !default;
-$gap-size-xxxl: 61px !default;  
-
 /**
-** Lists Gaps
-** padding + margin
+** Specific Lists Gaps
 **/
-
-$gap-v-tiny-mobile: $gap-size-xxs !default;
-$gap-v-tiny-tablet: $gap-size-xs !default;
-$gap-v-tiny-desktop: $gap-size-xs !default;
-
-$gap-v-sm-mobile: $gap-size-xs !default;
-$gap-v-sm-tablet: $gap-size-sm !default;
-$gap-v-sm-desktop: $gap-size-sm !default;
-
-$gap-v-xl-mobile: $gap-size-md !default;
-$gap-v-xl-tablet: $gap-size-lg !default;
-$gap-v-xl-desktop: $gap-size-lg !default;
 
 $gap-v-region-mobile: $gap-v-xl-mobile !default;
 $gap-v-region-tablet: $gap-v-xl-tablet !default;
@@ -163,10 +29,8 @@ $menu--main-navigation-padding-mobile: 0 80px 0 80px !default;
 $menu--main-navigation-padding-tablet: 0 80px 0 80px !default;
 $menu--main-navigation-padding-desktop: 0 80px 0 80px !default;
 $menu--main-navigation-active-color: $color-hover !default;
-
 $menu--main-navigation__item_padding: 5px 7px !default;
 $menu--main-navigation__item_margin: 0 5px !default;
-
 $menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
 
 $navigation-fade-delay: 0.05s !default;
@@ -183,6 +47,14 @@ $menu--submenu-navigation-mobile-color-active: $gray-base !default;
 $menu--submenu-navigation__item_margin-mobile: 15px 0px !default;
 $menu--submenu-navigation__item_margin-tablet: 15px 0px !default;
 $menu--submenu-navigation__item_margin-desktop: 0 5px !default;
+
+/**
+** Author
+**/
+$author__label-font: $font-tiny !default;
+$author__label-size: $label-size-medium !default;
+$author__label-color: $gray-base !default;
+$author__label-hover-color: $color-hover !default;
 
 /**
 ** Newsletter
@@ -215,19 +87,20 @@ $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 $product__item-text-headline-height: 70px !default;
 $product__item-text-headline-size: 18px !default;
 
-$label-size-xxl: 24px !default;
-$label-size-xl: 21px !default;
-$label-size-large: 18px !default;
-$label-size-medium: 16px !default;
-$label-size-small: 13px !default;
-$label-size-tiny: 11px !default;
-
 /**
 ** Labels
 **/
 
 /** label-category **/
-$label-category-size--default: $label-size-medium !default;
+$label--category-font: $font-label !default;
+$label--category-size--mobile: $label-size-medium !default;
+$label--category-size--tablet: $label-size-medium !default;
+$label--category-size--desktop: $label-size-medium !default;
+
+/** label-marketing**/
+$label--marketing-color: $text-color !default;
+$label--marketing-font: $font-tiny !default;
+$label--marketing-size-default: 14px !default;
 
 /**
 ** Titles
@@ -490,37 +363,3 @@ $gallery-ratio-small: 75% !default;
 $media--header-height-mobile: 100px !default;
 $media--header-height-tablet: 150px !default;
 $media--header-height-desktop: 200px !default;
-
-/** animation **/
-$menu-home-animated-logo: true !default;
-$transition-duration: 0.35s !default;
-$transition-easing: ease !default;
-
-$opacity-disabled: 0.4 !default;
-$zindex-menu-sidebar: 100 !default;
-$zindex-modal-background: 10;
-$zindex-modal: 11;
-$teaser-list-horizontal-count-default: 4 !default;
-$teaser-hover-opacity: 0.85 !default;
-
-/** bootstrap overrides **/
-$grid-gutter-width: 24px;
-$state-danger-text: #ea331e;
-$alert-danger-border: #ea331e;
-$alert-danger-text: $state-danger-text;
-
-$modal-backdrop-bg: $white;
-$modal-backdrop-opacity: 0.85;
-
-$input-border-radius: 0;
-$input-border-radius-large: 0;
-$input-border-radius-small: 0;
-$input-height-large: 60px;
-
-$padding-large-vertical: 10px;
-
-$screen-lg: $content-max-width;
-$screen-lg-min: $screen-lg;
-$screen-lg-desktop: $screen-lg-min;
-
-$screen-md-max: ($screen-lg-min - 1);

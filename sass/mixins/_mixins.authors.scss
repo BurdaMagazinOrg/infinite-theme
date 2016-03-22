@@ -1,0 +1,31 @@
+@mixin item-author() {
+  @include clearfix();
+  cursor: pointer;
+  color: $author__label-color;
+  display: inline-block;
+  min-width: 235px;
+
+  &:hover {
+    .img-container {
+      @include opacity($teaser-hover-opacity);
+    }
+
+    .text-author span {
+      color: $author__label-hover-color;
+    }
+  }
+
+  .caption {
+    @include text-helper($author__label-font, $author__label-size);
+  }
+
+  .text-author {
+    margin-top: 3px;
+    line-height: 1;
+    white-space: nowrap;
+
+    span {
+      display: inline-block;
+    }
+  }
+}
