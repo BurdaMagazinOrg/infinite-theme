@@ -28,7 +28,7 @@
 
 
             //parse on lazyloading
-            this.listenTo(this.infiniteModel, 'add', function (pModel) {
+            this.listenTo(this.infiniteModel, 'change:infiniteBlock', function (pModel) {
                 if (pModel.get('type') === 'infiniteBlockView' && pModel.get('initialDOMItem') === false) {
                     this.parseTrackingElements(pModel.get('el'));
                 }
@@ -268,8 +268,8 @@
                     category: tmpShop,
                     list: tmpOptions.list,
                     name: tmpTitle,
-                    id: tmpSKU,
-                    price: tmpPrice,
+                    id: tmpSKU.toString(),
+                    price: tmpPrice.toString(),
                     brand: tmpBrand,
                     position: (pIndex + 1)
                 }
@@ -327,6 +327,7 @@
 
             switch (pType) {
                 case 'impressions':
+                    tmpTrackingObject.event = 'productImpressions';
                     tmpTrackingObject.ecommerce = {
                         'impressions': pData
                     }
@@ -335,6 +336,7 @@
                     tmpTrackingObject.event = 'productClick';
                     tmpTrackingObject.ecommerce = {
                         'click': {
+                            'actionField': {'list': pData.list},
                             'products': [pData]
                         }
                     }
