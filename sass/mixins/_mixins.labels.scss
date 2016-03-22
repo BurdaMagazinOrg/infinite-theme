@@ -25,9 +25,13 @@
   color: $color;
 }
 
-@mixin label--copyright($size: $label--copyright-size-default, $font: $label--copyright-font, $color: $label--copyright-color) {
+@mixin label--copyright($sizes: ($label--copyright-size--mobile, $label--copyright-size--tablet, $label--copyright-size--desktop), $font: $label--copyright-font, $color: $label--copyright-color) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
   @extend %icon-copyright;
-  @include text-helper($font, $size);
+  @include text-helper($font);
   color: $color;
   text-transform: uppercase;
 
@@ -37,5 +41,17 @@
       margin-left: -4px;
       margin-right: 3px;
     }
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    @include text-helper-size($label--copyright-font, $size-mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($label--copyright-font, $size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($label--copyright-font, $size-desktop);
   }
 }

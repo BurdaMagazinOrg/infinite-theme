@@ -124,8 +124,10 @@ $label--advertorial-size: 14px !default;
 
 /** label-copyright**/
 $label--copyright-font: $font-tiny !default;
-$label--copyright-size-default: 14px !default;
 $label--copyright-color: $gray-base !default;
+$label--copyright-size--mobile: 12px !default;
+$label--copyright-size--tablet: 14px !default;
+$label--copyright-size--desktop: 14px !default;
 
 /**
 ** Titles

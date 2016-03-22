@@ -1,6 +1,5 @@
 .item-content__block--tags {
   @include text-helper($tags__article-font, $tags__article-text-size);
-  //@extend %text-tiny-size-large;
 
   .label {
     display: inline-block;
