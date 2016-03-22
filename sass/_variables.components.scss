@@ -158,6 +158,14 @@ $copytext--text-block-desktop: 21px !default;
 ** Teaser
 **/
 
+$teaser__author--default-gap-top-mobile: $gap-size-sm !default;
+$teaser__author--default-gap-top-tablet: $gap-size-sm !default;
+$teaser__author--default-gap-top-desktop: $gap-size-lg !default;
+
+$teaser__socials--default-gap-top-mobile: $gap-size-sm !default;
+$teaser__socials--default-gap-top-tablet: $gap-size-sm !default;  
+$teaser__socials--default-gap-top-desktop: $gap-size-lg !default;
+
 /** feed-teaser **/
 $feed-teaser-headline-size-mobile: $title-size-sm !default;
 $feed-teaser-headline-size-tablet: $title-size-md !default;

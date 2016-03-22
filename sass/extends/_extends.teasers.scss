@@ -29,3 +29,15 @@
 %teaser-square-xs {
   @include teaser-square-xs();
 }
+
+%teaser--portrait-small {
+  @include teaser--portrait-small();
+}
+
+%teaser--portrait-medium {
+  @include teaser--portrait-medium();
+}
+
+%teaser--content-right {
+  @include teaser--content-right();
+}

@@ -96,49 +96,13 @@
 **/
 
 .teaser-portrait-small {
-  & > .img-container {
-    @include make-xs-column($grid-columns/3);
-  }
-
-  .caption-teaser {
-    @include make-xs-column($grid-columns - ($grid-columns/3));
-  }
+  @extend %teaser--portrait-small;
 }
 
 .teaser-portrait-medium {
-  & > .img-container {
-    @include make-xs-column(floor($grid-columns/2.05));
-  }
-
-  .caption-teaser {
-    @include make-xs-column($grid-columns - floor($grid-columns/2.05));
-  }
-}
-
-.teaser-portrait-small, .teaser-portrait-medium {
-  @media (max-width: $screen-xxs-max) {
-    .img-container img {
-      width: 75%;
-    }
-
-    .caption-teaser {
-      width: 75%;
-    }
-  }
+  @extend %teaser--portrait-medium;
 }
 
 .teaser-content-right {
-  @include make-row();
-
-  .caption-teaser {
-    padding-top: 0;
-  }
-
-  &.teaser-landscape-medium {
-    @media (max-width: $screen-sm-max) {
-      & > .caption-teaser {
-        padding-top: $grid-gutter-width;
-      }
-    }
-  }
+  @extend %teaser--content-right;
 }
