@@ -2,7 +2,7 @@
 ** Containers
 **/
 
-@mixin reset-container-v-gap($lined: false) {
+@mixin gap__container--v-reset($lined: false) {
   @if ($region-v-lined or $lined) {
     border-top: 0;
   }
@@ -49,7 +49,6 @@
   }
 }
 
-
 @mixin margin--v-region($gaps: ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop)) {
   @include _margin--v($gaps);
 }
@@ -80,12 +79,36 @@
 ** Common
 **/
 
-@mixin clear-gutter-gap() {
-  margin-left: -$grid-gutter-width;
-  margin-right: -$grid-gutter-width;
+@mixin gap__container--h-negative() {
+  @media (max-width: $screen-xxs-max) {
+    margin-left: -$container-h-gap--mobile;
+    margin-right: -$container-h-gap--mobile;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    margin-left: -$container-h-gap--tablet;
+    margin-right: -$container-h-gap--tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-left: -$container-h-gap--desktop;
+    margin-right: -$container-h-gap--desktop;
+  }
 }
 
-@mixin padding-gutter-gap() {
-  padding-left: $grid-gutter-width;
-  padding-right: $grid-gutter-width;
+@mixin gap__container--h-padding() {
+  @media (max-width: $screen-xxs-max) {
+    padding-left: $container-h-gap--mobile;
+    padding-right: $container-h-gap--mobile;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    padding-left: $container-h-gap--tablet;
+    padding-right: $container-h-gap--tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding-left: $container-h-gap--desktop;
+    padding-right: $container-h-gap--desktop;
+  }
 }

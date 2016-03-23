@@ -34,14 +34,14 @@
 }
 
 #feed-modal-search {
-  @extend %padding-gutter-gap;
+  @extend %gap__container--h-padding;
   text-align: left;
   padding-top: $gap-section;
   margin-top: $gap-section;
 
   .region-lazy-loading:first-child {
     .region-teaser-list {
-      @extend %reset-container-v-gap;
+      @extend %gap__container--v-reset;
     }
   }
 

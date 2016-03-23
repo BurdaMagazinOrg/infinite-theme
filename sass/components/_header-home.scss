@@ -3,7 +3,7 @@
   min-height: 60px;
 
   .container-content {
-    @extend %region-fixed-content;
+    @extend %region--fixed-content;
     position: relative;
   }
 

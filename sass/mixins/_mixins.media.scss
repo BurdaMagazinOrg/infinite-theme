@@ -135,7 +135,7 @@
 
 @mixin item-media--header() {
   @include item-media--header-text();
-  @include clear-gutter-gap();
+  @include gap__container--h-negative();
   @include _item-media--header-height();
   overflow: hidden;
   position: relative;

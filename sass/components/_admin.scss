@@ -1,5 +1,5 @@
 #tabs {
-  @extend %clear-gutter-gap;
+  @extend %gap__container--h-negative;
   border-bottom: $h-line-style;
   //margin-bottom: $gap-section;
 

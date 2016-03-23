@@ -46,7 +46,7 @@ body {
 }
 
 #page-wrapper {
-  @extend %padding-gutter-gap;
+  @extend %gap__container--h-padding;
 }
 
 #page {

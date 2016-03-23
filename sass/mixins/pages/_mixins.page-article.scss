@@ -1,6 +1,6 @@
 @mixin page-article() {
   .item-content__header {
-    @extend %region-fixed-content;
+    @extend %region--fixed-content;
 
     h1 {
       @extend %title--article;
@@ -12,7 +12,7 @@
   }
 
   .breadcrumb {
-    @extend %region-fixed-content;
+    @extend %region--fixed-content;
   }
 
   @media (max-width: $screen-xs-max) {

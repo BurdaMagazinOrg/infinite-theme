@@ -1,9 +1,13 @@
-%region-fixed-content {
-  @include region-fixed-content();
+%region--fixed-content {
+  @include region--fixed-content();
 }
 
-%region-full-content {
-  @include region-full-content();
+%region--full-content {
+  @include region--full-content();
+}
+
+%region__children--full-content {
+  @include region__children--full-content();
 }
 
 %center-block {
@@ -14,6 +18,6 @@
   @include region-infinite-block();
 }
 
-%reset-container-v-gap {
-  @include reset-container-v-gap();
+%gap__container--v-reset {
+  @include gap__container--v-reset();
 }

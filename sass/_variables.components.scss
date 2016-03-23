@@ -8,6 +8,17 @@ $gap-v-region-tablet: $gap-v-xl-tablet !default;
 $gap-v-region-desktop: $gap-v-xl-desktop !default;
 
 /**
+** Containers
+**/
+$container-h-gap--mobile: 22px !default;
+$container-h-gap--tablet: 32px !default;
+$container-h-gap--desktop: 42px !default;
+
+$container-padding-top-mobile: $gap-size-md !default;
+$container-padding-top-tablet: $gap-size-lg !default;
+$container-padding-top-desktop: $gap-size-lg !default;
+
+/**
 ** Btns
 **/
 $btn--small-font: $font-label !default;
@@ -32,9 +43,6 @@ $margin-v-item-content__item-desktop: $gap-size-xxxl !default;
 
 /**region full content **/
 $region-v-lined: true !default;
-$container-padding-top-mobile: $gap-size-md !default;
-$container-padding-top-tablet: $gap-size-lg !default;
-$container-padding-top-desktop: $gap-size-lg !default;
 
 /**
 ** Main Navigation

@@ -1,11 +1,27 @@
-@mixin region-fixed-content {
+@mixin region--fixed-content {
   @include center-block();
   max-width: $content-max-width;
 }
 
-@mixin region-full-content {
-  @include clear-gutter-gap();
-  @include padding-gutter-gap();
+@mixin region--full-content() {
+  @include gap__container--h-negative();
+  @include gap__container--h-padding();
+}
+
+@mixin region__children--full-content {
+  &:first-child.region-marketing {
+    &.ad-active {
+      @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    }
+
+    &.ad-inactive + .region-full-content {
+      @extend %gap__container--v-reset;
+    }
+  }
+
+  & > .item-content__header:first-child {
+    padding-top: 0;
+  }
 }
 
 @mixin region-infinite-block() {

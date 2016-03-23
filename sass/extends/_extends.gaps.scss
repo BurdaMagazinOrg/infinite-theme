@@ -1,9 +1,9 @@
-%clear-gutter-gap {
-  @include clear-gutter-gap();
+%gap__container--h-negative {
+  @include gap__container--h-negative();
 }
 
-%padding-gutter-gap {
-  @include padding-gutter-gap();
+%gap__container--h-padding {
+  @include gap__container--h-padding();
 }
 
 %gap--v-sm {

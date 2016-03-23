@@ -3,18 +3,18 @@
 }
 
 @mixin item-paragraph--middle() {
-  @include region-fixed-content();
+  @include region--fixed-content();
 }
 
 @mixin item-paragraph--media() {
   .caption {
-    @extend %region-fixed-content;
+    @extend %region--fixed-content;
   }
 }
 
 @mixin item-paragraph--media--video() {
   &.item-paragraph--full {
-    @extend %clear-gutter-gap;
+    @extend %gap__container--h-negative;
   }
 }
 
@@ -23,7 +23,7 @@
 
   &.item-paragraph--full {
     .img-container {
-      @extend %clear-gutter-gap;
+      @extend %gap__container--h-negative;
     }
 
     .item-media--image-portrait {
@@ -38,7 +38,7 @@
   @extend %item-paragraph--media--image;
 
   &.item-paragraph--full {
-    @extend %clear-gutter-gap;
+    @extend %gap__container--h-negative;
 
     //todo check if possible in root // here
     .gallery-header {
@@ -124,7 +124,7 @@
   }
 
   &.item-paragraph--full {
-    @include clear-gutter-gap();
+    @include gap__container--h-negative();
 
     @media (max-width: $screen-xs-max) {
       @include _spotlight--small();
@@ -469,7 +469,7 @@
 
 @mixin _profile--two-col() {
   .wrapper {
-    @include region-fixed-content();
+    @include region--fixed-content();
   }
 
   .row {

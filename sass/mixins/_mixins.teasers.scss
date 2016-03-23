@@ -261,12 +261,12 @@
   }
 
   .caption__wrapper {
-    @include region-fixed-content();
+    @include region--fixed-content();
     position: relative;
   }
 
   .img-container {
-    @include clear-gutter-gap();
+    @include gap__container--h-negative();
   }
 
   .caption {
