@@ -6,63 +6,118 @@
 * Lading Page
 **/
 .region-newsletter-page {
-  position: relative;
-  min-height: 500px;
-  height: 0;
-  padding-bottom: 100%;
+  @media (min-height: 500px) {
+    position: fixed;
+    height: auto !important;
+    //width: 100% !important;
+    top: $navigation-min-height;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 
   .container-content {
     background-position: top center;
-    background-image: url(../images/static/newsletter_landingpage_xs.jpg);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    @media (min-width: $screen-sm-min) {
-      background-image: url(../images/static/newsletter_landingpage_sm.jpg);
-    }
-
-    @media (min-width: $screen-lg-min) {
-      background-image: url(../images/static/newsletter_landingpage_lg.jpg);
-    }
-
-    @media (min-width: $screen-xl-min) {
-      background-image: url(../images/static/newsletter_landingpage_xl.jpg);
-    }
   }
 
-
-  @media (min-width: $screen-md-min) {
-
-    .container-success {
-      background-color: transparent;
+  @media (max-width: $screen-xs-max) {
+    .content-wrapper {
+      padding: 10px;
     }
 
-    .content-wrapper {
-      background-color: rgba($white, 0.8);
-      color: $text-color;
-      width: $screen-sm-min;
-      padding: $gap-size-md;
-      margin-top: -200px;
+    .container-content {
+      background-image: url(../images/static/newsletter_landingpage_xs.jpg);
     }
 
     .container-privacy {
-      background-color: rgba($white, 0.8);
-      width: $screen-sm-min;
-      height: 400px;
-      margin-left: - floor($screen-sm-min/2);
-      margin-top: -200px;
-      top: 50%;
-      left: 50%;
-      bottom: auto;
-      right: auto;
+      display: block;
+    }
+
+    .icon-close {
+      right: 35px;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+    .content-wrapper {
+      padding: 20px;
+    }
+
+    .container-content {
+      background-image: url(../images/static/newsletter_landingpage_sm.jpg);
+    }
+
+    .container-privacy {
+      display: block;
     }
   }
 
   @media (min-width: $screen-lg-min) {
-    height: 0;
-    padding-bottom: 65%;
+    .content-wrapper {
+      padding: 20px;
+    }
+
+    .container-content {
+      background-image: url(../images/static/newsletter_landingpage_lg.jpg);
+    }
+
+    .container-privacy, .container-success {
+      background-color: transparent;
+      overflow-y: hidden;
+      color: $text-color;
+
+      .content-wrapper {
+        background-color: rgba($white, 0.8);
+        position: relative;
+        width: $screen-sm-min;
+        height: 400px;
+        overflow-y: scroll;
+        padding: 20px;
+      }
+    }
   }
+
+  .container-success {
+    .content-wrapper {
+      height: auto;
+    }
+  }
+
+  @media (min-width: $screen-xl-min) {
+    .container-content {
+      background-image: url(../images/static/newsletter_landingpage_xl.jpg);
+    }
+  }
+  //
+  //
+  //@media (min-width: $screen-md-min) {
+  //  .container-success {
+  //    background-color: transparent;
+  //  }
+  //
+  //  .content-wrapper {
+  //    background-color: rgba($white, 0.8);
+  //    color: $text-color;
+  //    width: $screen-sm-min;
+  //    padding: $gap-size-md;
+  //    margin-top: -200px;
+  //  }
+  //
+  //  .container-privacy {
+  //    background-color: rgba($white, 0.8);
+  //    width: $screen-sm-min;
+  //    height: 400px;
+  //    margin-left: - floor($screen-sm-min/2);
+  //    margin-top: -200px;
+  //    top: 50%;
+  //    left: 50%;
+  //    bottom: auto;
+  //    right: auto;
+  //  }
+  //}
+  //
+  //@media (min-width: $screen-lg-min) {
+  //  height: 0;
+  //  padding-bottom: 65%;
+  //}
 }

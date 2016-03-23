@@ -128,23 +128,26 @@
     text-decoration: underline;
   }
 
+  ul {
+    list-style-type: initial;
+  }
+
+  ol {
+    list-style-type: decimal;
+
+    li {
+      padding-left: 10px;
+    }
+  }
+
   ul, ol {
     margin-top: 5px;
 
     li {
       position: relative;
       line-height: 1.5;
-      overflow: hidden;
-      padding-left: 22px;
+      margin-left: 20px;
       margin-top: 10px;
-
-      &:before {
-        @extend %icon-arrow-right-small;
-        left: 0;
-        top: 7px;
-        position: absolute;
-        font-size: 17px;
-      }
 
       &:first-child {
         margin-top: 0;
