@@ -18,6 +18,10 @@ button {
   @extend %btn;
 }
 
+.btn--small {
+  @extend %btn-round--small;
+}
+
 .btn-lg {
   padding: $padding $padding-large-horizontal 6px;
 }

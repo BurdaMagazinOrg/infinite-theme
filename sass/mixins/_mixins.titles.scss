@@ -25,34 +25,36 @@
 
 @mixin title--article() {
   max-width: $full-headlines-max-width;
+  @include text-headline();
 
   @media (max-width: $screen-xs-max) {
-    @include text-headline($title--article-mobile);
+    @include text-headline-size($title--article-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-headline($title--article-tablet);
+    @include text-headline-size($title--article-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-headline($title--article-desktop);
+    @include text-headline-size($title--article-desktop);
   }
 }
 
 @mixin title--page-center() {
   text-align: center;
   color: $title--page-center-color;
+  letter-spacing: -1px;
 
   @media (max-width: $screen-xs-max) {
-    @include text-headline($title--page-center-mobile, '', -1px);
+    @include text-headline-size($title--page-center-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-headline($title--page-center-tablet, '', -1px);
+    @include text-headline-size($title--page-center-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-headline($title--page-center-desktop, '', -1px);
+    @include text-headline-size($title--page-center-desktop);
   }
 }
 

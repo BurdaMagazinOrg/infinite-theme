@@ -13,7 +13,7 @@
             this.checkText();
         },
         checkText: function () {
-            this.$productHeadlines.dotdotdot();
+            this.$productHeadlines.dotdotdot({watch: 'window'});
         }
     });
 

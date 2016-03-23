@@ -1,3 +1,4 @@
+
 /**
 ** Specific Lists Gaps
 **/
@@ -7,9 +8,19 @@ $gap-v-region-tablet: $gap-v-xl-tablet !default;
 $gap-v-region-desktop: $gap-v-xl-desktop !default;
 
 /**
+** Btns
+**/
+$btn--small-font: $font-label !default;
+$btn--small-size: 13px !default;
+$btn--small-padding: 4px 20px !default;
+$btn--small-border: 1px solid $color-highlighted !default;
+$btn--small-radius: 15px !default;
+$btn--small-color: $color-highlighted !default;
+
+/**
 ** Breadcrumb
 **/
-$breadcrumb-font: $font-label;
+$breadcrumb-font: $font-label !default;
 
 /**
 ** Lists Margins
@@ -89,19 +100,22 @@ $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 ** Products
 **/
 
-$product__item-text-headline-height: 70px !default;
 $product__item-text-headline-font: $font-headline !default;
 $product__item-text-brand-font: $font-label !default;
 $product__item-text-price-font: $font-label !default;
 $product__item-text-shipping-font: $font-label !default;
-$product__item-text-shop-font: $font-label !default;
 
 $product__item-text-headline-size: $title-size-xxs !default;
 $product__item-text-brand-size: 13px !default;
 $product__item-text-price-size: 13px !default;
 $product__item-text-shipping-size: 13px !default;
-$product__item-text-shop-size: 13px !default;
 
+$product__item-text-headline-height-mobile: 43px !default;
+$product__item-text-headline-height-tablet: 43px !default;
+$product__item-text-headline-height-desktop: 43px !default;
+$product__item-text-headline-gap-bottom-mobile: 33px !default;
+$product__item-text-headline-gap-bottom-tablet: 33px !default;
+$product__item-text-headline-gap-bottom-desktop: 33px !default;
 /**
 ** Labels
 **/

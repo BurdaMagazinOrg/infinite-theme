@@ -13,16 +13,43 @@
   overflow: hidden;
   margin-bottom: $gap-size-lg;
 
+  .text-headline {
+    overflow: hidden;
+  }
+
+  .text-brand {
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .text-shipping {
+    right: 0;
+    color: $gray-base;
+  }
+
+  .text-shipping, .text-price {
+    position: absolute;
+    bottom: 35px;
+  }
+
+  .text-price {
+    left: 0;
+  }
+
+  .text-shop {
+    margin-top: 10px;
+  }
+
   &:hover {
     .text-shop {
-      background-color: $color-highlighted;
-      color: $white;
+      @extend %btn-round--small--highlighted;
     }
   }
 
   .img-container {
     text-align: center;
-    margin-bottom: $padding;
+    margin-bottom: $gap-size-xs;
     height: 200px;
     overflow: hidden;
 
@@ -45,22 +72,42 @@
     display: block;
     width: auto;
     margin-right: 0;
+    padding-left: 0;
 
     &:first-child {
       @include reset-container-v-gap();
     }
 
-    .img-container {
-      height: auto;
-      margin-bottom: 0;
+    .text-headline {
+      margin-bottom: $product__item-text-headline-gap-bottom-mobile;
     }
 
     .img-container, .caption {
       @include make-xxs-column($grid-columns/2);
     }
 
+    .img-container {
+      height: auto;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
     .caption {
       padding-left: 0;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      height: $product__item-text-headline-height-tablet;
+      margin-bottom: $product__item-text-headline-gap-bottom-tablet;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      height: $product__item-text-headline-height-desktop;
+      margin-bottom: $product__item-text-headline-gap-bottom-desktop;
     }
   }
 }

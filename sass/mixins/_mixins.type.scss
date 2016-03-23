@@ -1,15 +1,15 @@
 @mixin text-helper($font, $size: '') {
 
   @if ($font == $font-headline) {
-    @include text-headline();
+    @extend %text-headline;
   } @else if ($font == $font-headline-bold) {
-    @include text-headline-bold();
+    @extend %text-headline-bold;
   } @else if ($font == $font-tiny) {
-    @include text-tiny();
+    @extend %text-tiny;
   } @else if ($font == $font-label) {
-    @include text-label();
-  } @else {
-    @include text-content();
+    @extend %text-label;
+  } @else if ($font == $font-content) {
+    @extend %text-content;
   }
 
   @if ($size!= '') {
@@ -120,7 +120,7 @@
     @extend %title--text-block;
   }
 
-  p {
+  p, .btn, .btn--small, .btn--large {
     margin-top: $grid-gutter-width;
   }
 

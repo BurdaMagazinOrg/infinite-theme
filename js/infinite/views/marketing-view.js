@@ -82,7 +82,7 @@
         },
         createOrbydAd: function (pSettings) {
 
-            var tmpAdURL = 'http://cdn-tags.orbyd.com/' + this.adFormat.toString(),
+            var tmpAdURL = '//cdn-tags.orbyd.com/' + this.adFormat.toString(),
                 tmpAdscModel = {},
                 tmpReferer = window.location.host + AppConfig.initialLocation,
                 tmpDataStr = '';

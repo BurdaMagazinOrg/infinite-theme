@@ -5,3 +5,11 @@
 %btn__open-tree--mobile {
   @include btn__open-tree--mobile();
 }
+
+%btn-round--small {
+  @include btn-round--small();
+}
+
+%btn-round--small--highlighted {
+  @include btn-round--small--highlighted();
+}
