@@ -10,7 +10,7 @@
 
 @mixin region__children--full-content {
   &:first-child.region-marketing {
-    &.ad-active {   
+    &.ad-active {
       //@include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
     }
 

@@ -124,10 +124,6 @@
     z-index: 2;
   }
 
-  .text-headline {
-    @extend %title--horizontal-block;
-  }
-
   .checkbox {
     text-align: center;
     margin-top: $gap-size-md;
@@ -140,8 +136,12 @@
   @media (max-width: $screen-xs-max) {
     height: $newsletter--horizontal--height-mobile;
 
-    .container-form {
+    .text-headline {
+      @include text-headline($newsletter--horizontal--title-size--mobile);
+      margin-bottom: $title--horizontal-block-gap-bottom-mobile;
+    }
 
+    .container-form {
       .input-email {
         width: 100%;
         padding-right: $padding-large-horizontal;
@@ -178,6 +178,11 @@
     height: $newsletter--horizontal--height-tablet;
     margin-top: $gap-size-xs;
 
+    .text-headline {
+      @include text-headline($newsletter--horizontal--title-size--tablet);
+      margin-bottom: $title--horizontal-block-gap-bottom-tablet;
+    }
+
     .container-content-item {
       padding: $newsletter--horizontal--padding-tablet;
     }
@@ -193,6 +198,11 @@
 
   @media (min-width: $screen-md-min) {
     height: $newsletter--horizontal--height-desktop;
+
+    .text-headline {
+      @include text-headline($newsletter--horizontal--title-size--desktop);
+      margin-bottom: $title--horizontal-block-gap-bottom-desktop;
+    }
 
     .container-content-item {
       padding: $newsletter--horizontal--padding-desktop;

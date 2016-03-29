@@ -84,6 +84,10 @@ $author__label-hover-color: $color-hover !default;
 ** Newsletter
 **/
 
+$newsletter--horizontal--title-size--mobile: $title-size-md !default;
+$newsletter--horizontal--title-size--tablet: $title-size-lg !default;
+$newsletter--horizontal--title-size--desktop: $title-size-lg !default;
+
 $newsletter--horizontal--padding-mobile: $gap-size-sm $gap-size-sm !default;
 $newsletter--horizontal--padding-tablet: $gap-size-sm $gap-size-sm !default;
 $newsletter--horizontal--padding-desktop: $gap-size-sm $gap-size-sm !default;
