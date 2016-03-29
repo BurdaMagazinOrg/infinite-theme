@@ -120,7 +120,7 @@
     @extend %title--text-block;
   }
 
-  p, .btn, .btn--small, .btn--large {
+  & > p, .btn, .btn--small, .btn--large {
     margin-top: $grid-gutter-width;
   }
 
