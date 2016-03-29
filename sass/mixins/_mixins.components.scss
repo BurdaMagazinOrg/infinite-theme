@@ -32,7 +32,7 @@
 
 @mixin item-breadcrumb() {
   @extend %region--fixed-content;
-    
+
   li {
     @include inline-block();
     @include text-helper($breadcrumb-font);
