@@ -3,8 +3,6 @@
 }
 
 @mixin item-content__header() {
-  padding-bottom: $gap-size-lg;
-
   @media (max-width: $screen-xxs-max) {
     .author {
       margin-top: $gap-size-sm;
@@ -288,6 +286,7 @@
 @mixin item-content--article() {
   .item-content__header {
     @extend %region--fixed-content;
+    padding-bottom: $gap-size-lg;  
 
     h1 {
       @extend %title--article;
