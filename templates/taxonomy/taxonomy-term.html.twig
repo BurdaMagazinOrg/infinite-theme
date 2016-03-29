@@ -38,15 +38,11 @@
 
     {% if content|render %}
         <div class="item-content__content">
-
-            {#{% if content.description|render %}#}
-            {#<div class="item-content-highlighted">#}
-            {#{{ content.description }}#}
-            {#</div>#}
-            {#{% endif %}#}
-
-            {{ content.field_paragraph|render }}  {# see TWIG files in paragraphs directory#}
-
+            {% if content.field_paragraphs %}
+                {{ content.field_paragraphs|render }}
+            {% else %}
+                {{ content.field_paragraph|render }}
+            {% endif %}
         </div>
     {% endif %}
 </div>
