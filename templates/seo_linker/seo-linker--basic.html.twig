@@ -1,0 +1,26 @@
+{#
+/**
+ * @file seo_linker.html.twig
+ * Default theme implementation to present SEO Linker data.
+ *
+ * This template is used when viewing SEO Linker pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_seo_linker()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="swipeable__item seo-linker__item--image">
+  <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
+    {{ content.field_media }}
+  </div>
+  <div class="list-wrapper--seo-linker">
+    <div class="seo-linker__item-title">{{ content.field_title }}</div>
+    {{ content.field_links }}
+  </div>
+</div>

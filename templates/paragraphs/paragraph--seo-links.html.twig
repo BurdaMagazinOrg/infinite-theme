@@ -1,0 +1,10 @@
+<div class="region-full-content swipeable--horizontal region__seo-linker--image" data-view-type="listSwipeableView">
+    <div class="container-content container-fixed-content seo-linker--image">
+        {% if content.field_title|render %}
+            <h3 class="seo-linker__title">{{ content.field_title }}</h3>
+        {% endif %}
+        <div class="swipeable__wrapper list__images--horizontal">
+            {{ content|without('field_title', 'field_layout') }}
+        </div>
+    </div>
+</div>
