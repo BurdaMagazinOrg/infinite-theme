@@ -1,5 +1,13 @@
+%item-content--article {
+  @include item-content--article();
+}
+
 %item-content--taxonomy {
   @include item-content--taxonomy();
+}
+
+%item-content--basic {
+  @include item-content--basic();
 }
 
 %item-content--archive {

@@ -285,6 +285,30 @@
   }
 }
 
+@mixin item-content--article() {
+  .item-content__header {
+    @extend %region--fixed-content;
+
+    h1 {
+      @extend %title--article;
+    }
+  }
+
+  #main {
+    padding-bottom: 0; //feed gap
+  }
+
+  .breadcrumb {
+    @extend %region--fixed-content;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-content-column .socials-vertical-bar {
+      margin-top: $gap-size-lg;
+    }
+  }
+}
+
 @mixin item-content--taxonomy() {
   .item-content__header {
     @extend %content__header-center;
@@ -304,6 +328,23 @@
 
   .title--page {
     @extend %title--page-center;
+  }
+}
+
+@mixin item-content--basic() {
+  .item-content__header {
+    @extend %content__header-center;
+    @extend %region--full-content;
+  }
+
+  .title--page {
+    @extend %title--page-center;
+  }
+
+  .item-content__content {
+    @extend %region--full-content;
+    @extend %container-v-padding;
+    border-top: $h-line-style;
   }
 }
 

@@ -30,6 +30,14 @@
   @extend %item-content--taxonomy;
 }
 
+.item-content--article {
+  @extend %item-content--article;
+}
+
+.item-content--basic {
+  @extend %item-content--basic;
+}
+
 .item-content .container-row {
   margin-top: $gap-section;
 
