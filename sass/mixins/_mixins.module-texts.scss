@@ -88,8 +88,7 @@
 
 @mixin socials-labeled-horizontal-bar-text() {
   .item-social span {
-    @include text-headline();
-    font-size: $socials-labeled-horizontal-bar-label-size;
+    @include text-helper($socials-labeled-horizontal-bar-label-font, $socials-labeled-horizontal-bar-label-size);
     line-height: $socials-labeled-horizontal-bar-label-size + 1px;
   }
 }
