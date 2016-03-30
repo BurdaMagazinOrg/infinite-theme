@@ -19,7 +19,7 @@
             this.ajax = Drupal.ajax(this.settings);
 
             //caching enabled
-            //this.ajax.options.type = "GET";
+            this.ajax.options.type = "GET";
 
             this.ajax.commands.insert = $.proxy(function (ajax, response, status) {
                 var method = response.method || ajax.method;
@@ -29,8 +29,9 @@
                     new_content = new_content_wrapped;
                 }
 
+                //caching enabled
                 if (method == 'append') {
-                    $('body').append(new_content);
+                    //$('body').append(new_content);
                 } else {
                     this.settings.callback(new_content);
                 }

@@ -8,9 +8,9 @@
 
     {% if not has_spotlight_title %}
         {% if has_header_block %}
-            <h2 class="text-headline text-headline-size-h1">{{ label }}</h2>
+            <h2 class="title--article">{{ label }}</h2>
         {% else %}
-            <h1 class="text-headline text-headline-size-h1">{{ label }}</h1>
+            <h1 class="title--article">{{ label }}</h1>
         {% endif %}
         {{ author_teaser }}
     {% endif %}
