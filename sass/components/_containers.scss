@@ -17,6 +17,14 @@
   }
 }
 
+.region-lazy-loading, .region-content > .region-infinite-block {
+  & > .region-marketing:first-child {
+    &.ad-active {
+      @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    }
+  }
+}
+
 #page-wrapper {
   .region-presenter {
     padding-top: 0;
@@ -49,9 +57,9 @@ body .region-marketing.ad-active + .region-full-content {
 
 //if ad is first child - remove negative margin-top
 //todo check this
-#content > .region-full-content:first-child > .region-marketing:first-child {
-  margin-top: 0;
-}
+//#content > .region-full-content:first-child > .region-marketing:first-child {
+//  margin-top: 0;
+//}
 
 .region--fixed-content, .region-fixed-content, .container-fixed-content, .fixed-content {
   @extend %region--fixed-content;
