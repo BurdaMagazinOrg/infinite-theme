@@ -130,23 +130,20 @@
 
   ul {
     list-style-type: initial;
+    padding-left: 2px;  //overflow fix  
   }
 
   ol {
     list-style-type: decimal;
-
-    li {
-      padding-left: 10px;
-    }
   }
 
   ul, ol {
     margin-top: 5px;
+    list-style-position:inside;
 
     li {
       position: relative;
       line-height: 1.5;
-      margin-left: 20px;
       margin-top: 10px;
 
       &:first-child {
