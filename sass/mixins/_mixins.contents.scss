@@ -101,7 +101,7 @@
   & > .col--left {
     @extend %flex-item-1;
     width: 100%;
-    //overflow: hidden;
+    overflow: hidden;  
   }
 
   @media (max-width: $screen-sm-max) {
