@@ -19,7 +19,7 @@
 }
 
 @mixin item-paragraph--media--image() {
-  @extend %item-paragraph--media;  
+  @extend %item-paragraph--media;
 
   &.item-paragraph--full {
     .img-container {
@@ -99,7 +99,7 @@
     @include img-full-responsive();
   }
 
-  .item-social {
+  .socials-bar .item-social {
     @include socials-clean-horizontal-bar-item--light();
   }
 

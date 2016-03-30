@@ -137,50 +137,51 @@
   text-align: center;
 
   .title {
+    @include text-helper($spotlight__title-font);
     letter-spacing: $spotlight__title-letter-spacing;
     text-shadow: $spotlight__caption-text-shadow;
   }
 
   .subtitle {
-    @include text-content($spotlight__subtitle-size);
+    @include text-helper($spotlight__subtitle-font, $spotlight__subtitle-size);
     text-transform: uppercase;
     text-shadow: $spotlight__caption-text-shadow;
   }
 
   .copytext {
-    @include text-tiny();
+    @include text-helper($spotlight__copytext-font);
     text-shadow: $spotlight__caption-text-shadow;
   }
 }
 
 @mixin item-content--spotlight-small-text() {
   .title {
-    @include text-headline($spotlight__title-size-mobile);
+    @include text-helper-size($spotlight__title-font, $spotlight__title-size-mobile);
   }
 
   .copytext {
-    @include text-tiny-size($spotlight__copytext-size-mobile);
+    @include text-helper-size($spotlight__copytext-font, $spotlight__copytext-size-mobile);
   }
 }
 
 @mixin item-content--spotlight-middle-text() {
   .title {
-    @include text-headline($spotlight__title-size-tablet);
+    @include text-helper-size($spotlight__title-font, $spotlight__title-size-tablet);
   }
 
   .copytext {
-    @include text-tiny-size($spotlight__copytext-size-tablet);
+    @include text-helper-size($spotlight__copytext-font, $spotlight__copytext-size-tablet);
   }
 }
 
 @mixin item-content--spotlight-full-text() {
   .title {
-    @include text-headline();
-    @include text-headline-size($spotlight__title-size-desktop, 1.1);
+    @include text-helper-size($spotlight__title-font, $spotlight__title-size-desktop);
+    letter-spacing: 1.1;
   }
 
   .copytext {
-    @include text-tiny-size($spotlight__copytext-size-desktop);
+    @include text-helper-size($spotlight__copytext-font, $spotlight__copytext-size-desktop);
   }
 }
 

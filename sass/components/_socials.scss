@@ -4,7 +4,7 @@
   }
 
   //fb / whatsapp / instagram / etc
-  @extend %socials-default-items;
+  @include socials-default-items();
 }
 
 .socials-bar-clean {

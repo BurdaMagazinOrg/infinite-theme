@@ -134,6 +134,12 @@
     padding-bottom: $gap-size-md;
     margin-bottom: $gap-size-md;
     border-bottom: $h-line-style;
+
+    span {
+      @extend %text-label;
+      @include text-label-size($menu--submenu-navigation-size);
+      text-transform: uppercase;
+    }
   }
 
   .title--page {
@@ -286,7 +292,7 @@
 @mixin item-content--article() {
   .item-content__header {
     @extend %region--fixed-content;
-    padding-bottom: $gap-size-lg;  
+    padding-bottom: $gap-size-lg;
 
     h1 {
       @extend %title--article;

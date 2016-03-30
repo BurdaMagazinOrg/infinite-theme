@@ -377,12 +377,15 @@ $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 **/
 
 /** spotlight **/
+$spotlight__title-font: $font-headline !default;
 $spotlight__title-size-mobile: $title-size-lg !default;
 $spotlight__title-size-tablet: $title-size-xl !default;
 $spotlight__title-size-desktop: 59px !default;
 
+$spotlight__subtitle-font: $font-content !default;
 $spotlight__subtitle-size: $label-size-medium !default;
 
+$spotlight__copytext-font: $font-tiny !default;
 $spotlight__copytext-size-mobile: 19px !default;
 $spotlight__copytext-size-tablet: 19px !default;
 $spotlight__copytext-size-desktop: 21px !default;

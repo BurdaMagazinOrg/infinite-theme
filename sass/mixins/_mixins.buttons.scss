@@ -51,7 +51,7 @@
 
   &:before {
     position: absolute;
-    right: 0;
+    right: $container-h-gap--mobile;
     color: $text-color;
   }
 

@@ -19,11 +19,11 @@
  */
 #}
 <div{{ attributes.addClass('item-content') }}>
-    <div class="item-content-header">
+    <div class="item-content__header">
         {% if has_header_block %}
-            <h2 class="text-headline text-headline-size-h1">{{ content.first_name }} {{ content.last_name }}</h2>
+            <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
         {% else %}
-            <h1 class="text-headline text-headline-size-h1">{{ content.first_name }} {{ content.last_name }}</h1>
+            <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
         {% endif %}
     </div>
 </div>
