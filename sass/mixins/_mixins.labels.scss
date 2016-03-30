@@ -33,7 +33,7 @@
   @extend %icon-copyright;
   @include text-helper($font);
   color: $color;
-  text-transform: uppercase;
+  text-transform: $label--copyright-text-transform;
 
   span + span {
     &:before {

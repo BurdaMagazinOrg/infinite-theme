@@ -1,3 +1,4 @@
+
 @mixin newsletter--horizontal() {
   overflow: hidden;
   text-align: center;
@@ -86,6 +87,9 @@
     strong {
       @extend %text-headline;
       @include text-headline-size($title-size-xxs);
+      margin-top: 15px;
+      margin-bottom: 7px;
+      display: block;
     }
 
     .container-content-dynamic {
@@ -214,6 +218,90 @@
       label {
         max-width: $newsletter__checkbox-label--horizontal-width-desktop;
       }
+    }
+  }
+}
+
+@mixin newsletter--page() {
+  @media (min-height: 500px) {
+    position: fixed;
+    height: auto !important;
+    top: $navigation-min-height;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .container-content {
+    background-position: top center;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .content-wrapper {
+      padding: 10px;
+    }
+
+    .container-content {
+      background-image: url($newsletter__bg-image--page-xs);
+    }
+
+    .container-privacy {
+      display: block;
+    }
+
+    .icon-close {
+      right: 35px;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+    .content-wrapper {
+      padding: 20px;
+    }
+
+    .container-content {
+      background-image: url($newsletter__bg-image--page-sm);
+    }
+
+    .container-privacy {
+      display: block;
+    }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    .content-wrapper {
+      padding: 20px;
+    }
+
+    .container-content {
+      background-image: url($newsletter__bg-image--page-lg);
+    }
+
+    .container-privacy, .container-success {
+      background-color: transparent;
+      overflow-y: hidden;
+      color: $text-color;
+
+      .content-wrapper {
+        background-color: rgba($white, 0.8);
+        position: relative;
+        width: $screen-sm-min;
+        height: 400px;
+        overflow-y: scroll;
+        padding: 20px;
+      }
+    }
+  }
+
+  .container-success {
+    .content-wrapper {
+      height: auto;
+    }
+  }
+
+  @media (min-width: $screen-xl-min) {
+    .container-content {
+      background-image: url($newsletter__bg-image--page-xl);
     }
   }
 }

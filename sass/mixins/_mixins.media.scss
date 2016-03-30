@@ -1,6 +1,6 @@
 @mixin item-media--description() {
   @include text-helper($media--description-font);
-  margin-top: 5px;
+  margin: $media--description-margin;
 
   p {
     line-height: inherit;

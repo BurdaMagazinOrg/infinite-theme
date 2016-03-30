@@ -1,41 +1,5 @@
 .item-content__block--tags {
-  @include text-helper($tags__article-font, $tags__article-text-size);
-
-  .label {
-    display: inline-block;
-    margin-right: 7px;
-  }
-
-  ul {
-    display: inline;
-  }
-
-  li {
-    display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    position: relative;
-    font-style: italic;
-
-    &:last-child {
-      a:after {
-        content: none;
-      }
-    }
-  }
-
-  a {
-    color: $color-highlighted;
-
-    &:after {
-      content: ",";
-      position: absolute;
-      right: -4px;
-      color: $text-highlighted;
-    }
-
-    &:hover {
-      color: $color-highlighted-hover;
-    }
+  .tags {
+    @extend %tags--article;
   }
 }
