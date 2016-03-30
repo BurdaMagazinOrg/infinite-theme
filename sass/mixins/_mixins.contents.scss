@@ -139,12 +139,11 @@
       @extend %text-label;
       @include text-label-size($menu--submenu-navigation-size);
       text-transform: uppercase;
+      color: $color-hover;
     }
   }
 
-  .title--page {
-    @extend %title--page-center;
-  }
+
 
   .title--list {
     @include text-label($title-size-xs);
@@ -293,10 +292,6 @@
   .item-content__header {
     @extend %region--fixed-content;
     padding-bottom: $gap-size-lg;
-
-    h1 {
-      @extend %title--article;
-    }
   }
 
   #main {
@@ -330,10 +325,6 @@
       border-top: $h-line-style;
     }
   }
-
-  .title--page {
-    @extend %title--page-center;
-  }
 }
 
 @mixin item-content--basic() {
@@ -342,9 +333,7 @@
     @extend %region--full-content;
   }
 
-  .title--page {
-    @extend %title--page-center;
-  }
+
 
   .item-content__content {
     @extend %region--full-content;
@@ -358,9 +347,7 @@
     @extend %content__header-center;
   }
 
-  .title--page {
-    @extend %title--page-center;
-  }
+
 
   .btn__open-tree {
     @extend %region--full-content;

@@ -18,12 +18,10 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass('item-content') }}>
-    <div class="item-content__header">
-        {% if has_header_block %}
-            <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
-        {% else %}
-            <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
-        {% endif %}
-    </div>
+<div class="region-full-content item-content__header">
+    {% if has_header_block %}
+        <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
+    {% else %}
+        <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
+    {% endif %}
 </div>
