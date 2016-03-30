@@ -201,6 +201,14 @@
     }
   }
 
+  &.item-paragraph--spotlight-right {
+    .spotlight__caption {
+      & > * {
+        word-wrap: break-word;
+      }
+    }
+  }
+
   .spotlight__caption {
     @include flexbox(vertical);
     @include align-items(center);
@@ -216,7 +224,6 @@
 
     & > * {
       max-width: 100%;
-      word-wrap: break-word;
     }
   }
 
