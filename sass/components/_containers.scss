@@ -30,7 +30,7 @@
     padding-top: 0;
 
     .teaser-content-right {
-      padding-top: $gap-size-md;
+      @extend %container-v-padding;
     }
   }
 
@@ -38,13 +38,14 @@
     margin-top: 0;
     border-top: 0;
   }
-}
 
-body .region-marketing.ad-active + .region-full-content {
-  @if ($region-v-lined) {
-    margin-top: -1px; //double line
+  .region-marketing.ad-active + .region-full-content {
+    @if ($region-v-lined) {
+      margin-top: -1px; //double line
+    }
   }
 }
+
 
 .region-infinite-block {
   @extend %region-infinite-block;

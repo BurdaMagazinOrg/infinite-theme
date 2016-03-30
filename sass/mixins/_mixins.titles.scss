@@ -74,19 +74,19 @@
 }
 
 @mixin title--text-block() {
-  @include text-label();
+  @include text-helper($title--text-block-font);
   margin-top: $gap-size-lg;
 
   @media (max-width: $screen-xs-max) {
-    @include text-label-size($title--text-block-mobile);
+    @include text-helper-size($title--text-block-font, $title--text-block-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-label-size($title--text-block-tablet);
+    @include text-helper-size($title--text-block-font, $title--text-block-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-label-size($title--text-block-desktop);
+    @include text-helper-size($title--text-block-font, $title--text-block-desktop);
   }
 
   &:first-child {

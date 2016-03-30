@@ -198,6 +198,7 @@ $title--article-tablet: $title-size-md !default;
 $title--article-desktop: $title-size-xl !default;
 
 /** title--text-block **/
+$title--text-block-font: $font-headline !default;  
 $title--text-block-mobile: $title-size-sm !default;
 $title--text-block-tablet: $title-size-md !default;
 $title--text-block-desktop: 30px !default;
@@ -444,3 +445,9 @@ $media--description-size-desktop: 18px !default;
 **/
 $tags__article-font: $font-tiny !default;
 $tags__article-text-size: $title-size-xxs !default;
+
+/**
+** Ads
+**/
+
+$ad__border: $h-line-style !default;
