@@ -9,7 +9,7 @@
 
 .socials-bar-clean {
   .item-social {
-    @extend %socials-clean-horizontal-bar-item;
+    @include socials-clean-horizontal-bar-item();
   }
 }
 
