@@ -1,9 +1,16 @@
-<div class="region-full-content swipeable--horizontal region__seo-linker--image" data-view-type="listSwipeableView">
-    <div class="container-content container-fixed-content seo-linker--image">
+{% set classes = [
+'item-paragraph',
+'item-paragraph--' ~ view_mode|clean_class,
+'item-paragraph--' ~ paragraph.bundle|clean_class,
+'swipeable--horizontal',
+] %}
+
+<div{{ attributes.addClass(classes) }} data-view-type="listSwipeableView">
+    <div class="container-content seo-linker--image">
         {% if content.field_title|render %}
             <h3 class="seo-linker__title">{{ content.field_title }}</h3>
         {% endif %}
-        <div class="swipeable__wrapper list__images--horizontal">
+        <div class="swipeable__wrapper">
             {{ content|without('field_title', 'field_p_view_mode') }}
         </div>
     </div>

@@ -1,41 +1,48 @@
-@mixin list__images--horizontal() {
+@mixin list__images--horizontal($gaps: ($teaser-list-h-teaser-gap-mobile, $teaser-list-h-teaser-gap-tablet, $teaser-list-h-teaser-gap-desktop)) {
   @include clearfix();
+  $gap-mobile: nth($gaps, 1);
+  $gap-tablet: nth($gaps, 2);
+  $gap-desktop: nth($gaps, 3);
 
   @media (max-width: $screen-xs-max) {
-    margin-left: -$teaser-list-h-teaser-gap-mobile;
-    margin-right: -$teaser-list-h-teaser-gap-mobile;
+    margin-left: -$gap-mobile;
+    margin-right: -$gap-mobile;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    margin-left: -$teaser-list-h-teaser-gap-tablet;
-    margin-right: -$teaser-list-h-teaser-gap-tablet;
+    margin-left: -$gap-tablet;
+    margin-right: -$gap-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    margin-left: -$teaser-list-h-teaser-gap-desktop;
-    margin-right: -$teaser-list-h-teaser-gap-desktop;
+    margin-left: -$gap-desktop;
+    margin-right: -$gap-desktop;
   }
 }
 
-@mixin list__images--horizontal__item() {
+@mixin list__images--horizontal__item($gaps: ($teaser-list-h-teaser-gap-mobile, $teaser-list-h-teaser-gap-tablet, $teaser-list-h-teaser-gap-desktop), $count: $teaser-list-horizontal-count-default) {
+  $gap-mobile: nth($gaps, 1);
+  $gap-tablet: nth($gaps, 2);
+  $gap-desktop: nth($gaps, 3);
+
   @media (max-width: $screen-xs-max) {
-    padding-left: $teaser-list-h-teaser-gap-mobile;
-    padding-right: $teaser-list-h-teaser-gap-mobile;
+    padding-left: $gap-mobile;
+    padding-right: $gap-mobile;
   }
 
   @media (min-width: $screen-sm-min) {
     float: left;
-    width: percentage(($grid-columns / $teaser-list-horizontal-count-default) / $grid-columns);
+    width: percentage(($grid-columns / $count) / $grid-columns);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    padding-left: $teaser-list-h-teaser-gap-tablet;
-    padding-right: $teaser-list-h-teaser-gap-tablet;
+    padding-left: $gap-tablet;
+    padding-right: $gap-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    padding-left: $teaser-list-h-teaser-gap-desktop;
-    padding-right: $teaser-list-h-teaser-gap-desktop;
+    padding-left: $gap-desktop;
+    padding-right: $gap-desktop;
   }
 }
 

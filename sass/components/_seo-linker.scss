@@ -2,31 +2,3 @@
 .seo-linker {
 
 }
-
-.seo-linker__title {
-  @extend %title--horizontal-block;
-}
-
-.seo-linker--image {
-  @extend %swipeable__images--horizontal;
-  @extend %list__images--horizontal;
-
-  @include seo-linker-text();
-}
-
-.seo-linker__item--image {
-  @extend %list__images--horizontal__item;
-  @extend %swipeable__images--horizontal__item;
-
-  .img-container img {
-    @extend %img-full-responsive-inline-block;
-  }
-}
-
-.seo-linker__item-title {
-  @extend %title--caption-top-gap;
-}
-
-.seo-linker__link-list--image {
-  @extend %list__links--module;
-}
