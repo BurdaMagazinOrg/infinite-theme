@@ -73,7 +73,8 @@
             $newMore = $data.filter(this.options.more)
         }
         if ($newMore.length) {
-            this.$more.replaceWith($newMore)
+            this.$more.remove();
+            this.$container.append($newMore);
             this.$more = $newMore
             this.waypoint = new Waypoint(this.options)
         }

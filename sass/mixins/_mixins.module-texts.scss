@@ -90,6 +90,7 @@
   .item-social span {
     @include text-helper($socials-labeled-horizontal-bar-label-font, $socials-labeled-horizontal-bar-label-size);
     line-height: $socials-labeled-horizontal-bar-label-size + 1px;
+    text-transform: uppercase;
   }
 }
 

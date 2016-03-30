@@ -155,32 +155,32 @@
   $color-hover: inherit,
   $border-color-hover: inherit) {
 
-    display: inline-block;
-    background-color: $bg;
-    border: $border;
-    color: $color;
-    margin-left: $socials-clean-horizontal-bar-left-gap;
-    text-align: center;
+  display: inline-block;
+  background-color: $bg;
+  border: $border;
+  color: $color;
+  margin-left: $socials-clean-horizontal-bar-left-gap;
+  text-align: center;
 
-    -webkit-transform: rotate(0.0001deg); //smoothing
+  -webkit-transform: rotate(0.0001deg); //smoothing
 
-    &:hover {
-      background-color: $bg-hover;
-      color: $color-hover;
-      border-color: $border-color-hover;
-    }
+  &:hover {
+    background-color: $bg-hover;
+    color: $color-hover;
+    border-color: $border-color-hover;
+  }
 
-    @media (max-width: $screen-xs-max) {
-      @include socials-item-settings($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
-    }
+  @media (max-width: $screen-xs-max) {
+    @include socials-item-settings($socials-clean-horizontal-bar-size-mobile, $socials-clean-horizontal-bar-icon-size-mobile);
+  }
 
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-      @include socials-item-settings($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
-    }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include socials-item-settings($socials-clean-horizontal-bar-size-tablet, $socials-clean-horizontal-bar-icon-size-tablet);
+  }
 
-    @media (min-width: $screen-md-min) {
-      @include socials-item-settings($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
-    }
+  @media (min-width: $screen-md-min) {
+    @include socials-item-settings($socials-clean-horizontal-bar-size-desktop, $socials-clean-horizontal-bar-icon-size-desktop);
+  }
 }
 
 @mixin socials-clean-horizontal-bar-item--light($bg: $socials-clean-horizontal-bar--light-bg-color,
@@ -220,9 +220,8 @@
 
   span {
     display: inline-block;
-    text-transform: uppercase;
     vertical-align: top;
-    padding-left: $gap-size-xxs;
+    padding: $socials-labeled-horizontal-bar-label-padding;
   }
 
   @media (max-width: $screen-xs-max) {
