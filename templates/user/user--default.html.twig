@@ -20,8 +20,16 @@
 #}
 <div class="region-full-content item-content__header">
     {% if has_header_block %}
-        <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
+        {% if content.field_forename %}
+            <h2 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h2>
+        {% else %}
+            <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
+        {% endif %}
     {% else %}
-        <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
+        {% if content.field_forename %}
+            <h1 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h1>
+        {% else %}
+            <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
+        {% endif %}
     {% endif %}
 </div>
