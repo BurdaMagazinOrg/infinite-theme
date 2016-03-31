@@ -15,7 +15,7 @@
                 speed: parseInt($.browser.version, 10) <= 9 ? 0 : 350,
                 keyboardControl: false,
                 loop: true,
-                //spaceBetween: 10,
+                spaceBetween: 10,
                 lazyLoading: false,
                 lazyLoadingInPrevNext: true,
                 lazyLoadingOnTransitionStart: true,
