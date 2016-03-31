@@ -1,4 +1,4 @@
-@mixin item-media--description() {
+@mixin item-media__description() {
   @include text-helper($media--description-font);
   margin: $media--description-margin;
 

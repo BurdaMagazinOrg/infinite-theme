@@ -42,8 +42,9 @@
   }
 }
 
-@mixin text-label-size($size: $label-size-small) {
+@mixin text-label-size($size: $label-size-small, $line-height: $line-height-label) {
   font-size: $size;
+  line-height: $line-height;
 }
 
 @mixin text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
