@@ -34,3 +34,16 @@
 %menu--submenu-navigation__item--active {
   @include menu--submenu-navigation__item--active();
 }
+
+/** Sidebar **/
+%menu--sidebar {
+  @include menu--sidebar();
+}
+
+%menu--sidebar-main {
+  @include menu--sidebar-main();
+}
+
+%menu--sidebar-misc {
+  @include menu--sidebar-misc();
+}

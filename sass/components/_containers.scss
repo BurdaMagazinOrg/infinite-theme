@@ -41,7 +41,7 @@
 
   .region-marketing.ad-active + .region-full-content {
     @if ($region-v-lined) {
-      margin-top: -1px; //double line
+      margin-top: -$h-line-width; //double line
     }
   }
 }

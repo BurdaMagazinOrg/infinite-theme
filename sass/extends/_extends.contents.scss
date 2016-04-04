@@ -26,6 +26,10 @@
   @include item-content__content();
 }
 
+%item-content__content--has-socials {
+  @include item-content__content--has-socials();
+}
+
 %item-content__block {
   @include item-content__block();
 }

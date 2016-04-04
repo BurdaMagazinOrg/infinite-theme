@@ -42,22 +42,6 @@
     position: relative;
     min-height: 160px;
 
-    .socials-vertical-bar {
-      position: absolute;
-      top: 0;
-      margin-left: -$article-socials-column-width;
-      z-index: 10;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      .socials-vertical-bar {
-        margin-left: 0;
-        position: relative;
-        top: 0;
-        bottom: auto;
-      }
-    }
-
     @media (min-width: $screen-sm-min) {
       @include region--fixed-content();
       padding-left: $article-socials-column-width;
@@ -75,6 +59,31 @@
   @media (min-width: $screen-md-min) {
     & > .item-paragraph--small, & > .item-group--outer > .item-paragraph--small {
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
+    }
+  }
+}
+
+@mixin item-content__content--has-socials() {
+  .socials-vertical-bar {
+    position: absolute;
+    top: 0;
+    margin-left: -$article-socials-column-width;
+    z-index: 10;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-content__content {
+      padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
+    }
+
+    .item-group--outer {
+      position: static;
+    }
+
+    .socials-vertical-bar {
+      margin-left: 0;
+      top: 0;
+      bottom: auto;
     }
   }
 }
@@ -142,8 +151,6 @@
       color: $color-hover;
     }
   }
-
-
 
   .title--list {
     @include text-label($title-size-xs);
@@ -289,6 +296,8 @@
 }
 
 @mixin item-content--article() {
+  @extend %item-content__content--has-socials;
+
   .item-content__header {
     @extend %region--fixed-content;
     padding-bottom: $gap-size-lg;
@@ -302,11 +311,11 @@
     @extend %region--fixed-content;
   }
 
-  @media (max-width: $screen-xs-max) {
-    .item-content-column .socials-vertical-bar {
-      margin-top: $gap-size-lg;
-    }
-  }
+  //@media (max-width: $screen-xs-max) {
+  //.item-content-column .socials-vertical-bar {
+  //  margin-top: $gap-size-lg;
+  //}
+  //}
 }
 
 @mixin item-content--taxonomy() {
@@ -333,8 +342,6 @@
     @extend %region--full-content;
   }
 
-
-
   .item-content__content {
     @extend %region--full-content;
     @extend %container-v-padding;
@@ -346,8 +353,6 @@
   .item-content__header {
     @extend %content__header-center;
   }
-
-
 
   .btn__open-tree {
     @extend %region--full-content;

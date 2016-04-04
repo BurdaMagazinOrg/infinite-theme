@@ -69,7 +69,8 @@ $gray-light: #e7e7e7;
 $gray-lighter: #eee;
 
 /** borders **/
-$h-line-style: 1px solid $gray !default;
+$h-line-width: 1px !default;
+$h-line-style: $h-line-width solid $gray !default;
 
 /** sizes **/
 //deprecated

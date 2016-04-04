@@ -1,4 +1,7 @@
 <div class="region-full-content item-content__block item-group--outer">
+
+    {{ children }}
+
     <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
         {% block socials_vertical_bar %}
             {% embed '@infinite/embeds/social_icons.html.twig' with {
@@ -12,8 +15,6 @@
             {% endembed %}
         {% endblock %}
     </aside>
-
-    {{ children }}
 
     {% block content_tags %}
             {{ parent.field_tags }}

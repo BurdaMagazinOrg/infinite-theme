@@ -191,22 +191,19 @@
 
 @mixin menu--main-navigation-text() {
   .menu-item {
-    @extend %text-label;
-    @include text-label-size($menu--main-navigation-size);
+    @include text-helper($menu--main-navigation-font, $menu--main-navigation-size);
     text-transform: uppercase;
   }
 }
 
 @mixin menu--submenu-navigation-text() {
   .label-menu {
-    @extend %text-label;
-    @include text-label-size($menu--submenu-navigation-size);
+    @include text-helper($menu--submenu-navigation-font, $menu--submenu-navigation-size);
     text-transform: uppercase;
   }
 
   .menu-item {
-    @extend %text-label;
-    @include text-label-size($menu--submenu-navigation-size);
+    @include text-helper($menu--submenu-navigation-font, $menu--submenu-navigation-size);
     color: $text-color;
     text-transform: uppercase;
   }
@@ -263,6 +260,33 @@
     .text-headline {
       @include text-headline-size($title--media-header-desktop);
       letter-spacing: $title--media-header-letter-spacing;
+    }
+  }
+}
+
+/**
+** Menu Sidebar
+**/
+@mixin menu--sidebar-main-text() {
+  .menu-item {
+    @include text-helper($menu--sidebar-main-font, $menu--sidebar-main-size);
+    text-transform: uppercase;
+  }
+}
+
+@mixin menu--sidebar-misc-text() {
+  color: $gray-base;
+
+  .menu-item {
+    @include text-helper($menu--sidebar-misc-font, $menu--sidebar-misc-size);
+    text-transform: uppercase;
+  }
+
+  li {
+    &:hover {
+      a {
+        color: $color-highlighted-hover;
+      }
     }
   }
 }

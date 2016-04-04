@@ -47,7 +47,7 @@ $region-v-lined: true !default;
 /**
 ** Main Navigation
 **/
-
+$menu--main-navigation-font: $font-label !default;
 $menu--main-navigation-size: 14px !default;
 $menu--main-navigation-padding-mobile: 0 90px 0 90px !default;
 $menu--main-navigation-padding-tablet: 0 90px 0 90px !default;
@@ -64,6 +64,7 @@ $navigation-menu-icon-size: 17px !default;
 $navigation-search-icon-size: 19px !default;
 
 //submenu
+$menu--submenu-navigation-font: $font-label !default;
 $menu--submenu-navigation-size: $menu--main-navigation-size - 2px !default;
 $menu--submenu-navigation__item_padding: 3px 7px !default;
 $menu--submenu-navigation-mobile-color: $gray-base !default;
@@ -71,6 +72,13 @@ $menu--submenu-navigation-mobile-color-active: $gray-base !default;
 $menu--submenu-navigation__item_margin-mobile: 15px 0px !default;
 $menu--submenu-navigation__item_margin-tablet: 15px 0px !default;
 $menu--submenu-navigation__item_margin-desktop: 0 5px !default;
+
+//sidebar
+$menu--sidebar-main-font: $font-label !default;
+$menu--sidebar-main-size: $menu--main-navigation-size !default;
+
+$menu--sidebar-misc-font: $font-content !default;
+$menu--sidebar-misc-size: 14px !default;
 
 /**
 ** Author
