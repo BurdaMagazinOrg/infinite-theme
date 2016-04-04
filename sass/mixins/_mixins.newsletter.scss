@@ -149,6 +149,10 @@
     }
 
     .container-form {
+      p {
+        font-size: 14px;
+      }
+
       .input-email {
         width: 100%;
         padding-right: $padding-large-horizontal;

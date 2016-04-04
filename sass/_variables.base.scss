@@ -131,6 +131,16 @@ $gap-v-xl-mobile: $gap-size-md !default;
 $gap-v-xl-tablet: $gap-size-lg !default;
 $gap-v-xl-desktop: $gap-size-lg !default;
 
+/**
+**  socials **
+**/
+
+$socials-size-sm: 32px !default;
+$socials-size-md: 40px !default;
+$socials-icon-size-sm: 16px !default;
+$socials-icon-size-md: 19px !default;
+$socials-default-border-radius: 50% !default;
+
 /** animation **/
 $menu-home-animated-logo: true !default;
 $transition-duration: 0.35s !default;
