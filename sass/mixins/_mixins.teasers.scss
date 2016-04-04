@@ -293,9 +293,9 @@
   }
 
   @media (min-width: $screen-sm-min) {
-    padding-bottom: $gap-size-md;
+    padding-bottom: $gap-size-xxl;
 
-    .caption {
+    .caption {  
       position: absolute;
 
       & > * {
