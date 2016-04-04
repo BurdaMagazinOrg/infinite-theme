@@ -58,21 +58,6 @@
   }
 }
 
-//todo switch to gap mixins gap--caption-title-top
-@mixin title--caption-top-gap($type: margin) {
-  @media (max-width: $screen-xs-max) {
-    #{$type}-top: $gap-size-xxs;
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    #{$type}-top: $gap-size-xs;
-  }
-
-  @media (min-width: $screen-md-min) {
-    #{$type}-top: $gap-size-sm;
-  }
-}
-
 @mixin title--text-block() {
   @include text-helper($title--text-block-font);
   margin-top: $gap-size-lg;

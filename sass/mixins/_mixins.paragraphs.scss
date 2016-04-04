@@ -144,7 +144,7 @@
   @include item-content--spotlight-small-text();
 
   .spotlight__caption {
-    @include container-v-padding();
+    @include container--v-padding();
     padding-left: $gap-size-sm;
     padding-right: $gap-size-sm;
     padding-bottom: $gap-size-sm;
@@ -169,7 +169,7 @@
   @include item-content--spotlight-middle-text();
 
   .spotlight__caption {
-    @include container-v-padding();
+    @include container--v-padding();
     padding-left: $gap-size-sm;
     padding-right: $gap-size-sm;
     padding-bottom: $gap-size-sm;
@@ -559,7 +559,7 @@
   }
 
   .seo-linker__item-title {
-    @extend %title--caption-top-gap;
+    @extend %gap__caption-top--h-teaser;
   }
 
   .seo-linker__link-list--image {

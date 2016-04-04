@@ -7,6 +7,14 @@ $gap-v-region-mobile: $gap-v-xl-mobile !default;
 $gap-v-region-tablet: $gap-v-xl-tablet !default;
 $gap-v-region-desktop: $gap-v-xl-desktop !default;
 
+$gap-v-sm-region-mobile: $gap-v-sm-mobile !default;
+$gap-v-sm-region-tablet: $gap-v-sm-tablet !default;
+$gap-v-sm-region-desktop: $gap-v-sm-desktop !default;
+
+$gap__caption-top--h-teaser-mobile: $gap-size-xxs !default;
+$gap__caption-top--h-teaser-tablet: $gap-size-xs !default;
+$gap__caption-top--h-teaser-desktop: $gap-size-sm !default;
+
 /**
 ** Containers
 **/
@@ -14,9 +22,16 @@ $container-h-gap--mobile: 22px !default;
 $container-h-gap--tablet: 32px !default;
 $container-h-gap--desktop: 42px !default;
 
+//size default
 $container-padding-top-mobile: $gap-size-md !default;
 $container-padding-top-tablet: $gap-size-lg !default;
 $container-padding-top-desktop: $gap-size-lg !default;
+
+//size sm
+$container-padding-sm-top-mobile: $gap-size-xs !default;
+$container-padding-sm-top-tablet: $gap-size-sm !default;
+$container-padding-sm-top-desktop: $gap-size-sm !default;
+
 
 /**
 ** Btns
@@ -60,7 +75,11 @@ $menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
 $navigation-fade-delay: 0.05s !default;
 $navigation-letter-spacing: 1px !default;
 $navigation-min-height: 60px !default;
+
+$navigation-menu-icon-color: $text-color !default;
 $navigation-menu-icon-size: 17px !default;
+
+$navigation-search-icon-color: $text-color !default;
 $navigation-search-icon-size: 19px !default;
 
 //submenu
@@ -240,6 +259,10 @@ $feed-teaser-headline-size-mobile: $title-size-sm !default;
 $feed-teaser-headline-size-tablet: $title-size-md !default;
 $feed-teaser-headline-size-desktop: $title-size-lg !default;
 
+$feed-teaser-headline-middle-size-mobile: $feed-teaser-headline-size-mobile !default;
+$feed-teaser-headline-middle-size-tablet: $feed-teaser-headline-size-tablet !default;
+$feed-teaser-headline-middle-size-desktop: $feed-teaser-headline-size-desktop !default;
+
 $feed-teaser-gap-top-mobile: $gap-size-md !default;
 $feed-teaser-gap-top-tablet: $gap-size-xl !default;
 $feed-teaser-gap-top-desktop: $gap-size-xl !default;
@@ -258,6 +281,7 @@ $rib-gap-bottom-desktop: 0 !default;
 $teaser-list-h-headline-size-mobile: $title-size-xxxs !default;
 $teaser-list-h-headline-size-tablet: $title-size-xxs !default;
 $teaser-list-h-headline-size-desktop: $title-size-xxs !default;
+
 $teaser-list-h-teaser-gap-mobile: 6px !default;
 $teaser-list-h-teaser-gap-tablet: 28px !default;
 $teaser-list-h-teaser-gap-desktop: 35px !default;
@@ -275,6 +299,8 @@ $teaser--content-headline-size-desktop: $title-size-xxs !default;
 $teaser--content-caption-height: 81px !default;
 $teaser--content-caption-height-mobile: 69px !default;
 
+$teaser__caption--full-bottom-tablet: - 40px !default;
+$teaser__caption--full-bottom-desktop: - 56px !default;
 /**
 **  Lists **
 **/

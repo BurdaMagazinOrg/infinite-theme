@@ -1,5 +1,5 @@
 @mixin content__header-center() {
-  @include container-v-padding();
+  @include container--v-padding();
 }
 
 @mixin item-content__header() {
@@ -297,6 +297,7 @@
 
 @mixin item-content--article() {
   @extend %item-content__content--has-socials;
+  @extend %container--v-sm-padding;
 
   .item-content__header {
     @extend %region--fixed-content;
@@ -310,12 +311,6 @@
   .breadcrumb {
     @extend %region--fixed-content;
   }
-
-  //@media (max-width: $screen-xs-max) {
-  //.item-content-column .socials-vertical-bar {
-  //  margin-top: $gap-size-lg;
-  //}
-  //}
 }
 
 @mixin item-content--taxonomy() {
@@ -344,7 +339,7 @@
 
   .item-content__content {
     @extend %region--full-content;
-    @extend %container-v-padding;
+    @extend %container--v-padding;
     border-top: $h-line-style;
   }
 }

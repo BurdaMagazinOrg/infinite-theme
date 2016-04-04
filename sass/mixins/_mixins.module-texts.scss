@@ -12,20 +12,26 @@
 ** Teaser types
 **/
 
-@mixin teaser-feed-large-text() {
-  .text-headline {
-    @include text-headline-size($feed-teaser-headline-size-mobile);
+@mixin teaser-feed-large-text($sizes: ($feed-teaser-headline-size-mobile, $feed-teaser-headline-size-tablet, $feed-teaser-headline-size-desktop)) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @media (max-width: $screen-xs-max) {
+    .text-headline {
+      @include text-headline-size($size-mobile);
+    }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-headline-size($feed-teaser-headline-size-tablet);
+      @include text-headline-size($size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-headline-size($feed-teaser-headline-size-desktop);
+      @include text-headline-size($size-desktop);
     }
   }
 }
@@ -193,6 +199,7 @@
   .menu-item {
     @include text-helper($menu--main-navigation-font, $menu--main-navigation-size);
     text-transform: uppercase;
+    line-height: 1;
   }
 }
 

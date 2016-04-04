@@ -19,6 +19,6 @@
   @include title--content-block();
 }
 
-%title--caption-top-gap {
-  @include title--caption-top-gap();
+%gap__caption-top--h-teaser {
+  @include gap__caption-top--h-teaser();
 }

@@ -18,6 +18,10 @@
   @include gap--v-region();
 }
 
+%gap--v-sm-region {
+  @include gap--v-sm-region();
+}
+
 %margin--v-region {
   @include margin--v-region();
 }
@@ -25,4 +29,8 @@
 /** Margins **/
 %margin--v-item-content__item {
   @include margin--v-item-content__item();
+}
+
+%gap__container--v-reset {
+  @include gap__container--v-reset();
 }

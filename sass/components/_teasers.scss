@@ -24,6 +24,10 @@
 
     @include teaser-feed-large-text();
   }
+
+  .teaser-square-medium, .teaser-portrait-medium {
+    @include teaser-feed-large-text(($feed-teaser-headline-middle-size-mobile, $feed-teaser-headline-middle-size-tablet, $feed-teaser-headline-middle-size-desktop));
+  }
 }
 
 .list__images--horizontal {
@@ -49,7 +53,6 @@
 
 .teaser-landscape-medium {
   @extend %teaser-landscape-medium;
-
   @include teaser-landscape-medium-text();
 }
 
@@ -73,7 +76,7 @@
 
 .teaser-landscape-large {
   & > .caption-teaser {
-    padding-top: $gap-section;
+    padding-top: $gap-size-sm;
   }
 }
 
@@ -86,9 +89,7 @@
   **/
 
 .teaser-square-medium {
-  & > .img-container, .caption-teaser {
-    @include make-xs-column($grid-columns/2);
-  }
+  @extend %teaser-square-medium;
 }
 
 /**

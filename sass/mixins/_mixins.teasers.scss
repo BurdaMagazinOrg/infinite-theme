@@ -112,6 +112,12 @@
   }
 }
 
+@mixin teaser-square-medium() {
+  & > .img-container, .caption-teaser {
+    @include make-xs-column($grid-columns/2);
+  }
+}
+
 @mixin teaser--portrait-small() {
   & > .img-container {
     @include make-xs-column($grid-columns/3);
@@ -171,7 +177,7 @@
   min-height: 1px;
 
   .caption-teaser {
-    @include title--caption-top-gap();
+    @include gap__caption-top--h-teaser();
   }
 
   .item-marketing-sponsored {
@@ -205,7 +211,7 @@
 
 @mixin teaser--content() {
   .caption {
-    @include title--caption-top-gap();
+    @include gap__caption-top--h-teaser();
   }
 
   .text-headline {
@@ -274,7 +280,7 @@
     width: 100%;
 
     & > * {
-      padding-top: 15px;
+      padding-top: $gap-size-sm;
     }
   }
 
@@ -293,7 +299,7 @@
       position: absolute;
 
       & > * {
-        padding: 15px ($grid-gutter-width - 3px) 0;
+        padding: $gap-size-sm ($grid-gutter-width - 3px) 0;
         background-color: $white;
       }
     }
@@ -306,7 +312,7 @@
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .caption {
-      bottom: - $gap-size-md;
+      bottom: $teaser__caption--full-bottom-desktop;
     }
 
     .title--presenter-full {
@@ -320,7 +326,7 @@
   @media (min-width: $screen-md-min) {
     .caption {
       left: -$grid-gutter-width;
-      bottom: 0;
+      bottom: $teaser__caption--full-bottom-desktop;
     }
 
     .title--presenter-full {

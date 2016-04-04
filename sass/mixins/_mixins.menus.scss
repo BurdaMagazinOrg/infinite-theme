@@ -119,7 +119,7 @@
   .menu {
     position: relative;
     text-align: center;
-    margin: $grid-gutter-width 0;
+    margin: 22px 0;
   }
 
   .menu-item {
@@ -221,6 +221,7 @@
   bottom: 0;
   padding: 0;
   z-index: 2;
+  color: $navigation-menu-icon-color;
 
   &:before {
     font-size: $navigation-menu-icon-size;
@@ -250,6 +251,7 @@
   top: 0;
   bottom: 0;
   padding: 0;
+  color: $navigation-search-icon-color;
 
   &:before {
     font-size: $navigation-search-icon-size;

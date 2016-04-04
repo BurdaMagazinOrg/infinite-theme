@@ -5,11 +5,11 @@
 
 //padded / lined teaser
 .region-content, .region-feed-teasers {
-  & > .region-full-content:first-child {
-    @extend %container-v-padding;
+  & > .region-full-content:not(.region__teasers--horizontal):first-child {
+    @extend %container--v-padding;
   }
 
-  .region-full-content + .region-full-content {
+  .region-full-content + .region-full-content:not(.item-content--article) {
     @extend %gap--v-region;
     @if ($region-v-lined) {
       border-top: $h-line-style;
@@ -30,7 +30,7 @@
     padding-top: 0;
 
     .teaser-content-right {
-      @extend %container-v-padding;
+      @extend %container--v-padding;
     }
   }
 
@@ -56,12 +56,6 @@
   padding-right: 0;
 }
 
-//if ad is first child - remove negative margin-top
-//todo check this
-//#content > .region-full-content:first-child > .region-marketing:first-child {
-//  margin-top: 0;
-//}
-
 .region--fixed-content, .region-fixed-content, .container-fixed-content, .fixed-content {
   @extend %region--fixed-content;
 }
@@ -77,8 +71,8 @@
   overflow: hidden;
 }
 
-.region-teaser-link-list {
-
+.region__teasers--horizontal {
+  @extend %region__teasers--horizontal;
 }
 
 .region-no-gap + .region-full-content {

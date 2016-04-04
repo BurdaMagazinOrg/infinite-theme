@@ -1,15 +1,19 @@
 
-@mixin container-v-padding($type: padding, $direction: top) {
+@mixin container--v-padding($type: padding, $direction: top, $gaps: ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop)) {
+  $gap-mobile: nth($gaps, 1);
+  $gap-tablet: nth($gaps, 2);
+  $gap-desktop: nth($gaps, 3);
+
   @media (max-width: $screen-xxs-max) {
-    #{$type}-#{$direction}: $gap-v-region-mobile;
+    #{$type}-#{$direction}: $gap-mobile;
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    #{$type}-#{$direction}: $gap-v-region-tablet;
+    #{$type}-#{$direction}: $gap-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    #{$type}-#{$direction}: $gap-v-region-desktop;
+    #{$type}-#{$direction}: $gap-desktop;
   }
 }
 

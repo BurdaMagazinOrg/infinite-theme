@@ -28,6 +28,10 @@
   @include _gap($gaps);
 }
 
+@mixin gap--v-sm-region($gaps: ($gap-v-sm-region-mobile, $gap-v-sm-region-tablet, $gap-v-sm-region-desktop)) {
+  @include _gap($gaps);
+}
+
 @mixin _gap($gaps) {
   $gap-mobile: nth($gaps, 1);
   $gap-tablet: nth($gaps, 2);
@@ -110,5 +114,19 @@
   @media (min-width: $screen-md-min) {
     padding-left: $container-h-gap--desktop;
     padding-right: $container-h-gap--desktop;
+  }
+}
+
+@mixin gap__caption-top--h-teaser($type: margin) {
+  @media (max-width: $screen-xs-max) {
+    #{$type}-top: $gap__caption-top--h-teaser-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    #{$type}-top: $gap__caption-top--h-teaser-mobile;
+  }
+
+  @media (min-width: $screen-md-min) {
+    #{$type}-top: $gap__caption-top--h-teaser-desktop;
   }
 }

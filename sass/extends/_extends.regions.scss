@@ -15,9 +15,9 @@
 }
 
 %region-infinite-block {
-  @include region-infinite-block();
+  @include region--infinite-block();
 }
 
-%gap__container--v-reset {
-  @include gap__container--v-reset();
+%region__teasers--horizontal {
+  @include region__teasers--horizontal();
 }

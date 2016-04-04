@@ -30,6 +30,10 @@
   @include teaser-square-xs();
 }
 
+%teaser-square-medium {
+  @include teaser-square-medium();
+}
+
 %teaser--portrait-small {
   @include teaser--portrait-small();
 }
