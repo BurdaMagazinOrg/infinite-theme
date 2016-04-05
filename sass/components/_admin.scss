@@ -35,9 +35,9 @@
   }
 }
 
-.user-login-form, .user-pass, .user-form {
-  margin: 20% auto;
+form[class^="user-"], form[class*=" user-"] {
   max-width: 500px;
+  margin: 20% auto;
 
   *:-webkit-autofill,
   *:-webkit-autofill:hover,
@@ -51,7 +51,7 @@
     display: block;
   }
 
-  details {
+  details, p, .description {
     margin-top: $padding;
   }
 
@@ -78,4 +78,8 @@
     margin-top: $padding;
     float: right;
   }
+}
+
+form.user-form {
+  margin: 5% auto;
 }
