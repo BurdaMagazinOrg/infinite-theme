@@ -35,7 +35,7 @@
   }
 }
 
-.user-login-form, .user-pass {
+.user-login-form, .user-pass, .user-form {
   margin: 20% auto;
   max-width: 500px;
 
@@ -49,6 +49,10 @@
 
   label {
     display: block;
+  }
+
+  details {
+    margin-top: $padding;
   }
 
   .js-form-item {
