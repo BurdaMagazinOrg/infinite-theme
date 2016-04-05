@@ -95,12 +95,12 @@
     margin-top: 0;
     padding-top: 0;
   }
-
-  @media (min-width: $screen-md-min) {
-    & > .socials-bar + .item-content__block {
-      margin-top: 0;
-    }
-  }
+  
+  //@media (min-width: $screen-md-min) {
+  //  & > .socials-bar + .item-content__block {
+  //    margin-top: 0;
+  //  }
+  //}
 }
 
 @mixin item-content__row--sidebar() {
