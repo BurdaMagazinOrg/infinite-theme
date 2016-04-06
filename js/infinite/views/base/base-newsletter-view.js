@@ -14,18 +14,17 @@
         $privacyView: null,
         $alerts: null,
         initialize: function (pOptions) {
-            //TODO need dynamic settings
-            this.settings = {
-                client: 673096,
-                groupId: 57,
-                env: "production"
-            };
+            this.settings = _.extend({}, drupalSettings.hm_newsletter);
+            this.settings.groupId = this.$el.data('newsletter-group-id');
 
             this.$el.hide();
             this.permissions = BaseNewsletterView.permissions;
-            //remove this after the dynamic settings
-            if (this.$el.hasClass('instyle-men')) this.settings.groupId = 60;
-            if (this.$el.data('newsletter-group-id')) this.settings.groupId = this.$el.data('newsletter-group-id');
+
+            if (this.settings.clientid == undefined || this.settings.groupId == undefined) {
+                console.warn("BaseNewsletterView needs seetings + groupId");
+                return;
+            }
+
             BaseView.prototype.initialize.call(this, pOptions);
 
             this.createView();
@@ -96,7 +95,7 @@
                 tmpAgreementVal = "",
                 $tmpItem = {},
                 tmpData = {
-                    client: this.settings.client,
+                    client: this.settings.clientid,
                     groups: [this.settings.groupId],
                     agreements: [],
                     user: {}
@@ -154,7 +153,7 @@
                     //this.$successView.fadeIn(350);
                     this.setViewState(BaseNewsletterView.STATE_SUCCESS);
 
-                    if(typeof TrackingManager != 'undefined') {
+                    if (typeof TrackingManager != 'undefined') {
                         TrackingManager.trackEvent({category: 'newsletter', action: 'success'});
                     }
                 }, this),
@@ -162,7 +161,7 @@
                     var responseData = BaseNewsletterView.responseInterpreter(err);
                     this.addAlert('danger', responseData.field, responseData.message);
 
-                    if(typeof TrackingManager != 'undefined') {
+                    if (typeof TrackingManager != 'undefined') {
                         TrackingManager.trackEvent({category: 'newsletter', action: 'error'});
                     }
                 }, this)
