@@ -117,7 +117,7 @@
       cursor: pointer;
     }
 
-    p {  
+    p {
       line-height: 1.5;
     }
   }
@@ -230,6 +230,12 @@
 }
 
 @mixin newsletter--page() {
+
+  @media (max-height: 499px) {
+    @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    height: 500px;
+  }
+
 
   @media (min-height: 500px) {
     position: fixed;

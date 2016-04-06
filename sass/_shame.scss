@@ -23,18 +23,18 @@
   }
 }
 
-.item-content-body-row {
-  .item-content-sidebar {
-    position: absolute \9;
-    right: 0 \9;
-    top: 0 \9;
-    height: 100% \9;
-  }
-
-  .item-content-body {
-    padding-right: $feed-ad-column-width \9;
-  }
-}
+//.item-content-body-row {
+//  .item-content-sidebar {
+//    position: absolute \9;
+//    right: 0 \9;
+//    top: 0 \9;
+//    height: 100% \9;
+//  }
+//
+//  .item-content-body {
+//    padding-right: $feed-ad-column-width \9;
+//  }
+//}
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .teaser .img-container:hover {
