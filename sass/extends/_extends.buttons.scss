@@ -6,10 +6,10 @@
   @include btn__open-tree--mobile();
 }
 
-%btn-round--small {
-  @include btn-round--small();
+%btn--small {
+  @include btn--small();
 }
 
-%btn-round--small--highlighted {
-  @include btn-round--small--highlighted();
+%btn--small--highlighted {
+  @include btn--small--highlighted();
 }

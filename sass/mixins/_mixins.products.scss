@@ -18,23 +18,24 @@
   }
 
   .text-brand {
-    margin-bottom: 10px;
     overflow: hidden;
     display: inline-block;
-  }
-
-  .text-shipping {
-    right: 0;
-    color: $gray-base;
+    margin-bottom: $product__item-text-brand-gap-bottom;
   }
 
   .text-shipping, .text-price {
     position: absolute;
-    bottom: 35px;
+  }
+
+  .text-shipping {
+    right: 0;
+    bottom: $product__item-text-shipping-pos-bottom;
   }
 
   .text-price {
     left: 0;
+    color: $product__item-text-price-color;
+    bottom: $product__item-text-price-pos-bottom;
   }
 
   .text-shop {
@@ -43,7 +44,7 @@
 
   &:hover {
     .text-shop {
-      @extend %btn-round--small--highlighted;
+      @extend %btn--small--highlighted;
     }
   }
 

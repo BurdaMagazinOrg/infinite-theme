@@ -24,25 +24,27 @@
   }
 }
 
-@mixin btn-round--small() {
+@mixin btn--small() {
   @include text-helper($btn--small-font, $btn--small-size);
   @include transition-default();
   color: $btn--small-color;
   border: $btn--small-border;
   border-radius: $btn--small-radius;
   padding: $btn--small-padding;
+  letter-spacing: $btn--small-letter-spacing;
   display: inline-block;
   text-transform: uppercase;
   cursor: pointer;
 
   &:hover {
-    @extend %btn-round--small--highlighted;
+    @extend %btn--small--highlighted;
   }
 }
 
-@mixin btn-round--small--highlighted() {
-  background-color: $color-highlighted;
-  color: $white;
+@mixin btn--small--highlighted() {
+  background-color: $btn--small-highlighted-bg-color;
+  color: $btn--small-highlighted-color;
+  border: $btn--small-highlighted-border;
 }
 
 @mixin btn__open-tree--mobile() {
