@@ -42,7 +42,7 @@ $btn--small-padding: 4px 20px !default;
 $btn--small-border: 1px solid $color-highlighted !default;
 $btn--small-radius: 15px !default;
 $btn--small-color: $color-highlighted !default;
-$btn--small-letter-spacing: 0px !default;
+$btn--small-letter-spacing: 1px !default;
 $btn--small-highlighted-color: $white  !default;
 $btn--small-highlighted-bg-color: $color-highlighted !default;
 $btn--small-highlighted-border: 1px solid $color-highlighted !default;
@@ -156,22 +156,24 @@ $product__item-text-brand-gap-bottom: 5px !default;
 $product__item-text-headline-font: $font-headline !default;
 $product__item-text-headline-size: $title-size-xxs !default;
 $product__item-text-headline-color: $text-color !default;
+
 $product__item-text-headline-height-mobile: 43px !default;
 $product__item-text-headline-height-tablet: 43px !default;
 $product__item-text-headline-height-desktop: 43px !default;
+
 $product__item-text-headline-gap-bottom-mobile: 33px !default;
 $product__item-text-headline-gap-bottom-tablet: 33px !default;
 $product__item-text-headline-gap-bottom-desktop: 33px !default;
 
-$product__item-text-price-font: $font-label !default;
+$product__item-text-price-font: $font-content !default;
 $product__item-text-price-size: 13px !default;
 $product__item-text-price-color: $text-color !default;
-$product__item-text-price-pos-bottom: 35px !default;
+$product__item-text-price-pos-bottom: 40px !default;
 
 $product__item-text-shipping-font: $font-label !default;
 $product__item-text-shipping-size: 13px !default;
 $product__item-text-shipping-color: $gray-base !default;
-$product__item-text-shipping-pos-bottom: 35px !default;
+$product__item-text-shipping-pos-bottom: 40px !default;
 
 /**
 ** Labels
