@@ -248,7 +248,7 @@
 
   @media (max-height: $screen-sm-max) {
     .spotlight__copytext {
-      max-height: 260px;
+      max-height: $spotlight__copytext-max-height;
     }
   }
 }

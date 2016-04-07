@@ -437,9 +437,9 @@ $spotlight__copytext-font: $font-tiny !default;
 $spotlight__copytext-size-mobile: 19px !default;
 $spotlight__copytext-size-tablet: 19px !default;
 $spotlight__copytext-size-desktop: 21px !default;
+$spotlight__copytext-max-height: 260px !default;
 
 $spotlight__caption-bg: $black !default;
-
 $spotlight__caption--full-bg: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.6)), linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)) !default;
 $spotlight__caption--full-width: 522px !default;
 
