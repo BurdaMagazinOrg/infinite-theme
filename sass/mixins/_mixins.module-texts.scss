@@ -139,7 +139,7 @@
 **/
 
 @mixin list__glossary-text() {
-  @include text-label($list__glossary-font-size);
+  @include text-helper($list__glossary-font, $list__glossary-font-size);
 }
 
 @mixin item-content--spotlight-text() {
