@@ -19,12 +19,13 @@
 
   .text-brand {
     overflow: hidden;
-    display: inline-block;
+    display: block;
     margin-bottom: $product__item-text-brand-gap-bottom;
   }
 
   .text-shipping, .text-price {
     position: absolute;
+    width: 100%;
   }
 
   .text-shipping {
