@@ -158,8 +158,11 @@
             picturefill({reevaluate: true});
         },
         updateInternalURL: function ($pContainer) {
-            $pContainer.find('[data-internal-url]').addBack().filter('[data-internal-url]')
-                .unbind('click.updateInternalURL').bind('click.updateInternalURL',
+            var $internalUrls = $pContainer.find('[data-internal-url]').addBack().filter('[data-internal-url]');
+
+            $internalUrls
+                .unbind('click.updateInternalURL')
+                .bind('click.updateInternalURL',
                 $.proxy(function (pEvent) {
                     var $tmpElement = $(pEvent.currentTarget),
                         url = $tmpElement.attr('data-internal-url'),
@@ -171,16 +174,37 @@
                         location.href = url;
                     }
                 }, this));
+
+            // Prevent click event of contained clickable elements from bubbling up.
+            $internalUrls
+                .find('[data-internal-url], [data-external-url]')
+                .unbind('click.updateInternalURLNoBubbling')
+                .bind('click.updateInternalURLNoBubbling',
+                $.proxy(function (pEvent) {
+                    pEvent.stopPropagation();
+                }, this));
         },
         updateExternalURL: function ($pContainer) {
-            $pContainer.find('[data-external-url]').addBack().filter('[data-external-url]')
-                .unbind('click.updateExternalURL').bind('click.updateExternalURL',
+            var $externalUrls = $pContainer.find('[data-external-url]').addBack().filter('[data-external-url]');
+
+            $externalUrls
+                .unbind('click.updateExternalURL')
+                .bind('click.updateExternalURL',
                 $.proxy(function (pEvent) {
                     var $tmpElement = $(pEvent.currentTarget),
                         url = $tmpElement.attr('data-external-url'),
                         target = $tmpElement.attr('data-target') || 'blank';
 
                     window.open(url, target);
+                }, this));
+
+            // Prevent click event of contained clickable elements from bubbling up.
+            $externalUrls
+                .find('[data-internal-url], [data-external-url]')
+                .unbind('click.updateExternalURLNoBubbling')
+                .bind('click.updateExternalURLNoBubbling',
+                $.proxy(function (pEvent) {
+                    pEvent.stopPropagation();
                 }, this));
         },
         disableBeforeUnloadHandler: function () {
