@@ -50,7 +50,7 @@
 .item-marketing-advertorial {
   @include text-helper($label--advertorial-font, $label--advertorial-size);
   color: $label--advertorial-color;
-  text-transform: uppercase;
+  text-transform: $label--advertorial-text-transform;
 }
 
 .item-marketing-native {
