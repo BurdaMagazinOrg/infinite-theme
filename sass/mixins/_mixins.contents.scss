@@ -134,6 +134,14 @@
 @mixin item-content--archive() {
   .item-content__header {
     @extend %content__header-center;
+    @extend %container--v-padding-bottom;
+    @extend %region--full-content;
+    border-bottom: $h-line-style;
+  }
+
+  .item-content__content {
+    @extend %region--full-content;
+    @extend %margin--v-xxl;
   }
 
   .btn__open-tree {
@@ -258,7 +266,7 @@
   @media (min-width: $screen-sm-min) {
     .item-content__row {
       @include make-row();
-      margin-top: $gap-size-xxxl;
+      //margin-top: $gap-size-xxxl;
     }
 
     .col--left {
@@ -339,7 +347,7 @@
 
   .item-content__content {
     @extend %region--full-content;
-    @extend %container--v-padding;
+    @extend %gap--v-region;
     border-top: $h-line-style;
   }
 }

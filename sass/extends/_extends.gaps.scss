@@ -14,6 +14,10 @@
   @include gap--v-xl();
 }
 
+%gap--v-xxl {
+  @include gap--v-xxl();
+}
+
 %gap--v-region {
   @include gap--v-region();
 }
@@ -22,11 +26,20 @@
   @include gap--v-sm-region();
 }
 
+/** Margins **/
+
 %margin--v-region {
   @include margin--v-region();
 }
 
-/** Margins **/
+%margin--v-xl {
+  @include margin--v-xl();
+}
+
+%margin--v-xxl {
+  @include margin--v-xxl();
+}
+
 %margin--v-item-content__item {
   @include margin--v-item-content__item();
 }
