@@ -228,8 +228,10 @@
   }
 
   .label-menu {
+    @include text-helper($menu--main-navigation__menu-label-font, $menu--main-navigation__menu-label-size, 1);
     @include inline-block();
-    margin-left: $gap-size-sm;
+    margin: $menu--main-navigation__menu-label-margin;
+    color: $menu--main-navigation__menu-label-color;
     display: none;
   }
 

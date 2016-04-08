@@ -200,9 +200,9 @@
 
 @mixin menu--main-navigation-text() {
   .menu-item {
-    @include text-helper($menu--main-navigation-font, $menu--main-navigation-size);
+    @include text-helper($menu--main-navigation-font, $menu--main-navigation-size, 1);
     text-transform: uppercase;
-    line-height: 1;
+    //line-height: 1;
   }
 }
 

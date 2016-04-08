@@ -1,4 +1,4 @@
-@mixin text-helper($font, $size: '') {
+@mixin text-helper($font, $size: '', $line-height: '') {
 
   @if ($font == $font-headline) {
     @extend %text-headline;
@@ -13,19 +13,39 @@
   }
 
   @if ($size!= '') {
-    @include text-helper-size($font, $size);
+    @include text-helper-size($font, $size, $line-height);
   }
 }
 
-@mixin text-helper-size($font, $size) {
+@mixin text-helper-size($font, $size, $line-height: '') {
   @if ($font == $font-headline or $font == $font-headline-bold) {
-    @include text-headline-size($size);
-  } @else if ($font == $font-label) {
-    @include text-label-size($size);
+
+    @if ($line-height == '') {
+      $line-height: $line-height-headline;
+    }
+    @include text-headline-size($size, $line-height);
+
+  } @else if ($font == $font-label, $line-height) {
+
+    @if ($line-height == '') {
+      $line-height: $line-height-label;
+    }
+    @include text-label-size($size, $line-height);
+
   } @else if ($font == $font-tiny) {
-    @include text-tiny-size($size);
+
+    @if ($line-height == '') {
+      $line-height: $line-height-text-tiny;
+    }
+    @include text-tiny-size($size, $line-height);
+
   } @else {
-    @include text-content-size($size);
+
+    @if ($line-height == '') {
+      $line-height: $line-height-content;
+    }
+    @include text-content-size($size, $line-height);
+
   }
 }
 
@@ -87,9 +107,9 @@
   }
 }
 
-@mixin text-tiny-size($size) {
+@mixin text-tiny-size($size, $line-height: $line-height-text-tiny) {
   font-size: $size;
-  line-height: $line-height-text-tiny;
+  line-height: $line-height;
 }
 
 @mixin text-content($size: '', $color: '') {
@@ -131,7 +151,7 @@
 
   ul {
     list-style-type: disc;
-    padding-left: 2px;  //overflow fix
+    padding-left: 2px; //overflow fix
   }
 
   ol {
@@ -140,7 +160,7 @@
 
   ul, ol {
     margin-top: 5px;
-    list-style-position:inside;  
+    list-style-position: inside;
 
     li {
       position: relative;
