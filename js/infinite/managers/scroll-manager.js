@@ -12,25 +12,10 @@
 
             this.scrollTopAdSettings = $(window).scrollTop();
             this.scrollTopUrl = $(window).scrollTop();
-            //this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.urlChangeHandler, 10), this);
-            //this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.adSettingsChangeHandler, 10), this);
             this.listenTo(this.infiniteModel, 'change:inview', this.onInviewChangeHandler, this);
         },
         onInviewChangeHandler: function (pModel) {
-            this.adSettingsChangeHandler(pModel);
             this.urlChangeHandler(pModel);
-        },
-        adSettingsChangeHandler: function (pModel) {
-            if (this.scrollTopAdSettings == $(window).scrollTop()) return;
-
-            var $tmpElement = pModel.get('el'),
-                tmpInviewModel = pModel.get('inview');
-
-            if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit' && tmpInviewModel.direction == 'up') {
-                this.adscModel.setByElement($tmpElement);
-            }
-
-            this.scrollTopAdSettings = $(window).scrollTop();
         },
         urlChangeHandler: function (pModel) {
             if (this.scrollTopUrl == $(window).scrollTop()) return;

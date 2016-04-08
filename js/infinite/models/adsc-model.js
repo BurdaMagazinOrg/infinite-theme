@@ -32,7 +32,7 @@
             tmpCurrentAdsc.adsc_adunit3 = tmpAdUnit_3;
             tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
 
-            console.log(">>> tmpCurrentAdsc", tmpCurrentAdsc);
+            //console.log(">>> tmpCurrentAdsc", tmpCurrentAdsc);
 
             this.set('adsc', tmpCurrentAdsc);
         },

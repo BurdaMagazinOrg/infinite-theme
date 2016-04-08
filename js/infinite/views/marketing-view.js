@@ -37,8 +37,6 @@
         },
         configureView: function () {
             this.adProvider = drupalSettings.AdProvider;
-            //this.adProvider = AppConfig.ad_orbyd;
-
             this.globalAdscModel = BM.reuseModel(ModelIds.adscModel);
             this.$adSlotContainer = this.$el.find(".ad-container");
             this.marketingSlotId = this.$adSlotContainer.attr('id');
@@ -110,6 +108,8 @@
             tmpDataStr += '&adunit2=' + tmpAdscModel.get('adsc').adsc_adunit2;
             tmpDataStr += '&adunit3=' + tmpAdscModel.get('adsc').adsc_adunit3;
             tmpDataStr += '&keyword=' + tmpAdscModel.get('adsc').adsc_keyword;
+
+            console.info("BUILD ORBYD", tmpDataStr);
 
             var content = '<!DOCTYPE html>'
                 + '<head>'

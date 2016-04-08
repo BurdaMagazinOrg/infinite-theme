@@ -113,8 +113,7 @@
                 infiniteModel: this.infiniteViewsModel,
                 adscModel: this.adscModel,
                 model: new Backbone.Model({
-                    initialLocation: AppConfig.initialLocation,
-                    initialAdsc: AppConfig.initialAdsc
+                    initialLocation: AppConfig.initialLocation
                 })
             });
 

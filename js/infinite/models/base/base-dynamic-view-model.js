@@ -53,9 +53,9 @@
                 case 'marketingView':
 
                     //dynamic adsc model
-                    if($tmpElement.parents('[data-adsc-keyword]').length > 0) {
+                    if(pModel.initialDOMItem === false && $tmpElement.parents('[data-adsc-adunit1]').length > 0) {
                         tmpAdscModel = new AdscModel();
-                        tmpAdscModel.setByElement($tmpElement.parents('[data-adsc-keyword]'));
+                        tmpAdscModel.setByElement($tmpElement.parents('[data-adsc-adunit1]'));
                         tmpSettings.dynamicAdscModel = tmpAdscModel;
                     }
 
