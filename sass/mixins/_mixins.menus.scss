@@ -232,6 +232,7 @@
     @include inline-block();
     margin: $menu--main-navigation__menu-label-margin;
     color: $menu--main-navigation__menu-label-color;
+    text-transform: $menu--main-navigation__menu-label-text-transform;
     display: none;
   }
 
