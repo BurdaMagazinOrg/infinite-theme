@@ -47,3 +47,7 @@
 %menu--sidebar-misc {
   @include menu--sidebar-misc();
 }
+
+%menu--sidebar-logos {
+  @include menu--sidebar-logos();
+}

@@ -74,13 +74,6 @@
   &:before {
     content: "\e908";
   }
-
-  @if ($hover) {
-    &:hover {
-      color: $color-hover;
-      cursor: pointer;
-    }
-  }
 }
 
 @mixin icon-close($hover: true) {
