@@ -280,7 +280,7 @@
 @mixin menu--sidebar-main-text() {
   .menu-item {
     @include text-helper($menu--sidebar-main-font, $menu--sidebar-main-size);
-    text-transform: uppercase;
+    text-transform: $menu--sidebar-main-text-transform;
   }
 }
 
@@ -289,7 +289,7 @@
 
   .menu-item {
     @include text-helper($menu--sidebar-misc-font, $menu--sidebar-misc-size);
-    text-transform: uppercase;
+    text-transform: $menu--sidebar-misc-text-transform;
   }
 
   li {
