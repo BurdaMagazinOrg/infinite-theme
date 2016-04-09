@@ -1,6 +1,6 @@
 @mixin title--horizontal-block() {
   text-align: center;
-  text-transform: uppercase;
+  text-transform: $title--horizontal-block-text-transform;
   padding-top: 6px; //umlaute fix
 
   .item-title {

@@ -8,7 +8,8 @@
 
   &.ad-active {
     background-color: $bg-color-gray-light;
-    padding-top: 0;
+    //todo check this after deployment
+    padding-top: 0 !important;
     border-bottom: $h-line-style;
   }
 
