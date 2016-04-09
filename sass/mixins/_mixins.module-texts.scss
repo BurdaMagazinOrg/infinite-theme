@@ -138,6 +138,10 @@
 ** Lists
 **/
 
+@mixin list__links--module-text() {
+  @include text-helper($list__links--module-font, $list__links--module-font-size);
+}
+
 @mixin list__glossary-text() {
   @include text-helper($list__glossary-font, $list__glossary-font-size);
 }

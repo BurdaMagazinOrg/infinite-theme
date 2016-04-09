@@ -332,6 +332,9 @@ $teaser__caption--full-bottom-desktop: - 56px !default;
 **  Lists **
 **/
 
+$list__links--module-font: $font-content !default;
+$list__links--module-font-size: 16px !default;
+
 $list__glossary-font: $font-label !default;
 $list__glossary-font-size: $title-size-xxs !default;
 $list__glossary-line-height: 32px !default;

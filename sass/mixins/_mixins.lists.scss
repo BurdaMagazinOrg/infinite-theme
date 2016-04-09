@@ -96,6 +96,7 @@
 }
 
 @mixin list__links--module() {
+  @include list__links--module-text();
   margin-top: $gap-size-xs;
   padding-bottom: $gap-size-md;
 
