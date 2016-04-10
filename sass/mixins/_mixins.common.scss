@@ -6,7 +6,7 @@
 @mixin sticky-logo-animated() {
   &.stuck {
     .logo {
-      @include transition-property(width, opacity, visibility);
+      @include transition-property(opacity, visibility);
       @include transition-duration($transition-duration);
       @include transition-timing-function($transition-easing);
       @include fade-in();

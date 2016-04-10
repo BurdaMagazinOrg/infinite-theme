@@ -30,9 +30,10 @@
   .close {
     z-index: 12;
     position: absolute;
-    right: $grid-gutter-width;
+    right: $padding;
     top: $padding;
     font-size: $icon-size-large;
+    padding: 0;
   }
 }
 

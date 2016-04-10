@@ -30,6 +30,10 @@
   @include item-content__content--has-socials();
 }
 
+%item-content__content--has-socials-with-gap {
+  @include item-content__content--has-socials(true);
+}
+
 %item-content__block {
   @include item-content__block();
 }

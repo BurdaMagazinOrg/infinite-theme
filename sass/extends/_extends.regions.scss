@@ -12,11 +12,7 @@
 
 %center-block {
   @include center-block();
-}
-
-%region-infinite-block {
-  @include region--infinite-block();
-}
+}  
 
 %region__teasers--horizontal {
   @include region__teasers--horizontal();

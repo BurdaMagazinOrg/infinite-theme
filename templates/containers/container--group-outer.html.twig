@@ -1,30 +1,32 @@
-<div class="region-full-content item-content__block item-group--outer">
+<div class="item-content__block item-group--outer-wrapper">
+    <div class="item-group--outer">
 
-    {{ children }}
+        {{ children }}
 
-    <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
-        {% block socials_vertical_bar %}
-            {% embed '@infinite/embeds/social_icons.html.twig' with {
-            'url': parent.url,
-            'label': parent.label,
-            'twitter_share_via': parent.twitter_share_via,
-            'email_share_text': parent.email_share_text,
-            'email_subject': parent.email_subject,
-            'whatsapp_share_text': parent.whatsapp_share_text,
-            } %}
-            {% endembed %}
-        {% endblock %}
-    </aside>
+        <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
+            {% block socials_vertical_bar %}
+                {% embed '@infinite/embeds/social_icons.html.twig' with {
+                'url': parent.url,
+                'label': parent.label,
+                'twitter_share_via': parent.twitter_share_via,
+                'email_share_text': parent.email_share_text,
+                'email_subject': parent.email_subject,
+                'whatsapp_share_text': parent.whatsapp_share_text,
+                } %}
+                {% endembed %}
+            {% endblock %}
+        </aside>
 
-    {% block content_tags %}
+        {% block content_tags %}
             {{ parent.field_tags }}
-    {% endblock %}
-
-    <div class="region-fixed-content socials socials-bar socials-horizontal-bar item-content__block">
-        {% block socials_horizontal_bar %}
-            {% embed '@infinite/embeds/social_icons.html.twig' with parent %}
-            {% endembed %}
         {% endblock %}
-    </div>
 
+        <div class="region-fixed-content socials socials-bar socials-horizontal-bar item-content__block">
+            {% block socials_horizontal_bar %}
+                {% embed '@infinite/embeds/social_icons.html.twig' with parent %}
+                {% endembed %}
+            {% endblock %}
+        </div>
+
+    </div>
 </div>

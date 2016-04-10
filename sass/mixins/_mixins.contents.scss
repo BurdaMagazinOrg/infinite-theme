@@ -27,15 +27,31 @@
 
   .item-paragraph {
     @extend %margin--v-item-content__item;
+  }
 
+  .item-paragraph--full {
     &:first-child {
       margin-top: 0;
+    }
+
+    &:first-child:not(.item-paragraph--seo-links) {
       padding-top: 0;
     }
   }
 
   & > .item-paragraph--spotlight:first-child {
     @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+  }
+
+  .item-group--outer-wrapper {
+    @extend %region--full-content;
+
+    .item-paragraph {
+      &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
   }
 
   .item-group--outer {
@@ -63,7 +79,24 @@
   }
 }
 
-@mixin item-content__content--has-socials() {
+@mixin item-content__block() {
+  @extend %margin--v-item-content__item;
+
+  &:first-child:not(.item-group--outer-wrapper) {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+@mixin item-content__content--has-socials($use-container-gap: false) {
+  $content-padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
+  $socials-top: 0;
+
+  @if ($use-container-gap) {
+    $content-padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile*2;
+    $socials-top: $gap-v-region-mobile;
+  }
+
   .socials-vertical-bar {
     position: absolute;
     top: 0;
@@ -73,7 +106,7 @@
 
   @media (max-width: $screen-xs-max) {
     .item-content__content {
-      padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
+      padding-top: $content-padding-top;
     }
 
     .item-group--outer {
@@ -82,25 +115,10 @@
 
     .socials-vertical-bar {
       margin-left: 0;
-      top: 0;
+      top: $socials-top;
       bottom: auto;
     }
   }
-}
-
-@mixin item-content__block() {
-  @extend %margin--v-item-content__item;
-
-  &:first-child {
-    margin-top: 0;
-    padding-top: 0;
-  }
-
-  //@media (min-width: $screen-md-min) {
-  //  & > .socials-bar + .item-content__block {
-  //    margin-top: 0;
-  //  }
-  //}
 }
 
 @mixin item-content__row--sidebar() {
@@ -312,6 +330,12 @@
     padding-bottom: $gap-size-lg;
   }
 
+  .item-content__content {
+    & > .item-content__block:first-child {
+      margin-top: 0;
+    }
+  }
+
   #main {
     padding-bottom: 0; //feed gap
   }
@@ -322,6 +346,8 @@
 }
 
 @mixin item-content--taxonomy() {
+  @extend %item-content__content--has-socials-with-gap;
+
   .item-content__header {
     @extend %content__header-center;
     @extend %region--full-content;
@@ -332,7 +358,7 @@
   }
 
   .item-content__header + .item-content__content {
-    @extend %gap--v-region;
+    @extend %margin--v-region;
     @if ($region-v-lined) {
       border-top: $h-line-style;
     }
