@@ -86,7 +86,8 @@
   }
 
   @media (min-width: $screen-md-min) {
-    & > .item-paragraph--small, & > .item-group--outer > .item-paragraph--small {
+    //todo check if > necessary
+    & > .item-paragraph--small, & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small {
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
     }
   }
