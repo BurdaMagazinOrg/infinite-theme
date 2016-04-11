@@ -490,11 +490,11 @@ $gallery__count-size-desktop: $title--content-block-desktop !default;
 ** Media
 **/
 
-$media--header-ratio-xs: 33% !default;
-$media--header-ratio-sm: 20% !default;
-$media--header-ratio-md: 14% !default;
-$media--header-ratio-lg: 14% !default;
-$media--header-ratio-xl: 11% !default;
+$media--header-ratio-xs: floor(percentage(160/480)) !default;
+$media--header-ratio-sm: floor(percentage(200/1000)) !default;
+$media--header-ratio-md: floor(percentage(200/1400)) !default;
+$media--header-ratio-lg: floor(percentage(200/1400)) !default;
+$media--header-ratio-xl: floor(percentage(200/1800)) !default;
 
 $media--description-margin: 5px 0 0 0 !default;
 $media--description-font: $font-tiny !default;
