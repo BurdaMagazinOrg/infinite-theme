@@ -489,9 +489,13 @@ $gallery__count-size-desktop: $title--content-block-desktop !default;
 /**
 ** Media
 **/
-$media--header-height-mobile: 100px !default;
-$media--header-height-tablet: 150px !default;
-$media--header-height-desktop: 200px !default;
+
+$media--header-ratio-xs: 33% !default;
+$media--header-ratio-sm: 20% !default;
+$media--header-ratio-md: 14% !default;
+$media--header-ratio-lg: 14% !default;
+$media--header-ratio-xl: 11% !default;
+
 $media--description-margin: 5px 0 0 0 !default;
 $media--description-font: $font-tiny !default;
 $media--description-size-mobile: 14px !default;

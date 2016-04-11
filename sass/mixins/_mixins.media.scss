@@ -136,7 +136,7 @@
 @mixin item-media--header() {
   @include item-media--header-text();
   @include gap__container--h-negative();
-  @include _item-media--header-height();
+
   overflow: hidden;
   position: relative;
 
@@ -146,7 +146,7 @@
 
   img {
     @extend %img-full-responsive;
-    @include animation(fadeIn $transition-duration $transition-easing $transition-duration both);
+    //@include animation(fadeIn $transition-duration $transition-easing $transition-duration both);
   }
 
   .caption {
@@ -167,8 +167,10 @@
 }
 
 @mixin item-media--header-image() {
-  @include _item-media--header-height();
+  @include item-media--header-ratio();
   position: relative;
+  height: 0;
+  overflow: hidden;
 
   .img-container {
     img {
@@ -177,16 +179,24 @@
   }
 }
 
-@mixin _item-media--header-height() {
+@mixin item-media--header-ratio() {
   @media (max-width: $screen-xs-max) {
-    min-height: $media--header-height-mobile;
+    padding-bottom: $media--header-ratio-xs;
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    min-height: $media--header-height-mobile;
+    padding-bottom: $media--header-ratio-sm;
   }
 
-  @media (min-width: $screen-md-min) {
-    min-height: $media--header-height-mobile;
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    padding-bottom: $media--header-ratio-md;
+  }
+
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+    padding-bottom: $media--header-ratio-lg;
+  }
+
+  @media (min-width: $screen-xl-min) {
+    padding-bottom: $media--header-ratio-xl;
   }
 }
