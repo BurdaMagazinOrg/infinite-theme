@@ -25,7 +25,7 @@
  * @ingroup themeable
  */
 #}
-{% if content is empty %}
+{% if content is not empty %}
     <div{{ attributes.addClass('item-content') }}>
         {{ content }}
     </div>
