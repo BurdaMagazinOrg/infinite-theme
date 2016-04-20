@@ -10,7 +10,7 @@
   @extend %item-content__content;
 }
 
-.item-content__block {
+.item-content__block, .item-block {
   @extend %item-content__block;
 }
 

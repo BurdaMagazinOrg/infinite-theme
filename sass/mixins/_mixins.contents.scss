@@ -311,7 +311,7 @@
   }
 
   .item-content__content {
-    & > .item-content__block:first-child {
+    & > .item-content__block:first-child, & > .item-block:first-child {
       margin-top: 0;
     }
   }
