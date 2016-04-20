@@ -13,6 +13,7 @@
 
     .container-privacy {
       @extend %fade-in;
+      overflow-y: scroll;
     }
   }
 
@@ -23,6 +24,7 @@
 
     .container-success {
       @extend %fade-in;
+      overflow-y: scroll;
     }
   }
 
@@ -81,7 +83,6 @@
   .container-privacy {
     text-align: left;
     padding: $grid-gutter-width;
-    overflow-y: scroll;
 
     strong {
       @extend %text-headline;

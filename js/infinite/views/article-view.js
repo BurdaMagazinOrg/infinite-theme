@@ -25,7 +25,9 @@
 
             if (typeof tracdelight != "undefined") {
                 window.tracdelight.then(_.bind(function (td) {
-                    td.parse(this.$el[0]);
+                    $.each(this.$el.find('.td-widget'), function (pIndex, pItem) {
+                        td.parse(pItem);
+                    })
                 }, this)).catch(function (err) {
                     console.error("Tracdelight Error", err);
                 });
