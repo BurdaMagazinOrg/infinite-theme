@@ -210,6 +210,10 @@
   }
 }
 
+@mixin menu--main-navigation__flyout-text() {
+  @include text-helper($menu--main-navigation__flyout-font, $menu--main-navigation__flyout-size);
+}
+
 @mixin menu--submenu-navigation-text() {
   .label-menu {
     @include text-helper($menu--submenu-navigation-font, $menu--submenu-navigation-size);

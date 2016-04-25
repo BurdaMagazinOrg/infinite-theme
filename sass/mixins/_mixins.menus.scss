@@ -47,10 +47,21 @@
 
   .menu {
     white-space: nowrap;
-  }
 
-  .menu-item {
-    @extend %menu--main-navigation__item;
+    & > .menu-item {
+      @extend %menu--main-navigation__item;
+
+      &:hover {
+        & > ol, & > ul {
+          display: block;
+        }
+      }
+    }
+
+    ol, ul {
+      @extend %menu--main-navigation__flyout;
+      @include menu--main-navigation__flyout-text();
+    }
   }
 
   .menu-item--active-trail {
@@ -106,7 +117,31 @@
 }
 
 @mixin menu--main-navigation__item--active() {
-  color: $menu--main-navigation-active-color;
+  background-color: $menu--main-navigation_active-bg;
+  color: $menu--main-navigation_active-color;
+
+  .is-active {
+    background-color: $menu--main-navigation_active-bg;
+    color: $menu--main-navigation_active-color;
+  }
+}
+
+@mixin menu--main-navigation__flyout() {
+  position: absolute;
+  top: $menu--main-navigation__flyout-top;
+  width: $menu--main-navigation__flyout-width;
+  background-color: $menu--main-navigation__flyout-bg-color;
+  border: $menu--main-navigation__flyout-border;
+  display: none;
+
+  li {
+    margin: $menu--main-navigation__flyout__item-margin;
+    display: list-item;
+  }
+
+  a {
+    display: inline-block;
+  }
 }
 
 /**

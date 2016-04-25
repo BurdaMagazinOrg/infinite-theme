@@ -72,8 +72,11 @@ $menu--main-navigation-padding-mobile: 0 90px 0 90px !default;
 $menu--main-navigation-padding-tablet: 0 90px 0 90px !default;
 $menu--main-navigation-padding-desktop: 0 100px 0 100px !default;
 $menu--main-navigation-active-color: $color-hover !default;
-$menu--main-navigation__item_padding: 5px 7px !default;
+$menu--main-navigation_active-bg: $white !default;
+
+$menu--main-navigation__item_padding: 5px 7px 4px !default;
 $menu--main-navigation__item_margin: 0 5px !default;
+
 $menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
 
 $menu--main-navigation__menu-label-font: $menu--main-navigation-font !default;
@@ -81,6 +84,14 @@ $menu--main-navigation__menu-label-size: $menu--main-navigation-size !default;
 $menu--main-navigation__menu-label-margin: 0 0 0 $gap-size-sm !default;
 $menu--main-navigation__menu-label-color: $text-color !default;
 $menu--main-navigation__menu-label-text-transform: uppercase !default;
+//flyout
+$menu--main-navigation__flyout-font: $font-label !default;
+$menu--main-navigation__flyout-size: $menu--main-navigation-size !default;
+$menu--main-navigation__flyout__item-margin: 10px 20px !default;
+$menu--main-navigation__flyout-top: 43px !default;
+$menu--main-navigation__flyout-width: auto !default;
+$menu--main-navigation__flyout-bg-color: $white !default;
+$menu--main-navigation__flyout-border: 1px solid $gray !default;
 
 $navigation-fade-delay: 0.05s !default;
 $navigation-letter-spacing: 1px !default;

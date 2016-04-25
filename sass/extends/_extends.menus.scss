@@ -10,6 +10,10 @@
   @include menu--main-navigation__item--active();
 }
 
+%menu--main-navigation__flyout {
+  @include menu--main-navigation__flyout();
+}
+
 %menu__sidebar-btn--main-navigation {
   @include menu__sidebar-btn--main-navigation();
 }
