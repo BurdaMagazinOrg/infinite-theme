@@ -385,8 +385,36 @@
 }
 
 @mixin menu--sidebar-logos() {
-  .menu-item {
+  .menu .menu-item {
     @include hide-text();
+    margin-top: $gap-size-lg;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .item-sidebar__logo {
+    display: block;
+    cursor: pointer;
+
+    &:after {
+      @include opacity(0.5);
+      @include transition-default();
+      content: " ";
+      width: 100%;
+      height: 100%;
+      display: block;
+
+      filter: grayscale(100%) contrast(100);
+      -webkit-filter: grayscale(100%) contrast(100);
+    }
+
+    &:hover {
+      &:after {
+        @include opacity(1);
+      }
+    }
   }
 
   @include menu__items--sidebar-logos();
