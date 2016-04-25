@@ -6,3 +6,7 @@
     @extend %img-full-responsive;
   }
 }
+
+svg {
+  max-height: 100%;
+}
