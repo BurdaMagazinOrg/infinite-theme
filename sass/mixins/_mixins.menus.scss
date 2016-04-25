@@ -96,18 +96,19 @@
   @extend %transition-timing-function;
   @include transition-property(opacity, color, visibility);
   display: inline-block;
-  margin: $menu--main-navigation__item_margin;
+  margin: $menu--main-navigation__item-margin;
 
   &:first-child {
     margin-left: 0;
   }
 
   a {
-    padding: $menu--main-navigation__item_padding;
+    padding: $menu--main-navigation__item-padding;
+    color: $menu--main-navigation__item-color;
     display: inline-block;
   }
 
-  .is-active, a:hover {
+  &:hover {
     @extend %menu--main-navigation__item--active;
   }
 
@@ -117,12 +118,12 @@
 }
 
 @mixin menu--main-navigation__item--active() {
-  background-color: $menu--main-navigation_active-bg;
-  color: $menu--main-navigation_active-color;
+  background-color: $menu--main-navigation__item-active-bg;
+  color: $menu--main-navigation__item-active-color;
 
-  .is-active {
-    background-color: $menu--main-navigation_active-bg;
-    color: $menu--main-navigation_active-color;
+  &:hover > a, a:hover, .is-active {
+    background-color: $menu--main-navigation__item-active-bg;
+    color: $menu--main-navigation__item-active-color;
   }
 }
 
@@ -132,7 +133,10 @@
   width: $menu--main-navigation__flyout-width;
   background-color: $menu--main-navigation__flyout-bg-color;
   border: $menu--main-navigation__flyout-border;
+  color: $menu--main-navigation__flyout-color;
+  padding: $menu--main-navigation__flyout-padding;
   display: none;
+  z-index: 3;
 
   li {
     margin: $menu--main-navigation__flyout__item-margin;
