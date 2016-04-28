@@ -1,11 +1,9 @@
 %transition-default {
-  @include transition(all $transition-duration $transition-easing);
+  @include transition-default(all $transition-duration $transition-easing);
 }
 
 %transition-fade {
-  @include transition-property(opacity, visibility);
-  @include transition-duration($transition-duration);
-  @include transition-timing-function($transition-easing);
+  @include transition-fade();
 }
 
 

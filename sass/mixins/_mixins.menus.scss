@@ -53,7 +53,7 @@
 
       &:hover {
         & > ol, & > ul {
-          display: block;
+          @extend %menu--main-navigation__flyout-open;
         }
       }
     }
@@ -128,6 +128,8 @@
 }
 
 @mixin menu--main-navigation__flyout() {
+  @include transition-fade($menu--main-navigation__flyout-fade-duration, $transition-easing, $menu--main-navigation__flyout-fade-delay);
+  @extend %fade-out;
   position: absolute;
   top: $menu--main-navigation__flyout-top;
   width: $menu--main-navigation__flyout-width;
@@ -135,8 +137,8 @@
   border: $menu--main-navigation__flyout-border;
   color: $menu--main-navigation__flyout-color;
   padding: $menu--main-navigation__flyout-padding;
-  display: none;
   z-index: 3;
+  //display: none;
 
   li {
     margin: $menu--main-navigation__flyout__item-margin;
@@ -146,6 +148,10 @@
   a {
     display: inline-block;
   }
+}
+
+@mixin menu--main-navigation__flyout-open() {
+  @extend %fade-in;
 }
 
 /**

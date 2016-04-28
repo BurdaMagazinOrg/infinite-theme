@@ -2,6 +2,13 @@
   @include transition($types $duration $easing);
 }
 
+@mixin transition-fade($duration: $transition-duration, $easing: $transition-easing, $delay: 0s) {
+  @include transition-property(opacity, visibility);
+  @include transition-duration($duration);
+  @include transition-timing-function($easing);
+  @include transition-delay($delay);
+}
+
 @mixin fade-out() {
   @include opacity(0);
   visibility: hidden;

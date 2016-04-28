@@ -14,6 +14,10 @@
   @include menu--main-navigation__flyout();
 }
 
+%menu--main-navigation__flyout-open {
+  @include menu--main-navigation__flyout-open();
+}
+
 %menu__sidebar-btn--main-navigation {
   @include menu__sidebar-btn--main-navigation();
 }

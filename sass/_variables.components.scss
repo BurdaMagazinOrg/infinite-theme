@@ -89,6 +89,8 @@ $menu--main-navigation__menu-label-text-transform: uppercase !default;
 $menu--main-navigation__flyout-font: $font-label !default;
 $menu--main-navigation__flyout-size: $menu--main-navigation-size !default;
 $menu--main-navigation__flyout-color: $text-color !default;
+$menu--main-navigation__flyout-fade-duration: 0.1s !default;
+$menu--main-navigation__flyout-fade-delay: 0.1s !default;
 $menu--main-navigation__flyout-top: 43px !default;
 $menu--main-navigation__flyout-width: auto !default;
 $menu--main-navigation__flyout-bg-color: $white !default;
