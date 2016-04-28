@@ -261,6 +261,7 @@
   padding: 0;
   z-index: 2;
   color: $navigation-menu-icon-color;
+  cursor: pointer;
 
   &:before {
     font-size: $navigation-menu-icon-size;
