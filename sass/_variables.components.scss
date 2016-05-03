@@ -68,6 +68,8 @@ $region-v-lined: true !default;
 **/
 $menu--main-navigation-font: $font-label !default;
 $menu--main-navigation-size: 14px !default;
+$menu--main-navigation-bg: $white !default;
+$menu--main-navigation-min-height: 60px !default;
 $menu--main-navigation-padding-mobile: 0 90px 0 90px !default;
 $menu--main-navigation-padding-tablet: 0 90px 0 90px !default;
 $menu--main-navigation-padding-desktop: 0 100px 0 100px !default;
@@ -100,7 +102,6 @@ $menu--main-navigation__flyout__item-margin: 10px 5px !default;
 
 $navigation-fade-delay: 0.05s !default;
 $navigation-letter-spacing: 1px !default;
-$navigation-min-height: 60px !default;
 
 $navigation-menu-icon-color: $text-color !default;
 $navigation-menu-icon-size: 17px !default;
@@ -111,9 +112,9 @@ $navigation-search-icon-size: 19px !default;
 //submenu
 $menu--submenu-navigation-font: $font-label !default;
 $menu--submenu-navigation-size: $menu--main-navigation-size - 2px !default;
-$menu--submenu-navigation__item_padding: 3px 7px !default;
 $menu--submenu-navigation-mobile-color: $gray-base !default;
 $menu--submenu-navigation-mobile-color-active: $gray-base !default;
+$menu--submenu-navigation__item_padding: 3px 7px !default;
 $menu--submenu-navigation__item_margin-mobile: 15px 0px !default;
 $menu--submenu-navigation__item_margin-tablet: 15px 0px !default;
 $menu--submenu-navigation__item_margin-desktop: 0 5px !default;
@@ -208,6 +209,7 @@ $product__item-text-shipping-pos-bottom: 40px !default;
 
 /** label-category **/
 $label--category-font: $font-label !default;
+$label--category-color: $color-highlighted !default;
 $label--category-size--mobile: $label-size-medium !default;
 $label--category-size--tablet: $label-size-medium !default;
 $label--category-size--desktop: $label-size-medium !default;
@@ -297,6 +299,10 @@ $teaser__author--default-gap-top-desktop: $gap-size-lg !default;
 $teaser__socials--default-gap-top-mobile: $gap-size-sm !default;
 $teaser__socials--default-gap-top-tablet: $gap-size-sm !default;
 $teaser__socials--default-gap-top-desktop: $gap-size-lg !default;
+
+$teaser__category--default-gap-bottom-mobile: $gap-size-sm !default;
+$teaser__category--default-gap-bottom-tablet: $gap-size-sm !default;
+$teaser__category--default-gap-bottom-desktop: $gap-size-sm !default;
 
 /** feed-teaser **/
 $feed-teaser-headline-size-mobile: $title-size-sm !default;

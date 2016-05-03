@@ -5,7 +5,7 @@
 
   @include text-helper($label--category-font);
   text-transform: uppercase;
-  color: $color-highlighted;
+  color: $label--category-color;
 
   @media (max-width: $screen-xxs-max) {
     @include text-helper-size($label--category-font, $size-mobile);

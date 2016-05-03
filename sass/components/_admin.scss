@@ -67,7 +67,7 @@ form[class^="user-"], form[class*=" user-"] {
   }
 
   .description {
-    @extend %text-content-size-small;
+    font-size: 14px;
     color: $gray-dark;
     margin-top: 5px;
   }

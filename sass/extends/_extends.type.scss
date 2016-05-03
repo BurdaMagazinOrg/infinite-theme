@@ -32,26 +32,6 @@
   @include text-content();
 }
 
-%text-content-size-tiny {
-  @include text-content-size($font-size-tiny);
-}
-
-%text-content-size-small {
-  @include text-content-size($font-size-small);
-}
-
-%text-content-size-medium {
-  @include text-content-size($font-size-medium);
-}
-
-%text-content-size-large {
-  @include text-content-size($font-size-large);
-}
-
-%text-content-size-xl {
-  @include text-content-size($font-size-xl);
-}
-
 %text-content-html {
   @include text-content-html();
 }

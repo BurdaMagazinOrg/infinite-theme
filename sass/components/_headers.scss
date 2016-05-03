@@ -3,3 +3,7 @@
     @extend %gap__container--h-negative;
   }
 }
+
+#header-home {
+  @extend %header--home;
+}

@@ -28,7 +28,7 @@
 
   .text-category {
     display: inline-block;
-    margin-bottom: $gap-size-sm;
+    //margin-bottom: $gap-size-sm;
 
     &:hover {
       color: $text-highlighted;
@@ -43,6 +43,10 @@
     .socials-bar {
       margin-top: $teaser__socials--default-gap-top-mobile;
     }
+
+    .text-category {
+      margin-bottom: $teaser__category--default-gap-bottom-mobile;
+    }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
@@ -53,6 +57,10 @@
     .socials-bar {
       margin-top: $teaser__socials--default-gap-top-tablet;
     }
+
+    .text-category {
+      margin-bottom: $teaser__category--default-gap-bottom-tablet;
+    }
   }
 
   @media (min-width: $screen-md-min) {
@@ -62,6 +70,10 @@
 
     .socials-bar {
       margin-top: $teaser__socials--default-gap-top-desktop;
+    }
+
+    .text-category {
+      margin-bottom: $teaser__category--default-gap-bottom-desktop;
     }
   }
 }

@@ -9,8 +9,8 @@
   position: relative;
   border-top: $h-line-style;
   border-bottom: $h-line-style;
-  background-color: $white;
-  height: $navigation-min-height;
+  background-color: $menu--main-navigation-bg;
+  height: $menu--main-navigation-min-height;
 
   &.stuck {
     position: fixed;
@@ -118,10 +118,11 @@
 }
 
 @mixin menu--main-navigation__item--active() {
-  background-color: $menu--main-navigation__item-active-bg;
-  color: $menu--main-navigation__item-active-color;
+  //background-color: $menu--main-navigation__item-active-bg;
+  //color: $menu--main-navigation__item-active-color;
 
-  &:hover > a, a:hover, .is-active {
+  //&:hover > a, a:hover, .is-active {
+  a:hover, .is-active {
     background-color: $menu--main-navigation__item-active-bg;
     color: $menu--main-navigation__item-active-color;
   }
@@ -138,7 +139,6 @@
   color: $menu--main-navigation__flyout-color;
   padding: $menu--main-navigation__flyout-padding;
   z-index: 3;
-  //display: none;
 
   li {
     margin: $menu--main-navigation__flyout__item-margin;
