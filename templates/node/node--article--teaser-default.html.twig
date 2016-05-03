@@ -28,10 +28,12 @@
     {% endblock %}
 
     {% block teaser_text_headline %}
-      <h2 class="text-headline">
+      <h2 class="teaser__title text-headline">
         <a href="{{ url }}" target="_self" rel="bookmark">{{ label }}</a>
       </h2>
     {% endblock %}
+
+    {% block teaser_text %}{% endblock %}
 
     <header>
       {% block teaser_author %}

@@ -1,0 +1,9 @@
+{% extends "node--article--presenter-full.html.twig" %}
+
+{% block teaser_text %}
+  {% if content.field_teaser_text %}
+    <p class="teaser__copy">
+      {{ content.field_teaser_text }}
+    </p>
+  {% endif %}
+{% endblock %}

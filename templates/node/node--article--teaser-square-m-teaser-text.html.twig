@@ -1,0 +1,12 @@
+{% extends "node--article--teaser-default.html.twig" %}
+
+{% set attributes = attributes.addClass('teaser-content-right', 'teaser-square-medium') %}
+
+{% block teaser_text %}
+    {% if content.field_teaser_text %}
+        <p class="teaser__copy">
+            {{ content.field_teaser_text }}
+        </p>
+    {% endif %}
+{% endblock %}
+

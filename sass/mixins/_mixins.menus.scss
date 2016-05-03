@@ -420,6 +420,10 @@
       left: 0;
     }
   }
+
+  .item-soft {
+    color: $menu__item--sidebar-soft-color;
+  }
 }
 
 @mixin menu--sidebar-main() {

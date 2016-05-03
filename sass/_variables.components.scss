@@ -122,6 +122,7 @@ $menu--submenu-navigation__item_margin-desktop: 0 5px !default;
 //sidebar
 $menu--sidebar-logo-width: 150px !default;
 $menu__item--sidebar-gap-top: 12px !default;
+$menu__item--sidebar-soft-color: $gray-base !default;
 
 $menu--sidebar-main-font: $font-label !default;
 $menu--sidebar-main-size: $menu--main-navigation-size !default;
@@ -130,7 +131,6 @@ $menu--sidebar-main-text-transform: uppercase !default;
 $menu--sidebar-misc-font: $font-content !default;
 $menu--sidebar-misc-size: 14px !default;
 $menu--sidebar-misc-text-transform: uppercase !default;
-
 /**
 ** Author
 **/

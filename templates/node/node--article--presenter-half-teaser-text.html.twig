@@ -67,4 +67,12 @@
 <div class="container-content container-fixed-content">
     {% set attributes = attributes.addClass('teaser-content-right', 'teaser-landscape-medium', 'teaser-presenter-half') %}
     {% extends "node--article--teaser-default.html.twig" %}
+
+    {% block teaser_text %}
+        {% if content.field_teaser_text %}
+            <p class="teaser__copy">
+                {{ content.field_teaser_text }}
+            </p>
+        {% endif %}
+    {% endblock %}
 </div>
