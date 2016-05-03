@@ -4,39 +4,49 @@
 
 {% block social_facebook %}
   <div class="item-social icon-facebook" data-url="{{ url | e('html_attr')}}" data-description="{{ label | e('html_attr') }}"  data-social-type="facebook">
-    {% if facebook_share_button %}
-      <span>{{ facebook_share_button }}</span>
-    {% endif %}
+    {% block social_facebook_button %}
+      {% if facebook_share_button %}
+        <span>{{ facebook_share_button }}</span>
+      {% endif %}
+    {% endblock %}
   </div>
 {% endblock %}
 {% block social_whatsapp %}
   <a class="item-social icon-whatsapp" href="whatsapp://send?text={{ (whatsapp_share_text ~ label ~ ' - ' ~ url) | e('url') }}" data-social-type="whatsapp">
-    {% if whatsapp_share_button %}
-      <span>{{ whatsapp_share_button }}</span>
-    {% endif %}
+    {% block social_whatsapp_button %}
+      {% if whatsapp_share_button %}
+        <span>{{ whatsapp_share_button }}</span>
+      {% endif %}
+    {% endblock %}
   </a>
 {% endblock %}
 
 {% block social_pinterest %}
   <div class="item-social icon-pinterest" data-url="{{ url | e('html_attr')}}" data-media-url="{{ share_img_url | e('html_attr')}}" data-description="{{ label | e('html_attr') }}" data-social-type="pinterest">
-    {% if pinterest_share_button %}
-      <span>{{ pinterest_share_button }}</span>
-    {% endif %}
+    {% block social_pinterest_button %}
+      {% if pinterest_share_button %}
+        <span>{{ pinterest_share_button }}</span>
+      {% endif %}
+    {% endblock %}
   </div>
 {% endblock %}
 
 {% block social_twitter %}
   <a class="item-social icon-twitter" href="https://twitter.com/intent/tweet?text={{ label | e('url') ~ '&url=' ~ url | e('url') ~ '&via=' ~ twitter_share_via | e('url') }}" target="_blank" data-social-type="twitter">
-    {% if twitter_share_button %}
-      <span>{{ twitter_share_button }}</span>
-    {% endif %}
+    {% block social_twitter_button %}
+      {% if twitter_share_button %}
+        <span>{{ twitter_share_button }}</span>
+      {% endif %}
+    {% endblock %}
   </a>
 {% endblock %}
 
 {% block social_email %}
   <div class="item-social icon-email" data-url="{{ url | e('html_attr') }}" data-email-share-text="{{ email_share_text | e('html_attr')}}" data-email-subject="{{ email_subject | e('html_attr') }}" data-description="{{ label | e('html_attr') }}" data-social-type="email">
-    {% if email_share_button %}
-      <span>{{ email_share_button }}</span>
-    {% endif %}
+    {% block social_email_button %}
+      {% if email_share_button %}
+        <span>{{ email_share_button }}</span>
+      {% endif %}
+    {% endblock %}
   </div>
 {% endblock %}
