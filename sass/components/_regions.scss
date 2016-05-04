@@ -23,10 +23,6 @@
       @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
     }
   }
-
-  & > .item-paragraph--full.item-paragraph--seo-links:last-child {
-    border-bottom: $h-line-style;
-  }
 }
 
 #page-wrapper {
