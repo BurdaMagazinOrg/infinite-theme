@@ -1,3 +1,7 @@
 %copytext--text-block {
   @include copytext--text-block();
 }
+
+%copytext--teaser-default {
+  @include copytext--teaser-default();
+}

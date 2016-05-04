@@ -1,4 +1,3 @@
-
 /**
 ** Specific Lists Gaps
 **/
@@ -32,7 +31,6 @@ $container-padding-sm-top-mobile: $gap-size-xs !default;
 $container-padding-sm-top-tablet: $gap-size-sm !default;
 $container-padding-sm-top-desktop: $gap-size-sm !default;
 
-
 /**
 ** Btns
 **/
@@ -43,7 +41,7 @@ $btn--small-border: 1px solid $color-highlighted !default;
 $btn--small-radius: 15px !default;
 $btn--small-color: $color-highlighted !default;
 $btn--small-letter-spacing: 1px !default;
-$btn--small-highlighted-color: $white  !default;
+$btn--small-highlighted-color: $white !default;
 $btn--small-highlighted-bg-color: $color-highlighted !default;
 $btn--small-highlighted-border: 1px solid $color-highlighted !default;
 
@@ -288,9 +286,15 @@ $copytext--text-block-mobile: 18px !default;
 $copytext--text-block-tablet: 19px !default;
 $copytext--text-block-desktop: 21px !default;
 
+
 /**
 ** Teaser
 **/
+
+$teaser__copy--default-font: $font-content !default;
+$teaser__copy--default-mobile: $copytext--text-block-mobile !default;
+$teaser__copy--default-tablet: $copytext--text-block-tablet !default;
+$teaser__copy--default-desktop: $copytext--text-block-desktop !default;
 
 $teaser__author--default-gap-top-mobile: $gap-size-sm !default;
 $teaser__author--default-gap-top-tablet: $gap-size-sm !default;
@@ -318,9 +322,20 @@ $feed-teaser-gap-top-tablet: $gap-size-xl !default;
 $feed-teaser-gap-top-desktop: $gap-size-xl !default;
 
 /** full-content-teaser **/
-$fc-teaser-headline-size-mobile: $title-size-sm !default;
-$fc-teaser-headline-size-tablet: $title-size-lg !default;
-$fc-teaser-headline-size-desktop: $title-size-xxl !default;
+$teaser__font--full-content: $font-headline !default;
+$teaser__title-size--full-content-mobile: $title-size-sm !default;
+$teaser__title-size--full-content-tablet: $title-size-lg !default;
+$teaser__title-size--full-content-desktop: $title-size-xxl !default;
+$teaser__img-ratio--full-content-mobile: 39.8% !default;
+$teaser__img-ratio--full-content-tablet: 39.8% !default;
+$teaser__img-ratio--full-content-desktop: 39.8% !default;
+
+$teaser__padding-bottom--full-content-tablet: 25px !default;
+$teaser__padding-bottom--full-content-desktop: 65px !default;
+
+//no mobile absolute position
+$teaser__caption-bottom--full-content-tablet: -33px !default;
+$teaser__caption-bottom--full-content-desktop: -49px !default;
 
 /** list horizontal teaser **/
 $teaser-list-h-headline-size-mobile: $title-size-xxxs !default;
@@ -344,8 +359,6 @@ $teaser--content-headline-size-desktop: $title-size-xxs !default;
 $teaser--content-caption-height: 81px !default;
 $teaser--content-caption-height-mobile: 69px !default;
 
-$teaser__caption--full-bottom-tablet: - 40px !default;
-$teaser__caption--full-bottom-desktop: - 56px !default;
 /**
 **  Lists **
 **/
@@ -384,7 +397,6 @@ $list--alphabetical-headline-padding: 5px 0 !default;
 $list--alphabetical-headline-margin: 0 0 $gap-size-xs 0 !default;
 $list--alphabetical-headline-color: $color-brand !default;
 $list--alphabetical-list-item-margin: 10px 0 0 0 !default;
-
 
 /** socials horizontal clean bar **/
 $socials-clean-horizontal-bar-left-gap: 8px !default;

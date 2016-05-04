@@ -26,9 +26,12 @@
     max-width: 100%;
   }
 
+  .teaser__copy {
+    @extend %copytext--teaser-default;
+  }
+
   .text-category {
     display: inline-block;
-    //margin-bottom: $gap-size-sm;
 
     &:hover {
       color: $text-highlighted;
@@ -269,8 +272,8 @@
 
 @mixin teaser-full-content() {
   padding-top: 0;
-  position: relative;
   padding-bottom: 0;
+  position: relative;
 
   &:hover {
     .title--presenter-full {
@@ -285,6 +288,7 @@
 
   .img-container {
     @include gap__container--h-negative();
+    height: 0;
   }
 
   .caption {
@@ -301,12 +305,20 @@
   }
 
   .title--presenter-full {
-    @include text-headline($fc-teaser-headline-size-mobile);
+    @include text-helper($teaser__font--full-content);
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .title--presenter-full {
+      @include text-helper-size($teaser__font--full-content, $teaser__title-size--full-content-mobile);
+    }
+
+    .img-container {
+      padding-bottom: $teaser__img-ratio--full-content-mobile;
+    }
   }
 
   @media (min-width: $screen-sm-min) {
-    padding-bottom: $gap-size-xxl;
-
     .caption {
       position: absolute;
 
@@ -315,20 +327,21 @@
         background-color: $white;
       }
     }
-
-    .img-container {
-      padding-bottom: 43.1%;
-      height: 0;
-    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    padding-bottom: $teaser__padding-bottom--full-content-tablet;
+
+    .img-container {
+      padding-bottom: $teaser__img-ratio--full-content-tablet;
+    }
+
     .caption {
-      bottom: $teaser__caption--full-bottom-desktop;
+      bottom: $teaser__caption-bottom--full-content-tablet;
     }
 
     .title--presenter-full {
-      @include text-headline-size($fc-teaser-headline-size-tablet);
+      @include text-helper-size($teaser__font--full-content, $teaser__title-size--full-content-tablet);
     }
   }
 
@@ -336,13 +349,19 @@
   * Large Screens
   **/
   @media (min-width: $screen-md-min) {
+    padding-bottom: $teaser__padding-bottom--full-content-desktop;
+
+    .img-container {
+      padding-bottom: $teaser__img-ratio--full-content-desktop;
+    }
+
     .caption {
       left: -$grid-gutter-width;
-      bottom: $teaser__caption--full-bottom-desktop;
+      bottom: $teaser__caption-bottom--full-content-desktop;
     }
 
     .title--presenter-full {
-      @include text-headline($fc-teaser-headline-size-desktop);
+      @include text-helper-size($teaser__font--full-content, $teaser__title-size--full-content-desktop);
     }
   }
 

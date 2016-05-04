@@ -13,3 +13,19 @@
     @include text-content-size($copytext--text-block-desktop);
   }
 }
+
+@mixin copytext--teaser-default() {
+  @include text-helper($teaser__copy--default-font);
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($teaser__copy--default-font, $teaser__copy--default-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($teaser__copy--default-font, $teaser__copy--default-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($teaser__copy--default-font, $teaser__copy--default-desktop);
+  }
+}
