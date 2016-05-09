@@ -68,36 +68,39 @@
 'teaser',
 'teaser-full-content',
 'contextual-region',
-]
-%}
+] %}
 
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
 {% set attributes = attributes.setAttribute('data-internal-url', url) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
-  <div class="img-container" itemprop="associatedMedia">
-    {% block presenter_media %}
-      {% if content.field_presenter_media['#items'] is not empty %}
-        {{ content.field_presenter_media }}
-      {% else %}
-        {{ content.field_teaser_media }}
-      {% endif %}
-    {% endblock %}
-  </div>
-
-  <div class="caption__wrapper">
-    <div class="caption caption-teaser">
-      {% block presenter_headline %}
-        {#<div class="title-overhead--presenter-full">overhead</div>#}
-        <h2 class="title--presenter-full">
-          <a href="{{ url }}" target="_self">{{ label }}</a>
-        </h2>
-      {% endblock %}
-      {% block teaser_text %}{% endblock %}
+    <div class="img-container" itemprop="associatedMedia">
+        {% block presenter_media %}
+            {% if content.field_presenter_media['#items'] is not empty %}
+                {{ content.field_presenter_media }}
+            {% else %}
+                {{ content.field_teaser_media }}
+            {% endif %}
+        {% endblock %}
     </div>
-  </div>
 
-  {% if (show_contextual_links) %}
-    {{ title_suffix.contextual_links }}
-  {% endif %}
+    <div class="caption__wrapper">
+        <div class="caption caption-teaser">
+
+            {% block presenter_overhead %}{% endblock %}
+
+            {% block presenter_headline %}
+                <h2 class="title--presenter-full">
+                    <a href="{{ url }}" target="_self">{{ label }}</a>
+                </h2>
+            {% endblock %}
+
+            {% block teaser_text %}{% endblock %}
+
+        </div>
+    </div>
+
+    {% if (show_contextual_links) %}
+        {{ title_suffix.contextual_links }}
+    {% endif %}
 </article>

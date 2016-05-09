@@ -66,5 +66,6 @@
 
 <div class="container-content container-fixed-content">
     {% set attributes = attributes.addClass('teaser-content-right', 'teaser-landscape-medium', 'teaser-presenter-half') %}
-    {% include "node--article--teaser-default.html.twig" %}
+    {% embed "node--article--teaser-default.html.twig" %}
+    {% endembed %}
 </div>

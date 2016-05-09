@@ -1,12 +1,8 @@
-{%
-  set wrapper_classes = [
-    'teaser',
-    'teaser-square-small',
-    'swipeable__item',
-    'contextual-region',
-  ]
-%}
+{% set wrapper_classes = [
+'teaser-square-small',
+] %}
 
+{% set attributes = attributes.addClass('teaser', 'contextual-region', 'swipeable__item') %}
 {% set attributes = attributes.setAttribute('data-tid', tid) %}
 {% set attributes = attributes.setAttribute('data-internal-url', url) %}
 

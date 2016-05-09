@@ -104,7 +104,8 @@
 
     {% if content.field_paragraphs | render is not empty %}
         {% block article_node_content %}
-            {% include '@infinite/node/node--article.html.twig' %}
+            {% embed '@infinite/node/node--article.html.twig' %}
+            {% endembed %}
         {% endblock %}
     {% endif %}
 

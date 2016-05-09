@@ -3,7 +3,8 @@
 {% block content_header %}
 
     {% block sponsored %}
-        {% include '@infinite/node/twig-block-sponsored.html.twig' %}
+        {% embed '@infinite/node/twig-block-sponsored.html.twig' %}
+        {% endembed %}
     {% endblock %}
 
     {% if not has_spotlight_title %}

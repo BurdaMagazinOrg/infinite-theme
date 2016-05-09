@@ -1,4 +1,4 @@
-@mixin list__images--horizontal($gaps: ($teaser-list-h-teaser-gap-mobile, $teaser-list-h-teaser-gap-tablet, $teaser-list-h-teaser-gap-desktop)) {
+@mixin list__images--horizontal($gaps: ($teaser__gap--list-horizontal-mobile, $teaser__gap--list-horizontal-tablet, $teaser__gap--list-horizontal-desktop)) {
   @include clearfix();
   $gap-mobile: nth($gaps, 1);
   $gap-tablet: nth($gaps, 2);
@@ -20,7 +20,7 @@
   }
 }
 
-@mixin list__images--horizontal__item($gaps: ($teaser-list-h-teaser-gap-mobile, $teaser-list-h-teaser-gap-tablet, $teaser-list-h-teaser-gap-desktop), $count: $teaser-list-horizontal-count-default) {
+@mixin list__images--horizontal__item($gaps: ($teaser__gap--list-horizontal-mobile, $teaser__gap--list-horizontal-tablet, $teaser__gap--list-horizontal-desktop), $count: $teaser-list-horizontal-count-default) {
   $gap-mobile: nth($gaps, 1);
   $gap-tablet: nth($gaps, 2);
   $gap-desktop: nth($gaps, 3);

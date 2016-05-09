@@ -7,7 +7,7 @@
 @mixin swipeable__images--horizontal__item() {
   @media (max-width: $screen-xs-max) {
     @include flex-shrink(0);
-    width: $teaser-list-h-teaser-shrinked-width;
+    width: $teaser__shrinked-width--list-horizontal;
     padding-left: 0;
     padding-right: 0;
   }

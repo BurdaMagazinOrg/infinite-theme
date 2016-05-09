@@ -37,25 +37,35 @@
 }
 
 @mixin teaser-list-h-text() {
+
+  &:hover {
+    color: $teaser__title-hover-color--list-horizontal;
+
+    .text-headline {
+      color: inherit;
+    }
+  }
+
   .text-headline {
-    @include text-content();
+    @include text-helper($teaser__title-font--list-horizontal);
+    color: $teaser__title-color--list-horizontal;
   }
 
   @media (max-width: $screen-xs-max) {
     .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-mobile);
+      @include text-helper-size($teaser__title-font--list-horizontal, $teaser__title-size--list-horizontal-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-tablet);
+      @include text-helper-size($teaser__title-font--list-horizontal, $teaser__title-size--list-horizontal-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-content-size($teaser-list-h-headline-size-desktop);
+      @include text-helper-size($teaser__title-font--list-horizontal, $teaser__title-size--list-horizontal-desktop);
     }
   }
 }
