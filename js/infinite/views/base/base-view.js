@@ -116,7 +116,7 @@
             $pContainer.find('[data-btn-action]').unbind('click.btnAction').bind('click.btnAction', function (pEvent) {
                 var tmpAction = $(this).data('btn-action'),
                     tmpValue = $(this).data('btn-action-value'),
-                    tmpTarget = $(this).data('target'),
+                    tmpTarget = $(this).data('btn-action-target'),
                     $tmpTarget = [];
 
                 if (tmpTarget != "") $tmpTarget = $(this).parents(tmpTarget);
@@ -135,7 +135,7 @@
         updateTextActions: function ($pContainer) {
             $.each($pContainer.find('[data-text-action]'), function (pIndex, pItem) {
                 var tmpAction = $(pItem).data('text-action') || '',
-                    tmpTarget = $(pItem).data('target') || '',
+                    tmpTarget = $(pItem).data('text-action-target') || '',
                     $tmpTarget = [];
 
                 if (tmpAction == "" || tmpTarget == "") return;
