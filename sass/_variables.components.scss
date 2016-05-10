@@ -338,14 +338,14 @@ $teaser__title-padding--full-content-mobile: $gap-size-xs 0 0 !default;
 $teaser__title-padding--full-content-tablet: $gap-size-sm 21px 0 !default;
 $teaser__title-padding--full-content-desktop: $gap-size-sm 21px 0 !default;
 
-$teaser__img-ratio--full-content-mobile: 39.8% !default;
-$teaser__img-ratio--full-content-tablet: 39.8% !default;
-$teaser__img-ratio--full-content-desktop: 39.8% !default;
+$teaser__img-ratio--full-content-mobile: 41.3% !default;
+$teaser__img-ratio--full-content-tablet: 41.3% !default;
+$teaser__img-ratio--full-content-desktop: 41.3% !default;
 
 //no mobile absolute position
 $teaser__caption-use-pos-absolute--full-content: true !default;
 $teaser__caption-bottom--full-content-tablet: -33px !default;
-$teaser__caption-bottom--full-content-desktop: -49px !default;
+$teaser__caption-bottom--full-content-desktop: -49px !default; 
 
 $teaser__overhead-bg--full-content: $white !default;
 $teaser__overhead-color--full-content: $label--category-color !default;
