@@ -148,12 +148,12 @@
 }
 
 /** horizontal clean bar **/
-@mixin socials-clean-horizontal-bar-item($bg: transparent,
-  $color: $text-color,
-  $border: 1px solid $color,
-  $bg-hover: transparent,
-  $color-hover: inherit,
-  $border-color-hover: inherit) {
+@mixin socials-clean-horizontal-bar-item($bg: $socials__bg-color--clean-horizontal-bar,
+  $color: $socials__color--clean-horizontal-bar,
+  $border: $socials__border--clean-horizontal-bar,
+  $bg-hover: $socials__bg-color-hover--clean-horizontal-bar,
+  $color-hover: $socials__color-hover--clean-horizontal-bar,
+  $border-color-hover: $socials__border-color-hover--clean-horizontal-bar) {
 
   display: inline-block;
   background-color: $bg;

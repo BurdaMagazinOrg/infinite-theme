@@ -423,6 +423,13 @@ $list--alphabetical-headline-color: $color-brand !default;
 $list--alphabetical-list-item-margin: 10px 0 0 0 !default;
 
 /** socials horizontal clean bar **/
+$socials__bg-color--clean-horizontal-bar: transparent !default;
+$socials__color--clean-horizontal-bar: $text-color !default;
+$socials__border--clean-horizontal-bar: 1px solid $socials__color--clean-horizontal-bar !default;
+$socials__bg-color-hover--clean-horizontal-bar:transparent !default;
+$socials__color-hover--clean-horizontal-bar: inherit !default;
+$socials__border-color-hover--clean-horizontal-bar: inherit !default;
+
 $socials-clean-horizontal-bar-left-gap: 8px !default;
 $socials-clean-horizontal-bar-size-mobile: $socials-size-sm !default;
 $socials-clean-horizontal-bar-size-tablet: $socials-size-sm !default;
