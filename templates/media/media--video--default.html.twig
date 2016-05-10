@@ -14,7 +14,7 @@
 #}
 {% if content %}
     <div class="embed-responsive embed-responsive-16by9 video-container" itemscope="" itemtype="http://schema.org/videoObject">
-        <iframe src="https://www.youtube.com/embed/{{ content.field_video_id }}" frameborder="0" allowfullscreen></iframe>
+        {{ content.field_media_video_embed_field }}
     </div>
     <div class="caption">
         {% if content.field_copyright|render  %}
@@ -25,7 +25,7 @@
         {% endif %}
 
         <div class="socials socials-bar">
-            <div class="item-social icon-facebook" data-url="https://www.youtube.com/embed/{{ content.field_video_id | e('url')}}"  data-social-type="facebook"></div>
+            <div class="item-social icon-facebook" data-url="{{ content.field_media_video_embed_field.0['children']['#url'] }}"  data-social-type="facebook"></div>
         </div>
     </div>
 {% endif %}
