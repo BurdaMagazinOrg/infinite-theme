@@ -1,3 +1,7 @@
+%gap__container--h {
+  @include gap__container--h-negative();
+}
+
 %gap__container--h-negative {
   @include gap__container--h-negative();
 }

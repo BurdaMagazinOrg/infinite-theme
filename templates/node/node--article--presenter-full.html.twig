@@ -74,14 +74,16 @@
 {% set attributes = attributes.setAttribute('data-internal-url', url) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
-    <div class="img-container" itemprop="associatedMedia">
-        {% block presenter_media %}
-            {% if content.field_presenter_media['#items'] is not empty %}
-                {{ content.field_presenter_media }}
-            {% else %}
-                {{ content.field_teaser_media }}
-            {% endif %}
-        {% endblock %}
+    <div class="img-container__wrapper">
+        <div class="img-container" itemprop="associatedMedia">
+            {% block presenter_media %}
+                {% if content.field_presenter_media['#items'] is not empty %}
+                    {{ content.field_presenter_media }}
+                {% else %}
+                    {{ content.field_teaser_media }}
+                {% endif %}
+            {% endblock %}
+        </div>
     </div>
 
     <div class="caption__wrapper">
