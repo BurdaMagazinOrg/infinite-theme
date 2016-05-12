@@ -18,14 +18,15 @@
  * @ingroup themeable
  */
 #}
-
 <div class="author item-author"
         {% if author_id != 0 %}
             data-internal-url="{{ author_url }}"
         {% endif %}
         >
 
-    {{ author_picture }}
+    {% if author_id != 0 %}
+        {{ author_picture }}
+    {% endif %}
 
     <div class="caption">
 
