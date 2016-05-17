@@ -24,19 +24,20 @@
 }
 
 @mixin title--article() {
-  max-width: $full-headlines-max-width;
-  @include text-headline();
+  @include text-helper($title--article-font);
+  max-width: $title--article-max-width;
+  color: $title--article-color;
 
   @media (max-width: $screen-xs-max) {
-    @include text-headline-size($title--article-mobile);
+    @include text-helper-size($title--article-font, $title--article-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-headline-size($title--article-tablet);
+    @include text-helper-size($title--article-font, $title--article-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-headline-size($title--article-desktop);
+    @include text-helper-size($title--article-font, $title--article-desktop);
   }
 }
 

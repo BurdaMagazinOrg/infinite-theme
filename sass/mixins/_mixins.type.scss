@@ -10,6 +10,8 @@
     @extend %text-label;
   } @else if ($font == $font-content) {
     @extend %text-content;
+  } @else {
+    font-family: $font;
   }
 
   @if ($size!= '') {

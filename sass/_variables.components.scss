@@ -270,9 +270,12 @@ $title--content-block-gap-bottom-tablet: $gap-size-md !default;
 $title--content-block-gap-bottom-desktop: $gap-size-xxl !default;
 
 /** title--article **/
+$title--article-font: $font-headline !default;
 $title--article-mobile: $title-size-sm !default;
 $title--article-tablet: $title-size-md !default;
 $title--article-desktop: $title-size-xl !default;
+$title--article-color: $text-color !default;
+$title--article-max-width: 888px !default;
 
 /** title--text-block **/
 $title--text-block-font: $font-headline !default;
@@ -332,6 +335,7 @@ $teaser__title-font--full-content: $font-headline !default;
 $teaser__title-size--full-content-mobile: $title-size-sm !default;
 $teaser__title-size--full-content-tablet: $title-size-lg !default;
 $teaser__title-size--full-content-desktop: $title-size-xxl !default;
+$teaser__title-max-width--full-content: 888px !default;
 $teaser__title-bg--full-content: $white !default;
 $teaser__title-color--full-content: $text-color !default;
 $teaser__title-padding--full-content-mobile: $gap-size-xs 0 0 !default;
@@ -555,17 +559,18 @@ $gallery__count-size-desktop: $title--content-block-desktop !default;
 ** Media
 **/
 
-$media--header-ratio-xs: floor(percentage(160/480)) !default;
-$media--header-ratio-sm: floor(percentage(200/1000)) !default;
-$media--header-ratio-md: floor(percentage(200/1400)) !default;
-$media--header-ratio-lg: floor(percentage(200/1400)) !default;
-$media--header-ratio-xl: floor(percentage(200/1800)) !default;
+$media__header-ratio-xs: floor(percentage(160/480)) !default;
+$media__header-ratio-sm: floor(percentage(200/1000)) !default;
+$media__header-ratio-md: floor(percentage(200/1400)) !default;
+$media__header-ratio-lg: floor(percentage(200/1400)) !default;
+$media__header-ratio-xl: floor(percentage(200/1800)) !default;
 
-$media--description-margin: 5px 0 0 0 !default;
-$media--description-font: $font-tiny !default;
-$media--description-size-mobile: 14px !default;
-$media--description-size-tablet: 14px !default;
-$media--description-size-desktop: 18px !default;
+$media__description-margin: 5px 0 0 0 !default;
+$media__description-font: $font-tiny !default;
+$media__description-size-mobile: 14px !default;
+$media__description-size-tablet: 14px !default;
+$media__description-size-desktop: 18px !default;
+$media__description-color: $text-color !default;
 
 /**
 ** Tags

@@ -1,6 +1,7 @@
 @mixin item-media__description() {
-  @include text-helper($media--description-font);
-  margin: $media--description-margin;
+  @include text-helper($media__description-font);
+  margin: $media__description-margin;
+  color: $media__description-color;
 
   p {
     line-height: inherit;
@@ -8,15 +9,15 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($media--description-font, $media--description-size-mobile);
+    @include text-helper-size($media__description-font, $media__description-size-mobile);
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($media--description-font, $media--description-size-tablet);
+    @include text-helper-size($media__description-font, $media__description-size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($media--description-font, $media--description-size-desktop);
+    @include text-helper-size($media__description-font, $media__description-size-desktop);
   }
 }
 
@@ -181,22 +182,22 @@
 
 @mixin item-media--header-ratio() {
   @media (max-width: $screen-xs-max) {
-    padding-bottom: $media--header-ratio-xs;
+    padding-bottom: $media__header-ratio-xs;
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    padding-bottom: $media--header-ratio-sm;
+    padding-bottom: $media__header-ratio-sm;
   }
 
   @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-    padding-bottom: $media--header-ratio-md;
+    padding-bottom: $media__header-ratio-md;
   }
 
   @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
-    padding-bottom: $media--header-ratio-lg;
+    padding-bottom: $media__header-ratio-lg;
   }
 
   @media (min-width: $screen-xl-min) {
-    padding-bottom: $media--header-ratio-xl;
+    padding-bottom: $media__header-ratio-xl;
   }
 }
