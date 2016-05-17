@@ -62,6 +62,7 @@
 @mixin title--text-block() {
   @include text-helper($title--text-block-font);
   margin-top: $gap-size-lg;
+  color: $title--text-block-color;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($title--text-block-font, $title--text-block-mobile);
