@@ -45,10 +45,6 @@ $btn--small-highlighted-color: $white !default;
 $btn--small-highlighted-bg-color: $color-highlighted !default;
 $btn--small-highlighted-border: 1px solid $color-highlighted !default;
 
-/**
-** Breadcrumb
-**/
-$breadcrumb-font: $font-label !default;
 
 /**
 ** Lists Margins
@@ -572,6 +568,18 @@ $media__description-size-mobile: 14px !default;
 $media__description-size-tablet: 14px !default;
 $media__description-size-desktop: 18px !default;
 $media__description-color: $text-color !default;
+
+/**
+** Breadcrumb
+**/
+$breadcrumb-font: $font-label !default;
+$breadcrumb-before-content: ">" !default;
+$breadcrumb-before-color: $color-highlighted !default;
+$breadcrumb-color: $text-color; //bootstrap variable
+$breadcrumb-color-highlighted: $color-highlighted !default;
+$breadcrumb-size-mobile: $label--category-size--mobile !default;
+$breadcrumb-size-tablet: $label--category-size--tablet !default;
+$breadcrumb-size-desktop: $label--category-size--desktop !default;
 
 /**
 ** Tags

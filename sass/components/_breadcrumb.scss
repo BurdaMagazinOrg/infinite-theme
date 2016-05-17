@@ -1,3 +1,4 @@
 .breadcrumb {
+  @extend %region--fixed-content;
   @extend %item-breadcrumb;
 }
