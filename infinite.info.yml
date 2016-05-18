@@ -39,6 +39,7 @@ libraries:
   - infinite/infinite.views.products-view
   - infinite/infinite.views.marketing-view
   - infinite/infinite.views.spinner
+  - infinite/infinite.views.hmnewsletter-view
 
 regions:
   header_large: 'Header large'
