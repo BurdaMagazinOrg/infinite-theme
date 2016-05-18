@@ -535,7 +535,7 @@
     .seo-linker--image {
       @extend %region--fixed-content;
     }
-      
+
     .seo-linker__title {
       @extend %title--horizontal-block;
     }
@@ -564,5 +564,73 @@
 
   .seo-linker__link-list--image {
     @extend %list__links--module;
+  }
+}
+
+@mixin item-paragraph--quote() {
+  @extend %center-block;
+  @include text-helper($quote__title-font--article);
+
+  color: $quote__title-color--article;
+  text-align: center;
+  position: relative;
+  font-style: $quote__title-font-style--article;
+
+  &:before, &:after {
+    @extend %center-block;
+    content: " ";
+    max-width: $quote__border-max-width--article;
+    border-top: $quote__border-style--article;
+    display: block;
+  }
+
+  p:before, p:after {
+    @include text-helper($quote__title-font--article);
+    color: $quote__quote-color--article;
+    font-style: $quote__title-font-style--article;
+    position: relative;
+    top: 4px;
+  }
+
+  p:before {
+    content: "\00bb";
+    padding-right: 10px;
+  }
+
+  p:after {
+    content: "\00ab";
+    padding-left: 10px;
+  }
+
+  p {
+    padding: $quote__title-padding--article;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($quote__title-font--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
+
+    p:before, p:after {
+      @include text-helper-size($quote__quote-font--article, $quote__quote-size--article-mobile, 0);
+    }
+  }
+
+  @media (min-width: $screen-xs-min)  {
+    max-width: $quote__title-max-width--article;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($quote__title-font--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
+
+    p:before, p:after {
+      @include text-helper-size($quote__quote-font--article, $quote__quote-size--article-tablet, 0);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($quote__title-font--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
+
+    p:before, p:after {
+      @include text-helper-size($quote__quote-font--article, $quote__quote-size--article-desktop, 0);
+    }
   }
 }

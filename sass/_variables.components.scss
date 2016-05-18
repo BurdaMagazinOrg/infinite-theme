@@ -591,6 +591,30 @@ $tags__article-text-size-desktop: $title-size-xxs !default;
 $tags__item-margin-mobile: 0px 5px 5px 0px !default;
 $tags__item-margin-tablet: 0px 5px 5px 0px !default;
 $tags__item-margin-desktop: 0px 5px 5px 0px !default;
+
+/**
+** Quote
+**/
+$quote__border-style--article: $h-line-style !default;
+$quote__border-max-width--article: 46.5% !default;
+
+$quote__title-font--article: $font-content !default;
+$quote__title-size--article-mobile: $title-size-sm !default;
+$quote__title-size--article-tablet: $title-size-md !default;
+$quote__title-size--article-desktop: 30px !default;
+$quote__title-line-height--article: 1.5 !default;
+$quote__title-color--article: $gray-base !default;
+$quote__title-max-width--article: 80% !default;
+$quote__title-padding--article: 10px 0 !default;
+$quote__title-font-style--article: italic !default;
+
+$quote__quote-font--article: $font-content-bold !default;
+$quote__quote-size--article-mobile: 37px !default;
+$quote__quote-size--article-tablet: 45px !default;
+$quote__quote-size--article-desktop: 50px !default;
+$quote__quote-color--article: $text-highlighted !default;
+$quote__quote-font-style--article: italic !default;
+
 /**
 ** Ads
 **/

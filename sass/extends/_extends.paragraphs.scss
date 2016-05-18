@@ -64,3 +64,7 @@
 %item-paragraph--seo-links {
   @include item-paragraph--seo-links();
 }
+
+%item-paragraph--quote {
+  @include item-paragraph--quote();
+}
