@@ -36,34 +36,34 @@
             }
         },
         initializeApi: function () {
-            if (!_.isUndefined(window.thsixtyQ)) return;
+            if (_.isUndefined(window.thsixtyQ)) {
+                window.thsixtyQ = window.thsixtyQ || [];
+                window.thsixtyQ.push(['init', {config: {env: this.settings.env}}]);
+                var th = document.createElement('script');
+                th.type = 'text/javascript';
+                th.async = true;
+                th.src = "//d2528hoa8g0iaj.cloudfront.net/thsixty.min.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(th, s)
+            }
 
-            window.thsixtyQ = window.thsixtyQ || [];
-            window.thsixtyQ.push(['init', {config: {env: this.settings.env}}]);
+            if(!this.permissions) {
+                window.thsixtyQ.push(['permissions.get', {
+                    success: _.bind(function (pPermissions) {
+                        //TODO remove this after prod permissions fix
+                        if (pPermissions.privacy) {
+                            pPermissions.datenschutzeinwilligung = pPermissions.privacy;
+                        }
 
-            window.thsixtyQ.push(['permissions.get', {
-                success: _.bind(function (pPermissions) {
-                    //TODO remove this after prod permissions fix
-                    if (pPermissions.privacy) {
-                        pPermissions.datenschutzeinwilligung = pPermissions.privacy;
-                    }
-
-                    BaseNewsletterView.permissions = pPermissions;
-                    this.permissions = pPermissions;
-                    this.ready();
-                }, this),
-                error: _.bind(function (pErr) {
-                    console.log("PERMISSIONS ERROR", pErr);
-                }, this)
-            }]);
-
-            var th = document.createElement('script');
-            th.type = 'text/javascript';
-            th.async = true;
-            th.src = "//d2528hoa8g0iaj.cloudfront.net/thsixty.min.js";
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(th, s);
-
+                        BaseNewsletterView.permissions = pPermissions;
+                        this.permissions = pPermissions;
+                        this.ready();
+                    }, this),
+                    error: _.bind(function (pErr) {
+                        console.log("PERMISSIONS ERROR", pErr);
+                    }, this)
+                }]);
+            }
         },
         createView: function () {
             this.$formView = this.$el.find('.container-form');
