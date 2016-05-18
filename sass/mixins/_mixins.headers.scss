@@ -20,7 +20,7 @@
 
   .socials-bar {
     @extend %transition-default;
-    @extend %fade-in;
+    @include fade-in();
     position: absolute;
     top: $grid-gutter-width;
     right: 0;
