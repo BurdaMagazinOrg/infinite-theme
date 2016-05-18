@@ -1,5 +1,5 @@
 @mixin tags--article() {
-  @include text-helper($tags__article-font, $tags__article-text-size);
+  @include text-helper($tags__article-font);
 
   .label {
     display: inline-block;
@@ -12,8 +12,6 @@
 
   li {
     display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
     position: relative;
     font-style: italic;
 
@@ -36,6 +34,36 @@
 
     &:hover {
       color: $color-highlighted-hover;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    li {
+      margin: $tags__item-margin-mobile;
+    }
+
+    a {
+      @include text-helper-size($tags__article-font, $tags__article-text-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    li {
+      margin: $tags__item-margin-tablet;
+    }
+
+    a {
+      @include text-helper-size($tags__article-font, $tags__article-text-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    li {
+      margin: $tags__item-margin-desktop;
+    }
+
+    a {
+      @include text-helper-size($tags__article-font, $tags__article-text-size-desktop);
     }
   }
 }

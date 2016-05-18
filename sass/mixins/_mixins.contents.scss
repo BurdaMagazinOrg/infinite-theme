@@ -87,7 +87,9 @@
 
   @media (min-width: $screen-md-min) {
     //todo check if > necessary
-    & > .item-paragraph--small, & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small {
+    & > .item-paragraph--small,
+    & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small,
+    .item-content__block--tags {
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
     }
   }
