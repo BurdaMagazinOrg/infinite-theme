@@ -81,3 +81,4 @@ stylesheets-remove:
   - core/modules/views/css/views.module.css
   - core/modules/system/css/components/position-container.module.css
   - modules/custom/paragraphs_starterkit/css/paragraphs_starterkit.css
+  - "@hm_newsletter/css/hm_newsletter.css"
