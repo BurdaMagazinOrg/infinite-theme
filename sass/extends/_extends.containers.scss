@@ -3,9 +3,9 @@
 }
 
 %container--v-padding-bottom {
-  @include container--v-padding(padding, bottom);
+  @include container--v-padding(bottom);
 }
 
 %container--v-sm-padding {
-  @include container--v-padding(padding, top, ($container-padding-sm-top-mobile, $container-padding-sm-top-tablet, $container-padding-sm-top-desktop));
+  @include container--v-padding(top, ($container-padding-sm-top-mobile, $container-padding-sm-top-tablet, $container-padding-sm-top-desktop));
 }

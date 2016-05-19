@@ -11,7 +11,7 @@
             this.createView();
         },
         createView: function () {
-            var $tmpSwiper = this.$el.swiper({
+            var $tmpSwiper = this.$el.find('.gallery-container').swiper({
                 speed: parseInt($.browser.version, 10) <= 9 ? 0 : 350,
                 keyboardControl: false,
                 loop: true,

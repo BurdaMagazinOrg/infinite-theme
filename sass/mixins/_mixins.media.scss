@@ -45,6 +45,10 @@
 @mixin item-media--gallery() {
   @include transition(all $transition-duration $transition-easing);
 
+  .text-title {
+    @extend %title--content-block;
+  }
+
   .gallery-wrapper {
     overflow: hidden;
     width: 100%;
@@ -109,6 +113,7 @@
 
   .text-item-count {
     @include text-helper($gallery__count-font);
+    color: $gallery__count-color;
   }
 
   @media (max-width: $screen-xs-max) {

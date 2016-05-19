@@ -1,0 +1,27 @@
+%padding--v-sm {
+  @include padding--v-sm();
+}
+
+%padding--v-sm-bottom {
+  @include padding--v-sm(bottom);
+}
+
+%padding--v-xl {
+  @include padding--v-xl();
+}
+
+%padding--v-xxl {
+  @include padding--v-xxl();
+}
+
+%padding--v-region {
+  @include padding--v-region();
+}
+
+%padding--v-item-content__item {
+  @include padding--v-item-content__item();
+}
+
+%gap__container--h-padding {
+  @include gap__container--h-padding();
+}

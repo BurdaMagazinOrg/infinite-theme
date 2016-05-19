@@ -1,13 +1,9 @@
 %gap__container--h {
-  @include gap__container--h-negative();
+  @include gap__container--h();
 }
 
 %gap__container--h-negative {
   @include gap__container--h-negative();
-}
-
-%gap__container--h-padding {
-  @include gap__container--h-padding();
 }
 
 %gap--v-sm {
@@ -28,24 +24,6 @@
 
 %gap--v-sm-region {
   @include gap--v-sm-region();
-}
-
-/** Margins **/
-
-%margin--v-region {
-  @include margin--v-region();
-}
-
-%margin--v-xl {
-  @include margin--v-xl();
-}
-
-%margin--v-xxl {
-  @include margin--v-xxl();
-}
-
-%margin--v-item-content__item {
-  @include margin--v-item-content__item();
 }
 
 %gap__container--v-reset {

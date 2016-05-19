@@ -1,4 +1,4 @@
-{% extends "@infinite/node/node.html.twig" %}
+{% extends "node.html.twig" %}
 
 {% block content_header %}
 
@@ -13,7 +13,10 @@
         {% else %}
             <h1 class="title--article">{{ label }}</h1>
         {% endif %}
-        {{ author_teaser }}
+
+        {% block author_teaser_block %}
+            {{ author_teaser }}
+        {% endblock %}
     {% endif %}
 {% endblock %}
 
@@ -22,3 +25,4 @@
         {{ content.field_paragraphs }}
     {% endif %}
 {% endblock %}
+

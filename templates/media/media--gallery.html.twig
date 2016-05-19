@@ -16,7 +16,15 @@
 {% set count = content.field_images['#items']|length %}
 
 {% if content %}
-    <div class="item-media item-media--gallery gallery-container" data-view-type="galleryView" data-media-id="{{ media_id }}">
+    <div class="item-media item-media--gallery" data-view-type="galleryView" data-media-id="{{ media_id }}">
+        {% block title %}
+            {% if content.field_title %}
+                <h3 class="text-title">{{ content.field_title }}</h3>
+            {% endif %}
+        {% endblock %}
+
+        <h3 class="text-title">Lorem ipsum dolor amet (statisch)</h3>
+
         <div class="gallery-header">
             <div class="text-item-count"><span>1</span> / {{ count }}</div>
             <div class="gallery-navigation">
@@ -24,8 +32,11 @@
                 <span class="icon icon-gallery-arrow-right swiper-button-next"></span>
             </div>
         </div>
-        <div class="gallery-wrapper swiper-wrapper">
-            {{ content.field_images }}
+
+        <div class="gallery-container">
+            <div class="gallery-wrapper swiper-wrapper">
+                {{ content.field_images }}
+            </div>
         </div>
     </div>
 {% endif %}

@@ -91,6 +91,7 @@
 
 @mixin title--content-block() {
   @include text-helper($title--content-block-font);
+  color: $title--content-block-color;
 
   .item-title {
     text-align: left;

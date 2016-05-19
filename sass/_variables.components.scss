@@ -255,10 +255,11 @@ $title--horizontal-block-gap-bottom-tablet: $gap-size-md !default;
 $title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
 
 /** title--content-block **/
-$title--content-block-font: $font-label !default;
+$title--content-block-font: $font-headline !default;
 $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
+$title--content-block-color: $text-color !default;
 
 //fkn different design shizzl
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
@@ -551,6 +552,7 @@ $gallery__count-font: $font-label !default;
 $gallery__count-size-mobile: $title--content-block-mobile !default;
 $gallery__count-size-tablet: $title--content-block-tablet !default;
 $gallery__count-size-desktop: $title--content-block-desktop !default;
+$gallery__count-color: $text-color !default;
 
 /**
 ** Media

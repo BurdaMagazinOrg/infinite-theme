@@ -144,11 +144,6 @@
   }
 }
 
-@mixin icon-arrow-large-left() {
-  &:before {
-    content: "\e902";
-  }
-}
 
 @mixin icon-arrow-large-left($hover: true) {
   &:before {

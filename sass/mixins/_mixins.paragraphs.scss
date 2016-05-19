@@ -322,7 +322,7 @@
 
   &.item-paragraph--small, &.item-paragraph--middle {
     .text-title {
-      @include title--content-block();
+      @extend %title--content-block;
     }
   }
 

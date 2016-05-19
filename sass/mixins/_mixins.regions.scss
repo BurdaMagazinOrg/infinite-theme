@@ -26,5 +26,5 @@
 
 @mixin region__teasers--horizontal() {
   @extend %container--v-sm-padding;
-  @include container--v-padding(padding, bottom, ($container-padding-sm-top-mobile, $container-padding-sm-top-tablet, $container-padding-sm-top-desktop));
+  @include container--v-padding(bottom, ($container-padding-sm-top-mobile, $container-padding-sm-top-tablet, $container-padding-sm-top-desktop));
 }

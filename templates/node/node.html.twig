@@ -75,7 +75,8 @@
     </div>
     <div class="item-content__content">
         {% block content_body %}
-            {{ content }}
+            {#{{ content }}#}
+            {#{{ content | without('field_tags') }}#}
         {% endblock %}
     </div>
 </article>
