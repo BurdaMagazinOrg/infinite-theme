@@ -39,6 +39,7 @@ libraries:
   - infinite/infinite.views.products-view
   - infinite/infinite.views.marketing-view
   - infinite/infinite.views.spinner
+  - infinite/infinite.views.hmnewsletter-view
 
 regions:
   header_large: 'Header large'
@@ -80,3 +81,4 @@ stylesheets-remove:
   - core/modules/views/css/views.module.css
   - core/modules/system/css/components/position-container.module.css
   - modules/custom/paragraphs_starterkit/css/paragraphs_starterkit.css
+  - "@hm_newsletter/css/hm_newsletter.css"

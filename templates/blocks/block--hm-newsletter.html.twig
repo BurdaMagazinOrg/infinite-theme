@@ -1,0 +1,74 @@
+{% set classes = [
+    'hm_newsletter',
+    'hm-newsletter-subscribe',
+'region-full-content',
+'region-newsletter',
+'no-horizontal-padding',
+] %}
+<div {{ attributes.addClass(classes) }} data-view-type="hmNewsletterView" >
+    <div class="container-content">
+
+        {% block container_form %}
+            <form class="form-horizontal container-form container-content-item container-content-item--centered">
+                <input type="hidden" name="client_id" value="{{ content['#client_id'] }}">
+                <div class="content-wrapper">
+
+                    {% block container_form__headline %}
+                        <div class="hm_newsletter__headline text-headline">{{ content['#headline'] }}</div>
+                    {% endblock %}
+
+                    {% block container_form__description %}
+                        <p class="hm_newsletter__description text-description">{{ content['#text']|plain_text|trim }}</p>
+                    {% endblock %}
+
+                    {% block container_form__form_groups %}
+                        <div class="hm_newsletter__newsletters form-group" {% if content['#newsletters']|length == 1 %}style="display: none;{% endif %}">
+                            {% for nl_id, nl_label in content['#newsletters'] %}
+                                <div class="checkbox">
+                                    <label for="{{ nl_id }}">
+                                        <span class="hm_newsletter__nl_logo nl_logo_{{ nl_id }}"></span>
+                                        <input type="checkbox" name="groups[]" id="{{ nl_id }}" value="{{ nl_id }}" {% if content['#newsletters']|length == 1 %}checked="checked"{% endif %}> {{ nl_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="hm_newsletter__email form-group">
+                            <input class="input-lg input-email" type="email" name="email" required
+                                   placeholder="Deine E-Mail-Adresse">
+                            <button type="submit" class="btn btn-lg">Anmelden</button>
+                        </div>
+
+                        <div class="hm_newsletter__permissions form-group"></div>
+                    {% endblock %}
+
+                    {% block container_form__alerts %}
+                        <div class="hm_newsletter__alerts container-alerts"></div>
+                    {% endblock %}
+                </div>
+            </form>
+        {% endblock %}
+
+        {% block container_success %}
+            <div class="container-success container-content-item container-content-item--centered">
+                <div class="content-wrapper">
+                    {% block container_success__headline %}
+                        <div class="text-headline ">{{ content['#confirmation_headline'] }}</div>
+                    {% endblock %}
+                    {% block container_success__confirmation_text %}
+                        {{ content['#confirmation_text']|raw }}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block container_privacy %}
+            <div class="hm_newsletter__privacy promo_permission_text--hidden container-content-item container-privacy">
+                <span class="icon icon-close"></span>
+
+                <div class="container-content-dynamic">
+
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>

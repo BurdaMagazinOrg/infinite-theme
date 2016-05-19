@@ -244,3 +244,9 @@ infinite.views.spinner:
   js:
     js/infinite/views/components/spinner-cube-view.js: {}
     js/brand/views/components/spinner-cube-view.js: {}
+
+infinite.views.hmnewsletter-view:
+  version: 1
+  js:
+    js/infinite/views/hmnewsletter-view.js: {}
+    js/brand/views/hmnewsletter-view.js: {}

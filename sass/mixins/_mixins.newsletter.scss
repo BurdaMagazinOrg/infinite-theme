@@ -139,6 +139,13 @@
     label {
       text-align: left;
     }
+
+    p {
+      line-height: inherit;
+      strong {
+        font-family: inherit;
+      }
+    }
   }
 
   @media (max-width: $screen-xs-max) {

@@ -67,6 +67,9 @@
                 case 'newsletterView':
                     tmpView = new BaseNewsletterView(tmpSettings);
                     break;
+                case 'hmNewsletterView':
+                    tmpView = new HmNewsletterView(tmpSettings);
+                    break;
                 case 'productsView':
                     tmpView = new ProductsView(tmpSettings);
                     break;
