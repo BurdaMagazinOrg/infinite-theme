@@ -13,7 +13,7 @@
  */
 #}
 
-{% set count = content.field_media_images['#items']|length %}
+{% set count = content.field_images['#items']|length %}
 
 {% if content %}
     <div class="item-media item-media--gallery gallery-container" data-view-type="galleryView" data-media-id="{{ media_id }}">
@@ -25,8 +25,7 @@
             </div>
         </div>
         <div class="gallery-wrapper swiper-wrapper">
-            {{ content.field_media_images }}
+            {{ content.field_images }}
         </div>
     </div>
 {% endif %}
-
