@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="author item-author"
+        {#{% if author_id != 0 %}#}
+            data-internal-url="{{ url }}"
+        {#{% endif %}#}
+        >
+
+    {#{% if author_id != 0 %}#}
+        {{ content.user_picture }}
+    {#{% endif %}#}
+
+    <div class="caption">
+
+        {#{% if author_id != 0 %}#}
+            <div class="text-author">Artikel von
+                <span typeof="schema:Person">{{ content.field_forename }} {{ content.field_surname }}</span>
+            </div>
+        {#{% endif %}#}
+
+        {% if datetime and timestamp %}
+            <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+        {% endif %}
+    </div>
+</div>
