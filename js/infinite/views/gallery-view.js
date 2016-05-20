@@ -10,8 +10,6 @@
 
             this.mediaId = this.$el.data('media-id').toString();
             this.itemSpace = this.$el.data('item-space') || this.itemSpace;
-
-            console.log(">>>> this.itemSpace", this.itemSpace);
             this.createView();
         },
         createView: function () {
