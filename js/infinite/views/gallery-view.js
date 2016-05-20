@@ -4,10 +4,14 @@
 
     BurdaInfinite.views.GalleryView = BaseView.extend({
         mediaId: null,
+        itemSpace: 10,
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
             this.mediaId = this.$el.data('media-id').toString();
+            this.itemSpace = this.$el.data('item-space') || this.itemSpace;
+
+            console.log(">>>> this.itemSpace", this.itemSpace);
             this.createView();
         },
         createView: function () {
@@ -15,7 +19,7 @@
                 speed: parseInt($.browser.version, 10) <= 9 ? 0 : 350,
                 keyboardControl: false,
                 loop: true,
-                spaceBetween: 10,
+                spaceBetween: this.itemSpace,
                 lazyLoading: false,
                 lazyLoadingInPrevNext: true,
                 lazyLoadingOnTransitionStart: true,
