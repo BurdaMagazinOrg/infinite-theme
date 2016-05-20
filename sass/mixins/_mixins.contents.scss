@@ -89,7 +89,8 @@
     //todo check if > necessary
     & > .item-paragraph--small,
     & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small,
-    .item-content__block--tags {
+    .item-content__block--tags,
+    .item-author--vita-short {
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
     }
   }

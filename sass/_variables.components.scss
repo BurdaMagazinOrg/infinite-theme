@@ -45,7 +45,6 @@ $btn--small-highlighted-color: $white !default;
 $btn--small-highlighted-bg-color: $color-highlighted !default;
 $btn--small-highlighted-border: 1px solid $color-highlighted !default;
 
-
 /**
 ** Lists Margins
 ** only margin
@@ -125,13 +124,6 @@ $menu--sidebar-main-text-transform: uppercase !default;
 $menu--sidebar-misc-font: $font-content !default;
 $menu--sidebar-misc-size: 14px !default;
 $menu--sidebar-misc-text-transform: uppercase !default;
-/**
-** Author
-**/
-$author__label-font: $font-tiny !default;
-$author__label-size: $label-size-medium !default;
-$author__label-color: $gray-base !default;
-$author__label-hover-color: $color-hover !default;
 
 /**
 ** Newsletter
@@ -287,7 +279,6 @@ $copytext--text-block-mobile: 18px !default;
 $copytext--text-block-tablet: 19px !default;
 $copytext--text-block-desktop: 21px !default;
 
-
 /**
 ** Teaser
 **/
@@ -359,7 +350,6 @@ $teaser__overhead-size--full-content-mobile: $label--category-size--mobile !defa
 $teaser__overhead-size--full-content-tablet: $label--category-size--tablet !default;
 $teaser__overhead-size--full-content-desktop: $label--category-size--desktop !default;
 
-
 /** list horizontal teaser **/
 $teaser__title-font--list-horizontal: $font-content !default;
 $teaser__title-color--list-horizontal: $text-color !default;
@@ -428,7 +418,7 @@ $list--alphabetical-list-item-margin: 10px 0 0 0 !default;
 $socials__bg-color--clean-horizontal-bar: transparent !default;
 $socials__color--clean-horizontal-bar: $text-color !default;
 $socials__border--clean-horizontal-bar: 1px solid $socials__color--clean-horizontal-bar !default;
-$socials__bg-color-hover--clean-horizontal-bar:transparent !default;
+$socials__bg-color-hover--clean-horizontal-bar: transparent !default;
 $socials__color-hover--clean-horizontal-bar: inherit !default;
 $socials__border-color-hover--clean-horizontal-bar: inherit !default;
 
@@ -577,7 +567,8 @@ $media__description-color: $text-color !default;
 $breadcrumb-font: $font-label !default;
 $breadcrumb-before-content: ">" !default;
 $breadcrumb-before-color: $color-highlighted !default;
-$breadcrumb-color: $text-color; //bootstrap variable
+$breadcrumb-color: $text-color;
+//bootstrap variable
 $breadcrumb-color-highlighted: $color-highlighted !default;
 $breadcrumb-size-mobile: $label--category-size--mobile !default;
 $breadcrumb-size-tablet: $label--category-size--tablet !default;
@@ -616,6 +607,59 @@ $quote__quote-size--article-tablet: 45px !default;
 $quote__quote-size--article-desktop: 50px !default;
 $quote__quote-color--article: $text-highlighted !default;
 $quote__quote-font-style--article: italic !default;
+
+/**
+** Author
+**/
+$author__label-font: $font-tiny !default;
+$author__label-size: $label-size-medium !default;
+$author__label-color: $gray-base !default;
+$author__label-hover-color: $color-hover !default;
+
+//vita-short
+$author-text-align--vita-short: center !default;
+$author-padding-top-bottom-mobile--vita-short: 10px !default;
+$author-padding-top-bottom-tablet--vita-short: 20px !default;
+$author-padding-top-bottom-desktop--vita-short: 30px !default;
+
+$author__date-font--vita-short: $font-tiny !default;
+$author__date-size-mobile--vita-short: $label-size-small !default;
+$author__date-size-tablet--vita-short: $label-size-medium !default;
+$author__date-size-desktop--vita-short: $label-size-large !default;
+$author__date-color--vita-short: $gray-base !default;
+$author__date-margin-desktop--vita-short: 0 0 $gap-size-lg 0 !default;
+$author__date-margin-tablet--vita-short: 0 0 $gap-size-lg 0 !default;
+$author__date-margin-mobile--vita-short: 0 0 $gap-size-xs 0 !default;
+
+$author__profile-image-radius--vita-short: 50% !default;
+$author__profile-image-border--vita-short: 2px solid $gray !default;
+
+$author__name-font--vita-short: $font-headline !default;
+$author__name-size-mobile--vita-short: $label-size-medium !default;
+$author__name-size-tablet--vita-short: $label-size-large !default;
+$author__name-size-desktop--vita-short: $label-size-xl !default;
+$author__name-color--vita-short: $title--text-block-color !default;
+$author__name-margin-desktop--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
+$author__name-margin-tablet--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
+$author__name-margin-mobile--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
+
+$author__email-font--vita-short: $font-content !default;
+$author__email-size-mobile--vita-short: $label-size-small !default;
+$author__email-size-tablet--vita-short: $label-size-medium !default;
+$author__email-size-desktop--vita-short: $label-size-medium !default;
+$author__email-color--vita-short: $gray-base !default;
+$author__email-margin-desktop--vita-short: 0 0 $gap-size-xxs 0 !default;
+$author__email-margin-tablet--vita-short: 0 0 $gap-size-xxs 0 !default;
+$author__email-margin-mobile--vita-short: 0 0 $gap-size-xxs 0 !default;
+
+$author__short-info-font--vita-short: $font-content !default;
+$author__short-info-size-mobile--vita-short: $label-size-small !default;
+$author__short-info-size-tablet--vita-short: $label-size-medium !default;
+$author__short-info-size-desktop--vita-short: $label-size-medium !default;
+$author__short-info-color--vita-short: $gray-base !default;
+$author__short-info-margin-desktop--vita-short: 0 !default;
+$author__short-info-margin-tablet--vita-short: 0 !default;
+$author__short-info-margin-mobile--vita-short: 0 !default;
 
 /**
 ** Ads

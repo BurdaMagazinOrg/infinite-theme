@@ -1,0 +1,7 @@
+%item-author {
+  @include item-author();
+}
+
+%item-author--vita-short {
+  @include item-author--vita-short();
+}
