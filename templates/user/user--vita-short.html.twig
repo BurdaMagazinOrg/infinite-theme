@@ -1,7 +1,6 @@
-{{ dump() }}
 {% if user.status %}
     <div class="item-content__block item-author item-author--vita-short" data-internal-url="http://www.elle.de/user/331_static">
-        <time class="item-author__date item-author__date--vita-short" itemprop="date" datetime="2016-05-20T10:34:01+0200" title="20.5.2016, 10:34:01">29.MÄRZ 2016</time>
+        {#<time class="item-author__date item-author__date--vita-short" itemprop="date" datetime="2016-05-20T10:34:01+0200" title="20.5.2016, 10:34:01">29.MÄRZ 2016</time>#}
 
         <div class="img-container item-author__profile-image item-author__profile-image--vita-short">
             {{ content.user_picture }}
@@ -12,9 +11,5 @@
             <div class="item-author__job item-author__job--vita-short">{{ content.field_job_title }}</div>
             <div class="item-author__short-info item-author__short-info--vita-short">{{ content.field_teaser_text }}</div>
         </div>
-    </div>
-{% else %}
-    <div class="item-content__block item-author item-author--vita-short">
-        <time class="item-author__date item-author__date--vita-short" itemprop="date" datetime="2016-05-20T10:34:01+0200" title="20.5.2016, 10:34:01">29.MÄRZ 2016</time>
     </div>
 {% endif %}
