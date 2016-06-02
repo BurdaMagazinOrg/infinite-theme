@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a media entity.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ * - file_url: File URL to link for downloading.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+    {{ content }}<button data-download-url="{{ file_url }}">Jetzt downloaden</button>
+{% endif %}
