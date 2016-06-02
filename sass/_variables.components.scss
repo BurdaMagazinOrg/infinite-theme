@@ -597,9 +597,9 @@ $quote__title-size--article-tablet: $title-size-md !default;
 $quote__title-size--article-desktop: 30px !default;
 $quote__title-line-height--article: 1.5 !default;
 $quote__title-color--article: $gray-base !default;
+$quote__title-font-style--article: italic !default;
 $quote__title-max-width--article: 80% !default;
 $quote__title-padding--article: 10px 0 !default;
-$quote__title-font-style--article: italic !default;
 
 $quote__quote-font--article: $font-content-bold !default;
 $quote__quote-size--article-mobile: 37px !default;
@@ -607,6 +607,15 @@ $quote__quote-size--article-tablet: 45px !default;
 $quote__quote-size--article-desktop: 50px !default;
 $quote__quote-color--article: $text-highlighted !default;
 $quote__quote-font-style--article: italic !default;
+
+$quote__author-font--article: $font-tiny !default;
+$quote__author-size--article-mobile: $title-size-xxs !default;
+$quote__author-size--article-tablet: $title-size-xs !default;
+$quote__author-size--article-desktop: $title-size-xs !default;
+$quote__author-line-height--article: 1 !default;
+$quote__author-color--article: $color-brand !default;
+$quote__author-font-style--article: normal !default;
+$quote__author-padding--article: 0 0 10px !default;
 
 /**
 ** Author

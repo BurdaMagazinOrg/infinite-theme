@@ -44,6 +44,7 @@
 
 @mixin item-media--gallery() {
   @include transition(all $transition-duration $transition-easing);
+  position: relative;
 
   .text-title {
     @extend %title--content-block;

@@ -5,6 +5,8 @@
     BurdaInfinite.views.GalleryView = BaseView.extend({
         mediaId: null,
         itemSpace: 10,
+        positionInnerNav: false,
+        $innerNav: [],
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
@@ -42,6 +44,8 @@
                 }, this)
             });
 
+            this.$innerNav = this.$el.find('.gallery-container .gallery-navigation');
+            this.positionInnerNav = this.$innerNav.length > 0;
 
             this.updateSocials(this.$el.find('.swiper-slide-duplicate'));
             this.resizeContent($tmpSwiper);
@@ -78,7 +82,12 @@
             var $tmpContainer = $(pSwiper.container),
                 $tmpGalleryWrapper = $tmpContainer.find('.swiper-wrapper'),
                 $tmpCurrentElement = $tmpGalleryWrapper.find('.swiper-slide-active'),
-                tmpHeight = $tmpCurrentElement.find('.img-container').outerHeight(true) + $tmpCurrentElement.find('.caption').outerHeight(true);
+                tmpImgHeight = $tmpCurrentElement.find('.img-container').outerHeight(true),
+                tmpHeight = tmpImgHeight + $tmpCurrentElement.find('.caption').outerHeight(true);
+
+            if(this.positionInnerNav) {
+                this.$innerNav.css('top', Math.round(tmpImgHeight/2));
+            }
 
             //todo check if still relevant (orientation change bug)
             $tmpGalleryWrapper.height(tmpHeight);

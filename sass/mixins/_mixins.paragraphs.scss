@@ -569,12 +569,8 @@
 
 @mixin item-paragraph--quote() {
   @extend %center-block;
-  @include text-helper($quote__title-font--article);
-
-  color: $quote__title-color--article;
   text-align: center;
   position: relative;
-  font-style: $quote__title-font-style--article;
 
   &:before, &:after {
     @extend %center-block;
@@ -592,25 +588,41 @@
     top: 4px;
   }
 
-  p:before {
-    content: "\00bb";
-    padding-right: 10px;
-  }
-
-  p:after {
-    content: "\00ab";
-    padding-left: 10px;
-  }
-
   p {
+    @include text-helper($quote__title-font--article);
+    color: $quote__title-color--article;
+    font-style: $quote__title-font-style--article;
     padding: $quote__title-padding--article;
+
+    &:before {
+      content: "\00bb";
+      padding-right: 10px;
+    }
+
+    &:after {
+      content: "\00ab";
+      padding-left: 10px;
+    }
+  }
+
+  footer {
+    @include text-helper($quote__author-font--article);
+    color: $quote__author-color--article;
+    font-style: $quote__author-font-style--article;
+    padding: $quote__author-padding--article;
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($quote__title-font--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
+    p {
+      @include text-helper-size($quote__title-font--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
+    }
 
     p:before, p:after {
       @include text-helper-size($quote__quote-font--article, $quote__quote-size--article-mobile, 0);
+    }
+
+    footer {
+      @include text-helper-size($quote__author-font--article, $quote__author-size--article-mobile, $quote__author-line-height--article);
     }
   }
 
@@ -619,18 +631,30 @@
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($quote__title-font--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
+    p {
+      @include text-helper-size($quote__title-font--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
+    }
 
     p:before, p:after {
       @include text-helper-size($quote__quote-font--article, $quote__quote-size--article-tablet, 0);
     }
+
+    footer {
+      @include text-helper-size($quote__author-font--article, $quote__author-size--article-tablet, $quote__author-line-height--article);
+    }
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($quote__title-font--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
+    p {
+      @include text-helper-size($quote__title-font--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
+    }
 
     p:before, p:after {
       @include text-helper-size($quote__quote-font--article, $quote__quote-size--article-desktop, 0);
+    }
+
+    footer {
+      @include text-helper-size($quote__author-font--article, $quote__author-size--article-desktop, $quote__author-line-height--article);
     }
   }
 }

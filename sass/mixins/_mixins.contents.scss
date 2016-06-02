@@ -90,7 +90,7 @@
     & > .item-paragraph--small,
     & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small,
     .item-content__block--tags,
-    .item-author--vita-short {
+    .item-content__block--meta-data {
       padding-right: $feed-ad-column-width + $feed-ad-column-margin;
     }
   }
@@ -340,6 +340,10 @@
     .socials-vertical-bar {
       top: 0;
     }
+  }
+
+  .item-content__block--meta-data {
+    @extend %item-author--vita-short;
   }
 }
 

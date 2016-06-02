@@ -33,19 +33,25 @@
 @mixin item-author--vita-short() {
   text-align: $author-text-align--vita-short;
 
-  .item-author__date {
+  .item-date--node-created {
     @include text-helper($author__date-font--vita-short);
     color: $author__date-color--vita-short;
     display: block;
   }
 
   .item-author__profile-image {
+    a {
+      max-width: 50%;
+    }
+
     img {
+      padding: 2px;
+      max-width: 100%;
+      height: auto;
+      border: $author__profile-image-border--vita-short;
+      border-radius: $author__profile-image-radius--vita-short;
       -webkit-border-radius: $author__profile-image-radius--vita-short;
       -moz-border-radius: $author__profile-image-radius--vita-short;
-      border-radius: $author__profile-image-radius--vita-short;
-      border: $author__profile-image-border--vita-short;
-      padding: 2px;
     }
   }
 
@@ -54,7 +60,7 @@
     color: $author__name-color--vita-short;
   }
 
-  .item-author__email {
+  .item-author__email, .item-author__job {
     @include text-helper($author__email-font--vita-short);
     color: $author__email-color--vita-short;
   }
@@ -69,7 +75,7 @@
     padding-top: $author-padding-top-bottom-mobile--vita-short;
     padding-bottom: $author-padding-top-bottom-mobile--vita-short;
 
-    .item-author__date {
+    .item-date--node-created {
       @include text-helper-size($author__date-font--vita-short, $author__date-size-mobile--vita-short);
       margin: $author__date-margin-mobile--vita-short;
     }
@@ -79,7 +85,7 @@
       margin: $author__name-margin-mobile--vita-short;
     }
 
-    .item-author__email {
+    .item-author__email, .item-author__job {
       @include text-helper-size($author__email-font--vita-short, $author__email-size-mobile--vita-short);
       margin: $author__email-margin-mobile--vita-short;
     }
@@ -94,7 +100,7 @@
     padding-top: $author-padding-top-bottom-tablet--vita-short;
     padding-bottom: $author-padding-top-bottom-tablet--vita-short;
 
-    .item-author__date {
+    .item-date--node-created {
       @include text-helper-size($author__date-font--vita-short, $author__date-size-tablet--vita-short);
       margin: $author__date-margin-tablet--vita-short;
     }
@@ -104,7 +110,7 @@
       margin: $author__name-margin-tablet--vita-short;
     }
 
-    .item-author__email {
+    .item-author__email, .item-author__job {
       @include text-helper-size($author__email-font--vita-short, $author__email-size-tablet--vita-short);
       margin: $author__email-margin-tablet--vita-short;
     }
@@ -119,7 +125,7 @@
     padding-top: $author-padding-top-bottom-desktop--vita-short;
     padding-bottom: $author-padding-top-bottom-desktop--vita-short;
 
-    .item-author__date {
+    .item-date--node-created {
       @include text-helper-size($author__date-font--vita-short, $author__date-size-desktop--vita-short);
       margin: $author__date-margin-desktop--vita-short;
     }
@@ -129,7 +135,7 @@
       margin: $author__name-margin-desktop--vita-short;
     }
 
-    .item-author__email {
+    .item-author__email, .item-author__job {
       @include text-helper-size($author__email-font--vita-short, $author__email-size-desktop--vita-short);
       margin: $author__email-margin-desktop--vita-short;
     }

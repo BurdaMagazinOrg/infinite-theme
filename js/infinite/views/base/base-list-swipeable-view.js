@@ -16,6 +16,14 @@
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
+            //init slide navi
+            if (this.$el.find('.gallery-navigation').length > 0) {
+                _.extend(this.settings, {
+                    nextButton: this.$el.find('.swiper-button-next')[0],
+                    prevButton: this.$el.find('.swiper-button-prev')[0]
+                });
+            }
+
             this.createView();
 
             if (!_.isUndefined(this.deviceModel) && this.deviceModel.isActive) {
