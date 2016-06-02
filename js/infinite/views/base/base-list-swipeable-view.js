@@ -4,8 +4,11 @@
 
     BurdaInfinite.views.base.BaseListSwipeableView = BaseView.extend({
         $swiperContainer: [],
+        $swiperNav: [],
         swiperApi: null,
         isMobileMode: false,
+        swiperNavUsage: false,
+        swiperNavActive: false,
         settings: {
             selector: '.swipeable--horizontal',
             slidesPerView: 'auto',
@@ -17,10 +20,12 @@
             BaseView.prototype.initialize.call(this, pOptions);
 
             //init slide navi
-            if (this.$el.find('.gallery-navigation').length > 0) {
+            this.$swiperNav = this.$el.find('.swiper-navigation');
+            if (this.$swiperNav.length > 0) {
+                this.swiperNavUsage = true;
                 _.extend(this.settings, {
-                    nextButton: this.$el.find('.swiper-button-next')[0],
-                    prevButton: this.$el.find('.swiper-button-prev')[0]
+                    nextButton: this.$swiperNav.find('.swiper-button-next')[0],
+                    prevButton: this.$swiperNav.find('.swiper-button-prev')[0]
                 });
             }
 
@@ -46,10 +51,16 @@
             this.breakpointDeviceModel = pModel;
 
             if (pModel.id == 'smartphone' && this.isMobileMode == false) {
+
+                if(this.swiperNavUsage) this.swiperNavActive = true;
                 this.isMobileMode = true;
+
                 this.updateViews();
             } else if (pModel.id != 'smartphone' && this.isMobileMode) {
+
+                if(this.swiperNavUsage) this.swiperNavActive = false;
                 this.isMobileMode = false;
+
                 this.removeSwiper();
             }
         }
