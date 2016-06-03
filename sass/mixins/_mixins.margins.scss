@@ -1,3 +1,7 @@
+@mixin margin--v-sm($gaps: ($gap-v-sm-mobile, $gap-v-sm-tablet, $gap-v-sm-desktop)) {
+  @include _margin--v($gaps);
+}
+
 @mixin margin--v-xl($gaps: ($gap-v-xl-mobile, $gap-v-xl-tablet, $gap-v-xl-desktop)) {
   @include _margin--v($gaps);
 }

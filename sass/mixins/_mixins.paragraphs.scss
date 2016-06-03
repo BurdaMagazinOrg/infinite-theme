@@ -1,9 +1,23 @@
 @mixin item-paragraph--small() {
   @include clearfix();
+
+  .item-paragraph__title {
+    @include title--content-block();
+  }
 }
 
 @mixin item-paragraph--middle() {
   @include region--fixed-content();
+
+  .item-paragraph__title {
+    @include title--content-block();
+  }
+}
+
+@mixin item-paragraph--full() {
+  .item-paragraph__title {
+    @extend %title--horizontal-block;
+  }
 }
 
 @mixin item-paragraph--media() {
@@ -626,7 +640,7 @@
     }
   }
 
-  @media (min-width: $screen-xs-min)  {
+  @media (min-width: $screen-xs-min) {
     max-width: $quote__title-max-width--article;
   }
 
@@ -655,6 +669,16 @@
 
     footer {
       @include text-helper-size($quote__author-font--article, $quote__author-size--article-desktop, $quote__author-line-height--article);
+    }
+  }
+}
+
+@mixin item-paragraph--media--file() {
+  & + .item-paragraph--media--file {
+    @include margin--v-sm();
+
+    .item-paragraph__title {
+      @include margin--v-sm();
     }
   }
 }

@@ -40,8 +40,11 @@
 'item-paragraph',
 'item-paragraph--' ~ view_mode|clean_class,
 'item-paragraph--' ~ paragraph.bundle|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class ~ '--' ~ media_bundle|clean_class,
+'item-paragraph--' ~ paragraph.bundle|clean_class ~ '-' ~ media_bundle|clean_class,
 ] %}
 <div{{ attributes.addClass(classes) }}>
+    {% if content.field_title|render %}#}
+        <h3 class="item-paragraph__title item-paragraph__title--media-file">{{ content.field_title }}</h3>
+    {% endif %}
     {{ content }}
 </div>

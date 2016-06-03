@@ -89,26 +89,30 @@
   }
 }
 
-@mixin title--content-block() {
-  @include text-helper($title--content-block-font);
-  color: $title--content-block-color;
+@mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font, $color: $title--content-block-color) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @include text-helper($font);
+  color: $color;
 
   .item-title {
     text-align: left;
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($title--content-block-font, $title--content-block-mobile);
+    @include text-helper-size($font, $size-mobile);
     margin-bottom: $title--content-block-gap-bottom-mobile;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($title--content-block-font, $title--content-block-tablet);
+    @include text-helper-size($font, $size-tablet);
     margin-bottom: $title--content-block-gap-bottom-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($title--content-block-font, $title--content-block-desktop);
+    @include text-helper-size($font, $size-desktop);
     margin-bottom: $title--content-block-gap-bottom-desktop;
   }
 }

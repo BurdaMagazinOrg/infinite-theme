@@ -318,3 +318,81 @@
     }
   }
 }
+
+/**
+** Media
+**/
+@mixin item-media--gallery-text() {
+  .text-title {
+    @extend %title--content-block;
+  }
+
+  .text-item-count {
+    @include text-helper($gallery__count-font);
+    color: $gallery__count-color;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .text-item-count {
+      @include text-helper-size($gallery__count-font, $gallery__count-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .text-item-count {
+      @include text-helper-size($gallery__count-font, $gallery__count-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-item-count {
+      @include text-helper-size($gallery__count-font, $gallery__count-size-desktop);
+    }
+  }
+}
+
+@mixin item-media--file-text() {
+  .item-media__title--file {
+    @include text-helper($media__title-font--file);
+    color: $media__title-color--file;
+  }
+
+  .item-media__description--file {
+    @include text-helper($media__description-font--file);
+    color: $media__description-color--file;
+  }
+
+  .item-media__btn-download--file {
+    @include btn--small(($media__btn-download-size-mobile--file, $media__btn-download-size-tablet--file, $media__btn-download-size-desktop--file), $media__btn-download-font--file);
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-media__title--file {
+      @include text-helper-size($media__title-font--file, $media__title-size-mobile--file);
+    }
+
+    .item-media__description--file {
+      @include text-helper-size($media__description-font--file, $media__description-size-mobile--file);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .item-media__title--file {
+      @include text-helper-size($media__title-font--file, $media__title-size-tablet--file);
+    }
+
+    .item-media__description--file {
+      @include text-helper-size($media__description-font--file, $media__description-size-tablet--file);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .item-media__title--file {
+      @include text-helper-size($media__title-font--file, $media__title-size-desktop--file);
+    }
+
+    .item-media__description--file {
+      @include text-helper-size($media__description-font--file, $media__description-size-desktop--file);
+    }
+  }
+}

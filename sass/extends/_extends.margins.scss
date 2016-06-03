@@ -5,6 +5,10 @@
   @include margin--v-region();
 }
 
+%margin--v-sm {
+  @include margin--v-sm();
+}
+
 %margin--v-xl {
   @include margin--v-xl();
 }

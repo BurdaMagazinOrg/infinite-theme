@@ -41,3 +41,7 @@
 .item-media--header-image {
   @extend %item-media--header-image;
 }
+
+.item-media--file {
+  @extend %item-media--file;
+}

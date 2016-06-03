@@ -24,20 +24,39 @@
   }
 }
 
-@mixin btn--small() {
-  @include text-helper($btn--small-font, $btn--small-size);
+@mixin btn--small($sizes: ($btn__label-size-mobile--small, $btn__label-size-desktop--small, $btn__label-size-desktop--small), $font: $btn--small-font) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @include text-helper($font);
   @include transition-default();
+  background-color: $btn--small-bg-color;
   color: $btn--small-color;
   border: $btn--small-border;
   border-radius: $btn--small-radius;
-  padding: $btn--small-padding;
   letter-spacing: $btn--small-letter-spacing;
   display: inline-block;
-  text-transform: uppercase;
+  text-transform: $btn--small-text-transform;
   cursor: pointer;
 
   &:hover {
     @extend %btn--small--highlighted;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($font, $size-mobile);
+    padding: $btn--small-padding-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($font, $size-tablet);
+    padding: $btn--small-padding-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($font, $size-desktop);
+    padding: $btn--small-padding-desktop;
   }
 }
 

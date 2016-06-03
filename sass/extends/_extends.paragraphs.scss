@@ -6,6 +6,10 @@
   @include item-paragraph--middle();
 }
 
+%item-paragraph--full {
+  @include item-paragraph--full();
+}
+
 %item-paragraph--media {
   @include item-paragraph--media();
 }
@@ -67,4 +71,8 @@
 
 %item-paragraph--quote {
   @include item-paragraph--quote();
+}
+
+%item-paragraph--media--file {
+  @include item-paragraph--media--file();
 }

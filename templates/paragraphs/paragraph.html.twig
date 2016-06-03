@@ -44,5 +44,10 @@ set classes = [
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
+
+    {#{% if content.field_title|render %}#}
+        {#<h3 class="item-paragraph__title">{{ content.field_title }}</h3>#}
+    {#{% endif %}#}
+
     {{ content }}
 </div>

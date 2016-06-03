@@ -15,6 +15,10 @@
   @include item-media--header-image();
 }
 
+%item-media--file {
+  @include item-media--file();
+}
+
 %item-media__description {
   @include item-media__description();
 }

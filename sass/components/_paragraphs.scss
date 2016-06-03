@@ -1,6 +1,3 @@
-.item-paragraph--full {
-
-}
 
 .item-paragraph--small {
   @extend %item-paragraph--small;
@@ -8,6 +5,10 @@
 
 .item-paragraph--middle {
   @extend %item-paragraph--middle;
+}
+
+.item-paragraph--full {
+  @extend %item-paragraph--full;
 }
 
 .item-paragraph--media {
@@ -72,5 +73,9 @@
 
 .item-paragraph--quote {
   @extend %item-paragraph--quote;
+}
+
+.item-paragraph--media--file {
+  @extend %item-paragraph--media--file;
 }
 
