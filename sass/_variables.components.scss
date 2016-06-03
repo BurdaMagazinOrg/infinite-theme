@@ -618,6 +618,7 @@ $tags__item-margin-desktop: 0px 5px 5px 0px !default;
 **/
 $quote__border-style--article: $h-line-style !default;
 $quote__border-max-width--article: 46.5% !default;
+$quote__text-align--article: center !default;
 
 $quote__title-font--article: $font-content !default;
 $quote__title-size--article-mobile: $title-size-sm !default;
@@ -635,6 +636,11 @@ $quote__quote-size--article-tablet: 45px !default;
 $quote__quote-size--article-desktop: 50px !default;
 $quote__quote-color--article: $text-highlighted !default;
 $quote__quote-font-style--article: italic !default;
+$quote__quote-top--article: 4px !default;
+$quote__quote-before--article: "\00bb" !default;
+$quote__quote-after--article: "\00ab" !default;
+$quote__quote-before-padding--article: 0 10px 0 0 !default;
+$quote__quote-after-padding--article: 0 0 0 10px !default;
 
 $quote__author-font--article: $font-tiny !default;
 $quote__author-size--article-mobile: $title-size-xxs !default;
@@ -643,8 +649,9 @@ $quote__author-size--article-desktop: $title-size-xs !default;
 $quote__author-line-height--article: 1 !default;
 $quote__author-color--article: $color-brand !default;
 $quote__author-font-style--article: normal !default;
+$quote__author-text-transform--article: normal !default;
 $quote__author-padding--article: 0 0 10px !default;
-
+$quote__author-before--article: "" !default;
 /**
 ** Author
 **/

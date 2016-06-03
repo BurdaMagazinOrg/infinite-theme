@@ -583,7 +583,7 @@
 
 @mixin item-paragraph--quote() {
   @extend %center-block;
-  text-align: center;
+  text-align: $quote__text-align--article;
   position: relative;
 
   &:before, &:after {
@@ -599,7 +599,7 @@
     color: $quote__quote-color--article;
     font-style: $quote__title-font-style--article;
     position: relative;
-    top: 4px;
+    top: $quote__quote-top--article;
   }
 
   p {
@@ -609,13 +609,13 @@
     padding: $quote__title-padding--article;
 
     &:before {
-      content: "\00bb";
-      padding-right: 10px;
+      content: $quote__quote-before--article;
+      padding: $quote__quote-before-padding--article;
     }
 
     &:after {
-      content: "\00ab";
-      padding-left: 10px;
+      content: $quote__quote-after--article;
+      padding: $quote__quote-after-padding--article;
     }
   }
 
@@ -623,7 +623,13 @@
     @include text-helper($quote__author-font--article);
     color: $quote__author-color--article;
     font-style: $quote__author-font-style--article;
+    text-transform: $quote__author-text-transform--article;
     padding: $quote__author-padding--article;
+
+    &:before {
+      content: $quote__author-before--article;
+      vertical-align: $quote__author-v-align--article;
+    }
   }
 
   @media (max-width: $screen-xs-max) {
