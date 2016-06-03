@@ -629,6 +629,7 @@
     &:before {
       content: $quote__author-before--article;
       vertical-align: $quote__author-v-align--article;
+      padding: $quote__author-before-padding--article;
     }
   }
 
