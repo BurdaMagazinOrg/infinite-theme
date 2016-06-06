@@ -150,7 +150,6 @@
 @mixin item-media--file() {
   @include item-media--file-text();
   position: relative;
-  padding-right: 50%;
   min-height: $media__min-height--file;
 
   .item-media__title--file {
