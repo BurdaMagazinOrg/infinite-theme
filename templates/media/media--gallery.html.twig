@@ -23,20 +23,22 @@
             {% endif %}
         {% endblock %}
 
-        <h3 class="text-title">Lorem ipsum dolor amet (statisch)</h3>
-
         <div class="gallery-header">
-            <div class="text-item-count"><span>1</span> / {{ count }}</div>
+            {% block gallery_counter_block %}
+                <div class="text-item-count"><span>1</span> / {{ count }}</div>
+            {% endblock %}
             <div class="gallery-navigation">
                 <span class="icon icon-gallery-arrow-left swiper-button-prev"></span>
                 <span class="icon icon-gallery-arrow-right swiper-button-next"></span>
             </div>
         </div>
 
+        {% block gallery_container_block %}
         <div class="gallery-container">
             <div class="gallery-wrapper swiper-wrapper">
                 {{ content.field_images }}
             </div>
         </div>
+        {% endblock %}
     </div>
 {% endif %}
