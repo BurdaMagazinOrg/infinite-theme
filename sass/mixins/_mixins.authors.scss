@@ -35,7 +35,9 @@
 
   .item-date--node-created {
     @include text-helper($author__date-font--vita-short);
+    letter-spacing: $author__date-letter-spacing--vita-short;
     color: $author__date-color--vita-short;
+    text-transform: $author__date-text-transform--vita-short;
     display: block;
   }
 
