@@ -17,12 +17,6 @@
 
 {% if content %}
     <div class="item-media item-media--gallery" data-view-type="galleryView" data-media-id="{{ media_id }}">
-        {% block title %}
-            {% if content.field_title %}
-                <h3 class="text-title">{{ content.field_title }}</h3>
-            {% endif %}
-        {% endblock %}
-
         <div class="gallery-header">
             {% block gallery_counter_block %}
                 <div class="text-item-count"><span>1</span> / {{ count }}</div>
