@@ -244,7 +244,6 @@
     height: 500px;
   }
 
-
   @media (min-height: 500px) {
     position: fixed;
     top: $menu--main-navigation-min-height;
@@ -313,6 +312,134 @@
   @media (min-width: $screen-xl-min) {
     .container-content {
       background-image: url($newsletter__bg-image--page-xl);
+    }
+  }
+}
+
+@mixin newsletter--modal() {
+  //display: block;
+
+  .newsletter-modal__modal-content {
+    @include flexbox();
+    @include align-items();
+    @include justify-content();
+    background-color: transparent;
+    padding: 20px;
+  }
+
+  .newsletter-modal__wrapper {
+    @include flex-item();
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+  }
+
+  .region-newsletter-modal {
+    margin: 0;
+    height: auto;
+    background-color: $white;
+    padding: 40px 20px;
+  }
+
+  .container-content {
+    background: none;
+
+    &:before {
+      content: none;
+    }
+  }
+
+  .container-content-item {
+    background-color: transparent;
+    color: $text-color;
+  }
+
+  .newsletter-modal__row {
+    //@include make-row(0);
+    @include flexbox();
+  }
+
+  .newsletter-modal__col--left {
+    @include flex-item();
+    //@include make-column($newsletter__col-left-columns--modal, 0);
+    position: relative;
+  }
+
+  .newsletter-modal__col--right {
+    @include flex-item();
+    //@include make-column($newsletter__col-right-columns--modal, 0);
+    text-align: center;
+
+    .logo {
+      max-width: $newsletter__logo-max-width--modal;
+      margin: $newsletter__logo-margin--modal;
+    }
+  }
+
+  .container-form {
+    position: relative;
+
+    .input-email {
+      border: 1px solid $gray-light;
+    }
+  }
+
+  @media (max-width: $screen-sm-max) {
+    .container-form {
+      .form-group {
+        .input-email {
+          width: 100%;
+          padding-right: $padding-large-horizontal;
+          height: 48px;
+        }
+
+        button {
+          width: 100%;
+          margin-top: $padding;
+          margin-left: 0;
+          padding: 13px $padding-large-horizontal;
+        }
+      }
+    }
+
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .newsletter-modal__col--left {
+      display: none;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .newsletter-modal__col--left {
+      background-image: url($newsletter__bg-image--modal);
+      background-repeat: no-repeat;
+      background-position: center 0;
+      background-size: cover;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      margin-bottom: 28px;
+    }
+
+    .container-form {
+      .form-group--email {
+        padding-right: 125px;
+        position: relative;
+
+        .input-email {
+          width: 100%;
+        }
+
+        button {
+          position: absolute;
+          right: 0;
+          top: 0;
+          margin: 0;
+        }
+      }
     }
   }
 }

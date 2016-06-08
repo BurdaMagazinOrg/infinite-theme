@@ -6,8 +6,9 @@
         events: {
             "submit": "formSubmit"
         },
-        apiInitialized: false,
+        available: false,
         settings: null,
+        useTracking: true,
         permissions: null,
         $formView: null,
         $successView: null,
@@ -21,7 +22,7 @@
             this.permissions = BaseNewsletterView.permissions;
 
             if (this.settings.clientid == undefined || this.settings.groupId == undefined) {
-                console.warn("BaseNewsletterView needs seetings + groupId");
+                console.warn("BaseNewsletterView needs settings + groupId", this.settings.clientid, this.settings.groupId);
                 return;
             }
 
@@ -47,7 +48,7 @@
                 s.parentNode.insertBefore(th, s)
             }
 
-            if(!this.permissions) {
+            if (!this.permissions) {
                 window.thsixtyQ.push(['permissions.get', {
                     success: _.bind(function (pPermissions) {
                         //TODO remove this after prod permissions fix
@@ -72,21 +73,18 @@
             this.$privacyView = this.$el.find('.container-privacy');
         },
         ready: function () {
-            //console.log("PERMISSIONS", this.permissions);
-
             this.$formView.find('.privacy-link').unbind('click.privacy_open').bind('click.privacy_open', $.proxy(function () {
-                //this.$privacyView.fadeIn(350);
                 this.setViewState(BaseNewsletterView.STATE_PRIVACY);
                 return false;
             }, this));
 
             this.$privacyView.find('.icon-close').unbind('click.privacy_close').bind('click.privacy_close', $.proxy(function () {
-                //this.$privacyView.fadeOut(350);
                 this.setViewState(BaseNewsletterView.STATE_INITIAL);
             }, this));
 
             this.$privacyView.find('.container-content-dynamic').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_body));
             this.$el.show();
+            this.available = true;
         },
         formSubmit: function (pEvent) {
             var tmpValid = true,
@@ -149,21 +147,15 @@
             window.thsixtyQ.push(['newsletter.subscribe', {
                 params: pData,
                 success: $.proxy(function () {
-                    //this.$formView.fadeOut(350);
-                    //this.$successView.fadeIn(350);
                     this.setViewState(BaseNewsletterView.STATE_SUCCESS);
-
-                    if (typeof TrackingManager != 'undefined') {
-                        TrackingManager.trackEvent({category: 'newsletter', action: 'success'});
-                    }
+                    this.$el.trigger('newsletter:success');
+                    this.track({category: 'newsletter', action: 'success'});
                 }, this),
                 error: $.proxy(function (err) {
                     var responseData = BaseNewsletterView.responseInterpreter(err);
                     this.addAlert('danger', responseData.field, responseData.message);
-
-                    if (typeof TrackingManager != 'undefined') {
-                        TrackingManager.trackEvent({category: 'newsletter', action: 'error'});
-                    }
+                    this.$el.trigger('newsletter:error', responseData);
+                    this.track({category: 'newsletter', action: 'error'});
                 }, this)
             }]);
         },
@@ -194,6 +186,11 @@
         removeAlerts: function () {
             this.$alerts.empty();
             this.$el.find('.form-group').removeClass('has-error');
+        },
+        track: function (pObject) {
+            if (typeof TrackingManager != 'undefined' && this.useTracking == true) {
+                TrackingManager.trackEvent(pObject);
+            }
         },
         destroy: function () {
 

@@ -245,8 +245,14 @@ infinite.views.spinner:
     js/infinite/views/components/spinner-cube-view.js: {}
     js/brand/views/components/spinner-cube-view.js: {}
 
-infinite.views.hmnewsletter-view:
+infinite.views.newsletter.hmnewsletter-view:
   version: 1
   js:
-    js/infinite/views/hmnewsletter-view.js: {}
-    js/brand/views/hmnewsletter-view.js: {}
+    js/infinite/views/newsletter/hmnewsletter-view.js: {}
+    js/brand/views/newsletter/hmnewsletter-view.js: {}
+
+infinite.views.newsletter.newsletter-modal-view:
+  version: 1
+  js:
+    js/infinite/views/newsletter/newsletter-modal-view.js: {}
+    js/brand/views/newsletter/newsletter-modal-view.js: {}

@@ -4,6 +4,7 @@
 
     BurdaInfinite.models.DeviceModel = Backbone.Model.extend({
         isActive: false,
+        cookieRefererName: '_referer',
         breakpoints: {},
         breakpointValues: [],
         breakpointKeys: [],
@@ -16,8 +17,12 @@
         lastBreakpoint: {},
         lastDeviceBreakpoint: {},
         useWhatsapp: ((navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i)) ? true : false),
+        isGoogleBot: navigator.userAgent.toLowerCase().indexOf('googlebot') > 0,
+        basehost: window.location.hostname.split(".")[0],
         initialize: function (pAttributes, pOptions) {
             Backbone.Model.prototype.initialize.call(this, pAttributes, pOptions);
+
+            this.cookieRefererName = this.basehost + this.cookieRefererName;
 
             this.breakpoints = pOptions.Breakpoints;
             this.breakpointValues = _.values(this.breakpoints);
@@ -32,6 +37,7 @@
             this.set('breakpoints', new Backbone.Collection());
             this.set('deviceBreakpoints', new Backbone.Collection());
 
+            this.writeRefererCookie();
             this.createBreakpoints();
             this.createDeviceBreakpoints();
             this.checkActiveBreakpoint();
@@ -42,7 +48,9 @@
                 this.checkActiveDevice();
             }, 200), this));
 
-            if(this.getBreakpoints().length > 0) this.isActive = true;
+            if (this.getBreakpoints().length > 0) this.isActive = true;
+
+            console.log("deviceModelInfo", this.getCookie(this.cookieRefererName));
         },
         createBreakpoints: function () {
             var tmpModelItem = {},
@@ -155,6 +163,52 @@
                 }
                 return tmpSize.width < pVal;
             }, this));
+        },
+        writeRefererCookie: function () {
+            var tmpParams = this.getURLParams(),
+                tmpCookie = $.extend(this.getCookie(this.cookieRefererName), {}),
+                tmpReferrer = document.referrer,
+                tmpHostname = this.parseUrl(tmpReferrer).hostname,
+                tmpUtmCampaign = tmpParams.utm_campaign;
+
+            tmpCookie.referrer = tmpReferrer;
+            tmpCookie.currentUtmCampaign = tmpUtmCampaign; //could be undefined if no campaign in usage
+
+            if (tmpUtmCampaign != "" && tmpUtmCampaign != undefined) {
+                tmpCookie.lastKnownUtmCampaign = tmpUtmCampaign;
+            }
+
+            tmpCookie.referrerIsMe = tmpReferrer != "" && tmpHostname.indexOf(this.basehost) > -1;
+            tmpCookie.referrerIsFb = tmpHostname.indexOf("facebook") > -1;
+
+            //counting clicks after FB referrer - needed for the FB layer/ads/likegates policy
+            if (tmpCookie.referrerIsFb) {
+                tmpCookie.comesFromFB = true;
+                tmpCookie.clicksAfterFbReferrer = 0;
+            } else if (tmpCookie.comesFromFB == true) {
+                tmpCookie.clicksAfterFbReferrer++;
+            }
+
+            this.setCookieValue(this.cookieRefererName, tmpCookie);
+        },
+        parseUrl: function (pUrl) {
+            var a = document.createElement('a');
+            a.href = pUrl;
+            return a;
+        },
+        setCookieValue: function (pCookieName, pValue, pOptions) {
+            $.cookie(pCookieName, pValue, pOptions);
+        },
+        getCookie: function (pCookieName) {
+            return $.cookie(pCookieName);
+        },
+        getRefererCookie: function () {
+            return $.cookie(this.cookieRefererName);
+        },
+        getURLParams: function (pParam) {
+            return _.object(_.compact(_.map(location.search.slice(1).split('&'), function (item) {
+                if (item) return item.split('=');
+            })));
         },
         getBreakpoints: function () {
             return this.get('breakpoints');

@@ -164,6 +164,13 @@ $newsletter__checkbox-label--horizontal-width-mobile: none !default;
 $newsletter__checkbox-label--horizontal-width-tablet: 440px !default;
 $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
 
+//modal
+$newsletter__logo-max-width--modal: 200px !default;
+$newsletter__bg-image--modal: "../images/static/nl-modal-xl.jpg" !default;
+$newsletter__col-left-columns--modal: ($grid-columns / 2) !default;
+$newsletter__col-right-columns--modal: ($grid-columns / 2) !default;
+$newsletter__logo-margin--modal: 0 0 40px 0 !default;
+
 /**
 ** Products
 **/
@@ -713,3 +720,9 @@ $author__short-info-margin-mobile--vita-short: 0 !default;
 ** Ads
 **/
 $ad__border: $h-line-style !default;
+
+/**
+** Modal
+**/
+//used in bootstrap
+$modal-backdrop-bg: rgba($black, 0.75);

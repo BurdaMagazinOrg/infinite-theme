@@ -2,9 +2,9 @@
 
   "use strict";
 
-  window.HmNewsletterView = BurdaInfinite.views.HmNewsletterView.extend({
+  window.HmNewsletterView = BurdaInfinite.views.newsletter.HmNewsletterView.extend({
     initialize: function (pOptions) {
-      BurdaInfinite.views.HmNewsletterView.prototype.initialize.call(this, pOptions);
+      BurdaInfinite.views.newsletter.HmNewsletterView.prototype.initialize.call(this, pOptions);
     }
   });
 

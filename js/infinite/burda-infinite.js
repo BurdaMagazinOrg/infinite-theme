@@ -4,7 +4,8 @@
 
     window.BurdaInfinite = {
         views: {
-            base: {}
+            base: {},
+            newsletter: {}
         },
         managers: {},
         models: {

@@ -22,7 +22,9 @@
         initialize: function (pOptions) {
             _.extend(this, pOptions);
 
-            $.timeago.settings.localeTitle = true;
+            if($.cookie != undefined) $.cookie.json = true;
+            if($.timeago != undefined)  $.timeago.settings.localeTitle = true;
+
             if (_.isFunction(history.pushState)) Backbone.history.start({pushState: true});
             AppConfig.initialLocation = Backbone.history.location.pathname + Backbone.history.location.search;
             //TFM.Debug.start();

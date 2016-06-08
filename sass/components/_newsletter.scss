@@ -8,3 +8,7 @@
 .region-newsletter-page {
   @include newsletter--page();
 }
+
+.newsletter-modal {
+  @include newsletter--modal();
+}

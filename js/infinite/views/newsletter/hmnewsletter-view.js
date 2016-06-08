@@ -2,7 +2,7 @@
 
   "use strict";
 
-  BurdaInfinite.views.HmNewsletterView = BaseView.extend({
+  BurdaInfinite.views.newsletter.HmNewsletterView = BaseView.extend({
     initialize: function (pOptions) {
       Drupal.behaviors.hmNewsletter.attach(pOptions.el.context)
       
