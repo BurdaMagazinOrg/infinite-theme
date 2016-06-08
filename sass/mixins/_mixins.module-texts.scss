@@ -323,10 +323,6 @@
 ** Media
 **/
 @mixin item-media--gallery-text() {
-  .text-title {
-    @extend %title--content-block;
-  }
-
   .text-item-count {
     @include text-helper($gallery__count-font);
     color: $gallery__count-color;
