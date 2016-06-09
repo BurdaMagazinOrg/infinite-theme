@@ -378,26 +378,33 @@
 
   .container-form {
     position: relative;
+  }
 
+  .form-group--email {
     .input-email {
       border: 1px solid $gray-light;
+      padding-right: $padding-small-horizontal;
+      height: 48px;
+    }
+
+    button {
+      height: 48px;
     }
   }
 
   @media (max-width: $screen-sm-max) {
     .container-form {
-      .form-group {
+      .form-group--email {
         .input-email {
           width: 100%;
           padding-right: $padding-large-horizontal;
-          height: 48px;
         }
 
         button {
           width: 100%;
           margin-top: $padding;
           margin-left: 0;
-          padding: 13px $padding-large-horizontal;
+          padding: 13px $padding-large-horizontal 10px;
         }
       }
     }
