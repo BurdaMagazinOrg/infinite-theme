@@ -266,8 +266,9 @@
   .text-headline {
     @include text-headline-bold();
     text-shadow: $title--media-header-text-shadow;
-    text-align: center;
+    text-transform: $title--media-header-text-transform;
     color: $title--media-header-color;
+    text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
