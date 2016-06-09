@@ -18,26 +18,12 @@
  * @ingroup themeable
  */
 #}
-<div class="author item-author"
-        {#{% if author_id != 0 %}#}
-            data-internal-url="{{ url }}"
-        {#{% endif %}#}
-        >
-
-    {#{% if author_id != 0 %}#}
-        {{ content.user_picture }}
-    {#{% endif %}#}
-
-    <div class="caption">
-
-        {#{% if author_id != 0 %}#}
-            <div class="text-author">Artikel von
-                <span typeof="schema:Person">{{ content.field_forename }} {{ content.field_surname }}</span>
-            </div>
-        {#{% endif %}#}
-
-        {% if datetime and timestamp %}
-            <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
-        {% endif %}
+{% if user.status %}
+{{ content.user_picture }}
+<div class="caption">  {# TODO: closed in author-teaser.html.twig #}
+    <div class="text-author">Artikel von
+        <span typeof="schema:Person">{{ content.field_forename }} {{ content.field_surname }}</span>
     </div>
-</div>
+{% else %}
+<div class="caption">  {# TODO: closed in author-teaser.html.twig #}
+{% endif %}

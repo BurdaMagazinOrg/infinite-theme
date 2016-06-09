@@ -24,20 +24,9 @@
         {% endif %}
         >
 
-    {% if author_id != 0 %}
         {{ author_picture }}
-    {% endif %}
-
-    <div class="caption">
-
-        {% if author_id != 0 %}
-            <div class="text-author">Artikel von
-                <span typeof="schema:Person">{{ name }}</span>
-            </div>
-        {% endif %}
-
         {% if datetime and timestamp %}
             <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
         {% endif %}
-    </div>
+    </div> {# TODO: opened in user--author-teaser.html.twig #}
 </div>
