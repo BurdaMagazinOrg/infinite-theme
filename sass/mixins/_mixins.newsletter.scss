@@ -338,7 +338,7 @@
     margin: 0;
     height: auto;
     background-color: $white;
-    padding: 40px 20px;
+    padding: 40px 20px; 
   }
 
   .container-content {
@@ -371,6 +371,7 @@
     text-align: center;
 
     .logo {
+      display: inline-block;
       max-width: $newsletter__logo-max-width--modal;
       margin: $newsletter__logo-margin--modal;
     }
