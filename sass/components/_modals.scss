@@ -37,6 +37,10 @@
   }
 }
 
+.modal-overall .modal-backdrop {
+  z-index: $zindex-modal-background-overall;
+}
+
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;

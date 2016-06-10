@@ -318,7 +318,7 @@
 
 @mixin newsletter--modal() {
   //display: block;
-  z-index: 9999;
+  z-index: $newsletter__z-index--modal;
 
   .newsletter-modal__modal-content {
     @include flexbox();

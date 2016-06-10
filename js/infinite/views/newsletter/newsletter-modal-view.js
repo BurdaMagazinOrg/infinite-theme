@@ -99,10 +99,12 @@
         },
         show: function () {
             this.$el.modal('show');
+            $('body').addClass('modal-overall');
             this.track({category: 'newsletter_modal', action: 'show'});
         },
         close: function () {
             this.$el.modal('hide');
+            $('body').removeClass('modal-overall');
             this.track({category: 'newsletter_modal', action: 'close'});
 
             if (!this.newsletterSuccess) {

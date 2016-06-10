@@ -197,7 +197,9 @@
             return a;
         },
         setCookieValue: function (pCookieName, pValue, pOptions) {
-            $.cookie(pCookieName, pValue, pOptions);
+            var tmpOptions = _.extend({path: '/'}, pOptions);
+            console.log(">>>> tmpOptions", tmpOptions);
+            $.cookie(pCookieName, pValue, tmpOptions);
         },
         getCookie: function (pCookieName) {
             return $.cookie(pCookieName);
