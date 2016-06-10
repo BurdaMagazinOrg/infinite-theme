@@ -318,6 +318,7 @@
 
 @mixin newsletter--modal() {
   //display: block;
+  z-index: 9999;
 
   .newsletter-modal__modal-content {
     @include flexbox();
@@ -338,7 +339,7 @@
     margin: 0;
     height: auto;
     background-color: $white;
-    padding: 40px 20px; 
+    padding: 40px 20px;
   }
 
   .container-content {
