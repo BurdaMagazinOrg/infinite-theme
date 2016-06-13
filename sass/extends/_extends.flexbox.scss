@@ -42,6 +42,10 @@
   @include align-items();
 }
 
+%align-self-center {
+  @include align-self();
+}
+
 %align-items-flex-end {
   @include align-items(flex-end);
 }

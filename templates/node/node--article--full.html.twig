@@ -112,7 +112,7 @@
     {% block article_footer_blocks_lazyloading %}{% endblock %}
 </div>
 
-{% if block('article_footer_blocks_full') is not empty %}
+{% if content.field_footer_blocks | render is not empty %}
     <div class="region-full-content region-feed" data-view-type="feedView">
         {% block article_footer_blocks_full %}
             {% if view_mode == 'full' and content.field_footer_blocks | render %}

@@ -51,6 +51,9 @@ $btn__label-size-mobile--small: 13px !default;
 $btn__label-size-tablet--small: 13px !default;
 $btn__label-size-desktop--small: 14px !default;
 
+//large
+$btn__padding--large: $padding $padding-large-horizontal ($padding - 4px) !default;
+
 /**
 ** Lists Margins
 ** only margin
@@ -163,6 +166,32 @@ $newsletter__checkbox-label--horizontal-desktop: 11px !default;
 $newsletter__checkbox-label--horizontal-width-mobile: none !default;
 $newsletter__checkbox-label--horizontal-width-tablet: 440px !default;
 $newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
+
+//groups
+$newsletter__groups-border-radius: 0 !default;
+$newsletter__groups-bg-color: rgba($white, 0.9) !default;
+$newsletter__groups-margin: 0px 0 30px 0 !default;
+$newsletter__groups-padding-mobile: 10px !default;
+$newsletter__groups-padding-desktop: 15px 50px !default;
+$newsletter__groups-title-font: $font-headline !default;
+$newsletter__groups-title-size-mobile: $title-size-xxxs !default;
+$newsletter__groups-title-size-tablet: $title-size-sm !default;
+$newsletter__groups-title-size-desktop: $title-size-sm !default;
+$newsletter__groups-title-color: $gray-base !default;
+$newsletter__groups-title-margin: 0 0 15px 0 !default;
+
+$newsletter__groups-checkbox-label-font: $font-headline !default;
+$newsletter__groups-checkbox-label-color: $cherry !default;
+$newsletter__groups-checkbox-label-size-mobile: $title-size-xxxs !default;
+$newsletter__groups-checkbox-label-size-tablet: $title-size-xxs !default;
+$newsletter__groups-checkbox-label-size-desktop: $title-size-xxs !default;
+$newsletter__groups-checkbox-copy-font: $font-content !default;
+$newsletter__groups-checkbox-copy-color: $gray-base !default;
+$newsletter__groups-checkbox-copy-size: $font-size-base !default;
+$newsletter__groups-checkbox-copy-label-margin: 30px 0 0 0 !default;
+
+$newsletter__alerts-bg: rgba($brand-danger, 0.95) !default;
+
 
 //modal
 $newsletter__logo-max-width--modal: 200px !default;

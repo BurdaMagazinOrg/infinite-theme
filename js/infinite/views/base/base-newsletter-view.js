@@ -6,6 +6,7 @@
         events: {
             "submit": "formSubmit"
         },
+        useAlerts: true,
         available: false,
         settings: null,
         useTracking: true,
@@ -14,6 +15,8 @@
         $successView: null,
         $privacyView: null,
         $alerts: null,
+        removeTimer: 1000,
+        removeTimerDelay: 1000,
         initialize: function (pOptions) {
             this.settings = _.extend({}, drupalSettings.hm_newsletter);
             this.settings.groupId = this.$el.data('newsletter-group-id');
@@ -88,10 +91,7 @@
         },
         formSubmit: function (pEvent) {
             var tmpValid = true,
-                tmpField = null,
                 tmpVal = "",
-                tmpAgreementVal = "",
-                $tmpItem = {},
                 tmpData = {
                     client: this.settings.clientid,
                     groups: [this.settings.groupId],
@@ -104,11 +104,22 @@
             /**
              * collect field values
              */
+            if (!this.validateFields(tmpData)) return false;
+            if (!this.validateAgreements(tmpData)) return false;
+
+            this.send(tmpData);
+            return false;
+        },
+        validateFields: function (pData) {
+            var tmpField = null,
+                tmpVal = '',
+                tmpValid = true;
+
             _.each(BaseNewsletterView.fields, function (pVal, pKey) {
                 tmpField = this.formField(pKey);
                 if (tmpField.length) {
                     tmpVal = tmpField.val();
-                    tmpData.user[pKey] = tmpVal;
+                    pData.user[pKey] = tmpVal;
 
                     if (tmpVal == '' && tmpField.attr('required')) {
                         this.addAlert('danger', pKey, 'Das Feld ist erforderlich.');
@@ -118,16 +129,23 @@
                 }
             }, this);
 
+            return tmpValid;
+        },
+        validateAgreements: function (pData) {
+            var $tmpItem = null,
+                tmpAgreementVal = '',
+                tmpValid = true;
+
             _.each(this.$formView.find('[name="agreements[]"]'), function (pItem, pIndex) {
                 $tmpItem = $(pItem);
                 if ($tmpItem.is(':checked')) {
                     tmpAgreementVal = $tmpItem.val();
                     if (tmpAgreementVal == 'datenschutzeinwilligung') {
-                        tmpData.extra = {acquia_id: $.cookie('tc_ptid')};
+                        pData.extra = {acquia_id: $.cookie('tc_ptid')};
                     }
 
                     if (this.permissions[tmpAgreementVal] !== undefined && this.permissions[tmpAgreementVal].version !== undefined) {
-                        tmpData.agreements.push({
+                        pData.agreements.push({
                             'name': tmpAgreementVal,
                             'version': this.permissions[tmpAgreementVal].version
                         });
@@ -140,8 +158,7 @@
                 }
             }, this);
 
-            if (tmpVal) this.send(tmpData);
-            return false;
+            return tmpValid;
         },
         send: function (pData) {
             window.thsixtyQ.push(['newsletter.subscribe', {
@@ -176,12 +193,21 @@
             return this.$formView.find('[name="' + pName + '"]');
         },
         addAlert: function (pType, pField, pMessage) {
-            var tmpAlertString = "";
+
+            var $tmpItem = {};
 
             if (pType == 'danger' && pField !== undefined) this.setValidationState(this.formField(pField), 'has-error');
 
-            tmpAlertString = '<div class="alert alert-' + pType + '" role="alert">' + pMessage + '</div>';
-            this.$alerts.append(tmpAlertString);
+            if (!this.useAlerts) return;
+
+            $tmpItem = '<div class="alert alert-' + pType + '" role="alert">' + pMessage + '</div>';
+            $tmpItem = $($tmpItem).appendTo(this.$alerts);
+
+            _.delay(_.bind(function () {
+                $tmpItem.animate({height: 0, paddingTop: 0, paddingBottom: 0}, function() {
+                    $(this).remove();
+                });
+            }, this), this.removeTimer + (this.removeTimerDelay*$tmpItem.index()));
         },
         removeAlerts: function () {
             this.$alerts.empty();
