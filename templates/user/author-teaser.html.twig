@@ -24,9 +24,17 @@
         {% endif %}
         >
 
+    {% if author_id != 0 %}
         {{ author_picture }}
         {% if datetime and timestamp %}
             <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
         {% endif %}
-    </div> {# TODO: opened in user--author-teaser.html.twig #}
+        </div> {# TODO: opened in user--author-teaser.html.twig #}
+    {% else %}
+        <div class="caption">
+        {% if datetime and timestamp %}
+            <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+        {% endif %}
+        </div>
+    {% endif %}
 </div>
