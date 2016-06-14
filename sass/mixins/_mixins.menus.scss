@@ -96,14 +96,13 @@
   @extend %transition-timing-function;
   @include transition-property(opacity, color, visibility);
   display: inline-block;
-  margin: $menu--main-navigation__item-margin;
+
 
   &:first-child {
     margin-left: 0;
   }
 
   a {
-    padding: $menu--main-navigation__item-padding;
     color: $menu--main-navigation__item-color;
     display: inline-block;
   }
@@ -114,6 +113,19 @@
 
   @media (max-width: $screen-md-max) {
     letter-spacing: 0px;
+    margin: $menu--main-navigation__item-margin-tablet;
+
+    a {
+      padding: $menu--main-navigation__item-padding-tablet;
+    }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    margin: $menu--main-navigation__item-margin-desktop;
+
+    a {
+      padding: $menu--main-navigation__item-padding-desktop;
+    }
   }
 }
 

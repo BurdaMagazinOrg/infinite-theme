@@ -90,8 +90,10 @@ $menu--main-navigation-padding-desktop: 0 100px 0 100px !default;
 $menu--main-navigation__item-color: $text-color !default;
 $menu--main-navigation__item-active-color: $color-hover !default;
 $menu--main-navigation__item-active-bg: $white !default;
-$menu--main-navigation__item-padding: 5px 7px 4px !default;
-$menu--main-navigation__item-margin: 0 5px !default;
+$menu--main-navigation__item-margin-tablet: 0 5px !default;
+$menu--main-navigation__item-margin-desktop: 0 5px !default;
+$menu--main-navigation__item-padding-desktop: 5px 7px 4px !default;
+$menu--main-navigation__item-padding-tablet: 5px 7px 4px !default;
 
 $menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
 
