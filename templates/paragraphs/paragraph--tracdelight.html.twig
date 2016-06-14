@@ -44,7 +44,7 @@
 {% if content | render %}
 <div {{ attributes.addClass(classes) }} data-view-type="productsView">
     {%  if content.field_title|render %}
-        <div class="text-headline item-title">{{ content.field_title }}</div>
+        <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
     {% endif %}
     <div class="container-content">
         {{ content|without('field_title') }}

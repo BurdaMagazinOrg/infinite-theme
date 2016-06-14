@@ -16,7 +16,7 @@
                 <div class="col--right profile__col--right">
                     {% if content.field_title %}
                         <div class="title profile__title">
-                            {{ content.field_title }}
+                            {{ content.field_title | plain_text }}
                         </div>
                     {% endif %}
                     <div class="facts profile__facts">

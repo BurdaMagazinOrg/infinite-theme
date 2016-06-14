@@ -50,14 +50,14 @@
     <div class="caption spotlight__caption">
         {% if has_headline %}
             <div class="title spotlight__title">
-                <h1>{{ content.field_title }}</h1>
+                <h1>{{ content.field_title | plain_text }}</h1>
             </div>
             <div class="subtitle spotlight__subtitle">
                 <h2>{{ content.field_subtitle }}</h2>
             </div>
         {% else %}
             <div class="title spotlight__title">
-                <h2>{{ content.field_title }}</h2>
+                <h2>{{ content.field_title | plain_text }}</h2>
             </div>
             <div class="subtitle spotlight__subtitle">
                 <h3>{{ content.field_subtitle }}</h3>
