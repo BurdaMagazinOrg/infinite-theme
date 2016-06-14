@@ -25,7 +25,20 @@ form {
 
 .has-error {
   input {
-    border: 2px solid $alert-danger-border;
+    //border: 2px solid $alert-danger-border;
+    outline: 2px solid $alert-danger-border;
+    outline-offset: -2px;
+
+    //position: relative;
+    //
+    //&:after {
+    //  @include text-helper($form__error-content-font, $form__error-content-size);
+    //  content: $form__error-content;
+    //  position: absolute;
+    //  left: $form__error-content-left;
+    //  top: $form__error-content-top;
+    //  color: $form__error-content-color;
+    //}
   }
 }
 
@@ -33,17 +46,19 @@ form {
   font-size: $font-size-small;
 
   .alert {
-    @extend %icon-circle-filled;
+    @extend %icon-notification;
 
     &:before {
       margin-right: 5px;
       font-size: $icon-size-tiny;
+      color: $white;
+      position: relative;
+      top: -2px;
     }
   }
 
-  .alert-danger {
-    &:before {
-      color: $alert-danger-text;
-    }
-  }
+  //.alert-danger {
+  //  &:before {
+  //  }
+  //}
 }

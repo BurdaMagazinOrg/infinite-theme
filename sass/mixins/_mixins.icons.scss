@@ -108,6 +108,12 @@
   }
 }
 
+@mixin icon-notification() {
+  &:before {
+    content: "\e90d";
+  }
+}
+
 @mixin icon-pinterest() {
   &:before {
     content: "\e904";

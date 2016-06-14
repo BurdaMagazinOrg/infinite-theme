@@ -48,6 +48,11 @@
   @extend %icon;
 }
 
+%icon-notification {
+  @include icon-notification();
+  @extend %icon;
+}
+
 %icon-facebook {
   @include icon-facebook();
   @extend %icon;

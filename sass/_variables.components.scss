@@ -55,6 +55,17 @@ $btn__label-size-desktop--small: 14px !default;
 $btn__padding--large: $padding $padding-large-horizontal ($padding - 4px) !default;
 
 /**
+** Form
+**/
+$form__error-content-font: $font-headline !default;
+$form__error-content-size: 20px !default;
+$form__error-content: "!" !default;
+$form__error-content-color: $alert-danger-text !default;
+$form__error-content-top: -4px !default;
+$form__error-content-left: -14px !default;
+
+
+/**
 ** Lists Margins
 ** only margin
 **/

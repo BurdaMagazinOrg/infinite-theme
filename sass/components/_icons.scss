@@ -71,6 +71,10 @@
   @extend %icon-info;
 }
 
+.icon-notification {
+  @extend %icon-notification;
+}
+
 .icon-return {
   @extend %icon-return;
 }
