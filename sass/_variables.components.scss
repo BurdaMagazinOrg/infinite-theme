@@ -329,6 +329,9 @@ $title--text-block-mobile: $title-size-sm !default;
 $title--text-block-tablet: $title-size-md !default;
 $title--text-block-desktop: 30px !default;
 $title--text-block-color: $text-color !default;
+$title-margin--text-block: $gap-size-lg 0 0 0 !default;
+$title__p-margin--text-block: 13px 0 0 !default;
+$title__headline-margin--text-block: 16px 0 0 !default;
 //fkn different design shizzl
 
 /** copytext--text-block **/
@@ -759,6 +762,36 @@ $author__short-info-color--vita-short: $gray-base !default;
 $author__short-info-margin-desktop--vita-short: 0 !default;
 $author__short-info-margin-tablet--vita-short: 0 !default;
 $author__short-info-margin-mobile--vita-short: 0 !default;
+
+/**
+** Tables
+**/
+$table__title-font--text-block: $font-headline !default;
+$table__title-color--text-block: $title--text-block-color !default;
+
+$table-border-spacing-mobile--text-block: (0px 0px) !default;
+$table-border-spacing-tablet--text-block: (10px 0px) !default;
+$table-border-spacing-desktop--text-block: (10px 0px) !default;
+
+//all tds
+$table__td-padding-mobile--text-block: 2px 0px !default;
+$table__td-padding-tablet--text-block: 4px 25px 4px 10px !default;
+$table__td-padding-desktop--text-block: 4px 25px 4px 10px !default;
+$table__td-border-bottom--text-block: $h-line-style !default;
+
+$table__td-first-font--text-block: $font-content-bold !default;
+$table__td-first-color--text-block: $color-brand !default;
+$table__td-first-letter-spacing--text-block: $content-letter-spacing !default;
+$table__td-first-size-mobile--text-block: $copytext--text-block-mobile !default;
+$table__td-first-size-tablet--text-block: $copytext--text-block-tablet !default;
+$table__td-first-size-desktop--text-block: $copytext--text-block-desktop !default;
+
+$table__td-font--text-block: $font-content !default;
+$table__td-color--text-block: $text-color !default;
+$table__td-letter-spacing--text-block: $content-letter-spacing !default;
+$table__td-size-mobile--text-block: $copytext--text-block-mobile !default;
+$table__td-size-tablet--text-block: $copytext--text-block-tablet !default;
+$table__td-size-desktop--text-block: $copytext--text-block-desktop !default;
 
 /**
 ** Ads

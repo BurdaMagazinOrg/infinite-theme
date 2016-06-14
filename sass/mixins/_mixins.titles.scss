@@ -61,7 +61,7 @@
 
 @mixin title--text-block() {
   @include text-helper($title--text-block-font);
-  margin-top: $gap-size-lg;
+  margin: $title-margin--text-block;
   color: $title--text-block-color;
 
   @media (max-width: $screen-xs-max) {
@@ -80,12 +80,12 @@
     margin-top: 0;
   }
 
-  & + p {
-    margin-top: 13px;
+  & + p, & + table {
+    margin: $title__p-margin--text-block;
   }
 
   & + h2, & + h3, & + h4, & + h5, & + h6 {
-    margin-top: 16px;
+    margin: $title__headline-margin--text-block;
   }
 }
 

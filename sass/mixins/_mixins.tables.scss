@@ -1,0 +1,109 @@
+@mixin table--text-block() {
+  border-collapse: separate;
+
+  caption {
+    @extend %title--text-block;
+    padding-bottom: 13px;
+  }
+
+  tbody {
+
+    td:first-child {
+      @include text-helper($table__td-first-font--text-block);
+      position: relative;
+      color: $table__td-first-color--text-block;
+      letter-spacing: $table__td-first-letter-spacing--text-block;
+      vertical-align: top;
+    }
+
+    td + td {
+      @include text-helper($table__td-font--text-block);
+      color: $table__td-color--text-block;
+      letter-spacing: $table__td-letter-spacing--text-block;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    border-spacing: $table-border-spacing-desktop--text-block;
+
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    tbody {
+      tr {
+        padding-top: 7px;
+        margin-top: 7px;
+        border-top: $table__td-border-bottom--text-block;
+
+        &:first-child {
+          margin-top: 0;
+          padding-top: 0;
+          border-top: 0;
+
+          td:first-child {
+            border-top: 0;
+          }
+        }
+      }
+
+      td {
+        padding: $table__td-padding-mobile--text-block;
+      }
+
+      td:first-child {
+        @include text-helper-size($table__td-first-font--text-block, $table__td-first-size-mobile--text-block);
+        left: - nth($table-border-spacing-mobile--text-block, 1);
+      }
+
+      td + td {
+        @include text-helper-size($table__td-font--text-block, $table__td-size-mobile--text-block);
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    td {
+      border-bottom: $table__td-border-bottom--text-block;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    border-spacing: $table-border-spacing-desktop--text-block;
+
+    tbody {
+      td {
+        padding: $table__td-padding-tablet--text-block;
+      }
+
+      td:first-child {
+        @include text-helper-size($table__td-first-font--text-block, $table__td-first-size-tablet--text-block);
+        left: - nth($table-border-spacing-tablet--text-block, 1);
+      }
+
+      td + td {
+        @include text-helper-size($table__td-font--text-block, $table__td-size-tablet--text-block);
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    border-spacing: $table-border-spacing-desktop--text-block;
+
+    tbody {
+
+      td {
+        padding: $table__td-padding-desktop--text-block;
+      }
+
+      td:first-child {
+        @include text-helper-size($table__td-first-font--text-block, $table__td-first-size-desktop--text-block);
+        left: - nth($table-border-spacing-desktop--text-block, 1);
+      }
+
+      td + td {
+        @include text-helper-size($table__td-font--text-block, $table__td-size-desktop--text-block);
+      }
+    }
+  }
+}

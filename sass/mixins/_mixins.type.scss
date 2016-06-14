@@ -177,4 +177,10 @@
       }
     }
   }
+
+  table {
+    margin-top: 1em;
+
+    @extend %table--text-block;
+  }
 }
