@@ -294,7 +294,10 @@ $title--page-center-desktop: 59px !default;
 $title--page-center-color: $gray-base !default;
 
 /** title--horizontal-block **/
+$title--horizontal-block-font: $font-headline !default;
+$title--horizontal-block-letter-spacing: 0px !default;
 $title--horizontal-block-text-transform: uppercase !default;
+$title--horizontal-block-color: $text-color !default;
 $title--horizontal-block-mobile: $title-size-xs !default;
 $title--horizontal-block-tablet: $title-size-sm !default;
 $title--horizontal-block-desktop: $title-size-md !default;
@@ -591,8 +594,12 @@ $profile__td-size: 16px !default;
 $profile__td-color: $gray-darker !default;
 
 /** seo linker **/
+$seo-linker__item-title-font: $font-headline !default;
 $seo-linker__item-title-size: $title-size-xxs !default;
+$seo-linker__link-list-font: $font-content !default;
 $seo-linker__link-list-size: 15px !default;
+$seo-linker__link-list-color: $text-color !default;
+$seo-linker__link-list-hover-color: $color-hover !default;
 
 /** Gallery */
 $gallery-ratio-full: 75% !default;

@@ -6,10 +6,10 @@
 ] %}
 
 <div{{ attributes.addClass(classes) }} data-view-type="listSwipeableView">
-    <div class="container-content seo-linker--image">
         {% if content.field_title|render %}
-            <h3 class="seo-linker__title">{{ content.field_title  | plain_text }}</h3>
+            {{ content.field_title }}
         {% endif %}
+    <div class="container-content seo-linker--image">
         <div class="swipeable__wrapper">
             {{ content|without('field_title', 'field_p_view_mode') }}
         </div>

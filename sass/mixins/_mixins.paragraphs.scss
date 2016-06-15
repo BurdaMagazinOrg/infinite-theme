@@ -519,11 +519,6 @@
 }
 
 @mixin item-paragraph--seo-links() {
-  &.item-paragraph--small, &.item-paragraph--middle {
-    .seo-linker__title {
-      @extend %title--content-block;
-    }
-  }
 
   &.item-paragraph--small {
     .swipeable__wrapper {
@@ -548,10 +543,6 @@
   &.item-paragraph--full {
     .seo-linker--image {
       @extend %region--fixed-content;
-    }
-
-    .seo-linker__title {
-      @extend %title--horizontal-block;
     }
   }
 

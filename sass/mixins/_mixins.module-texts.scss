@@ -1,10 +1,15 @@
 @mixin seo-linker-text() {
   .seo-linker__item-title {
-    @include text-headline($seo-linker__item-title-size);
+    @include text-helper($seo-linker__item-title-font, $seo-linker__item-title-size);
   }
 
   .seo-linker__link-list--image {
-    @include text-content-size($seo-linker__link-list-size);
+    @include text-helper($seo-linker__link-list-font, $seo-linker__link-list-size);
+    color: $seo-linker__link-list-color;
+
+    a:hover {
+      color: $seo-linker__link-list-hover-color;
+    }
   }
 }
 

@@ -1,6 +1,9 @@
 @mixin title--horizontal-block() {
+  @include text-helper($title--horizontal-block-font);
   text-align: center;
   text-transform: $title--horizontal-block-text-transform;
+  letter-spacing: $title--horizontal-block-letter-spacing;
+  color: $title--horizontal-block-color;
   padding-top: 6px; //umlaute fix
 
   .item-title {
@@ -8,17 +11,17 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-headline($title--horizontal-block-mobile);
+    @include text-helper-size($title--horizontal-block-font, $title--horizontal-block-mobile);
     margin-bottom: $title--horizontal-block-gap-bottom-mobile;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-headline($title--horizontal-block-tablet);
+    @include text-helper-size($title--horizontal-block-font, $title--horizontal-block-tablet);
     margin-bottom: $title--horizontal-block-gap-bottom-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-headline($title--horizontal-block-desktop);
+    @include text-helper-size($title--horizontal-block-font, $title--horizontal-block-desktop);
     margin-bottom: $title--horizontal-block-gap-bottom-desktop;
   }
 }
