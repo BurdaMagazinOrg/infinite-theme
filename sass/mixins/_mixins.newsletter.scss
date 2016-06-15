@@ -262,12 +262,13 @@
 
 @mixin newsletter--page() {
 
-  @media (max-height: 499px) {
+  @media (max-height: ($newsletter__max-height-mobile--page - 1px)) {
     @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
-    height: 500px;
+    height: $newsletter__max-height-mobile--page;
+
   }
 
-  @media (min-height: 500px) {
+  @media (min-height: $newsletter__max-height-mobile--page) {
     position: fixed;
     top: $menu--main-navigation-min-height;
     bottom: 0;
