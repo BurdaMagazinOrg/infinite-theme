@@ -47,12 +47,13 @@
 {% endif %}
 
 {% if rows %}
-
-    <div class="container-content container-fixed-content">
-        <div class="teaser-list teaser-list-horizontal swipeable__wrapper list__images--horizontal">
-            {{ rows }}
+    {% block rows_block %}
+        <div class="container-content container-fixed-content">
+            <div class="teaser-list teaser-list-horizontal swipeable__wrapper list__images--horizontal">
+                {{ rows }}
+            </div>
         </div>
-    </div>
+    {% endblock %}
 
 {% elseif empty %}
     {{ empty }}

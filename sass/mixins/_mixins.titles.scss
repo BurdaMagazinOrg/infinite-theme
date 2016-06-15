@@ -92,10 +92,14 @@
   }
 }
 
-@mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font, $color: $title--content-block-color) {
+@mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font, $color: $title--content-block-color, $margins: ($title--content-block-gap-bottom-mobile, $title--content-block-gap-bottom-tablet, $title--content-block-gap-bottom-desktop)) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
+
+  $margin-mobile: nth($margins, 1);
+  $margin-tablet: nth($margins, 2);
+  $margin-desktop: nth($margins, 3);
 
   @include text-helper($font);
   color: $color;
@@ -106,16 +110,16 @@
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($font, $size-mobile);
-    margin-bottom: $title--content-block-gap-bottom-mobile;
+    margin-bottom: $margin-mobile;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include text-helper-size($font, $size-tablet);
-    margin-bottom: $title--content-block-gap-bottom-tablet;
+    margin-bottom: $margin-tablet;
   }
 
   @media (min-width: $screen-md-min) {
     @include text-helper-size($font, $size-desktop);
-    margin-bottom: $title--content-block-gap-bottom-desktop;
+    margin-bottom: $margin-desktop;
   }
 }
