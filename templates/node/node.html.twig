@@ -67,7 +67,14 @@
  * @ingroup themeable
  */
 #}
-<article {{ attributes.addClass('region-full-content item-content item-content--article') }} data-view-type="articleView">
+
+{% set classes = [
+'region-full-content',
+'item-content',
+'item-content--article',
+] %}
+
+<article {{ attributes.addClass(classes) }} data-view-type="articleView">
     <div class="item-content__header">
         {% block content_header %}
             <h1 class="title--article">{{ label }}</h1>
@@ -75,8 +82,7 @@
     </div>
     <div class="item-content__content">
         {% block content_body %}
-            {#{{ content }}#}
-            {#{{ content | without('field_tags') }}#}
+            {{ content }}
         {% endblock %}
     </div>
 </article>

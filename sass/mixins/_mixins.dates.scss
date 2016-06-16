@@ -1,0 +1,65 @@
+@mixin item-date--node-created() {
+  @include text-helper($date__font--node-created);
+  letter-spacing: $date__letter-spacing--node-created;
+  color: $date__color--node-created;
+  text-transform: $date__text-transform--node-created;
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($date__font--node-created, $date__size-mobile--node-created);
+    margin: $date__margin-mobile--node-created;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($date__font--node-created, $date__size-tablet--node-created);
+    margin: $date__margin-tablet--node-created;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($date__font--node-created, $date__size-desktop--node-created);
+    margin: $date__margin-desktop--node-created;
+  }
+}
+
+@mixin item-date--vita-short() {
+  @include text-helper($author__date-font--vita-short);
+  letter-spacing: $author__date-letter-spacing--vita-short;
+  color: $author__date-color--vita-short;
+  text-transform: $author__date-text-transform--vita-short;
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($author__date-font--vita-short, $author__date-size-mobile--vita-short);
+    margin: $author__date-margin-mobile--vita-short;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($author__date-font--vita-short, $author__date-size-tablet--vita-short);
+    margin: $author__date-margin-tablet--vita-short;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($author__date-font--vita-short, $author__date-size-desktop--vita-short);
+    margin: $author__date-margin-desktop--vita-short;
+  }
+}
+
+@mixin item-date--horoscope() {
+  @include text-helper($date__font--horoscope);
+  letter-spacing: $date__letter-spacing--horoscope;
+  color: $date__color--horoscope;
+  text-transform: $date__text-transform--horoscope;
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($date__font--horoscope, $date__size-mobile--horoscope);
+    margin: $date__margin-mobile--horoscope;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($date__font--horoscope, $date__size-tablet--horoscope);
+    margin: $date__margin-tablet--horoscope;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($date__font--horoscope, $date__size-desktop--horoscope);
+    margin: $date__margin-desktop--horoscope;
+  }
+}

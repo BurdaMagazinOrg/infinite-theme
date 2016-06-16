@@ -572,6 +572,10 @@
   }
 }
 
+@mixin item-paragraph--viversum-zodiac() {
+  @include item-paragraph--text();
+}
+
 @mixin item-paragraph--quote() {
   @extend %center-block;
   text-align: $quote__text-align--article;

@@ -34,6 +34,10 @@
   @extend %item-content--article;
 }
 
+.item-content--horoscope {
+  @extend %item-content--horoscope;
+}
+
 .item-content--basic {
   @extend %item-content--basic;
 }

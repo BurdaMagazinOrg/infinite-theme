@@ -73,6 +73,10 @@
   @include item-paragraph--quote();
 }
 
+%item-paragraph--viversum-zodiac {
+  @include item-paragraph--viversum-zodiac();
+}
+
 %item-paragraph--media--file {
   @include item-paragraph--media--file();
 }
