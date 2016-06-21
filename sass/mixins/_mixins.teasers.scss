@@ -1,14 +1,15 @@
 @mixin teaser-default() {
+  @include teaser__text--default();
 
   @if ($teaser__use-multi-links--default == false) {
     &:hover {
-      .img-container {
+      .img-container, .teaser__img-container {
         @include opacity($teaser-hover-opacity);
       }
     }
   }
 
-  .img-container {
+  .img-container, .teaser__img-container {
     @include transition-default(opacity, $transition-duration, $transition-easing);
     @include opacity(1);
     overflow: hidden;
@@ -19,7 +20,7 @@
         @include opacity($teaser-hover-opacity);
       }
 
-      &:hover + .caption {
+      &:hover + .caption, &:hover + .teaser__caption {
         .text-headline {
           color: $text-highlighted;
         }
@@ -37,7 +38,6 @@
   }
 
   .teaser__copy {
-    @extend %copytext--teaser-default;
     margin-top: 20px;
     color: $teaser__copy-color--default;
     letter-spacing: $teaser__copy-letter-spacing--default;
@@ -63,6 +63,10 @@
     .text-category {
       margin-bottom: $teaser__category--default-gap-bottom-mobile;
     }
+
+    .teaser__overhead {
+      margin-bottom: $teaser__overhead-gap-bottom-tablet--default;
+    }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
@@ -76,6 +80,10 @@
 
     .text-category {
       margin-bottom: $teaser__category--default-gap-bottom-tablet;
+    }
+
+    .teaser__overhead {
+      margin-bottom: $teaser__overhead-gap-bottom-tablet--default;
     }
   }
 
@@ -91,6 +99,52 @@
     .text-category {
       margin-bottom: $teaser__category--default-gap-bottom-desktop;
     }
+
+    .teaser__overhead {
+      margin-bottom: $teaser__overhead-gap-bottom-desktop--default;
+    }
+  }
+}
+
+@mixin teaser-list__gap--middle() {
+  border-top: $h-line-style;
+
+  @media (max-width: $screen-xxs-max) {
+    padding-top: $teaser-list__gap-mobile--teaser-middle;
+    margin-top: $teaser-list__gap-mobile--teaser-middle;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    padding-top: $teaser-list__gap-tablet--teaser-middle;
+    margin-top: $teaser-list__gap-tablet--teaser-middle;
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding-top: $teaser-list__gap-desktop--teaser-middle;
+    margin-top: $teaser-list__gap-desktop--teaser-middle;
+  }
+}
+
+@mixin teaser-list__gap--horoscope-middle() {
+  border-top: $h-line-style;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    padding-top: $teaser-list__gap-mobile--teaser-horoscope-middle;
+    margin-top: $teaser-list__gap-mobile--teaser-horoscope-middle;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    padding-top: $teaser-list__gap-tablet--teaser-horoscope-middle;
+    margin-top: $teaser-list__gap-tablet--teaser-horoscope-middle;
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding-top: $teaser-list__gap-desktop--teaser-horoscope-middle;
+    margin-top: $teaser-list__gap-desktop--teaser-horoscope-middle;
   }
 }
 
@@ -121,7 +175,7 @@
 
 @mixin teaser-feed-large() {
   @media (max-width: $screen-xxs-max) {
-    .caption-teaser {
+    .caption-teaser, .teaser__caption {
       padding-top: $gap-size-xs;
     }
   }
@@ -131,48 +185,88 @@
   @include make-row();
   @include teaser-square-xs-text();
 
-  & > .img-container {
+  & > .img-container, & > .teaser__img-container {
     @include make-xxs-column(6);
   }
 
-  & > .caption-teaser {
+  & > .caption-teaser, .teaser__caption {
     @include make-xxs-column(18);
   }
 }
 
 @mixin teaser-square-medium() {
-  & > .img-container, .caption-teaser {
+  & > .img-container, & > .teaser__img-container,
+  .caption-teaser, . teaser__caption {
     @include make-xs-column($grid-columns/2);
   }
 }
 
+@mixin teaser--horoscope-square-medium() {
+  position: relative;
+
+  & > .teaser__img-container {
+    @include make-xs-column(10);
+  }
+
+  .teaser__caption {
+    @include make-xs-column(14);
+  }
+
+  @media (max-width: $screen-xs-max) {
+
+    .teaser__img-container {
+      img {
+        max-width: 40%;
+      }
+    }
+
+    .teaser__caption {
+      position: static;
+    }
+
+    .teaser__caption-pos-content {
+      position: absolute;
+      width: 60%;
+      right: 0px;
+      top: 0px;
+      padding: 20px;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    & > .teaser__img-container {
+      padding-left: 0;
+    }
+  }
+}
+
 @mixin teaser--portrait-small() {
-  & > .img-container {
+  & > .img-container, & > .teaser__img-container {
     @include make-xs-column($grid-columns/3);
   }
 
-  .caption-teaser {
+  .caption-teaser, .teaser__caption {
     @include make-xs-column($grid-columns - ($grid-columns/3));
   }
 
   @media (max-width: $screen-xxs-max) {
-    & > .img-container img {
+    & > .img-container img, & > .teaser__img-container img {
       width: 75%;
     }
   }
 }
 
 @mixin teaser--portrait-medium() {
-  & > .img-container {
+  & > .img-container, & > .teaser__img-container {
     @include make-xs-column(floor($grid-columns/2.05));
   }
 
-  .caption-teaser {
+  .caption-teaser, .teaser__caption {
     @include make-xs-column($grid-columns - floor($grid-columns/2.05));
   }
 
   @media (max-width: $screen-xxs-max) {
-    & > .img-container img {
+    & > .img-container img, & > .teaser__img-container img {
       width: 75%;
     }
   }
@@ -181,20 +275,16 @@
 @mixin teaser-landscape-medium() {
   @include make-row();
 
-  & > .img-container {
+  & > .img-container, & > .teaser__img-container {
     @include make-md-column(15);
   }
 
-  & > .caption-teaser {
+  & > .caption-teaser, .teaser__caption {
     @include make-md-column(9);
   }
 
-  //.text-headline {
-  //  margin-left: -3px;
-  //}
-
   @media (max-width: $screen-xxs-max) {
-    .caption-teaser {
+    .caption-teaser, .teaser__caption {
       padding-top: $gap-size-xs;
     }
   }
@@ -204,7 +294,7 @@
   position: relative;
   min-height: 1px;
 
-  .caption-teaser {
+  .caption-teaser, .teaser__caption {
     @include gap__caption-top--h-teaser();
   }
 
@@ -217,29 +307,10 @@
       height: 17px;
     }
   }
-
-  //module-text.css
-  //@media (max-width: $screen-xs-max) {
-  //  .text-headline {
-  //    @include text-content-size($teaser__title-size--list-horizontal-mobile);
-  //  }
-  //}
-  //
-  //@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-  //  .text-headline {
-  //    @include text-content-size($teaser__title-size--list-horizontal-tablet);
-  //  }
-  //}
-  //
-  //@media (min-width: $screen-md-min) {
-  //  .text-headline {
-  //    @include text-content-size($teaser__title-size--list-horizontal-desktop);
-  //  }
-  //}
 }
 
 @mixin teaser--content() {
-  .caption {
+  .caption, .teaser__caption {
     @include gap__caption-top--h-teaser();
   }
 
@@ -255,12 +326,12 @@
       padding-top: 0;
     }
 
-    .img-container {
+    .img-container, .teaser__img-container {
       @include make-column(6);
       padding-right: 0;
     }
 
-    .caption {
+    .caption, .teaser__caption {
       @include make-column(18);
       margin-top: 0;
       //padding-right: 0;
@@ -299,7 +370,7 @@
     @extend %gap__container--h-negative;
   }
 
-  .img-container {
+  .img-container, .teaser__img-container {
     height: 0;
   }
 
@@ -308,7 +379,7 @@
     position: relative;
   }
 
-  .caption {
+  .caption, .teaser__caption {
     max-width: $teaser__title-max-width--full-content;
     width: 100%;
   }
@@ -337,13 +408,13 @@
       padding: $teaser__title-padding--full-content-mobile;
     }
 
-    .img-container {
+    .img-container, .teaser__img-container {
       padding-bottom: $teaser__img-ratio--full-content-mobile;
     }
   }
 
   @media (min-width: $screen-sm-min) {
-    .caption {
+    .caption, .teaser__caption {
       @if ($teaser__caption-use-pos-absolute--full-content == true) {
         position: absolute;
       }
@@ -353,11 +424,11 @@
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     padding-bottom: $teaser__padding-bottom--full-content-tablet;
 
-    .img-container {
+    .img-container, .teaser__img-container {
       padding-bottom: $teaser__img-ratio--full-content-tablet;
     }
 
-    .caption {
+    .caption, .teaser__caption {
       @if ($teaser__caption-use-pos-absolute--full-content == true) {
         bottom: $teaser__caption-bottom--full-content-tablet;
       }
@@ -387,11 +458,11 @@
   @media (min-width: $screen-md-min) {
     padding-bottom: $teaser__padding-bottom--full-content-desktop;
 
-    .img-container {
+    .img-container, .teaser__img-container {
       padding-bottom: $teaser__img-ratio--full-content-desktop;
     }
 
-    .caption {
+    .caption, .teaser__caption {
       @if ($teaser__caption-use-pos-absolute--full-content == true) {
         left: -($container-h-gap--desktop/2);
         bottom: $teaser__caption-bottom--full-content-desktop;
@@ -413,13 +484,13 @@
 @mixin teaser--content-right() {
   @include make-row();
 
-  .caption-teaser {
+  .caption-teaser, .teaser__caption {
     padding-top: 0;
   }
 
   &.teaser-landscape-medium {
     @media (max-width: $screen-sm-max) {
-      & > .caption-teaser {
+      & > .caption-teaser, .teaser__caption {
         padding-top: $grid-gutter-width;
       }
     }

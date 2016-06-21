@@ -6,6 +6,10 @@
   @include gap__container--h-negative();
 }
 
+%gap--v-xs {
+  @include gap--v-xs();
+}
+
 %gap--v-sm {
   @include gap--v-sm();
 }

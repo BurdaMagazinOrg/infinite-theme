@@ -10,6 +10,10 @@
   @include item-content--taxonomy();
 }
 
+%item-content--horoscope {
+  @include item-content--horoscope();
+}
+
 %item-content--basic {
   @include item-content--basic();
 }

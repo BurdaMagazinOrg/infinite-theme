@@ -16,6 +16,10 @@
   @include _gap($gaps);
 }
 
+@mixin gap--v-xs($gaps: ($gap-v-xs-mobile, $gap-v-xs-tablet, $gap-v-xs-desktop)) {
+  @include _gap($gaps);
+}
+
 @mixin gap--v-sm($gaps: ($gap-v-sm-mobile, $gap-v-sm-tablet, $gap-v-sm-desktop)) {
   @include _gap($gaps);
 }

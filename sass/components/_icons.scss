@@ -1,3 +1,15 @@
+.icon-star--full {
+  @extend %icon-star--full;
+}
+
+.icon-star--half {
+  @extend %icon-star--half;
+}
+
+.icon-star--empty {
+  @extend %icon-star--empty;
+}
+
 .icon-facebook {
   @extend %icon-facebook;
 }
@@ -11,7 +23,7 @@
 }
 
 .icon-instagram {
-  //@extend %icon-instagram;
+  @extend %icon-instagram;
 }
 
 .icon-email {
@@ -65,7 +77,6 @@
 .icon-copyright {
   @extend %icon-copyright;
 }
-
 
 .icon-info {
   @extend %icon-info;

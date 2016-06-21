@@ -401,6 +401,48 @@
   }
 }
 
+@mixin item-content--horoscope() {
+  @extend %item-content--article;
+
+  .item-horoscope__date {
+    @extend %item-date--horoscope;
+  }
+
+  .item-horoscope__img-container {
+    text-align: center;
+    border-bottom: $horoscope__img-container-border;
+
+    img {
+      max-width: 70%;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-horoscope__img-container {
+      margin-bottom: $horoscope__img-container-margin-mobile;
+      padding-bottom: $horoscope__img-container-padding-mobile;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .item-horoscope__img-container {
+      margin-bottom: $horoscope__img-container-margin-tablet;
+      padding-bottom: $horoscope__img-container-padding-tablet;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .item-horoscope__img-container {
+      margin-bottom: $horoscope__img-container-margin-desktop;
+      padding-bottom: $horoscope__img-container-padding-desktop;
+    }
+  }
+}
+
 @mixin item-content--basic() {
   .item-content__header {
     @extend %content__header-center;

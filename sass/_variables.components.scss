@@ -64,7 +64,6 @@ $form__error-content-color: $alert-danger-text !default;
 $form__error-content-top: -4px !default;
 $form__error-content-left: -14px !default;
 
-
 /**
 ** Lists Margins
 ** only margin
@@ -205,7 +204,6 @@ $newsletter__groups-checkbox-copy-size: $font-size-base !default;
 $newsletter__groups-checkbox-copy-label-margin: 30px 0 0 0 !default;
 
 $newsletter__alerts-bg: rgba($brand-danger, 0.95) !default;
-
 
 //modal
 $newsletter__logo-max-width--modal: 200px !default;
@@ -367,7 +365,18 @@ $teaser__category--default-gap-bottom-mobile: $gap-size-sm !default;
 $teaser__category--default-gap-bottom-tablet: $gap-size-sm !default;
 $teaser__category--default-gap-bottom-desktop: $gap-size-sm !default;
 
+$teaser__overhead-font--default: $label--category-font !default;
+$teaser__overhead-color--default: $label--category-color !default;
+$teaser__overhead-letter-spacing--default: $tiny-letter-spacing !default;
+$teaser__overhead-size-mobile--default: $label--category-size--mobile !default;
+$teaser__overhead-size-tablet--default: $label--category-size--tablet !default;
+$teaser__overhead-size-desktop--default: $label--category-size--desktop !default;
+$teaser__overhead-gap-bottom-mobile--default: $teaser__category--default-gap-bottom-mobile !default;
+$teaser__overhead-gap-bottom-tablet--default: $teaser__category--default-gap-bottom-tablet !default;
+$teaser__overhead-gap-bottom-desktop--default: $teaser__category--default-gap-bottom-desktop !default;
+
 /** feed-teaser **/
+//TODO: rename this to $list__headline...-teaser-feed
 $feed-teaser-headline-size-mobile: $title-size-sm !default;
 $feed-teaser-headline-size-tablet: $title-size-md !default;
 $feed-teaser-headline-size-desktop: $title-size-lg !default;
@@ -379,6 +388,25 @@ $feed-teaser-headline-middle-size-desktop: $feed-teaser-headline-size-desktop !d
 $feed-teaser-gap-top-mobile: $gap-size-md !default;
 $feed-teaser-gap-top-tablet: $gap-size-xl !default;
 $feed-teaser-gap-top-desktop: $gap-size-xl !default;
+
+/**
+** list-teaser
+**/
+$teaser-list__headline-font--teaser-middle: $font-headline !default;
+$teaser-list__headline-size-mobile--teaser-middle: $title-size-sm !default;
+$teaser-list__headline-size-tablet--teaser-middle: $title-size-md !default;
+$teaser-list__headline-size-desktop--teaser-middle: $title-size-lg !default;
+$teaser-list__gap-mobile--teaser-middle: $gap-v-sm-region-mobile!default;
+$teaser-list__gap-tablet--teaser-middle: $gap-v-sm-region-tablet !default;
+$teaser-list__gap-desktop--teaser-middle: $gap-v-sm-region-desktop !default;
+//horoscope
+$teaser-list__headline-font--teaser-horoscope-middle: $font-headline !default;
+$teaser-list__headline-size-mobile--teaser-horoscope-middle: $title-size-sm !default;
+$teaser-list__headline-size-tablet--teaser-horoscope-middle: $title-size-md !default;
+$teaser-list__headline-size-desktop--teaser-horoscope-middle: $title-size-lg !default;
+$teaser-list__gap-mobile--teaser-horoscope-middle: $gap-v-sm-region-mobile!default;
+$teaser-list__gap-tablet--teaser-horoscope-middle: $gap-v-sm-region-tablet !default;
+$teaser-list__gap-desktop--teaser-horoscope-middle: $gap-v-sm-region-desktop !default;
 
 /** full-content-teaser **/
 $teaser__padding-bottom--full-content-tablet: 25px !default;
@@ -733,16 +761,15 @@ $date__margin-mobile--node-created: 0 0 $gap-size-xs 0 !default;
 
 //horoscope
 $date__font--horoscope: $font-tiny !default;
-$date__size-mobile--horoscope: $label-size-small !default;
+$date__size-mobile--horoscope: $label-size-medium !default;
 $date__size-tablet--horoscope: $label-size-medium !default;
 $date__size-desktop--horoscope: $label-size-large !default;
 $date__letter-spacing--horoscope: 2px !default;
 $date__text-transform--horoscope: uppercase !default;
 $date__color--horoscope: $gray-base !default;
-$date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;
-$date__margin-tablet--horoscope: 0 0 $gap-size-sm 0 !default;
 $date__margin-mobile--horoscope: 0 0 $gap-size-xs 0 !default;
-
+$date__margin-tablet--horoscope: 0 0 $gap-size-sm 0 !default;
+$date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;
 
 /**
 ** Author
@@ -848,3 +875,18 @@ $horoscope__img-container-border: $h-line-style !default;
 $horoscope__img-container-margin-mobile: 0 !default;
 $horoscope__img-container-margin-tablet: 0 !default;
 $horoscope__img-container-margin-desktop: 0 !default;
+$horoscope__img-container-padding-mobile: $gap-size-sm !default;
+$horoscope__img-container-padding-tablet: $gap-size-sm !default;
+$horoscope__img-container-padding-desktop: $gap-size-sm !default;
+
+/**
+** Rating
+**/
+$rating__size: inherit !default;
+$rating__letter-spacing: 5px !default;
+$rating__pos-right: 120px !default;
+$rating__pos-top: 0px !default;
+$rating__content-before: "\e913" !default;
+$rating__content-after: "\e913" !default;
+$rating__color: $gray-light !default;
+$rating__color-active: $color-highlighted !default;

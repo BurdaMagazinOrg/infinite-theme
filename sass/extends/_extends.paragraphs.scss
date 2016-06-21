@@ -69,6 +69,10 @@
   @include item-paragraph--seo-links();
 }
 
+%item-paragraph--viversum-zodiac {
+  @include item-paragraph--viversum-zodiac();
+}
+
 %item-paragraph--quote {
   @include item-paragraph--quote();
 }

@@ -17,6 +17,31 @@
 ** Teaser types
 **/
 
+@mixin teaser__text--default() {
+  .teaser__overhead {
+    @include text-helper($teaser__overhead-font--default);
+    text-transform: uppercase;
+    color: $teaser__overhead-color--default;
+    letter-spacing: $teaser__overhead-letter-spacing--default;
+
+    @media (max-width: $screen-xxs-max) {
+      @include text-helper-size($teaser__overhead-font--default, $teaser__overhead-size-mobile--default);
+    }
+
+    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+      @include text-helper-size($teaser__overhead-font--default, $teaser__overhead-size-tablet--default);
+    }
+
+    @media (min-width: $screen-md-min) {
+      @include text-helper-size($teaser__overhead-font--default, $teaser__overhead-size-desktop--default);
+    }
+  }
+
+  .teaser__copy {
+    @extend %copytext--teaser-default;
+  }
+}
+
 @mixin teaser-feed-large-text($sizes: ($feed-teaser-headline-size-mobile, $feed-teaser-headline-size-tablet, $feed-teaser-headline-size-desktop)) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
@@ -37,6 +62,62 @@
   @media (min-width: $screen-md-min) {
     .text-headline {
       @include text-headline-size($size-desktop);
+    }
+  }
+}
+
+@mixin teaser-list__text--middle($sizes: ($teaser-list__headline-size-mobile--teaser-middle, $teaser-list__headline-size-tablet--teaser-middle, $teaser-list__headline-size-desktop--teaser-middle), $font: $teaser-list__headline-font--teaser-middle) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  .text-headline {
+    @include text-helper($font);
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .text-headline {
+      @include text-helper-size($font, $size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-helper-size($font, $size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-helper-size($font, $size-desktop);
+    }
+  }
+}
+
+@mixin teaser-list__text--horoscope-middle($sizes: ($teaser-list__headline-size-mobile--teaser-horoscope-middle, $teaser-list__headline-size-tablet--teaser-horoscope-middle, $teaser-list__headline-size-desktop--teaser-horoscope-middle), $font: $teaser-list__headline-font--teaser-horoscope-middle) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  .text-headline {
+    @include text-helper($font);
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .text-headline {
+      @include text-helper-size($font, $size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      @include text-helper-size($font, $size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-helper-size($font, $size-desktop);
     }
   }
 }

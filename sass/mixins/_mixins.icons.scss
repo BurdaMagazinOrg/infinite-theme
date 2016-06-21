@@ -18,6 +18,24 @@
   }
 }
 
+@mixin icon-star--full() {
+  &:before {
+    content: "\e913";
+  }
+}
+
+@mixin icon-star--half() {
+  &:before {
+    content: "\e912";
+  }
+}
+
+@mixin icon-star--empty() {
+  &:before {
+    content: "\e911";
+  }
+}
+
 @mixin icon-arrow-up-small($hover: true) {
   &:before {
     content: "\e90f";

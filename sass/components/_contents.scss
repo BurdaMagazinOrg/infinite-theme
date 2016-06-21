@@ -26,12 +26,16 @@
   @extend %item-content--vocabulary;
 }
 
+.item-content--article {
+  @extend %item-content--article;
+}
+
 .item-content--taxonomy {
   @extend %item-content--taxonomy;
 }
 
-.item-content--article {
-  @extend %item-content--article;
+.item-content--horoscope {
+  @extend %item-content--horoscope;
 }
 
 .item-content--horoscope {

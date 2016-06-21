@@ -1,0 +1,43 @@
+@mixin rating--stars() {
+  @include icon();
+  @include icon('&:after');
+  position: absolute;
+  right: $rating__pos-right;
+  top: $rating__pos-top;
+  letter-spacing: $rating__letter-spacing;
+  font-size: $rating__size;
+
+  &[class*="rating-1"]:after {
+    content: $rating__content-after;
+  }
+
+  &[class*="rating-2"]:after {
+    content: $rating__content-after + $rating__content-after;
+  }
+
+  &[class*="rating-3"]:after {
+    content: $rating__content-after + $rating__content-after + $rating__content-after;
+  }
+
+  &[class*="rating-4"]:after {
+    content: $rating__content-after + $rating__content-after + $rating__content-after + $rating__content-after;
+  }
+
+  &[class*="rating-5"]:after {
+    content: $rating__content-after + $rating__content-after + $rating__content-after + $rating__content-after + $rating__content-after;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    white-space: nowrap;
+  }
+
+  &:before {
+    content: $rating__content-before + $rating__content-before + $rating__content-before + $rating__content-before + $rating__content-before;
+    color: $rating__color;
+  }
+
+  &:after {
+    color: $rating__color-active;
+  }
+}

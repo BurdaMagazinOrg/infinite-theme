@@ -3,6 +3,21 @@
   //@extend %transition-color;
 }
 
+%icon-star--full {
+  @include icon-star--full();
+  @extend %icon;
+}
+
+%icon-star--half {
+  @include icon-star--half();
+  @extend %icon;
+}
+
+%icon-star--empty {
+  @include icon-star--empty();
+  @extend %icon;
+}
+
 %icon-arrow-left-small {
   @include icon-arrow-left-small();
   @extend %icon;

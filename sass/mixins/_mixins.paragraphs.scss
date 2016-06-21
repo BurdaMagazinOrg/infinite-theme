@@ -573,7 +573,13 @@
 }
 
 @mixin item-paragraph--viversum-zodiac() {
-  @include item-paragraph--text();
+  @extend %text-content-html;
+  @extend %copytext--text-block;
+  position: relative;
+
+  .item-horoscope__rating {
+    @extend %rating--stars;
+  }
 }
 
 @mixin item-paragraph--quote() {

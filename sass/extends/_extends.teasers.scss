@@ -10,6 +10,23 @@
   @include teaser-feed-large();
 }
 
+%teaser-list--middle {
+  @include teaser-list--middle();
+}
+
+%teaser-list__gap--middle {
+  @include teaser-list__gap--middle();
+}
+
+
+%teaser-list--horoscope-middle{
+  @include teaser-list--horoscope-middle();
+}
+
+%teaser-list__gap--horoscope-middle {
+  @include teaser-list__gap--horoscope-middle();
+}
+
 %teaser-feed-large-gap {
   @include teaser-feed-large-gap();
 }
@@ -32,6 +49,10 @@
 
 %teaser-square-medium {
   @include teaser-square-medium();
+}
+
+%teaser--horoscope-square-medium {
+  @include teaser--horoscope-square-medium();
 }
 
 %teaser--portrait-small {
