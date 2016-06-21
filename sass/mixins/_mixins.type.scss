@@ -152,8 +152,7 @@
   }
 
   ul {
-    list-style-type: disc;
-    padding-left: 2px; //overflow fix
+    @extend %list-ul--text-block;
   }
 
   ol {
@@ -161,21 +160,7 @@
   }
 
   ul, ol {
-    margin-top: 1em;
-    list-style-position: inside;
-
-    li {
-      position: relative;
-      line-height: 1.5;
-      margin-top: 0.5em;
-      margin-left: 1em;
-      text-indent: -1em;
-      padding-left: 1em;
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
+    @extend %list--text-block;
   }
 
   table {

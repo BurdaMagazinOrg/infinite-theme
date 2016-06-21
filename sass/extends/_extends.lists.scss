@@ -29,3 +29,11 @@
 %list__alphabetical {
   @include list__alphabetical();
 }
+
+%list--text-block {
+  @include list--text-block();
+}
+
+%list-ul--text-block {
+  @include list-ul--text-block();
+}

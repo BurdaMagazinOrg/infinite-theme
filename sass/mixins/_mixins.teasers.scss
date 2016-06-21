@@ -181,6 +181,22 @@
   }
 }
 
+@mixin teaser-list--middle() {
+  @media (max-width: $screen-xxs-max) {
+    .teaser__caption {
+      padding-top: $gap-size-xs;
+    }
+  }
+}
+
+@mixin teaser-list--horoscope-middle() {
+  @media (max-width: $screen-xxs-max) {
+    .teaser__caption {
+      padding-top: $gap-size-xs;
+    }
+  }
+}
+
 @mixin teaser-square-xs() {
   @include make-row();
   @include teaser-square-xs-text();

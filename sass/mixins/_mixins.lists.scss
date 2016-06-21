@@ -159,3 +159,26 @@
   @include gap--v-sm();
   border-top: $h-line-style;
 }
+
+@mixin list--text-block() {
+  list-style-position: inside;
+  margin-top: 1em;
+
+  li {
+    position: relative;
+    line-height: 1.5;
+    margin-top: 0.5em;
+    margin-left: 1em;
+    text-indent: -1em;
+    padding-left: 1em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+@mixin list-ul--text-block() {
+  list-style-type: disc;
+  padding-left: 2px; //overflow fix
+}

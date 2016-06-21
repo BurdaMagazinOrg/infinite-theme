@@ -1,0 +1,86 @@
+@mixin item-pager--list() {
+  .item-pager__title {
+    @extend %title--content-block;
+  }
+
+  .item-pager__nav {
+  }
+
+  .item-pager__tree {
+    @extend %list-ul--text-block;
+    @extend %list--text-block;
+    background-color: $pager__tree-bg-color--list;
+    padding: $pager__tree-padding--list;
+  }
+
+  .item-pager__links {
+    position: relative;
+    height: $pager__links-height--list;
+    margin: $pager__links-margin--list;
+  }
+
+  .item-pager__links-prev, .item-pager__links-next {
+    @include text-helper($pager__links-font--list);
+    text-transform: $pager__links-text-transform--list;
+    letter-spacing: $pager__links-letter-spacing--list;
+    color: $pager__links-color--list;
+    position: absolute;
+    top: 0;
+
+    &:hover {
+      color: $pager__links-color-hover--list;
+    }
+  }
+
+  .item-pager__links-prev {
+    @include icon();
+    @include icon-arrow-large-left(false);
+    left: 0;
+
+    &:before {
+      margin-right: 5px;
+      vertical-align: baseline;
+    }
+  }
+
+  .item-pager__links-next {
+    @include icon('&:after');
+    @include icon-arrow-large-right(false, '&:after');
+    right: 0;
+
+    &:after {
+      margin-left: 5px;
+      vertical-align: baseline;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-pager__links-prev, .item-pager__links-next {
+      @include text-helper-size($pager__links-font--list, $pager__links-size-mobile--list);
+
+      &:before, &:after {
+        font-size: $pager__links-icon-size-mobile--list;
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .item-pager__links-prev, .item-pager__links-next {
+      @include text-helper-size($pager__links-font--list, $pager__links-size-tablet--list);
+    }
+
+    &:before, &:after {
+      font-size: $pager__links-icon-size-tablet--list;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .item-pager__links-prev, .item-pager__links-next {
+      @include text-helper-size($pager__links-font--list, $pager__links-size-desktop--list);
+
+      &:before, &:after {
+        font-size: $pager__links-icon-size-desktop--list;
+      }
+    }
+  }
+}

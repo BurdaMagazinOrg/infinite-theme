@@ -62,8 +62,8 @@
   }
 }
 
-@mixin icon-arrow-left-small($hover: true) {
-  &:before {
+@mixin icon-arrow-left-small($hover: true, $container: '&:before') {
+#{$container} {
     content: "\e900";
   }
 
@@ -75,8 +75,8 @@
   }
 }
 
-@mixin icon-arrow-right-small($hover: true) {
-  &:before {
+@mixin icon-arrow-right-small($hover: true, $container: '&:before') {
+  #{$container} {
     content: "\e901";
   }
 
@@ -169,8 +169,8 @@
 }
 
 
-@mixin icon-arrow-large-left($hover: true) {
-  &:before {
+@mixin icon-arrow-large-left($hover: true, $container: '&:before') {
+  #{$container} {
     content: "\e902";
   }
 
@@ -182,8 +182,8 @@
   }
 }
 
-@mixin icon-arrow-large-right($hover: true) {
-  &:before {
+@mixin icon-arrow-large-right($hover: true, $container: '&:before') {
+  #{$container} {
     content: "\e903";
   }
 

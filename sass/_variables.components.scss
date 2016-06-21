@@ -311,7 +311,6 @@ $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
 $title--content-block-color: $text-color !default;
-
 //fkn different design shizzl
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
 $title--content-block-gap-bottom-tablet: $gap-size-md !default;
@@ -332,9 +331,11 @@ $title--text-block-tablet: $title-size-md !default;
 $title--text-block-desktop: 30px !default;
 $title--text-block-color: $text-color !default;
 $title-margin--text-block: $gap-size-lg 0 0 0 !default;
-$title__p-margin--text-block: 13px 0 0 !default;
+$title__children-margin-mobile--text-block: 13px 0 0 !default;
+$title__children-margin-tablet--text-block: 13px 0 0 !default;
+$title__children-margin-desktop--text-block: 13px 0 0 !default;
 $title__headline-margin--text-block: 16px 0 0 !default;
-//fkn different design shizzl
+
 
 /** copytext--text-block **/
 $copytext--text-block-mobile: 18px !default;
@@ -890,3 +891,23 @@ $rating__content-before: "\e913" !default;
 $rating__content-after: "\e913" !default;
 $rating__color: $gray-light !default;
 $rating__color-active: $color-highlighted !default;
+
+
+/**
+** Pager
+**/
+$pager__tree-bg-color--list: $gray-light !default;
+$pager__tree-padding--list: 10px 20px !default;
+$pager__links-font--list: $font-label !default;
+$pager__links-text-transform--list: uppercase !default;
+$pager__links-letter-spacing--list: 0.1em !default;
+$pager__links-color--list: $gray-base !default;
+$pager__links-size-mobile--list: $title-size-xxxs !default;
+$pager__links-size-tablet--list: $title-size-xxxs !default;
+$pager__links-size-desktop--list: $title-size-xxxs !default;
+$pager__links-icon-size-mobile--list: 12px !default;
+$pager__links-icon-size-tablet--list: 12px !default;
+$pager__links-icon-size-desktop--list: 12px !default;
+$pager__links-color-hover--list: $color-hover !default;
+$pager__links-margin--list: 14px 0px 0 !default;
+$pager__links-height--list: 22px !default;

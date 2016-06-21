@@ -83,8 +83,22 @@
     margin-top: 0;
   }
 
-  & + p, & + table {
-    margin: $title__p-margin--text-block;
+  @media (max-width: $screen-xs-max) {
+    & + * {
+      margin: $title__children-margin-mobile--text-block;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    & + * {
+      margin: $title__children-margin-tablet--text-block;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    & + * {
+      margin: $title__children-margin-desktop--text-block;
+    }
   }
 
   & + h2, & + h3, & + h4, & + h5, & + h6 {
