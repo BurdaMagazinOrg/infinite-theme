@@ -49,7 +49,7 @@
 
             var tmpAjaxModel = new AjaxModel({
                 url: tmpURL,
-                element: $tmpMoreLink,
+                element: $tmpMoreLink[0],
                 callback: _.bind(this.appendInfiniteItem, this)
             });
             tmpAjaxModel.execute();
