@@ -49,7 +49,7 @@ a {
   @extend %text-content-html;
 }
 
-strong, b {
+strong, b, .text--highlighted {
   font-family: $font-content-bold;
 }
 
