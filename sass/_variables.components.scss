@@ -872,13 +872,30 @@ $zindex-modal-background-overall: 9999 !default;
 /**
 ** Horoscope
 **/
-$horoscope__img-container-border: $h-line-style !default;
-$horoscope__img-container-margin-mobile: 0 !default;
-$horoscope__img-container-margin-tablet: 0 !default;
-$horoscope__img-container-margin-desktop: 0 !default;
-$horoscope__img-container-padding-mobile: $gap-size-sm !default;
-$horoscope__img-container-padding-tablet: $gap-size-sm !default;
-$horoscope__img-container-padding-desktop: $gap-size-sm !default;
+$horoscope__img-container-border--node: $h-line-style !default;
+$horoscope__img-container-margin-mobile--node: 0 !default;
+$horoscope__img-container-margin-tablet--node: 0 !default;
+$horoscope__img-container-margin-desktop--node: 0 !default;
+$horoscope__img-container-padding-mobile--node: $gap-size-sm !default;
+$horoscope__img-container-padding-tablet--node: $gap-size-sm !default;
+$horoscope__img-container-padding-desktop--node: $gap-size-sm !default;
+
+$horoscope__sponsored-font: $font-content !default;
+$horoscope__sponsored-size: $label-size-medium !default;
+$horoscope__sponsored-color: $gray-base !default;
+$horoscope__sponsored-border: $h-line-style !default;
+$horoscope__sponsored-margin: 15px 0 !default;
+$horoscope__sponsored-padding: 10px 0 !default;
+$horoscope__sponsored-letter-spacing: 1px !default;
+$horoscope__viversum-logo: "../images/static/icon_viversum.png" !default;
+$horoscope__viversum-logo-width: 100px !default;
+$horoscope__viversum-logo-height: 56px !default;
+$horoscope__viversum-logo-top: -5px !default;
+$horoscope__viversum-banner: "../images/static/viversum-banner.jpg" !default;
+$horoscope__viversum-banner-ratio: 34% !default;
+$horoscope__viversum-banner-margin: 15px 0 !default;
+$horoscope__viversum-banner-padding: $gap-size-sm 0 !default;
+$horoscope__viversum-banner-border: $h-line-style !default;
 
 /**
 ** Rating

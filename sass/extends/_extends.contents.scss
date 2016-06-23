@@ -2,16 +2,16 @@
   @include item-content--article();
 }
 
-%item-content--horoscope {
-  @include item-content--horoscope();
-}
-
 %item-content--taxonomy {
   @include item-content--taxonomy();
 }
 
-%item-content--horoscope {
-  @include item-content--horoscope();
+%item-content--horoscopes {
+  @include item-content--horoscopes();
+}
+
+%item-content--node-horoscope {
+  @include item-content--node-horoscope();
 }
 
 %item-content--basic {

@@ -305,37 +305,6 @@
   }
 }
 
-@mixin item-content--horoscope() {
-  @extend %item-content--article;
-
-  .item-horoscope__img-container {
-    text-align: center;
-    border-bottom: $horoscope__img-container-border;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    .item-horoscope__img-container {
-      margin-bottom: $horoscope__img-container-margin-mobile;
-    }
-  }
-
-  @media (min-width: $screen-sm-min) {
-
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    .item-horoscope__img-container {
-      margin-bottom: $horoscope__img-container-margin-tablet;
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-    .item-horoscope__img-container {
-      margin-bottom: $horoscope__img-container-margin-desktop;
-    }
-  }
-}
-
 @mixin item-content--article() {
   @extend %container--v-sm-padding;
 
@@ -402,16 +371,36 @@
   }
 }
 
-@mixin item-content--horoscope() {
+@mixin item-content--horoscopes() {
+  .item-horoscope__teaser-list {
+    @extend %teaser-list--horoscope-50;
+  }
+
+  .item-horoscope__viversum-sponsored {
+    @extend %item-horoscope__viversum-sponsored;
+  }
+
+  .item-horoscope__viversum-banner {
+    @extend %item-horoscope__viversum-banner;
+  }
+
+}
+
+@mixin item-content--node-horoscope() {
   @extend %item-content--article;
+  @include item-content__text--node-horoscope();
 
   .item-horoscope__date {
     @extend %item-date--horoscope;
   }
 
+  .item-horoscope__viversum-sponsored {
+    @extend %item-horoscope__viversum-sponsored;
+  }
+
   .item-horoscope__img-container {
     text-align: center;
-    border-bottom: $horoscope__img-container-border;
+    border-bottom: $horoscope__img-container-border--node;
 
     img {
       max-width: 70%;
@@ -420,8 +409,8 @@
 
   @media (max-width: $screen-xs-max) {
     .item-horoscope__img-container {
-      margin-bottom: $horoscope__img-container-margin-mobile;
-      padding-bottom: $horoscope__img-container-padding-mobile;
+      margin-bottom: $horoscope__img-container-margin-mobile--node;
+      padding-bottom: $horoscope__img-container-padding-mobile--node;
     }
   }
 
@@ -431,15 +420,15 @@
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .item-horoscope__img-container {
-      margin-bottom: $horoscope__img-container-margin-tablet;
-      padding-bottom: $horoscope__img-container-padding-tablet;
+      margin-bottom: $horoscope__img-container-margin-tablet--node;
+      padding-bottom: $horoscope__img-container-padding-tablet--node;
     }
   }
 
   @media (min-width: $screen-md-min) {
     .item-horoscope__img-container {
-      margin-bottom: $horoscope__img-container-margin-desktop;
-      padding-bottom: $horoscope__img-container-padding-desktop;
+      margin-bottom: $horoscope__img-container-margin-desktop--node;
+      padding-bottom: $horoscope__img-container-padding-desktop--node;
     }
   }
 }

@@ -122,6 +122,10 @@
   }
 }
 
+@mixin teaser-list__text--horoscope-50($sizes: ($teaser-list__headline-size-mobile--teaser-horoscope-middle, $teaser-list__headline-size-tablet--teaser-horoscope-middle, $teaser-list__headline-size-desktop--teaser-horoscope-middle), $font: $teaser-list__headline-font--teaser-horoscope-middle) {
+  @include teaser-list__text--horoscope-middle($sizes, $font);
+}
+
 @mixin teaser-list-h-text() {
 
   &:hover {
@@ -477,5 +481,24 @@
     .item-media__description--file {
       @include text-helper-size($media__description-font--file, $media__description-size-desktop--file);
     }
+  }
+}
+
+@mixin item-content__text--node-horoscope() {
+  .item-horoscope__viversum-sponsored {
+    @include text-helper($horoscope__sponsored-font, $horoscope__sponsored-size);
+    color: $horoscope__sponsored-color;
+  }
+
+  @media (max-width: $screen-xs-max) {
+
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+
+  }
+
+  @media (min-width: $screen-md-min) {
+
   }
 }

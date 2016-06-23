@@ -17,35 +17,20 @@
 }
 
 //vertical feed list
-.teaser-list-large, .list--teaser-large {
-  .teaser {
-    @extend %teaser-feed-large;
-    @extend %teaser-feed-large-gap;
-
-    @include teaser-feed-large-text();
-  }
-
-  .teaser-square-medium, .teaser-portrait-medium {
-    @include teaser-feed-large-text(($feed-teaser-headline-middle-size-mobile, $feed-teaser-headline-middle-size-tablet, $feed-teaser-headline-middle-size-desktop));
-  }
+.teaser-list-large, .teaser-list--large {
+  @extend %teaser-feed-large;
 }
 
 .teaser-list--middle {
-  .teaser {
-    @extend %teaser-list--middle;
-    @extend %teaser-list__gap--middle;
-
-    @include teaser-list__text--middle();
-  }
+  @extend %teaser-list--middle;
 }
 
 .teaser-list--horoscope-middle {
-  .teaser {
-    @extend %teaser-list--horoscope-middle;
-    @extend %teaser-list__gap--horoscope-middle;
+  @extend %teaser-list--horoscope-middle;
+}
 
-    @include teaser-list__text--horoscope-middle();
-  }
+.teaser-list--horoscope-50 {
+  @extend %teaser-list--horoscope-50;
 }
 
 .list__images--horizontal {
@@ -59,10 +44,6 @@
 
     @include teaser-list-h-text();
   }
-}
-
-.teaser-link-list-horizontal {
-
 }
 
 /**
@@ -108,6 +89,10 @@
 
 .teaser-square-medium {
   @extend %teaser-square-medium;
+}
+
+.teaser--horoscope-square {
+  @extend %teaser--horoscope-square;
 }
 
 .teaser--horoscope-square-medium {

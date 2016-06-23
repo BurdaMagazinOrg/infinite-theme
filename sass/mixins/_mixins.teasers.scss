@@ -148,6 +148,31 @@
   }
 }
 
+@mixin teaser-list__gap--horoscope-50() {
+  border-top: $h-line-style;
+
+  &:first-child, &:nth-child(2) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    padding-top: $teaser-list__gap-mobile--teaser-horoscope-middle;
+    margin-top: $teaser-list__gap-mobile--teaser-horoscope-middle;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    padding-top: $teaser-list__gap-tablet--teaser-horoscope-middle;
+    margin-top: $teaser-list__gap-tablet--teaser-horoscope-middle;
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding-top: $teaser-list__gap-desktop--teaser-horoscope-middle;
+    margin-top: $teaser-list__gap-desktop--teaser-horoscope-middle;
+  }
+}
+
 @mixin teaser-feed-large-gap() {
   border-top: $h-line-style;
 
@@ -174,6 +199,15 @@
 }
 
 @mixin teaser-feed-large() {
+  .teaser {
+    @extend %teaser-feed-large-gap;
+    @include teaser-feed-large-text();
+  }
+
+  .teaser-square-medium, .teaser-portrait-medium {
+    @include teaser-feed-large-text(($feed-teaser-headline-middle-size-mobile, $feed-teaser-headline-middle-size-tablet, $feed-teaser-headline-middle-size-desktop));
+  }
+
   @media (max-width: $screen-xxs-max) {
     .caption-teaser, .teaser__caption {
       padding-top: $gap-size-xs;
@@ -182,6 +216,11 @@
 }
 
 @mixin teaser-list--middle() {
+  .teaser {
+    @extend %teaser-list__gap--middle;
+    @include teaser-list__text--middle();
+  }
+
   @media (max-width: $screen-xxs-max) {
     .teaser__caption {
       padding-top: $gap-size-xs;
@@ -190,10 +229,25 @@
 }
 
 @mixin teaser-list--horoscope-middle() {
+  .teaser {
+    @extend %teaser-list__gap--horoscope-middle;
+    @include teaser-list__text--horoscope-middle();
+  }
+
   @media (max-width: $screen-xxs-max) {
     .teaser__caption {
       padding-top: $gap-size-xs;
     }
+  }
+}
+
+@mixin teaser-list--horoscope-50() {
+  @include make-row();
+
+  .teaser {
+    @extend %teaser-list__gap--horoscope-50;
+    @include teaser-list__text--horoscope-50();
+    @include make-xs-column($grid-columns/2);
   }
 }
 
@@ -214,6 +268,35 @@
   & > .img-container, & > .teaser__img-container,
   .caption-teaser, . teaser__caption {
     @include make-xs-column($grid-columns/2);
+  }
+}
+
+@mixin teaser--horoscope-square() {
+  position: relative;
+
+  @media (max-width: $screen-xs-max) {
+
+    .teaser__img-container {
+      img {
+        max-width: 40%;
+      }
+    }
+
+    .teaser__caption {
+      position: static;
+    }
+
+    .teaser__caption-pos-content {
+      position: absolute;
+      width: 60%;
+      right: 0px;
+      top: 0px;
+      padding: 20px;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+
   }
 }
 
