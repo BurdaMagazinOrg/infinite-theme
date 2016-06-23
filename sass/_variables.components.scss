@@ -393,14 +393,6 @@ $feed-teaser-gap-top-desktop: $gap-size-xl !default;
 /**
 ** list-teaser
 **/
-$teaser-list__headline-font--teaser-middle: $font-headline !default;
-$teaser-list__headline-size-mobile--teaser-middle: $title-size-sm !default;
-$teaser-list__headline-size-tablet--teaser-middle: $title-size-md !default;
-$teaser-list__headline-size-desktop--teaser-middle: $title-size-lg !default;
-$teaser-list__gap-mobile--teaser-middle: $gap-v-sm-region-mobile!default;
-$teaser-list__gap-tablet--teaser-middle: $gap-v-sm-region-tablet !default;
-$teaser-list__gap-desktop--teaser-middle: $gap-v-sm-region-desktop !default;
-//horoscope
 $teaser-list__headline-font--teaser-horoscope-middle: $font-headline !default;
 $teaser-list__headline-size-mobile--teaser-horoscope-middle: $title-size-sm !default;
 $teaser-list__headline-size-tablet--teaser-horoscope-middle: $title-size-md !default;
@@ -881,11 +873,11 @@ $horoscope__img-container-padding-tablet--node: $gap-size-sm !default;
 $horoscope__img-container-padding-desktop--node: $gap-size-sm !default;
 
 $horoscope__sponsored-font: $font-content !default;
-$horoscope__sponsored-size: $label-size-medium !default;
+$horoscope__sponsored-size: 15px !default;
 $horoscope__sponsored-color: $gray-base !default;
 $horoscope__sponsored-border: $h-line-style !default;
-$horoscope__sponsored-margin: 15px 0 !default;
-$horoscope__sponsored-padding: 10px 0 !default;
+$horoscope__sponsored-margin: 15px 0  10px !default;
+$horoscope__sponsored-padding: 10px 0 0 !default;
 $horoscope__sponsored-letter-spacing: 1px !default;
 $horoscope__viversum-logo: "../images/static/icon_viversum.png" !default;
 $horoscope__viversum-logo-width: 100px !default;

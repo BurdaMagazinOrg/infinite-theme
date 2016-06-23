@@ -484,21 +484,16 @@
   }
 }
 
-@mixin item-content__text--node-horoscope() {
+@mixin item-content__text--horoscopes() {
   .item-horoscope__viversum-sponsored {
     @include text-helper($horoscope__sponsored-font, $horoscope__sponsored-size);
     color: $horoscope__sponsored-color;
   }
+}
 
-  @media (max-width: $screen-xs-max) {
-
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-
-  }
-
-  @media (min-width: $screen-md-min) {
-
+@mixin item-content__text--node-horoscope() {
+  .item-horoscope__viversum-sponsored {
+    @include text-helper($horoscope__sponsored-font, $horoscope__sponsored-size);
+    color: $horoscope__sponsored-color;
   }
 }

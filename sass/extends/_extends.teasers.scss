@@ -10,14 +10,6 @@
   @include teaser-feed-large();
 }
 
-%teaser-list--middle {
-  @include teaser-list--middle();
-}
-
-%teaser-list__gap--middle {
-  @include teaser-list__gap--middle();
-}
-
 %teaser-list--horoscope-middle{
   @include teaser-list--horoscope-middle();
 }

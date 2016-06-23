@@ -372,8 +372,14 @@
 }
 
 @mixin item-content--horoscopes() {
+  @include item-content__text--horoscopes();
+
   .item-horoscope__teaser-list {
     @extend %teaser-list--horoscope-50;
+
+    .teaser {
+      @extend %teaser--horoscope-square;
+    }
   }
 
   .item-horoscope__viversum-sponsored {
@@ -383,7 +389,6 @@
   .item-horoscope__viversum-banner {
     @extend %item-horoscope__viversum-banner;
   }
-
 }
 
 @mixin item-content--node-horoscope() {
@@ -396,6 +401,14 @@
 
   .item-horoscope__viversum-sponsored {
     @extend %item-horoscope__viversum-sponsored;
+  }
+
+  .item-horoscope__teaser-list {
+    @extend %teaser-list--horoscope-middle;
+
+    .teaser {
+      @extend %teaser--horoscope-square-medium;
+    }
   }
 
   .item-horoscope__img-container {

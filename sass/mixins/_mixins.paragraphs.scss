@@ -577,6 +577,10 @@
   @extend %copytext--text-block;
   position: relative;
 
+  h2, h3, h4, h5, h6 {
+    padding-right: $rating__pos-right + $padding;
+  }
+
   .item-horoscope__rating {
     @extend %rating--stars;
   }

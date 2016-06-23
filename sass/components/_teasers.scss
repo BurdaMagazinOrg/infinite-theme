@@ -21,18 +21,6 @@
   @extend %teaser-feed-large;
 }
 
-.teaser-list--middle {
-  @extend %teaser-list--middle;
-}
-
-.teaser-list--horoscope-middle {
-  @extend %teaser-list--horoscope-middle;
-}
-
-.teaser-list--horoscope-50 {
-  @extend %teaser-list--horoscope-50;
-}
-
 .list__images--horizontal {
   @extend %swipeable__images--horizontal;
   @extend %list__images--horizontal;
