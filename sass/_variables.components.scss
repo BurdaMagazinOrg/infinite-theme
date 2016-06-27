@@ -885,8 +885,8 @@ $horoscope__viversum-logo-height: 56px !default;
 $horoscope__viversum-logo-top: -5px !default;
 $horoscope__viversum-banner: "../images/static/viversum-banner.jpg" !default;
 $horoscope__viversum-banner-ratio: 34% !default;
-$horoscope__viversum-banner-margin: 15px 0 !default;
-$horoscope__viversum-banner-padding: $gap-size-sm 0 !default;
+$horoscope__viversum-banner-margin: $gap-size-sm 0 0 !default;
+$horoscope__viversum-banner-padding: $gap-size-sm 0 0 !default;
 $horoscope__viversum-banner-border: $h-line-style !default;
 
 /**
@@ -907,6 +907,7 @@ $rating__color-active: $color-highlighted !default;
 **/
 $pager__tree-bg-color--list: $gray-light !default;
 $pager__tree-padding--list: 10px 20px !default;
+$pager__active-color--list: $color-hover !default;
 $pager__links-font--list: $font-label !default;
 $pager__links-text-transform--list: uppercase !default;
 $pager__links-letter-spacing--list: 0.1em !default;

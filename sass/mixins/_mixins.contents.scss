@@ -403,12 +403,20 @@
     @extend %item-horoscope__viversum-sponsored;
   }
 
+  .item-horoscope__viversum-banner {
+    @extend %item-horoscope__viversum-banner;
+  }
+
   .item-horoscope__teaser-list {
     @extend %teaser-list--horoscope-middle;
 
     .teaser {
       @extend %teaser--horoscope-square-medium;
     }
+  }
+
+  .item-horoscope__pager {
+    @extend %item-pager--list;
   }
 
   .item-horoscope__img-container {
@@ -428,7 +436,17 @@
   }
 
   @media (min-width: $screen-sm-min) {
+    .item-pager__tree {
+      .menu {
+        @include make-row();
 
+        li {
+          @include make-column($grid-columns/2);
+          margin-left: 0;
+          text-indent: 0;
+        }
+      }
+    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {

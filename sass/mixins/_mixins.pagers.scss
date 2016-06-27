@@ -7,10 +7,14 @@
   }
 
   .item-pager__tree {
-    @extend %list-ul--text-block;
     @extend %list--text-block;
+    @include list-ul--text-block(false);
     background-color: $pager__tree-bg-color--list;
     padding: $pager__tree-padding--list;
+
+    .is-active, .is-active a {
+      color: $pager__active-color--list;
+    }
   }
 
   .item-pager__links {
