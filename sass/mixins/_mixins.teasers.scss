@@ -236,7 +236,7 @@
 
 @mixin teaser-square-medium() {
   & > .img-container, & > .teaser__img-container,
-  .caption-teaser, . teaser__caption {
+  .caption-teaser, .teaser__caption {
     @include make-xs-column($grid-columns/2);
   }
 }

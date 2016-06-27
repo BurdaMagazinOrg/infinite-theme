@@ -99,6 +99,15 @@
   }
 }
 
+.outbrain_div_container {
+  @extend %gap__container--h-negative;
+
+  .OUTBRAIN {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .ad-inactive {
   overflow: hidden;
   height: 0 !important;

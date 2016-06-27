@@ -178,7 +178,10 @@
   }
 }
 
-@mixin list-ul--text-block() {
+@mixin list-ul--text-block($use-padding: true) {
   list-style-type: disc;
-  padding-left: 2px; //overflow fix
+
+  @if($use-padding) {
+    padding-left: 2px; //overflow fix
+  }
 }
