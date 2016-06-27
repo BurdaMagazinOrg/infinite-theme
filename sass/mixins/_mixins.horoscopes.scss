@@ -5,8 +5,7 @@
   letter-spacing: $horoscope__sponsored-letter-spacing;
   text-align: right;
 
-  &:after {
-    content: " ";
+  .viversum-logo {
     position: relative;
     background-image: url($horoscope__viversum-logo);
     background-repeat: no-repeat;
@@ -22,6 +21,7 @@
   margin: $horoscope__viversum-banner-margin;
   padding: $horoscope__viversum-banner-padding;
   border-top: $horoscope__viversum-banner-border;
+  display: block;
 
   &:after {
     content: " ";
