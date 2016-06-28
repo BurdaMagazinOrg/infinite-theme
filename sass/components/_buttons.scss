@@ -25,7 +25,3 @@ button {
 .btn--large {
   @extend %btn--large;
 }
-
-.btn-lg {
-  padding: $btn__padding--large;
-}

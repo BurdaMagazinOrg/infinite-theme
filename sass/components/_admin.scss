@@ -73,8 +73,7 @@ form[class^="user-"], form[class*=" user-"] {
   }
 
   .button {
-    @extend .btn;
-    @extend .btn-lg;
+    @extend %btn--large;
     margin-top: $padding;
     float: right;
   }
