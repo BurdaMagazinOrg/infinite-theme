@@ -384,6 +384,7 @@
 
   .item-horoscope__viversum-sponsored {
     @extend %item-horoscope__viversum-sponsored;
+    border-top: $horoscope__sponsored-border;
   }
 
   .item-horoscope__viversum-banner {
