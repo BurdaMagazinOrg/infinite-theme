@@ -37,12 +37,12 @@ $container-padding-sm-top-desktop: $gap-size-sm !default;
 $btn--small-font: $font-label !default;
 $btn--small-border: 1px solid $color-highlighted !default;
 $btn--small-radius: 15px !default;
-$btn--small-color: $color-highlighted !default;
-$btn--small-bg-color: transparent !default;
+$btn--small-color: $white !default;
+$btn--small-bg-color: $color-highlighted !default;
 $btn--small-letter-spacing: 1px !default;
 $btn--small-highlighted-color: $white !default;
-$btn--small-highlighted-bg-color: $color-highlighted !default;
-$btn--small-highlighted-border: 1px solid $color-highlighted !default;
+$btn--small-highlighted-bg-color: $color-hover !default;
+$btn--small-highlighted-border: 1px solid $color-hover !default;
 $btn--small-text-transform: uppercase !default;
 $btn--small-padding-mobile: 4px 20px !default;
 $btn--small-padding-tablet: 4px 20px !default;
@@ -51,8 +51,23 @@ $btn__label-size-mobile--small: 13px !default;
 $btn__label-size-tablet--small: 13px !default;
 $btn__label-size-desktop--small: 14px !default;
 
-//large
-$btn__padding--large: $padding $padding-large-horizontal ($padding - 4px) !default;
+$btn--large-font: $font-headline-bold !default;
+$btn--large-text-transform: uppercase !default;
+$btn--large-border: 1px solid $color-highlighted !default;
+$btn--large-bg-color: $color-highlighted !default;
+$btn--large-color: $white !default;
+$btn--large-highlighted-bg-color: $gray-base !default;
+$btn--large-highlighted-color: $white !default;
+$btn--large-border: transparent !default;
+$btn--large-highlighted-border: 1px solid $gray-base !default;
+$btn--large-radius: 0 !default;
+$btn--large-letter-spacing: 0.05em !default;
+$btn--large-padding-mobile: 12px 20px 8px !default;
+$btn--large-padding-tablet: 12px 20px 8px !default;
+$btn--large-padding-desktop: 12px 20px 8px !default;
+$btn__label-size-mobile--large: 15px !default;
+$btn__label-size-tablet--large: 15px !default;
+$btn__label-size-desktop--large: 15px !default;
 
 /**
 ** Form
@@ -234,10 +249,10 @@ $product__item-text-headline-gap-bottom-mobile: 33px !default;
 $product__item-text-headline-gap-bottom-tablet: 33px !default;
 $product__item-text-headline-gap-bottom-desktop: 33px !default;
 
-$product__item-text-price-font: $font-content !default;
+$product__item-text-price-font: $font-content-bold !default;
 $product__item-text-price-size: 13px !default;
 $product__item-text-price-color: $text-color !default;
-$product__item-text-price-pos-bottom: 40px !default;
+$product__item-text-price-pos-bottom: 45px !default;
 
 $product__item-text-shipping-font: $font-label !default;
 $product__item-text-shipping-size: 13px !default;
@@ -666,7 +681,7 @@ $media__description-size-tablet--file: $copytext--text-block-tablet !default;
 $media__description-size-desktop--file: $copytext--text-block-desktop !default;
 $media__description-margin--file: 1px 0 0 !default;
 
-$media__btn-download-font--file: $btn--small-font !default;
+$media__btn-download-font--file: $btn--large-font !default;
 $media__btn-download-size-mobile--file: $copytext--text-block-mobile !default;
 $media__btn-download-size-tablet--file: $copytext--text-block-tablet !default;
 $media__btn-download-size-desktop--file: $copytext--text-block-desktop !default;

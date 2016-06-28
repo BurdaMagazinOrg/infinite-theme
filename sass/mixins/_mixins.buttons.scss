@@ -66,6 +66,48 @@
   border: $btn--small-highlighted-border;
 }
 
+@mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @include text-helper($font);
+  @include transition-default();
+  background-color: $btn--large-bg-color;
+  color: $btn--large-color;
+  border: $btn--large-border;
+  border-radius: $btn--large-radius;
+  letter-spacing: $btn--large-letter-spacing;
+  display: inline-block;
+  text-transform: $btn--large-text-transform;
+  cursor: pointer;
+
+  &:hover {
+    @extend %btn--large--highlighted;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($font, $size-mobile);
+    padding: $btn--large-padding-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($font, $size-tablet);
+    padding: $btn--large-padding-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($font, $size-desktop);
+    padding: $btn--large-padding-desktop;
+  }
+}
+
+@mixin btn--large--highlighted() {
+  background-color: $btn--large-highlighted-bg-color;
+  color: $btn--large-highlighted-color;
+  border: $btn--large-highlighted-border;
+}
+
 @mixin btn__open-tree--mobile() {
   @include icon();
   @include icon-arrow-down-small();

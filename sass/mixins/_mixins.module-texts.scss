@@ -206,6 +206,13 @@
 
 //todo only text
 @mixin product__item-text() {
+
+  &:hover {
+    .text-shop {
+      @extend %btn--small--highlighted;
+    }
+  }
+
   .text-headline {
     @include text-helper($product__item-text-headline-font, $product__item-text-headline-size);
     color: $product__item-text-headline-color;
@@ -450,7 +457,7 @@
   }
 
   .item-media__btn-download--file {
-    @include btn--small(($media__btn-download-size-mobile--file, $media__btn-download-size-tablet--file, $media__btn-download-size-desktop--file), $media__btn-download-font--file);
+    @include btn--large(($media__btn-download-size-mobile--file, $media__btn-download-size-tablet--file, $media__btn-download-size-desktop--file), $media__btn-download-font--file);
   }
 
   @media (max-width: $screen-xs-max) {

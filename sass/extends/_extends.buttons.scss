@@ -13,3 +13,11 @@
 %btn--small--highlighted {
   @include btn--small--highlighted();
 }
+
+%btn--large {
+  @include btn--large();
+}
+
+%btn--large--highlighted {
+  @include btn--large--highlighted();
+}
