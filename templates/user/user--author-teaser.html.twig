@@ -19,11 +19,13 @@
  */
 #}
 {% if user.status %}
-<div class="img-container container-avatar">
-    {{ content.user_picture }}
-</div>
-<div class="caption">  {# TODO: closed in author-teaser.html.twig #}
-    <div class="text-author">Artikel von
-        <span typeof="schema:Person">{{ content.field_forename }} {{ content.field_surname }}</span>
-    </div>
+    {% if content.user_picture | render is not empty %}
+        <div class="img-container container-avatar">
+            {{ content.user_picture }}
+        </div>
+    {% endif %}
+    <div class="caption">  {# TODO: closed in author-teaser.html.twig #}
+        <div class="text-author">Artikel von
+            <span typeof="schema:Person">{{ content.field_forename }} {{ content.field_surname }}</span>
+        </div>
 {% endif %}

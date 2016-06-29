@@ -196,12 +196,6 @@
   .teaser-square-medium, .teaser-portrait-medium {
     @include teaser-feed-large-text(($feed-teaser-headline-middle-size-mobile, $feed-teaser-headline-middle-size-tablet, $feed-teaser-headline-middle-size-desktop));
   }
-
-  @media (max-width: $screen-xxs-max) {
-    .caption-teaser, .teaser__caption {
-      padding-top: $gap-size-xs;
-    }
-  }
 }
 
 @mixin teaser-list--horoscope-middle() {
@@ -565,10 +559,16 @@
     padding-top: 0;
   }
 
-  &.teaser-landscape-medium {
-    @media (max-width: $screen-sm-max) {
-      & > .caption-teaser, .teaser__caption {
-        padding-top: $grid-gutter-width;
+  @media (max-width: $screen-xs-max) {
+    .caption-teaser, .teaser__caption {
+      padding-top: $gap-size-xs;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    &.teaser-landscape-medium {
+      .caption-teaser, .teaser__caption {
+        padding-top: $gap-size-sm;
       }
     }
   }

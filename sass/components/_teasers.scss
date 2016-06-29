@@ -62,8 +62,18 @@
 }
 
 .teaser-landscape-large {
-  & > .caption-teaser, & > .teaser__caption {
-    padding-top: $gap-size-sm;
+  //& > .caption-teaser, & > .teaser__caption {
+  //}
+  @media (max-width: $screen-xs-max) {
+    .caption-teaser, .teaser__caption {
+      padding-top: $gap-size-xs;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .caption-teaser, .teaser__caption {
+      padding-top: $gap-size-sm;
+    }
   }
 }
 
