@@ -176,6 +176,10 @@
       margin-top: 0;
     }
   }
+
+  .is-active {
+    color: $pager-active-color;
+  }
 }
 
 @mixin list-ul--text-block($use-padding: true) {

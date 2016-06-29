@@ -384,7 +384,6 @@
 
   .item-horoscope__viversum-sponsored {
     @extend %item-horoscope__viversum-sponsored;
-    border-top: $horoscope__sponsored-border;
   }
 
   .item-horoscope__viversum-banner {
@@ -402,6 +401,7 @@
 
   .item-horoscope__viversum-sponsored {
     @extend %item-horoscope__viversum-sponsored;
+    border-top: $horoscope__sponsored-border;
   }
 
   .item-horoscope__viversum-banner {
@@ -414,6 +414,15 @@
     .teaser {
       @extend %teaser--horoscope-square-medium;
     }
+  }
+
+  .item-horoscope__pager-typo {
+    @extend %list--text-block;
+    @extend %list-ul--text-block;
+  }
+
+  .item-horoscope__pager-typo-title {
+    @extend %title--text-block;
   }
 
   .item-horoscope__pager {
