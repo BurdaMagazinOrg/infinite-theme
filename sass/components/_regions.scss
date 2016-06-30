@@ -55,7 +55,7 @@
   padding-right: 0;
 }
 
-.region--fixed-content, .region-fixed-content, .container-fixed-content, .fixed-content {
+.region--fixed-content, .region-fixed-content, .container-fixed-content, .container--fixed-content {
   @extend %region--fixed-content;
 }
 
