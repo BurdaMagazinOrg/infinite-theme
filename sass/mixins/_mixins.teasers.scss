@@ -381,12 +381,19 @@
 }
 
 @mixin teaser--content() {
+  &:hover {
+    .text-headline a, .text-headline a:hover {
+      color: $teaser--content-headline-hover-color;
+    }
+  }
+
   .caption, .teaser__caption {
     @include gap__caption-top--h-teaser();
   }
 
   .text-headline {
-    @include text-content();
+    @include text-helper($teaser--content-headline-font);
+    color: $teaser--content-headline-color;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -409,19 +416,19 @@
     }
 
     .text-headline {
-      @include text-content-size($teaser--content-headline-size-mobile);
+      @include text-helper-size($teaser--content-headline-font, $teaser--content-headline-size-mobile);
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-content-size($teaser--content-headline-size-tablet);
+      @include text-helper-size($teaser--content-headline-font, $teaser--content-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-content-size($teaser--content-headline-size-desktop);
+      @include text-helper-size($teaser--content-headline-font, $teaser--content-headline-size-desktop);
     }
   }
 }
