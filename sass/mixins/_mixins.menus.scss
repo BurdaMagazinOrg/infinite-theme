@@ -145,7 +145,7 @@
   @extend %fade-out;
   position: absolute;
   top: $menu--main-navigation__flyout-top;
-  width: $menu--main-navigation__flyout-width;
+  min-width: $menu--main-navigation__flyout-width;
   background-color: $menu--main-navigation__flyout-bg-color;
   border: $menu--main-navigation__flyout-border;
   color: $menu--main-navigation__flyout-color;
