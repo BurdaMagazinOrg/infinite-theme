@@ -18,6 +18,11 @@
  * @ingroup themeable
  */
 #}
+{# Add wrapper classes #}
+{% set wrapper_classes = [
+    'region-full-content',
+    'item-content__content'
+] %}
 <div class="region-full-content item-content__header">
     {% if has_header_block %}
         {% if content.field_forename %}
@@ -33,3 +38,7 @@
         {% endif %}
     {% endif %}
 </div>
+<div{{ attributes.addClass(wrapper_classes) }} >
+    {{ content.field_paragraphs }}
+</div>
+
