@@ -374,6 +374,22 @@
 @mixin item-content--horoscopes() {
   @include item-content__text--horoscopes();
 
+  .item-content__content .item-group--outer {
+    padding-left: 0;
+  }
+
+  .col--left {
+    .item-paragraph--text:first-child {
+      h2, .title--horoscopes {
+        @include title--article(($title--article-mobile - 3px, $title--article-tablet, $title--article-desktop - 5px));
+      }
+
+      p {
+        @include margin--v-sm();
+      }
+    }
+  }
+
   .item-horoscope__teaser-list {
     @extend %teaser-list--horoscope-50;
 

@@ -26,21 +26,25 @@
   }
 }
 
-@mixin title--article() {
-  @include text-helper($title--article-font);
+@mixin title--article($sizes: ($title--article-mobile, $title--article-tablet, $title--article-desktop), $font: $title--article-font) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @include text-helper($font);
   max-width: $title--article-max-width;
   color: $title--article-color;
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($title--article-font, $title--article-mobile);
+    @include text-helper-size($font, $size-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($title--article-font, $title--article-tablet);
+    @include text-helper-size($font, $size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($title--article-font, $title--article-desktop);
+    @include text-helper-size($font, $size-desktop);
   }
 }
 
