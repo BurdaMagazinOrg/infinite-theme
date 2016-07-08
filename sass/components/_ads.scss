@@ -120,4 +120,8 @@
   margin-top: 0 !important;
   padding-top: 0 !important;
   border-top: 0 !important;
+
+  & > div > div {
+    @extend %padding--v-region;
+  }
 }

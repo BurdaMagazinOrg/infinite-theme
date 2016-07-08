@@ -226,7 +226,7 @@ $newsletter__bg-image--modal: "../images/static/nl-modal-xl.jpg" !default;
 $newsletter__col-left-columns--modal: ($grid-columns / 2) !default;
 $newsletter__col-right-columns--modal: ($grid-columns / 2) !default;
 $newsletter__logo-margin--modal: 0 0 40px 0 !default;
-$newsletter__z-index--modal: 10000 !default;
+$newsletter__z-index--modal: 999999 !default;
 
 /**
 ** Products
@@ -877,7 +877,7 @@ $ad__border: $h-line-style !default;
 **/
 //used in bootstrap
 $modal-backdrop-bg: rgba($black, 0.75);
-$zindex-modal-background-overall: 9999 !default;
+$zindex-modal-background-overall: 999998 !default;
 
 /**
 ** Horoscope

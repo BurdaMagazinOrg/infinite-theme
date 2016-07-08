@@ -16,7 +16,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 1100;
+    z-index: ($newsletter__z-index--modal - 10);
     margin-left: 0;
     margin-right: 0;
     overflow: visible;
