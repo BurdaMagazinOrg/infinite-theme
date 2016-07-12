@@ -41,8 +41,14 @@ a {
   @extend %label--copyright;
 }
 
-.text-description a {
-  text-decoration: underline;
+.text-description {
+  strong, b {
+    font-family: inherit;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .text-content-html {

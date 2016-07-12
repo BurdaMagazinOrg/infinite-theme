@@ -1,3 +1,7 @@
+#toolbar-administration {
+  z-index: 999999999;
+}
+
 #tabs {
   @extend %gap__container--h-negative;
   border-bottom: $h-line-style;
