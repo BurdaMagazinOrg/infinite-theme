@@ -39,7 +39,7 @@
     {% for item in items %}
       <li{{ item.attributes.addClass('menu-item') }}>
         {% if item.in_active_trail %}
-          {{ link(item.title, item.url, {'class': 'is-active'}) }}
+          {{ link(item.title, item.url, item.class) }}
         {% else %}
           {{ link(item.title, item.url) }}
         {%endif%}

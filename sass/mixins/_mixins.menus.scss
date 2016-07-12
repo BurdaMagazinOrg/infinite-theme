@@ -412,6 +412,10 @@
         margin-top: 0;
       }
     }
+
+    .is-active {
+      color: $menu__item-active-color--sidebar;
+    }
   }
 
   .menu-item {
