@@ -1,7 +1,7 @@
 {% if items|length > 0 %}
     <div class="item-block item-block-tags">
         <div class="tags">
-            <div class="label">Mehr zum Thema:</div>
+            <div class="label">{{ 'More'|t }}:</div>
             <ul>
                 {% for item in items %}
                     <li>{{ item.content }}</li>
