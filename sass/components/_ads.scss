@@ -115,7 +115,15 @@
   }
 
   @media (max-width: $screen-xs-max) {
+    .ob-widget-header {
+      margin-top: 0 !important;
+    }
+
     .ob-widget {
+      margin-bottom: $gap-v-region-mobile !important;
+    }
+
+    .ob-widget-section {
       padding: $outbrain__padding-mobile !important;
 
       .ob-rec-text, .ob-rec-source {
