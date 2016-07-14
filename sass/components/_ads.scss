@@ -115,7 +115,7 @@
 
   @media (max-width: $screen-xs-max) {
     .OUTBRAIN {
-      margin: $outbrain__margin-mobile !important;
+      padding: $outbrain__padding-mobile !important;
 
       .ob-rec-text, .ob-rec-source {
         padding: $outbrain__item-padding-mobile !important;
