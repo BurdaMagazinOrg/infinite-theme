@@ -17,6 +17,7 @@ infinite.libs:
     js/infinite/libs/jquery.timeago.js: {}
     js/infinite/libs/swiper.jquery.js: {}
     js/infinite/libs/jquery.browser.min.js: {}
+    js/infinite/libs/jquery.sticky-kit.min.js: {}
     js/infinite/libs/bootstrap/modal.js: {}
     js/infinite/libs/bootstrap/transition.js: {}
 

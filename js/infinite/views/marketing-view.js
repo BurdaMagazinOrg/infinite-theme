@@ -45,8 +45,7 @@
             }
         },
         buildAd: function () {
-            //console.log(">>>", this.marketingSettings, this.adType, this.marketingSlotId);
-            if(this.marketingSettings == null) return;
+            if(!this.marketingSettings) return;
 
             this.adType = this.breakpointDeviceModel.id;
             this.adFormat = this.marketingSettings[this.adType];
