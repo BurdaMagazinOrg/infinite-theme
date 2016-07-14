@@ -155,6 +155,16 @@
   border-top: 0 !important;
 
   & > div > div {
-    @extend %padding--v-region;
+    @media (max-width: $screen-xxs-max) {
+      margin-top: $gap-v-region-mobile !important;
+    }
+
+    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+      margin-top: $gap-v-region-tablet !important;
+    }
+
+    @media (min-width: $screen-md-min) {
+      margin-top: $gap-v-region-desktop !important;
+    }
   }
 }
