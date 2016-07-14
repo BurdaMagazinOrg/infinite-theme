@@ -940,3 +940,9 @@ $pager__links-icon-size-desktop--list: 12px !default;
 $pager__links-color-hover--list: $color-hover !default;
 $pager__links-margin--list: 14px 0px 0 !default;
 $pager__links-height--list: 22px !default;
+
+/**
+** Outbrain
+**/
+$outbrain__margin-mobile: 0 $teaser__gap--list-horizontal-mobile !default;
+$outbrain__item-padding-mobile: 10px $teaser__gap--list-horizontal-mobile + 0 !default;

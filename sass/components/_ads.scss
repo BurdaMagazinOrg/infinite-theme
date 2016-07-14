@@ -114,9 +114,12 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    .OUTBRAIN .ob-rec-text, .OUTBRAIN .ob-rec-source {
-      padding-right: 5px !important;
-      padding-left: 5px !important;
+    .OUTBRAIN {
+      margin: $outbrain__margin-mobile !important;
+
+      .ob-rec-text, .ob-rec-source {
+        padding: $outbrain__item-padding-mobile !important;
+      }
     }
   }
 }
