@@ -114,6 +114,10 @@
     padding: 20px 10px 20px !important;
   }
 
+  .ob-widget {
+    margin-bottom: $gap-v-region-desktop !important;
+  }
+
   @media (max-width: $screen-xs-max) {
     .ob-widget-header {
       margin-top: 0 !important;
