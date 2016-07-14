@@ -103,8 +103,21 @@
   @extend %gap__container--h-negative;
 
   .OUTBRAIN {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .ob_what.ob-hover {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 20px 10px 20px !important;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .OUTBRAIN .ob-rec-text, .OUTBRAIN .ob-rec-source {
+      padding-right: 5px !important;
+      padding-left: 5px !important;
+    }
   }
 }
 

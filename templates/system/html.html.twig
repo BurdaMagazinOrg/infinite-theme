@@ -27,6 +27,7 @@ db_offline ? 'db-offline',
                 {% embed '@infinite/embeds/api_fb.html.twig' with fb_vars %}{% endembed %}
             {% endblock %}
         {% endif %}
+        {% block fb_tracking_pixel_block %}{% endblock %}
         <div id="page-wrapper">
             {{ page_top }}
             {{ page }}

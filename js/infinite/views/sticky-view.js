@@ -38,9 +38,9 @@
             this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
 
             //TODO check if throttle or debounce is better
-            $(this.context).bind('scroll.sticky', _.bind(_.throttle(function () {
-                this.onCheckHandler();
-            }, 500), this));
+            //$(this.context).bind('scroll.sticky', _.bind(_.throttle(function () {
+            //    this.onCheckHandler();
+            //}, 500), this));
 
             window.addEventListener('adRendered', _.bind(this.onAdRenderedHandler, this), false);
 
@@ -77,6 +77,13 @@
                 context: this.context[0],
                 element: this.$el.parent(),
                 handler: _.bind(function (pDirection) {
+
+                    //TODO
+                    if(this.$el.parent().outerHeight() < this.$el.outerHeight(true)) {
+                        this.$el.parent().css('min-height', this.$el.outerHeight(true));
+                    } else if(this.$el.css('min-height') != 1) {
+                        this.$el.parent().removeAttr("style");
+                    }
 
                     if (pDirection == 'down') {
                         this.$el.addClass('stuck-stop');
@@ -123,10 +130,6 @@
 
             if (tmpHeight == 0) return;
 
-            //if (this.$el.parent('.sticky-wrapper').length > 0) {
-            //    tmpPosTop = Math.floor(this.$el.parent('.sticky-wrapper').offset().top);
-            //} else {
-            //}
             tmpPosTop = Math.floor(this.$el.offset().top);
 
             if (this.posTop == tmpPosTop && this.height == tmpHeight) return;
