@@ -38,9 +38,9 @@
             this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
 
             //TODO check if throttle or debounce is better
-            //$(this.context).bind('scroll.sticky', _.bind(_.throttle(function () {
-            //    this.onCheckHandler();
-            //}, 500), this));
+            $(this.context).bind('scroll.sticky', _.bind(_.throttle(function () {
+                this.onCheckHandler();
+            }, 500), this));
 
             window.addEventListener('adRendered', _.bind(this.onAdRenderedHandler, this), false);
 
