@@ -111,7 +111,7 @@
   .ob_what {
     width: 100% !important;
     margin-left: 0 !important;
-    padding: 20px 10px 20px !important;
+    padding: $outbrain__ob_what-padding-desktop;
   }
 
   .ob-widget {
@@ -121,6 +121,10 @@
   @media (max-width: $screen-xs-max) {
     .ob-widget-header {
       margin-top: 0 !important;
+    }
+
+    .ob_what {
+      padding: $outbrain__ob_what-padding-mobile;
     }
 
     .ob-widget {
