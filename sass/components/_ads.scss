@@ -103,18 +103,19 @@
   @extend %gap__container--h-negative;
 
   .OUTBRAIN {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    width: 100% !important;
   }
 
-  .ob_what.ob-hover {
+  .ob_what {
     width: 100% !important;
     margin-left: 0 !important;
     padding: 20px 10px 20px !important;
   }
 
   @media (max-width: $screen-xs-max) {
-    .OUTBRAIN {
+    .ob-widget {
       padding: $outbrain__padding-mobile !important;
 
       .ob-rec-text, .ob-rec-source {
