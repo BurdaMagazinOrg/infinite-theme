@@ -214,6 +214,11 @@ infinite.views.gallery-view:
     js/infinite/views/gallery-view.js: {}
     js/brand/views/gallery-view.js: {}
 
+infinite.views.gallery-slick-view:
+  version: 1
+  js:
+    js/infinite/views/gallery-slick-view.js: {}
+    js/brand/views/gallery-slick-view.js: {}
 
 infinite.views.sticky-view:
   version: 1

@@ -50,6 +50,9 @@
                 case 'galleryView':
                     tmpView = new GalleryView(tmpSettings);
                     break;
+                case 'gallerySlickView':
+                    tmpView = new GallerySlickView(tmpSettings);
+                    break;
                 case 'marketingView':
 
                     //dynamic adsc model

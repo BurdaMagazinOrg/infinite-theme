@@ -35,6 +35,7 @@ libraries:
   - infinite/infinite.views.modal-search-view
   - infinite/infinite.views.article-view
   - infinite/infinite.views.gallery-view
+  - infinite/infinite.views.gallery-slick-view
   - infinite/infinite.views.sticky-view
   - infinite/infinite.views.products-view
   - infinite/infinite.views.marketing-view
