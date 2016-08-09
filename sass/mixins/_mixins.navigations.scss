@@ -1,13 +1,4 @@
 @mixin helper__menu-dropdown($btn-class: 'btn__open-tree', $btn-class--open: 'btn__open-tree--is-open', $list-element: 'li') {
-  &.#{$btn-class--open} {
-    #{$list-element} {
-      display: block;
-    }
-
-    .#{$btn-class} {
-      margin-bottom: $gap-size-xs;
-    }
-  }
 
   .#{$btn-class} {
     @extend %btn__open-tree--mobile;
@@ -16,6 +7,16 @@
   }
 
   @media (max-width: $screen-xs-max) {
+    &.#{$btn-class--open} {
+      #{$list-element} {
+        display: block;
+      }
+
+      .#{$btn-class} {
+        margin-bottom: $gap-size-xs;
+      }
+    }
+    
     .#{$btn-class} {
       display: block;
     }
