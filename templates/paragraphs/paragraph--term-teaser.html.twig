@@ -1,11 +1,9 @@
-{% set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-] %}
+{% set attributes = attributes.setAttribute('data-text-action', 'text-overflow') %}
+{% set attributes = attributes.setAttribute('data-text-action-target', '.caption') %}
 
-<div{{ attributes.addClass(classes) }} data-text-action="text-overflow" data-text-action-target=".caption">
+{% extends "paragraph.html.twig" %}
 
+{% block content_block %}
     {% block title %}
         {% if content.field_title %}
             {{ content.field_title }}
@@ -17,4 +15,4 @@
             {{ content.field_terms }}
         {% endblock %}
     </div>
-</div>
+{% endblock %}

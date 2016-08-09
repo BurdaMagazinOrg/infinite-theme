@@ -36,19 +36,14 @@
  * @ingroup themeable
  */
 #}
-{%
-set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-]
-%}
 
-<div{{ attributes.addClass(classes) }}>
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
     {% block title %}
         {% if content.field_title %}
             {{ content.field_title }}
         {% endif %}
     {% endblock %}
     {{ content|without('field_title') }}  {# see TWIG files in media directory #}
-</div>
+{% endblock %}

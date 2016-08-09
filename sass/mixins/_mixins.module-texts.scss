@@ -329,7 +329,7 @@
 
   .menu-item {
     @include text-helper($menu--submenu-navigation-font, $menu--submenu-navigation-size);
-    color: $text-color;
+    color: $menu--submenu-navigation-color;
     text-transform: uppercase;
   }
 }
@@ -502,5 +502,31 @@
   .item-horoscope__viversum-sponsored {
     @include text-helper($horoscope__sponsored-font, $horoscope__sponsored-size);
     color: $horoscope__sponsored-color;
+  }
+}
+
+@mixin item-anchor-nav__text() {
+  @include text-helper($anchor-nav__item-font);
+  text-transform: $anchor-nav__item-text-transform;
+
+  li {
+    display: inline-block;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($anchor-nav__item-font, $anchor-nav__item-size-mobile);
+    color: $anchor-nav__item-mobile-color;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    color: $anchor-nav__item-color;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($anchor-nav__item-font, $anchor-nav__item-size-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($anchor-nav__item-font, $anchor-nav__item-size-desktop);
   }
 }

@@ -239,6 +239,19 @@ infinite.views.marketing-view:
     js/infinite/views/marketing-view.js: {}
     js/brand/views/marketing-view.js: {}
 
+infinite.views.anchor-navigation-view:
+  version: 1
+  js:
+    js/infinite/views/anchor-navigation-view.js: {}
+    js/brand/views/anchor-navigation-view.js: {}
+
+
+infinite.views.marketing-view:
+  version: 1
+  js:
+    js/infinite/views/marketing-view.js: {}
+    js/brand/views/marketing-view.js: {}
+
 
 infinite.views.spinner:
   version: 1

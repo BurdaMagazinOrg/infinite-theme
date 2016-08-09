@@ -140,6 +140,7 @@ $navigation-search-icon-size: 19px !default;
 
 //submenu
 $menu--submenu-navigation-font: $font-label !default;
+$menu--submenu-navigation-color: $text-color !default;
 $menu--submenu-navigation-size: $menu--main-navigation-size - 2px !default;
 $menu--submenu-navigation-mobile-color: $gray-base !default;
 $menu--submenu-navigation-mobile-color-active: $gray-base !default;
@@ -352,7 +353,6 @@ $title__children-margin-tablet--text-block: 13px 0 0 !default;
 $title__children-margin-desktop--text-block: 13px 0 0 !default;
 $title__headline-margin--text-block: 16px 0 0 !default;
 
-
 /** copytext--text-block **/
 $copytext--text-block-mobile: 18px !default;
 $copytext--text-block-tablet: 19px !default;
@@ -413,7 +413,7 @@ $teaser-list__headline-font--teaser-horoscope-middle: $font-headline !default;
 $teaser-list__headline-size-mobile--teaser-horoscope-middle: $title-size-sm !default;
 $teaser-list__headline-size-tablet--teaser-horoscope-middle: $title-size-md !default;
 $teaser-list__headline-size-desktop--teaser-horoscope-middle: $title-size-lg !default;
-$teaser-list__gap-mobile--teaser-horoscope-middle: $gap-v-sm-region-mobile!default;
+$teaser-list__gap-mobile--teaser-horoscope-middle: $gap-v-sm-region-mobile !default;
 $teaser-list__gap-tablet--teaser-horoscope-middle: $gap-v-sm-region-tablet !default;
 $teaser-list__gap-desktop--teaser-horoscope-middle: $gap-v-sm-region-desktop !default;
 
@@ -895,7 +895,7 @@ $horoscope__sponsored-font: $font-content !default;
 $horoscope__sponsored-size: 15px !default;
 $horoscope__sponsored-color: $gray-base !default;
 $horoscope__sponsored-border: $h-line-style !default;
-$horoscope__sponsored-margin: 15px 0  10px !default;
+$horoscope__sponsored-margin: 15px 0 10px !default;
 $horoscope__sponsored-padding: 10px 0 0 !default;
 $horoscope__sponsored-letter-spacing: 1px !default;
 $horoscope__viversum-logo: "../images/static/icon_viversum.png" !default;
@@ -919,7 +919,6 @@ $rating__content-before: "\e913" !default;
 $rating__content-after: "\e913" !default;
 $rating__color: $gray-light !default;
 $rating__color-active: $color-highlighted !default;
-
 
 /**
 ** Pager
@@ -948,3 +947,31 @@ $outbrain__padding-mobile: 0 $teaser__gap--list-horizontal-mobile !default;
 $outbrain__item-padding-mobile: 10px $teaser__gap--list-horizontal-mobile + 0 !default;
 $outbrain__ob_what-padding-mobile: 20px 10px 20px !important;
 $outbrain__ob_what-padding-desktop: 20px 10px 20px !important;
+
+/**
+** Navigations
+**/
+
+//Anchor Navigation
+$anchor-nav__item-font: $font-navigation !default;
+$anchor-nav__item-text-transform: uppercase !default;
+$anchor-nav__padding-mobile: $gap-size-xs !default;
+$anchor-nav__padding-tablet: $gap-size-xs !default;
+$anchor-nav__padding-desktop: $gap-size-xs !default;
+
+$anchor-nav__item-size-mobile: $menu--submenu-navigation-size !default;
+$anchor-nav__item-size-tablet: $menu--submenu-navigation-size !default;
+$anchor-nav__item-size-desktop: $menu--submenu-navigation-size !default;
+$anchor-nav__item-mobile-color: $menu--submenu-navigation-mobile-color !default;
+$anchor-nav__item-color: $menu--submenu-navigation-color !default;
+$anchor-nav__item-color-hover: $menu--main-navigation__item-active-color !default;
+$anchor-nav__item-bg-color: transparent !default;
+$anchor-nav__item-bg-color-hover: transparent !default;
+
+$anchor-nav__item-margin-mobile: 0 !default;
+$anchor-nav__item-margin-tablet: $menu--submenu-navigation__item_margin-tablet !default;
+$anchor-nav__item-margin-desktop: $menu--submenu-navigation__item_margin-desktop !default;
+
+$anchor-nav__item-padding-mobile: $gap-size-xs 0 0 !default;
+$anchor-nav__item-padding-tablet: $menu--submenu-navigation__item_padding !default;
+$anchor-nav__item-padding-desktop: $menu--submenu-navigation__item_padding !default;

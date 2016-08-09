@@ -37,49 +37,63 @@
  */
 #}
 {% set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
 'item-paragraph--' ~ (paragraph.bundle ~ '-' ~ text_position )|clean_class,
 ] %}
 
-<div{{ attributes.addClass(classes) }}>
-    <div class="img-container spotlight__img-container">
-        {{ content.field_media }}
-    </div>
-    <div class="caption spotlight__caption">
-        {% if has_headline %}
-            <div class="title spotlight__title">
-                <h1>{{ content.field_title | plain_text }}</h1>
-            </div>
-            <div class="subtitle spotlight__subtitle">
-                <h2>{{ content.field_subtitle }}</h2>
-            </div>
-        {% else %}
-            <div class="title spotlight__title">
-                <h2>{{ content.field_title | plain_text }}</h2>
-            </div>
-            <div class="subtitle spotlight__subtitle">
-                <h3>{{ content.field_subtitle }}</h3>
-            </div>
-        {% endif %}
-        <div class="copytext spotlight__copytext">
-            {{ content.field_text }}
+{% set attributes = attributes.addClass(classes) %}
+
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
+    <div class="spotlight__wrapper">
+        <div class="img-container spotlight__img-container">
+            {{ content.field_media }}
         </div>
-        {% if has_socials %}
-            <div class="socials socials-bar spotlight__socials">
-                {% block teaser_social_bar %}
-                    {% embed '@infinite/embeds/social_icons.html.twig' with {
-                    'url': parent.url,
-                    'label': parent.label,
-                    'twitter_share_via': parent.twitter_share_via,
-                    'email_share_text': parent.email_share_text,
-                    'email_subject': parent.email_subject,
-                    'whatsapp_share_text': parent.whatsapp_share_text,
-                    } %}
-                    {% endembed %}
-                {% endblock %}
+        <div class="caption spotlight__caption">
+            {% if has_headline %}
+                <div class="title spotlight__title">
+                    <h1>{{ content.field_title | plain_text }}</h1>
+                </div>
+                <div class="subtitle spotlight__subtitle">
+                    <h2>{{ content.field_subtitle }}</h2>
+                </div>
+            {% else %}
+                <div class="title spotlight__title">
+                    <h2>{{ content.field_title | plain_text }}</h2>
+                </div>
+                <div class="subtitle spotlight__subtitle">
+                    <h3>{{ content.field_subtitle }}</h3>
+                </div>
+            {% endif %}
+            <div class="copytext spotlight__copytext">
+                {{ content.field_text }}
             </div>
-        {% endif %}
+            {% if has_socials %}
+                <div class="socials socials-bar spotlight__socials">
+                    {% block teaser_social_bar %}
+                        {% embed '@infinite/embeds/social_icons.html.twig' with {
+                        'url': parent.url,
+                        'label': parent.label,
+                        'twitter_share_via': parent.twitter_share_via,
+                        'email_share_text': parent.email_share_text,
+                        'email_subject': parent.email_subject,
+                        'whatsapp_share_text': parent.whatsapp_share_text,
+                        } %}
+                        {% endembed %}
+                    {% endblock %}
+                </div>
+            {% endif %}
+        </div>
     </div>
-</div>
+    {% if anchor_links %}
+        {% block anchor_block %}
+            <div class="spotlight__anchor-nav" data-view-type="anchorNavigationView">
+                <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open"
+                     class="btn__open-tree">
+                    <span>Menü</span>
+                </div>
+                {{ anchor_links }}
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

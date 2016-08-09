@@ -1,2 +1,5 @@
-{% set attributes = attributes.addClass('region-full-content') %}
+{% set classes = ['region-full-content'] %}
+
+{% set attributes = attributes.addClass(classes) %}
+
 {% include 'paragraph--profile.html.twig' %}

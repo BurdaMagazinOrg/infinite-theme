@@ -39,15 +39,17 @@
 {%
 set classes = [
 'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
+view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
 'item-paragraph--' ~ paragraph.bundle|clean_class,
 ]
 %}
+
+{% if paragraph.field_anchor is not empty %}
+    {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value | clean_id) %}
+{% endif %}
+
 <div{{ attributes.addClass(classes) }}>
-
-    {#{% if content.field_title|render %}#}
-        {#<h3 class="item-paragraph__title">{{ content.field_title }}</h3>#}
-    {#{% endif %}#}
-
-    {{ content }}
+    {% block content_block %}
+        {{ content }}
+    {% endblock %}
 </div>

@@ -36,15 +36,15 @@
  * @ingroup themeable
  */
 #}
-{% set classes = [
-'region-full-content',
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-] %}
+{% set classes = ['region-full-content'] %}
+
+{% set attributes = attributes.addClass(classes) %}
+{% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}
+
+{% extends "paragraph.html.twig" %}
+
 {% if content | render %}
-<div {{ attributes.addClass(classes) }} data-view-type="productsView">
-    {%  if content.field_title|render %}
+    {% if content.field_title|render %}
         <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
     {% endif %}
     <div class="container-fixed-content">
@@ -52,5 +52,4 @@
             {{ content|without('field_title') }}
         </div>
     </div>
-</div>
 {% endif %}

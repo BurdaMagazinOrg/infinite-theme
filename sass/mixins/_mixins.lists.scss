@@ -185,7 +185,7 @@
 @mixin list-ul--text-block($use-padding: true) {
   list-style-type: disc;
 
-  @if($use-padding) {
+  @if ($use-padding) {
     padding-left: 2px; //overflow fix
   }
 }

@@ -36,15 +36,11 @@
  * @ingroup themeable
  */
 #}
-{%
-set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-]
-%}
-{% if content.tweet %}
-    <div{{ attributes.addClass(classes) }}>
+
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
+    {% if content.tweet %}
         {{ content.tweet }}
-    </div>
-{% endif %}
+    {% endif %}
+{% endblock %}

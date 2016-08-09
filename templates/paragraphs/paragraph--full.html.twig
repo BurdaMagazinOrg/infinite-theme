@@ -39,13 +39,14 @@
 {%
 set classes = [
 'region-full-content',
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
 'item-paragraph--' ~ paragraph.bundle|clean_class ~ '--' ~ media_bundle|clean_class,
 ]
 %}
 
-<div{{ attributes.addClass(classes) }}>
+{% set attributes = attributes.addClass(classes) %}
+
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
     {{ content }}
-</div>
+{% endblock %}

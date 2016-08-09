@@ -1,17 +1,19 @@
 {% set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
 'swipeable--horizontal',
 ] %}
 
-<div{{ attributes.addClass(classes) }} data-view-type="listSwipeableView">
-        {% if content.field_title|render %}
-            {{ content.field_title }}
-        {% endif %}
+{% set attributes = attributes.addClass(classes) %}
+{% set attributes = attributes.setAttribute('data-view-type', 'listSwipeableView') %}
+
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
+    {% if content.field_title|render %}
+        {{ content.field_title }}
+    {% endif %}
     <div class="container-content seo-linker--image">
         <div class="swipeable__wrapper">
             {{ content|without('field_title', 'field_p_view_mode') }}
         </div>
     </div>
-</div>
+{% endblock %}

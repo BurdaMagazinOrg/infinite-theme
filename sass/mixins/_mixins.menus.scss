@@ -132,12 +132,6 @@
 @mixin menu--main-navigation__item--active() {
   background-color: $menu--main-navigation__item-active-bg;
   color: $menu--main-navigation__item-active-color;
-
-  //&:hover > a, a:hover, .is-active {
-  //a:hover, .is-active {
-  //  background-color: $menu--main-navigation__item-active-bg;
-  //  color: $menu--main-navigation__item-active-color;
-  //}
 }
 
 @mixin menu--main-navigation__flyout() {

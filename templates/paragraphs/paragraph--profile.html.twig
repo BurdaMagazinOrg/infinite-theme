@@ -1,11 +1,6 @@
-{% set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-] %}
+{% extends "paragraph.html.twig" %}
 
-<div{{ attributes.addClass(classes) }}>
-
+{% block content_block %}
     <div class="wrapper profile__wrapper">
         {% block profile_content %}
             <div class="row profile__row">
@@ -26,4 +21,4 @@
             </div>
         {% endblock %}
     </div>
-</div>
+{% endblock %}

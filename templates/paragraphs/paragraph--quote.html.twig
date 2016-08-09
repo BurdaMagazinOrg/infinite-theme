@@ -42,6 +42,9 @@
 view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
 ] %}
 
+{% if paragraph.field_anchor is not empty %}
+    {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value | clean_id) %}
+{% endif %}
 
 <blockquote {{ attributes.addClass(classes) }}>
     {{ content | without('field_quote_author') }}

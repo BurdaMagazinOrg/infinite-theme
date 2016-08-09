@@ -76,6 +76,9 @@
                 case 'productsView':
                     tmpView = new ProductsView(tmpSettings);
                     break;
+                case 'anchorNavigationView':
+                    tmpView = new AnchorNavigationView(tmpSettings);
+                    break;
                 default:
                     tmpView = new BaseView(tmpSettings);
                     break;

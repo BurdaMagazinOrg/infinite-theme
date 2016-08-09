@@ -36,18 +36,17 @@
  * @ingroup themeable
  */
 #}
-{% set classes = [
-'item-paragraph',
-'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-] %}
-{% if content | render %}
-<div {{ attributes.addClass(classes) }} data-view-type="productsView">
-    {%  if content.field_title|render %}
-        <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
+{% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}
+
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
+    {% if content | render %}
+        {% if content.field_title|render %}
+            <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
+        {% endif %}
+        <div class="container-content">
+            {{ content|without('field_title') }}
+        </div>
     {% endif %}
-    <div class="container-content">
-        {{ content|without('field_title') }}
-    </div>
-</div>
-{% endif %}
+{% endblock %}
