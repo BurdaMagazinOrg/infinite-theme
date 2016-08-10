@@ -422,13 +422,14 @@
     }
   }
 
-  @media (max-width: $screen-xs-max) {
+  //@media (max-width: $screen-xs-max) {
+  //}
+
+  @media (max-width: $screen-sm-max) {
     .newsletter-modal__col--left {
       display: none;
     }
-  }
 
-  @media (max-width: $screen-sm-max) {
     .container-form {
       .form-group--email {
         .input-email {
@@ -438,7 +439,7 @@
 
         button {
           width: 100%;
-          margin-top: $padding;
+          //margin-top: $padding;
           margin-left: 0;
           padding: 13px $padding-large-horizontal 10px;
         }
@@ -447,16 +448,15 @@
 
   }
 
-  @media (min-width: $screen-sm-min) {
+
+  @media (min-width: $screen-md-min) {
     .newsletter-modal__col--left {
       background-image: url($newsletter__bg-image--modal);
       background-repeat: no-repeat;
       background-position: center 0;
       background-size: cover;
     }
-  }
 
-  @media (min-width: $screen-md-min) {
     .text-headline {
       margin-bottom: 28px;
     }
