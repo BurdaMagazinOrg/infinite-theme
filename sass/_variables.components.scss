@@ -601,7 +601,7 @@ $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 $spotlight__title-font: $font-headline !default;
 $spotlight__title-size-mobile: $title-size-lg !default;
 $spotlight__title-size-tablet: $title-size-xl !default;
-$spotlight__title-size-desktop: 59px !default;
+$spotlight__title-size-desktop: 49px !default;
 
 $spotlight__subtitle-font: $font-content !default;
 $spotlight__subtitle-size: $label-size-medium !default;
@@ -969,8 +969,8 @@ $anchor-nav__item-bg-color: transparent !default;
 $anchor-nav__item-bg-color-hover: transparent !default;
 
 $anchor-nav__item-margin-mobile: 0 !default;
-$anchor-nav__item-margin-tablet: $menu--submenu-navigation__item_margin-tablet !default;
-$anchor-nav__item-margin-desktop: $menu--submenu-navigation__item_margin-desktop !default;
+$anchor-nav__item-margin-tablet: 0 5px !default;
+$anchor-nav__item-margin-desktop: 0 5px !default;
 
 $anchor-nav__item-padding-mobile: $gap-size-xs 0 0 !default;
 $anchor-nav__item-padding-tablet: $menu--submenu-navigation__item_padding !default;
