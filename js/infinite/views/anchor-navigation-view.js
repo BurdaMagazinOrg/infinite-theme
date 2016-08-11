@@ -18,14 +18,24 @@
                 this.offsetTop = this.offsetsPageModel.get('offsets').top;
                 this.listenTo(this.offsetsPageModel, 'change:offsets', this.onOffsetHandler, this);
             }
-        },
-        onClickHandler: function (pEvent) {
-            var tmpItemId = $(pEvent.currentTarget).attr('href');
 
-            $("html, body").animate({scrollTop: Math.round($(tmpItemId).offset().top - this.offsetTop - AppConfig.padding)}, {
+            if (window.location.hash && this.$el.find('a[href="' + window.location.hash + '"]').length > 0) {
+                setTimeout($.proxy(function () {
+                    this.scrollToElement(window.location.hash);
+                }, this), 1500);
+            }
+        },
+        scrollToElement: function (pElementId) {
+            $("html, body").animate({scrollTop: Math.round($(pElementId).offset().top - this.offsetTop - AppConfig.padding)}, {
                 duration: 1000,
                 easing: 'easeInOutCubic'
             });
+
+            return false;
+        },
+        onClickHandler: function (pEvent) {
+            var tmpItemId = $(pEvent.currentTarget).attr('href');
+            this.scrollToElement(tmpItemId);
 
             return false;
         },
