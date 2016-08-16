@@ -40,7 +40,7 @@
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
-    {% if content.tweet %}
+    {% if pinit_url %}
         <a data-pin-do="embedPin" data-pin-width="medium" href="{{ pinit_url }}"></a>
     {% endif %}
 {% endblock %}
