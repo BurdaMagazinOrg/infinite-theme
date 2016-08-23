@@ -5527,7 +5527,7 @@ hr {
 }
 
 /* line 1, ../sass/extends/_extends.regions.scss */
-.region-fixed-content, .container-fixed-content, .item-content-header, #header-home .container-content, .page-article .breadcrumb {
+.region-fixed-content, .container-fixed-content, .item-content__header, #header-home .container-content, .page-article .breadcrumb {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -8525,7 +8525,7 @@ form a {
   margin-top: 31px;
 }
 /* line 12, ../sass/pages/_page-article.scss */
-.page-article .item-content-header h1 {
+.page-article .item-content__header h1 {
   max-width: 840px;
 }
 /* line 17, ../sass/pages/_page-article.scss */
