@@ -296,6 +296,7 @@
             tmpTrackingObject = _.extend({
                 'event': TrackingManager.gtmEventName,
                 'location': tmpCurrentPath,
+                'label': '',
                 'value': ''
             }, tmpTrackingObject);
 

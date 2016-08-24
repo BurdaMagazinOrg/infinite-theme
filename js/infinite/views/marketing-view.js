@@ -10,18 +10,15 @@
         marketingSettings: null,
         breakpointDeviceModel: null,
         dynamicAdscModel: null,
-        adModel: null,
-        globalAdscModel: null,
-        showByModel: false,
         initialized: false,
         enabled: true,
-        currentAdClass: "",
+        adTagsModel: null,
         adType: "",
         adFormat: "",
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
-            if(!drupalSettings.hasOwnProperty('AdProvider')  || !drupalSettings.hasOwnProperty('AdvertisingSlots')) {
+            if (!drupalSettings.hasOwnProperty('AdProvider') || !drupalSettings.hasOwnProperty('AdvertisingSlots')) {
                 console.log("marketingView needs drupalSettings.AdProvider && drupalSettings.AdvertisingSlots settings")
                 return;
             }
@@ -37,15 +34,21 @@
         },
         configureView: function () {
             this.adProvider = drupalSettings.AdProvider;
-            this.globalAdscModel = BM.reuseModel(ModelIds.adscModel);
             this.$adSlotContainer = this.$el.find(".ad-container");
             this.marketingSlotId = this.$adSlotContainer.attr('id');
+
+            if (this.dynamicAdscModel == undefined || this.dynamicAdscModel == null) {
+                this.adTagsModel = BM.reuseModel(ModelIds.adscModel);
+            } else {
+                this.adTagsModel = this.dynamicAdscModel;
+            }
+
             if (_.has(drupalSettings.AdvertisingSlots, this.marketingSlotId)) {
                 this.marketingSettings = drupalSettings.AdvertisingSlots[this.marketingSlotId];
             }
         },
         buildAd: function () {
-            if(!this.marketingSettings) return;
+            if (!this.marketingSettings) return;
 
             this.adType = this.breakpointDeviceModel.id;
             this.adFormat = this.marketingSettings[this.adType];
@@ -53,37 +56,13 @@
 
             if (this.adFormat == undefined || this.adFormat == '') return;
 
-            if (this.adProvider == AppConfig.ad_orbyd) {
-                //i want the TFM API back :((( tfm ftw!! sounds sad/mad but it's true
-                this.createOrbydAd();
-                this.initialized = true;
-            } else if (this.adProvider == AppConfig.ad_fag && typeof TFM != "undefined") {
-                //TODO change this after tfm API change
-                this.globalAdscModel.checkSet(this.dynamicAdscModel);
-                TFM.Tag.getAdTag(this.adFormat, this.marketingSlotId);
-                this.initialized = true;
-            }
-        },
-        updateView: function () {
-            var tmpPrefix = 'ad-';
-
-            this.$el.removeClass(tmpPrefix + this.currentAdClass).addClass(tmpPrefix + this.adModel.type);
-
-            if (!this.adModel.isFiller && !this.adModel.isEmpty) {
-                this.showByModel = true;
-                this.show();
-            } else {
-                this.removeFixHeight();
-                this.showByModel = false;
-                this.hide();
-            }
-
-            this.currentAdClass = tmpPrefix + this.adModel.type;
+            //i want the TFM API back :((( tfm ftw!! sounds sad/mad but it's true
+            this.createOrbydAd();
+            this.initialized = true;
         },
         createOrbydAd: function (pSettings) {
 
             var tmpAdURL = '//cdn-tags.orbyd.com/' + this.adFormat.toString(),
-                tmpAdscModel = {},
                 tmpReferer = window.location.host + AppConfig.initialLocation,
                 tmpDataStr = '';
 
@@ -100,16 +79,10 @@
 
             this.$adSlotContainer.append(this.$dynamicIframe);
 
-            if (this.dynamicAdscModel == undefined || this.dynamicAdscModel == null) {
-                tmpAdscModel = this.globalAdscModel;
-            } else {
-                tmpAdscModel = this.dynamicAdscModel;
-            }
-
-            tmpDataStr = 'adunit1=' + tmpAdscModel.get('adsc').adsc_adunit1;
-            tmpDataStr += '&adunit2=' + tmpAdscModel.get('adsc').adsc_adunit2;
-            tmpDataStr += '&adunit3=' + tmpAdscModel.get('adsc').adsc_adunit3;
-            tmpDataStr += '&keyword=' + tmpAdscModel.get('adsc').adsc_keyword;
+            tmpDataStr = 'adunit1=' + this.adTagsModel.get('adsc').adunit1;
+            tmpDataStr += '&adunit2=' + this.adTagsModel.get('adsc').adunit2;
+            tmpDataStr += '&adunit3=' + this.adTagsModel.get('adsc').adunit3;
+            tmpDataStr += '&keyword=' + this.adTagsModel.get('adsc').adkeyword;
 
             console.info("BUILD ORBYD", tmpDataStr);
 
@@ -165,14 +138,7 @@
         enableView: function () {
             if (this.enabled) return;
 
-            if (this.adProvider == AppConfig.ad_fag && !_.isNull(this.adModel)) {
-                if (this.$el.hasClass('ad-bsad')) return;
-
-                this.buildAd();
-                this.updateView();
-            } else if (this.adProvider == AppConfig.ad_orbyd) {
-                this.buildAd();
-            }
+            this.buildAd();
             this.enabled = true;
         },
         disableView: function () {
@@ -200,11 +166,12 @@
         hide: function () {
             this.$el.removeClass('ad-active').addClass('ad-inactive');
             this.model.set('contentHeight', 0);
-        },
-        setModel: function (pAdModel) {
-            this.adModel = pAdModel;
-            this.updateView();
         }
+        //,
+        //setModel: function (pAdModel) {
+        //    this.adModel = pAdModel;
+        //    this.updateView();
+        //}
     });
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

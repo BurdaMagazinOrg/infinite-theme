@@ -1,5 +1,5 @@
 @mixin title--horizontal-block() {
-  @include text-helper($title--horizontal-block-font);
+  @include text-helper($title--horizontal-block-font-id);
   text-align: center;
   text-transform: $title--horizontal-block-text-transform;
   letter-spacing: $title--horizontal-block-letter-spacing;
@@ -11,22 +11,22 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($title--horizontal-block-font, $title--horizontal-block-mobile);
+    @include text-helper-size($title--horizontal-block-font-id, $title--horizontal-block-mobile);
     margin-bottom: $title--horizontal-block-gap-bottom-mobile;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($title--horizontal-block-font, $title--horizontal-block-tablet);
+    @include text-helper-size($title--horizontal-block-font-id, $title--horizontal-block-tablet);
     margin-bottom: $title--horizontal-block-gap-bottom-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($title--horizontal-block-font, $title--horizontal-block-desktop);
+    @include text-helper-size($title--horizontal-block-font-id, $title--horizontal-block-desktop);
     margin-bottom: $title--horizontal-block-gap-bottom-desktop;
   }
 }
 
-@mixin title--article($sizes: ($title--article-mobile, $title--article-tablet, $title--article-desktop), $font: $title--article-font) {
+@mixin title--article($sizes: ($title--article-mobile, $title--article-tablet, $title--article-desktop), $font: $title--article-font-id) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
@@ -67,20 +67,20 @@
 }
 
 @mixin title--text-block() {
-  @include text-helper($title--text-block-font);
+  @include text-helper($title--text-block-font-id);
   margin: $title-margin--text-block;
   color: $title--text-block-color;
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($title--text-block-font, $title--text-block-mobile);
+    @include text-helper-size($title--text-block-font-id, $title--text-block-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($title--text-block-font, $title--text-block-tablet);
+    @include text-helper-size($title--text-block-font-id, $title--text-block-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($title--text-block-font, $title--text-block-desktop);
+    @include text-helper-size($title--text-block-font-id, $title--text-block-desktop);
   }
 
   &:first-child {
@@ -110,7 +110,7 @@
   }
 }
 
-@mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font, $color: $title--content-block-color, $margins: ($title--content-block-gap-bottom-mobile, $title--content-block-gap-bottom-tablet, $title--content-block-gap-bottom-desktop)) {
+@mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font-id, $color: $title--content-block-color, $margins: ($title--content-block-gap-bottom-mobile, $title--content-block-gap-bottom-tablet, $title--content-block-gap-bottom-desktop)) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);

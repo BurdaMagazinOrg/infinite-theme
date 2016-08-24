@@ -22,8 +22,8 @@
         initialize: function (pOptions) {
             _.extend(this, pOptions);
 
-            if($.cookie != undefined) $.cookie.json = true;
-            if($.timeago != undefined)  $.timeago.settings.localeTitle = true;
+            if ($.cookie != undefined) $.cookie.json = true;
+            if ($.timeago != undefined)  $.timeago.settings.localeTitle = true;
 
             if (_.isFunction(history.pushState)) Backbone.history.start({pushState: true});
             AppConfig.initialLocation = Backbone.history.location.pathname + Backbone.history.location.search;
@@ -31,7 +31,7 @@
 
             this.initBeforeUnloadBehavior();
             this.initAdBehavior();
-            this.delegateEvents();
+            //this.delegateEvents();
             this.createModels();
             this.createManagers();
             this.createViews();
@@ -123,6 +123,21 @@
             BM.reuseView(ManagerIds.scrollManager, this.scrollManager);
         },
         createViews: function () {
+            /**
+             * InfiniteView - parse and create views by data-view-type
+             * IMPORTANT - Needed for the initial parsing
+             */
+            this.infiniteView = new BaseDynamicView({
+                id: ViewIds.infiniteView,
+                el: this.$el,
+                model: this.infiniteViewsModel,
+                deviceModel: this.deviceModel,
+                initialCall: true
+            });
+
+            this.infiniteView.delegateElements();
+            /** **/
+
 
             /**
              * MainMenuView
@@ -141,16 +156,6 @@
                 model: this.menuSidebarModel
             });
 
-            /**
-             * InfiniteView - parse and create views by data-view-type
-             */
-            this.infiniteView = new BaseDynamicView({
-                id: ViewIds.infiniteView,
-                el: this.$el,
-                model: this.infiniteViewsModel,
-                deviceModel: this.deviceModel,
-                initialCall: true
-            });
 
             /**
              * ModalSearchView

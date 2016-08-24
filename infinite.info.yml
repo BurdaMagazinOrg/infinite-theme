@@ -19,6 +19,7 @@ libraries:
   - infinite/infinite.models.page-offsets-model
   - infinite/infinite.models.device-model
   - infinite/infinite.models.adsc-model
+  - infinite/infinite.models.infinite-block-data-model
 
   - infinite/infinite.views.base.base-view
   - infinite/infinite.views.base.base-inview-view

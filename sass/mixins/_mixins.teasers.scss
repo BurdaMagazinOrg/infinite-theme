@@ -392,7 +392,7 @@
   }
 
   .text-headline {
-    @include text-helper($teaser--content-headline-font);
+    @include text-helper($teaser--content-headline-font-id);
     color: $teaser--content-headline-color;
   }
 
@@ -416,19 +416,19 @@
     }
 
     .text-headline {
-      @include text-helper-size($teaser--content-headline-font, $teaser--content-headline-size-mobile);
+      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-mobile);
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-helper-size($teaser--content-headline-font, $teaser--content-headline-size-tablet);
+      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-helper-size($teaser--content-headline-font, $teaser--content-headline-size-desktop);
+      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-desktop);
     }
   }
 }

@@ -15,6 +15,9 @@
   @include text-headline();
 }
 
+%text-headline-bold {
+  @include text-headline-bold();
+}
 
 /**
 * Text-Tiny

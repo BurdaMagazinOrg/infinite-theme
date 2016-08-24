@@ -48,7 +48,7 @@
 
             if (this.preloader != null) this.preloader.hide(true, true);
             this.onAfterLoadCallback($(pItem));
-            this.parseInfiniteView($(pItem), {modelList: this.model, parseItemRoot: false});
+            this.parseInfiniteView($(pItem), {modelList: this.model, delegateElements: true, initialDOMItem: false});
         },
         onDisableHandler: function (pDisabled) {
             //console.log("AbstractFeedView onDisableHandler", " View >> ", this.id, pDisabled);

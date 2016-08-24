@@ -3,29 +3,29 @@
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
 
-  @include text-helper($label--category-font);
+  @include text-helper($label--category-font-id);
   text-transform: uppercase;
   color: $label--category-color;
 
   @media (max-width: $screen-xxs-max) {
-    @include text-helper-size($label--category-font, $size-mobile);
+    @include text-helper-size($label--category-font-id, $size-mobile);
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($label--category-font, $size-tablet);
+    @include text-helper-size($label--category-font-id, $size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($label--category-font, $size-desktop);
+    @include text-helper-size($label--category-font-id, $size-desktop);
   }
 }
 
-@mixin label--marketing($size: $label--marketing-size-default, $font: $label--marketing-font, $color: $label--marketing-color) {
+@mixin label--marketing($size: $label--marketing-size-default, $font: $label--marketing-font-id, $color: $label--marketing-color) {
   @include text-helper($font, $size);
   color: $color;
 }
 
-@mixin label--copyright($sizes: ($label--copyright-size--mobile, $label--copyright-size--tablet, $label--copyright-size--desktop), $font: $label--copyright-font, $color: $label--copyright-color) {
+@mixin label--copyright($sizes: ($label--copyright-size--mobile, $label--copyright-size--tablet, $label--copyright-size--desktop), $font: $label--copyright-font-id, $color: $label--copyright-color) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
@@ -44,14 +44,14 @@
   }
 
   @media (max-width: $screen-xxs-max) {
-    @include text-helper-size($label--copyright-font, $size-mobile);
+    @include text-helper-size($label--copyright-font-id, $size-mobile);
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($label--copyright-font, $size-tablet);
+    @include text-helper-size($label--copyright-font-id, $size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($label--copyright-font, $size-desktop);
+    @include text-helper-size($label--copyright-font-id, $size-desktop);
   }
 }

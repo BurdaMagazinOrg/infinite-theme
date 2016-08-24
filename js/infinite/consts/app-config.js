@@ -8,6 +8,7 @@ var AppConfig = {
     gtmIndexPosEvent: 'gtm_index_pos_event',
     initialLocation: '/',
     initialAdsc: {},
+    articleReadedDelay: 2000,
     ad_fag: 'fag',
     ad_orbyd: 'orbyd',
     initialDocumentTitle: document.title

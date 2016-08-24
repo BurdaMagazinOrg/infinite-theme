@@ -16,7 +16,7 @@
   }
 
   .caption {
-    @include text-helper($author__label-font, $author__label-size);
+    @include text-helper($author__label-font-id, $author__label-size);
   }
 
   .text-author {

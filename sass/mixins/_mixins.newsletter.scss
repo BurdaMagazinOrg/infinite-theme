@@ -488,7 +488,7 @@
   border-radius: $newsletter__groups-border-radius;
 
   .newsletter__groups-title {
-    @include text-helper($newsletter__groups-title-font);
+    @include text-helper($newsletter__groups-title-font-id);
     color: $newsletter__groups-title-color;
     margin: $newsletter__groups-title-margin;
   }
@@ -508,7 +508,7 @@
     }
 
     label {
-      @include text-helper($newsletter__groups-checkbox-label-font);
+      @include text-helper($newsletter__groups-checkbox-label-font-id);
       color: $newsletter__groups-checkbox-label-color;
 
       span {
@@ -517,7 +517,7 @@
     }
 
     p {
-      @include text-helper($newsletter__groups-checkbox-copy-font, $newsletter__groups-checkbox-copy-size);
+      @include text-helper($newsletter__groups-checkbox-copy-font-id, $newsletter__groups-checkbox-copy-size);
       color: $newsletter__groups-checkbox-copy-color;
       padding-left: 20px;
       margin: $newsletter__groups-checkbox-copy-label-margin;
@@ -528,12 +528,12 @@
     padding: $newsletter__groups-padding-mobile;
 
     .newsletter__groups-title {
-      @include text-helper-size($newsletter__groups-title-font, $newsletter__groups-title-size-mobile);
+      @include text-helper-size($newsletter__groups-title-font-id, $newsletter__groups-title-size-mobile);
     }
 
     .newsletter__groups-form-row {
       label {
-        @include text-helper-size($newsletter__groups-checkbox-label-font, $newsletter__groups-checkbox-label-size-mobile);
+        @include text-helper-size($newsletter__groups-checkbox-label-font-id, $newsletter__groups-checkbox-label-size-mobile);
       }
     }
 
@@ -571,24 +571,24 @@
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
     .newsletter__groups-title {
-      @include text-helper-size($newsletter__groups-title-font, $newsletter__groups-title-size-tablet);
+      @include text-helper-size($newsletter__groups-title-font-id, $newsletter__groups-title-size-tablet);
     }
 
     .checkbox {
       label {
-        @include text-helper-size($newsletter__groups-checkbox-label-font, $newsletter__groups-checkbox-label-size-tablet);
+        @include text-helper-size($newsletter__groups-checkbox-label-font-id, $newsletter__groups-checkbox-label-size-tablet);
       }
     }
   }
 
   @media (min-width: $screen-lg-min) {
     .newsletter__groups-title {
-      @include text-helper-size($newsletter__groups-title-font, $newsletter__groups-title-size-desktop);
+      @include text-helper-size($newsletter__groups-title-font-id, $newsletter__groups-title-size-desktop);
     }
 
     .checkbox {
       label {
-        @include text-helper-size($newsletter__groups-checkbox-label-font, $newsletter__groups-checkbox-label-size-desktop);
+        @include text-helper-size($newsletter__groups-checkbox-label-font-id, $newsletter__groups-checkbox-label-size-desktop);
       }
     }
   }

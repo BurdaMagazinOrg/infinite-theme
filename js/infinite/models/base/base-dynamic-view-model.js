@@ -6,7 +6,7 @@
         defaults: {
             el: [],
             infiniteBlock: false,
-            initialDOMItem: true
+            initialDOMItem: true,
         },
         initialize: function (pModel, pOptions) {
             BaseCollectionModel.prototype.initialize.call(this, pModel, pOptions);
@@ -15,23 +15,24 @@
                 this.createDynamicItem(pModel);
             }
         },
-        createDynamicItem: function (pModel, pOptions) {
+        createDynamicItem: function (pSettings, pOptions) {
+
             var tmpView = {},
                 tmpAdscModel,
-                $tmpElement = pModel.el,
-                tmpType = pModel.type,
-                tmpSettings = {
+                $tmpElement = pSettings.el,
+                tmpType = pSettings.type,
+                tmpSettings = _.extend({
                     model: this,
-                    el: $tmpElement,
                     context: $tmpElement.closest('[data-view-context]').length > 0 ?
                         $tmpElement.closest('[data-view-context]') : $(window)
-                };
+                }, pSettings, pOptions);
 
-            if (!_.isUndefined(pOptions) && !_.isUndefined(pOptions.deviceModel)) {
-                tmpSettings.deviceModel = pOptions.deviceModel;
-            }
+            /**
+             * set new values
+             */
+            this.set(pSettings);
 
-            //console.log(">>> createView", tmpType);
+            //console.log(">>> createView", tmpType, tmpSettings);
 
             switch (tmpType) {
                 case 'feedView':
@@ -40,6 +41,10 @@
                 case 'infiniteBlockView':
                     tmpView = new InfiniteBlockView(tmpSettings);
                     tmpView.delegateInview(); //active inview functions
+
+                    if(!tmpSettings.initialDOMItem) {
+                        tmpView.delegateElements();
+                    }
                     break;
                 case 'articleView':
                     tmpView = new ArticleView(tmpSettings);
@@ -51,11 +56,10 @@
                     tmpView = new GalleryView(tmpSettings);
                     break;
                 case 'marketingView':
-
                     //dynamic adsc model
-                    if(pModel.initialDOMItem === false && $tmpElement.parents('[data-adsc-adunit1]').length > 0) {
+                    if (pSettings.initialDOMItem === false && $tmpElement.parents('[data-adunit1]').length > 0) {
                         tmpAdscModel = new AdscModel();
-                        tmpAdscModel.setByElement($tmpElement.parents('[data-adsc-adunit1]'));
+                        tmpAdscModel.setByElement($tmpElement.parents('[data-adunit1]'));
                         tmpSettings.dynamicAdscModel = tmpAdscModel;
                     }
 
@@ -84,7 +88,6 @@
                     break;
             }
 
-            this.set(pModel);
             this.set('view', tmpView);
         }
     });

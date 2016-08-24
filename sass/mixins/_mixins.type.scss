@@ -1,14 +1,14 @@
 @mixin text-helper($font, $size: '', $line-height: '') {
 
-  @if ($font == $font-headline) {
+  @if ($font == $font-headline-id) {
     @extend %text-headline;
-  } @else if ($font == $font-headline-bold) {
+  } @else if ($font == $font-headline-bold-id) {
     @extend %text-headline-bold;
-  } @else if ($font == $font-tiny) {
+  } @else if ($font == $font-tiny-id) {
     @extend %text-tiny;
-  } @else if ($font == $font-label) {
+  } @else if ($font == $font-label-id) {
     @extend %text-label;
-  } @else if ($font == $font-content) {
+  } @else if ($font == $font-content-id) {
     @extend %text-content;
   } @else {
     font-family: $font;
@@ -69,17 +69,17 @@
   line-height: $line-height;
 }
 
-@mixin text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
+@mixin text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing, $font-weight: $headline-font-weight) {
   font-family: $font-headline;
-  @include _text-headline($size, $color, $letter-spacing);
+  @include _text-headline($size, $color, $letter-spacing, $font-weight);
 }
 
-@mixin text-headline-bold($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
+@mixin text-headline-bold($size: '', $color: '', $letter-spacing: $headline-bold-letter-spacing, $font-weight: $headline-bold-font-weight) {
   font-family: $font-headline-bold;
-  @include _text-headline($size, $color, $letter-spacing);
+  @include _text-headline($size, $color, $letter-spacing, $font-weight);
 }
 
-@mixin _text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing) {
+@mixin _text-headline($size: '', $color: '', $letter-spacing: $headline-letter-spacing, $font-weight: '') {
   letter-spacing: $letter-spacing;
 
   @if ($size!= '') {
@@ -88,6 +88,10 @@
 
   @if ($color != '') {
     color: $color;
+  }
+
+  @if ($font-weight != '') {
+    font-weight: $font-weight;
   }
 }
 
@@ -117,6 +121,19 @@
 @mixin text-content($size: '', $color: '') {
   font-family: $font-content;
   letter-spacing: $content-letter-spacing;
+
+  @if ($size != '') {
+    @include text-content-size($size);
+  }
+
+  @if ($color != '') {
+    color: $color;
+  }
+}
+
+@mixin text-content-bold($size: '', $color: '') {
+  font-family: $font-content-bold;
+  letter-spacing: $content-bold-letter-spacing;
 
   @if ($size != '') {
     @include text-content-size($size);
