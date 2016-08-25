@@ -36,7 +36,7 @@
             this.initializeApi();
             this.delegateEvents();
 
-            if (!_.isNull(this.permissions) || !this.useAjaxPermissions) {
+            if (!_.isNull(this.permissions)) {
                 this.ready();
             }
         },
@@ -52,7 +52,7 @@
                 s.parentNode.insertBefore(th, s)
             }
 
-            if (this.useAjaxPermissions && !this.permissions) {
+            if (!this.permissions) {
                 window.thsixtyQ.push(['permissions.get', {
                     success: _.bind(function (pPermissions) {
                         //TODO remove this after prod permissions fix
