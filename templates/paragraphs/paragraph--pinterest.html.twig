@@ -40,6 +40,12 @@
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
+    {% block title %}
+        {% if content.field_title %}
+            {{ content.field_title }}
+        {% endif %}
+    {% endblock %}
+
     {% if pinit_url %}
         <a data-pin-do="embedPin" data-pin-width="medium" href="{{ pinit_url }}"></a>
     {% endif %}
