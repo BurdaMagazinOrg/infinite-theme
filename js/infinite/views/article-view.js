@@ -74,7 +74,8 @@
                 TrackingManager.trackEvent({
                     category: 'mkt-userInteraction',
                     action: 'readArticle',
-                    label: this.articleSEOTitle
+                    label: this.articleSEOTitle,
+                    'eventNonInteraction': 'true',
                 });
             }
         }

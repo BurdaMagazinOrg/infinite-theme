@@ -171,6 +171,7 @@
                 success: $.proxy(function () {
                     this.setViewState(BaseNewsletterView.STATE_SUCCESS);
                     this.$el.trigger('newsletter:success');
+
                     this.track({category: 'newsletter', action: 'success'});
                 }, this),
                 error: $.proxy(function (err) {
@@ -221,6 +222,14 @@
         track: function (pObject) {
             if (typeof TrackingManager != 'undefined' && this.useTracking == true) {
                 TrackingManager.trackEvent(pObject);
+
+                if (pObject.category == 'newsletter' && pObject.action == 'success') {
+                    TrackingManager.trackEvent({
+                        category: 'mkt-conversion',
+                        action: 'newsletterSignup',
+                        'eventNonInteraction': 'false',
+                    });
+                }
             }
         },
         destroy: function () {

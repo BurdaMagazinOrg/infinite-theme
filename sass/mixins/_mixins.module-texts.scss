@@ -18,7 +18,7 @@
 **/
 
 @mixin teaser__text--default() {
-  .teaser__overhead {
+  .teaser__overhead, .text-label--internal-url {
     @include text-helper($teaser__overhead-font--default);
     text-transform: uppercase;
     color: $teaser__overhead-color--default;
@@ -46,6 +46,10 @@
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
+
+  .text-headline {
+    text-transform: $feed-teaser-headline-text-transform;
+  }
 
   @media (max-width: $screen-xs-max) {
     .text-headline {

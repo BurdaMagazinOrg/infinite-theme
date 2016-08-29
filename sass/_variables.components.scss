@@ -91,6 +91,15 @@ $margin-v-item-content__item-desktop: $gap-size-xxxl !default;
 $region-v-lined: true !default;
 
 /**
+** Header
+**/
+//Header Home
+$header-home__logo-width: 35% !default;
+$header-home__logo-min-width: 180px !default;
+$header-home__logo-align: "" !default;
+$header-home__logo-padding: $gap-size-sm 0 !default;
+
+/**
 ** Main Navigation
 **/
 $menu--main-navigation-font-id: $font-label-id !default;
@@ -397,6 +406,7 @@ $teaser__overhead-gap-bottom-desktop--default: $teaser__category--default-gap-bo
 $feed-teaser-headline-size-mobile: $title-size-sm !default;
 $feed-teaser-headline-size-tablet: $title-size-md !default;
 $feed-teaser-headline-size-desktop: $title-size-lg !default;
+$feed-teaser-headline-text-transform: none !default;
 
 $feed-teaser-headline-middle-size-mobile: $feed-teaser-headline-size-mobile !default;
 $feed-teaser-headline-middle-size-tablet: $feed-teaser-headline-size-tablet !default;

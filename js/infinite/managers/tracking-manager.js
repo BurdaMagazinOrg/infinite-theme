@@ -297,7 +297,8 @@
                 'event': TrackingManager.gtmEventName,
                 'location': tmpCurrentPath,
                 'label': '',
-                'value': ''
+                'value': '',
+                'eventNonInteraction': '',
             }, tmpTrackingObject);
 
             if (typeof window.dataLayer != "undefined") {
