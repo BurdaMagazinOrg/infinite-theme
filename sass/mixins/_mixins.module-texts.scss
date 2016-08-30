@@ -405,7 +405,7 @@
 }
 
 @mixin menu--sidebar-misc-text() {
-  color: $gray-base;
+  color: $menu--sidebar-misc-color;
 
   .menu-item {
     @include text-helper($menu--sidebar-misc-font-id, $menu--sidebar-misc-size);

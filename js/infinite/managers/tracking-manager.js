@@ -108,6 +108,15 @@
                 $tmpItems = [];
 
             /**
+             * Outbrain
+             */
+
+            $tmpItems = $pContainer.find('.outbrain_div_container');
+            $tmpItems.on('click', '.ob-dynamic-rec-link', function(el){
+                console.log("OUTBRAIN CLICK TRACK", el);
+            });
+
+            /**
              * Presenter Full
              */
             $tmpItems = $pContainer.find('.teaser-full-content');

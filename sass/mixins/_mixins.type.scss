@@ -4,6 +4,8 @@
     @extend %text-headline;
   } @else if ($font == $font-headline-bold-id) {
     @extend %text-headline-bold;
+  } @else if ($font == $font-navigation-id) {
+    @extend %text-navigation;
   } @else if ($font == $font-tiny-id) {
     @extend %text-tiny;
   } @else if ($font == $font-label-id) {
@@ -96,6 +98,24 @@
 }
 
 @mixin text-headline-size($size, $line-height: $line-height-headline) {
+  font-size: $size;
+  line-height: $line-height;
+}
+
+@mixin text-navigation($size: '', $color: '') {
+  font-family: $font-navigation;
+  letter-spacing: $navigation-letter-spacing;
+
+  @if ($size != '') {
+    @include text-navigation-size($size);
+  }
+
+  @if ($color != '') {
+    color: $color;
+  }
+}
+
+@mixin text-navigation-size($size, $line-height: $line-height-text-navigation) {
   font-size: $size;
   line-height: $line-height;
 }

@@ -102,7 +102,7 @@ $header-home__logo-padding: $gap-size-sm 0 !default;
 /**
 ** Main Navigation
 **/
-$menu--main-navigation-font-id: $font-label-id !default;
+$menu--main-navigation-font-id: $font-navigation-id !default;
 $menu--main-navigation-size: 14px !default;
 $menu--main-navigation-bg: $white !default;
 $menu--main-navigation-min-height: 60px !default;
@@ -171,6 +171,7 @@ $menu--sidebar-main-text-transform: uppercase !default;
 $menu--sidebar-misc-font-id: $font-content-id !default;
 $menu--sidebar-misc-size: 14px !default;
 $menu--sidebar-misc-text-transform: uppercase !default;
+$menu--sidebar-misc-color: $gray-base !default;
 
 /**
 ** Newsletter
@@ -796,10 +797,16 @@ $date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;
 /**
 ** Author
 **/
+$author__profile-image-margin--teaser-default: 0 $padding 0 0 !default;
+$author__profile-image-radius--teaser-default: 0 !default;
+$author__profile-image-size--teaser-default: 40px !default;
+
 $author__label-font-id: $font-tiny-id !default;
 $author__label-size: $label-size-medium !default;
+$author__label-letter-spacing: 0.04em !default;
 $author__label-color: $gray-base !default;
 $author__label-hover-color: $color-hover !default;
+$author__label-author-margin: 3px 0 0 0 !default;
 
 //vita-short
 $author-text-align--vita-short: center !default;
