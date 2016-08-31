@@ -1,0 +1,27 @@
+{#
+/**
+ * @file native_campaign.html.twig
+ * Default theme implementation to present Native campaign data.
+ *
+ * This template is used when viewing Native campaign pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_native_campaign()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('native_campaign') }}>
+  <span class="logo">
+    <img src="{{ logo_url }}"/>
+  </span>
+  <span class="separator">&</span>
+  <span class="brand">
+    {{ content.logo }}
+  </span>
+  {{ content.tracking_pixel }}
+</div>
