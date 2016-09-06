@@ -43,13 +43,15 @@
 
 {% extends "paragraph.html.twig" %}
 
-{% if content | render %}
-    {% if content.field_title|render %}
-        <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
-    {% endif %}
-    <div class="container-fixed-content">
-        <div class="container-content">
-            {{ content|without('field_title') }}
+{% block content_block %}
+    {% if content | render %}
+        {% if content.field_title|render %}
+            <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
+        {% endif %}
+        <div class="container-fixed-content">
+            <div class="container-content">
+                {{ content|without('field_title') }}
+            </div>
         </div>
-    </div>
-{% endif %}
+    {% endif %}
+{% endblock %}
