@@ -1,8 +1,12 @@
 {
-    "name": "burdamagazinorg/infinite",
+    "name": "burdamagazinorg/infinite_theme",
     "target-dir": "infinite",
     "type": "drupal-theme",
     "authors": [
+        {
+            "name": "Nico Davis",
+            "email": "n.davis@nicodavis.de"
+        },
         {
             "name": "Steffen Schlaer",
             "email": "steffen.schlaer@it-cru.de"
