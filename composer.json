@@ -1,5 +1,6 @@
 {
     "name": "burdamagazinorg/infinite",
+    "target-dir": "infinite",
     "type": "drupal-theme",
     "authors": [
         {
