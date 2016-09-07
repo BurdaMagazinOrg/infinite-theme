@@ -22,21 +22,28 @@
 }
 
 @mixin text-helper-size($font, $size, $line-height: '') {
-  @if ($font == $font-headline or $font == $font-headline-bold) {
+  @if ($font == $font-headline-id or $font == $font-headline-bold-id) {
 
     @if ($line-height == '') {
       $line-height: $line-height-headline;
     }
     @include text-headline-size($size, $line-height);
 
-  } @else if ($font == $font-label, $line-height) {
+  } @else if ($font == $font-navigation-id) {
+
+    @if ($line-height == '') {
+      $line-height: $line-height-text-navigation;
+    }
+    @include text-navigation-size($size, $line-height);
+
+  } @else if ($font == $font-label-id) {
 
     @if ($line-height == '') {
       $line-height: $line-height-label;
     }
     @include text-label-size($size, $line-height);
 
-  } @else if ($font == $font-tiny) {
+  } @else if ($font == $font-tiny-id) {
 
     @if ($line-height == '') {
       $line-height: $line-height-text-tiny;
