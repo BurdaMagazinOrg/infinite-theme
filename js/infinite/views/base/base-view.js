@@ -7,16 +7,19 @@
         deviceModel: null,
         initialize: function (pOptions) {
             _.extend(this, pOptions || {});
+            //console.log("this.model.get('initialDOMItem')", this.model.get('initialDOMItem'));
+            //if (this.model.has('initialDOMItem') && this.model.get('initialDOMItem') === true) return;
+        },
+        delegateElements: function ($pElement) {
+            var $tmpElement = $pElement || this.$el;
 
-            if (pOptions.initialDOMItem === true) return; //mainView is an BaseView -> parsed all internal / extern / etc objects
-
-            this.updateInternalURL(this.$el);
-            this.updateExternalURL(this.$el);
-            this.updateTimeAgo(this.$el);
-            this.loadResponsiveImages(this.$el);
-            this.updateSocials(this.$el);
-            this.updateBtnActions(this.$el);
-            this.updateTextActions(this.$el);
+            this.updateInternalURL($tmpElement);
+            this.updateExternalURL($tmpElement);
+            this.updateTimeAgo($tmpElement);
+            this.loadResponsiveImages($tmpElement);
+            this.updateSocials($tmpElement);
+            this.updateBtnActions($tmpElement);
+            this.updateTextActions($tmpElement);
         },
         updateSocials: function ($pContainer) {
             /**

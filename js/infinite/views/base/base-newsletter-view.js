@@ -7,6 +7,7 @@
             "submit": "formSubmit"
         },
         useAlerts: true,
+        useAjaxPermissions: true,
         available: false,
         settings: null,
         useTracking: true,
@@ -20,7 +21,7 @@
         initialize: function (pOptions) {
             this.settings = _.extend({}, drupalSettings.hm_newsletter);
             this.settings.groupId = this.$el.data('newsletter-group-id');
-
+            this.useAjaxPermissions = this.$el.data('use-ajax-permissions') == undefined ? true : this.$el.data('use-ajax-permissions');
             this.$el.hide();
             this.permissions = BaseNewsletterView.permissions;
 
@@ -76,18 +77,22 @@
             this.$privacyView = this.$el.find('.container-privacy');
         },
         ready: function () {
-            this.$formView.find('.privacy-link').unbind('click.privacy_open').bind('click.privacy_open', $.proxy(function () {
-                this.setViewState(BaseNewsletterView.STATE_PRIVACY);
-                return false;
-            }, this));
-
-            this.$privacyView.find('.icon-close').unbind('click.privacy_close').bind('click.privacy_close', $.proxy(function () {
-                this.setViewState(BaseNewsletterView.STATE_INITIAL);
-            }, this));
-
-            this.$privacyView.find('.container-content-dynamic').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_body));
             this.$el.show();
             this.available = true;
+
+            if (this.useAjaxPermissions) {
+
+                this.$formView.find('.privacy-link').unbind('click.privacy_open').bind('click.privacy_open', $.proxy(function () {
+                    this.setViewState(BaseNewsletterView.STATE_PRIVACY);
+                    return false;
+                }, this));
+
+                this.$privacyView.find('.icon-close').unbind('click.privacy_close').bind('click.privacy_close', $.proxy(function () {
+                    this.setViewState(BaseNewsletterView.STATE_INITIAL);
+                }, this));
+
+                this.$privacyView.find('.container-content-dynamic').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_body));
+            }
         },
         formSubmit: function (pEvent) {
             var tmpValid = true,
@@ -166,6 +171,7 @@
                 success: $.proxy(function () {
                     this.setViewState(BaseNewsletterView.STATE_SUCCESS);
                     this.$el.trigger('newsletter:success');
+
                     this.track({category: 'newsletter', action: 'success'});
                 }, this),
                 error: $.proxy(function (err) {
@@ -204,10 +210,10 @@
             $tmpItem = $($tmpItem).appendTo(this.$alerts);
 
             _.delay(_.bind(function () {
-                $tmpItem.animate({height: 0, paddingTop: 0, paddingBottom: 0}, function() {
+                $tmpItem.animate({height: 0, paddingTop: 0, paddingBottom: 0}, function () {
                     $(this).remove();
                 });
-            }, this), this.removeTimer + (this.removeTimerDelay*$tmpItem.index()));
+            }, this), this.removeTimer + (this.removeTimerDelay * $tmpItem.index()));
         },
         removeAlerts: function () {
             this.$alerts.empty();
@@ -216,6 +222,14 @@
         track: function (pObject) {
             if (typeof TrackingManager != 'undefined' && this.useTracking == true) {
                 TrackingManager.trackEvent(pObject);
+
+                if (pObject.category == 'newsletter' && pObject.action == 'success') {
+                    TrackingManager.trackEvent({
+                        category: 'mkt-conversion',
+                        action: 'newsletterSignup',
+                        'eventNonInteraction': 'false',
+                    });
+                }
             }
         },
         destroy: function () {

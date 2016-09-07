@@ -184,3 +184,11 @@ function infinite_preprocess_paragraph(&$variables) {
     $variables['media_bundle'] = $media->bundle();
   }
 }
+
+function infinite_page_attachments_alter(array &$attachments) {
+  foreach($attachments['#attached']['html_head'] as $key => $attachment) {
+    if(isset($attachment[1]) && $attachment[1] == 'breakpoint_settings_loader') {
+      unset($attachments['#attached']['html_head'][$key]);
+    }
+  }
+}

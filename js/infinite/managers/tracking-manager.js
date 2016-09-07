@@ -108,6 +108,26 @@
                 $tmpItems = [];
 
             /**
+             * Outbrain
+             */
+
+            $tmpItems = $pContainer.find('.outbrain_div_container');
+            $tmpItems.on('click', '.ob-dynamic-rec-link', $.proxy(function (pEvent) {
+                var $tmpElement = $(pEvent.currentTarget),
+                    tmpIndex = ($tmpElement.parent().index() + 1),
+                    tmpMagazineName = $tmpElement.find('.ob-rec-source').text(),
+                    tmpTrackingObject = {
+                        event: this.gtmEventName,
+                        category: 'mkt-userInteraction',
+                        action: 'outbrainClick',
+                        label: tmpMagazineName,
+                        index: 'index_' + tmpIndex
+                    };
+
+                TrackingManager.trackEvent(tmpTrackingObject);
+            }, this));
+
+            /**
              * Presenter Full
              */
             $tmpItems = $pContainer.find('.teaser-full-content');
@@ -296,7 +316,9 @@
             tmpTrackingObject = _.extend({
                 'event': TrackingManager.gtmEventName,
                 'location': tmpCurrentPath,
-                'value': ''
+                'label': '',
+                'value': '',
+                'eventNonInteraction': '',
             }, tmpTrackingObject);
 
             if (typeof window.dataLayer != "undefined") {

@@ -1,5 +1,5 @@
 @mixin tags--article() {
-  @include text-helper($tags__article-font);
+  @include text-helper($tags__article-font-id);
 
   .label {
     display: inline-block;
@@ -43,7 +43,7 @@
     }
 
     a {
-      @include text-helper-size($tags__article-font, $tags__article-text-size-mobile);
+      @include text-helper-size($tags__article-font-id, $tags__article-text-size-mobile);
     }
   }
 
@@ -53,7 +53,7 @@
     }
 
     a {
-      @include text-helper-size($tags__article-font, $tags__article-text-size-tablet);
+      @include text-helper-size($tags__article-font-id, $tags__article-text-size-tablet);
     }
   }
 
@@ -63,7 +63,7 @@
     }
 
     a {
-      @include text-helper-size($tags__article-font, $tags__article-text-size-desktop);
+      @include text-helper-size($tags__article-font-id, $tags__article-text-size-desktop);
     }
   }
 }

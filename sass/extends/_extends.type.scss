@@ -15,6 +15,13 @@
   @include text-headline();
 }
 
+%text-headline-bold {
+  @include text-headline-bold();
+}
+
+%text-navigation {
+  @include text-navigation();
+}
 
 /**
 * Text-Tiny

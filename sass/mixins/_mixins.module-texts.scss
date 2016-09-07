@@ -1,10 +1,10 @@
 @mixin seo-linker-text() {
   .seo-linker__item-title {
-    @include text-helper($seo-linker__item-title-font, $seo-linker__item-title-size);
+    @include text-helper($seo-linker__item-title-font-id, $seo-linker__item-title-size);
   }
 
   .seo-linker__link-list--image {
-    @include text-helper($seo-linker__link-list-font, $seo-linker__link-list-size);
+    @include text-helper($seo-linker__link-list-font-id, $seo-linker__link-list-size);
     color: $seo-linker__link-list-color;
 
     a:hover {
@@ -18,7 +18,7 @@
 **/
 
 @mixin teaser__text--default() {
-  .teaser__overhead {
+  .teaser__overhead, .text-label--internal-url {
     @include text-helper($teaser__overhead-font--default);
     text-transform: uppercase;
     color: $teaser__overhead-color--default;
@@ -46,6 +46,10 @@
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
+
+  .text-headline {
+    text-transform: $feed-teaser-headline-text-transform;
+  }
 
   @media (max-width: $screen-xs-max) {
     .text-headline {
@@ -194,7 +198,7 @@
 
 @mixin socials-labeled-horizontal-bar-text() {
   .item-social span {
-    @include text-helper($socials-labeled-horizontal-bar-label-font, $socials-labeled-horizontal-bar-label-size);
+    @include text-helper($socials-labeled-horizontal-bar-label-font-id, $socials-labeled-horizontal-bar-label-size);
     line-height: $socials-labeled-horizontal-bar-label-size + 1px;
     text-transform: uppercase;
   }
@@ -214,12 +218,12 @@
   }
 
   .text-headline {
-    @include text-helper($product__item-text-headline-font, $product__item-text-headline-size);
+    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size);
     color: $product__item-text-headline-color;
   }
 
   .text-brand {
-    @include text-helper($product__item-text-brand-font, $product__item-text-brand-size);
+    @include text-helper($product__item-text-brand-font-id, $product__item-text-brand-size);
     text-transform: uppercase;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -227,12 +231,12 @@
   }
 
   .text-price {
-    @include text-helper($product__item-text-price-font, $product__item-text-price-size);
+    @include text-helper($product__item-text-price-font-id, $product__item-text-price-size);
     color: $product__item-text-price-color;
   }
 
   .text-shipping {
-    @include text-helper($product__item-text-shipping-font, $product__item-text-shipping-size);
+    @include text-helper($product__item-text-shipping-font-id, $product__item-text-shipping-size);
     color: $product__item-text-shipping-color;
   }
 
@@ -246,62 +250,62 @@
 **/
 
 @mixin list__links--module-text() {
-  @include text-helper($list__links--module-font, $list__links--module-font-size);
+  @include text-helper($list__links--module-font-id, $list__links--module-font-size);
 }
 
 @mixin list__glossary-text() {
-  @include text-helper($list__glossary-font, $list__glossary-font-size);
+  @include text-helper($list__glossary-font-id, $list__glossary-font-size);
 }
 
 @mixin item-content--spotlight-text() {
   text-align: center;
 
   .title {
-    @include text-helper($spotlight__title-font);
+    @include text-helper($spotlight__title-font-id);
     letter-spacing: $spotlight__title-letter-spacing;
     text-shadow: $spotlight__caption-text-shadow;
   }
 
   .subtitle {
-    @include text-helper($spotlight__subtitle-font, $spotlight__subtitle-size);
+    @include text-helper($spotlight__subtitle-font-id, $spotlight__subtitle-size);
     text-transform: uppercase;
     text-shadow: $spotlight__caption-text-shadow;
   }
 
   .copytext {
-    @include text-helper($spotlight__copytext-font);
+    @include text-helper($spotlight__copytext-font-id);
     text-shadow: $spotlight__caption-text-shadow;
   }
 }
 
 @mixin item-content--spotlight-small-text() {
   .title {
-    @include text-helper-size($spotlight__title-font, $spotlight__title-size-mobile);
+    @include text-helper-size($spotlight__title-font-id, $spotlight__title-size-mobile);
   }
 
   .copytext {
-    @include text-helper-size($spotlight__copytext-font, $spotlight__copytext-size-mobile);
+    @include text-helper-size($spotlight__copytext-font-id, $spotlight__copytext-size-mobile);
   }
 }
 
 @mixin item-content--spotlight-middle-text() {
   .title {
-    @include text-helper-size($spotlight__title-font, $spotlight__title-size-tablet);
+    @include text-helper-size($spotlight__title-font-id, $spotlight__title-size-tablet);
   }
 
   .copytext {
-    @include text-helper-size($spotlight__copytext-font, $spotlight__copytext-size-tablet);
+    @include text-helper-size($spotlight__copytext-font-id, $spotlight__copytext-size-tablet);
   }
 }
 
 @mixin item-content--spotlight-full-text() {
   .title {
-    @include text-helper-size($spotlight__title-font, $spotlight__title-size-desktop);
+    @include text-helper-size($spotlight__title-font-id, $spotlight__title-size-desktop);
     letter-spacing: 1.1;
   }
 
   .copytext {
-    @include text-helper-size($spotlight__copytext-font, $spotlight__copytext-size-desktop);
+    @include text-helper-size($spotlight__copytext-font-id, $spotlight__copytext-size-desktop);
   }
 }
 
@@ -311,24 +315,24 @@
 
 @mixin menu--main-navigation-text() {
   .menu-item {
-    @include text-helper($menu--main-navigation-font, $menu--main-navigation-size, 1);
+    @include text-helper($menu--main-navigation-font-id, $menu--main-navigation-size, 1);
     text-transform: uppercase;
     //line-height: 1;
   }
 }
 
 @mixin menu--main-navigation__flyout-text() {
-  @include text-helper($menu--main-navigation__flyout-font, $menu--main-navigation__flyout-size);
+  @include text-helper($menu--main-navigation__flyout-font-id, $menu--main-navigation__flyout-size);
 }
 
 @mixin menu--submenu-navigation-text() {
   .label-menu {
-    @include text-helper($menu--submenu-navigation-font, $menu--submenu-navigation-size);
+    @include text-helper($menu--submenu-navigation-font-id, $menu--submenu-navigation-size);
     text-transform: uppercase;
   }
 
   .menu-item {
-    @include text-helper($menu--submenu-navigation-font, $menu--submenu-navigation-size);
+    @include text-helper($menu--submenu-navigation-font-id, $menu--submenu-navigation-size);
     color: $menu--submenu-navigation-color;
     text-transform: uppercase;
   }
@@ -395,16 +399,16 @@
 **/
 @mixin menu--sidebar-main-text() {
   .menu-item {
-    @include text-helper($menu--sidebar-main-font, $menu--sidebar-main-size);
+    @include text-helper($menu--sidebar-main-font-id, $menu--sidebar-main-size);
     text-transform: $menu--sidebar-main-text-transform;
   }
 }
 
 @mixin menu--sidebar-misc-text() {
-  color: $gray-base;
+  color: $menu--sidebar-misc-color;
 
   .menu-item {
-    @include text-helper($menu--sidebar-misc-font, $menu--sidebar-misc-size);
+    @include text-helper($menu--sidebar-misc-font-id, $menu--sidebar-misc-size);
     text-transform: $menu--sidebar-misc-text-transform;
   }
 
@@ -422,25 +426,25 @@
 **/
 @mixin item-media--gallery-text() {
   .text-item-count {
-    @include text-helper($gallery__count-font);
+    @include text-helper($gallery__count-font-id);
     color: $gallery__count-color;
   }
 
   @media (max-width: $screen-xs-max) {
     .text-item-count {
-      @include text-helper-size($gallery__count-font, $gallery__count-size-mobile);
+      @include text-helper-size($gallery__count-font-id, $gallery__count-size-mobile);
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .text-item-count {
-      @include text-helper-size($gallery__count-font, $gallery__count-size-tablet);
+      @include text-helper-size($gallery__count-font-id, $gallery__count-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-item-count {
-      @include text-helper-size($gallery__count-font, $gallery__count-size-desktop);
+      @include text-helper-size($gallery__count-font-id, $gallery__count-size-desktop);
     }
   }
 }
@@ -493,20 +497,20 @@
 
 @mixin item-content__text--horoscopes() {
   .item-horoscope__viversum-sponsored {
-    @include text-helper($horoscope__sponsored-font, $horoscope__sponsored-size);
+    @include text-helper($horoscope__sponsored-font-id, $horoscope__sponsored-size);
     color: $horoscope__sponsored-color;
   }
 }
 
 @mixin item-content__text--node-horoscope() {
   .item-horoscope__viversum-sponsored {
-    @include text-helper($horoscope__sponsored-font, $horoscope__sponsored-size);
+    @include text-helper($horoscope__sponsored-font-id, $horoscope__sponsored-size);
     color: $horoscope__sponsored-color;
   }
 }
 
 @mixin item-anchor-nav__text() {
-  @include text-helper($anchor-nav__item-font);
+  @include text-helper($anchor-nav__item-font-id);
   text-transform: $anchor-nav__item-text-transform;
 
   li {
@@ -514,7 +518,7 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($anchor-nav__item-font, $anchor-nav__item-size-mobile);
+    @include text-helper-size($anchor-nav__item-font-id, $anchor-nav__item-size-mobile);
     color: $anchor-nav__item-mobile-color;
   }
 
@@ -523,10 +527,10 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($anchor-nav__item-font, $anchor-nav__item-size-tablet);
+    @include text-helper-size($anchor-nav__item-font-id, $anchor-nav__item-size-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($anchor-nav__item-font, $anchor-nav__item-size-desktop);
+    @include text-helper-size($anchor-nav__item-font-id, $anchor-nav__item-size-desktop);
   }
 }

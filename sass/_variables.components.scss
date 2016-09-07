@@ -34,7 +34,7 @@ $container-padding-sm-top-desktop: $gap-size-sm !default;
 /**
 ** Btns
 **/
-$btn--small-font: $font-label !default;
+$btn--small-font-id: $font-label-id !default;
 $btn--small-border: 1px solid $color-highlighted !default;
 $btn--small-radius: 15px !default;
 $btn--small-color: $white !default;
@@ -51,7 +51,7 @@ $btn__label-size-mobile--small: 13px !default;
 $btn__label-size-tablet--small: 13px !default;
 $btn__label-size-desktop--small: 14px !default;
 
-$btn--large-font: $font-headline-bold !default;
+$btn--large-font-id: $font-headline-bold-id !default;
 $btn--large-text-transform: uppercase !default;
 $btn--large-border: 1px solid $color-highlighted !default;
 $btn--large-bg-color: $color-highlighted !default;
@@ -72,7 +72,7 @@ $btn__label-size-desktop--large: 15px !default;
 /**
 ** Form
 **/
-$form__error-content-font: $font-headline !default;
+$form__error-content-font-id: $font-headline-id !default;
 $form__error-content-size: 20px !default;
 $form__error-content: "!" !default;
 $form__error-content-color: $alert-danger-text !default;
@@ -91,9 +91,18 @@ $margin-v-item-content__item-desktop: $gap-size-xxxl !default;
 $region-v-lined: true !default;
 
 /**
+** Header
+**/
+//Header Home
+$header-home__logo-width: 35% !default;
+$header-home__logo-min-width: 180px !default;
+$header-home__logo-align: "" !default;
+$header-home__logo-padding: $gap-size-sm 0 !default;
+
+/**
 ** Main Navigation
 **/
-$menu--main-navigation-font: $font-label !default;
+$menu--main-navigation-font-id: $font-navigation-id !default;
 $menu--main-navigation-size: 14px !default;
 $menu--main-navigation-bg: $white !default;
 $menu--main-navigation-min-height: 60px !default;
@@ -111,13 +120,13 @@ $menu--main-navigation__item-padding-tablet: 5px 7px 4px !default;
 
 $menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
 
-$menu--main-navigation__menu-label-font: $menu--main-navigation-font !default;
+$menu--main-navigation__menu-label-font-id: $menu--main-navigation-font-id !default;
 $menu--main-navigation__menu-label-size: $menu--main-navigation-size !default;
 $menu--main-navigation__menu-label-margin: 0 0 0 $gap-size-sm !default;
 $menu--main-navigation__menu-label-color: $text-color !default;
 $menu--main-navigation__menu-label-text-transform: uppercase !default;
 //flyout
-$menu--main-navigation__flyout-font: $font-label !default;
+$menu--main-navigation__flyout-font-id: $font-label-id !default;
 $menu--main-navigation__flyout-size: $menu--main-navigation-size !default;
 $menu--main-navigation__flyout-color: $text-color !default;
 $menu--main-navigation__flyout-fade-duration: 0.1s !default;
@@ -139,7 +148,7 @@ $navigation-search-icon-color: $text-color !default;
 $navigation-search-icon-size: 19px !default;
 
 //submenu
-$menu--submenu-navigation-font: $font-label !default;
+$menu--submenu-navigation-font-id: $font-label-id !default;
 $menu--submenu-navigation-color: $text-color !default;
 $menu--submenu-navigation-size: $menu--main-navigation-size - 2px !default;
 $menu--submenu-navigation-mobile-color: $gray-base !default;
@@ -155,13 +164,14 @@ $menu__item--sidebar-gap-top: 12px !default;
 $menu__item--sidebar-soft-color: $gray-base !default;
 $menu__item-active-color--sidebar: $color-hover !default;
 
-$menu--sidebar-main-font: $font-label !default;
+$menu--sidebar-main-font-id: $font-label-id !default;
 $menu--sidebar-main-size: $menu--main-navigation-size !default;
 $menu--sidebar-main-text-transform: uppercase !default;
 
-$menu--sidebar-misc-font: $font-content !default;
+$menu--sidebar-misc-font-id: $font-content-id !default;
 $menu--sidebar-misc-size: 14px !default;
 $menu--sidebar-misc-text-transform: uppercase !default;
+$menu--sidebar-misc-color: $gray-base !default;
 
 /**
 ** Newsletter
@@ -203,19 +213,19 @@ $newsletter__groups-bg-color: rgba($white, 0.9) !default;
 $newsletter__groups-margin: 0px 0 30px 0 !default;
 $newsletter__groups-padding-mobile: 10px !default;
 $newsletter__groups-padding-desktop: 15px 50px !default;
-$newsletter__groups-title-font: $font-headline !default;
+$newsletter__groups-title-font-id: $font-headline-id !default;
 $newsletter__groups-title-size-mobile: $title-size-xxxs !default;
 $newsletter__groups-title-size-tablet: $title-size-sm !default;
 $newsletter__groups-title-size-desktop: $title-size-sm !default;
 $newsletter__groups-title-color: $gray-base !default;
 $newsletter__groups-title-margin: 0 0 15px 0 !default;
 
-$newsletter__groups-checkbox-label-font: $font-headline !default;
+$newsletter__groups-checkbox-label-font-id: $font-headline-id !default;
 $newsletter__groups-checkbox-label-color: $text-color !default;
 $newsletter__groups-checkbox-label-size-mobile: $title-size-xxxs !default;
 $newsletter__groups-checkbox-label-size-tablet: $title-size-xxs !default;
 $newsletter__groups-checkbox-label-size-desktop: $title-size-xxs !default;
-$newsletter__groups-checkbox-copy-font: $font-content !default;
+$newsletter__groups-checkbox-copy-font-id: $font-content !default;
 $newsletter__groups-checkbox-copy-color: $gray-base !default;
 $newsletter__groups-checkbox-copy-size: $font-size-base !default;
 $newsletter__groups-checkbox-copy-label-margin: 30px 0 0 0 !default;
@@ -234,12 +244,12 @@ $newsletter__z-index--modal: 999999 !default;
 ** Products
 **/
 
-$product__item-text-brand-font: $font-label !default;
+$product__item-text-brand-font-id: $font-label-id !default;
 $product__item-text-brand-size: 13px !default;
 $product__item-text-brand-color: $gray-base !default;
 $product__item-text-brand-gap-bottom: 5px !default;
 
-$product__item-text-headline-font: $font-headline !default;
+$product__item-text-headline-font-id: $font-headline-id !default;
 $product__item-text-headline-size: $title-size-xxs !default;
 $product__item-text-headline-color: $text-color !default;
 
@@ -251,12 +261,12 @@ $product__item-text-headline-gap-bottom-mobile: 33px !default;
 $product__item-text-headline-gap-bottom-tablet: 33px !default;
 $product__item-text-headline-gap-bottom-desktop: 33px !default;
 
-$product__item-text-price-font: $font-content-bold !default;
+$product__item-text-price-font-id: $font-content-bold-id !default;
 $product__item-text-price-size: 13px !default;
 $product__item-text-price-color: $text-color !default;
 $product__item-text-price-pos-bottom: 45px !default;
 
-$product__item-text-shipping-font: $font-label !default;
+$product__item-text-shipping-font-id: $font-label-id !default;
 $product__item-text-shipping-size: 13px !default;
 $product__item-text-shipping-color: $gray-base !default;
 $product__item-text-shipping-pos-bottom: 40px !default;
@@ -266,25 +276,25 @@ $product__item-text-shipping-pos-bottom: 40px !default;
 **/
 
 /** label-category **/
-$label--category-font: $font-label !default;
+$label--category-font-id: $font-label-id !default;
 $label--category-color: $color-highlighted !default;
 $label--category-size--mobile: $label-size-medium !default;
 $label--category-size--tablet: $label-size-medium !default;
 $label--category-size--desktop: $label-size-medium !default;
 
 /** label-marketing**/
-$label--marketing-font: $font-tiny !default;
+$label--marketing-font-id: $font-tiny-id !default;
 $label--marketing-color: $text-color !default;
 $label--marketing-size-default: 14px !default;
 
 /** label-marketing**/
-$label--advertorial-font: $font-content !default;
+$label--advertorial-font-id: $font-content-id !default;
 $label--advertorial-color: $gray-base !default;
 $label--advertorial-size: 14px !default;
 $label--advertorial-text-transform: uppercase !default;
 
 /** label-copyright**/
-$label--copyright-font: $font-tiny !default;
+$label--copyright-font-id: $font-tiny-id !default;
 $label--copyright-color: $gray-base !default;
 $label--copyright-text-transform: uppercase !default;
 $label--copyright-size--mobile: 12px !default;
@@ -310,7 +320,7 @@ $title--page-center-desktop: 59px !default;
 $title--page-center-color: $gray-base !default;
 
 /** title--horizontal-block **/
-$title--horizontal-block-font: $font-headline !default;
+$title--horizontal-block-font-id: $font-headline-id !default;
 $title--horizontal-block-letter-spacing: 0px !default;
 $title--horizontal-block-text-transform: uppercase !default;
 $title--horizontal-block-color: $text-color !default;
@@ -323,7 +333,7 @@ $title--horizontal-block-gap-bottom-tablet: $gap-size-md !default;
 $title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
 
 /** title--content-block **/
-$title--content-block-font: $font-headline !default;
+$title--content-block-font-id: $font-headline-id !default;
 $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
@@ -334,7 +344,7 @@ $title--content-block-gap-bottom-tablet: $gap-size-md !default;
 $title--content-block-gap-bottom-desktop: $gap-size-xl !default;
 
 /** title--article **/
-$title--article-font: $font-headline !default;
+$title--article-font-id: $font-headline-id !default;
 $title--article-mobile: $title-size-sm !default;
 $title--article-tablet: $title-size-md !default;
 $title--article-desktop: $title-size-xl !default;
@@ -342,7 +352,7 @@ $title--article-color: $text-color !default;
 $title--article-max-width: 888px !default;
 
 /** title--text-block **/
-$title--text-block-font: $font-headline !default;
+$title--text-block-font-id: $font-headline-id !default;
 $title--text-block-mobile: $title-size-sm !default;
 $title--text-block-tablet: $title-size-md !default;
 $title--text-block-desktop: 30px !default;
@@ -363,7 +373,7 @@ $copytext--text-block-desktop: 21px !default;
 **/
 
 $teaser__use-multi-links--default: true !default;
-$teaser__copy--default-font: $font-content !default;
+$teaser__copy--default-font-id: $font-content-id !default;
 $teaser__copy-color--default: $text-color !default;
 $teaser__copy-letter-spacing--default: 0.012em !default;
 $teaser__copy--default-mobile: $copytext--text-block-mobile !default;
@@ -382,7 +392,7 @@ $teaser__category--default-gap-bottom-mobile: $gap-size-sm !default;
 $teaser__category--default-gap-bottom-tablet: $gap-size-sm !default;
 $teaser__category--default-gap-bottom-desktop: $gap-size-sm !default;
 
-$teaser__overhead-font--default: $label--category-font !default;
+$teaser__overhead-font--default: $label--category-font-id !default;
 $teaser__overhead-color--default: $label--category-color !default;
 $teaser__overhead-letter-spacing--default: $tiny-letter-spacing !default;
 $teaser__overhead-size-mobile--default: $label--category-size--mobile !default;
@@ -397,6 +407,7 @@ $teaser__overhead-gap-bottom-desktop--default: $teaser__category--default-gap-bo
 $feed-teaser-headline-size-mobile: $title-size-sm !default;
 $feed-teaser-headline-size-tablet: $title-size-md !default;
 $feed-teaser-headline-size-desktop: $title-size-lg !default;
+$feed-teaser-headline-text-transform: none !default;
 
 $feed-teaser-headline-middle-size-mobile: $feed-teaser-headline-size-mobile !default;
 $feed-teaser-headline-middle-size-tablet: $feed-teaser-headline-size-tablet !default;
@@ -409,7 +420,7 @@ $feed-teaser-gap-top-desktop: $gap-size-xl !default;
 /**
 ** list-teaser
 **/
-$teaser-list__headline-font--teaser-horoscope-middle: $font-headline !default;
+$teaser-list__headline-font--teaser-horoscope-middle: $font-headline-id !default;
 $teaser-list__headline-size-mobile--teaser-horoscope-middle: $title-size-sm !default;
 $teaser-list__headline-size-tablet--teaser-horoscope-middle: $title-size-md !default;
 $teaser-list__headline-size-desktop--teaser-horoscope-middle: $title-size-lg !default;
@@ -421,7 +432,7 @@ $teaser-list__gap-desktop--teaser-horoscope-middle: $gap-v-sm-region-desktop !de
 $teaser__padding-bottom--full-content-tablet: 25px !default;
 $teaser__padding-bottom--full-content-desktop: 65px !default;
 
-$teaser__title-font--full-content: $font-headline !default;
+$teaser__title-font--full-content: $font-headline-id !default;
 $teaser__title-size--full-content-mobile: $title-size-sm !default;
 $teaser__title-size--full-content-tablet: $title-size-lg !default;
 $teaser__title-size--full-content-desktop: $title-size-xxl !default;
@@ -443,7 +454,7 @@ $teaser__caption-bottom--full-content-desktop: -49px !default;
 
 $teaser__overhead-bg--full-content: $white !default;
 $teaser__overhead-color--full-content: $label--category-color !default;
-$teaser__overhead-font--full-content: $label--category-font !default;
+$teaser__overhead-font--full-content: $label--category-font-id !default;
 $teaser__overhead-padding--full-content-mobile: $gap-size-xs 0 0 !default;
 $teaser__overhead-padding--full-content-tablet: $gap-size-sm 21px 0 !default;
 $teaser__overhead-padding--full-content-desktop: $gap-size-sm 21px 0 !default;
@@ -452,7 +463,7 @@ $teaser__overhead-size--full-content-tablet: $label--category-size--tablet !defa
 $teaser__overhead-size--full-content-desktop: $label--category-size--desktop !default;
 
 /** list horizontal teaser **/
-$teaser__title-font--list-horizontal: $font-content !default;
+$teaser__title-font--list-horizontal: $font-content-id !default;
 $teaser__title-color--list-horizontal: $text-color !default;
 $teaser__title-hover-color--list-horizontal: $color-hover !default;
 $teaser__title-size--list-horizontal-mobile: $title-size-xxxs !default;
@@ -470,7 +481,7 @@ $teaser-square-xs-headline-size-tablet: $title-size-sm !default;
 $teaser-square-xs-headline-size-desktop: $title-size-md !default;
 
 /** teaser content **/
-$teaser--content-headline-font: $teaser__title-font--list-horizontal !default;
+$teaser--content-headline-font-id: $teaser__title-font--list-horizontal !default;
 $teaser--content-headline-color: $teaser__title-color--list-horizontal !default;
 $teaser--content-headline-hover-color: $color-hover !default;
 $teaser--content-headline-size-mobile: $title-size-xxxs !default;
@@ -483,10 +494,10 @@ $teaser--content-caption-height-mobile: 69px !default;
 **  Lists **
 **/
 
-$list__links--module-font: $font-content !default;
+$list__links--module-font-id: $font-content-id !default;
 $list__links--module-font-size: 16px !default;
 
-$list__glossary-font: $font-label !default;
+$list__glossary-font-id: $font-label-id !default;
 $list__glossary-font-size: $title-size-xxs !default;
 $list__glossary-line-height: 32px !default;
 $list__glossary-margin: 0 4px 4px 0 !default;
@@ -544,7 +555,7 @@ $socials-clean-horizontal-bar--light-color-hover: $white !default;
 $socials-clean-horizontal-bar--light-border-color-hover: $white !default;
 
 /** socials horizontal bar **/
-$socials-labeled-horizontal-bar-label-font: $font-content !default;
+$socials-labeled-horizontal-bar-label-font-id: $font-content-id !default;
 $socials-labeled-horizontal-bar-label-size: 13px !default;
 $socials-labeled-horizontal-bar-label-padding: 0 0 0 $gap-size-xxs !default;
 $socials-labeled-horizontal-bar-left-gap-mobile: 8px !default;
@@ -598,15 +609,15 @@ $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 **/
 
 /** spotlight **/
-$spotlight__title-font: $font-headline !default;
+$spotlight__title-font-id: $font-headline-id !default;
 $spotlight__title-size-mobile: $title-size-lg !default;
 $spotlight__title-size-tablet: $title-size-xl !default;
 $spotlight__title-size-desktop: 49px !default;
 
-$spotlight__subtitle-font: $font-content !default;
+$spotlight__subtitle-font-id: $font-content-id !default;
 $spotlight__subtitle-size: $label-size-medium !default;
 
-$spotlight__copytext-font: $font-tiny !default;
+$spotlight__copytext-font-id: $font-tiny-id !default;
 $spotlight__copytext-size-mobile: 19px !default;
 $spotlight__copytext-size-tablet: 19px !default;
 $spotlight__copytext-size-desktop: 21px !default;
@@ -635,9 +646,9 @@ $profile__td-size: 16px !default;
 $profile__td-color: $gray-darker !default;
 
 /** seo linker **/
-$seo-linker__item-title-font: $font-headline !default;
+$seo-linker__item-title-font-id: $font-headline-id !default;
 $seo-linker__item-title-size: $title-size-xxs !default;
-$seo-linker__link-list-font: $font-content !default;
+$seo-linker__link-list-font-id: $font-content-id !default;
 $seo-linker__link-list-size: 15px !default;
 $seo-linker__link-list-color: $text-color !default;
 $seo-linker__link-list-hover-color: $color-hover !default;
@@ -646,7 +657,7 @@ $seo-linker__link-list-hover-color: $color-hover !default;
 $gallery-ratio-full: 75% !default;
 $gallery-ratio-middle: 56% !default;
 $gallery-ratio-small: 75% !default;
-$gallery__count-font: $font-label !default;
+$gallery__count-font-id: $font-label-id !default;
 $gallery__count-size-mobile: $title--content-block-mobile !default;
 $gallery__count-size-tablet: $title--content-block-tablet !default;
 $gallery__count-size-desktop: $title--content-block-desktop !default;
@@ -663,7 +674,7 @@ $media__header-ratio-lg: floor(percentage(200/1400)) !default;
 $media__header-ratio-xl: floor(percentage(200/1800)) !default;
 
 $media__description-margin: 5px 0 0 0 !default;
-$media__description-font: $font-tiny !default;
+$media__description-font-id: $font-tiny-id !default;
 $media__description-size-mobile: 14px !default;
 $media__description-size-tablet: 14px !default;
 $media__description-size-desktop: 18px !default;
@@ -671,21 +682,21 @@ $media__description-color: $text-color !default;
 
 //file
 $media__min-height--file: 35px !default;
-$media__title-font--file: $title--text-block-font !default;
+$media__title-font--file: $title--text-block-font-id !default;
 $media__title-color--file: $title--text-block-color !default;
 $media__title-size-mobile--file: $title--text-block-mobile !default;
 $media__title-size-tablet--file: $title--text-block-tablet !default;
 $media__title-size-desktop--file: $title--text-block-desktop !default;
 $media__title-margin--file: 0 !default;
 
-$media__description-font--file: $font-content !default;
+$media__description-font--file: $font-content-id !default;
 $media__description-color--file: $gray-base !default;
 $media__description-size-mobile--file: $copytext--text-block-mobile !default;
 $media__description-size-tablet--file: $copytext--text-block-tablet !default;
 $media__description-size-desktop--file: $copytext--text-block-desktop !default;
 $media__description-margin--file: 1px 0 0 !default;
 
-$media__btn-download-font--file: $btn--large-font !default;
+$media__btn-download-font--file: $btn--large-font-id !default;
 $media__btn-download-size-mobile--file: $btn__label-size-mobile--large !default;
 $media__btn-download-size-tablet--file: $btn__label-size-tablet--large !default;
 $media__btn-download-size-desktop--file: $btn__label-size-desktop--large !default;
@@ -694,7 +705,7 @@ $media__btn-download-margin-mobile--file: 15px 0 0 !default;
 /**
 ** Breadcrumb
 **/
-$breadcrumb-font: $font-label !default;
+$breadcrumb-font-id: $font-label-id !default;
 $breadcrumb-before-content: ">" !default;
 $breadcrumb-before-color: $color-highlighted !default;
 $breadcrumb-color: $text-color;
@@ -707,7 +718,7 @@ $breadcrumb-size-desktop: $label--category-size--desktop !default;
 /**
 ** Tags
 **/
-$tags__article-font: $font-tiny !default;
+$tags__article-font-id: $font-tiny-id !default;
 $tags__article-text-size-mobile: $title-size-xxxs !default;
 $tags__article-text-size-tablet: $title-size-xxs !default;
 $tags__article-text-size-desktop: $title-size-xxs !default;
@@ -722,7 +733,7 @@ $quote__border-style--article: $h-line-style !default;
 $quote__border-max-width--article: 46.5% !default;
 $quote__text-align--article: center !default;
 
-$quote__title-font--article: $font-content !default;
+$quote__title-font--article: $font-content-id !default;
 $quote__title-size--article-mobile: $title-size-sm !default;
 $quote__title-size--article-tablet: $title-size-md !default;
 $quote__title-size--article-desktop: 30px !default;
@@ -732,7 +743,7 @@ $quote__title-font-style--article: italic !default;
 $quote__title-max-width--article: 80% !default;
 $quote__title-padding--article: 10px 0 !default;
 
-$quote__quote-font--article: $font-content-bold !default;
+$quote__quote-font--article: $font-content-bold-id !default;
 $quote__quote-size--article-mobile: 37px !default;
 $quote__quote-size--article-tablet: 45px !default;
 $quote__quote-size--article-desktop: 50px !default;
@@ -744,7 +755,7 @@ $quote__quote-after--article: "\00ab" !default;
 $quote__quote-before-padding--article: 0 10px 0 0 !default;
 $quote__quote-after-padding--article: 0 0 0 10px !default;
 
-$quote__author-font--article: $font-tiny !default;
+$quote__author-font--article: $font-tiny-id !default;
 $quote__author-size--article-mobile: $title-size-xxs !default;
 $quote__author-size--article-tablet: $title-size-xs !default;
 $quote__author-size--article-desktop: $title-size-xs !default;
@@ -760,7 +771,7 @@ $quote__author-v-align--article: baseline !default;
 /**
 ** Dates
 **/
-$date__font--node-created: $font-tiny !default;
+$date__font--node-created: $font-tiny-id !default;
 $date__size-mobile--node-created: $label-size-small !default;
 $date__size-tablet--node-created: $label-size-medium !default;
 $date__size-desktop--node-created: $label-size-large !default;
@@ -772,7 +783,7 @@ $date__margin-tablet--node-created: 0 0 $gap-size-lg 0 !default;
 $date__margin-mobile--node-created: 0 0 $gap-size-xs 0 !default;
 
 //horoscope
-$date__font--horoscope: $font-tiny !default;
+$date__font--horoscope: $font-tiny-id !default;
 $date__size-mobile--horoscope: $label-size-medium !default;
 $date__size-tablet--horoscope: $label-size-medium !default;
 $date__size-desktop--horoscope: $label-size-large !default;
@@ -786,10 +797,16 @@ $date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;
 /**
 ** Author
 **/
-$author__label-font: $font-tiny !default;
+$author__profile-image-margin--teaser-default: 0 $padding 0 0 !default;
+$author__profile-image-radius--teaser-default: 0 !default;
+$author__profile-image-size--teaser-default: 40px !default;
+
+$author__label-font-id: $font-tiny-id !default;
 $author__label-size: $label-size-medium !default;
+$author__label-letter-spacing: 0.04em !default;
 $author__label-color: $gray-base !default;
 $author__label-hover-color: $color-hover !default;
+$author__label-author-margin: 3px 0 0 0 !default;
 
 //vita-short
 $author-text-align--vita-short: center !default;
@@ -797,7 +814,7 @@ $author-padding-top-bottom-mobile--vita-short: 10px !default;
 $author-padding-top-bottom-tablet--vita-short: 20px !default;
 $author-padding-top-bottom-desktop--vita-short: 30px !default;
 
-$author__date-font--vita-short: $font-tiny !default;
+$author__date-font--vita-short: $font-tiny-id !default;
 $author__date-size-mobile--vita-short: $label-size-small !default;
 $author__date-size-tablet--vita-short: $label-size-medium !default;
 $author__date-size-desktop--vita-short: $label-size-large !default;
@@ -811,7 +828,7 @@ $author__date-margin-mobile--vita-short: 0 0 $gap-size-xs 0 !default;
 $author__profile-image-radius--vita-short: 50% !default;
 $author__profile-image-border--vita-short: 2px solid $gray !default;
 
-$author__name-font--vita-short: $font-headline !default;
+$author__name-font--vita-short: $font-headline-id !default;
 $author__name-size-mobile--vita-short: $label-size-medium !default;
 $author__name-size-tablet--vita-short: $label-size-large !default;
 $author__name-size-desktop--vita-short: $label-size-xl !default;
@@ -820,7 +837,7 @@ $author__name-margin-desktop--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !defaul
 $author__name-margin-tablet--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
 $author__name-margin-mobile--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
 
-$author__email-font--vita-short: $font-content !default;
+$author__email-font--vita-short: $font-content-id !default;
 $author__email-size-mobile--vita-short: $label-size-small !default;
 $author__email-size-tablet--vita-short: $label-size-medium !default;
 $author__email-size-desktop--vita-short: $label-size-medium !default;
@@ -829,7 +846,7 @@ $author__email-margin-desktop--vita-short: 0 0 $gap-size-xxs 0 !default;
 $author__email-margin-tablet--vita-short: 0 0 $gap-size-xxs 0 !default;
 $author__email-margin-mobile--vita-short: 0 0 $gap-size-xxs 0 !default;
 
-$author__short-info-font--vita-short: $font-content !default;
+$author__short-info-font--vita-short: $font-content-id !default;
 $author__short-info-size-mobile--vita-short: $label-size-small !default;
 $author__short-info-size-tablet--vita-short: $label-size-medium !default;
 $author__short-info-size-desktop--vita-short: $label-size-medium !default;
@@ -841,7 +858,7 @@ $author__short-info-margin-mobile--vita-short: 0 !default;
 /**
 ** Tables
 **/
-$table__title-font--text-block: $font-headline !default;
+$table__title-font--text-block: $font-headline-id !default;
 $table__title-color--text-block: $title--text-block-color !default;
 
 $table-border-spacing-mobile--text-block: (0px 0px) !default;
@@ -854,14 +871,14 @@ $table__td-padding-tablet--text-block: 4px 25px 4px 10px !default;
 $table__td-padding-desktop--text-block: 4px 25px 4px 10px !default;
 $table__td-border-bottom--text-block: $h-line-style !default;
 
-$table__td-first-font--text-block: $font-content-bold !default;
+$table__td-first-font--text-block: $font-content-bold-id !default;
 $table__td-first-color--text-block: $color-brand !default;
 $table__td-first-letter-spacing--text-block: $content-letter-spacing !default;
 $table__td-first-size-mobile--text-block: $copytext--text-block-mobile !default;
 $table__td-first-size-tablet--text-block: $copytext--text-block-tablet !default;
 $table__td-first-size-desktop--text-block: $copytext--text-block-desktop !default;
 
-$table__td-font--text-block: $font-content !default;
+$table__td-font--text-block: $font-content-id !default;
 $table__td-color--text-block: $text-color !default;
 $table__td-letter-spacing--text-block: $content-letter-spacing !default;
 $table__td-size-mobile--text-block: $copytext--text-block-mobile !default;
@@ -891,7 +908,7 @@ $horoscope__img-container-padding-mobile--node: $gap-size-sm !default;
 $horoscope__img-container-padding-tablet--node: $gap-size-sm !default;
 $horoscope__img-container-padding-desktop--node: $gap-size-sm !default;
 
-$horoscope__sponsored-font: $font-content !default;
+$horoscope__sponsored-font-id: $font-content-id !default;
 $horoscope__sponsored-size: 15px !default;
 $horoscope__sponsored-color: $gray-base !default;
 $horoscope__sponsored-border: $h-line-style !default;
@@ -926,7 +943,7 @@ $rating__color-active: $color-highlighted !default;
 $pager__tree-bg-color--list: $gray-light !default;
 $pager__tree-padding--list: 10px 20px !default;
 $pager__active-color--list: $color-hover !default;
-$pager__links-font--list: $font-label !default;
+$pager__links-font--list: $font-label-id !default;
 $pager__links-text-transform--list: uppercase !default;
 $pager__links-letter-spacing--list: 0.1em !default;
 $pager__links-color--list: $gray-base !default;
@@ -953,7 +970,7 @@ $outbrain__ob_what-padding-desktop: 20px 10px 20px !important;
 **/
 
 //Anchor Navigation
-$anchor-nav__item-font: $font-navigation !default;
+$anchor-nav__item-font-id: $font-navigation-id !default;
 $anchor-nav__item-text-transform: uppercase !default;
 $anchor-nav__padding-mobile: $gap-size-xs !default;
 $anchor-nav__padding-tablet: $gap-size-xs !default;

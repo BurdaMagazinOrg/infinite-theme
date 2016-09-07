@@ -284,7 +284,7 @@
   }
 
   .label-menu {
-    @include text-helper($menu--main-navigation__menu-label-font, $menu--main-navigation__menu-label-size, 1);
+    @include text-helper($menu--main-navigation__menu-label-font-id, $menu--main-navigation__menu-label-size, 1);
     @include inline-block();
     margin: $menu--main-navigation__menu-label-margin;
     color: $menu--main-navigation__menu-label-color;

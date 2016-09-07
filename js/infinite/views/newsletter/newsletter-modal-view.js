@@ -73,9 +73,9 @@
             this.newsletterView = new BaseNewsletterView({el: $tmpNewsletter, useTracking: false});
 
             $tmpNewsletter.on('newsletter:success', $.proxy(function (event) {
-                this.track({category: 'newsletter_modal', action: 'success'});
                 this.newsletterSuccess = true;
                 this.deviceModel.setCookieValue(this.cookieName, {newsletterModalSuccess: true}, {expires: 120});
+                this.track({category: 'newsletter_modal', action: 'success'});
             }, this));
 
             $tmpNewsletter.on('newsletter:error', $.proxy(function (event) {
@@ -89,6 +89,14 @@
         track: function (pObject) {
             if (typeof TrackingManager != 'undefined') {
                 TrackingManager.trackEvent(pObject);
+
+                if (pObject.category == 'newsletter_modal' && pObject.action == 'success') {
+                    TrackingManager.trackEvent({
+                        category: 'mkt-conversion',
+                        action: 'newsletterSignup',
+                        'eventNonInteraction': 'false',
+                    });
+                }
             }
         },
         isRefererAccepted: function () {

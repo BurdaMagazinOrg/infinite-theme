@@ -32,7 +32,7 @@ form {
     //position: relative;
     //
     //&:after {
-    //  @include text-helper($form__error-content-font, $form__error-content-size);
+    //  @include text-helper($form__error-content-font-id, $form__error-content-size);
     //  content: $form__error-content;
     //  position: absolute;
     //  left: $form__error-content-left;

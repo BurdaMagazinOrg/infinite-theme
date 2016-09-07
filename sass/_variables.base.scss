@@ -15,15 +15,28 @@ $font-headline-bold: 'Arial' !default;
 $font-content: 'Arial' !default;
 $font-content-bold: 'Arial' !default;
 
+$font-navigation-id: "font-navigation";
+$font-label-id: "font-label";
+$font-tiny-id: "font-tiny";
+$font-headline-id: "font-headline";
+$font-headline-bold-id: "font-headline-bold";
+$font-content-id: "font-content";
+$font-content-bold-id: "font-content-bold";
+
 $label-letter-spacing: 1px !default;
 $headline-letter-spacing: 0px !default;
+$headline-bold-letter-spacing: 0px !default;
+$headline-font-weight: normal !default;
+$headline-bold-font-weight: normal !default;
 $tiny-letter-spacing: 0px !default;
 $content-letter-spacing: 0px !default;
+$content-bold-letter-spacing: 0px !default;
 
 $line-height-headline: 1.2 !default;
 $line-height-content: 1.55 !default;
 $line-height-label: 1.4 !default;
 $line-height-text-tiny: 1.4 !default;
+$line-height-text-navigation: 1 !default;
 
 $font-size-base: 16px;
 $font-size-large: 18px;

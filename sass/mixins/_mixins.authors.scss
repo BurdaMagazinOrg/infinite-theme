@@ -16,16 +16,30 @@
   }
 
   .caption {
-    @include text-helper($author__label-font, $author__label-size);
+    @include text-helper($author__label-font-id, $author__label-size);
+    letter-spacing: $author__label-letter-spacing;
   }
 
   .text-author {
-    margin-top: 3px;
+    margin: $author__label-author-margin;
     line-height: 1;
     white-space: nowrap;
 
     span {
       display: inline-block;
+    }
+  }
+
+  .container-avatar {
+    width: $author__profile-image-size--teaser-default;
+    height: $author__profile-image-size--teaser-default;
+    float: left;
+    margin: $author__profile-image-margin--teaser-default;
+
+    img {
+      border-radius: $author__profile-image-radius--teaser-default;
+      -webkit-border-radius: $author__profile-image-radius--teaser-default;
+      -moz-border-radius: $author__profile-image-radius--teaser-default;
     }
   }
 }
@@ -67,7 +81,6 @@
     @include text-helper($author__short-info-font--vita-short);
     color: $author__short-info-color--vita-short;
   }
-
 
   @media (max-width: $screen-xs-max) {
     padding-top: $author-padding-top-bottom-mobile--vita-short;

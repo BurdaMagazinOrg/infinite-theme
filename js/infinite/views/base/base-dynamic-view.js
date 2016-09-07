@@ -5,14 +5,22 @@
     BurdaInfinite.views.base.BaseDynamicView = BaseInviewView.extend({
         type: 'baseDynamicView',
         initialCall: false,
+        initialDOMItem: true,
         initialize: function (pOptions) {
             BaseInviewView.prototype.initialize.call(this, pOptions);
 
             this.parseInfiniteView(this.$el, {initialCall: this.initialCall});
         },
         parseInfiniteView: function (pContainer, pSettings) {
-            var tmpSettings = _.extend({modelList: this.model, initialCall: false}, pSettings);
-            var $tmpContainer = $(pContainer),
+            if(pSettings.initialDOMItem === false) this.initialDOMItem = false;
+
+            var tmpSettings = _.extend({
+                    modelList: this.model,
+                    initialCall: false, //todo find a better name
+                    delegateElements: false,
+                    initialDOMItem: this.initialDOMItem
+                }, pSettings),
+                $tmpContainer = $(pContainer),
                 $tmpViewTypes = [];
 
             if (this.$el[0] == $tmpContainer[0] || tmpSettings.initialCall) {
@@ -41,15 +49,26 @@
                 tmpViewType = $tmpItem.data('view-type'),
                 tmpModel = new BaseDynamicViewModel();
 
+            if (tmpViewType == "infiniteBlockView") {
+                if ($tmpItem.attr('data-adunit1') || $tmpItem.attr('data-content-type')) {
+                    //tmpModel.set('infiniteBlockDataModel', new InfiniteBlockDataModel({$el: $tmpItem}));
+                    this.infiniteBlockDataModel = new InfiniteBlockDataModel({$el: $tmpItem});
+                }
+            }
+
             pSettings.modelList.add(tmpModel);
 
             //trigger change events
             tmpModel.createDynamicItem({
                 el: $tmpItem,
                 type: tmpViewType,
+                //TODO check performance
                 initialDOMItem: $tmpItem.parents('.region-feed').length <= 0,
                 'infiniteBlock': tmpViewType == 'infiniteBlockView'
-            }, {deviceModel: this.deviceModel});
+            }, {
+                deviceModel: this.deviceModel,
+                infiniteBlockDataModel: this.infiniteBlockDataModel
+            });
 
             $tmpItem.data('infiniteModel', tmpModel);
         },

@@ -15,17 +15,17 @@
 }
 
 @mixin copytext--teaser-default() {
-  @include text-helper($teaser__copy--default-font);
+  @include text-helper($teaser__copy--default-font-id);
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($teaser__copy--default-font, $teaser__copy--default-mobile);
+    @include text-helper-size($teaser__copy--default-font-id, $teaser__copy--default-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($teaser__copy--default-font, $teaser__copy--default-tablet);
+    @include text-helper-size($teaser__copy--default-font-id, $teaser__copy--default-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($teaser__copy--default-font, $teaser__copy--default-desktop);
+    @include text-helper-size($teaser__copy--default-font-id, $teaser__copy--default-desktop);
   }
 }

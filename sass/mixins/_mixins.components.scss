@@ -5,7 +5,7 @@
 
   li {
     @include inline-block();
-    @include text-helper($breadcrumb-font);
+    @include text-helper($breadcrumb-font-id);
     position: relative;
     text-transform: uppercase;
     vertical-align: middle;
@@ -35,19 +35,19 @@
 
   @media (max-width: $screen-xxs-max) {
     li {
-      @include text-helper-size($breadcrumb-font, $size-mobile);
+      @include text-helper-size($breadcrumb-font-id, $size-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     li {
-      @include text-helper-size($breadcrumb-font, $size-tablet);
+      @include text-helper-size($breadcrumb-font-id, $size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     li {
-      @include text-helper-size($breadcrumb-font, $size-desktop);
+      @include text-helper-size($breadcrumb-font-id, $size-desktop);
     }
   }
 }

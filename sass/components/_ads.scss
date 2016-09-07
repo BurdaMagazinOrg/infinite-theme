@@ -49,7 +49,7 @@
 }
 
 .item-marketing-advertorial {
-  @include text-helper($label--advertorial-font, $label--advertorial-size);
+  @include text-helper($label--advertorial-font-id, $label--advertorial-size);
   color: $label--advertorial-color;
   text-transform: $label--advertorial-text-transform;
 }

@@ -24,7 +24,7 @@
   }
 }
 
-@mixin btn--small($sizes: ($btn__label-size-mobile--small, $btn__label-size-desktop--small, $btn__label-size-desktop--small), $font: $btn--small-font) {
+@mixin btn--small($sizes: ($btn__label-size-mobile--small, $btn__label-size-desktop--small, $btn__label-size-desktop--small), $font: $btn--small-font-id) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
@@ -66,7 +66,7 @@
   border: $btn--small-highlighted-border;
 }
 
-@mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font) {
+@mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font-id) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);

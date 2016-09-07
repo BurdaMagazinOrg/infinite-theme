@@ -17,20 +17,20 @@
             }
         },
         setByElement: function ($pElement) {
-            var tmpAdUnit_1 = $pElement.data('adsc-adunit1') || '',
-                tmpAdUnit_2 = $pElement.data('adsc-adunit2') || '',
-                tmpAdUnit_3 = $pElement.data('adsc-adunit3') || '',
-                tmpAdkeyWord = $pElement.data('adsc-keyword') || '',
+            var tmpAdUnit_1 = $pElement.data('adunit1') || '',
+                tmpAdUnit_2 = $pElement.data('adunit2') || '',
+                tmpAdUnit_3 = $pElement.data('adunit3') || '',
+                tmpAdkeyWord = $pElement.data('adkeyword') || '',
                 tmpCurrentAdsc = _.clone(this.get('adsc'));
 
             //important tag
             if(tmpAdUnit_1 != '') {
-                tmpCurrentAdsc.adsc_adunit1 = tmpAdUnit_1;
+                tmpCurrentAdsc.adunit1 = tmpAdUnit_1;
             }
 
-            tmpCurrentAdsc.adsc_adunit2 = tmpAdUnit_2;
-            tmpCurrentAdsc.adsc_adunit3 = tmpAdUnit_3;
-            tmpCurrentAdsc.adsc_keyword = tmpAdkeyWord;
+            tmpCurrentAdsc.adunit2 = tmpAdUnit_2;
+            tmpCurrentAdsc.adunit3 = tmpAdUnit_3;
+            tmpCurrentAdsc.adkeyword = tmpAdkeyWord;
 
             //console.log(">>> tmpCurrentAdsc", tmpCurrentAdsc);
 
@@ -61,10 +61,10 @@
         },
         getCurrentAdscInfos: function () {
             return {
-                'adsc_adunit1': window.adunit1,
-                'adsc_adunit2': window.adunit2,
-                'adsc_adunit3': window.adunit3,
-                'adsc_keyword': window.adkeyword,
+                'adunit1': window.adunit1,
+                'adunit2': window.adunit2,
+                'adunit3': window.adunit3,
+                'adkeyword': window.adkeyword,
                 'adsc_mode': window.adsc_mode,
                 'adsc_mobile': window.admobile,
                 'adsc_device': window.addevice

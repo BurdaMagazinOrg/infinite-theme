@@ -24,9 +24,11 @@
     <div{{ attributes.addClass(classes) }}>
       <div class="icon icon-close"></div>
 
-      <a class="logo item-sidebar" href="{{ front_page }}" title="{{ 'Home'|t }}">
-        <img src="{{ logo }}" alt="{{ 'Home'|t }}"/>
-      </a>
+      {% block logo_block %}
+        <a class="logo item-sidebar" href="{{ front_page }}" title="{{ 'Home'|t }}">
+          {% embed '@infinite_theme/logo.html.twig' %}{% endembed %}
+        </a>
+      {% endblock %}
 
       {{ content }}
     </div>
