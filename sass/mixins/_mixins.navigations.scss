@@ -30,6 +30,7 @@
 
 @mixin item-anchor-navigation--full() {
   @include item-anchor-nav__text();
+  z-index: 2;
 
   li {
     display: inline-block;
