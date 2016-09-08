@@ -27,11 +27,7 @@
 
 #page-wrapper {
   .region-presenter {
-    padding-top: 0;
-
-    .teaser-content-right, .teaser--content-right {
-      @extend %container--v-padding;
-    }
+    @include page-wrapper__region-presenter();
   }
 
   .region-breadcrumb + .region-full-content {

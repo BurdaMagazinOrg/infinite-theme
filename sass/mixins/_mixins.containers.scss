@@ -6,3 +6,11 @@
   float: left;
   width: percentage(($columns / $grid-columns));
 }
+
+@mixin page-wrapper__region-presenter() {
+  padding-top: 0;
+
+  .teaser-content-right, .teaser--content-right {
+    @extend %container--v-padding;
+  }
+}

@@ -413,9 +413,10 @@ $feed-teaser-headline-middle-size-mobile: $feed-teaser-headline-size-mobile !def
 $feed-teaser-headline-middle-size-tablet: $feed-teaser-headline-size-tablet !default;
 $feed-teaser-headline-middle-size-desktop: $feed-teaser-headline-size-desktop !default;
 
-$feed-teaser-gap-top-mobile: $gap-size-md !default;
-$feed-teaser-gap-top-tablet: $gap-size-xl !default;
-$feed-teaser-gap-top-desktop: $gap-size-xl !default;
+$feed-teaser-h-line: $h-line-style !default;
+$feed-teaser-gap-top-mobile: $gap-v-region-mobile !default;
+$feed-teaser-gap-top-tablet: $gap-v-region-tablet !default;
+$feed-teaser-gap-top-desktop: $gap-v-region-desktop !default;
 
 /**
 ** list-teaser

@@ -65,7 +65,8 @@
 #}
 
 <div class="container-content container-fixed-content">
-    {% set attributes = attributes.addClass('teaser-content-right', 'teaser-landscape-medium', 'teaser-presenter-half') %}
+    {% set attributes = attributes.addClass('teaser-content-right', 'teaser-landscape-medium', 'teaser-presenter' , 'teaser-presenter--half') %}
     {% embed "node--article--teaser-default.html.twig" %}
+        {% block teaser_author %}{% endblock %}
     {% endembed %}
 </div>

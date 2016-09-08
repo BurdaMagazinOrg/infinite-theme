@@ -38,8 +38,12 @@
   @include teaser--content();
 }
 
-%teaser-full-content {
-  @include teaser-full-content();
+%teaser-presenter--full {
+  @include teaser-presenter--full();
+}
+
+%teaser-presenter--lg{
+  @include teaser-presenter--lg();
 }
 
 %teaser-square-xs {

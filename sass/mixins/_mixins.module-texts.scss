@@ -18,7 +18,7 @@
 **/
 
 @mixin teaser__text--default() {
-  .teaser__overhead, .text-label--internal-url {
+  .teaser__overhead {
     @include text-helper($teaser__overhead-font--default);
     text-transform: uppercase;
     color: $teaser__overhead-color--default;
@@ -42,29 +42,81 @@
   }
 }
 
+@mixin teaser-presenter-text($overhead-sizes: ($teaser__overhead-size--full-content-mobile, $teaser__overhead-size--full-content-tablet, $teaser__overhead-size--full-content-desktop), $overhead-font: $teaser__overhead-font--full-content, $title-sizes: ($teaser__title-size--full-content-mobile, $teaser__title-size--full-content-tablet, $teaser__title-size--full-content-desktop), $title-font: $teaser__title-font--full-content) {
+  $overhead-size-mobile: nth($overhead-sizes, 1);
+  $overhead-size-tablet: nth($overhead-sizes, 2);
+  $overhead-size-desktop: nth($overhead-sizes, 3);
+
+  $title-size-mobile: nth($title-sizes, 1);
+  $title-size-tablet: nth($title-sizes, 2);
+  $title-size-desktop: nth($title-sizes, 3);
+
+  .teaser__overhead {
+    @include text-helper($overhead-font);
+    text-transform: uppercase;
+  }
+
+  .teaser__title {
+    @include text-helper($title-font);
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .teaser__overhead {
+      @include text-helper-size($overhead-font, $overhead-size-mobile);
+    }
+
+    .teaser__title {
+      @include text-helper-size($title-font, $title-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .teaser__overhead {
+      @include text-helper-size($overhead-font, $overhead-size-tablet);
+    }
+
+    .teaser__title {
+      @include text-helper-size($title-font, $title-size-tablet);
+    }
+  }
+
+  /**
+  * Large Screens
+  **/
+  @media (min-width: $screen-md-min) {
+    .teaser__overhead {
+      @include text-helper-size($overhead-font, $overhead-size-desktop);
+    }
+
+    .teaser__title {
+      @include text-helper-size($title-font, $title-size-desktop);
+    }
+  }
+}
+
 @mixin teaser-feed-large-text($sizes: ($feed-teaser-headline-size-mobile, $feed-teaser-headline-size-tablet, $feed-teaser-headline-size-desktop)) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
 
-  .text-headline {
+  .teaser__title {
     text-transform: $feed-teaser-headline-text-transform;
   }
 
   @media (max-width: $screen-xs-max) {
-    .text-headline {
+    .teaser__title {
       @include text-headline-size($size-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    .text-headline {
+    .teaser__title {
       @include text-headline-size($size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
-    .text-headline {
+    .teaser__title {
       @include text-headline-size($size-desktop);
     }
   }

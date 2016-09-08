@@ -3,13 +3,13 @@
 
   @if ($teaser__use-multi-links--default == false) {
     &:hover {
-      .img-container, .teaser__img-container {
+      .teaser__img-container {
         @include opacity($teaser-hover-opacity);
       }
     }
   }
 
-  .img-container, .teaser__img-container {
+  .teaser__img-container {
     @include transition-default(opacity, $transition-duration, $transition-easing);
     @include opacity(1);
     overflow: hidden;
@@ -43,7 +43,7 @@
     letter-spacing: $teaser__copy-letter-spacing--default;
   }
 
-  .text-label--internal-url {
+  .teaser__overhead {
     display: inline-block;
 
     &:hover {
@@ -60,7 +60,7 @@
       margin-top: $teaser__socials--default-gap-top-mobile;
     }
 
-    .text-label--internal-url {
+    .teaser__overhead {
       margin-bottom: $teaser__category--default-gap-bottom-mobile;
     }
 
@@ -78,7 +78,7 @@
       margin-top: $teaser__socials--default-gap-top-tablet;
     }
 
-    .text-label--internal-url {
+    .teaser__overhead {
       margin-bottom: $teaser__category--default-gap-bottom-tablet;
     }
 
@@ -96,7 +96,7 @@
       margin-top: $teaser__socials--default-gap-top-desktop;
     }
 
-    .text-label--internal-url {
+    .teaser__overhead {
       margin-bottom: $teaser__category--default-gap-bottom-desktop;
     }
 
@@ -163,7 +163,7 @@
 }
 
 @mixin teaser-feed-large-gap() {
-  border-top: $h-line-style;
+  border-top: $feed-teaser-h-line;
 
   &:first-child {
     border-top: 0;
@@ -219,7 +219,7 @@
   @include make-row();
   @include teaser-square-xs-text();
 
-  & > .img-container, & > .teaser__img-container {
+  & > .teaser__img-container {
     @include make-xxs-column(6);
   }
 
@@ -229,7 +229,7 @@
 }
 
 @mixin teaser-square-medium() {
-  & > .img-container, & > .teaser__img-container,
+  & > .teaser__img-container,
   .caption-teaser, .teaser__caption {
     @include make-xs-column($grid-columns/2);
   }
@@ -312,7 +312,7 @@
 }
 
 @mixin teaser--portrait-small() {
-  & > .img-container, & > .teaser__img-container {
+  & > .teaser__img-container {
     @include make-xs-column($grid-columns/3);
   }
 
@@ -321,14 +321,14 @@
   }
 
   @media (max-width: $screen-xxs-max) {
-    & > .img-container img, & > .teaser__img-container img {
+    & > .teaser__img-container img {
       width: 75%;
     }
   }
 }
 
 @mixin teaser--portrait-medium() {
-  & > .img-container, & > .teaser__img-container {
+  & > .teaser__img-container {
     @include make-xs-column(floor($grid-columns/2.05));
   }
 
@@ -337,7 +337,7 @@
   }
 
   @media (max-width: $screen-xxs-max) {
-    & > .img-container img, & > .teaser__img-container img {
+    & > .teaser__img-container img {
       width: 75%;
     }
   }
@@ -346,7 +346,7 @@
 @mixin teaser-landscape-medium() {
   @include make-row();
 
-  & > .img-container, & > .teaser__img-container {
+  & > .teaser__img-container {
     @include make-md-column(15);
   }
 
@@ -355,7 +355,7 @@
   }
 
   @media (max-width: $screen-xxs-max) {
-    .caption-teaser, .teaser__caption {
+    .teaser__caption {
       padding-top: $gap-size-xs;
     }
   }
@@ -433,7 +433,8 @@
   }
 }
 
-@mixin teaser-full-content() {
+@mixin teaser-presenter--full() {
+  @include teaser-presenter-text();
   padding-top: 0;
   padding-bottom: 0;
   position: relative;
@@ -444,55 +445,50 @@
     }
   }
 
-  .img-container__wrapper {
+  .teaser__img-container-wrapper {
     @extend %gap__container--h-negative;
   }
 
-  .img-container, .teaser__img-container {
+  .teaser__img-container {
     height: 0;
   }
 
-  .caption__wrapper {
+  .teaser__caption-wrapper {
     @extend %region--fixed-content;
     position: relative;
   }
 
-  .caption, .teaser__caption {
+  .teaser__caption {
     max-width: $teaser__title-max-width--full-content;
     width: 100%;
   }
 
-  .title-overhead--presenter-full {
-    @include text-helper($teaser__overhead-font--full-content);
+  .teaser__overhead {
     background-color: $teaser__overhead-bg--full-content;
-    text-transform: uppercase;
     color: $teaser__overhead-color--full-content;
   }
 
-  .title--presenter-full {
-    @include text-helper($teaser__title-font--full-content);
+  .teaser__title {
     background-color: $teaser__title-bg--full-content;
     color: $teaser__title-color--full-content;
   }
 
   @media (max-width: $screen-xs-max) {
-    .title-overhead--presenter-full {
-      @include text-helper-size($teaser__overhead-font--full-content, $teaser__overhead-size--full-content-mobile);
+    .teaser__overhead {
       padding: $teaser__overhead-padding--full-content-mobile;
     }
 
-    .title--presenter-full {
-      @include text-helper-size($teaser__title-font--full-content, $teaser__title-size--full-content-mobile);
+    .teaser__title {
       padding: $teaser__title-padding--full-content-mobile;
     }
 
-    .img-container, .teaser__img-container {
+    .teaser__img-container {
       padding-bottom: $teaser__img-ratio--full-content-mobile;
     }
   }
 
   @media (min-width: $screen-sm-min) {
-    .caption, .teaser__caption {
+    .teaser__caption {
       @if ($teaser__caption-use-pos-absolute--full-content == true) {
         position: absolute;
       }
@@ -502,30 +498,28 @@
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     padding-bottom: $teaser__padding-bottom--full-content-tablet;
 
-    .img-container, .teaser__img-container {
+    .teaser__img-container {
       padding-bottom: $teaser__img-ratio--full-content-tablet;
     }
 
-    .caption, .teaser__caption {
+    .teaser__caption {
       @if ($teaser__caption-use-pos-absolute--full-content == true) {
         bottom: $teaser__caption-bottom--full-content-tablet;
       }
     }
 
-    .title-overhead--presenter-full {
-      @include text-helper-size($teaser__overhead-font--full-content, $teaser__overhead-size--full-content-tablet);
+    .teaser__overhead {
       padding: $teaser__overhead-padding--full-content-tablet;
     }
 
-    .title--presenter-full {
-      @include text-helper-size($teaser__title-font--full-content, $teaser__title-size--full-content-tablet);
+    .teaser__title {
       padding: $teaser__title-padding--full-content-tablet;
     }
   }
 
   @media (max-width: $screen-sm-max) {
 
-    .title--presenter-full {
+    .teaser__title {
       max-width: none;
     }
   }
@@ -536,45 +530,48 @@
   @media (min-width: $screen-md-min) {
     padding-bottom: $teaser__padding-bottom--full-content-desktop;
 
-    .img-container, .teaser__img-container {
+    .teaser__img-container {
       padding-bottom: $teaser__img-ratio--full-content-desktop;
     }
 
-    .caption, .teaser__caption {
+    .teaser__caption {
       @if ($teaser__caption-use-pos-absolute--full-content == true) {
         left: -($container-h-gap--desktop/2);
         bottom: $teaser__caption-bottom--full-content-desktop;
       }
     }
 
-    .title-overhead--presenter-full {
-      @include text-helper-size($teaser__overhead-font--full-content, $teaser__overhead-size--full-content-desktop);
+    .teaser__overhead {
       padding: $teaser__overhead-padding--full-content-desktop;
     }
 
-    .title--presenter-full {
-      @include text-helper-size($teaser__title-font--full-content, $teaser__title-size--full-content-desktop);
+    .teaser__title {
       padding: $teaser__title-padding--full-content-desktop;
     }
   }
 }
 
+@mixin teaser-presenter--lg() {
+  @include teaser-landscape-medium();
+  @include teaser-presenter-text();
+}
+
 @mixin teaser--content-right() {
   @include make-row();
 
-  .caption-teaser, .teaser__caption {
+  .teaser__caption {
     padding-top: 0;
   }
 
   @media (max-width: $screen-xs-max) {
-    .caption-teaser, .teaser__caption {
+    .teaser__caption {
       padding-top: $gap-size-xs;
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     &.teaser-landscape-medium {
-      .caption-teaser, .teaser__caption {
+      .teaser__caption {
         padding-top: $gap-size-sm;
       }
     }
