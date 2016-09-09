@@ -187,30 +187,30 @@
   &:hover {
     color: $teaser__title-hover-color--list-horizontal;
 
-    .text-headline {
+    .teaser__title {
       color: inherit;
     }
   }
 
-  .text-headline {
+  .teaser__title {
     @include text-helper($teaser__title-font--list-horizontal);
     color: $teaser__title-color--list-horizontal;
   }
 
   @media (max-width: $screen-xs-max) {
-    .text-headline {
+    .teaser__title {
       @include text-helper-size($teaser__title-font--list-horizontal, $teaser__title-size--list-horizontal-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    .text-headline {
+    .teaser__title {
       @include text-helper-size($teaser__title-font--list-horizontal, $teaser__title-size--list-horizontal-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
-    .text-headline {
+    .teaser__title {
       @include text-helper-size($teaser__title-font--list-horizontal, $teaser__title-size--list-horizontal-desktop);
     }
   }
@@ -221,24 +221,24 @@
 }
 
 @mixin teaser-square-xs-text() {
-  .text-headline {
+  .teaser__title {
     @include text-headline();
   }
 
   @media (max-width: $screen-xs-max) {
-    .text-headline {
+    .teaser__title {
       @include text-headline-size($teaser-square-xs-headline-size-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    .text-headline {
+    .teaser__title {
       @include text-headline-size($teaser-square-xs-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
-    .text-headline {
+    .teaser__title {
       @include text-headline-size($teaser-square-xs-headline-size-desktop);
     }
   }
