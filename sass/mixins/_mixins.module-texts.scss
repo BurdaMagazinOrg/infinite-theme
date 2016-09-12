@@ -1,14 +1,44 @@
 @mixin seo-linker-text() {
   .seo-linker__item-title {
-    @include text-helper($seo-linker__item-title-font-id, $seo-linker__item-title-size);
+    @include text-helper($seo-linker__item-title-font-id);
   }
 
   .seo-linker__link-list--image {
-    @include text-helper($seo-linker__link-list-font-id, $seo-linker__link-list-size);
+    @include text-helper($seo-linker__link-list-font-id);
     color: $seo-linker__link-list-color;
 
     a:hover {
       color: $seo-linker__link-list-hover-color;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .seo-linker__item-title {
+      @include text-helper-size($seo-linker__item-title-font-id, $seo-linker__item-title-size-mobile);
+    }
+
+    .seo-linker__link-list--image {
+      @include text-helper-size($seo-linker__link-list-font-id, $seo-linker__link-list-size-mobile);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .seo-linker__item-title {
+      @include text-helper-size($seo-linker__item-title-font-id, $seo-linker__item-title-size-tablet);
+    }
+
+    .seo-linker__link-list--image {
+      @include text-helper-size($seo-linker__link-list-font-id, $seo-linker__link-list-size-tablet);
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .seo-linker__item-title {
+      @include text-helper-size($seo-linker__item-title-font-id, $seo-linker__item-title-size-desktop);
+    }
+
+    .seo-linker__link-list--image {
+      @include text-helper-size($seo-linker__link-list-font-id, $seo-linker__link-list-size-desktop);
     }
   }
 }

@@ -507,6 +507,10 @@ $teaser--content-caption-height-mobile: 69px !default;
 
 $list__links--module-font-id: $font-content-id !default;
 $list__links--module-font-size: 16px !default;
+$list__links-margin--module: $gap-size-xs 0 0 0 !default;
+$list__links-padding--module: 0 0 $gap-size-md 0 !default;
+$list__links-item-h-line--module: $h-line-style !default;
+$list__links-item-margin--module: 5px 0 0 !default;
 
 $list__glossary-font-id: $font-label-id !default;
 $list__glossary-font-size: $title-size-xxs !default;
@@ -548,7 +552,7 @@ $socials__bg-color-hover--clean-horizontal-bar: transparent !default;
 $socials__color-hover--clean-horizontal-bar: inherit !default;
 $socials__border-color-hover--clean-horizontal-bar: inherit !default;
 
-$socials-clean-horizontal-bar-left-gap: 8px !default;
+$socials-clean-horizontal-bar-left-gap: $socials-h-gap--default !default;
 $socials-clean-horizontal-bar-size-mobile: $socials-size-sm !default;
 $socials-clean-horizontal-bar-size-tablet: $socials-size-sm !default;
 $socials-clean-horizontal-bar-size-desktop: $socials-size-sm !default;
@@ -583,7 +587,7 @@ $socials-labeled-horizontal-bar-icon-size-tablet: $socials-icon-size-md !default
 $socials-labeled-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 
 /** socials vertical bar **/
-$socials-vertical-bar-left-gap-mobile: 8px !default;
+$socials-vertical-bar-left-gap-mobile: $socials-h-gap--default !default;
 $socials-vertical-bar-top-gap-mobile: 8px !default;
 $socials-vertical-bar-top-gap-tablet: 8px !default;
 $socials-vertical-bar-top-gap-desktop: 8px !default;
@@ -596,7 +600,7 @@ $socials-vertical-bar-icon-size-tablet: $socials-icon-size-md !default;
 $socials-vertical-bar-icon-size-desktop: $socials-icon-size-md !default;
 
 /** socials teaser horizontal bar **/
-$socials-teaser-horizontal-bar-left-gap: 8px !default;
+$socials-teaser-horizontal-bar-left-gap: $socials-h-gap--default !default;
 $socials-teaser-horizontal-bar-size-mobile: $socials-size-sm !default;
 $socials-teaser-horizontal-bar-size-tablet: $socials-size-sm !default;
 $socials-teaser-horizontal-bar-size-desktop: $socials-size-sm !default;
@@ -606,7 +610,7 @@ $socials-teaser-horizontal-bar-icon-size-tablet: $socials-icon-size-sm !default;
 $socials-teaser-horizontal-bar-icon-size-desktop: $socials-icon-size-sm !default;
 
 /** socials horizontal media bar **/
-$socials-media-left-gap: 8px !default;
+$socials-media-left-gap: $socials-h-gap--default !default;
 $socials-media-horizontal-bar-size-mobile: $socials-size-md !default;
 $socials-media-horizontal-bar-size-tablet: $socials-size-md !default;
 $socials-media-horizontal-bar-size-desktop: $socials-size-md !default;
@@ -658,9 +662,13 @@ $profile__td-color: $gray-darker !default;
 
 /** seo linker **/
 $seo-linker__item-title-font-id: $font-headline-id !default;
-$seo-linker__item-title-size: $title-size-xxs !default;
+$seo-linker__item-title-size-mobile: $title-size-xxs !default;
+$seo-linker__item-title-size-tablet: $title-size-xxs !default;
+$seo-linker__item-title-size-desktop: $title-size-xxs !default;
 $seo-linker__link-list-font-id: $font-content-id !default;
-$seo-linker__link-list-size: 15px !default;
+$seo-linker__link-list-size-mobile: 15px !default;
+$seo-linker__link-list-size-tablet: 15px !default;
+$seo-linker__link-list-size-desktop: 15px !default;
 $seo-linker__link-list-color: $text-color !default;
 $seo-linker__link-list-hover-color: $color-hover !default;
 

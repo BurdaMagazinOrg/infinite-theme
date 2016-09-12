@@ -97,12 +97,12 @@
 
 @mixin list__links--module() {
   @include list__links--module-text();
-  margin-top: $gap-size-xs;
-  padding-bottom: $gap-size-md;
+  margin: $list__links-margin--module;
+  padding: $list__links-padding--module;
 
   li {
-    margin-top: 5px;
-    border-bottom: $h-line-style;
+    margin: $list__links-item-margin--module;
+    border-bottom: $list__links-item-h-line--module;
   }
 }
 
