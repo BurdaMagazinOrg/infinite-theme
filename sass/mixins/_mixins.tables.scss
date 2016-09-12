@@ -9,7 +9,7 @@
   tbody {
 
     td:first-child {
-      @include text-helper($table__td-first-font--text-block);
+      @include text-helper($table__td-first-font-id--text-block);
       position: relative;
       color: $table__td-first-color--text-block;
       letter-spacing: $table__td-first-letter-spacing--text-block;
@@ -17,7 +17,7 @@
     }
 
     td + td {
-      @include text-helper($table__td-font--text-block);
+      @include text-helper($table__td-font-id--text-block);
       color: $table__td-color--text-block;
       letter-spacing: $table__td-letter-spacing--text-block;
     }
@@ -52,12 +52,12 @@
       }
 
       td:first-child {
-        @include text-helper-size($table__td-first-font--text-block, $table__td-first-size-mobile--text-block);
+        @include text-helper-size($table__td-first-font-id--text-block, $table__td-first-size-mobile--text-block);
         left: - nth($table-border-spacing-mobile--text-block, 1);
       }
 
       td + td {
-        @include text-helper-size($table__td-font--text-block, $table__td-size-mobile--text-block);
+        @include text-helper-size($table__td-font-id--text-block, $table__td-size-mobile--text-block);
       }
     }
   }
@@ -77,12 +77,12 @@
       }
 
       td:first-child {
-        @include text-helper-size($table__td-first-font--text-block, $table__td-first-size-tablet--text-block);
+        @include text-helper-size($table__td-first-font-id--text-block, $table__td-first-size-tablet--text-block);
         left: - nth($table-border-spacing-tablet--text-block, 1);
       }
 
       td + td {
-        @include text-helper-size($table__td-font--text-block, $table__td-size-tablet--text-block);
+        @include text-helper-size($table__td-font-id--text-block, $table__td-size-tablet--text-block);
       }
     }
   }
@@ -97,12 +97,12 @@
       }
 
       td:first-child {
-        @include text-helper-size($table__td-first-font--text-block, $table__td-first-size-desktop--text-block);
+        @include text-helper-size($table__td-first-font-id--text-block, $table__td-first-size-desktop--text-block);
         left: - nth($table-border-spacing-desktop--text-block, 1);
       }
 
       td + td {
-        @include text-helper-size($table__td-font--text-block, $table__td-size-desktop--text-block);
+        @include text-helper-size($table__td-font-id--text-block, $table__td-size-desktop--text-block);
       }
     }
   }

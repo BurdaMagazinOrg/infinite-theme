@@ -24,7 +24,7 @@
   }
 
   .item-pager__links-prev, .item-pager__links-next {
-    @include text-helper($pager__links-font--list);
+    @include text-helper($pager__links-font-id--list);
     text-transform: $pager__links-text-transform--list;
     letter-spacing: $pager__links-letter-spacing--list;
     color: $pager__links-color--list;
@@ -60,7 +60,7 @@
 
   @media (max-width: $screen-xs-max) {
     .item-pager__links-prev, .item-pager__links-next {
-      @include text-helper-size($pager__links-font--list, $pager__links-size-mobile--list);
+      @include text-helper-size($pager__links-font-id--list, $pager__links-size-mobile--list);
 
       &:before, &:after {
         font-size: $pager__links-icon-size-mobile--list;
@@ -70,7 +70,7 @@
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .item-pager__links-prev, .item-pager__links-next {
-      @include text-helper-size($pager__links-font--list, $pager__links-size-tablet--list);
+      @include text-helper-size($pager__links-font-id--list, $pager__links-size-tablet--list);
     }
 
     &:before, &:after {
@@ -80,7 +80,7 @@
 
   @media (min-width: $screen-md-min) {
     .item-pager__links-prev, .item-pager__links-next {
-      @include text-helper-size($pager__links-font--list, $pager__links-size-desktop--list);
+      @include text-helper-size($pager__links-font-id--list, $pager__links-size-desktop--list);
 
       &:before, &:after {
         font-size: $pager__links-icon-size-desktop--list;

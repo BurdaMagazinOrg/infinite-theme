@@ -68,17 +68,17 @@
   }
 
   .item-author__name {
-    @include text-helper($author__name-font--vita-short);
+    @include text-helper($author__name-font-id--vita-short);
     color: $author__name-color--vita-short;
   }
 
   .item-author__email, .item-author__job {
-    @include text-helper($author__email-font--vita-short);
+    @include text-helper($author__email-font-id--vita-short);
     color: $author__email-color--vita-short;
   }
 
   .item-author__short-info {
-    @include text-helper($author__short-info-font--vita-short);
+    @include text-helper($author__short-info-font-id--vita-short);
     color: $author__short-info-color--vita-short;
   }
 
@@ -87,17 +87,17 @@
     padding-bottom: $author-padding-top-bottom-mobile--vita-short;
 
     .item-author__name {
-      @include text-helper-size($author__name-font--vita-short, $author__name-size-mobile--vita-short);
+      @include text-helper-size($author__name-font-id--vita-short, $author__name-size-mobile--vita-short);
       margin: $author__name-margin-mobile--vita-short;
     }
 
     .item-author__email, .item-author__job {
-      @include text-helper-size($author__email-font--vita-short, $author__email-size-mobile--vita-short);
+      @include text-helper-size($author__email-font-id--vita-short, $author__email-size-mobile--vita-short);
       margin: $author__email-margin-mobile--vita-short;
     }
 
     .item-author__short-info {
-      @include text-helper-size($author__short-info-font--vita-short, $author__short-info-size-mobile--vita-short);
+      @include text-helper-size($author__short-info-font-id--vita-short, $author__short-info-size-mobile--vita-short);
       margin: $author__short-info-margin-mobile--vita-short;
     }
   }
@@ -107,17 +107,17 @@
     padding-bottom: $author-padding-top-bottom-tablet--vita-short;
 
     .item-author__name {
-      @include text-helper-size($author__name-font--vita-short, $author__name-size-tablet--vita-short);
+      @include text-helper-size($author__name-font-id--vita-short, $author__name-size-tablet--vita-short);
       margin: $author__name-margin-tablet--vita-short;
     }
 
     .item-author__email, .item-author__job {
-      @include text-helper-size($author__email-font--vita-short, $author__email-size-tablet--vita-short);
+      @include text-helper-size($author__email-font-id--vita-short, $author__email-size-tablet--vita-short);
       margin: $author__email-margin-tablet--vita-short;
     }
 
     .item-author__short-info {
-      @include text-helper-size($author__short-info-font--vita-short, $author__short-info-size-tablet--vita-short);
+      @include text-helper-size($author__short-info-font-id--vita-short, $author__short-info-size-tablet--vita-short);
       margin: $author__short-info-margin-tablet--vita-short;
     }
   }
@@ -127,17 +127,17 @@
     padding-bottom: $author-padding-top-bottom-desktop--vita-short;
 
     .item-author__name {
-      @include text-helper-size($author__name-font--vita-short, $author__name-size-desktop--vita-short);
+      @include text-helper-size($author__name-font-id--vita-short, $author__name-size-desktop--vita-short);
       margin: $author__name-margin-desktop--vita-short;
     }
 
     .item-author__email, .item-author__job {
-      @include text-helper-size($author__email-font--vita-short, $author__email-size-desktop--vita-short);
+      @include text-helper-size($author__email-font-id--vita-short, $author__email-size-desktop--vita-short);
       margin: $author__email-margin-desktop--vita-short;
     }
 
     .item-author__short-info {
-      @include text-helper-size($author__short-info-font--vita-short, $author__short-info-size-desktop--vita-short);
+      @include text-helper-size($author__short-info-font-id--vita-short, $author__short-info-size-desktop--vita-short);
       margin: $author__short-info-margin-desktop--vita-short;
     }
   }

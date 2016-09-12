@@ -177,9 +177,19 @@ $menu--sidebar-misc-color: $gray-base !default;
 ** Newsletter
 **/
 
+$newsletter__title-font-id--horizontal: $font-headline-id !default;
+$newsletter__title-text-transform--horizontal: normal !default;
 $newsletter--horizontal--title-size--mobile: $title-size-md !default;
 $newsletter--horizontal--title-size--tablet: $title-size-lg !default;
 $newsletter--horizontal--title-size--desktop: $title-size-lg !default;
+
+$newsletter__input-width--horizontal: 455px !default;
+$newsletter__input-padding--horizontal: 0 135px 0 $padding-base-horizontal !default;
+$newsletter__input-margin--horizontal: 0 !default;
+
+$newsletter__submit-width--horizontal: 125px !default;
+$newsletter__submit-margin--horizontal: 0 0 0 -130px !default;
+$newsletter__submit-height--horizontal: $input-height-large - 8px !default;
 
 $newsletter--horizontal--padding-mobile: $gap-size-sm $gap-size-sm !default;
 $newsletter--horizontal--padding-tablet: $gap-size-sm $gap-size-sm !default;
@@ -392,7 +402,7 @@ $teaser__category--default-gap-bottom-mobile: $gap-size-sm !default;
 $teaser__category--default-gap-bottom-tablet: $gap-size-sm !default;
 $teaser__category--default-gap-bottom-desktop: $gap-size-sm !default;
 
-$teaser__overhead-font--default: $label--category-font-id !default;
+$teaser__overhead-font-id--default: $label--category-font-id !default;
 $teaser__overhead-color--default: $label--category-color !default;
 $teaser__overhead-letter-spacing--default: $tiny-letter-spacing !default;
 $teaser__overhead-size-mobile--default: $label--category-size--mobile !default;
@@ -421,7 +431,7 @@ $feed-teaser-gap-top-desktop: $gap-v-region-desktop !default;
 /**
 ** list-teaser
 **/
-$teaser-list__headline-font--teaser-horoscope-middle: $font-headline-id !default;
+$teaser-list__headline-font-id--teaser-horoscope-middle: $font-headline-id !default;
 $teaser-list__headline-size-mobile--teaser-horoscope-middle: $title-size-sm !default;
 $teaser-list__headline-size-tablet--teaser-horoscope-middle: $title-size-md !default;
 $teaser-list__headline-size-desktop--teaser-horoscope-middle: $title-size-lg !default;
@@ -433,7 +443,7 @@ $teaser-list__gap-desktop--teaser-horoscope-middle: $gap-v-sm-region-desktop !de
 $teaser__padding-bottom--full-content-tablet: 25px !default;
 $teaser__padding-bottom--full-content-desktop: 65px !default;
 
-$teaser__title-font--full-content: $font-headline-id !default;
+$teaser__title-font-id--full-content: $font-headline-id !default;
 $teaser__title-size--full-content-mobile: $title-size-sm !default;
 $teaser__title-size--full-content-tablet: $title-size-lg !default;
 $teaser__title-size--full-content-desktop: $title-size-xxl !default;
@@ -455,7 +465,7 @@ $teaser__caption-bottom--full-content-desktop: -49px !default;
 
 $teaser__overhead-bg--full-content: $white !default;
 $teaser__overhead-color--full-content: $label--category-color !default;
-$teaser__overhead-font--full-content: $label--category-font-id !default;
+$teaser__overhead-font-id--full-content: $label--category-font-id !default;
 $teaser__overhead-padding--full-content-mobile: $gap-size-xs 0 0 !default;
 $teaser__overhead-padding--full-content-tablet: $gap-size-sm 21px 0 !default;
 $teaser__overhead-padding--full-content-desktop: $gap-size-sm 21px 0 !default;
@@ -464,7 +474,7 @@ $teaser__overhead-size--full-content-tablet: $label--category-size--tablet !defa
 $teaser__overhead-size--full-content-desktop: $label--category-size--desktop !default;
 
 /** list horizontal teaser **/
-$teaser__title-font--list-horizontal: $font-content-id !default;
+$teaser__title-font-id--list-horizontal: $font-content-id !default;
 $teaser__title-color--list-horizontal: $text-color !default;
 $teaser__title-hover-color--list-horizontal: $color-hover !default;
 $teaser__title-size--list-horizontal-mobile: $title-size-xxxs !default;
@@ -482,7 +492,7 @@ $teaser-square-xs-headline-size-tablet: $title-size-sm !default;
 $teaser-square-xs-headline-size-desktop: $title-size-md !default;
 
 /** teaser content **/
-$teaser--content-headline-font-id: $teaser__title-font--list-horizontal !default;
+$teaser--content-headline-font-id: $teaser__title-font-id--list-horizontal !default;
 $teaser--content-headline-color: $teaser__title-color--list-horizontal !default;
 $teaser--content-headline-hover-color: $color-hover !default;
 $teaser--content-headline-size-mobile: $title-size-xxxs !default;
@@ -683,21 +693,21 @@ $media__description-color: $text-color !default;
 
 //file
 $media__min-height--file: 35px !default;
-$media__title-font--file: $title--text-block-font-id !default;
+$media__title-font-id--file: $title--text-block-font-id !default;
 $media__title-color--file: $title--text-block-color !default;
 $media__title-size-mobile--file: $title--text-block-mobile !default;
 $media__title-size-tablet--file: $title--text-block-tablet !default;
 $media__title-size-desktop--file: $title--text-block-desktop !default;
 $media__title-margin--file: 0 !default;
 
-$media__description-font--file: $font-content-id !default;
+$media__description-font-id--file: $font-content-id !default;
 $media__description-color--file: $gray-base !default;
 $media__description-size-mobile--file: $copytext--text-block-mobile !default;
 $media__description-size-tablet--file: $copytext--text-block-tablet !default;
 $media__description-size-desktop--file: $copytext--text-block-desktop !default;
 $media__description-margin--file: 1px 0 0 !default;
 
-$media__btn-download-font--file: $btn--large-font-id !default;
+$media__btn-download-font-id--file: $btn--large-font-id !default;
 $media__btn-download-size-mobile--file: $btn__label-size-mobile--large !default;
 $media__btn-download-size-tablet--file: $btn__label-size-tablet--large !default;
 $media__btn-download-size-desktop--file: $btn__label-size-desktop--large !default;
@@ -734,7 +744,7 @@ $quote__border-style--article: $h-line-style !default;
 $quote__border-max-width--article: 46.5% !default;
 $quote__text-align--article: center !default;
 
-$quote__title-font--article: $font-content-id !default;
+$quote__title-font-id--article: $font-content-id !default;
 $quote__title-size--article-mobile: $title-size-sm !default;
 $quote__title-size--article-tablet: $title-size-md !default;
 $quote__title-size--article-desktop: 30px !default;
@@ -744,7 +754,7 @@ $quote__title-font-style--article: italic !default;
 $quote__title-max-width--article: 80% !default;
 $quote__title-padding--article: 10px 0 !default;
 
-$quote__quote-font--article: $font-content-bold-id !default;
+$quote__quote-font-id--article: $font-content-bold-id !default;
 $quote__quote-size--article-mobile: 37px !default;
 $quote__quote-size--article-tablet: 45px !default;
 $quote__quote-size--article-desktop: 50px !default;
@@ -756,7 +766,7 @@ $quote__quote-after--article: "\00ab" !default;
 $quote__quote-before-padding--article: 0 10px 0 0 !default;
 $quote__quote-after-padding--article: 0 0 0 10px !default;
 
-$quote__author-font--article: $font-tiny-id !default;
+$quote__author-font-id--article: $font-tiny-id !default;
 $quote__author-size--article-mobile: $title-size-xxs !default;
 $quote__author-size--article-tablet: $title-size-xs !default;
 $quote__author-size--article-desktop: $title-size-xs !default;
@@ -772,7 +782,7 @@ $quote__author-v-align--article: baseline !default;
 /**
 ** Dates
 **/
-$date__font--node-created: $font-tiny-id !default;
+$date__font-id--node-created: $font-tiny-id !default;
 $date__size-mobile--node-created: $label-size-small !default;
 $date__size-tablet--node-created: $label-size-medium !default;
 $date__size-desktop--node-created: $label-size-large !default;
@@ -784,7 +794,7 @@ $date__margin-tablet--node-created: 0 0 $gap-size-lg 0 !default;
 $date__margin-mobile--node-created: 0 0 $gap-size-xs 0 !default;
 
 //horoscope
-$date__font--horoscope: $font-tiny-id !default;
+$date__font-id--horoscope: $font-tiny-id !default;
 $date__size-mobile--horoscope: $label-size-medium !default;
 $date__size-tablet--horoscope: $label-size-medium !default;
 $date__size-desktop--horoscope: $label-size-large !default;
@@ -815,7 +825,7 @@ $author-padding-top-bottom-mobile--vita-short: 10px !default;
 $author-padding-top-bottom-tablet--vita-short: 20px !default;
 $author-padding-top-bottom-desktop--vita-short: 30px !default;
 
-$author__date-font--vita-short: $font-tiny-id !default;
+$author__date-font-id--vita-short: $font-tiny-id !default;
 $author__date-size-mobile--vita-short: $label-size-small !default;
 $author__date-size-tablet--vita-short: $label-size-medium !default;
 $author__date-size-desktop--vita-short: $label-size-large !default;
@@ -829,7 +839,7 @@ $author__date-margin-mobile--vita-short: 0 0 $gap-size-xs 0 !default;
 $author__profile-image-radius--vita-short: 50% !default;
 $author__profile-image-border--vita-short: 2px solid $gray !default;
 
-$author__name-font--vita-short: $font-headline-id !default;
+$author__name-font-id--vita-short: $font-headline-id !default;
 $author__name-size-mobile--vita-short: $label-size-medium !default;
 $author__name-size-tablet--vita-short: $label-size-large !default;
 $author__name-size-desktop--vita-short: $label-size-xl !default;
@@ -838,7 +848,7 @@ $author__name-margin-desktop--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !defaul
 $author__name-margin-tablet--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
 $author__name-margin-mobile--vita-short: $gap-size-xs 0 $gap-size-xxs 0 !default;
 
-$author__email-font--vita-short: $font-content-id !default;
+$author__email-font-id--vita-short: $font-content-id !default;
 $author__email-size-mobile--vita-short: $label-size-small !default;
 $author__email-size-tablet--vita-short: $label-size-medium !default;
 $author__email-size-desktop--vita-short: $label-size-medium !default;
@@ -847,7 +857,7 @@ $author__email-margin-desktop--vita-short: 0 0 $gap-size-xxs 0 !default;
 $author__email-margin-tablet--vita-short: 0 0 $gap-size-xxs 0 !default;
 $author__email-margin-mobile--vita-short: 0 0 $gap-size-xxs 0 !default;
 
-$author__short-info-font--vita-short: $font-content-id !default;
+$author__short-info-font-id--vita-short: $font-content-id !default;
 $author__short-info-size-mobile--vita-short: $label-size-small !default;
 $author__short-info-size-tablet--vita-short: $label-size-medium !default;
 $author__short-info-size-desktop--vita-short: $label-size-medium !default;
@@ -859,7 +869,7 @@ $author__short-info-margin-mobile--vita-short: 0 !default;
 /**
 ** Tables
 **/
-$table__title-font--text-block: $font-headline-id !default;
+$table__title-font-id--text-block: $font-headline-id !default;
 $table__title-color--text-block: $title--text-block-color !default;
 
 $table-border-spacing-mobile--text-block: (0px 0px) !default;
@@ -872,14 +882,14 @@ $table__td-padding-tablet--text-block: 4px 25px 4px 10px !default;
 $table__td-padding-desktop--text-block: 4px 25px 4px 10px !default;
 $table__td-border-bottom--text-block: $h-line-style !default;
 
-$table__td-first-font--text-block: $font-content-bold-id !default;
+$table__td-first-font-id--text-block: $font-content-bold-id !default;
 $table__td-first-color--text-block: $color-brand !default;
 $table__td-first-letter-spacing--text-block: $content-letter-spacing !default;
 $table__td-first-size-mobile--text-block: $copytext--text-block-mobile !default;
 $table__td-first-size-tablet--text-block: $copytext--text-block-tablet !default;
 $table__td-first-size-desktop--text-block: $copytext--text-block-desktop !default;
 
-$table__td-font--text-block: $font-content-id !default;
+$table__td-font-id--text-block: $font-content-id !default;
 $table__td-color--text-block: $text-color !default;
 $table__td-letter-spacing--text-block: $content-letter-spacing !default;
 $table__td-size-mobile--text-block: $copytext--text-block-mobile !default;
@@ -944,7 +954,7 @@ $rating__color-active: $color-highlighted !default;
 $pager__tree-bg-color--list: $gray-light !default;
 $pager__tree-padding--list: 10px 20px !default;
 $pager__active-color--list: $color-hover !default;
-$pager__links-font--list: $font-label-id !default;
+$pager__links-font-id--list: $font-label-id !default;
 $pager__links-text-transform--list: uppercase !default;
 $pager__links-letter-spacing--list: 0.1em !default;
 $pager__links-color--list: $gray-base !default;
