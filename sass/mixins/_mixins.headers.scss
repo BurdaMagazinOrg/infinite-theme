@@ -21,6 +21,10 @@
     img {
       @extend %img-full-responsive;
     }
+
+    svg {
+      width: 100%;
+    }
   }
 
   .socials-bar {
