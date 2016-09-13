@@ -398,9 +398,9 @@ $teaser__socials--default-gap-top-mobile: $gap-size-sm !default;
 $teaser__socials--default-gap-top-tablet: $gap-size-sm !default;
 $teaser__socials--default-gap-top-desktop: $gap-size-lg !default;
 
-$teaser__category--default-gap-bottom-mobile: $gap-size-sm !default;
-$teaser__category--default-gap-bottom-tablet: $gap-size-sm !default;
-$teaser__category--default-gap-bottom-desktop: $gap-size-sm !default;
+$teaser__category-gap-bottom-mobile--default: $gap-size-sm !default;
+$teaser__category-gap-bottom-tablet--default: $gap-size-sm !default;
+$teaser__category-gap-bottom-desktop--default: $gap-size-sm !default;
 
 $teaser__overhead-font-id--default: $label--category-font-id !default;
 $teaser__overhead-color--default: $label--category-color !default;
@@ -408,9 +408,9 @@ $teaser__overhead-letter-spacing--default: $tiny-letter-spacing !default;
 $teaser__overhead-size-mobile--default: $label--category-size--mobile !default;
 $teaser__overhead-size-tablet--default: $label--category-size--tablet !default;
 $teaser__overhead-size-desktop--default: $label--category-size--desktop !default;
-$teaser__overhead-gap-bottom-mobile--default: $teaser__category--default-gap-bottom-mobile !default;
-$teaser__overhead-gap-bottom-tablet--default: $teaser__category--default-gap-bottom-tablet !default;
-$teaser__overhead-gap-bottom-desktop--default: $teaser__category--default-gap-bottom-desktop !default;
+$teaser__overhead-gap-bottom-mobile--default: $teaser__category-gap-bottom-mobile--default !default;
+$teaser__overhead-gap-bottom-tablet--default: $teaser__category-gap-bottom-tablet--default !default;
+$teaser__overhead-gap-bottom-desktop--default: $teaser__category-gap-bottom-desktop--default !default;
 
 /** feed-teaser **/
 //TODO: rename this to $list__headline...-teaser-feed
