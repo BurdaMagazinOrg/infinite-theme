@@ -54,15 +54,15 @@
 
   @media (max-width: $screen-xxs-max) {
     .author {
-      margin-top: $teaser__author--default-gap-top-mobile;
+      margin-top: $teaser__author-gap-top-mobile--default;
     }
 
     .socials-bar {
-      margin-top: $teaser__socials--default-gap-top-mobile;
+      margin-top: $teaser__socials-gap-top-mobile--default;
     }
 
     .teaser__category {
-      margin-bottom: $teaser__category--default-gap-bottom-mobile;
+      margin-bottom: $teaser__category-gap-bottom-mobile--default;
     }
 
     .teaser__overhead {
@@ -72,11 +72,11 @@
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .author {
-      margin-top: $teaser__author--default-gap-top-tablet;
+      margin-top: $teaser__author-gap-top-tablet--default;
     }
 
     .socials-bar {
-      margin-top: $teaser__socials--default-gap-top-tablet;
+      margin-top: $teaser__socials-gap-top-tablet--default;
     }
 
     .teaser__overhead {
@@ -90,11 +90,11 @@
 
   @media (min-width: $screen-md-min) {
     .author {
-      margin-top: $teaser__author--default-gap-top-desktop;
+      margin-top: $teaser__author-gap-top-desktop--default;
     }
 
     .socials-bar {
-      margin-top: $teaser__socials--default-gap-top-desktop;
+      margin-top: $teaser__socials-gap-top-desktop--default;
     }
 
     .teaser__category {
