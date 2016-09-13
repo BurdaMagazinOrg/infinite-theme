@@ -491,6 +491,13 @@ $teaser-square-xs-headline-size-mobile: $title-size-xxxs !default;
 $teaser-square-xs-headline-size-tablet: $title-size-sm !default;
 $teaser-square-xs-headline-size-desktop: $title-size-md !default;
 
+/** landscape **/
+$teaser__caption-padding-mobile--landscape-medium: $gap-size-xs 0 0 0 !default;
+
+$teaser__caption-padding-mobile--landscape-large: $gap-size-xs 0 0 0 !default;
+$teaser__caption-padding-tablet--landscape-large: $gap-size-sm 0 0 0 !default;
+$teaser__caption-padding-desktop--landscape-large: $gap-size-sm 0 0 0 !default;
+
 /** teaser content **/
 $teaser--content-headline-font-id: $teaser__title-font-id--list-horizontal !default;
 $teaser--content-headline-color: $teaser__title-color--list-horizontal !default;

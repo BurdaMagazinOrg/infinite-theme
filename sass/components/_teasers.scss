@@ -43,6 +43,10 @@
   @include teaser-landscape-medium-text();
 }
 
+.teaser-landscape-large {
+  @extend %teaser-landscape-large;
+}
+
 /**
 * Presenter Fullcontent
 **/
@@ -56,20 +60,6 @@
 
 .teaser-presenter--lg {
   @extend %teaser-presenter--lg;
-}
-
-.teaser-landscape-large {
-  @media (max-width: $screen-xs-max) {
-    .teaser__caption {
-      padding-top: $gap-size-xs;
-    }
-  }
-
-  @media (min-width: $screen-sm-min) {
-    .teaser__caption {
-      padding-top: $gap-size-sm;
-    }
-  }
 }
 
 .teaser-square-xs {

@@ -347,9 +347,29 @@
     @include make-md-column(9);
   }
 
-  @media (max-width: $screen-xxs-max) {
+  @media (max-width: $screen-xs-max) {
     .teaser__caption {
-      padding-top: $gap-size-xs;
+      padding: $teaser__caption-padding-mobile--landscape-medium;
+    }
+  }
+}
+
+@mixin teaser-landscape-large() {
+  @media (max-width: $screen-xs-max) {
+    .teaser__caption {
+      padding: $teaser__caption-padding-mobile--landscape-large;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .teaser__caption {
+      padding: $teaser__caption-padding-tablet--landscape-large;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .teaser__caption {
+      padding: $teaser__caption-padding-desktop--landscape-large;
     }
   }
 }

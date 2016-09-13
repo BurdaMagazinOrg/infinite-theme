@@ -6,6 +6,10 @@
   @include teaser-landscape-medium();
 }
 
+%teaser-landscape-large {
+  @include teaser-landscape-large();
+}
+
 %teaser-feed-large {
   @include teaser-feed-large();
 }
