@@ -39,6 +39,10 @@
   @include text-content();
 }
 
+%text-content-bold {
+  @include text-content-bold();
+}
+
 %text-content-html {
   @include text-content-html();
 }

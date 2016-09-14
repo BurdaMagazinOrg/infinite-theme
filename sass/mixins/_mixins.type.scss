@@ -12,6 +12,8 @@
     @extend %text-label;
   } @else if ($font == $font-content-id) {
     @extend %text-content;
+  } @else if ($font == $font-content-bold-id) {
+    @extend %text-content-bold;
   } @else {
     font-family: $font;
   }
@@ -161,6 +163,7 @@
 @mixin text-content-bold($size: '', $color: '') {
   font-family: $font-content-bold;
   letter-spacing: $content-bold-letter-spacing;
+  font-weight: $content-bold-font-weight;
 
   @if ($size != '') {
     @include text-content-size($size);
@@ -212,4 +215,8 @@
 
     @extend %table--text-block;
   }
+}
+
+@mixin bold-settings() {
+  @include text-content-bold();
 }

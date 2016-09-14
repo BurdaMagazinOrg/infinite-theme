@@ -56,7 +56,7 @@ a {
 }
 
 strong, b, .text--highlighted {
-  font-family: $font-content-bold;
+  @include bold-settings();
 }
 
 i, em {
