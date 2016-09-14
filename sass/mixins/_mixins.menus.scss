@@ -97,7 +97,6 @@
   @include transition-property(opacity, color, visibility);
   display: inline-block;
 
-
   &:first-child {
     margin-left: 0;
   }
@@ -454,12 +453,12 @@
   }
 
   .item-sidebar__logo {
+    @include opacity(0.5);
+    @include transition-default();
     display: block;
     cursor: pointer;
 
     &:after {
-      @include opacity(0.5);
-      @include transition-default();
       content: " ";
       width: 100%;
       height: 100%;
@@ -470,8 +469,8 @@
     }
 
     &:hover {
+      @include opacity(1);
       &:after {
-        @include opacity(1);
       }
     }
   }
