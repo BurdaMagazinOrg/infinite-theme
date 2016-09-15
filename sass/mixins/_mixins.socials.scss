@@ -236,7 +236,7 @@
 
   @media (min-width: $screen-sm-min) {
     border-radius: $socials-labeled-horizontal-bar-border-radius;
-    padding: 0 22px;
+    padding: $socials-labeled-horizontal-bar__item-padding;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {

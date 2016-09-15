@@ -302,6 +302,10 @@
 @mixin item-paragraph--pinterest() {
   text-align: center;
 
+  .item-paragraph__title {
+    text-align: left;
+  }
+
   & > * {
     //max-width: 100% !important;
     min-width: 0 !important;

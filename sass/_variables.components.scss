@@ -349,6 +349,8 @@ $title--content-block-mobile: $title-size-sm !default;
 $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
 $title--content-block-color: $text-color !default;
+$title--content-block-text-transform: none !default;
+
 //fkn different design shizzl
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
 $title--content-block-gap-bottom-tablet: $gap-size-md !default;
@@ -592,7 +594,7 @@ $socials-labeled-horizontal-bar-border-radius: floor($socials-size-md / 2) !defa
 $socials-labeled-horizontal-bar-size-mobile: $socials-size-md !default;
 $socials-labeled-horizontal-bar-size-tablet: $socials-size-md !default;
 $socials-labeled-horizontal-bar-size-desktop: $socials-size-md !default;
-
+$socials-labeled-horizontal-bar__item-padding: 0 22px !default;
 $socials-labeled-horizontal-bar-icon-size-mobile: $socials-icon-size-md !default;
 $socials-labeled-horizontal-bar-icon-size-tablet: $socials-icon-size-md !default;
 $socials-labeled-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;

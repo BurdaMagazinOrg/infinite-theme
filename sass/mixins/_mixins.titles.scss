@@ -123,6 +123,7 @@
 
   @include text-helper($font);
   color: $color;
+  text-transform: $title--content-block-text-transform;
 
   .item-title {
     text-align: left;
