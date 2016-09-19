@@ -184,6 +184,8 @@ $newsletter--horizontal--title-size--mobile: $title-size-md !default;
 $newsletter--horizontal--title-size--tablet: $title-size-lg !default;
 $newsletter--horizontal--title-size--desktop: $title-size-lg !default;
 
+$newsletter__input-font-id--horizontal: $font-content-id !default;
+$newsletter__input-font-size--horizontal: $font-size-base !default;
 $newsletter__input-width--horizontal: 455px !default;
 $newsletter__input-padding--horizontal: 0 135px 0 $padding-base-horizontal !default;
 $newsletter__input-margin--horizontal: 0 !default;
@@ -210,6 +212,7 @@ $newsletter__bg-image--page-sm: "../images/static/newsletter_landingpage_sm.jpg"
 $newsletter__bg-image--page-lg: "../images/static/newsletter_landingpage_lg.jpg" !default;
 $newsletter__bg-image--page-xl: "../images/static/newsletter_landingpage_xl.jpg" !default;
 
+$newsletter__checkbox-label-font-id--horizontal: $font-content-id !default;
 $newsletter__checkbox-label--horizontal-mobile: 11px !default;
 $newsletter__checkbox-label--horizontal-tablet: 11px !default;
 $newsletter__checkbox-label--horizontal-desktop: 11px !default;
