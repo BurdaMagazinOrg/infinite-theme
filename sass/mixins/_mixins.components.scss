@@ -9,15 +9,15 @@
     position: relative;
     text-transform: uppercase;
     vertical-align: middle;
-    margin-left: 15px;
+    margin: $breadcrumb__item-margin;
     color: $breadcrumb-color;
 
     &:before {
       content: $breadcrumb-before-content;
       color: $breadcrumb-before-color;
       position: absolute;
-      left: -12px;
-      top: 0;
+      left: $breadcrumb-before-left;
+      top: $breadcrumb-before-top;
     }
 
     &:first-child {
