@@ -2,6 +2,7 @@
 
 use Drupal\Core\Url;
 use Drupal\Core\Template\Attribute;
+use Drupal\block\Entity\Block;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
 use Drupal\image\Entity\ImageStyle;
@@ -30,6 +31,19 @@ function infinite_preprocess_page(&$variables) {
 function infinite_preprocess_block(&$variables) {
   $variables['front_page'] = \Drupal::url('<front>');
   $variables['logo'] = theme_get_setting('logo.url');
+}
+
+function infinite_preprocess_block__outbrain(&$variables) {
+  /* @var Drupal\block\Entity\Block $block */
+  $block = Block::load('advertisingslot_fba_article');
+  if (is_object($block)) {
+    $advertisingslot_fba_article =  \Drupal::entityManager()
+      ->getViewBuilder('block')
+      ->view($block, 'default');
+
+    $variables['elements']['content']['advertisingslot_fba_article'] = $advertisingslot_fba_article;
+    $variables['content']['advertisingslot_fba_article'] = $advertisingslot_fba_article;
+  }
 }
 
 function infinite_preprocess_region(&$variables) {
