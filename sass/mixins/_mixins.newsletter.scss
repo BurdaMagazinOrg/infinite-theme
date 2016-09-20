@@ -112,6 +112,7 @@
     }
 
     .input-email {
+      @include text-helper($newsletter__input-font-id--horizontal, $newsletter__input-font-size--horizontal);
       width: $newsletter__input-width--horizontal;
       padding: $newsletter__input-padding--horizontal;
       margin: $newsletter__input-margin--horizontal;
@@ -130,6 +131,10 @@
     p {
       line-height: 1.5;
     }
+  }
+
+  .checkbox {
+    @include text-helper($newsletter__checkbox-label-font-id--horizontal);
   }
 
   .icon-close {
@@ -214,7 +219,7 @@
     }
 
     .checkbox {
-      @include text-content-size($newsletter__checkbox-label--horizontal-mobile, 1.1);
+      @include text-helper-size($newsletter__checkbox-label-font-id--horizontal, $newsletter__checkbox-label--horizontal-mobile, 1.1);
     }
   }
 
@@ -238,7 +243,7 @@
     }
 
     .checkbox {
-      @include text-content-size($newsletter__checkbox-label--horizontal-tablet, 1.1);
+      @include text-helper-size($newsletter__checkbox-label-font-id--horizontal, $newsletter__checkbox-label--horizontal-tablet, 1.1);
 
       label {
         max-width: $newsletter__checkbox-label--horizontal-width-tablet;
@@ -259,7 +264,7 @@
     }
 
     .checkbox {
-      @include text-content-size($newsletter__checkbox-label--horizontal-desktop, 1.1);
+      @include text-helper-size($newsletter__checkbox-label-font-id--horizontal, $newsletter__checkbox-label--horizontal-desktop, 1.1);
 
       label {
         max-width: $newsletter__checkbox-label--horizontal-width-desktop;
