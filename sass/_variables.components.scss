@@ -353,6 +353,7 @@ $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
 $title--content-block-color: $text-color !default;
 $title--content-block-text-transform: none !default;
+$title--content-block-text-align: left !default;
 
 //fkn different design shizzl
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
@@ -791,6 +792,9 @@ $quote__quote-size--article-desktop: 50px !default;
 $quote__quote-color--article: $text-highlighted !default;
 $quote__quote-font-style--article: italic !default;
 $quote__quote-top--article: 4px !default;
+$quote__quote-font-id--article: $quote__title-font-id--article !default;
+$quote__quote-display--article: inline !default;
+$quote__quote-line-height--article: 0 !default;
 $quote__quote-before--article: "\00bb" !default;
 $quote__quote-after--article: "\00ab" !default;
 $quote__quote-before-padding--article: 0 10px 0 0 !default;
@@ -805,6 +809,7 @@ $quote__author-color--article: $color-brand !default;
 $quote__author-font-style--article: normal !default;
 $quote__author-text-transform--article: normal !default;
 $quote__author-padding--article: 0 0 10px !default;
+$quote__author-text-align--article: inherit !default;
 $quote__author-before--article: "" !default;
 $quote__author-before-padding--article: 0 !default;
 $quote__author-v-align--article: baseline !default;
