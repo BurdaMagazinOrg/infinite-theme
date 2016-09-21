@@ -384,18 +384,18 @@
     }
   }
 
-  .caption {
+  .teaser__caption {
     overflow: hidden;
   }
 
   @media (max-width: $screen-xs-max) {
-    .caption {
+    .teaser__caption {
       height: $teaser--content-caption-height-mobile;
     }
   }
 
   @media (min-width: $screen-sm-min) {
-    .caption {
+    .teaser__caption {
       height: $teaser--content-caption-height;
     }
 

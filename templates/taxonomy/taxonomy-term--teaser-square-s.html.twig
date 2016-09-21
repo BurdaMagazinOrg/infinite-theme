@@ -7,16 +7,16 @@
 {% set attributes = attributes.setAttribute('data-internal-url', url) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
-  <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
+  <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject">
     {% block teaser_img_container %}
       {{ content.field_teaser_media }}
     {% endblock %}
   </div>
 
-  <div class="caption caption-teaser">
+  <div class="teaser__caption">
 
     {% block teaser_text_headline %}
-      <h2 class="text-headline">
+      <h2 class="teaser__title text-headline">
         <a href="{{ url }}" target="_self">{{ name }}</a>
       </h2>
     {% endblock %}
