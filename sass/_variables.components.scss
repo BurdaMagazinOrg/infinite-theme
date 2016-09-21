@@ -741,10 +741,13 @@ $media__btn-download-margin-mobile--file: 15px 0 0 !default;
 ** Breadcrumb
 **/
 $breadcrumb-font-id: $font-label-id !default;
+$breadcrumb-before-font-id: $breadcrumb-font-id !default;
 $breadcrumb-before-content: ">" !default;
 $breadcrumb-before-color: $color-highlighted !default;
 $breadcrumb-before-left: -12px !default;
 $breadcrumb-before-top: 0 !default;
+$breadcrumb-before-size: inherit !default;
+$breadcrumb-before-margin: 0 !default;
 $breadcrumb-color: $text-color;
 $breadcrumb__item-margin: 0 0 0 15px !default;
 //bootstrap variable
