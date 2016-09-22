@@ -510,6 +510,7 @@ $teaser__caption-padding-desktop--landscape-large: $gap-size-sm 0 0 0 !default;
 
 /** teaser content **/
 $teaser--content-headline-font-id: $teaser__title-font-id--list-horizontal !default;
+$teaser--content-headline-text-transform: none !default;
 $teaser--content-headline-color: $teaser__title-color--list-horizontal !default;
 $teaser--content-headline-hover-color: $color-hover !default;
 $teaser--content-headline-size-mobile: $title-size-xxxs !default;
@@ -517,7 +518,7 @@ $teaser--content-headline-size-tablet: $title-size-xxs !default;
 $teaser--content-headline-size-desktop: $title-size-xxs !default;
 $teaser--content-caption-height: 81px !default;
 $teaser--content-caption-height-mobile: 69px !default;
-
+$teaser--content-headline-line-height: '' !default;
 /**
 **  Lists **
 **/

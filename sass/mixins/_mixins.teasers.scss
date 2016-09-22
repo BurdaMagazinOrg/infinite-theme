@@ -414,6 +414,7 @@
 
   .teaser__title {
     @include text-helper($teaser--content-headline-font-id);
+    text-transform: $teaser--content-headline-text-transform;
     color: $teaser--content-headline-color;
   }
 
@@ -437,19 +438,19 @@
     }
 
     .teaser__title {
-      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-mobile);
+      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-mobile, $teaser--content-headline-line-height);
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .teaser__title {
-      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-tablet);
+      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-tablet, $teaser--content-headline-line-height);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .teaser__title {
-      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-desktop);
+      @include text-helper-size($teaser--content-headline-font-id, $teaser--content-headline-size-desktop, $teaser--content-headline-line-height);
     }
   }
 }
