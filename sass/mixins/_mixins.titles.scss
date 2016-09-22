@@ -124,10 +124,7 @@
   @include text-helper($font);
   color: $color;
   text-transform: $title--content-block-text-transform;
-
-  .item-title {
-    text-align: left;
-  }
+  text-align: $title--content-block-text-align;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($font, $size-mobile);

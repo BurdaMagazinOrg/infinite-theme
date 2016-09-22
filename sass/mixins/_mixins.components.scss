@@ -13,11 +13,13 @@
     color: $breadcrumb-color;
 
     &:before {
+      @include text-helper($breadcrumb-before-font-id, $breadcrumb-before-size, 1);
       content: $breadcrumb-before-content;
       color: $breadcrumb-before-color;
       position: absolute;
       left: $breadcrumb-before-left;
       top: $breadcrumb-before-top;
+      margin: $breadcrumb-before-margin;
     }
 
     &:first-child {

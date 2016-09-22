@@ -353,6 +353,7 @@ $title--content-block-tablet: $title-size-md !default;
 $title--content-block-desktop: 30px !default;
 $title--content-block-color: $text-color !default;
 $title--content-block-text-transform: none !default;
+$title--content-block-text-align: left !default;
 
 //fkn different design shizzl
 $title--content-block-gap-bottom-mobile: $gap-size-sm !default;
@@ -501,7 +502,7 @@ $teaser-square-xs-headline-size-tablet: $title-size-sm !default;
 $teaser-square-xs-headline-size-desktop: $title-size-md !default;
 
 /** landscape **/
-$teaser__caption-padding-mobile--landscape-medium: $gap-size-xs 0 0 0 !default;
+$teaser__caption-padding-mobile--landscape-medium: $gap-size-xs $padding 0 $padding !default;
 
 $teaser__caption-padding-mobile--landscape-large: $gap-size-xs 0 0 0 !default;
 $teaser__caption-padding-tablet--landscape-large: $gap-size-sm 0 0 0 !default;
@@ -509,6 +510,7 @@ $teaser__caption-padding-desktop--landscape-large: $gap-size-sm 0 0 0 !default;
 
 /** teaser content **/
 $teaser--content-headline-font-id: $teaser__title-font-id--list-horizontal !default;
+$teaser--content-headline-text-transform: none !default;
 $teaser--content-headline-color: $teaser__title-color--list-horizontal !default;
 $teaser--content-headline-hover-color: $color-hover !default;
 $teaser--content-headline-size-mobile: $title-size-xxxs !default;
@@ -516,7 +518,7 @@ $teaser--content-headline-size-tablet: $title-size-xxs !default;
 $teaser--content-headline-size-desktop: $title-size-xxs !default;
 $teaser--content-caption-height: 81px !default;
 $teaser--content-caption-height-mobile: 69px !default;
-
+$teaser--content-headline-line-height: '' !default;
 /**
 **  Lists **
 **/
@@ -741,10 +743,13 @@ $media__btn-download-margin-mobile--file: 15px 0 0 !default;
 ** Breadcrumb
 **/
 $breadcrumb-font-id: $font-label-id !default;
+$breadcrumb-before-font-id: $breadcrumb-font-id !default;
 $breadcrumb-before-content: ">" !default;
 $breadcrumb-before-color: $color-highlighted !default;
 $breadcrumb-before-left: -12px !default;
 $breadcrumb-before-top: 0 !default;
+$breadcrumb-before-size: inherit !default;
+$breadcrumb-before-margin: 0 !default;
 $breadcrumb-color: $text-color;
 $breadcrumb__item-margin: 0 0 0 15px !default;
 //bootstrap variable
@@ -788,6 +793,9 @@ $quote__quote-size--article-desktop: 50px !default;
 $quote__quote-color--article: $text-highlighted !default;
 $quote__quote-font-style--article: italic !default;
 $quote__quote-top--article: 4px !default;
+$quote__quote-font-id--article: $quote__title-font-id--article !default;
+$quote__quote-display--article: inline !default;
+$quote__quote-line-height--article: 0 !default;
 $quote__quote-before--article: "\00bb" !default;
 $quote__quote-after--article: "\00ab" !default;
 $quote__quote-before-padding--article: 0 10px 0 0 !default;
@@ -802,6 +810,7 @@ $quote__author-color--article: $color-brand !default;
 $quote__author-font-style--article: normal !default;
 $quote__author-text-transform--article: normal !default;
 $quote__author-padding--article: 0 0 10px !default;
+$quote__author-text-align--article: inherit !default;
 $quote__author-before--article: "" !default;
 $quote__author-before-padding--article: 0 !default;
 $quote__author-v-align--article: baseline !default;

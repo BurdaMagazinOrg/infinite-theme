@@ -625,11 +625,12 @@
   }
 
   p:before, p:after {
-    @include text-helper($quote__title-font-id--article);
+    @include text-helper($quote__quote-font-id--article);
     color: $quote__quote-color--article;
     font-style: $quote__title-font-style--article;
     position: relative;
     top: $quote__quote-top--article;
+    display: $quote__quote-display--article;
   }
 
   p {
@@ -655,6 +656,7 @@
     font-style: $quote__author-font-style--article;
     text-transform: $quote__author-text-transform--article;
     padding: $quote__author-padding--article;
+    text-align: $quote__author-text-align--article;
 
     &:before {
       content: $quote__author-before--article;
@@ -664,12 +666,13 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    p {
-      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
+    p:before, p:after {
+      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-mobile--article, $quote__quote-line-height--article);
     }
 
-    p:before, p:after {
-      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size--article-mobile, 0);
+    //called title
+    p {
+      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
     }
 
     footer {
@@ -678,16 +681,18 @@
   }
 
   @media (min-width: $screen-xs-min) {
-    max-width: $quote__title-max-width--article;
+    p, footer { 
+      max-width: $quote__title-max-width--article;
+    }
   }
 
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    p {
-      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    p:before, p:after {
+      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-tablet--article, $quote__quote-line-height--article);
     }
 
-    p:before, p:after {
-      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size--article-tablet, 0);
+    p {
+      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
     }
 
     footer {
@@ -696,12 +701,12 @@
   }
 
   @media (min-width: $screen-md-min) {
-    p {
-      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
+    p:before, p:after {
+      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-desktop--article, $quote__quote-line-height--article);
     }
 
-    p:before, p:after {
-      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size--article-desktop, 0);
+    p {
+      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
     }
 
     footer {
