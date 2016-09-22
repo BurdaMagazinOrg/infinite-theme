@@ -351,12 +351,12 @@
     @include make-md-column(15);
   }
 
-  & > .caption-teaser, .teaser__caption {
+  & > .teaser__caption {
     @include make-md-column(9);
   }
 
   @media (max-width: $screen-xs-max) {
-    .teaser__caption {
+    & > .teaser__caption {
       padding: $teaser__caption-padding-mobile--landscape-medium;
     }
   }
