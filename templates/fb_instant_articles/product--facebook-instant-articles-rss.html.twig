@@ -1,0 +1,28 @@
+{#
+/**
+ * @file product.html.twig
+ * Default theme implementation to present Product data.
+ *
+ * This template is used when viewing Product pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ * - data_attributes: HTML data-* attributes for tracking properties.
+ *
+ * @see template_preprocess_product()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content.active %}
+    <figure data-feedback="fb:likes, fb:comments">
+        {{ content.file }}
+        <figcaption class="op-vertical-below">
+            <a href="{{ product_url }}" title="{{ content.brand }} - {{ content.title }} für {{ content.formattedprice }} bei {{ content.shop }}" target="_blank">
+                <h1>{{ content.brand }} - {{ content.title }} für {{ content.formattedprice }} bei {{ content.shop }}</h1>
+            </a>
+        </figcaption>
+    </figure>
+{% endif %}

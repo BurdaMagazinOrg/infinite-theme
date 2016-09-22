@@ -18,6 +18,15 @@ function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $
   }
 }
 
+/**
+ * Implements hook_theme_suggestions_product_alter().
+ */
+function infinite_theme_suggestions_product_alter(array &$suggestions, array $variables, $hook) {
+  if (!empty($variables['elements']['#view_mode'])) {
+    $suggestions[] = $hook . '__' . $variables['elements']['#view_mode'];
+  }
+}
+
 function infinite_theme_suggestions_user_alter(array &$suggestions, array $variables, $hook) {
   if (!empty($variables['elements']['#view_mode'])) {
     $suggestions[] = $hook . '__' . $variables['elements']['#view_mode'];
@@ -176,6 +185,7 @@ function infinite_preprocess_product(&$variables) {
     ->setAttribute('data-currency', $product->currency->value)
     ->setAttribute('data-sku', $product->sku->value);
 
+  $subID = 0;
   if (Drupal::request()->attributes->has('node')) {
     $node = Drupal::request()->attributes->get('node');
     $sub_id = 'node-' . $node->id();
@@ -185,7 +195,8 @@ function infinite_preprocess_product(&$variables) {
     $sub_id = 'term-' . $term->id();
   }
 
-  $data_attributes->setAttribute('data-external-url', $product->detailpageurl->uri . '&subid=' . $sub_id);
+  $variables['product_url'] = $product->detailpageurl->uri . '&subid=' . $subID;
+  $data_attributes->setAttribute('data-external-url', $variables['product_url']);
   $variables['data_attributes'] = $data_attributes;
 }
 
