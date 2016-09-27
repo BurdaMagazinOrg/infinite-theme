@@ -13,9 +13,11 @@
  */
 #}
 {% if content %}
-    <div class="swiper-slide">
+    {% block media_image_wrapper_block %}
         <div class="item-media item-media--image item-media--image-{{ calculated_dimension }}">
-            {% include 'media--image-base.html.twig' %}
+            {% block media_image_block %}
+                {{ content.field_image }}
+            {% endblock %}
         </div>
-    </div>
+    {% endblock %}
 {% endif %}

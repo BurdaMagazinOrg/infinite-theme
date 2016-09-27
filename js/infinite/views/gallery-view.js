@@ -12,7 +12,7 @@
 
             this.mediaId = this.$el.data('media-id').toString();
             this.itemSpace = this.$el.data('item-space') || this.itemSpace;
-            this.createView();
+            //this.createView();
         },
         createView: function () {
             var $tmpSwiper = this.$el.find('.gallery-container').swiper({

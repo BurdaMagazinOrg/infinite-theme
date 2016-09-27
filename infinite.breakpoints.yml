@@ -36,13 +36,13 @@ infinite.md:
     - 1x
 infinite.lg:
   label: lg
-  mediaQuery: 'all and (min-width: 1128px)'
+  mediaQuery: 'all and (min-width: 1279px)'
   weight: 6
   multipliers:
     - 1x
 infinite.xl:
   label: xl
-  mediaQuery: 'all and (min-width: 1450px)'
+  mediaQuery: 'all and (min-width: 1439px)'
   weight: 7
   multipliers:
     - 1x

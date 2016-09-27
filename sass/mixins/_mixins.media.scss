@@ -27,6 +27,10 @@
     position: relative;
   }
 
+  img {
+    display: inline-block;
+  }
+
   &.item-media--image-landscape {
     img {
       width: 100%;

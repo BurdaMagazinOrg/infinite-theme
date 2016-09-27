@@ -1,4 +1,4 @@
-{#
+#
 /**
  * @file
  * Default theme implementation to present a media entity.
@@ -12,8 +12,9 @@
  * @ingroup themeable
  */
 #}
-{% if content %}
-    <div class="item-media item-media--image item-media--image-{{ calculated_dimension }}">
-        {% include 'media--image-base.html.twig' %}
-    </div>
-{% endif %}
+
+{% extends 'media--image.html.twig' %}
+
+{% block media_image_block %}
+    {% include 'media--image-base.html.twig' %}
+{% endblock media_image_block %}
