@@ -17,12 +17,11 @@
  */
 #}
 {% if content.active %}
+    {% set label = content.brand|render ~" - " ~content.title|render ~" für " ~content.formattedprice|render ~" bei " ~content.shop|render %}
     <figure data-feedback="fb:likes, fb:comments">
         {{ content.file }}
         <figcaption class="op-vertical-below">
-            <a href="{{ product_url }}" title="{{ content.brand }} - {{ content.title }} für {{ content.formattedprice }} bei {{ content.shop }}" target="_blank">
-                <h1>{{ content.brand }} - {{ content.title }} für {{ content.formattedprice }} bei {{ content.shop }}</h1>
-            </a>
+            <h1><a href="{{ product_url }}" title="{{ label }}" target="_blank">{{ label }}</a></h1>
         </figcaption>
     </figure>
 {% endif %}
