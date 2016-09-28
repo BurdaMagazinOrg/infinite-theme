@@ -1,5 +1,5 @@
 %transition-default {
-  @include transition-default(all $transition-duration $transition-easing);
+  @include transition-default(all, $transition-duration, $transition-easing);
 }
 
 %transition-fade {

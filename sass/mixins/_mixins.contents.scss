@@ -57,7 +57,6 @@
   .socials-vertical-bar {
     position: absolute;
     top: 0;
-    margin-left: -$article-socials-column-width;
     z-index: 10;
   }
 
@@ -75,7 +74,6 @@
   @media (min-width: $screen-sm-min) {
     .item-group--outer {
       @include region--fixed-content();
-      padding-left: $article-socials-column-width;
       padding-right: 0;
     }
 
@@ -85,7 +83,26 @@
     }
   }
 
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .socials-vertical-bar {
+      margin-left: -$article-socials-column-width-tablet;
+    }
+
+    .item-group--outer {
+      padding-left: $article-socials-column-width-tablet;
+    }
+  }
+
   @media (min-width: $screen-md-min) {
+
+    .socials-vertical-bar {
+      margin-left: -$article-socials-column-width;
+    }
+
+    .item-group--outer {
+      padding-left: $article-socials-column-width;
+    }
+
     //todo check if > necessary
     & > .item-paragraph--small,
     & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small,
@@ -310,7 +327,6 @@
 
   .item-content__header {
     @extend %region--fixed-content;
-    padding-bottom: $gap-size-lg;
   }
 
   .item-content__content {
@@ -327,10 +343,20 @@
     @extend %region--fixed-content;
   }
 
+  .item-content__block--meta-data {
+    @extend %item-author--vita-short;
+  }
+
   //position socials on top
   @media (max-width: $screen-xs-max) {
+
+    .item-content__header {
+      padding: $article__header-padding-mobile;
+    }
+
     .item-content__content {
-      padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
+      //padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
+      @include padding--v-region(top, (($gap-v-region-mobile*2), ($gap-v-region-tablet*2), ($gap-v-region-desktop*2)));
     }
 
     .item-group--outer-wrapper .item-group--outer {
@@ -342,8 +368,16 @@
     }
   }
 
-  .item-content__block--meta-data {
-    @extend %item-author--vita-short;
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .item-content__header {
+      padding: $article__header-padding-tablet;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .item-content__header {
+      padding: $article__header-padding-desktop;
+    }
   }
 }
 

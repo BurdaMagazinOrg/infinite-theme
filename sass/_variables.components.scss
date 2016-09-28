@@ -606,7 +606,7 @@ $socials-labeled-horizontal-bar-icon-size-desktop: $socials-icon-size-md !defaul
 
 /** socials vertical bar **/
 $socials-vertical-bar-left-gap-mobile: $socials-h-gap--default !default;
-$socials-vertical-bar-top-gap-mobile: 8px !default;
+$socials-vertical-bar-top-gap-mobile: 0px !default;
 $socials-vertical-bar-top-gap-tablet: 8px !default;
 $socials-vertical-bar-top-gap-desktop: 8px !default;
 $socials-vertical-bar-size-mobile: $socials-size-md !default;
@@ -640,6 +640,10 @@ $socials-media-horizontal-bar-icon-size-desktop: $socials-icon-size-md !default;
 /**
 ** Item Contents
 **/
+
+$article__header-padding-mobile: 0 0 $gap-size-lg 0 !default;
+$article__header-padding-tablet: 0 0 $gap-size-lg 0 !default;
+$article__header-padding-desktop: 0 0 $gap-size-lg 0 !default;
 
 /** spotlight **/
 $spotlight__title-font-id: $font-headline-id !default;
@@ -694,11 +698,13 @@ $seo-linker__link-list-hover-color: $color-hover !default;
 $gallery-ratio-full: 75% !default;
 $gallery-ratio-middle: 56% !default;
 $gallery-ratio-small: 75% !default;
+$gallery__header-margin: 0 0 $grid-gutter-width 0 !default;
 $gallery__count-font-id: $font-label-id !default;
 $gallery__count-size-mobile: $title--content-block-mobile !default;
 $gallery__count-size-tablet: $title--content-block-tablet !default;
 $gallery__count-size-desktop: $title--content-block-desktop !default;
 $gallery__count-color: $text-color !default;
+$gallery__navigation-arrow-margin: 0 $grid-gutter-width 0 0 !default;
 
 /**
 ** Media

@@ -12,12 +12,22 @@
  * @ingroup themeable
  */
 #}
+{% set classes = [
+'item-media',  'item-media--image', 'item-media--image-' ~ calculated_dimension,
+'media', 'media--blazy',
+settings.lazy ? 'media--loading',
+settings.type ? 'media--' ~ settings.type,
+settings.ratio ? 'media--ratio media--ratio--' ~ settings.ratio,
+settings.media_switch ? 'media--switch media--switch--' ~ settings.media_switch|clean_class,
+settings.player ? 'media--player',
+settings.responsive_image_style_id ? 'media--responsive'
+] %}
 
 {% if content %}
     {% block media_image_gallery_wrapper_block %}
         <div class="swiper-slide">
             {% block media_image_gallery_block %}
-                <div class="item-media item-media--image item-media--image-{{ calculated_dimension }}">
+                <div {{ attributes.addClass(classes) }}>
                     {% include 'media--image-base.html.twig' %}
                 </div>
             {% endblock %}

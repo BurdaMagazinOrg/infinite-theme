@@ -67,11 +67,11 @@
 }
 
 .icon-gallery-arrow-left {
-  @extend %icon-arrow-large-left;
+  @include icon-gallery-arrow-left();
 }
 
 .icon-gallery-arrow-right {
-  @extend %icon-arrow-large-right;
+  @include icon-gallery-arrow-right();
 }
 
 .icon-copyright {
