@@ -1,4 +1,4 @@
-#
+{#
 /**
  * @file
  * Default theme implementation to present a media entity.
@@ -12,9 +12,4 @@
  * @ingroup themeable
  */
 #}
-
-{% extends 'media--image.html.twig' %}
-
-{% block media_image_block %}
-    {% include 'media--image-base.html.twig' %}
-{% endblock media_image_block %}
+{% extends 'media--image--gallery.html.twig' %}
