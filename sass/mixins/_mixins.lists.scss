@@ -82,14 +82,14 @@
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     margin-top: $list__content-teaser__item--horizontal-gap-top-tablet;
-    padding-top: $list__content-teaser__item--horizontal-gap-top-tablet;
+    //padding-top: $list__content-teaser__item--horizontal-gap-top-tablet;
     padding-left: $list__content-teaser--horizontal-gap-h-tablet;
     padding-right: $list__content-teaser--horizontal-gap-h-tablet;
   }
 
   @media (min-width: $screen-md-min) {
     margin-top: $list__content-teaser__item--horizontal-gap-top-desktop;
-    padding-top: $list__content-teaser__item--horizontal-gap-top-desktop;
+    //padding-top: $list__content-teaser__item--horizontal-gap-top-desktop;
     padding-left: $list__content-teaser--horizontal-gap-h-desktop;
     padding-right: $list__content-teaser--horizontal-gap-h-desktop;
   }

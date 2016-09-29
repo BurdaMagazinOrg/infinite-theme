@@ -63,8 +63,13 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include gap--v-xl();
-    border-top: $h-line-style;
+    @if ($product__item-lined-mobile) {
+      @include gap--v-xl();
+      border-top: $h-line-style;
+    } @else {
+      @include padding--v-xl();
+    }
+
     display: block;
     width: auto;
     margin-right: 0;
