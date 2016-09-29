@@ -12,5 +12,8 @@
  * @ingroup themeable
  */
 #}
-
-{% extends 'media--image--gallery-base.html.twig' %}
+{% if content %}
+    <div class="item-media item-media--image item-media--image-{{ calculated_dimension }}">
+        {% include 'media--image-base.html.twig' %}
+    </div>
+{% endif %}

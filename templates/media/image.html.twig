@@ -12,5 +12,4 @@
  * @ingroup themeable
  */
 #}
-{% set dataSrc = attributes.srcset | default(attributes.src) %}
-<img{{ attributes.addClass('b-lazy') }} data-src="{{ dataSrc }}"/>
+<img{{ attributes }} />

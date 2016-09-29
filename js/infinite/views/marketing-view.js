@@ -54,6 +54,9 @@
             this.adFormat = this.marketingSettings[this.adType];
             this.$adSlotContainer.empty();
 
+            console.log(">>>", this.$el.hasClass('container-sidebar-content'), this.adFormat);
+
+            //this.$el.hasClass('container-sidebar-content') && this.adType != 'desktop'
             if (this.adFormat == undefined || this.adFormat == '') return;
 
             //i want the TFM API back :((( tfm ftw!! sounds sad/mad but it's true

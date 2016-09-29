@@ -1,3 +1,11 @@
+@mixin icon-gallery-arrow-left (){
+  @extend %icon-arrow-large-left;
+}
+
+@mixin icon-gallery-arrow-right(){
+  @extend %icon-arrow-large-right;
+}
+
 @mixin icon($container: '&:before') {
   #{$container} {
     @include user-select(none);

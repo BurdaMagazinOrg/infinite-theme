@@ -58,7 +58,7 @@
 
   .gallery-header {
     position: relative;
-    margin-bottom: $grid-gutter-width;
+    margin: $gallery__header-margin;
   }
 
   .gallery-navigation {
@@ -71,7 +71,7 @@
       cursor: pointer;
 
       &:first-child {
-        margin-right: $grid-gutter-width;
+        margin: $gallery__navigation-arrow-margin;
       }
     }
   }

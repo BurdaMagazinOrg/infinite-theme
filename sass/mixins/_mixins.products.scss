@@ -63,8 +63,11 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include gap--v-xl();
-    border-top: $h-line-style;
+    @if ($product__item-lined-mobile) {
+      @include gap--v-xl();
+      border-top: $h-line-style;
+    }
+
     display: block;
     width: auto;
     margin-right: 0;
@@ -72,6 +75,10 @@
 
     &:first-child {
       @include gap__container--v-reset(true);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
 
     .text-headline {
