@@ -315,10 +315,8 @@
 }
 
 @mixin item-paragraph--twitter() {
-  & > iframe {
+  & > iframe, .twitter-tweet {
     @include center-block();
-    width: 100% !important;
-    max-width: 520px !important;
   }
 }
 
@@ -681,7 +679,7 @@
   }
 
   @media (min-width: $screen-xs-min) {
-    p, footer { 
+    p, footer {
       max-width: $quote__title-max-width--article;
     }
   }
