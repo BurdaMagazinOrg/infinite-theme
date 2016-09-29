@@ -57,6 +57,8 @@ regions:
   highlighted: 'Highlighted'
   content: Content
   modal: Modal
+  dyn_blocks_taxonomy_term: 'Dynamic blocks for taxonomy terms'
+  dyn_blocks_node: 'Dynamic blocks for nodes'
   hidden: Hidden
 stylesheets-remove:
   - core/modules/system/css/system.module.css
