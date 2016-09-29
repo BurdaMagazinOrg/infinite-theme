@@ -66,8 +66,6 @@
     @if ($product__item-lined-mobile) {
       @include gap--v-xl();
       border-top: $h-line-style;
-    } @else {
-      @include padding--v-xl();
     }
 
     display: block;
@@ -77,6 +75,10 @@
 
     &:first-child {
       @include gap__container--v-reset(true);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
 
     .text-headline {
