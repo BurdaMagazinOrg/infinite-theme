@@ -20,7 +20,7 @@
     {% set label = content.brand|render ~" - " ~content.title|render ~" für " ~content.formattedprice|render ~" bei " ~content.shop|render %}
     <figure data-feedback="fb:likes, fb:comments">
         {{ content.file }}
-        <figcaption class="op-vertical-below">
+        <figcaption class="op-vertical-below op-extra-large">
             <h1><a href="{{ product_url }}" title="{{ label }}" target="_blank">{{ label }}</a></h1>
         </figcaption>
     </figure>
