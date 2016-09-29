@@ -1,38 +1,38 @@
 @mixin margin--v-sm($gaps: ($gap-v-sm-mobile, $gap-v-sm-tablet, $gap-v-sm-desktop)) {
-  @include _margin--v($gaps);
+  @include _margin--v(top, $gaps);
 }
 
 @mixin margin--v-xl($gaps: ($gap-v-xl-mobile, $gap-v-xl-tablet, $gap-v-xl-desktop)) {
-  @include _margin--v($gaps);
+  @include _margin--v(top, $gaps);
 }
 
 @mixin margin--v-xxl($gaps: ($gap-v-xxl-mobile, $gap-v-xxl-tablet, $gap-v-xxl-desktop)) {
-  @include _margin--v($gaps);
+  @include _margin--v(top, $gaps);
 }
 
 @mixin margin--v-region($gaps: ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop)) {
-  @include _margin--v($gaps);
+  @include _margin--v(top, $gaps);
 }
 
 @mixin margin--v-item-content__item($gaps: ($margin-v-item-content__item-mobile, $margin-v-item-content__item-tablet, $margin-v-item-content__item-desktop)) {
-  @include _margin--v($gaps);
+  @include _margin--v(top, $gaps);
 }
 
-@mixin _margin--v($gaps) {
+@mixin _margin--v($direction, $gaps) {
   $gap-mobile: nth($gaps, 1);
   $gap-tablet: nth($gaps, 2);
   $gap-desktop: nth($gaps, 3);
 
   @media (max-width: $screen-xxs-max) {
-    margin-top: round($gap-mobile);
+    margin-#{$direction}: round($gap-mobile);
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    margin-top: round($gap-tablet);
+    margin-#{$direction}: round($gap-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    margin-top: round($gap-desktop);
+    margin-#{$direction}: round($gap-desktop);
   }
 }
 
