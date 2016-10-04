@@ -419,7 +419,7 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include make-row();
+    @include clearfix();
 
     &:first-child {
       margin-top: 0;
@@ -427,14 +427,14 @@
     }
 
     .img-container, .teaser__img-container {
-      @include make-column(6);
-      padding-right: 0;
+      width: $teaser--content-img-width-mobile;
+      padding-right: $padding;
+      float: left;
     }
 
     .caption, .teaser__caption {
-      @include make-column(18);
       margin-top: 0;
-      //padding-right: 0;
+      padding-right: $padding;
     }
 
     .teaser__title {

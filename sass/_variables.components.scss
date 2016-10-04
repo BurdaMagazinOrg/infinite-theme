@@ -511,6 +511,7 @@ $teaser__caption-padding-desktop--landscape-large: $gap-size-sm 0 0 0 !default;
 
 /** teaser content **/
 $teaser--content-headline-font-id: $teaser__title-font-id--list-horizontal !default;
+$teaser--content-img-width-mobile: (120px + $padding) !default;
 $teaser--content-headline-text-transform: none !default;
 $teaser--content-headline-color: $teaser__title-color--list-horizontal !default;
 $teaser--content-headline-hover-color: $color-hover !default;
