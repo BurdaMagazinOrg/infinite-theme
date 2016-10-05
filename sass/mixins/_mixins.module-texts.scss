@@ -447,7 +447,7 @@
 
 @mixin item-media--header-text() {
   .text-headline {
-    @include text-headline-bold();
+    @include text-helper($title--media-header-font-id);
     text-shadow: $title--media-header-text-shadow;
     text-transform: $title--media-header-text-transform;
     color: $title--media-header-color;
@@ -458,19 +458,19 @@
 
   @media (max-width: $screen-xxs-max) {
     .text-headline {
-      @include text-headline-size($title--media-header-mobile);
+      @include text-helper-size($title--media-header-font-id, $title--media-header-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-headline-size($title--media-header-tablet);
+      @include text-helper-size($title--media-header-font-id, $title--media-header-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-headline-size($title--media-header-desktop);
+      @include text-helper-size($title--media-header-font-id, $title--media-header-desktop);
       letter-spacing: $title--media-header-letter-spacing;
     }
   }

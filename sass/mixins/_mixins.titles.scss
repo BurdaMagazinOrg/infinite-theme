@@ -50,20 +50,21 @@
 }
 
 @mixin title--page-center() {
+  @include text-helper($title--page-center-font-id);
   text-align: center;
   color: $title--page-center-color;
   letter-spacing: -1px;
 
   @media (max-width: $screen-xs-max) {
-    @include text-headline-size($title--page-center-mobile);
+    @include text-helper-size($title--page-center-font-id, $title--page-center-mobile);
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-headline-size($title--page-center-tablet);
+    @include text-helper-size($title--page-center-font-id, $title--page-center-tablet);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-headline-size($title--page-center-desktop);
+    @include text-helper-size($title--page-center-font-id, $title--page-center-desktop);
   }
 }
 

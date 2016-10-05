@@ -320,15 +320,18 @@ $label--copyright-size--desktop: 14px !default;
 ** Titles
 **/
 
+$title--media-header-font-id: $font-headline-bold-id !default;
 $title--media-header-mobile: $title-size-lg !default;
 $title--media-header-tablet: $title-size-xxl !default;
 $title--media-header-desktop: 72px !default;
+$title--media-header-text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 1px !default;
 $title--media-header-text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 1px !default;
 $title--media-header-letter-spacing: -3px !default;
 $title--media-header-color: $white !default;
 $title--media-header-text-transform: none !default;
 
 /** title--page-center **/
+$title--page-center-font-id: $font-headline-id !default;
 $title--page-center-mobile: 36px !default;
 $title--page-center-tablet: 59px !default;
 $title--page-center-desktop: 59px !default;
