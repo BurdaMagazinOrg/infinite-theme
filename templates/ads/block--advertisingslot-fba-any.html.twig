@@ -1,3 +1,5 @@
+{% set deviceAdIds = content['#ad_tag'] | default({'smartphone': '', 'tablet': '', 'desktop': ''}) %}
+
 {% if use_container %}
     <{{ block_tag|raw }} {{ attributes }}>
 {% endif %}
@@ -9,7 +11,11 @@
   {% endif %}
 
   {% block content %}
-      <div class="region-full-content ad-bdsa ad-js">
+      <div class="region-full-content ad-bdsa ad-js"
+           data-aid-smartphone="{{ deviceAdIds['smartphone'] }}"
+           data-aid-tablet="{{ deviceAdIds['tablet'] }}"
+           data-aid-desktop="{{ deviceAdIds['desktop'] }}">
+
           {{ content }}
       </div>
   {% endblock %}
