@@ -6,7 +6,6 @@ package: Infinite
 core: 8.x
 screenshot: images/infinite.png
 libraries:
-  - infinite/jquery
   - infinite/infinite.external
   - infinite/infinite.libs
   - infinite/infinite.init
@@ -89,3 +88,6 @@ stylesheets-remove:
   - "@paragraphs_starterkit/css/paragraphs_starterkit.css"
   - "@nexx_integration/css/styles.css"
   - "@hm_newsletter/css/hm_newsletter.css"
+
+libraries-override:
+  core/jquery: infinite/jquery

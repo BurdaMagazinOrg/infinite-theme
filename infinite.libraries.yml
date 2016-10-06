@@ -40,7 +40,7 @@ infinite.init:
     js/infinite/consts/manager-ids.js: {}
 
   dependencies:
-#    - core/jquery
+    - core/jquery
     - core/backbone
     - core/drupal
     - core/drupal.ajax
