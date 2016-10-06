@@ -150,9 +150,11 @@ $navigation-search-icon-size: 19px !default;
 //submenu
 $menu--submenu-navigation-font-id: $font-label-id !default;
 $menu--submenu-navigation-color: $text-color !default;
-$menu--submenu-navigation-size: $menu--main-navigation-size - 2px !default;
+$menu--submenu-navigation-size: $menu--main-navigation-size !default;
 $menu--submenu-navigation-mobile-color: $gray-base !default;
 $menu--submenu-navigation-mobile-color-active: $gray-base !default;
+$menu--submenu-navigation-padding-mobile: $menu--submenu-navigation-size 0 0 0 !default;
+$menu--submenu-navigation-padding-mobile--open: ($menu--submenu-navigation-size + $gap-size-md) 0 0 0 !default;
 $menu--submenu-navigation__item_padding: 3px 7px !default;
 $menu--submenu-navigation__item_margin-mobile: 15px 0px !default;
 $menu--submenu-navigation__item_margin-tablet: 15px 0px !default;

@@ -198,12 +198,12 @@
       }
 
       .menu {
-        padding-top: $menu--submenu-navigation-size + $gap-size-md;
+        padding: $menu--submenu-navigation-padding-mobile--open;
       }
     }
 
     .menu {
-      padding-top: $menu--submenu-navigation-size;
+      padding: $menu--submenu-navigation-padding-mobile;
     }
 
     .menu-item {
