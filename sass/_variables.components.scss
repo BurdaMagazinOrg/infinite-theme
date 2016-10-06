@@ -143,6 +143,7 @@ $navigation-letter-spacing: 1px !default;
 
 $navigation-menu-icon-color: $text-color !default;
 $navigation-menu-icon-size: 17px !default;
+$navigation-menu-icon-hover-color: $color-hover !default;
 
 $navigation-search-icon-color: $text-color !default;
 $navigation-search-icon-size: 19px !default;
@@ -162,6 +163,7 @@ $menu--submenu-navigation__item_margin-desktop: 0 5px !default;
 
 //sidebar
 $menu--sidebar-logo-width: 150px !default;
+$menu--sidebar-bg: rgba($white, 0.85) !default;
 $menu__item--sidebar-gap-top: 12px !default;
 $menu__item--sidebar-soft-color: $gray-base !default;
 $menu__item-active-color--sidebar: $color-hover !default;

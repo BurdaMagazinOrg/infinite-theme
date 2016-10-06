@@ -284,7 +284,7 @@
   }
 
   &:hover {
-    color: $black;
+    color: $navigation-menu-icon-hover-color;
   }
 
   .label-menu {
@@ -322,7 +322,7 @@
   }
 
   &:hover {
-    color: $black;
+    color: $navigation-menu-icon-hover-color;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -349,7 +349,7 @@
   left: 0;
   bottom: 0;
   top: 0;
-  background-color: rgba($white, 0.85);
+  background-color: $menu--sidebar-bg;
 
   &.open {
     @extend %fade-in;
