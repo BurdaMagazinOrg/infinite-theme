@@ -1,9 +1,13 @@
+jquery:
+  header: true
+  js:
+    ../../../core/assets/vendor/jquery/jquery.min.js: { minified: true }
+
 infinite.external:
   js:
     //assets.pinterest.com/js/pinit.js: { type: external, attributes: { defer: true, async: true} }
-    //platform.twitter.com/widgets.js: { type: external, minified: true }
-    //platform.instagram.com/en_US/embeds.js: { type: external, minified: true }
-    //assets.pinterest.com/js/pinit.js: { type: external, minified: true }
+    //platform.twitter.com/widgets.js: { type: external, minified: true, attributes: { defer: true, async: true} }
+    //platform.instagram.com/en_US/embeds.js: { type: external, minified: true, attributes: { defer: true, async: true} }
 
 infinite.libs:
   js:
@@ -21,7 +25,6 @@ infinite.libs:
     js/infinite/libs/bootstrap/modal.js: {}
     js/infinite/libs/bootstrap/transition.js: {}
 
-
 infinite.init:
   css:
     base:
@@ -37,7 +40,7 @@ infinite.init:
     js/infinite/consts/manager-ids.js: {}
 
   dependencies:
-    - core/jquery
+#    - core/jquery
     - core/backbone
     - core/drupal
     - core/drupal.ajax
