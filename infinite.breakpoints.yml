@@ -30,7 +30,7 @@ infinite.sm:
     - 1x
 infinite.md:
   label: md
-  mediaQuery: 'all and (min-width: 992px)'
+  mediaQuery: 'all and (min-width: 1024px)'
   weight: 5
   multipliers:
     - 1x
