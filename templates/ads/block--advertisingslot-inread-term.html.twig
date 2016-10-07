@@ -1,0 +1,25 @@
+{% set deviceAdIds = content['#ad_tag'] | default({'smartphone': '', 'tablet': '', 'desktop': ''}) %}
+
+{% if use_container %}
+    <{{ block_tag|raw }} {{ attributes }}>
+{% endif %}
+
+  {% if not label is empty and label_display is defined %}
+
+  <{{ title_tag }} {{ title_attributes }}>{{ label }}</{{ title_tag }}>
+
+  {% endif %}
+
+  {% block content %}
+      <div class="ad-inread ad-js"
+           data-aid-smartphone="{{ deviceAdIds['smartphone'] }}"
+           data-aid-tablet="{{ deviceAdIds['tablet'] }}"
+           data-aid-desktop="{{ deviceAdIds['desktop'] }}">
+          <span class="item-label">Anzeige</span>
+          {{ content }}
+      </div>
+  {% endblock %}
+
+{% if use_container %}
+</{{ block_tag|raw }}>
+{% endif %}
