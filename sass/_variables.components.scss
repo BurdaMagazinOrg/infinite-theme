@@ -859,6 +859,10 @@ $date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;
 /**
 ** Author
 **/
+//$article__header-padding-tablet
+$author__margin-mobile--content-header: $gap-size-lg 0 0 0 !default;
+$author__margin-tablet--content-header: $gap-size-lg 0 0 0 !default;
+$author__margin-desktop--content-header: $gap-size-lg 0 0 0 !default;
 $author__profile-image-margin--teaser-default: 0 $padding 0 0 !default;
 $author__profile-image-radius--teaser-default: 0 !default;
 $author__profile-image-size--teaser-default: 40px !default;

@@ -5,19 +5,22 @@
 @mixin item-content__header() {
   @media (max-width: $screen-xxs-max) {
     .author {
-      margin-top: $gap-size-sm;
+      margin: $author__margin-mobile--content-header;
+      //margin-top: $gap-size-sm;
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .author {
-      margin-top: $gap-size-lg;
+      margin: $author__margin-tablet--content-header;
+      //margin-top: $gap-size-lg;
     }
   }
 
   @media (min-width: $screen-md-min) {
     .author {
-      margin-top: $gap-size-lg;
+      margin: $author__margin-desktop--content-header;
+      //margin-top: $gap-size-lg;
     }
   }
 }
