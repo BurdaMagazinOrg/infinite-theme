@@ -22,6 +22,11 @@
     @extend %socials-teaser-horizontal-bar-item;
   }
 }
+#header-home .socials-bar {
+  .item-social {
+    @extend %socials-teaser-horizontal-bar-item;
+  }
+}
 
 .item-media .socials-bar {
   .item-social {
