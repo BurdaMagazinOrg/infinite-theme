@@ -3,52 +3,61 @@ infinite.xxs:
   mediaQuery: 'all and (min-width: 0px)'
   weight: 0
   multipliers:
+    - 2x
     - 1x
 infinite.mobile_sm:
   label: mobile_sm
   mediaQuery: 'all and (min-width: 360px)'
   weight: 1
   multipliers:
+    - 2x
     - 1x
 infinite.mobile_md:
   label: mobile_md
   mediaQuery: 'all and (min-width: 414px)'
   weight: 2
   multipliers:
+    - 2x
     - 1x
 infinite.xs:
   label: xs
   mediaQuery: 'all and (min-width: 480px)'
   weight: 3
   multipliers:
+    - 2x
     - 1x
 infinite.sm:
   label: sm
   mediaQuery: 'all and (min-width: 767px)'
   weight: 4
   multipliers:
+    - 2x
     - 1x
 infinite.md:
   label: md
   mediaQuery: 'all and (min-width: 992px)'
   weight: 5
   multipliers:
+    - 2x
     - 1x
 infinite.lg:
   label: lg
   mediaQuery: 'all and (min-width: 1279px)'
   weight: 6
   multipliers:
+    - 2x
     - 1x
 infinite.xl:
   label: xl
   mediaQuery: 'all and (min-width: 1439px)'
   weight: 7
   multipliers:
+    - 2x
     - 1x
 infinite.xxl:
   label: xxl
   mediaQuery: 'all and (min-width: 1800px)'
   weight: 8
   multipliers:
+    - 2x
     - 1x

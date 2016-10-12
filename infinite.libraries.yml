@@ -1,7 +1,7 @@
-jquery:
-  header: true
-  js:
-    ../../../core/assets/vendor/jquery/jquery.min.js: { minified: true }
+#jquery:
+#  header: true
+#  js:
+#    ../../../core/assets/vendor/jquery/jquery.min.js: { minified: true }
 
 #infinite.external:
 #  js:

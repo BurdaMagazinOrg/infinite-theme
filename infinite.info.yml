@@ -89,5 +89,5 @@ stylesheets-remove:
   - "@nexx_integration/css/styles.css"
   - "@hm_newsletter/css/hm_newsletter.css"
 
-libraries-override:
-  core/jquery: infinite/jquery
+#libraries-override:
+#  core/jquery: infinite/jquery
