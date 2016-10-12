@@ -273,12 +273,15 @@
 
             $.each($tmpProductItems, function (pIndex, pItem) {
                 var $tmpProductItem = $(pItem),
-                    tmpSKU = $tmpProductItem.data('sku') || '',
+                    tmpProdID = $tmpProductItem.data('sku') || $tmpProductItem.data('product-id') || '',
                     tmpTitle = $tmpProductItem.data('title') || '',
                     tmpBrand = $tmpProductItem.data('brand') || '',
                     tmpPrice = $tmpProductItem.data('price') || '',
                     tmpShop = $tmpProductItem.data('shop') || '',
-                    tmpCurrency = $tmpProductItem.data('currency') || '';
+                    tmpCurrency = $tmpProductItem.data('currency') || '',
+                    tmpProvider = $tmpProductItem.data('provider') || '';
+
+                tmpOptions.provider = tmpProvider;
 
                 /**
                  * Impression Data
@@ -288,7 +291,7 @@
                     category: tmpShop,
                     list: tmpOptions.list,
                     name: tmpTitle,
-                    id: tmpSKU.toString(),
+                    id: tmpProdID.toString(),
                     price: tmpPrice.toString(),
                     brand: tmpBrand,
                     position: (pIndex + 1)
