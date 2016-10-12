@@ -17,15 +17,11 @@
  */
 #}
 {% if content.status %}
-    <div class="item-product" {{ data_attributes }}>
-        <div class="img-container">
-            {{ content.product_image }}
-        </div>
-        <div class="caption">
-            <div class="text-brand">{{ content.product_brand }}</div>
-            <div class="text-headline">{{ content.product_name }}</div>
-            <div class="text-price">{{ content.product_price }} {{ content.product_currency }}</div>
-            <div class="text-shop">Zum Shop</div>
-        </div>
-    </div>
+    {% set label = content.product_brand|render ~" - " ~content.product_name|render ~" für " ~content.product_price|render ~" " ~content.product_currency|render~ " bei " ~content.product_shop|render %}
+    <figure data-feedback="fb:likes, fb:comments">
+        {{ content.product_image }}
+        <figcaption class="op-vertical-below op-extra-large">
+            <h1><a href="{{ tracking_url }}" title="{{ label }}" target="_blank">{{ label }}</a></h1>
+        </figcaption>
+    </figure>
 {% endif %}
