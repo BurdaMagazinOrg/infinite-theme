@@ -4,9 +4,17 @@ not root_path ? 'page-front' : 'page-' ~ root_path|clean_class,
 node_type ? 'page-' ~ node_type|clean_class,
 db_offline ? 'db-offline',
 ] %}
-
+{% set clear_attributes = [
+    'xmlns:dc',
+    'xmlns:og',
+    'xmlns:article',
+    'xmlns:book',
+    'xmlns:product',
+    'xmlns:profile',
+    'xmlns:video',
+] %}
 <!DOCTYPE html>
-<html{{ html_attributes }}>
+<html{{ html_attributes.removeAttribute(clear_attributes) }}>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
