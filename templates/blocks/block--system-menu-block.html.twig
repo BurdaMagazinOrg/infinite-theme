@@ -40,8 +40,7 @@
  * @ingroup themeable
  */
 #}
-{% set heading_id = attributes.id|clean_id %}
-<nav role="navigation" id="{{ heading_id }}" {{ attributes }}>
+<nav{{ attributes }}>
   {# Label. If not displayed, we still provide it for screen readers. #}
   {{ title_prefix }}
   {% if configuration.label_display %}
