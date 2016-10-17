@@ -18,11 +18,7 @@
 }
 
 .region-lazy-loading, .region-content > .region-infinite-block {
-  & > .region-marketing:first-child {
-    &.ad-active {
-      @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
-    }
-  }
+  @include region-lazy-loading();
 }
 
 #page-wrapper {

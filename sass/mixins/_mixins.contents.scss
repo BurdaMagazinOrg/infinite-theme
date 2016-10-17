@@ -136,22 +136,23 @@
     overflow: hidden;
   }
 
+  & > .col--right {
+    display: block;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    width: $feed-ad-column-width;
+    margin-left: $feed-ad-column-margin;
+  }
+
   @media (max-width: $screen-sm-max) {
     & > .col--right {
       display: none;
     }
   }
 
-  @media (min-width: $screen-md-min) {
-    & > .col--right {
-      display: block;
-      position: relative;
-      min-height: 1px;
-      float: left;
-      width: $feed-ad-column-width;
-      margin-left: $feed-ad-column-margin;
-    }
-  }
+  //@media (min-width: $screen-md-min) {
+  //}
 }
 
 @mixin item-content--archive() {

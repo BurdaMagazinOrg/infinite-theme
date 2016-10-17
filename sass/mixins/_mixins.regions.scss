@@ -28,3 +28,11 @@
   @extend %container--v-sm-padding;
   @include container--v-padding(bottom, ($container-padding-sm-top-mobile, $container-padding-sm-top-tablet, $container-padding-sm-top-desktop));
 }
+
+@mixin region-lazy-loading() {
+  & > .region-marketing:first-child {
+    &.ad-active {
+      @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    }
+  }
+}
