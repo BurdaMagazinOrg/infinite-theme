@@ -59,6 +59,7 @@
             //});
         },
         destroy: function () {
+            console.log("REMOVE");
             this.$template.remove();
         }
     });
