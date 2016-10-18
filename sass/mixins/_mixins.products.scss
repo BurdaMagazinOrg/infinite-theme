@@ -21,6 +21,13 @@
     overflow: hidden;
     display: block;
     margin-bottom: $product__item-text-brand-gap-bottom;
+
+    @media (min-width: $screen-sm-min) {
+      &:after {
+        content: " ";
+        white-space: pre;
+      }
+    }
   }
 
   .text-shipping, .text-price {

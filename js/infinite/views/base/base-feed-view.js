@@ -46,7 +46,10 @@
         onAfterLoad: function (pItem) {
             //console.log("loading done", " View >> ", this.id || this.$el.attr('id') || this.$el.attr('class'));
 
-            if (this.preloader != null) this.preloader.hide(true, true);
+            if (this.preloader != null) {
+                this.preloader.hide(true, true);
+                this.preloader = null;
+            }
             this.onAfterLoadCallback($(pItem));
             this.parseInfiniteView($(pItem), {modelList: this.model, delegateElements: true, initialDOMItem: false});
         },

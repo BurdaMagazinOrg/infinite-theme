@@ -39,6 +39,7 @@
             console.log("newsletter_modal",
                 " \n | isGoogleBot", this.deviceModel.isGoogleBot,
                 " \n | currentBreakpoint >> " + tmpCurrentBreakpoint, 'is allowed > ', this.elementBreakpoints.indexOf(tmpCurrentBreakpoint),
+                " \n | cookieName", this.cookieName,
                 " \n | cookie", this.getCookie(),
                 " \n | lastBreakpoint is NOT the same >> " + this.lastBreakpoint, (this.lastBreakpoint != tmpCurrentBreakpoint),
                 " \n | referrerIsMe >> " + this.isRefererAccepted(),

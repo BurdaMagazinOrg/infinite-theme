@@ -1,9 +1,12 @@
 @mixin item-author() {
   @include clearfix();
-  cursor: pointer;
   color: $author__label-color;
   display: inline-block;
   min-width: 235px;
+
+  &[data-internal-url] {
+    cursor: pointer;
+  }
 
   &:hover {
     .img-container {
