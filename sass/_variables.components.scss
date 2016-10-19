@@ -924,7 +924,9 @@ $author__short-info-margin-mobile--vita-short: 0 !default;
 
 //author article teaser large
 $author-text-align-mobile--teaser-large: center !default;
-$author-text-align-desktop--teaser-large: center !default;
+//$author-text-align-desktop--teaser-large: left !default;
+$author-justify-desktop--teaser-large: left !default;
+$author-max-width-desktop--teaser-large: 70% !default;
 
 $author__profile-image-radius--teaser-large: $author__profile-image-radius--vita-short !default;
 $author__profile-image-border--teaser-large: 0 !default;
@@ -934,7 +936,7 @@ $author__profile-image-margin-tablet--teaser-large: 0 $gap-size-sm 0 0 !default;
 $author__profile-image-margin-desktop--teaser-large: 0 $gap-size-sm 0 0 !default;
 
 $author__caption-text-align-mobile--teaser-large: center !default;
-$author__caption-text-align-desktop--teaser-large: center !default;
+$author__caption-text-align-desktop--teaser-large: left !default;
 
 $author__name-font-id--teaser-large: $font-headline-id !default;
 $author__name-size-mobile--teaser-large: 22px !default;
@@ -952,9 +954,9 @@ $author__job-size-desktop--teaser-large: $author__email-size-desktop--vita-short
 $author__job-letter-spacing--teaser-large: 2px !default;
 $author__job-color--teaser-large: $author__email-color--vita-short !default;
 $author__job-text-transform--teaser-large: none !default;
-$author__job-margin-desktop--teaser-large: 0 0 $author__email-margin-desktop--vita-short 0 !default;
-$author__job-margin-tablet--teaser-large: 0 0 $author__email-margin-tablet--vita-short 0 !default;
-$author__job-margin-mobile--teaser-large: 0 0 $author__email-margin-mobile--vita-short 0 !default;
+$author__job-margin-mobile--teaser-large: $author__email-margin-mobile--vita-short !default;
+$author__job-margin-tablet--teaser-large: $author__email-margin-tablet--vita-short !default;
+$author__job-margin-desktop--teaser-large: $author__email-margin-desktop--vita-short !default;
 
 //author article teaser small
 $author-text-align--teaser-small: $author-text-align-mobile--teaser-large !default;
