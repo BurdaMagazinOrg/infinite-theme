@@ -94,11 +94,19 @@
     & + * {
       margin: $title__children-margin-mobile--text-block;
     }
+
+    & + h2, & + h3, & + h4, & + h5, & + h6 {
+      margin: $title__headline-margin-mobile--text-block;
+    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     & + * {
       margin: $title__children-margin-tablet--text-block;
+    }
+
+    & + h2, & + h3, & + h4, & + h5, & + h6 {
+      margin: $title__headline-margin-tablet--text-block;
     }
   }
 
@@ -106,11 +114,12 @@
     & + * {
       margin: $title__children-margin-desktop--text-block;
     }
+
+    & + h2, & + h3, & + h4, & + h5, & + h6 {
+      margin: $title__headline-margin-desktop--text-block;
+    }
   }
 
-  & + h2, & + h3, & + h4, & + h5, & + h6 {
-    margin: $title__headline-margin--text-block;
-  }
 }
 
 @mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font-id, $color: $title--content-block-color, $margins: ($title--content-block-gap-bottom-mobile, $title--content-block-gap-bottom-tablet, $title--content-block-gap-bottom-desktop)) {

@@ -386,10 +386,13 @@ $title--text-block-desktop: 30px !default;
 $title--text-block-color: $text-color !default;
 $title--text-block-text-transform: none !default;
 $title-margin--text-block: $gap-size-lg 0 0 0 !default;
-$title__children-margin-mobile--text-block: 13px 0 0 !default;
-$title__children-margin-tablet--text-block: 13px 0 0 !default;
-$title__children-margin-desktop--text-block: 13px 0 0 !default;
-$title__headline-margin--text-block: 16px 0 0 !default;
+$title__children-margin-mobile--text-block: $margin-v-item-content__item-mobile 0 0 !default;
+$title__children-margin-tablet--text-block: $margin-v-item-content__item-tablet 0 0 !default;
+$title__children-margin-desktop--text-block: $margin-v-item-content__item-desktop 0 0 !default;
+$title__headline-margin--text-block: 16px 0 0 !default; //legacy
+$title__headline-margin-mobile--text-block: $margin-v-item-content__item-mobile 0 0 0 !default;
+$title__headline-margin-tablet--text-block: $margin-v-item-content__item-tablet 0 0 0 !default;
+$title__headline-margin-desktop--text-block: $margin-v-item-content__item-desktop 0 0 0 !default;
 
 /** copytext--text-block **/
 $copytext--text-block-mobile: 18px !default;
