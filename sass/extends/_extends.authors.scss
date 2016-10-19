@@ -5,3 +5,15 @@
 %item-author--vita-short {
   @include item-author--vita-short();
 }
+
+%item-author--teaser-large {
+  @include item-author--teaser-large();
+}
+
+%item-author--teaser-small {
+  @include item-author--teaser-small();
+}
+
+%item-author--teaser-small-detail {
+  @include item-author--teaser-small-detail();
+}

@@ -176,7 +176,7 @@ $menu--sidebar-misc-font-id: $font-content-id !default;
 $menu--sidebar-misc-size: 14px !default;
 $menu--sidebar-misc-text-transform: uppercase !default;
 $menu--sidebar-misc-color: $gray-base !default;
-$menu--sidebar-misc-hover-color: $color-highlighted-hover!default;
+$menu--sidebar-misc-hover-color: $color-highlighted-hover !default;
 
 /**
 ** Newsletter
@@ -863,6 +863,7 @@ $date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;
 $author__margin-mobile--content-header: $gap-size-lg 0 0 0 !default;
 $author__margin-tablet--content-header: $gap-size-lg 0 0 0 !default;
 $author__margin-desktop--content-header: $gap-size-lg 0 0 0 !default;
+
 $author__profile-image-margin--teaser-default: 0 $padding 0 0 !default;
 $author__profile-image-radius--teaser-default: 0 !default;
 $author__profile-image-size--teaser-default: 40px !default;
@@ -920,6 +921,113 @@ $author__short-info-color--vita-short: $gray-base !default;
 $author__short-info-margin-desktop--vita-short: 0 !default;
 $author__short-info-margin-tablet--vita-short: 0 !default;
 $author__short-info-margin-mobile--vita-short: 0 !default;
+
+//author article teaser large
+$author-text-align-mobile--teaser-large: center !default;
+$author-text-align-desktop--teaser-large: center !default;
+
+$author__profile-image-radius--teaser-large: $author__profile-image-radius--vita-short !default;
+$author__profile-image-border--teaser-large: 0 !default;
+$author__profile-image-width-desktop--teaser-large: 120px !default;
+$author__profile-image-margin-mobile--teaser-large: 0 0 0 0 !default;
+$author__profile-image-margin-tablet--teaser-large: 0 $gap-size-sm 0 0 !default;
+$author__profile-image-margin-desktop--teaser-large: 0 $gap-size-sm 0 0 !default;
+
+$author__caption-text-align-mobile--teaser-large: center !default;
+$author__caption-text-align-desktop--teaser-large: center !default;
+
+$author__name-font-id--teaser-large: $font-headline-id !default;
+$author__name-size-mobile--teaser-large: 22px !default;
+$author__name-size-tablet--teaser-large: $title-size-lg !default;
+$author__name-size-desktop--teaser-large: $title-size-xl !default;
+$author__name-color--teaser-large: $text-color !default;
+$author__name-margin-mobile--teaser-large: $gap-size-sm 0 $gap-size-xxs 0 !default;
+$author__name-margin-tablet--teaser-large: 0 0 $gap-size-xxs 0 !default;
+$author__name-margin-desktop--teaser-large: 0 0 $gap-size-xxs 0 !default;
+
+$author__job-font-id--teaser-large: $author__email-font-id--vita-short !default;
+$author__job-size-mobile--teaser-large: $author__email-size-mobile--vita-short !default;
+$author__job-size-tablet--teaser-large: $author__email-size-tablet--vita-short !default;
+$author__job-size-desktop--teaser-large: $author__email-size-desktop--vita-short !default;
+$author__job-letter-spacing--teaser-large: 2px !default;
+$author__job-color--teaser-large: $author__email-color--vita-short !default;
+$author__job-text-transform--teaser-large: normal !default;
+$author__job-margin-desktop--teaser-large: 0 0 $author__email-margin-desktop--vita-short 0 !default;
+$author__job-margin-tablet--teaser-large: 0 0 $author__email-margin-tablet--vita-short 0 !default;
+$author__job-margin-mobile--teaser-large: 0 0 $author__email-margin-mobile--vita-short 0 !default;
+
+//author article teaser small
+$author-text-align--teaser-small: $author-text-align-mobile--teaser-large !default;
+
+$author__profile-image-radius--teaser-small: $author__profile-image-radius--teaser-large !default;
+$author__profile-image-border--teaser-small: $author__profile-image-border--teaser-large !default;
+$author__profile-image-margin-mobile--teaser-small: $author__profile-image-margin-mobile--teaser-large !default;
+$author__profile-image-margin-tablet--teaser-small: $author__profile-image-margin-tablet--teaser-large !default;
+$author__profile-image-margin-desktop--teaser-small: $author__profile-image-margin-desktop--teaser-large !default;
+
+$author__caption-text-align--teaser-small: $author__caption-text-align-mobile--teaser-large !default;
+
+$author__name-font-id--teaser-small: $author__name-font-id--teaser-large !default;
+$author__name-size-mobile--teaser-small: $author__name-size-mobile--teaser-large !default;
+$author__name-size-tablet--teaser-small: $author__name-size-mobile--teaser-large !default;
+$author__name-size-desktop--teaser-small: $author__name-size-mobile--teaser-large !default;
+$author__name-color--teaser-small: $author__name-color--teaser-large !default;
+$author__name-margin-mobile--teaser-small: $author__name-margin-mobile--teaser-large !default;
+$author__name-margin-tablet--teaser-small: $author__name-margin-mobile--teaser-large !default;
+$author__name-margin-desktop--teaser-small: $author__name-margin-mobile--teaser-large !default;
+
+$author__job-font-id--teaser-small: $author__job-font-id--teaser-large !default;
+$author__job-size-mobile--teaser-small: 12px !default;
+$author__job-size-tablet--teaser-small: 12px !default;
+$author__job-size-desktop--teaser-small: 12px !default;
+$author__job-color--teaser-small: $author__job-color--teaser-large !default;
+$author__job-letter-spacing--teaser-small: $author__job-letter-spacing--teaser-large !default;
+$author__job-text-transform--teaser-small: $author__job-text-transform--teaser-large !default;
+$author__job-margin-desktop--teaser-small: $author__job-margin-desktop--teaser-large !default;
+$author__job-margin-tablet--teaser-small: $author__job-margin-tablet--teaser-large !default;
+$author__job-margin-mobile--teaser-small: $author__job-margin-mobile--teaser-large !default;
+
+//teaser small detail
+$author-text-align--teaser-small-detail: $author-text-align-mobile--teaser-large !default;
+
+$author__profile-image-radius--teaser-small-detail: $author__profile-image-radius--teaser-large !default;
+$author__profile-image-border--teaser-small-detail: $author__profile-image-border--teaser-large !default;
+$author__profile-image-margin-mobile--teaser-small-detail: $author__profile-image-margin-mobile--teaser-large !default;
+$author__profile-image-margin-tablet--teaser-small-detail: $author__profile-image-margin-tablet--teaser-large !default;
+$author__profile-image-margin-desktop--teaser-small-detail: $author__profile-image-margin-desktop--teaser-large !default;
+
+$author__caption-text-align--teaser-small-detail: left !default;
+
+$author__job-font-id--teaser-small-detail: $author__job-font-id--teaser-large !default;
+$author__job-size-mobile--teaser-small-detail: 12px !default;
+$author__job-size-tablet--teaser-small-detail: 12px !default;
+$author__job-size-desktop--teaser-small-detail: 12px !default;
+$author__job-color--teaser-small-detail: $author__job-color--teaser-large !default;
+$author__job-letter-spacing--teaser-small-detail: $author__job-letter-spacing--teaser-large !default;
+$author__job-text-transform--teaser-small-detail: $author__job-text-transform--teaser-large !default;
+$author__job-margin-mobile--teaser-small-detail: $author__name-margin-mobile--teaser-large !default;
+$author__job-margin-tablet--teaser-small-detail: $author__name-margin-tablet--teaser-large !default;
+$author__job-margin-desktop--teaser-small-detail: $author__name-margin-desktop--teaser-large !default;
+
+$author__name-font-id--teaser-small-detail: $author__name-font-id--teaser-large !default;
+$author__name-size-mobile--teaser-small-detail: $author__name-size-mobile--teaser-large !default;
+$author__name-size-tablet--teaser-small-detail: $author__name-size-mobile--teaser-large !default;
+$author__name-size-desktop--teaser-small-detail: $author__name-size-mobile--teaser-large !default;
+$author__name-color--teaser-small-detail: $author__name-color--teaser-large !default;
+$author__name-margin-mobile--teaser-small-detail: $gap-size-xxs 0 0 0 !default;
+$author__name-margin-tablet--teaser-small-detail: $gap-size-xxs 0 0 0 !default;
+$author__name-margin-desktop--teaser-small-detail: $gap-size-xxs 0 0 0 !default;
+
+$author__short-info-font-id--teaser-small-detail: $author__job-font-id--teaser-small !default;
+$author__short-info-size-mobile--teaser-small-detail: 12px !default;
+$author__short-info-size-tablet--teaser-small-detail: 12px !default;
+$author__short-info-size-desktop--teaser-small-detail: 12px !default;
+$author__short-info-color--teaser-small-detail: $author__job-color--teaser-small !default;
+$author__short-info-letter-spacing--teaser-small-detail: $author__job-letter-spacing--teaser-small !default;
+$author__short-info-text-transform--teaser-small-detail: $author__job-text-transform--teaser-small !default;
+$author__short-info-margin-mobile--teaser-small-detail: $gap-size-xs 0 0 0 !default;
+$author__short-info-margin-tablet--teaser-small-detail: $author__short-info-margin-mobile--teaser-small-detail !default;
+$author__short-info-margin-desktop--teaser-small-detail: $author__short-info-margin-mobile--teaser-small-detail !default;
 
 /**
 ** Tables

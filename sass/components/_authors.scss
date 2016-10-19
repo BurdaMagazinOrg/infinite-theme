@@ -2,3 +2,15 @@
 .author {
   @extend %item-author;
 }
+
+.item-author--teaser-large {
+  @extend %item-author--teaser-large;
+}
+
+.item-author--teaser-small {
+  @extend %item-author--teaser-small;
+}
+
+.item-author--teaser-small-detail {
+  @extend %item-author--teaser-small-detail;
+}
