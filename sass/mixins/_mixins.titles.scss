@@ -70,20 +70,22 @@
 
 @mixin title--text-block() {
   @include text-helper($title--text-block-font-id);
-  margin: $title-margin--text-block;
   color: $title--text-block-color;
   text-transform: $title--text-block-text-transform;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($title--text-block-font-id, $title--text-block-mobile);
+    margin: $title-margin-mobile--text-block;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include text-helper-size($title--text-block-font-id, $title--text-block-tablet);
+    margin: $title-margin-tablet--text-block;
   }
 
   @media (min-width: $screen-md-min) {
     @include text-helper-size($title--text-block-font-id, $title--text-block-desktop);
+    margin: $title-margin-desktop--text-block;
   }
 
   &:first-child {
