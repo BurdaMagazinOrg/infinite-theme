@@ -483,18 +483,24 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($author__short-info-font-id--teaser-small-detail, $author__short-info-size-desktop--teaser-small-detail);
-    margin: $author__short-info-margin-desktop--teaser-small-detail;
+    .item-author__short-info {
+      @include text-helper-size($author__short-info-font-id--teaser-small-detail, $author__short-info-size-mobile--teaser-small-detail);
+      margin: $author__short-info-margin-mobile--teaser-small-detail;
+    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($author__short-info-font-id--teaser-small-detail, $author__short-info-size-desktop--teaser-small-detail);
-    margin: $author__short-info-margin-desktop--teaser-small-detail;
+    .item-author__short-info {
+      @include text-helper-size($author__short-info-font-id--teaser-small-detail, $author__short-info-size-tablet--teaser-small-detail);
+      margin: $author__short-info-margin-tablet--teaser-small-detail;
+    }
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($author__short-info-font-id--teaser-small-detail, $author__short-info-size-desktop--teaser-small-detail);
-    margin: $author__short-info-margin-desktop--teaser-small-detail;
+    .item-author__short-info {
+      @include text-helper-size($author__short-info-font-id--teaser-small-detail, $author__short-info-size-desktop--teaser-small-detail);
+      margin: $author__short-info-margin-desktop--teaser-small-detail;
+    }
   }
 }
 
