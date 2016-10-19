@@ -17,7 +17,7 @@
  */
 #}
 {% if content.status %}
-    {% set label = content.product_brand|render ~" - " ~content.product_name|render ~" für " ~content.product_price|render ~" " ~content.product_currency|render~ " bei " ~content.product_shop|render %}
+    {% set label = content.product_brand|render ~" - " ~content.product_name|render ~" für " ~content.product_price|render ~" " ~formatted_currency~ " bei " ~content.product_shop|render %}
     <figure data-feedback="fb:likes, fb:comments">
         {{ content.product_image }}
         <figcaption class="op-vertical-below op-extra-large">
