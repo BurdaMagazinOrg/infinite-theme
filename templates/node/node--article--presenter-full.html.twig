@@ -71,20 +71,21 @@
 'contextual-region',
 ] %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
-{% set attributes = attributes.setAttribute('data-internal-url', url) %}
+{% set attributes = attributes.setAttribute('data-nid', nid).setAttribute('data-internal-url', url).removeAttribute(remove_attributes) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
     <div class="teaser__img-container-wrapper">
-        <div class="teaser__img-container" itemprop="associatedMedia">
-            {% block presenter_media %}
-                {% if content.field_presenter_media['#items'] is not empty %}
-                    {{ content.field_presenter_media }}
-                {% else %}
-                    {{ content.field_teaser_media }}
-                {% endif %}
-            {% endblock %}
-        </div>
+        {% block img_container_block %}
+            <div class="teaser__img-container" itemprop="associatedMedia">
+                {% block presenter_media %}
+                    {% if content.field_presenter_media['#items'] is not empty %}
+                        {{ content.field_presenter_media }}
+                    {% else %}
+                        {{ content.field_teaser_media }}
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
 
     <div class="teaser__caption-wrapper">

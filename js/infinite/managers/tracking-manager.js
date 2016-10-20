@@ -130,13 +130,14 @@
             /**
              * Presenter Full
              */
-            $tmpItems = $pContainer.find('.teaser-full-content');
+            tmpSelector = '.teaser-presenter--full .teaser__img-container, .teaser-presenter--full .teaser__title';
+            $tmpItems = $pContainer.find(tmpSelector);
             if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onPresenterFullClickHandler).bind('click', $.proxy(this.onPresenterFullClickHandler, this));
 
             /**
              * Presenter Half
              */
-            tmpSelector = '.region-presenter .teaser-landscape-medium > .img-container, .region-presenter .teaser-landscape-medium .text-headline';
+            tmpSelector = '.teaser-presenter--lg .teaser__img-container, .teaser-presenter--lg .teaser__title';
             $tmpItems = $pContainer.find(tmpSelector).addBack().filter(tmpSelector);
             if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onPresenterHalfClickHandler).bind('click', $.proxy(this.onPresenterHalfClickHandler, this));
 
