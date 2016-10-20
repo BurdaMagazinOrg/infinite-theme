@@ -170,7 +170,7 @@
             /**
              * Teaser Category Link
              */
-            tmpSelector = '.caption-teaser .text-category';
+            tmpSelector = '.teaser__overhead [data-internal-url]';
             $tmpItems = $pContainer.find(tmpSelector);
             if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onTeaserCategoryClickHandler).bind('click', $.proxy(this.onTeaserCategoryClickHandler, this));
 
