@@ -20,23 +20,27 @@
 #}
 {# Add wrapper classes #}
 {% set wrapper_classes = [
-    'region-full-content',
-    'item-content__content'
+'item-content__content'
 ] %}
-<div class="region-full-content item-content__header">
-    {% if has_header_block %}
-        {% if content.field_forename %}
-            <h2 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h2>
-        {% else %}
-            <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
-        {% endif %}
-    {% else %}
-        {% if content.field_forename %}
-            <h1 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h1>
-        {% else %}
-            <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
-        {% endif %}
-    {% endif %}
+
+<div class="region-full-content item-content item-content--user">
+    {% block content_header_block %}
+        <div class="item-content__header">
+            {% if has_header_block %}
+                {% if content.field_forename %}
+                    <h2 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h2>
+                {% else %}
+                    <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
+                {% endif %}
+            {% else %}
+                {% if content.field_forename %}
+                    <h1 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h1>
+                {% else %}
+                    <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endblock %}
 </div>
 <div{{ attributes.addClass(wrapper_classes) }} >
     {{ content.field_paragraphs }}

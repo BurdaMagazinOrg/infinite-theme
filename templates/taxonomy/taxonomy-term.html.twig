@@ -26,15 +26,17 @@
  */
 #}
 <div{{ attributes.addClass('region-full-content item-content item-content--taxonomy') }}>
-    {% if not has_spotlight_title and not term_title_hidden %}
-    <div class="item-content__header">
-        {% if has_header_block %}
-            <h2 class="title--page">{{ name }}</h2>
-        {% else %}
-            <h1 class="title--page">{{ name }}</h1>
+    {% block content_header_block %}
+        {% if not has_spotlight_title and not term_title_hidden %}
+        <div class="item-content__header">
+            {% if has_header_block %}
+                <h2 class="title--page">{{ name }}</h2>
+            {% else %}
+                <h1 class="title--page">{{ name }}</h1>
+            {% endif %}
+        </div>
         {% endif %}
-    </div>
-    {% endif %}
+    {% endblock %}
 
     {% if content|render %}
         <div class="item-content__content">

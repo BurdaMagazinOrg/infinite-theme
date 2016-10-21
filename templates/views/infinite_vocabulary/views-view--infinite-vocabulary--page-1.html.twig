@@ -36,15 +36,17 @@
 <div class="region-full-content region-vocabulary item-content item-content--vocabulary">
     {{ title_prefix }}
 
-    <div class="item-content__header">
-        <h1 class="title--page">{{ title }}</h1>
+    {% block content_header_block %}
+        <div class="item-content__header">
+            <h1 class="title--page">{{ title }}</h1>
 
-        {% if header %}
-            <header>
-                {{ header }}
-            </header>
-        {% endif %}
-    </div>
+            {% if header %}
+                <header>
+                    {{ header }}
+                </header>
+            {% endif %}
+        </div>
+    {% endblock %}
     <div class="item-content__content">
         <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open" class="btn__open-tree">
             <span>{{ title }}</span>
