@@ -189,7 +189,8 @@
     text-align: left;
     display: block;
     padding-bottom: $gap-size-xs;
-    text-transform: uppercase;
+    text-transform: $archive__list-title-text-transform;
+    letter-spacing: $archive__list-title-letter-spacing;
   }
 
   .col--left {

@@ -546,6 +546,7 @@ $list__links-item-margin--module: 5px 0 0 !default;
 
 $list__glossary-font-id: $font-label-id !default;
 $list__glossary-font-size: $title-size-xxs !default;
+$list__glossary-text-transform: none !default;
 $list__glossary-line-height: 32px !default;
 $list__glossary-margin: 0 4px 4px 0 !default;
 $list__glossary-padding: 0 8px !default;
@@ -553,6 +554,7 @@ $list__glossary-border: $h-line-style !default;
 $list__glossary-background-color: $bg-color-gray-light !default;
 $list__glossary-background-color-active: $color-highlighted !default;
 $list__glossary-background-disabled-color: $bg-color-gray-light !default;
+$list__glossary-color: $text-color !default;
 $list__glossary-disabled-color: $gray-base !default;
 $list__glossary-color-active: $white !default;
 
@@ -662,6 +664,8 @@ $article__header-padding-desktop: 0 0 $gap-size-lg 0 !default;
 $archive__list-title-font: $font-label !default;
 $archive__list-title-size: $title-size-xs !default;
 $archive__list-title-color: $color-brand !default;
+$archive__list-title-text-transform: uppercase !default;
+$archive__list-title-letter-spacing: 0.04em !default;
 
 $archive__teaser-list-title-color: $gray-base !default;
 
