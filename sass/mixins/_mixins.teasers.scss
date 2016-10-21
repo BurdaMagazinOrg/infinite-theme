@@ -221,11 +221,18 @@
   @include teaser-square-xs-text();
 
   & > .teaser__img-container {
-    @include make-xxs-column(6);
+    position: relative;
+    float: left;
+    width: 125px;
+    min-height: 1px;
+    padding-left:  $padding;
+    padding-right: $padding;
   }
 
   & > .caption-teaser, .teaser__caption {
-    @include make-xxs-column(18);
+    //@include make-xxs-column(18);
+    padding-left:  $padding;
+    padding-right: $padding;
   }
 }
 

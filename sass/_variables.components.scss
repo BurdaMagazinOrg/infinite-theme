@@ -659,6 +659,12 @@ $article__header-padding-mobile: 0 0 $gap-size-lg 0 !default;
 $article__header-padding-tablet: 0 0 $gap-size-lg 0 !default;
 $article__header-padding-desktop: 0 0 $gap-size-lg 0 !default;
 
+$archive__list-title-font: $font-label !default;
+$archive__list-title-size: $title-size-xs !default;
+$archive__list-title-color: $color-brand !default;
+
+$archive__teaser-list-title-color: $gray-base !default;
+
 /** spotlight **/
 $spotlight__title-font-id: $font-headline-id !default;
 $spotlight__title-size-mobile: $title-size-lg !default;

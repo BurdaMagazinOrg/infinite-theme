@@ -185,7 +185,7 @@
   }
 
   .title--list {
-    @include text-label($title-size-xs);
+    @include text-helper($archive__list-title-font, $archive__list-title-size);
     text-align: left;
     display: block;
     padding-bottom: $gap-size-xs;
@@ -194,7 +194,7 @@
 
   .col--left {
     .title--list {
-      color: $color-brand;
+      color: $archive__list-title-color;
     }
 
     .block--archive-tree-ym {
@@ -219,7 +219,7 @@
 
   .col--right {
     .title--list {
-      color: $gray-base;
+      color: $archive__teaser-list-title-color //$gray-base;
     }
   }
 
