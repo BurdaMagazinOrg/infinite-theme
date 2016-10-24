@@ -125,7 +125,7 @@
   position: relative;
 
   &.item-media--header-plain {
-    @include _margin--v(bottom, (-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    //@include _margin--v(bottom, (-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
 
     .text-title {
       color: $title--media-header-color-plain;

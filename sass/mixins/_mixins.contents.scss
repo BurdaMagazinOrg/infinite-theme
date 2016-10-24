@@ -187,7 +187,7 @@
 @mixin item-content--archive() {
   .item-content__header {
     @extend %content__header-center;
-    @extend %container--v-padding-bottom;
+    //@extend %container--v-padding-bottom;
     //@extend %region--full-content;
     //@extend %gap__container--h-negative;
     border-bottom: $h-line-style;
@@ -575,7 +575,7 @@
 @mixin item-content--vocabulary() {
   .item-content__header {
     @extend %content__header-center;
-    @extend %container--v-padding-bottom;
+    //@extend %container--v-padding-bottom;
     @extend %region--full-content;
     border-bottom: $h-line-style;
   }
