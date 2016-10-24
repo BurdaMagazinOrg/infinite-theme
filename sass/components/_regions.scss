@@ -5,16 +5,7 @@
 
 //padded / lined teaser
 .region-content, .region-feed-teasers {
-  & > .region-full-content:not(.region__teasers--horizontal):first-child {
-    @extend %container--v-padding;
-  }
-
-  .region-full-content + .region-full-content:not(.item-content--article) {
-    @extend %gap--v-region;
-    @if ($region-v-lined) {
-      border-top: $h-line-style;
-    }
-  }
+  @include region-content();
 }
 
 .region-lazy-loading, .region-content > .region-infinite-block {

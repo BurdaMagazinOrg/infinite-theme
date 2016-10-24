@@ -36,3 +36,16 @@
     }
   }
 }
+
+@mixin region-content() {
+  & > .region-full-content:not(.region__teasers--horizontal):not(.item-content--archive):not(.item-content--user):not(.item-content--basic):first-child {
+    @extend %container--v-padding;
+  }
+
+  .region-full-content + .region-full-content:not(.item-content--article) {
+    @extend %gap--v-region;
+    @if ($region-v-lined) {
+      border-top: $h-line-style;
+    }
+  }
+}

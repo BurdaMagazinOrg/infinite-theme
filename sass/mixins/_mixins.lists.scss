@@ -135,6 +135,7 @@
     float: left;
     text-align: center;
     background-color: $list__glossary-background-disabled-color;
+    text-transform: $list__glossary-text-transform;
   }
 
   a {
@@ -147,7 +148,6 @@
     padding: $list__glossary-padding;
     border: $list__glossary-border;
     line-height: $list__glossary-line-height - ($h-line-width*2);
-    text-transform: $list__glossary-text-transform;
 
     &.active, &:hover {
       background-color: $list__glossary-background-color-active;

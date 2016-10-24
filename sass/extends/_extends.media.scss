@@ -11,8 +11,8 @@
   @include item-media--header();
 }
 
-%item-media--header-image {
-  @include item-media--header-image();
+%item-media__header-image {
+  @include item-media__header-image();
 }
 
 %item-media--file {

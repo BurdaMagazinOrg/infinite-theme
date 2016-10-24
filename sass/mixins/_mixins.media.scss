@@ -121,9 +121,23 @@
 @mixin item-media--header() {
   @include item-media--header-text();
   @include gap__container--h-negative();
-
   overflow: hidden;
   position: relative;
+
+  &.item-media--header-plain {
+    @include _margin--v(bottom, (-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+
+    .text-title {
+      color: $title--media-header-color-plain;
+    }
+  }
+
+  .item-media__ratio-wrapper {
+    @include item-media--header-ratio();
+    position: relative;
+    height: 0;
+    overflow: hidden;
+  }
 
   .media-header-image {
     position: static;
@@ -184,12 +198,7 @@
   }
 }
 
-@mixin item-media--header-image() {
-  @include item-media--header-ratio();
-  position: relative;
-  height: 0;
-  overflow: hidden;
-
+@mixin item-media__header-image() {
   .img-container {
     img {
       @extend %img-full-responsive;

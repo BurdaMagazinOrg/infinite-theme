@@ -1,16 +1,24 @@
 {#{% set attributes = attributes.setAttribute('data-view-type', 'articleView') %}#}
 
-<article{{ attributes.addClass('item-content item-content--basic') }}>
-    <div class="item-content__header">
-        {% block page_headline %}
-            <h1 class="title--page">{{ label }}</h1>
-        {% endblock %}
-    </div>
-    <div class="item-content__content">
-        {% block page_content %}
-            <div class="item-paragraph--text item-paragraph--small">
-                {{ content }}
+<article{{ attributes.addClass('region-full-content region-basic item-content item-content--basic') }}>
+    {% block content_header_block %}
+        <div class="item-content__header">
+            <div class="ratio-wrapper">
+                <div class="caption">
+                    {% block page_headline %}
+                        <h1 class="title--page">{{ label }}</h1>
+                    {% endblock %}
+                </div>
             </div>
-        {% endblock %}
-    </div>
+        </div>
+    {% endblock %}
+    {% block content_content_block %}
+        <div class="item-content__content">
+            {% block page_content %}
+                <div class="item-paragraph--text item-paragraph--small">
+                    {{ content }}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
 </article>
