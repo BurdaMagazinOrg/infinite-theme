@@ -180,7 +180,7 @@
       @extend %text-label;
       @include text-label-size($menu--submenu-navigation-size);
       text-transform: uppercase;
-      color: $color-hover;
+      color: $menu--submenu-navigation-color;
     }
   }
 
