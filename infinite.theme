@@ -128,7 +128,7 @@ function infinite_preprocess_node(&$variables) {
       ) {
 
         $share_img_path = $node->field_teaser_media->entity->field_image->entity->getFileUri();
-        $share_img = ImageStyle::load('og_image');
+        $share_img = ImageStyle::load(theme_get_setting('share_image_style'));
         if (is_object($share_img)) {
           $url = $share_img->buildUrl($share_img_path);
           $variables['share_img_url'] = $url;

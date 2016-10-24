@@ -25,6 +25,16 @@ function infinite_form_system_theme_settings_alter(&$form, &$form_state) {
     '#suffix' => '</div>',
   );
 
+  $form['share']['share_image_style'] = array(
+    '#type' => 'select',
+    '#title' => t('Image style for sharing'),
+    '#options' => image_style_options(),
+    '#default_value' => theme_get_setting('share_image_style'),
+    '#description' => t('Select the image style, that will be used for sharing on social media.'),
+    '#prefix' => '<div id="share-image-style-wrapper">',
+    '#suffix' => '</div>',
+  );
+
   $form['share']['facebook_share_button'] = array(
     '#type' => 'textfield',
     '#title' => t('Facebook share button text'),
