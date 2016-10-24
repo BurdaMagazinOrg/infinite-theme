@@ -46,6 +46,10 @@
   @extend %item-content--basic;
 }
 
+.item-content--user {
+  @extend %item-content--user;
+}
+
 .item-content .container-row {
   margin-top: $gap-section;
 

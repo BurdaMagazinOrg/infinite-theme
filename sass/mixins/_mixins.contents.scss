@@ -178,6 +178,12 @@
   //}
 }
 
+@mixin item-content--user() {
+  .region-teaser-list {
+    @include gap--v-region();
+  }
+}
+
 @mixin item-content--archive() {
   .item-content__header {
     @extend %content__header-center;

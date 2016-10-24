@@ -23,28 +23,29 @@
 'item-content__content'
 ] %}
 
-{% block content_header_block %}
-    <div class="item-content__header">
-        <div class="ratio-wrapper">
-            <div class="caption">
-                {% if has_header_block %}
-                    {% if content.field_forename %}
-                        <h2 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h2>
+{#<div class="region-full-content region-user item-content item-content--user">#}
+    {% block content_header_block %}
+        <div class="item-content__header">
+            <div class="ratio-wrapper">
+                <div class="caption">
+                    {% if has_header_block %}
+                        {% if content.field_forename %}
+                            <h2 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h2>
+                        {% else %}
+                            <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
+                        {% endif %}
                     {% else %}
-                        <h2 class="title--page">{{ content.first_name }} {{ content.last_name }}</h2>
+                        {% if content.field_forename %}
+                            <h1 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h1>
+                        {% else %}
+                            <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
+                        {% endif %}
                     {% endif %}
-                {% else %}
-                    {% if content.field_forename %}
-                        <h1 class="title--page">{{ content.field_forename }} {{ content.field_surname }}</h1>
-                    {% else %}
-                        <h1 class="title--page">{{ content.first_name }} {{ content.last_name }}</h1>
-                    {% endif %}
-                {% endif %}
+                </div>
             </div>
         </div>
+    {% endblock %}
+    <div{{ attributes.addClass(wrapper_classes) }} >
+        {{ content.field_paragraphs }}
     </div>
-{% endblock %}
-<div{{ attributes.addClass(wrapper_classes) }} >
-    {{ content.field_paragraphs }}
-</div>
-
+{#</div>#}

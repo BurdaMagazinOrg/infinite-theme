@@ -18,6 +18,10 @@
   @include item-content--basic();
 }
 
+%item-content--user {
+  @include item-content--user();
+}
+
 %item-content--archive {
   @include item-content--archive();
 }
