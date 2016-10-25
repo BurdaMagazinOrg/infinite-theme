@@ -23,7 +23,7 @@
 'item-content__content'
 ] %}
 
-{#<div class="region-full-content region-user item-content item-content--user">#}
+<div class="region-full-content region-user item-content item-content--user no-v-padding">
     {% block content_header_block %}
         <div class="item-content__header">
             <div class="ratio-wrapper">
@@ -48,4 +48,4 @@
     <div{{ attributes.addClass(wrapper_classes) }} >
         {{ content.field_paragraphs }}
     </div>
-{#</div>#}
+</div>

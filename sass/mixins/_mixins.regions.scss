@@ -38,8 +38,12 @@
 }
 
 @mixin region-content() {
-  & > .region-full-content:not(.region__teasers--horizontal):not(.item-content--archive):not(.item-content--user):not(.item-content--basic):first-child {
+  & > .region-full-content:first-child {
     @extend %container--v-padding;
+
+    .no-v-padding:first-child {
+      @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    }
   }
 
   .region-full-content + .region-full-content:not(.item-content--article) {
