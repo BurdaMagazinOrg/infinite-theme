@@ -592,8 +592,10 @@
     @extend %region--full-content;
     @extend %btn__open-tree--mobile;
     display: none;
-    padding-bottom: $gap-size-md;
-    border-bottom: $h-line-style;
+    padding: $archive__open-tree-padding;
+    margin: $archive__open-tree-margingit pull
+  ;
+    border-bottom: $archive__open-tree-border;
   }
 
   .list__glossary {
