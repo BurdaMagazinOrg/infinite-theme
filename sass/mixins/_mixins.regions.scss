@@ -38,7 +38,7 @@
 }
 
 @mixin region-content() {
-  & > .region-full-content:first-child {
+  & > .region-full-content:not(.no-v-padding):first-child {
     @extend %container--v-padding;
 
     .no-v-padding:first-child {

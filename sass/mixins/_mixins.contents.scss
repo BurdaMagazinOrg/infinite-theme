@@ -1,5 +1,5 @@
 @mixin content__header-center() {
-  @include container--v-padding();
+
 }
 
 @mixin item-content__header() {
@@ -186,10 +186,10 @@
 
 @mixin item-content--archive() {
   .item-content__header {
-    @extend %content__header-center;
-    //@extend %container--v-padding-bottom;
     //@extend %region--full-content;
-    //@extend %gap__container--h-negative;
+    //@extend %content__header-center;
+    //@extend %container--v-padding-bottom;
+    @extend %gap__container--h-negative;
     border-bottom: $h-line-style;
   }
 
@@ -202,9 +202,9 @@
     @extend %region--full-content;
     @extend %btn__open-tree--mobile;
     display: none;
-    padding-bottom: $gap-size-md;
-    margin-bottom: $gap-size-md;
-    border-bottom: $h-line-style;
+    padding: $archive__open-tree-padding; // $gap-size-md
+    margin: $archive__open-tree-margin; //$gap-size-md;
+    border-bottom: $archive__open-tree-border; //$h-line-style
 
     span {
       @extend %text-label;
@@ -418,8 +418,9 @@
 
 @mixin item-content--taxonomy() {
   .item-content__header {
-    @extend %content__header-center;
-    @extend %region--full-content;
+    //@extend %content__header-center;
+    //@extend %region--full-content;
+    @extend %gap__container--h-negative;
   }
 
   .item-content__content {
@@ -561,8 +562,9 @@
 
 @mixin item-content--basic() {
   .item-content__header {
-    @extend %content__header-center;
+    //@extend %content__header-center;
     //@extend %region--full-content;
+    @extend %gap__container--h-negative;
   }
 
   .item-content__content {
@@ -574,9 +576,10 @@
 
 @mixin item-content--vocabulary() {
   .item-content__header {
-    @extend %content__header-center;
+    //@extend %content__header-center;
     //@extend %container--v-padding-bottom;
-    @extend %region--full-content;
+    //@extend %region--full-content;
+    @extend %gap__container--h-negative;
     border-bottom: $h-line-style;
   }
 

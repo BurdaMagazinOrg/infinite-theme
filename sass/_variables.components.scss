@@ -669,6 +669,9 @@ $archive__list-title-text-transform: uppercase !default;
 $archive__list-title-letter-spacing: 0.04em !default;
 
 $archive__teaser-list-title-color: $gray-base !default;
+$archive__open-tree-padding: 0 0 $gap-size-xxs 0 !default;
+$archive__open-tree-margin: 0 !default;
+$archive__open-tree-border: $h-line-style !default;
 
 /** spotlight **/
 $spotlight__title-font-id: $font-headline-id !default;
