@@ -239,7 +239,7 @@
 @mixin teaser-square-medium() {
   & > .teaser__img-container,
   .caption-teaser, .teaser__caption {
-    @include make-xs-column($grid-columns/2);
+    @include make-sm-column($grid-columns/2);
   }
 }
 
@@ -321,11 +321,11 @@
 
 @mixin teaser--portrait-small() {
   & > .teaser__img-container {
-    @include make-xs-column($grid-columns/3);
+    @include make-sm-column($grid-columns/3);
   }
 
   .caption-teaser, .teaser__caption {
-    @include make-xs-column($grid-columns - ($grid-columns/3));
+    @include make-sm-column($grid-columns - ($grid-columns/3));
   }
 
   @media (max-width: $screen-xxs-max) {
@@ -337,14 +337,14 @@
 
 @mixin teaser--portrait-medium() {
   & > .teaser__img-container {
-    @include make-xs-column(floor($grid-columns/2.05));
+    @include make-sm-column(floor($grid-columns/2.05));
   }
 
   .caption-teaser, .teaser__caption {
-    @include make-xs-column($grid-columns - floor($grid-columns/2.05));
+    @include make-sm-column($grid-columns - floor($grid-columns/2.05));
   }
 
-  @media (max-width: $screen-xxs-max) {
+  @media (max-width: $screen-xs-max) {
     & > .teaser__img-container img {
       width: 75%;
     }
