@@ -1,0 +1,8 @@
+{% block content_block %}
+    {% if content|render %}
+        {% if content.field_title|plain_text %}
+            <h2>{{ content.field_title|plain_text }}</h2>
+        {% endif %}
+        {{ content|without('field_title') }}
+    {% endif %}
+{% endblock %}
