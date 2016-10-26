@@ -37,6 +37,10 @@
     max-width: 100%;
   }
 
+  .teaser__caption {
+    word-wrap: break-word;
+  }
+
   .teaser__copy {
     margin-top: 20px;
     color: $teaser__copy-color--default;
