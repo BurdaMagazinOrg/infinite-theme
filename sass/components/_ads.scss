@@ -169,3 +169,13 @@
     }
   }
 }
+
+.item-content .sticky-intext-roll {
+  @extend %margin--v-region;
+}
+
+.teaser-list-large {
+  .sticky-intext-roll {
+    @extend %gap--v-region;
+  }
+}
