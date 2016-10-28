@@ -169,9 +169,10 @@
     position: relative;
     line-height: 1.5;
     margin-top: 0.5em;
-    margin-left: 1em;
-    text-indent: -1em;
-    padding-left: 1em;
+    //text-indent: -1em;
+    margin-left: 2em;
+    padding-left: 0.5em;
+    list-style-position: outside;
 
     &:first-child {
       margin-top: 0;
