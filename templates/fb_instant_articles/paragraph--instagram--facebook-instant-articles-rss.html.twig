@@ -1,3 +1,6 @@
 {% if content.field_link %}
+    {% if content.field_title|plain_text %}
+        <h2>{{ content.field_title|plain_text }}</h2>
+    {% endif %}
     {{ content.field_link }}
 {% endif %}
