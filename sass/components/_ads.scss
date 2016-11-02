@@ -174,6 +174,10 @@
   @extend %margin--v-region;
 }
 
+.region-feed > .ad-bdsa .ad-js-active {
+  @include _margin--v(bottom,  ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop));
+}
+
 .teaser-list-large {
   .sticky-intext-roll {
     @extend %gap--v-region;
