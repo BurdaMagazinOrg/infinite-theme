@@ -72,7 +72,7 @@
   }
 }
 
-@mixin teaser-presenter-text($overhead-sizes: ($teaser__overhead-size--full-content-mobile, $teaser__overhead-size--full-content-tablet, $teaser__overhead-size--full-content-desktop), $overhead-font: $teaser__overhead-font-id--full-content, $title-sizes: ($teaser__title-size--full-content-mobile, $teaser__title-size--full-content-tablet, $teaser__title-size--full-content-desktop), $title-font: $teaser__title-font-id--full-content) {
+@mixin teaser-presenter-text($overhead-sizes: ($teaser__overhead-size--full-content-mobile, $teaser__overhead-size--full-content-tablet, $teaser__overhead-size--full-content-desktop), $overhead-font: $teaser__overhead-font-id--full-content, $title-sizes: ($teaser__title-size--full-content-mobile, $teaser__title-size--full-content-tablet, $teaser__title-size--full-content-desktop), $title-font: $teaser__title-font-id--full-content, $title-line-heights: ($teaser__title-line-height--full-content-mobile, $teaser__title-line-height--full-content-tablet, $teaser__title-line-height--full-content-desktop)) {
   $overhead-size-mobile: nth($overhead-sizes, 1);
   $overhead-size-tablet: nth($overhead-sizes, 2);
   $overhead-size-desktop: nth($overhead-sizes, 3);
@@ -80,6 +80,10 @@
   $title-size-mobile: nth($title-sizes, 1);
   $title-size-tablet: nth($title-sizes, 2);
   $title-size-desktop: nth($title-sizes, 3);
+
+  $title-lh-mobile: nth($title-line-heights, 1);
+  $title-lh-tablet: nth($title-line-heights, 2);
+  $title-lh-desktop: nth($title-line-heights, 3);
 
   .teaser__overhead {
     @include text-helper($overhead-font);
@@ -96,7 +100,7 @@
     }
 
     .teaser__title {
-      @include text-helper-size($title-font, $title-size-mobile);
+      @include text-helper-size($title-font, $title-size-mobile, $title-lh-mobile);
     }
   }
 
@@ -106,7 +110,7 @@
     }
 
     .teaser__title {
-      @include text-helper-size($title-font, $title-size-tablet);
+      @include text-helper-size($title-font, $title-size-tablet, $title-lh-tablet);
     }
   }
 
@@ -119,7 +123,7 @@
     }
 
     .teaser__title {
-      @include text-helper-size($title-font, $title-size-desktop);
+      @include text-helper-size($title-font, $title-size-desktop, $title-lh-desktop);
     }
   }
 }

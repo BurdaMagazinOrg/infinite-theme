@@ -193,12 +193,13 @@
 }
 
 @mixin teaser-feed-large() {
-  .teaser {
+  .teaser:not(.teaser-square-medium):not(.teaser-portrait-medium) {
     @extend %teaser-feed-large-gap;
     @include teaser-feed-large-text();
   }
 
   .teaser-square-medium, .teaser-portrait-medium {
+    @extend %teaser-feed-large-gap;
     @include teaser-feed-large-text(($feed-teaser-headline-middle-size-mobile, $feed-teaser-headline-middle-size-tablet, $feed-teaser-headline-middle-size-desktop));
   }
 }
