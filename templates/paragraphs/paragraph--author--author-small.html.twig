@@ -1,0 +1,13 @@
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
+    {% for authors in content.field_author['#items'] | batch(2, '') %}
+        {% set loopIndex = loop.index0 %}
+        <div class="item-author__row">
+            {% for author in authors %}
+                {{ content.field_author[(loopIndex*2) + loop.index0] }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+{% endblock %}

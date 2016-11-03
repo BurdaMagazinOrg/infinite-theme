@@ -17,3 +17,7 @@
 %item-author--teaser-small-detail {
   @include item-author--teaser-small-detail();
 }
+
+%item-author__row {
+  @include item-author__row();
+}

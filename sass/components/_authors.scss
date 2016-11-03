@@ -14,3 +14,7 @@
 .item-author--teaser-small-detail {
   @extend %item-author--teaser-small-detail;
 }
+
+.item-author__row {
+  @extend %item-author__row;
+}
