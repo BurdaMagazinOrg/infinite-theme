@@ -4,6 +4,11 @@
 'contextual-region',
 ] %}
 
+{% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
+    {% set smart_teaser_class = content.field_smart_teaser_class|render %}
+    {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
+{% endif %}
+
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
 
 {% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
