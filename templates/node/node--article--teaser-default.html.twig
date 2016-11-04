@@ -11,11 +11,6 @@
 
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
 
-{% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
-    {% set smart_teaser_class = content.field_smart_teaser_class|render %}
-    {% set attributes = attributes.addClass(smart_teaser_class) %}
-{% endif %}
-
 <article{{ attributes.addClass(wrapper_classes) }}>
     <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject"
          data-internal-url="{{ url }}">
