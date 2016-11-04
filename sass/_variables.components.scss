@@ -542,6 +542,24 @@ $teaser--content-headline-size-desktop: $title-size-xxs !default;
 $teaser--content-caption-height: 81px !default;
 $teaser--content-caption-height-mobile: 69px !default;
 $teaser--content-headline-line-height: '' !default;
+
+//smart
+$teaser__opacity--smart: 0.8 !default;
+$teaser__opacity-hover--smart: 1 !default;
+$teaser__position-left--smart: 50% !default;
+$teaser__position-top--smart: 50% !default;
+$teaser__color--smart: $white !default;
+$teaser__text-shadow--smart: none !default; //0 1px 0 rgba($gray-darker, 0.2)
+
+$teaser__icon-video-after--smart: "\e916";
+$teaser__icon-image-after--smart: "\e914";
+
+$teaser__icon-size-mobile--smart-large: 40px !default;
+$teaser__icon-size-desktop--smart-large: 70px !default;
+
+$teaser__icon-size-mobile--smart-small: 40px !default;
+$teaser__icon-size-desktop--smart-small: 40px !default;
+
 /**
 **  Lists **
 **/

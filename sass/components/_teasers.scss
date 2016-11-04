@@ -97,3 +97,29 @@
 .teaser-content-right, .teaser--content-right {
   @extend %teaser--content-right;
 }
+
+.teaser-list-large {
+  .teaser-smart-video, .teaser-smart-image {
+    @extend %teaser--smart-large;
+  }
+}
+
+.teaser-smart-video, .teaser-smart-image {
+  @extend %teaser--smart;
+}
+
+.teaser-smart-video {
+  .teaser__img-container {
+    &:after {
+      content: $teaser__icon-video-after--smart; //"\e916"
+    }
+  }
+}
+
+.teaser-smart-image {
+  .teaser__img-container {
+    &:after {
+      content: $teaser__icon-image-after--smart; //"\e914"
+    }
+  }
+}

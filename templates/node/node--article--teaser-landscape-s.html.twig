@@ -1,3 +1,8 @@
 {% extends "node--article--teaser-default-small.html.twig" %}
 
 {% set wrapper_classes = attributes.addClass('teaser-landscape-small', 'swipeable__item') %}
+
+{% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
+    {% set smart_teaser_class = content.field_smart_teaser_class|render %}
+    {% set attributes = attributes.addClass(smart_teaser_class) %}
+{% endif %}

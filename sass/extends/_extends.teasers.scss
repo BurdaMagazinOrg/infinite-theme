@@ -77,3 +77,16 @@
 %teaser--content-right {
   @include teaser--content-right();
 }
+
+%teaser--smart {
+  @include teaser--smart();
+}
+
+%teaser--smart-large {
+  @include teaser--smart-large();
+}
+
+%teaser--smart-small {
+  @include teaser--smart-small();
+}
+
