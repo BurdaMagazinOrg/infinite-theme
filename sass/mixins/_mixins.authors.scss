@@ -365,15 +365,9 @@
 
 @mixin item-author__gap--teaser-small() {
   @media (max-width: $screen-xs-max) {
-    @include margin--v-item-content__item();
-    @include padding--v-item-content__item();
     border-top: $h-line-style;
-
-    //&:first-child {
-    //  margin-top: 0;
-    //  padding-top: 0;
-    //  border-top: 0;
-    //}
+    padding-top: $gap-size-sm;
+    margin-top: $gap-size-sm;
   }
 }
 
@@ -516,8 +510,8 @@
 
   @media (min-width: $screen-sm-min) {
     @include make-row();
-    @include margin--v-item-content__item();
-    @include padding--v-item-content__item();
+    @include margin--v-sm();
+    @include padding--v-sm();
     border-top: $h-line-style;
 
     &:first-child {
@@ -526,5 +520,4 @@
       border-top: 0;
     }
   }
-
 }
