@@ -91,6 +91,7 @@
     {% set wrapper_attributes = wrapper_attributes.setAttribute('data-adkeyword', adsc_keyword) %}
 {% endif %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
 
 {# Add data attribute data-no-track only for view mode full #}
 {% if view_mode == 'full' %}
