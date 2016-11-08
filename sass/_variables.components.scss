@@ -548,17 +548,35 @@ $teaser__opacity--smart: 0.8 !default;
 $teaser__opacity-hover--smart: 1 !default;
 $teaser__position-left--smart: 50% !default;
 $teaser__position-top--smart: 50% !default;
+$teaser__position-bottom--smart: auto !default;
+$teaser__position-right--smart: auto !default;
 $teaser__color--smart: $white !default;
 $teaser__text-shadow--smart: none !default; //0 1px 0 rgba($gray-darker, 0.2)
+$teaser__bg-color--smart: transparent !default;
+$teaser__bg-color-hover--smart: transparent !default;
 
 $teaser__icon-video-after--smart: "\e916";
 $teaser__icon-image-after--smart: "\e914";
 
+$teaser__padding--smart-large: 0 !default;
+$teaser__width-mobile--smart-large: auto !default;
+$teaser__height-mobile--smart-large: auto !default;
+$teaser__width-desktop--smart-large: auto !default;
+$teaser__height-desktop--smart-large: auto !default;
 $teaser__icon-size-mobile--smart-large: 40px !default;
 $teaser__icon-size-desktop--smart-large: 70px !default;
+$teaser__icon-margin-mobile--smart-large: 0 0 0 (- $teaser__icon-size-mobile--smart-large / 2) !default;
+$teaser__icon-margin-desktop--smart-large: 0 0 0 (- $teaser__icon-size-desktop--smart-large / 2) !default;
 
+$teaser__padding--smart-small: 0 !default;
+$teaser__width-mobile--smart-small: auto !default;
+$teaser__height-mobile--smart-small: auto !default;
+$teaser__width-desktop--smart-small: auto !default;
+$teaser__height-desktop--smart-small: auto !default;
 $teaser__icon-size-mobile--smart-small: 40px !default;
 $teaser__icon-size-desktop--smart-small: 40px !default;
+$teaser__icon-margin-mobile--smart-small: 0 0 0 (- $teaser__icon-size-mobile--smart-small / 2) !default;
+$teaser__icon-margin-desktop--smart-small: 0 0 0 (- $teaser__icon-size-desktop--smart-small / 2) !default;
 
 /**
 **  Lists **

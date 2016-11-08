@@ -627,11 +627,11 @@
 }
 
 @mixin teaser--smart() {
-  @include teaser--smart-small;
 
   &:hover {
     .teaser__img-container:after {
       @include opacity($teaser__opacity-hover--smart);
+      background-color: $teaser__bg-color-hover--smart;
     }
   }
 
@@ -640,31 +640,40 @@
     position: relative;
 
     &:after {
-      @include transition-default(opacity, $transition-duration, $transition-easing);
+      @include transition-default();
       @include opacity($teaser__opacity--smart);
       -webkit-transform: translateZ(0);
       position: absolute;
+      background-color: $teaser__bg-color--smart;
       left: $teaser__position-left--smart; //50%
       top: $teaser__position-top--smart;
+      bottom: $teaser__position-bottom--smart;
+      right: $teaser__position-right--smart;
       color: $teaser__color--smart; //$white
       text-shadow: $teaser__text-shadow--smart; //0 1px 0 rgba($gray-darker, 0.2)
     }
   }
+
+  @include teaser--smart-small;
 }
 
 @mixin teaser--smart-large() {
   .teaser__img-container {
     &:after {
+      padding: $teaser__padding--smart-large;
+
       @media (max-width: $screen-xs-max) {
         font-size: $teaser__icon-size-mobile--smart-large; //40px
-        margin-left: - $teaser__icon-size-mobile--smart-large / 2;
-        margin-top: - $teaser__icon-size-mobile--smart-large / 2;
+        margin:  $teaser__icon-margin-mobile--smart-large;
+        width: $teaser__width-mobile--smart-large;
+        line-height: $teaser__height-mobile--smart-large;
       }
 
       @media (min-width: $screen-sm-min) {
-        font-size: $teaser__icon-size-desktop--smart-large; //70px
-        margin-left: - $teaser__icon-size-desktop--smart-large / 2;
-        margin-top: - $teaser__icon-size-desktop--smart-large / 2;
+        font-size: $teaser__icon-size-desktop--smart-large;
+        margin: $teaser__icon-margin-desktop--smart-large;
+        width: $teaser__width-desktop--smart-large;
+        line-height: $teaser__height-desktop--smart-large;
       }
     }
   }
@@ -673,16 +682,20 @@
 @mixin teaser--smart-small() {
   .teaser__img-container {
     &:after {
+      padding: $teaser__padding--smart-small;
+
       @media (max-width: $screen-xs-max) {
         font-size: $teaser__icon-size-mobile--smart-small;
-        margin-left: - $teaser__icon-size-mobile--smart-small / 2;
-        margin-top: - $teaser__icon-size-mobile--smart-small / 2;
+        margin: $teaser__icon-margin-mobile--smart-small;
+        width: $teaser__width-mobile--smart-small;
+        line-height: $teaser__height-mobile--smart-small;
       }
 
       @media (min-width: $screen-sm-min) {
         font-size: $teaser__icon-size-desktop--smart-small;
-        margin-left: - $teaser__icon-size-desktop--smart-small / 2;
-        margin-top: - $teaser__icon-size-desktop--smart-small / 2;
+        margin: $teaser__icon-margin-desktop--smart-small;
+        width: $teaser__width-mobile--smart-small;
+        line-height: $teaser__height-mobile--smart-small;
       }
     }
   }
