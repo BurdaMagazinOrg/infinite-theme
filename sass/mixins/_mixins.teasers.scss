@@ -663,7 +663,7 @@
       padding: $teaser__padding--smart-large;
 
       @media (max-width: $screen-xs-max) {
-        font-size: $teaser__icon-size-mobile--smart-large; //40px
+        font-size: $teaser__icon-size-mobile--smart-large;
         margin:  $teaser__icon-margin-mobile--smart-large;
         width: $teaser__width-mobile--smart-large;
         line-height: $teaser__height-mobile--smart-large;
