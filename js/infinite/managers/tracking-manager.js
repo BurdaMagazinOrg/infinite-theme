@@ -49,7 +49,7 @@
                  * track pageView
                  */
                 if (!_.isUndefined(tmpHistoryURL) && pModel.get('scrollDepthTracked') != true && pModel.get('initialDOMItem') != true) {
-                    TrackingManager.trackPageView(tmpHistoryURL);
+                    TrackingManager.trackPageView(tmpHistoryURL, TrackingManager.getAdvTrackingByElement($tmpElement));
                 }
 
                 if (pModel.get('scrollDepthTracked') != true) {
@@ -57,7 +57,7 @@
                     tmpTrackingObject.depth = 'index_' + tmpIndex;
                     tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
 
-                    TrackingManager.trackEvent(tmpTrackingObject);
+                    TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
                     pModel.set('scrollDepthTracked', true);
                 }
             }
@@ -66,7 +66,11 @@
         },
         initBaseElements: function () {
             $('#menu-open-btn', this.$el).click(function () {
-                TrackingManager.trackEvent({category: 'click', action: 'menu_sidebar', label: 'open'});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'menu_sidebar',
+                    label: 'open'
+                });
             });
 
             $('#menu-sidebar .icon-close', this.$el).click(function () {
@@ -312,9 +316,9 @@
             TrackingManager.trackEcommerce(tmpItemsData, 'impressions');
         }
     }, {
-        trackEvent: function (pTrackingObject, pUseCurrentPath) {
-            var tmpUseCurrentPath = pUseCurrentPath != undefined ? pUseCurrentPath : true,
-                tmpTrackingObject = pTrackingObject,
+        trackEvent: function (pTrackingObject, pAdvObject) {
+            var tmpTrackingObject = pTrackingObject,
+                tmpAdvObject = pAdvObject || TrackingManager.getAdvTrackingByElement(),
                 tmpCurrentPath = TrackingManager.getCurrentPath();
 
             tmpTrackingObject = _.extend({
@@ -323,7 +327,7 @@
                 'label': '',
                 'value': '',
                 'eventNonInteraction': '',
-            }, tmpTrackingObject);
+            }, tmpTrackingObject, tmpAdvObject);
 
             if (typeof window.dataLayer != "undefined") {
                 window.dataLayer.push(tmpTrackingObject);
@@ -332,11 +336,14 @@
                 console.log("No Google Tag Manager available");
             }
         },
-        trackPageView: function (pPath) {
-            var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1");
+        trackPageView: function (pPath, pAdvObject) {
+            var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1"),
+                tmpAdvObject = pAdvObject || TrackingManager.getAdvTrackingByElement(),
+                tmpTrackingObject = _.extend({event: 'page_view', 'location': tmpPath}, pAdvObject);
 
             if (typeof window.dataLayer != "undefined") {
-                window.dataLayer.push({event: 'page_view', 'location': tmpPath});
+                tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
+                window.dataLayer.push(tmpTrackingObject);
                 console.log(">> trackPageView >>", document.title, tmpPath);
             } else {
                 console.log("No Google Tag Manager available");
@@ -348,8 +355,9 @@
             iamDataObject = iamDataObject || window.iam_data;
             iom.c(iamDataObject, 1);
         },
-        trackEcommerce: function (pData, pType) {
-            var tmpTrackingObject = {}
+        trackEcommerce: function (pData, pType, pAdvObject) {
+            var tmpTrackingObject = {},
+                tmpAdvObject = pAdvObject || TrackingManager.getAdvTrackingByElement();
 
             switch (pType) {
                 case 'impressions':
@@ -371,6 +379,7 @@
                     return;
             }
 
+            tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
             console.log(">>> ecommerce", tmpTrackingObject);
             if (typeof window.dataLayer != "undefined") {
                 window.dataLayer.push(tmpTrackingObject);
@@ -409,6 +418,25 @@
             }
 
             return tmpAction;
+        },
+        getAdvTrackingByElement: function ($pElement) {
+            var tmpAdvObject;
+
+            if (drupalSettings.datalayer != undefined) {
+                var tmpUuid = $($pElement).parents('[data-uuid]').addBack().data('uuid');
+
+                //use specific tracking object
+                if (drupalSettings.datalayer[tmpUuid]) {
+                    tmpAdvObject = drupalSettings.dataLayer[tmpUuid];
+                }
+                //use global/initial tracking object
+                else if (drupalSettings.datalayer.hasOwnProperty('page') && drupalSettings.datalayer.page != "") {
+                    tmpAdvObject = drupalSettings.datalayer.page;
+                }
+            }
+
+            //console.log(">>>>> Adv", tmpAdvObject);
+            return tmpAdvObject;
         },
         getLocationType: function (pDefault) {
             var tmpLocation = pDefault;
