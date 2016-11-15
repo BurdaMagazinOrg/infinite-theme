@@ -8,12 +8,12 @@
       
       pOptions.el.on('newsletter:success', function(event) {
         if(typeof TrackingManager != 'undefined') {
-          TrackingManager.trackEvent({category: 'newsletter', action: 'success'});
+          TrackingManager.trackEvent({category: 'newsletter', action: 'success'}, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       })
       pOptions.el.on('newsletter:error', function(event) {
         if (typeof TrackingManager != 'undefined') {
-          TrackingManager.trackEvent({category: 'newsletter', action: 'error'});
+          TrackingManager.trackEvent({category: 'newsletter', action: 'error'}, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       })
     }

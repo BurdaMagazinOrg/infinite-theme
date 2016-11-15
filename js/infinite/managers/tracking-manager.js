@@ -3,13 +3,13 @@
     "use strict";
 
     BurdaInfinite.managers.TrackingManager = Backbone.View.extend({
-        scrollTopPos: 0,
         initialLocation: "",
         gtmEventName: "",
         gtmIndexEvent: "",
         gtmIndexPosEvent: "",
+        activeInfiniteBlockModel: null,
+        lastViewState: "",
         initialize: function (pOptions) {
-
             _.extend(this, pOptions);
 
             if (!this.model.has('initialLocation') || !this.model.has('gtmEventName') || !this.model.has('gtmIndexEvent') || !this.model.has('gtmIndexPosEvent')) {
@@ -20,9 +20,8 @@
             this.gtmEventName = TrackingManager.gtmEventName = this.model.get('gtmEventName');
             this.gtmIndexEvent = this.model.get('gtmIndexEvent');
             this.gtmIndexPosEvent = this.model.get('gtmIndexPosEvent');
-            this.scrollTopPos = $(window).scrollTop();
 
-            this.listenTo(this.infiniteModel, 'change:inview', _.debounce(this.inviewChangeHandler, 10), this);
+            this.listenTo(this.infiniteModel, 'change:inview', this.inviewChangeHandler, this);
             this.initBaseElements();
             this.parseTrackingElements(this.$el);
 
@@ -33,18 +32,23 @@
                     this.parseTrackingElements(pModel.get('el'));
                 }
             }, this);
-
         },
         inviewChangeHandler: function (pModel) {
-            if (this.scrollTopPos == $(window).scrollTop() || pModel.get('el').data('no-track') === true) return;
+            if (this.lastViewState == pModel.get('inview').state) return;
 
             var $tmpElement = pModel.get('el'),
                 tmpInviewModel = pModel.get('inview'),
                 tmpHistoryURL = $tmpElement.data('history-url'),
-                tmpIndex = ($('.region-infinite-block').not('.region-infinite-block[data-no-track="true"]').index($tmpElement) + 1).toString(), //$tmpElement.parent('.infinite-item').addBack()
-                tmpTrackingObject = {};
+                tmpTrackingObject = {},
+                tmpIndex = 0;
 
-            if (tmpInviewModel.state == 'enter') {
+            if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
+                //set current infiniteModel
+                TrackingManager.activeInfiniteBlockModel = pModel;
+            }
+
+            if (tmpInviewModel.state == 'enter' && $tmpElement.data('no-track') != true) {
+
                 /**
                  * track pageView
                  */
@@ -53,6 +57,7 @@
                 }
 
                 if (pModel.get('scrollDepthTracked') != true) {
+                    tmpIndex = ($('.region-infinite-block').not('.region-infinite-block[data-no-track="true"]').index($tmpElement) + 1).toString();
                     tmpTrackingObject.event = tmpTrackingObject.category = 'scroll_depth';
                     tmpTrackingObject.depth = 'index_' + tmpIndex;
                     tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
@@ -60,9 +65,10 @@
                     TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
                     pModel.set('scrollDepthTracked', true);
                 }
+
             }
 
-            this.scrollTopPos = $(window).scrollTop();
+            this.lastViewState = tmpInviewModel.state;
         },
         initBaseElements: function () {
             $('#menu-open-btn', this.$el).click(function () {
@@ -70,41 +76,69 @@
                     category: 'click',
                     action: 'menu_sidebar',
                     label: 'open'
-                });
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#menu-sidebar .icon-close', this.$el).click(function () {
-                TrackingManager.trackEvent({category: 'click', action: 'menu_sidebar', label: 'close'});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'menu_sidebar',
+                    label: 'close'
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#menu-sidebar .menu-item a', this.$el).click(function (pEvent) {
                 var $tmpItem = $(pEvent.currentTarget),
                     tmpText = $tmpItem.text();
-                TrackingManager.trackEvent({category: 'click', action: 'menu_sidebar', label: tmpText});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'menu_sidebar',
+                    label: tmpText
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#menu-sidebar .logo', this.$el).click(function (pEvent) {
-                TrackingManager.trackEvent({category: 'click', action: 'menu_sidebar', label: 'logo'});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'menu_sidebar',
+                    label: 'logo'
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#menu-main-navigation .logo', this.$el).click(function (pEvent) {
-                TrackingManager.trackEvent({category: 'click', action: 'main_navigation', label: 'logo'});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'main_navigation',
+                    label: 'logo'
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#header-home .logo', this.$el).click(function (pEvent) {
-                TrackingManager.trackEvent({category: 'click', action: 'header_home', label: 'logo'});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'header_home',
+                    label: 'logo'
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#menu-main-navigation .menu-item a', this.$el).click(function (pEvent) {
                 var $tmpItem = $(pEvent.currentTarget),
                     tmpText = $tmpItem.text();
-                TrackingManager.trackEvent({category: 'click', action: 'main_navigation', label: tmpText});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'main_navigation',
+                    label: tmpText
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
 
             $('#menu-submenu-navigation .menu-item a', this.$el).click(function (pEvent) {
                 var $tmpItem = $(pEvent.currentTarget),
                     tmpText = $tmpItem.text();
-                TrackingManager.trackEvent({category: 'click', action: 'sub_navigation', label: tmpText});
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'sub_navigation',
+                    label: tmpText
+                }, TrackingManager.getAdvTrackingByElement($(this)));
             });
         },
         parseTrackingElements: function ($pContainer) {
@@ -128,7 +162,7 @@
                         index: 'index_' + tmpIndex
                     };
 
-                TrackingManager.trackEvent(tmpTrackingObject);
+                TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
             }, this));
 
             /**
@@ -220,7 +254,7 @@
                     index: 'index_' + tmpIndex
                 };
 
-            TrackingManager.trackEvent(tmpTrackingObject);
+            TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
         },
         onPresenterHalfClickHandler: function (pEvent) {
             var $tmpItem = $(pEvent.currentTarget).parent('.teaser-landscape-medium'),
@@ -232,7 +266,7 @@
                     index: 'index_' + tmpIndex
                 };
 
-            TrackingManager.trackEvent(tmpTrackingObject);
+            TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
         },
         onTeaserHorizontalClickHandler: function (pEvent) {
             var $tmpItem = $(pEvent.currentTarget),
@@ -246,7 +280,7 @@
                     pos: 'pos_' + tmpItemIndex
                 };
 
-            TrackingManager.trackEvent(tmpTrackingObject);
+            TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
         },
         onSocialsClickHandler: function (pEvent) {
             var $tmpItem = $(pEvent.currentTarget),
@@ -256,7 +290,7 @@
             tmpTrackingObject.action = tmpAction;
             tmpTrackingObject.label = $tmpItem.find('[data-social-type]').addBack().filter('[data-social-type]').data('social-type');
 
-            TrackingManager.trackEvent(tmpTrackingObject);
+            TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
         },
         onAuthorClickHandler: function (pEvent) {
             var $tmpItem = $(pEvent.currentTarget),
@@ -265,7 +299,7 @@
             tmpTrackingObject.action = $tmpItem.find('.text-author span').text();
             tmpTrackingObject.label = TrackingManager.getItemType($tmpItem);
 
-            TrackingManager.trackEvent(tmpTrackingObject);
+            TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
         },
         onProductsHandler: function ($pContainer, pOptions) {
             var $tmpContainer = $($pContainer),
@@ -309,11 +343,11 @@
                  */
                 $tmpProductItem.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', {clickData: tmpItemData}, $.proxy(function (pEvent) {
                     var tmpData = pEvent.data.clickData;
-                    TrackingManager.trackEcommerce(tmpData, 'productClick');
+                    TrackingManager.trackEcommerce(tmpData, 'productClick', TrackingManager.getAdvTrackingByElement($tmpContainer));
                 }, this));
             });
 
-            TrackingManager.trackEcommerce(tmpItemsData, 'impressions');
+            TrackingManager.trackEcommerce(tmpItemsData, 'impressions', TrackingManager.getAdvTrackingByElement($tmpContainer));
         }
     }, {
         trackEvent: function (pTrackingObject, pAdvObject) {
@@ -425,17 +459,28 @@
             if (drupalSettings.datalayer != undefined) {
                 var tmpUuid = $($pElement).parents('[data-uuid]').addBack().data('uuid');
 
-                //use specific tracking object
+                /** use specific tracking object when parent got an uuid **/
                 if (drupalSettings.datalayer[tmpUuid]) {
-                    tmpAdvObject = drupalSettings.dataLayer[tmpUuid];
+                    tmpAdvObject = drupalSettings.datalayer[tmpUuid];
                 }
-                //use global/initial tracking object
+                /** use active infiniteBlockModel when the parent has no uuid (example: menu open / close in infinite-scrolling) **/
+                else if (TrackingManager.activeInfiniteBlockModel != null) {
+                    tmpUuid = TrackingManager.activeInfiniteBlockModel.get('el').data('uuid');
+
+                    if (drupalSettings.datalayer[tmpUuid]) {
+                        tmpAdvObject = drupalSettings.datalayer[tmpUuid];
+                    } else if (drupalSettings.datalayer.hasOwnProperty('page') && drupalSettings.datalayer.page != "") {
+                        tmpAdvObject = drupalSettings.datalayer.page;
+                    }
+                }
+                /** use global/initial tracking object **/
                 else if (drupalSettings.datalayer.hasOwnProperty('page') && drupalSettings.datalayer.page != "") {
                     tmpAdvObject = drupalSettings.datalayer.page;
                 }
+            } else {
+                console.log(">>> no drupalSettings.datalayer found");
             }
 
-            //console.log(">>>>> Adv", tmpAdvObject);
             return tmpAdvObject;
         },
         getLocationType: function (pDefault) {

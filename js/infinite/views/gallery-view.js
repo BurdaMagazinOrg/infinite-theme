@@ -39,7 +39,7 @@
                             category: 'click',
                             action: 'gallery',
                             label: this.mediaId
-                        });
+                        }, TrackingManager.getAdvTrackingByElement(this.$el));
                     }
                 }, this)
             });

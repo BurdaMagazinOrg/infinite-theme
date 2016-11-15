@@ -221,14 +221,14 @@
         },
         track: function (pObject) {
             if (typeof TrackingManager != 'undefined' && this.useTracking == true) {
-                TrackingManager.trackEvent(pObject);
+                TrackingManager.trackEvent(pObject, TrackingManager.getAdvTrackingByElement(this.$el));
 
                 if (pObject.category == 'newsletter' && pObject.action == 'success') {
                     TrackingManager.trackEvent({
                         category: 'mkt-conversion',
                         action: 'newsletterSignup',
                         'eventNonInteraction': 'false',
-                    });
+                    }, TrackingManager.getAdvTrackingByElement(this.$el));
                 }
             }
         },
