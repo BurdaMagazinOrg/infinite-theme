@@ -54,7 +54,7 @@
             this.adFormat = this.marketingSettings[this.adType];
             this.$adSlotContainer.empty();
 
-            console.log(">>>", this.adType, this.adFormat, this.breakpointDeviceModel);
+            //console.log(">>>", this.adType, this.adFormat, this.breakpointDeviceModel);
 
             //this.$el.hasClass('container-sidebar-content') && this.adType != 'desktop'
             if (this.adFormat == undefined || this.adFormat == '') return;

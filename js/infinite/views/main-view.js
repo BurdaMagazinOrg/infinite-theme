@@ -10,9 +10,6 @@
         infiniteViewsModel: {},
         deviceModel: {},
 
-        trackingManager: {},
-        scrollManager: {},
-
         menuMainView: {},
         menuSidebarView: {},
         infiniteView: {},
@@ -95,7 +92,7 @@
             /**
              * TrackingManager
              */
-            this.trackingManager = new TrackingManager({
+            new TrackingManager({
                 id: ManagerIds.trackingManager,
                 el: this.$el,
                 infiniteModel: this.infiniteViewsModel,
@@ -110,7 +107,7 @@
             /**
              * ScrollManager
              */
-            this.scrollManager = new ScrollManager({
+            new ScrollManager({
                 id: ManagerIds.scrollManager,
                 el: this.$el,
                 infiniteModel: this.infiniteViewsModel,
@@ -119,9 +116,6 @@
                     initialLocation: AppConfig.initialLocation
                 })
             });
-
-            BM.reuseView(ManagerIds.trackingManager, this.trackingManager);
-            BM.reuseView(ManagerIds.scrollManager, this.scrollManager);
         },
         createViews: function () {
             /**

@@ -7,6 +7,7 @@
         defaults: function () {
             return {
                 nid: '',
+                uuid: '',
                 path: '',
                 title: '',
                 category: '',
@@ -27,6 +28,7 @@
         },
         parseElement: function ($pElement) {
             var tmpNid = $pElement.data('nid') || '',
+                tmpUuid = $pElement.data('uuid') || '',
                 tmpPath = $pElement.data('path') || $pElement.data('history-url') || '',
                 tmpTitle = $pElement.data('title') || $pElement.data('history-title') || '',
                 tmpCategory = $pElement.data('category') || '',
@@ -42,6 +44,7 @@
 
             this.set({
                 'nid': tmpNid,
+                'uuid': tmpUuid,
                 'path': tmpPath,
                 'title': tmpTitle,
                 'category': tmpCategory,

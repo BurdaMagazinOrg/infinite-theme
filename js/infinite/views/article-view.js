@@ -76,7 +76,7 @@
                     action: 'readArticle',
                     label: this.articleSEOTitle,
                     'eventNonInteraction': 'true',
-                });
+                }, TrackingManager.getAdvTrackingByElement(this.$el));
             }
         }
     });
