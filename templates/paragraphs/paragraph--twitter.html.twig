@@ -46,7 +46,9 @@
         {% endif %}
     {% endblock %}
 
-    {% if content.tweet %}
+    {% if content.field_media %}
+        {{ content.field_media }}
+    {% else %}
         {{ content.tweet }}
     {% endif %}
 {% endblock %}
