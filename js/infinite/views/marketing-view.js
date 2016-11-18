@@ -108,19 +108,19 @@
             this.$dynamicIframe.src = 'javascript:window["contents"]';
 
             $(this.$dynamicIframe).load(_.bind(function (pEvent) {
-                var tmpIFrameWidth = $(this.$dynamicIframe).contents().width(),
-                    tmpIFrameHeight = $(this.$dynamicIframe).contents().height();
+                //var tmpIFrameWidth = $(this.$dynamicIframe).contents().width(),
+                //    tmpIFrameHeight = $(this.$dynamicIframe).contents().height();
 
-                $(this.$dynamicIframe).css({'height': tmpIFrameHeight, 'width': tmpIFrameWidth});
-                this.$adSlotContainer.height(tmpIFrameHeight);
-
-                //ad-shizzl bug ://
-                //todo check this after orbyd-fix | > 0
-                if (tmpIFrameHeight > 20) {
-                    this.show();
-                } else {
-                    this.hide();
-                }
+                //$(this.$dynamicIframe).css({'height': tmpIFrameHeight, 'width': tmpIFrameWidth});
+                //this.$adSlotContainer.height(tmpIFrameHeight);
+                //
+                ////ad-shizzl bug ://
+                ////todo check this after orbyd-fix | > 0
+                //if (tmpIFrameHeight > 20) {
+                //    this.show();
+                //} else {
+                //    this.hide();
+                //}
             }, this));
 
         },
@@ -148,8 +148,8 @@
             if (this.$el.hasClass('ad-bsad') || !this.enabled) return;
 
             if (this.$el.hasClass('region-full-content') && tmpHeight != 0) {
-                var tmpHeight = this.$adSlotContainer.height();
-                this.$adSlotContainer.css('height', this.$adSlotContainer.height());
+                //var tmpHeight = this.$adSlotContainer.height();
+                //this.$adSlotContainer.css('height', this.$adSlotContainer.height());
                 this.$adSlotContainer.empty();
             } else {
                 this.hide();
@@ -159,7 +159,7 @@
             this.enabled = false;
         },
         removeFixHeight: function () {
-            if (this.$adSlotContainer.prop("style")["height"] !== '') this.$adSlotContainer.css('height', 'auto');
+            //if (this.$adSlotContainer.prop("style")["height"] !== '') this.$adSlotContainer.css('height', 'auto');
         },
         show: function () {
             this.$el.removeClass('ad-inactive').addClass('ad-active');
