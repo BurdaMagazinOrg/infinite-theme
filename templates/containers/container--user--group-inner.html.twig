@@ -1,96 +1,12 @@
-{% if parent.field_forename %}
-    {% set author_name = parent.field_forename | render ~ " " ~ parent.field_surname | render %}
-{% else %}
-    {% set author_name = parent.first_name | render ~ " " ~ parent.last_name | render %}
-{% endif %}
-
 <div class="item-content__block item-group--inner">
     <div class="item-content__row--sidebar">
         <div class="item-content__row-col col--left">
-
-            <div class="item-author--detail-large">
-                <div class="item-author__profile-image">
-                    {{ parent.user_picture }}
-                </div>
-                {% if parent.has_header_block %}
-                    <h2 class="item-author__name">{{ author_name }}</h2>
-                {% else %}
-                    <h1 class="item-author__name">{{ author_name }}</h1>
-                {% endif %}
-                <div class="item-author__job">
-                    {{ parent.field_job_title }}
-                </div>
-                <div class="item-author__short-info">
-                    {{ parent.field_profile_text }}
-                </div>
-
-                {% block user_author_socials %}
-                    <div class="item-author__socials">
-                        <div class="item-author__socials-title">Folge <span>{{ author_name }}</span></div>
-
-                        <div class="item-author__socials-icons socials socials-bar">
-                            <span>
-                            {% if parent.field_social_instagram %}
-                                <a class="item-social icon-instagram"
-                                   href="{{ parent.field_social_instagram }}"
-                                   data-description="{{ author_name }}" data-social-type="instagram">
-                                </a>
-                            {% endif %}
-                                {% if parent.field_social_facebook %}
-                                    <a class="item-social icon-facebook"
-                                       href="{{ parent.field_social_facebook }}"
-                                       data-description="{{ author_name }}" data-social-type="facebook">
-                                    </a>
-                                {% endif %}
-                                {% if parent.field_social_pinterest %}
-                                    <a class="item-social icon-pinterest"
-                                       href="{{ parent.field_social_pinterest }}"
-                                       data-description="{{ author_name }}" data-social-type="pinterest">
-                                    </a>
-                                {% endif %}
-                                {% if parent.field_social_twitter %}
-                                    <a class="item-social icon-twitter"
-                                       href="{{ parent.field_social_twitter }}"
-                                       data-description="{{ author_name }}" data-social-type="twitter">
-                                    </a>
-                                {% endif %}
-                                {% if parent.mail %}
-                                    <a class="item-social icon-email"
-                                       href="mailto:{{ parent.mail }}"
-                                       data-description="{{ author_name }}" data-social-type="email">
-                                    </a>
-                                {% endif %}
-                                </span>
-                        </div>
-                        <div class="item-author__socials-misc">
-                            {% if parent.field_social_snapchat %}
-                                <div class="item-author__socials-misc-item item-author__snapchat">
-                                    <span>Snapchat:</span> <a
-                                            href="https://www.snapchat.com/add/{{ parent.field_social_snapchat }}"
-                                            target="_blank" rel="nofollow">@{{ parent.field_social_snapchat }}</a></div>
-                            {% endif %}
-                            {% if parent.field_social_blog %}
-                                <div class="item-author__socials-misc-item item-author__blog"><span>Blog:</span> <a
-                                            href="{{ parent.field_social_blog }}" target="_blank"
-                                            rel="nofollow">{{ parent.field_social_blog }}</a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endblock %}
-            </div>
 
             {{ children }}
         </div>
 
         <div class="item-content__row-col col--right">
-            {% if parent.field_sidebar_blocks is not empty %}
-                <div class="item-sticky" data-view-type="stickyView">
-                {% block content_sidebar %}
-                    {{ parent.field_sidebar_blocks }}
-                    </div>
-                {% endblock %}
-            {% endif %}
+
         </div>
     </div>
 </div>

@@ -187,9 +187,10 @@
     padding-left: 0;
   }
 
-  //.item-author--detail-large {
-  //  margin-bottom: $gap-size-xxxl;
-  //}
+  .item-author--detail-large {
+    @extend %region--fixed-content;
+    padding-right: $feed-ad-column-width + $feed-ad-column-margin;
+  }
 }
 
 @mixin item-content--archive() {

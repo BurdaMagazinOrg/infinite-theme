@@ -1,3 +1,24 @@
+
+%item-content__content {
+  @include item-content__content();
+}
+
+%item-content__header {
+  @include item-content__header();
+}
+
+%item-content__block {
+  @include item-content__block();
+}
+
+%item-content__row--sidebar {
+  @include item-content__row--sidebar();
+}
+
+%content__header-center {
+  @include content__header-center();
+}
+
 %item-content--article {
   @include item-content--article();
 }
@@ -28,24 +49,4 @@
 
 %item-content--vocabulary {
   @include item-content--vocabulary();
-}
-
-%item-content__header {
-  @include item-content__header();
-}
-
-%item-content__content {
-  @include item-content__content();
-}
-
-%item-content__block {
-  @include item-content__block();
-}
-
-%item-content__row--sidebar {
-  @include item-content__row--sidebar();
-}
-
-%content__header-center {
-  @include content__header-center();
 }

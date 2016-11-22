@@ -23,10 +23,97 @@
 'item-content__content'
 ] %}
 
+{% if content.field_forename %}
+    {% set author_name = content.field_forename | render ~ " " ~ content.field_surname | render %}
+{% else %}
+    {% set author_name = content.first_name | render ~ " " ~ content.last_name | render %}
+{% endif %}
+
 <div class="region-full-content item-content item-content--user no-v-padding">
     {% block content_header_block %}{% endblock %}
 
     <div{{ attributes.addClass(wrapper_classes) }} >
+
+        <div class="item-author--detail-large">
+            <div class="item-author__profile-image">
+                {{ content.user_picture }}
+            </div>
+            {% if content.has_header_block %}
+                <h2 class="item-author__name">{{ author_name }}</h2>
+            {% else %}
+                <h1 class="item-author__name">{{ author_name }}</h1>
+            {% endif %}
+            <div class="item-author__job">
+                {{ content.field_job_title }}
+            </div>
+            <div class="item-author__short-info">
+                {{ content.field_profile_text }}
+            </div>
+
+            {% block user_author_socials %}
+                <div class="item-author__socials">
+                    <div class="item-author__socials-title">Folge <span>{{ author_name }}</span></div>
+
+                    <div class="item-author__socials-icons socials socials-bar">
+                            <span>
+                            {% if content.group_social_media_links.field_social_instagram %}
+                                <a class="item-social icon-instagram"
+                                   rel="nofollow"
+                                   href="{{ content.group_social_media_links.field_social_instagram }}"
+                                   target="_blank"
+                                   data-description="{{ author_name }}" data-social-type="instagram">
+                                </a>
+                            {% endif %}
+                                {% if content.group_social_media_links.field_social_facebook %}
+                                    <a class="item-social icon-facebook"
+                                       rel="nofollow"
+                                       href="{{ content.group_social_media_links.field_social_facebook }}"
+                                       target="_blank"
+                                       data-description="{{ author_name }}" data-social-type="facebook">
+                                    </a>
+                                {% endif %}
+                                {% if content.group_social_media_links.field_social_pinterest %}
+                                    <a class="item-social icon-pinterest"
+                                       rel="nofollow"
+                                       href="{{ content.group_social_media_links.field_social_pinterest }}"
+                                       target="_blank"
+                                       data-description="{{ author_name }}" data-social-type="pinterest">
+                                    </a>
+                                {% endif %}
+                                {% if content.field_social_twitter %}
+                                    <a class="item-social icon-twitter"
+                                       rel="nofollow"
+                                       href="{{ content.field_social_twitter }}"
+                                       target="_blank"
+                                       data-description="{{ author_name }}" data-social-type="twitter">
+                                    </a>
+                                {% endif %}
+                                {% if content.group_social_media_links.mail %}
+                                    <a class="item-social icon-email"
+                                       rel="nofollow"
+                                       href="mailto:{{ content.group_social_media_links.mail }}"
+                                       data-description="{{ author_name }}" data-social-type="email">
+                                    </a>
+                                {% endif %}
+                                </span>
+                    </div>
+                    <div class="item-author__socials-misc">
+                        {% if content.group_social_media_links.field_social_snapchat %}
+                            <div class="item-author__socials-misc-item item-author__snapchat">
+                                <span>Snapchat:</span> <a
+                                        href="https://www.snapchat.com/add/{{ content.group_social_media_links.field_social_snapchat }}"
+                                        target="_blank" rel="nofollow">@{{ content.group_social_media_links.field_social_snapchat }}</a></div>
+                        {% endif %}
+                        {% if content.group_social_media_links.field_social_blog %}
+                            <div class="item-author__socials-misc-item item-author__blog"><span>Blog:</span> <a
+                                        href="{{ content.group_social_media_links.field_social_blog }}" target="_blank"
+                                        rel="nofollow">{{ content.group_social_media_links.field_social_blog }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
 
         {{ content.field_paragraphs }}
 
