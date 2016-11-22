@@ -187,6 +187,13 @@
     padding-left: 0;
   }
 
+  .item-author__article-title {
+    @extend %region--fixed-content;
+    @extend %title--content-block;
+    @extend %gap--v-region;
+    margin-bottom: 0;
+  }
+
   .item-author--detail-large {
     @extend %region--fixed-content;
 

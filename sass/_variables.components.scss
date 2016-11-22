@@ -1107,9 +1107,9 @@ $author__short-info-margin-tablet--teaser-small-detail: $gap-size-xs 0 0 0 !defa
 $author__short-info-margin-desktop--teaser-small-detail: $gap-size-xs 0 0 0 !default;
 
 //user profile page
-$author-margin-mobile--detail-large: 0 0 $gap-size-sm 0 !default;
-$author-margin-tablet--detail-large: 0 0 $gap-size-lg 0 !default;
-$author-margin-desktop--detail-large: 0 0 $gap-size-xxxl 0 !default;
+$author-margin-mobile--detail-large: $gap-size-sm 0 $gap-size-sm 0 !default;
+$author-margin-tablet--detail-large: $gap-size-md 0 $gap-size-lg 0 !default;
+$author-margin-desktop--detail-large: $gap-size-md 0 $gap-size-xxxl 0 !default;
 $author-text-align--detail-large: center !default;
 $author__profile-image-radius--detail-large: $author__profile-image-radius--teaser-large !default;
 $author__profile-image-border--detail-large: $author__profile-image-border--teaser-large !default;
