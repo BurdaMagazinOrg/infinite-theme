@@ -189,7 +189,10 @@
 
   .item-author--detail-large {
     @extend %region--fixed-content;
-    padding-right: $feed-ad-column-width + $feed-ad-column-margin;
+
+    @media (min-width: $screen-md-min) {
+      padding-right: $feed-ad-column-width + $feed-ad-column-margin;
+    }
   }
 }
 
