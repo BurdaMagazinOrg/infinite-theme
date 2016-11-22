@@ -182,13 +182,18 @@
   .region-teaser-list {
     @include gap--v-region();
   }
+
+  .item-group--outer {
+    padding-left: 0;
+  }
+
+  //.item-author--detail-large {
+  //  margin-bottom: $gap-size-xxxl;
+  //}
 }
 
 @mixin item-content--archive() {
   .item-content__header {
-    //@extend %region--full-content;
-    //@extend %content__header-center;
-    //@extend %container--v-padding-bottom;
     @extend %gap__container--h-negative;
     border-bottom: $h-line-style;
   }

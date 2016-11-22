@@ -3,6 +3,10 @@
   @extend %item-author;
 }
 
+.item-author--detail-large {
+  @extend %item-author--detail-large;
+}
+
 .item-author--teaser-large {
   @extend %item-author--teaser-large;
 }

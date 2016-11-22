@@ -6,6 +6,10 @@
   @include item-author--vita-short();
 }
 
+%item-author--detail-large {
+  @include item-author--detail-large();
+}
+
 %item-author--teaser-large {
   @include item-author--teaser-large();
 }

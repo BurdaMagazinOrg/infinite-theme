@@ -10,6 +10,10 @@
   @include socials-teaser-horizontal-bar-item();
 }
 
+%socials-media-horizontal-author-bar-item {
+  @include socials-media-horizontal-author-bar-item();
+}
+
 %socials-clean-horizontal-bar-item {
   @include socials-clean-horizontal-bar-item();
 }
