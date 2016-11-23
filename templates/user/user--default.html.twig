@@ -53,19 +53,20 @@
             {% block user_author_socials %}
                 <div class="item-author__socials">
 
-                    {% if content.group_social_media_links is defined %}
+                    {% if content.group_social_media_links is defined or content.group_social_media_misc is defined %}
                         <div class="item-author__socials-title">Folge <span>{{ author_name }}</span></div>
 
-                        <div class="item-author__socials-icons socials socials-bar">
+                        {% if content.group_social_media_links is defined %}
+                            <div class="item-author__socials-icons socials socials-bar">
                                 <span>
-                                {% if content.group_social_media_links.field_social_instagram | render is not empty  %}
-                                    <a class="item-social icon-instagram"
-                                       rel="nofollow"
-                                       href="{{ content.group_social_media_links.field_social_instagram }}"
-                                       target="_blank"
-                                       data-description="{{ author_name }}" data-social-type="instagram">
-                                    </a>
-                                {% endif %}
+                                    {% if content.group_social_media_links.field_social_instagram | render is not empty  %}
+                                        <a class="item-social icon-instagram"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_instagram }}"
+                                           target="_blank"
+                                           data-description="{{ author_name }}" data-social-type="instagram">
+                                        </a>
+                                    {% endif %}
                                     {% if content.group_social_media_links.field_social_facebook | render is not empty  %}
                                         <a class="item-social icon-facebook"
                                            rel="nofollow"
@@ -97,24 +98,26 @@
                                            data-description="{{ author_name }}" data-social-type="email">
                                         </a>
                                     {% endif %}
-                                    </span>
-                        </div>
-                    {% endif %}
-                    {% if content.group_social_media_misc is defined %}
-                    <div class="item-author__socials-misc">
-                        {% if content.group_social_media_misc.field_social_snapchat | render is not empty  %}
-                            <div class="item-author__socials-misc-item item-author__snapchat">
-                                <span>Snapchat:</span> <a
-                                        href="https://www.snapchat.com/add/{{ content.group_social_media_misc.field_social_snapchat }}"
-                                        target="_blank" rel="nofollow">@{{ content.group_social_media_misc.field_social_snapchat }}</a></div>
-                        {% endif %}
-                        {% if content.group_social_media_misc.field_social_blog | render is not empty %}
-                            <div class="item-author__socials-misc-item item-author__blog"><span>Webseite:</span> <a
-                                        href="{{ content.group_social_media_misc.field_social_blog }}" target="_blank"
-                                        rel="nofollow">{{ content.group_social_media_misc.field_social_blog }}</a>
+                                </span>
                             </div>
                         {% endif %}
-                    </div>
+
+                        {% if content.group_social_media_misc is defined %}
+                            <div class="item-author__socials-misc">
+                                {% if content.group_social_media_misc.field_social_snapchat | render is not empty  %}
+                                    <div class="item-author__socials-misc-item item-author__snapchat">
+                                        <span>Snapchat:</span> <a
+                                                href="https://www.snapchat.com/add/{{ content.group_social_media_misc.field_social_snapchat }}"
+                                                target="_blank" rel="nofollow">@{{ content.group_social_media_misc.field_social_snapchat }}</a></div>
+                                {% endif %}
+                                {% if content.group_social_media_misc.field_social_blog | render is not empty %}
+                                    <div class="item-author__socials-misc-item item-author__blog"><span>Webseite:</span> <a
+                                                href="{{ content.group_social_media_misc.field_social_blog }}" target="_blank"
+                                                rel="nofollow">{{ content.group_social_media_misc.field_social_blog }}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
                     {% endif %}
                 </div>
             {% endblock %}
