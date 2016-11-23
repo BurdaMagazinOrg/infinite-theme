@@ -52,65 +52,70 @@
 
             {% block user_author_socials %}
                 <div class="item-author__socials">
-                    <div class="item-author__socials-title">Folge <span>{{ author_name }}</span></div>
 
-                    <div class="item-author__socials-icons socials socials-bar">
-                            <span>
-                            {% if content.group_social_media_links.field_social_instagram | render is not empty  %}
-                                <a class="item-social icon-instagram"
-                                   rel="nofollow"
-                                   href="{{ content.group_social_media_links.field_social_instagram }}"
-                                   target="_blank"
-                                   data-description="{{ author_name }}" data-social-type="instagram">
-                                </a>
-                            {% endif %}
-                                {% if content.group_social_media_links.field_social_facebook | render is not empty  %}
-                                    <a class="item-social icon-facebook"
+                    {% if content.group_social_media_links is defined %}
+                        <div class="item-author__socials-title">Folge <span>{{ author_name }}</span></div>
+
+                        <div class="item-author__socials-icons socials socials-bar">
+                                <span>
+                                {% if content.group_social_media_links.field_social_instagram | render is not empty  %}
+                                    <a class="item-social icon-instagram"
                                        rel="nofollow"
-                                       href="{{ content.group_social_media_links.field_social_facebook }}"
+                                       href="{{ content.group_social_media_links.field_social_instagram }}"
                                        target="_blank"
-                                       data-description="{{ author_name }}" data-social-type="facebook">
+                                       data-description="{{ author_name }}" data-social-type="instagram">
                                     </a>
                                 {% endif %}
-                                {% if content.group_social_media_links.field_social_pinterest | render is not empty  %}
-                                    <a class="item-social icon-pinterest"
-                                       rel="nofollow"
-                                       href="{{ content.group_social_media_links.field_social_pinterest }}"
-                                       target="_blank"
-                                       data-description="{{ author_name }}" data-social-type="pinterest">
-                                    </a>
-                                {% endif %}
-                                {% if content.field_social_twitter | render is not empty  %}
-                                    <a class="item-social icon-twitter"
-                                       rel="nofollow"
-                                       href="{{ content.field_social_twitter }}"
-                                       target="_blank"
-                                       data-description="{{ author_name }}" data-social-type="twitter">
-                                    </a>
-                                {% endif %}
-                                {% if content.group_social_media_links.mail | render is not empty  %}
-                                    <a class="item-social icon-email"
-                                       rel="nofollow"
-                                       href="mailto:{{ content.group_social_media_links.mail }}"
-                                       data-description="{{ author_name }}" data-social-type="email">
-                                    </a>
-                                {% endif %}
-                                </span>
-                    </div>
+                                    {% if content.group_social_media_links.field_social_facebook | render is not empty  %}
+                                        <a class="item-social icon-facebook"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_facebook }}"
+                                           target="_blank"
+                                           data-description="{{ author_name }}" data-social-type="facebook">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_pinterest | render is not empty  %}
+                                        <a class="item-social icon-pinterest"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_pinterest }}"
+                                           target="_blank"
+                                           data-description="{{ author_name }}" data-social-type="pinterest">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_twitter | render is not empty  %}
+                                        <a class="item-social icon-twitter"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_twitter }}"
+                                           target="_blank"
+                                           data-description="{{ author_name }}" data-social-type="twitter">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_email | render is not empty  %}
+                                        <a class="item-social icon-email"
+                                           rel="nofollow"
+                                           href="mailto:{{ content.group_social_media_links.field_social_email }}"
+                                           data-description="{{ author_name }}" data-social-type="email">
+                                        </a>
+                                    {% endif %}
+                                    </span>
+                        </div>
+                    {% endif %}
+                    {% if content.group_social_media_misc is defined %}
                     <div class="item-author__socials-misc">
-                        {% if content.group_social_media_links.field_social_snapchat | render is not empty  %}
+                        {% if content.group_social_media_misc.field_social_snapchat | render is not empty  %}
                             <div class="item-author__socials-misc-item item-author__snapchat">
                                 <span>Snapchat:</span> <a
-                                        href="https://www.snapchat.com/add/{{ content.group_social_media_links.field_social_snapchat }}"
-                                        target="_blank" rel="nofollow">@{{ content.group_social_media_links.field_social_snapchat }}</a></div>
+                                        href="https://www.snapchat.com/add/{{ content.group_social_media_misc.field_social_snapchat }}"
+                                        target="_blank" rel="nofollow">@{{ content.group_social_media_misc.field_social_snapchat }}</a></div>
                         {% endif %}
-                        {% if content.group_social_media_links.field_social_blog | render is not empty %}
+                        {% if content.group_social_media_misc.field_social_blog | render is not empty %}
                             <div class="item-author__socials-misc-item item-author__blog"><span>Webseite:</span> <a
-                                        href="{{ content.group_social_media_links.field_social_blog }}" target="_blank"
-                                        rel="nofollow">{{ content.group_social_media_links.field_social_blog }}</a>
+                                        href="{{ content.group_social_media_misc.field_social_blog }}" target="_blank"
+                                        rel="nofollow">{{ content.group_social_media_misc.field_social_blog }}</a>
                             </div>
                         {% endif %}
                     </div>
+                    {% endif %}
                 </div>
             {% endblock %}
         </div>
