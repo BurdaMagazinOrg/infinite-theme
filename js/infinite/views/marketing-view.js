@@ -147,7 +147,7 @@
         disableView: function () {
             if (this.$el.hasClass('ad-bsad') || !this.enabled) return;
 
-            if (this.$el.hasClass('region-full-content') && tmpHeight != 0) {
+            if (this.$el.hasClass('region-full-content')) {
                 //var tmpHeight = this.$adSlotContainer.height();
                 //this.$adSlotContainer.css('height', this.$adSlotContainer.height());
                 this.$adSlotContainer.empty();
