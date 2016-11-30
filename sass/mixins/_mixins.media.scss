@@ -143,7 +143,7 @@
     position: static;
   }
 
-  img {
+  img, amp-img {
     @extend %img-full-responsive;
     //@include animation(fadeIn $transition-duration $transition-easing $transition-duration both);
   }
