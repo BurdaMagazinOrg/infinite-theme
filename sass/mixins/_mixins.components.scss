@@ -4,8 +4,8 @@
   $size-desktop: nth($sizes, 3);
 
   li {
-    @include inline-block();
     @include text-helper($breadcrumb-font-id);
+    display: inline-block;
     position: relative;
     text-transform: uppercase;
     vertical-align: middle;

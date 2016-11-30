@@ -1,0 +1,36 @@
+@mixin ads-native() {
+  .item-marketing-sponsored {
+    margin-bottom: $gap-section;
+  }
+
+  .item-marketing-advertorial {
+    @include text-helper($label--advertorial-font-id, $label--advertorial-size);
+    color: $label--advertorial-color;
+    text-transform: $label--advertorial-text-transform;
+  }
+
+  .item-marketing-native {
+    .logo {
+      margin-bottom: 5px;
+    }
+
+    .logo, .brand {
+      vertical-align: top;
+      display: inline-block;
+      height: 20px;
+    }
+
+    .separator {
+      margin: 0 1px 0 3px;
+      font-family: $font-content-bold;
+      vertical-align: middle;
+      display: inline-block;
+      padding-top: 4px;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}

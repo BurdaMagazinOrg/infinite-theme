@@ -10,7 +10,7 @@
   #{$container} {
     @include user-select(none);
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: $icons-font-family !important;
+    font-family: $icons-font-family; //important removed
     speak: none;
     font-style: normal;
     font-weight: normal;
