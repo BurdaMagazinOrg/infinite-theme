@@ -196,7 +196,9 @@
                 $.proxy(function (pEvent) {
                     var $tmpElement = $(pEvent.currentTarget),
                         url = $tmpElement.attr('data-external-url'),
-                        target = $tmpElement.attr('data-target') || 'blank';
+                        target = $tmpElement.attr('data-target') || '_blank';
+
+                    console.log("updateExternalURL >>> URL", url, "TARGET", target);
 
                     window.open(url, target);
                 }, this));
