@@ -27,14 +27,22 @@
     {% if author_id != 0 %}
         {{ author_picture }}
         {% if datetime and timestamp %}
-            <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+            {% if use_absolute_date %}
+                <time itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp | format_date('custom', 'd. F Y') }}</time>
+            {% else %}
+                <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+            {% endif %}
         {% endif %}
         </div> {# TODO: opened in user--author-teaser.html.twig #}
     {% else %}
         <div class="caption">
-        {% if datetime and timestamp %}
-            <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
-        {% endif %}
+            {% if datetime and timestamp %}
+                {% if use_absolute_date %}
+                    <time itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp | format_date('custom', 'd. F Y') }}</time>
+                {% else %}
+                    <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+                {% endif %}
+            {% endif %}
         </div>
     {% endif %}
 </div>
