@@ -66,7 +66,7 @@
   }
 
   & > .item-paragraph--spotlight:first-child {
-    @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
+    //@include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
   }
 
   .item-group--outer-wrapper {
