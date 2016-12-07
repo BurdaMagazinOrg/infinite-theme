@@ -638,6 +638,7 @@
     color: $quote__title-color--article;
     font-style: $quote__title-font-style--article;
     padding: $quote__title-padding--article;
+    display: inline-block;
 
     &:before {
       content: $quote__quote-before--article;
@@ -681,7 +682,7 @@
   }
 
   @media (min-width: $screen-xs-min) {
-    .item-quote__text, footer {
+    .item-quote__text {
       max-width: $quote__title-max-width--article;
     }
   }
