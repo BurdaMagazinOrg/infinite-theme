@@ -889,7 +889,7 @@ $quote__quote-line-height--article: 0 !default;
 $quote__quote-before--article: "\00bb" !default;
 $quote__quote-after--article: "\00ab" !default;
 $quote__quote-before-padding--article: 0 10px 0 0 !default;
-$quote__quote-after-padding--article: 0 0 0 10px !default;
+$quote__quote-after-padding--article: 10px 0 0 10px !default;
 
 $quote__author-font-id--article: $font-tiny-id !default;
 $quote__author-size--article-mobile: $title-size-xxs !default;

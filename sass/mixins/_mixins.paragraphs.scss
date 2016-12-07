@@ -624,7 +624,7 @@
     display: block;
   }
 
-  p:before, p:after {
+  .item-quote__text:before, .item-quote__text:after {
     @include text-helper($quote__quote-font-id--article);
     color: $quote__quote-color--article;
     font-style: $quote__title-font-style--article;
@@ -633,7 +633,7 @@
     display: $quote__quote-display--article;
   }
 
-  p {
+  .item-quote__text {
     @include text-helper($quote__title-font-id--article);
     color: $quote__title-color--article;
     font-style: $quote__title-font-style--article;
@@ -666,12 +666,12 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    p:before, p:after {
+    .item-quote__text:before, .item-quote__text:after {
       @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-mobile--article, $quote__quote-line-height--article);
     }
 
     //called title
-    p {
+    .item-quote__text {
       @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
     }
 
@@ -681,17 +681,17 @@
   }
 
   @media (min-width: $screen-xs-min) {
-    p, footer {
+    .item-quote__text, footer {
       max-width: $quote__title-max-width--article;
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    p:before, p:after {
+    .item-quote__text:before, .item-quote__text:after {
       @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-tablet--article, $quote__quote-line-height--article);
     }
 
-    p {
+    .item-quote__text {
       @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
     }
 
@@ -701,11 +701,11 @@
   }
 
   @media (min-width: $screen-md-min) {
-    p:before, p:after {
+    .item-quote__text:before, .item-quote__text:after {
       @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-desktop--article, $quote__quote-line-height--article);
     }
 
-    p {
+    .item-quote__text {
       @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
     }
 

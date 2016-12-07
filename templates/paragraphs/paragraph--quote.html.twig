@@ -47,8 +47,13 @@ view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
 {% endif %}
 
 <blockquote {{ attributes.addClass(classes) }}>
-    {{ content | without('field_quote_author') }}
+    {{ content.field_title }}
+
+    <div class="item-quote__text">
+        {{ content.field_text }}
+    </div>
+
     {% if content.field_quote_author %}
-    <footer>{{ content.field_quote_author }}</footer>
+    <footer class="item-quote__author">{{ content.field_quote_author }}</footer>
     {% endif %}
 </blockquote>

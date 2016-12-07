@@ -42,6 +42,11 @@
       left: 5px;
     }
   }
+
+  @media (max-width: 350px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @include ads-native();
@@ -141,7 +146,7 @@
 }
 
 .region-feed > .ad-bdsa .ad-js-active {
-  @include _margin--v(bottom,  ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop));
+  @include _margin--v(bottom, ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop));
 }
 
 .teaser-list-large {
