@@ -128,9 +128,11 @@
             {% endblock %}
         </div>
 
-        {{ content.field_paragraphs }}
+        {% block content_block %}
+            {{ content.field_paragraphs }}
+        {% endblock %}
 
-        <h3 class="text-headline item-author__article-title"><span>Artikel von {{ author_name }}</span></h3>
+        {% block author_articles_title_block %}{% endblock %}
 
     </div>
 </div>
