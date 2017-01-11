@@ -23,12 +23,6 @@
 'item-content__content'
 ] %}
 
-{% if content.field_forename %}
-    {% set author_name = content.field_forename | render ~ " " ~ content.field_surname | render %}
-{% else %}
-    {% set author_name = content.first_name | render ~ " " ~ content.last_name | render %}
-{% endif %}
-
 <div class="region-full-content item-content item-content--user no-v-padding">
     {% block content_header_block %}{% endblock %}
 
@@ -39,9 +33,9 @@
                 {{ content.user_picture }}
             </div>
             {% if content.has_header_block %}
-                <h2 class="item-author__name">{{ author_name }}</h2>
+                <h2 class="item-author__name">{{ content.field_full_name }}</h2>
             {% else %}
-                <h1 class="item-author__name">{{ author_name }}</h1>
+                <h1 class="item-author__name">{{ content.field_full_name }}</h1>
             {% endif %}
             <div class="item-author__job">
                 {{ content.field_job_title }}
@@ -55,7 +49,7 @@
 
                     {% if content.group_social_media_links is defined or content.group_social_media_misc is defined %}
                         {% block user_author_socials_title %}
-                            <div class="item-author__socials-title">Folgen Sie <span>{{ author_name }}</span></div>
+                            <div class="item-author__socials-title">Folgen Sie <span>{{ content.field_full_name }}</span></div>
                         {% endblock %}
                         {% if content.group_social_media_links is defined %}
                             <div class="item-author__socials-icons socials socials-bar">
@@ -65,7 +59,7 @@
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_instagram }}"
                                            target="_blank"
-                                           data-description="{{ author_name }}" data-social-type="instagram">
+                                           data-description="{{ content.field_full_name }}" data-social-type="instagram">
                                         </a>
                                     {% endif %}
                                     {% if content.group_social_media_links.field_social_facebook | render is not empty %}
@@ -73,7 +67,7 @@
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_facebook }}"
                                            target="_blank"
-                                           data-description="{{ author_name }}" data-social-type="facebook">
+                                           data-description="{{ content.field_full_name }}" data-social-type="facebook">
                                         </a>
                                     {% endif %}
                                     {% if content.group_social_media_links.field_social_pinterest | render is not empty %}
@@ -81,7 +75,7 @@
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_pinterest }}"
                                            target="_blank"
-                                           data-description="{{ author_name }}" data-social-type="pinterest">
+                                           data-description="{{ content.field_full_name }}" data-social-type="pinterest">
                                         </a>
                                     {% endif %}
                                     {% if content.group_social_media_links.field_social_twitter | render is not empty %}
@@ -89,14 +83,14 @@
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_twitter }}"
                                            target="_blank"
-                                           data-description="{{ author_name }}" data-social-type="twitter">
+                                           data-description="{{ content.field_full_name }}" data-social-type="twitter">
                                         </a>
                                     {% endif %}
                                     {% if content.group_social_media_links.field_social_email | render is not empty %}
                                         <a class="item-social icon-email"
                                            rel="nofollow"
                                            href="mailto:{{ content.group_social_media_links.field_social_email }}"
-                                           data-description="{{ author_name }}" data-social-type="email">
+                                           data-description="{{ content.field_full_name }}" data-social-type="email">
                                         </a>
                                     {% endif %}
                                 </span>
