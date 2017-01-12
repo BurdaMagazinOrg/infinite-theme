@@ -7,6 +7,20 @@
  */
 function infinite_form_system_theme_settings_alter(&$form, &$form_state) {
 
+  /*--------------- General Settings ----------------*/
+  $form['settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Infinite theme settings'
+  );
+
+  $form['settings']['facebook_lang'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook SDK language code'),
+    '#description' => t('Enter a language code, so that FB plugins and buttons show up localised. See here for more info: <a href="https://developers.facebook.com/docs/internationalization">Facebook Documentation</a>'),
+    '#size' => 40,
+    '#default_value' => theme_get_setting('facebook_lang')
+  );
+
   /*--------------- Share button Settings --------------*/
   $form['share'] = array(
     '#type' => 'fieldset',

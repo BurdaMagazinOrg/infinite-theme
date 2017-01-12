@@ -55,7 +55,9 @@ function infinite_preprocess_html(&$variables) {
     }
 
     if (isset($metatags['fb_app_id'])) {
-      $variables['fb_vars'] = ['fb_app_id' => $metatags['fb_app_id']];
+      $fb_lang = theme_get_setting('facebook_lang');
+      $fb_lang = !empty($fb_lang) ? $fb_lang : 'en_US';
+      $variables['fb_vars'] = ['fb_app_id' => $metatags['fb_app_id'], 'fb_lang' => $fb_lang];
     }
     $variables['gtm_vars'] = ['gtm_id' => theme_get_setting('gtm_id')];
   }
