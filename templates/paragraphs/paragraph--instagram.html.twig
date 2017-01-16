@@ -46,7 +46,10 @@
         {% endif %}
     {% endblock %}
 
-    {% if content.instagram %}
+    {% if content.field_media %}
+        {{ content.field_media }}
+    {% else %}
         {{ content.instagram }}
     {% endif %}
+
 {% endblock %}
