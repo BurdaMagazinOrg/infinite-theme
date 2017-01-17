@@ -46,7 +46,10 @@
         {% endif %}
     {% endblock %}
 
-    {% if pinit_url %}
+    {% if content.field_media %}
+        {{ content.field_media }}
+    {% else %}
         <a data-pin-do="embedPin" data-pin-width="medium" href="{{ pinit_url }}"></a>
     {% endif %}
+
 {% endblock %}
