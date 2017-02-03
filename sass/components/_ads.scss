@@ -6,6 +6,10 @@
   //max-height: 0;
   overflow: hidden;
 
+  //needed for ad-sizes
+  padding-left: 0;
+  padding-right: 0;
+
   &.ad-active {
     background-color: $bg-color-gray-light;
     //todo check this after deployment
@@ -43,9 +47,12 @@
     }
   }
 
-  @media (max-width: 350px) {
-    padding-left: 0;
-    padding-right: 0;
+  $ad-width: 728px;
+  $tablet-gap: round((($screen-sm-min) - $ad-width)  / 2);
+  $tablet-ad-breakpoint-max-width: ($ad-width + ($container-h-gap--tablet*2));
+  @media (min-width: 351px) and (max-width: $tablet-ad-breakpoint-max-width) {
+    padding-left: $tablet-gap;
+    padding-right: $tablet-gap;
   }
 }
 
