@@ -34,9 +34,9 @@
   cursor: pointer;
   border-radius: $socials-default-border-radius;
 
-  &:hover {
-    background-color: transparent;
-  }
+  //&:hover {
+  //  background-color: transparent;
+  //}
 }
 
 @mixin socials-default-items() {
