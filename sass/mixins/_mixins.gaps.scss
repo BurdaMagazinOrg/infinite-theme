@@ -29,7 +29,7 @@
   $gap-tablet: nth($gaps, 2);
   $gap-desktop: nth($gaps, 3);
 
-  @media (max-width: $screen-xxs-max) {
+  @media (max-width: $screen-xs-max) {
     margin-top: round($gap-mobile);
     padding-top: round($gap-mobile);
   }

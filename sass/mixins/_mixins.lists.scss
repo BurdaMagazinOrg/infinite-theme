@@ -1,7 +1,7 @@
 @mixin list__images--horizontal() {
   @include clearfix();
 
-  @media (min-width: $screen-xxs-min) and (max-width: $screen-xs-max) {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
     margin-left: -$teaser-list-h-teaser-gap-mobile;
     margin-right: -$teaser-list-h-teaser-gap-mobile;
   }
@@ -18,7 +18,7 @@
 }
 
 @mixin list__images--horizontal__item() {
-  @media (min-width: $screen-xxs-min) and (max-width: $screen-xs-max) {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
     padding-left: $teaser-list-h-teaser-gap-mobile;
     padding-right: $teaser-list-h-teaser-gap-mobile;
   }
@@ -81,7 +81,6 @@
   }
 
   a {
-    color: inherit;
     display: inline-block;
     cursor: pointer;
     width: 100%;

@@ -3,7 +3,7 @@
 }
 
 .item-content__header {
-  @media (max-width: $screen-xxs-max) {
+  @media (max-width: $screen-xs-max) {
     .author {
       margin-top: $gap-size-sm;
     }

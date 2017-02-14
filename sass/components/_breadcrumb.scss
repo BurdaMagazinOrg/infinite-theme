@@ -1,6 +1,6 @@
 .breadcrumb {
   li {
-    @include inline-block();
+    display: inline-block;
     @extend %text-label;
     @extend %text-label-size-medium;
     position: relative;

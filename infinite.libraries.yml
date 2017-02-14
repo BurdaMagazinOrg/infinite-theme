@@ -5,10 +5,10 @@ infinite.external:
 infinite.libs:
   js:
     bower_components/jQuery.dotdotdot/src/jquery.dotdotdot.min.js: {}
-    bower_components/waypoints/lib/jquery.waypoints.min.js: {}
-    js/infinite/libs/shortuts/infinite_custom.js: {}
-    bower_components/waypoints/shortcuts/sticky.min.js: {}
-    bower_components/waypoints/shortcuts/inview.min.js: {}
+    bower_components/waypoints/lib/jquery.waypoints.js: {}
+    bower_components/waypoints/lib/shortcuts/sticky.js: {}
+    bower_components/waypoints/lib/shortcuts/inview.js: {}
+    js/infinite/libs/shortcuts/infinite_custom.js: {}
     bower_components/jquery.easing/js/jquery.easing.min.js: {}
     bower_components/jquery-timeago/jquery.timeago.js: {}
     bower_components/swiper/dist/js/swiper.jquery.min.js: {}

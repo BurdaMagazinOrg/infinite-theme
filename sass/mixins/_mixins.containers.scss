@@ -1,6 +1,6 @@
 
 @mixin container-v-padding($type: padding, $direction: top) {
-  @media (max-width: $screen-xxs-max) {
+  @media (max-width: $screen-xs-max) {
     #{$type}-#{$direction}: $gap-v-region-mobile;
   }
 
