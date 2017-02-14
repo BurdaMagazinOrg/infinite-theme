@@ -2,6 +2,8 @@
 
 awesome Drupal 8 theme delivered with Thunder CMS.
 
+![Theme preview](./images/infinite.png)
+
 ### Installation
 
 1. go to theme path in bash: `cd docroot/themes/contrib/infinite_theme` 
@@ -9,7 +11,8 @@ awesome Drupal 8 theme delivered with Thunder CMS.
 
 ### Development
 
-`gulp` build theme for production use (starting after npm install)
-`gulp watch` auto-builds if detected change in sass / templates / js and reload browser thanks BrowserSync
-`gulp sass --dev` generate readable CSS with source maps
-`gulp bower` just run bower.json update
+- `gulp` build theme for production use (starting after npm install)
+- `gulp watch` auto-builds if detected change in sass / templates / js and reload browser thanks BrowserSync 
+- `gulp watch --http://yourhost.local:8888` quick way without user input
+- `gulp sass --dev` generate readable CSS with source maps
+- `gulp bower` just run bower.json update

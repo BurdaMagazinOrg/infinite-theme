@@ -7,8 +7,7 @@ var gulp            = require('gulp'),
     prefixer	    = require('gulp-autoprefixer'),
     readlineSync    = require('readline-sync'),
     browserSync     = require('browser-sync').create(),
-    environments    = ['dev', 'stage', 'prod'],
-    environment     = environments[3];
+    environments    = ['dev', 'stage', 'prod'];
 
 
 gulp.task('bower', function()
@@ -22,7 +21,7 @@ gulp.task('bower', function()
 gulp.task('copy-fonts', function ()
 {
     return gulp.src(["./bower_components/ionicons/fonts/*"])
-               .pipe(gulp.dest('./fonts/ionicons'));
+        .pipe(gulp.dest('./fonts/ionicons'));
 });
 
 
@@ -63,7 +62,11 @@ gulp.task('sass', function ()
 gulp.task('watch', function ()
 {
     browserSync.init({
-        proxy: readlineSync.question('Virtual host (e.g. http://thunder.dev:8888): ')
+        proxy: (
+            process.argv[3] ?
+            process.argv[3].split('--')[1] :
+            readlineSync.question('Virtual host (e.g. http://thunder.dev:8888): ')
+        )
     });
 
     gulp.watch('./sass/**.s+(a|c)ss', ['sass'])
