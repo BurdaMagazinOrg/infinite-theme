@@ -1,10 +1,14 @@
+logo:
+  path: themes/contrib/infinite_theme/images/logo.svg
+  use_default: false
+
 gtm_id: ''
 facebook_share_button: 'Share'
 whatsapp_share_button: 'Share'
 whatsapp_share_text: ''
 pinterest_share_button: 'Pin'
 twitter_share_button: 'Tweet'
-twitter_share_via: ''
+twitter_share_via: 'ThunderCoreTeam'
 email_share_button: 'Mail'
 email_share_text: ''
 email_subject: ''

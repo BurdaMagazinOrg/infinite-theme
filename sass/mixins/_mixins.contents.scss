@@ -131,12 +131,12 @@
     }
 
     .col--left {
-      @include make-xxs-column(10);
+      @include make-xs-column(10);
       text-align: right;
     }
 
     .col--right {
-      @include make-xxs-column(14);
+      @include make-xs-column(14);
     }
 
     .block--archive-tree-ym {
@@ -241,7 +241,7 @@
     }
 
     .item-content__row-col {
-      @include make-xxs-column($grid-columns/2);
+      @include make-xs-column($grid-columns/2);
     }
 
     .col--left {

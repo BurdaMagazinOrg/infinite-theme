@@ -1,0 +1,22 @@
+{
+  "name": "infinite_theme",
+  "version": "0.0.1",
+  "description": "Drupal Theme delivered with Thunder",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "gulp"
+  },
+  "dependencies": {
+    "bower": "1.8.0",
+    "browser-sync": "^2.18.5",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-bower": "0.0.13",
+    "gulp-concat": "~2.6.0",
+    "gulp-concat-css": "~2.2.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "~2.1.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-sourcemaps": "~1.6.0"
+  }
+}

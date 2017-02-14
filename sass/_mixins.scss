@@ -1,4 +1,5 @@
-@import "bootstrap/mixins";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "mixins/mixins.compass";
 @import "mixins/mixins.shorthand";
 @import "mixins/mixins.gaps";
 @import "mixins/mixins.common";
@@ -27,4 +28,4 @@
 @import "mixins/pages/mixins.page-vocabulary";
 @import "mixins/pages/mixins.page-taxonomy";
 @import "mixins/pages/mixins.page-front";
-@import "mixins/pages/mixins.page-article";
+@import "mixins/pages/mixins.page-article";  ;

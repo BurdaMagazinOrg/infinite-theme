@@ -1,5 +1,5 @@
-@import "bootstrap/variables";
-@import "ionicons/ionicons-variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../bower_components/ionicons/scss/ionicons-variables";
 
 $content-max-width: 1128px !default;
 
@@ -422,7 +422,20 @@ $zindex-modal: 11;
 $teaser-list-horizontal-count-default: 4 !default;
 $teaser-hover-opacity: 0.85 !default;
 
+/** old bootstrap variables fixing **/
+$screen-xl:                 1450px !default;
+$screen-xl-min:             $screen-xl !default;
+$screen-xxs-min:            $screen-xs;
+$screen-xxs-max:            ($screen-xs-min - 1);
+$screen-lg-max:             ($screen-xl-min - 1) !default;
+
+/** compass fixing */
+$default-translate-x: 1em;
+$default-translate-y: $default-translate-x;
+$default-translate-z: $default-translate-x;
+
 /** bootstrap overrides **/
+$grid-columns: 24;
 $grid-gutter-width: 24px;
 $state-danger-text: #ea331e;
 $alert-danger-border: #ea331e;
