@@ -1,6 +1,6 @@
 # Infinite
 
-awesome Drupal 8 theme delivered with Thunder CMS.
+awesome Drupal 8 theme delivered with [Thunder CMS](http://www.thunder.org).
 
 ![Theme preview](./images/infinite.png)
 
