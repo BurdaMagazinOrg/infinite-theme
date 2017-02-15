@@ -1,5 +1,9 @@
 # Infinite
 
+[![Total Downloads](https://poser.pugx.org/burdamagazinorg/infinite_theme/downloads?format=flat-square)](https://packagist.org/packages/burdamagazinorg/infinite_theme)
+[![Monthly Downloads](https://poser.pugx.org/burdamagazinorg/infinite_theme/d/monthly?format=flat-square)](https://packagist.org/packages/burdamagazinorg/infinite_theme)
+[![License](https://poser.pugx.org/burdamagazinorg/infinite_theme/license?format=flat-square)](https://packagist.org/packages/burdamagazinorg/infinite_theme)
+
 awesome Drupal 8 theme delivered with [Thunder CMS](http://www.thunder.org).
 
 ![Theme preview](./images/infinite.png)
