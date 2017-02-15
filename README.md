@@ -16,7 +16,9 @@ awesome Drupal 8 theme delivered with [Thunder CMS](http://www.thunder.org).
 ### Development
 
 - `gulp` build theme for production use (starting after npm install)
+- `gulp bower` just run bower.json update
+- `gulp sass` generate compressed CSS for production use
+- `gulp sass --dev` generate readable CSS with source maps
 - `gulp watch` auto-builds if detected change in sass / templates / js and reload browser thanks BrowserSync 
 - `gulp watch --http://yourhost.local:8888` quick way without user input
-- `gulp sass --dev` generate readable CSS with source maps
-- `gulp bower` just run bower.json update
+- `gulp watch --http://yourhost.local:8888 --dev` quick development sass

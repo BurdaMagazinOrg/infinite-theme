@@ -27,7 +27,7 @@ gulp.task('copy-fonts', function ()
 
 gulp.task('sass', function ()
 {
-    if(process.argv[3] === '--' + environments[0])
+    if(process.argv[3] || process.argv[4] === '--' + environments[0])
     {
         return gulp
             .src('./sass/infinite-global.scss')
@@ -69,14 +69,14 @@ gulp.task('watch', function ()
         )
     });
 
-    gulp.watch('./sass/**.s+(a|c)ss', ['sass'])
+    gulp.watch('./sass/**', ['sass'])
         .on('change', browserSync.reload);
 
-    gulp.watch('./js/**.js')
+    gulp.watch('./js/**')
         .on('change', browserSync.reload);
 
     // basic shared tpls
-    gulp.watch('./templates/**.html.twig')
+    gulp.watch('./templates/**')
         .on('change', browserSync.reload);
 });
 
