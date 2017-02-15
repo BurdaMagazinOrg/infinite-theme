@@ -1,10 +1,7 @@
 <?php
 
-use Drupal\Core\Url;
 use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
-use Drupal\user\Entity\User;
-use Drupal\node\Entity\Node;
 use Drupal\image\Entity\ImageStyle;
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
@@ -85,7 +82,7 @@ function infinite_preprocess_html(&$variables) {
 }
 
 function infinite_preprocess_node(&$variables) {
-  /* @var Node $node */
+  /* @var Drupal\node\Entity\Node $node */
   $node = $variables['node'];
 
   // share buttons received from theme settings
