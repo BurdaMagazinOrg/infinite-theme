@@ -18,7 +18,8 @@ gulp.task('bower', function()
 
 gulp.task('copy-fonts', function ()
 {
-    return gulp.src(["./bower_components/ionicons/fonts/*"])
+    return gulp
+        .src(["./bower_components/ionicons/fonts/*"])
         .pipe(gulp.dest('./fonts/ionicons'));
 });
 
