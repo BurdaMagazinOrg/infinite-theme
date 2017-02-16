@@ -1,14 +1,12 @@
 var gulp            = require('gulp'),
-    bower		    = require('gulp-bower'),
-    sequence	    = require('gulp-sequence'),
-    concat		    = require('gulp-concat'),
-    sass		    = require('gulp-sass'),
-    sourcemaps	    = require('gulp-sourcemaps'),
-    prefixer	    = require('gulp-autoprefixer'),
+    bower           = require('gulp-bower'),
+    sequence        = require('gulp-sequence'),
+    concat          = require('gulp-concat'),
+    sass            = require('gulp-sass'),
+    sourcemaps      = require('gulp-sourcemaps'),
+    prefixer        = require('gulp-autoprefixer'),
     readlineSync    = require('readline-sync'),
-    browserSync     = require('browser-sync').create(),
-    environments    = ['dev', 'stage', 'prod'];
-
+    browserSync     = require('browser-sync').create();
 
 gulp.task('bower', function()
 {
@@ -27,7 +25,7 @@ gulp.task('copy-fonts', function ()
 
 gulp.task('sass', function ()
 {
-    if(process.argv[3] || process.argv[4] === '--' + environments[0])
+    if(process.argv[3] === '--' + 'dev' || process.argv[2] === 'watch')
     {
         return gulp
             .src('./sass/infinite-global.scss')
