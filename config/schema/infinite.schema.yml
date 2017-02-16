@@ -1,0 +1,34 @@
+infinite.settings:
+  type: theme_settings
+  label: 'Infinite Settings'
+  mapping:
+    gtm_id:
+      type: string
+      label: 'GTM ID'
+    facebook_share_button:
+      type: string
+      label: 'Facebook share button'
+    whatsapp_share_button:
+      type: string
+      label: 'WhatsApp share button'
+    whatsapp_share_text:
+      type: string
+      label: 'WhatsApp share text'
+    pinterest_share_button:
+      type: string
+      label: 'Pinterest share button'
+    twitter_share_button:
+      type: string
+      label: 'Twitter share button'
+    twitter_share_via:
+      type: string
+      label: 'Twitter share via'
+    email_share_button:
+      type: string
+      label: 'E-Mail share button'
+    email_share_text:
+      type: string
+      label: 'E-Mail share text'
+    email_subject:
+      type: string
+      label: 'E-Mail subject'
