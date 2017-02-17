@@ -1,0 +1,31 @@
+{#
+/**
+ * @file advertising_product.html.twig
+ * Default theme implementation to present Advertising Product data.
+ *
+ * This template is used when viewing Advertising Product pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ * - data_attributes: HTML data-* attributes for tracking properties.
+ *
+ * @see template_preprocess_advertising_product()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content.status %}
+    <div class="item-product--single" {{ data_attributes }}>
+        <div class="img-container">
+            {{ content.product_image }}
+        </div>
+        <div class="caption">
+            <div class="text-brand">{{ content.product_brand }}</div>
+            <div class="text-headline">{{ content.product_name }}</div>
+            <div class="text-price">{{ content.product_price }} {{ formatted_currency }}</div>
+            <div class="text-shop">Zum Shop</div>
+        </div>
+    </div>
+{% endif %}
