@@ -296,8 +296,9 @@
   iframe {
     @include center-block();
     //max-width: 500px;
-    width: 100%;
     box-shadow: none !important;
+    width: 99.9%;
+    width: calc(100% - 2px); //2px border from instagram
   }
 }
 

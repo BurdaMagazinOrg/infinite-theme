@@ -1,47 +1,46 @@
 {#
 /**
  * @file
- * Default theme implementation to present all user data.
- *
- * This template is used when viewing a registered user's page,
- * e.g., example.com/user/123. 123 being the user's ID.
+ * Default theme implementation to present the author of a node.
  *
  * Available variables:
- * - content: A list of content items. Use 'content' to print all content, or
- *   print a subset such as 'content.field_example'. Fields attached to a user
- *   such as 'user_picture' are available as 'content.user_picture'.
- * - attributes: HTML attributes for the container element.
- * - user: A Drupal User entity.
+ * - author_id
+ * - author_forename
+ * - author_surname
+ * - author_url
+ * - author_picture
+ * - timestamp
+ * - use_absolute_date
  *
- * @see template_preprocess_user()
+ * @see template_preprocess_author_teaser()
  *
  * @ingroup themeable
  */
 #}
-{% if author_id != 0 or (datetime and timestamp) %}
+{% if author_id != 0 or (timestamp) %}
 <div class="author item-author"
-        {% if author_id != 0 and (author_forename is not empty or author_surname is not empty) %}
-            data-internal-url="{{ author_url }}"
-        {% endif %}
-        >
+    {% if author_id != 0 and (author_forename is not empty or author_surname is not empty) %}
+        data-internal-url="{{ author_url }}"
+    {% endif %}
+>
 
     {% if author_id != 0 %}
         {{ author_picture }}
-        {% if datetime and timestamp %}
+        {% if timestamp %}
             {% if use_absolute_date %}
-                <time itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp | format_date('custom', 'd. F Y') }}</time>
+                <time itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
             {% else %}
-                <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+                <time class="text-timestamp" itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
             {% endif %}
         {% endif %}
         </div> {# TODO: opened in user--author-teaser.html.twig #}
     {% else %}
         <div class="caption">
-            {% if datetime and timestamp %}
+            {% if timestamp %}
                 {% if use_absolute_date %}
-                    <time itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp | format_date('custom', 'd. F Y') }}</time>
+                    <time itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
                 {% else %}
-                    <time class="text-timestamp" itemprop="date" datetime="{{ datetime }}" title="">{{ timestamp }}</time>
+                    <time class="text-timestamp" itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
                 {% endif %}
             {% endif %}
         </div>
