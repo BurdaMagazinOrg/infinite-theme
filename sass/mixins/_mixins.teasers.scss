@@ -43,7 +43,7 @@
     margin-top: $gap-size-lg;
   }
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: $screen-xxs-max) {
     .author {
       margin-top: $gap-size-xxs;
     }
@@ -63,7 +63,7 @@
     margin-top: 0;
   }
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: $screen-xxs-max) {
     padding-top: $feed-teaser-gap-top-mobile;
     margin-top: $feed-teaser-gap-top-mobile;
   }
@@ -80,7 +80,7 @@
 }
 
 @mixin teaser-feed-large() {
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: $screen-xxs-max) {
     .caption-teaser {
       padding-top: $gap-size-xs;
     }
@@ -115,7 +115,7 @@
     margin-left: -3px;
   }
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: $screen-xxs-max) {
     .caption-teaser {
       padding-top: $gap-size-xs;
     }
