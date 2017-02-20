@@ -1,5 +1,6 @@
 @mixin table--text-block() {
   border-collapse: separate;
+  width: 100%;
 
   caption {
     @extend %title--text-block;
