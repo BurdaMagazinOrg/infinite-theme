@@ -13,6 +13,7 @@
         delegateElements: function ($pElement) {
             var $tmpElement = $pElement || this.$el;
 
+            this.checkNexxVideos($tmpElement);
             this.updateInternalURL($tmpElement);
             this.updateExternalURL($tmpElement);
             this.updateTimeAgo($tmpElement);
@@ -20,6 +21,11 @@
             this.updateSocials($tmpElement);
             this.updateBtnActions($tmpElement);
             this.updateTextActions($tmpElement);
+        },
+        checkNexxVideos: function($pContainer) {
+            if(Drupal.behaviors.nexx != undefined) {
+                Drupal.behaviors.nexx($pContainer, drupalSettings);
+            }
         },
         updateSocials: function ($pContainer) {
             /**
