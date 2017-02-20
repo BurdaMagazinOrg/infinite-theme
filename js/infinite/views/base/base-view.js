@@ -23,7 +23,7 @@
             this.updateTextActions($tmpElement);
         },
         checkNexxVideos: function($pContainer) {
-            console.log(">>>>", Drupal.behaviors.nexx, $pContainer, drupalSettings);
+            console.log(">>>>", Drupal.behaviors.nexx.attach, $pContainer, drupalSettings);
 
             if(Drupal.behaviors.nexx != undefined) {
                 Drupal.behaviors.nexx.attach($pContainer, drupalSettings);
