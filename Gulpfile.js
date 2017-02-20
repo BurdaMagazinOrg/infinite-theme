@@ -12,7 +12,7 @@ gulp.task('bower', function()
 {
     return bower({
         cmd: 'update',
-        interactive: true
+        interactive: false
     });
 });
 
