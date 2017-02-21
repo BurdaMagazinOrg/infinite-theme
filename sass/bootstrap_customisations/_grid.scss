@@ -1,0 +1,41 @@
+// TODO: This doesn't seems to be used
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+.container {
+  @media (min-width: $screen-xxs-min) {
+    width: $container-xxs;
+  }
+  @media (min-width: $screen-xs-min) {
+    width: $container-xs;
+  }
+
+  @media (min-width: $screen-xl-min) {
+    width: $container-xl;
+  }
+  @media (min-width: $screen-xxl-min) {
+    width: $container-xxl;
+  }
+}
+
+// Columns
+//
+// Common styles for small and large grid columns
+@include make-grid(xxs);
+
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+// ORIGINAL SURROUNDED WITH @MEDIA
+@media (min-width: $screen-xs-min) {
+  @include make-grid(xs);
+}
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: $screen-xl-min) {
+  @include make-grid(xl);
+}

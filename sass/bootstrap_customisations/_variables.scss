@@ -1,0 +1,58 @@
+// TODO: check, if we can get rid of other added breakpoints xxs, xl and xxl
+
+// Tiny screen / phone
+//** Deprecated `$screen-xs` as of v3.0.1
+$screen-xxs:                  320px;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xxs-min:              $screen-xxs;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone:               $screen-xxs-min; // OVERRIDE
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                  767px; // OVERRIDE
+
+$screen-xl:                  1450px;
+$screen-xl-min:              $screen-xl;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-xl-desktop:          $screen-xl-min;
+
+$screen-xxl:                 1800px;
+$screen-xxl-min:              $screen-xxl;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-xxl-desktop:          $screen-xxl-min;
+
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xxs-max:             ($screen-xs-min - 1);
+$screen-lg-max:              ($screen-xl-min - 1);
+$screen-xl-max:              ($screen-xxl-min - 1);
+
+
+//** Number of columns in the grid.
+$grid-columns:              24; // OVERRIDE
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         20px; // OVERRIDE
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+$container-phone-xxs:             ($screen-xxs + $grid-gutter-width);
+//** For `$screen-xs-min` and up.
+$container-xxs:                 $container-phone-xxs;
+
+// Small screen / tablet
+$container-phone:             (430px + $grid-gutter-width);
+//** For `$screen-xs-min` and up.
+$container-xs:                 $container-phone;
+
+// Large screen / wide desktop
+$container-xl-desktop:        (1400px + $grid-gutter-width);
+//** For `$screen-lg-min` and up.
+$container-xl:                 $container-xl-desktop;
+
+// Large screen / wide desktop
+$container-xxl-desktop:        (1750px + $grid-gutter-width);
+//** For `$screen-lg-min` and up.
+$container-xxl:                 $container-xxl-desktop;

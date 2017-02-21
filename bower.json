@@ -4,7 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "jquery": "^3.1.1",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "3.3.4",
     "jquery-timeago": "^1.5.4",
     "Ionicons": "ionicons#^2.0.1",
     "jquery.browser": "^0.1.0",

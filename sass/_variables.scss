@@ -1,4 +1,5 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "bootstrap_customisations/variables";
 @import "../bower_components/ionicons/scss/ionicons-variables";
 
 $content-max-width: 1128px !default;
@@ -426,7 +427,6 @@ $teaser-list-horizontal-count-default: 4 !default;
 $teaser-hover-opacity: 0.85 !default;
 
 /** bootstrap overrides **/
-$grid-columns: 24;
 $grid-gutter-width: 24px;
 $state-danger-text: #ea331e;
 $alert-danger-border: #ea331e;
@@ -441,8 +441,6 @@ $input-border-radius-small: 0;
 $input-height-large: 60px;
 
 $padding-large-vertical: 10px;
-
-$screen-xxs-max: 479px;
 
 $screen-lg: $content-max-width;
 $screen-lg-min: $screen-lg;
