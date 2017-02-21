@@ -92,11 +92,11 @@
   @include teaser-square-xs-text();
 
   & > .img-container {
-    @include make-xs-column(6);
+    @include make-xxs-column(6);
   }
 
   & > .caption-teaser {
-    @include make-xs-column(18);
+    @include make-xxs-column(18);
   }
 }
 

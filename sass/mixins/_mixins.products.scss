@@ -56,7 +56,7 @@
     }
 
     .img-container, .caption {
-      @include make-xs-column($grid-columns/2);
+      @include make-xxs-column($grid-columns/2);
     }
 
     .caption {

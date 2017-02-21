@@ -113,7 +113,7 @@
 }
 
 .teaser-portrait-small, .teaser-portrait-medium {
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: $screen-xxs-max) {
     .img-container img {
       width: 75%;
     }
