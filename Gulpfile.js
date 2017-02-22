@@ -1,5 +1,6 @@
 var gulp            = require('gulp'),
     bower           = require('gulp-bower'),
+    mainBowerFiles      = require("main-bower-files"),
     sequence        = require('gulp-sequence'),
     concat          = require('gulp-concat'),
     sass            = require('gulp-sass'),
@@ -13,6 +14,10 @@ gulp.task('bower', function()
     return bower();
 });
 
+gulp.task("copy-bower-files", function() {
+    gulp.src(mainBowerFiles({ checkExistence: true }), { base: './bower_components' })
+      .pipe(gulp.dest("./lib"))
+})
 
 gulp.task('sass', function ()
 {
@@ -72,5 +77,5 @@ gulp.task('watch', function ()
 
 gulp.task('default', function(callback)
 {
-    sequence('bower', 'sass')(callback)
+    sequence('bower','copy-bower-files', 'sass')(callback)
 });
