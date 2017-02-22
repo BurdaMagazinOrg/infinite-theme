@@ -47,5 +47,4 @@ drupal/sites/simpletest
 bower_components
 node_modules
 legacy_files
-css/*.css
 css/*.css.map
