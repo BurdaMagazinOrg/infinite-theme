@@ -7,7 +7,8 @@
   }
 
   .menu-item {
-    @include inline-block();
+    display: inline-block;
+    vertical-align: middle;
     @extend %text-label;
     @extend %text-label-size-large;
     color: $text-color;

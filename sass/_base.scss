@@ -1,9 +1,7 @@
-@import "compass";
-@import "compass/reset";
-
 @import "bootstrap";
+@import "bootstrap_customisations";
 @import "reset";
-//@import "ionicons/ionicons";
+//@import "../bower_components/ionicons/scss/ionicons";
 @import "helper";
 @import "mixins";
 @import "extends";

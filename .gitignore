@@ -43,5 +43,9 @@ drupal/sites/simpletest
 # Ignore SimpleTest multi-site environment.
 # simpletest
 
-
+# ignore bower libs
+bower_components
+node_modules
 legacy_files
+css/*.css
+css/*.css.map

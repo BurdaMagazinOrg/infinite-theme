@@ -26,7 +26,7 @@
   }
 
   .h-line {
-    @include transition(all 1s $transition-easing $transition-duration);
+    transition: all 1s $transition-easing $transition-duration;
     display: inline-block;
     border-bottom: $h-line-style;
     width: 0;
@@ -48,16 +48,16 @@
 }
 
 #modal-search-input {
-  @include transition(all 0.5s $transition-easing 1s);
+  transition: all 0.5s $transition-easing 1s;
   @include opacity(0);
-  @include translateY(200%);
+  transform: translateY(200%);
   width: 100%;
   text-align: center;
 }
 
 #modal-search-description {
-  @include transition(all 0.5s $transition-easing 1s);
-  @include translateY(-(200%));
+  transition: all 0.5s $transition-easing 1s;
+  transform: translateY(-200%);
   @include opacity(0);
   color: $gray-base;
 
@@ -70,7 +70,7 @@
   }
 
   .message-char-length {
-    @include transition(all $transition-duration $transition-easing);
+    transition: all $transition-duration $transition-easing;
     @include fade-out();
 
     font-size: $font-size-small;
@@ -97,12 +97,12 @@
 
     #modal-search-input {
       @include opacity(1);
-      @include translateY(0);
+      transform: translateY(0);
     }
 
     #modal-search-description {
       @include opacity(1);
-      @include translateY($label-size-medium);
+      transform: translateY($label-size-medium);
     }
   }
 

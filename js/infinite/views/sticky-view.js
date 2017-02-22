@@ -105,6 +105,7 @@
             this.onStickyHandler();
         },
         onStickyHandler: function (pDirection) {
+            this.$el.parent().attr('style', '');
             if (this.$el.hasClass('stuck')) {
                 this.$el.css('top', this.offsetTop + AppConfig.padding);
             } else {

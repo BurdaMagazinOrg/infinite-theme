@@ -1,5 +1,6 @@
-@import "bootstrap/variables";
-@import "ionicons/ionicons-variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "bootstrap_customisations/variables";
+@import "../bower_components/ionicons/scss/ionicons-variables";
 
 $content-max-width: 1128px !default;
 

@@ -1,0 +1,160 @@
+// TODO: This doesn't seems to be used
+
+// Visibility utilities
+// Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
+@include responsive-invisibility('.visible-xxs');
+@include responsive-invisibility('.visible-xl');
+@include responsive-invisibility('.visible-xxl');
+
+.visible-xxs-block,
+.visible-xxs-inline,
+.visible-xxs-inline-block,
+.visible-xl-block,
+.visible-xl-inline,
+.visible-xl-inline-block // TODO: the following empty line doesn't make sense
+
+.visible-xxl-block,
+.visible-xxl-inline,
+.visible-xxl-inline-block {
+  display: none !important;
+}
+
+@media (max-width: $screen-xxs-max) {
+  @include responsive-visibility('.visible-xxs');
+}
+
+.visible-xxs-block {
+  @media (max-width: $screen-xxs-max) {
+    display: block !important;
+  }
+}
+
+.visible-xxs-inline {
+  @media (max-width: $screen-xxs-max) {
+    display: inline !important;
+  }
+}
+
+.visible-xxs-inline-block {
+  @media (max-width: $screen-xxs-max) {
+    display: inline-block !important;
+  }
+}
+
+// OVERRIDE
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  @include responsive-visibility('.visible-xs');
+}
+
+// OVERRIDE
+.visible-xs-block {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+    display: block !important;
+  }
+}
+
+// OVERRIDE
+.visible-xs-inline {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+    display: inline !important;
+  }
+}
+
+// OVERRIDE
+.visible-xs-inline-block {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+    display: inline-block !important;
+  }
+}
+
+// OVERRIDE
+@media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+  @include responsive-visibility('.visible-lg');
+}
+
+// OVERRIDE
+.visible-lg-block {
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+    display: block !important;
+  }
+}
+
+// OVERRIDE
+.visible-lg-inline {
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+    display: inline !important;
+  }
+}
+
+// OVERRIDE
+.visible-lg-inline-block {
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+    display: inline-block !important;
+  }
+}
+
+@media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
+  @include responsive-visibility('.visible-xl');
+}
+
+.visible-xl-block {
+  @media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
+    display: block !important;
+  }
+}
+
+.visible-xl-inline {
+  @media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
+    display: inline !important;
+  }
+}
+
+.visible-xl-inline-block {
+  @media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
+    display: inline-block !important;
+  }
+}
+
+@media (min-width: $screen-xxl-min) {
+  @include responsive-visibility('.visible-xxl');
+}
+
+.visible-xxl-block {
+  @media (min-width: $screen-xxl-min) {
+    display: block !important;
+  }
+}
+
+.visible-xxl-inline {
+  @media (min-width: $screen-xxl-min) {
+    display: inline !important;
+  }
+}
+
+.visible-xxl-inline-block {
+  @media (min-width: $screen-xxl-min) {
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: $screen-xxs-max) {
+  @include responsive-invisibility('.hidden-xxs');
+}
+
+// OVERRIDE
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.hidden-xs');
+}
+
+// OVERRIDE
+@media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+  @include responsive-invisibility('.hidden-lg');
+}
+
+@media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
+  @include responsive-invisibility('.hidden-xl');
+}
+
+@media (min-width: $screen-xxl-min) {
+  @include responsive-invisibility('.hidden-xxl');
+}

@@ -108,7 +108,7 @@
   }
 
   .label-menu {
-    @include inline-block();
+    vertical-align: middle;
     @extend %text-label;
     @extend %text-label-size-navigation;
     margin-left: $gap-size-sm;
