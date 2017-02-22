@@ -1,6 +1,6 @@
 var gulp            = require('gulp'),
     bower           = require('gulp-bower'),
-    mainBowerFiles      = require("main-bower-files"),
+    mainBowerFiles  = require("main-bower-files"),
     sequence        = require('gulp-sequence'),
     concat          = require('gulp-concat'),
     sass            = require('gulp-sass'),
