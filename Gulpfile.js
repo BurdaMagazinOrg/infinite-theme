@@ -10,10 +10,7 @@ var gulp            = require('gulp'),
 
 gulp.task('bower', function()
 {
-    return bower({
-        cmd: 'update',
-        interactive: false
-    });
+    return bower();
 });
 
 
