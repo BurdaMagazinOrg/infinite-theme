@@ -4,17 +4,17 @@ infinite.external:
 
 infinite.libs:
   js:
-    bower_components/jQuery.dotdotdot/src/jquery.dotdotdot.min.js: {}
-    bower_components/waypoints/lib/jquery.waypoints.js: {}
-    bower_components/waypoints/lib/shortcuts/sticky.js: {}
-    bower_components/waypoints/lib/shortcuts/inview.js: {}
+    lib/jQuery.dotdotdot/src/jquery.dotdotdot.min.js: {}
+    lib/waypoints/lib/jquery.waypoints.js: {}
+    lib/waypoints/lib/shortcuts/sticky.js: {}
+    lib/waypoints/lib/shortcuts/inview.js: {}
     js/infinite/libs/shortcuts/infinite_custom.js: {}
-    bower_components/jquery.easing/js/jquery.easing.min.js: {}
-    bower_components/jquery-timeago/jquery.timeago.js: {}
-    bower_components/swiper/dist/js/swiper.jquery.min.js: {}
-    bower_components/jquery.browser/dist/jquery.browser.min.js: {}
-    bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js: {}
-    bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js: {}
+    lib/jquery.easing/js/jquery.easing.min.js: {}
+    lib/jquery-timeago/jquery.timeago.js: {}
+    lib/swiper/dist/js/swiper.jquery.min.js: {}
+    lib/jquery.browser/dist/jquery.browser.min.js: {}
+    lib/bootstrap-sass/assets/javascripts/bootstrap/modal.js: {}
+    lib/bootstrap-sass/assets/javascripts/bootstrap/transition.js: {}
 
 
 infinite.init:
