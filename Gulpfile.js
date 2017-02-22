@@ -75,5 +75,5 @@ gulp.task('watch', function ()
 
 gulp.task('default', function(callback)
 {
-    sequence('bower', 'copy-fonts', 'sass')(callback)
+    sequence('bower', 'sass')(callback)
 });
