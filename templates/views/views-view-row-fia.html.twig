@@ -45,7 +45,7 @@
   <link>{{  options.link.url }}</link>
   <guid isPermaLink="false">{{ options.guid }}</guid>
   <pubDate>{{ options.created|date(constant('DATE_RSS')) }}</pubDate>
-  <author>{{  options.author|striptags }}</author>
+  <author>{{  options.author|render|striptags }}</author>
   <description>{{ options.kicker }}</description>
   <content:encoded>
     <![CDATA[
