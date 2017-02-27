@@ -14,6 +14,7 @@
     display: inline-block;
     position: relative;
     font-style: italic;
+    margin: $tags__item-margin-mobile;
 
     &:last-child {
       a:after {
@@ -23,6 +24,7 @@
   }
 
   a {
+    @include text-helper-size($tags__article-font-id, $tags__article-text-size-mobile);
     color: $color-highlighted;
 
     &:after {
@@ -32,38 +34,32 @@
       color: $text-highlighted;
     }
 
-    &:hover {
-      color: $color-highlighted-hover;
+    @if ($is-mobile == false) {
+      &:hover {
+        color: $color-highlighted-hover;
+      }
     }
   }
 
-  @media (max-width: $screen-xs-max) {
-    li {
-      margin: $tags__item-margin-mobile;
+  @if ($is-mobile == false) {
+    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+      li {
+        margin: $tags__item-margin-tablet;
+      }
+
+      a {
+        @include text-helper-size($tags__article-font-id, $tags__article-text-size-tablet);
+      }
     }
 
-    a {
-      @include text-helper-size($tags__article-font-id, $tags__article-text-size-mobile);
-    }
-  }
+    @media (min-width: $screen-md-min) {
+      li {
+        margin: $tags__item-margin-desktop;
+      }
 
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    li {
-      margin: $tags__item-margin-tablet;
-    }
-
-    a {
-      @include text-helper-size($tags__article-font-id, $tags__article-text-size-tablet);
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-    li {
-      margin: $tags__item-margin-desktop;
-    }
-
-    a {
-      @include text-helper-size($tags__article-font-id, $tags__article-text-size-desktop);
+      a {
+        @include text-helper-size($tags__article-font-id, $tags__article-text-size-desktop);
+      }
     }
   }
 }
