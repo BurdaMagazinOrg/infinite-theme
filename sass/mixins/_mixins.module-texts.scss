@@ -50,20 +50,19 @@
 @mixin teaser__text--default() {
   .teaser__overhead {
     @include text-helper($teaser__overhead-font-id--default);
+    @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-mobile--default);
     text-transform: uppercase;
     color: $teaser__overhead-color--default;
     letter-spacing: $teaser__overhead-letter-spacing--default;
 
-    @media (max-width: $screen-xxs-max) {
-      @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-mobile--default);
-    }
+    @if ($is-mobile == false) {
+      @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+        @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-tablet--default);
+      }
 
-    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-      @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-tablet--default);
-    }
-
-    @media (min-width: $screen-md-min) {
-      @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-desktop--default);
+      @media (min-width: $screen-md-min) {
+        @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-desktop--default);
+      }
     }
   }
 
