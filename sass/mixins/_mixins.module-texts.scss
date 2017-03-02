@@ -350,6 +350,10 @@
     position: absolute;
   }
 
+  .img-container {
+    max-width: 100%;
+  }
+
   .text-headline {
     @include text-helper($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-mobile--single-product);
     color: $product__item-text-headline-color--single-product;
