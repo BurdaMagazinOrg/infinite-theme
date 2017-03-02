@@ -330,6 +330,49 @@
   }
 }
 
+@mixin product__item-text--single-product() {
+  text-align: $product-text-align--single-product;
+
+  &:hover {
+    .text-shop {
+      @extend %btn--small--highlighted;
+    }
+  }
+
+  .text-headline {
+    @include text-helper($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-mobile--single-product);
+    color: $product__item-text-headline-color--single-product;
+  }
+
+  .text-brand {
+    @include text-helper($product__item-text-brand-font-id--single-product, $product__item-text-brand-size--single-product);
+    letter-spacing: $product__item-text-brand-letter-spacing--single-product;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $product__item-text-brand-color--single-product;
+  }
+
+  .text-price {
+    @include text-helper($product__item-text-price-font-id--single-product, $product__item-text-price-size--single-product);
+    color: $product__item-text-price-color--single-product;
+    letter-spacing: 1px;
+  }
+
+  .text-shop {
+    @extend %btn--large;
+    -webkit-border-radius: $product__item-btn-radius--single-product;
+    -moz-border-radius: $product__item-btn-radius--single-product;
+    border-radius: $product__item-btn-radius--single-product;
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      @include text-helper-size($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-desktop--single-product);
+    }
+  }
+}
+
 /**
 ** Lists
 **/

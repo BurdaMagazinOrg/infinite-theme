@@ -50,6 +50,10 @@
   @include item-paragraph--tracdelight();
 }
 
+%item-paragraph--single-product {
+  @include item-paragraph--single-product();
+}
+
 %item-paragraph--content-teaser {
   @include item-paragraph--content-teaser();
 }

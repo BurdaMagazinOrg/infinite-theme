@@ -36,17 +36,19 @@
  * @ingroup themeable
  */
 #}
+{% set attributes = attributes.addClass('item-paragraph--' ~ content.field_e_view_mode | render | striptags | trim | replace('_', '-')) %}
 {% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}
 
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
+    {{ content.field_e_view_mode | clean_class }}
     {% if content | render %}
         {% if content.field_title|render %}
             <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
         {% endif %}
         <div class="container-content">
-            {{ content|without('field_title') }}
+            {{ content|without('field_title', 'field_e_view_mode') }}
         </div>
     {% endif %}
 {% endblock %}

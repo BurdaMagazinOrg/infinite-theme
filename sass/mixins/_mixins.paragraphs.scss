@@ -323,6 +323,17 @@
   }
 }
 
+@mixin item-paragraph--single-product() {
+  //.item-title {
+  //  text-align: center;
+  //}
+
+  .container-content {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
 @mixin item-paragraph--tracdelight() {
   @include products--horizontal-block();
 
@@ -342,11 +353,6 @@
     .item-title {
       @extend %title--content-block;
     }
-  }
-
-  .item-product {
-    @include product__item-text();
-    @include product__item--horizontal-block();
   }
 }
 

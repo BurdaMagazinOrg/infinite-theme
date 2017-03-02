@@ -267,6 +267,7 @@ $product__item-lined-mobile: true !default;
 $product__item-text-brand-font-id: $font-label-id !default;
 $product__item-text-brand-size: 13px !default;
 $product__item-text-brand-color: $gray-base !default;
+$product__item-text-brand-letter-spacing: 0.15em !default;
 $product__item-text-brand-gap-bottom: 5px !default;
 
 $product__item-text-headline-font-id: $font-headline-id !default;
@@ -290,6 +291,30 @@ $product__item-text-shipping-font-id: $font-label-id !default;
 $product__item-text-shipping-size: 13px !default;
 $product__item-text-shipping-color: $gray-base !default;
 $product__item-text-shipping-pos-bottom: 40px !default;
+
+/**
+** Single Product
+**/
+$product-padding--single-product: 15px 30px 30px 30px !default;
+$product-border--single-product: $h-line-style !default;
+$product-border-radius--single-product: 0px !default;
+$product-text-align--single-product: center !default;
+
+$product__item-btn-radius--single-product: 0px !default;
+
+$product__item-text-brand-font-id--single-product: $product__item-text-brand-font-id !default;
+$product__item-text-brand-size--single-product: 15px !default;
+$product__item-text-brand-color--single-product: $product__item-text-brand-color !default;
+$product__item-text-brand-letter-spacing--single-product: $product__item-text-brand-letter-spacing !default;
+
+$product__item-text-headline-font-id--single-product: $product__item-text-headline-font-id !default;
+$product__item-text-headline-color--single-product: $product__item-text-headline-color !default;
+$product__item-text-headline-size-mobile--single-product: $title-size-xs !default;
+$product__item-text-headline-size-desktop--single-product: $title-size-sm !default;
+
+$product__item-text-price-font-id--single-product: $product__item-text-price-font-id !default;
+$product__item-text-price-size--single-product: 20px !default;
+$product__item-text-price-color--single-product: $product__item-text-price-color !default;
 
 /**
 ** Labels

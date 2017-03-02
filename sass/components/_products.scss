@@ -1,0 +1,9 @@
+.item-product {
+  @include product__item-text();
+  @include product__item--horizontal-block();
+}
+
+.item-product--single {
+  @include product__item-text--single-product();
+  @include product__item--single-product();
+}

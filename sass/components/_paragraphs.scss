@@ -47,10 +47,6 @@
   @extend %item-paragraph--twitter;
 }
 
-.item-paragraph--tracdelight {
-  @extend %item-paragraph--tracdelight;
-}
-
 .item-paragraph--content-teaser {
   @extend %item-paragraph--content-teaser;
 }
@@ -93,4 +89,8 @@
 
 .item-paragraph--advertising-products-paragraph {
   @extend %item-paragraph--tracdelight;
+}
+
+.item-paragraph--single-product {
+  @extend %item-paragraph--single-product;
 }

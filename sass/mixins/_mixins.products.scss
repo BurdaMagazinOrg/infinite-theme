@@ -8,7 +8,6 @@
 
 @mixin product__item--horizontal-block {
   @include make-sm-column($grid-columns/3);
-
   position: relative;
   overflow: hidden;
   margin-bottom: $gap-size-lg;
@@ -120,5 +119,29 @@
       height: $product__item-text-headline-height-desktop;
       margin-bottom: $product__item-text-headline-gap-bottom-desktop;
     }
+  }
+}
+
+@mixin product__item--single-product() {
+  padding: $product-padding--single-product;
+  border: $product-border--single-product;
+  -webkit-border-radius: $product-border-radius--single-product;
+  -moz-border-radius: $product-border-radius--single-product;
+  border-radius: $product-border-radius--single-product;
+
+.text-brand {
+    margin-top: 18px;
+  }
+
+  .text-headline {
+    margin-top: 18px;
+  }
+
+  .text-price {
+    margin-top: 15px;
+  }
+
+  .text-shop {
+    margin-top: 15px;
   }
 }
