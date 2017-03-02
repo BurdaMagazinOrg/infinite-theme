@@ -343,11 +343,11 @@
 
   &:after {
     content: $product__shop-icon-content--single-product;
-    position: absolute;
-    right: $product__shop-icon-pos-right--single-product;
-    top: 0;
-    font-size: $product__shop-icon-size--single-product;
     color: $product__shop-icon-color--single-product;
+    font-size: $product__shop-icon-size--single-product - 10px;
+    right: $product__shop-icon-pos-right--single-product + 10px;
+    top: 0;
+    position: absolute;
   }
 
   .text-headline {
@@ -378,6 +378,11 @@
   }
 
   @media (min-width: $screen-md-min) {
+    &:after {
+      font-size: $product__shop-icon-size--single-product;
+      right: $product__shop-icon-pos-right--single-product;
+    }
+
     .text-headline {
       @include text-helper-size($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-desktop--single-product);
     }
