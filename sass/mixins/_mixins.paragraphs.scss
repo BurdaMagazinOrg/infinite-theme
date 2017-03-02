@@ -324,13 +324,24 @@
 }
 
 @mixin item-paragraph--single-product() {
-  //.item-title {
-  //  text-align: center;
-  //}
+
+  &.item-paragraph .item-title {
+    text-align: center;
+  }
 
   .container-content {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .item-product--single:not(:first-child) {
+    @extend %margin--v-item-content__item;
+  }
+
+  .item-product--single {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

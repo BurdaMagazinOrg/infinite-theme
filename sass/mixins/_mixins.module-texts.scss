@@ -331,12 +331,23 @@
 }
 
 @mixin product__item-text--single-product() {
+  @extend %icon--after;
   text-align: $product-text-align--single-product;
+  position: relative;
 
   &:hover {
     .text-shop {
       @extend %btn--small--highlighted;
     }
+  }
+
+  &:after {
+    content: $product__shop-icon-content--single-product;
+    position: absolute;
+    right: $product__shop-icon-pos-right--single-product;
+    top: 0;
+    font-size: $product__shop-icon-size--single-product;
+    color: $product__shop-icon-color--single-product;
   }
 
   .text-headline {

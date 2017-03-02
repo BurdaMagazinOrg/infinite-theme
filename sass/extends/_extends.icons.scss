@@ -3,6 +3,10 @@
   //@extend %transition-color;
 }
 
+%icon--after {
+  @include icon('&:after');
+}
+
 %icon-star--full {
   @include icon-star--full();
   @extend %icon;
