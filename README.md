@@ -6,6 +6,8 @@
 
 Drupal 8 theme delivered with the [Thunder CMS](http://www.thunder.org).
 
+**PLEASE NOTE**: This theme is not longer actively maintained and is considered deprecated.
+
 ![Theme preview](./images/infinite.png)
 
 ### Installation
