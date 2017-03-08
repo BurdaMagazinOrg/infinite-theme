@@ -41,6 +41,7 @@
   & > .region-full-content:not(.no-v-padding):first-child {
     @extend %container--v-padding;
 
+    //TODO check if :first-child necessary
     .no-v-padding:first-child {
       @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
     }
