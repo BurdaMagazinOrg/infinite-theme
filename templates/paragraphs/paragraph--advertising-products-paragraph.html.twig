@@ -42,7 +42,6 @@
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
-    {{ content.field_e_view_mode | clean_class }}
     {% if content | render %}
         {% if content.field_title|render %}
             <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
