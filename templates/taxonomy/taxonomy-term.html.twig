@@ -44,11 +44,7 @@
 
     {% if content|render %}
         <div class="item-content__content">
-            {% if content.field_paragraphs %}
-                {{ content.field_paragraphs|render }}
-            {% else %}
-                {{ content.field_paragraph|render }}
-            {% endif %}
+            {{ content.field_paragraphs }}
         </div>
     {% endif %}
 </div>
