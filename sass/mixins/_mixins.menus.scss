@@ -51,6 +51,10 @@
     & > .menu-item {
       @extend %menu--main-navigation__item;
 
+      &:first-child {
+        margin-left: 0;
+      }
+
       &:hover {
         & > ol, & > ul {
           @extend %menu--main-navigation__flyout-open;
@@ -96,10 +100,6 @@
   @extend %transition-timing-function;
   @include transition-property(opacity, color, visibility);
   display: inline-block;
-
-  &:first-child {
-    margin-left: 0;
-  }
 
   & > a {
     color: $menu--main-navigation__item-color;
