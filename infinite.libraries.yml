@@ -26,6 +26,7 @@ infinite.init:
     js/infinite/backbone-manager.js: {}
     js/infinite/burda-infinite.js: {}
     js/infinite/adIntegration.js: {}
+    js/infinite/devicePreviewIntegration.js: {}
     js/infinite/consts/app-config.js: {}
     js/infinite/consts/view-ids.js: {}
     js/infinite/consts/model-ids.js: {}
