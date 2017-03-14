@@ -68,23 +68,29 @@
   }
 }
 
-@mixin title--text-block() {
+@mixin title--text-block($use-size: true) {
   @include text-helper($title--text-block-font-id);
   color: $title--text-block-color;
   text-transform: $title--text-block-text-transform;
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($title--text-block-font-id, $title--text-block-mobile);
+    @if ($use-size) {
+      @include text-helper-size($title--text-block-font-id, $title--text-block-mobile);
+    }
     margin: $title-margin-mobile--text-block;
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($title--text-block-font-id, $title--text-block-tablet);
+    @if ($use-size) {
+      @include text-helper-size($title--text-block-font-id, $title--text-block-tablet);
+    }
     margin: $title-margin-tablet--text-block;
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($title--text-block-font-id, $title--text-block-desktop);
+    @if ($use-size) {
+      @include text-helper-size($title--text-block-font-id, $title--text-block-desktop);
+    }
     margin: $title-margin-desktop--text-block;
   }
 
@@ -96,19 +102,11 @@
     & + * {
       margin: $title__children-margin-mobile--text-block;
     }
-
-    & + h2, & + h3, & + h4, & + h5, & + h6 {
-      margin: $title__headline-margin-mobile--text-block;
-    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     & + * {
       margin: $title__children-margin-tablet--text-block;
-    }
-
-    & + h2, & + h3, & + h4, & + h5, & + h6 {
-      margin: $title__headline-margin-tablet--text-block;
     }
   }
 
@@ -116,12 +114,47 @@
     & + * {
       margin: $title__children-margin-desktop--text-block;
     }
+  }
+}
 
-    & + h2, & + h3, & + h4, & + h5, & + h6 {
-      margin: $title__headline-margin-desktop--text-block;
+@mixin headline-gaps--text-block() {
+
+  @media (max-width: $screen-xs-max) {
+
+    @for $index from 2 through 6 {
+      h#{$index} {
+        @if ($index <= 5) {
+          & + h#{$index + 1} {
+            margin: $title__headline-margin-mobile--text-block;
+          }
+        }
+      }
     }
   }
 
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @for $index from 2 through 6 {
+      h#{$index} {
+        @if ($index <= 5) {
+          & + h#{$index + 1} {
+            margin: $title__headline-margin-tablet--text-block;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    @for $index from 2 through 6 {
+      h#{$index} {
+        @if ($index <= 5) {
+          & + h#{$index + 1} {
+            margin: $title__headline-margin-desktop--text-block;
+          }
+        }
+      }
+    }
+  }
 }
 
 @mixin title--content-block($sizes: ($title--content-block-mobile, $title--content-block-tablet, $title--content-block-desktop), $font: $title--content-block-font-id, $color: $title--content-block-color, $margins: ($title--content-block-gap-bottom-mobile, $title--content-block-gap-bottom-tablet, $title--content-block-gap-bottom-desktop)) {

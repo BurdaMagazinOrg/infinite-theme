@@ -15,6 +15,10 @@
   @include title--text-block();
 }
 
+%headline-gaps--text-block {
+  @include headline-gaps--text-block();
+}
+
 %title--content-block {
   @include title--content-block();
 }

@@ -46,3 +46,23 @@
 %text-content-html {
   @include text-content-html();
 }
+
+%h2--text-block {
+  @include h2--text-block();
+}
+
+%h3--text-block {
+  @include h3--text-block();
+}
+
+%h4--text-block {
+  @include h4--text-block();
+}
+
+%h5--text-block {
+  @include h5--text-block();
+}
+
+%h6--text-block {
+  @include h6--text-block();
+}

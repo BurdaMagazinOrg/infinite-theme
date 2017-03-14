@@ -180,6 +180,8 @@
 }
 
 @mixin text-content-html() {
+  @extend %headline-gaps--text-block;
+
   & > p, & > .text-label {
     &:first-child {
       margin-top: 0;
@@ -187,7 +189,27 @@
   }
 
   h2, h3, h4, h5, h6 {
-    @extend %title--text-block;
+    @include title--text-block();
+  }
+
+  h2 {
+    @extend %h2--text-block;
+  }
+
+  h3 {
+    @extend %h3--text-block;
+  }
+
+  h4 {
+    @extend %h4--text-block;
+  }
+
+  h5 {
+    @extend %h5--text-block;
+  }
+
+  h6 {
+    @extend %h6--text-block;
   }
 
   & > p, .btn, .btn--small, .btn--large {
@@ -219,4 +241,74 @@
 
 @mixin bold-settings() {
   @include text-content-bold();
+}
+
+@mixin h2--text-block() {
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($title--text-block-font-id, $h2-size--text-block-mobile, $h-line-height--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($title--text-block-font-id, $h2-size--text-block-tablet, $h-line-height--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($title--text-block-font-id, $h2-size--text-block-desktop, $h-line-height--text-block-desktop);
+  }
+}
+
+@mixin h3--text-block() {
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($title--text-block-font-id, $h3-size--text-block-mobile, $h-line-height--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($title--text-block-font-id, $h3-size--text-block-tablet, $h-line-height--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($title--text-block-font-id, $h3-size--text-block-desktop, $h-line-height--text-block-desktop);
+  }
+}
+
+@mixin h4--text-block() {
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($title--text-block-font-id, $h4-size--text-block-mobile, $h-line-height--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($title--text-block-font-id, $h4-size--text-block-tablet, $h-line-height--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($title--text-block-font-id, $h4-size--text-block-desktop, $h-line-height--text-block-desktop);
+  }
+}
+
+@mixin h5--text-block() {
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($title--text-block-font-id, $h5-size--text-block-mobile, $h-line-height--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($title--text-block-font-id, $h5-size--text-block-tablet, $h-line-height--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($title--text-block-font-id, $h5-size--text-block-desktop, $h-line-height--text-block-desktop);
+  }
+}
+
+@mixin h6--text-block() {
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($title--text-block-font-id, $h6-size--text-block-mobile, $h-line-height--text-block-mobile);
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($title--text-block-font-id, $h6-size--text-block-tablet, $h-line-height--text-block-tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($title--text-block-font-id, $h6-size--text-block-desktop, $h-line-height--text-block-mobile);
+  }
 }
