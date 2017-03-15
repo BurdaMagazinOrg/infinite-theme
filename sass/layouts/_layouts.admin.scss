@@ -1,6 +1,14 @@
 #toolbar-administration .toolbar-bar {
   position: fixed;
   z-index: 9999;
+
+  .menu-item {
+    .toolbar-icon {
+      &:before {
+        @include box-sizing(initial);
+      }
+    }
+  }
 }
 
 @media (max-width: $screen-sm-max) {
