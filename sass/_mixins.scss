@@ -1,3 +1,7 @@
+@function icon($character) {
+  @return unquote("\"")+unquote(str-insert($character,"\\", 1))+unquote("\"");
+}
+
 @import "bootstrap/mixins";
 @import "mixins/mixins.shorthand";
 @import "mixins/mixins.gaps";

@@ -331,6 +331,7 @@
 }
 
 @mixin product__item-text--single-product() {
+  @extend %icon;
   @extend %icon--after;
   text-align: $product-text-align--single-product;
   position: relative;
@@ -339,6 +340,23 @@
     .text-shop {
       @extend %btn--large--highlighted;
     }
+  }
+
+  &:before, &:after {
+    font-size: $product__shop-icon-size--single-product - 10px;
+    right: $product__shop-icon-pos-right--single-product + 10px;
+    top: 0;
+    position: absolute;
+  }
+
+  &:before {
+    content: icon($product__shop-icon-content-before--single-product);
+    color: $product__shop-icon-before-color--single-product;
+  }
+
+  &:after {
+    content: icon($product__shop-icon-content--single-product);
+    color: $product__shop-icon-color--single-product;
   }
 
   .text-headline {
@@ -369,6 +387,11 @@
   }
 
   @media (min-width: $screen-md-min) {
+    &:before, &:after {
+      font-size: $product__shop-icon-size--single-product;
+      right: $product__shop-icon-pos-right--single-product;
+    }
+
     .text-headline {
       @include text-helper-size($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-desktop--single-product);
     }
