@@ -129,6 +129,23 @@
   -moz-border-radius: $product-border-radius--single-product;
   border-radius: $product-border-radius--single-product;
 
+  &:before, &:after {
+    font-size: $product__shop-icon-size--single-product - 10px;
+    right: $product__shop-icon-pos-right--single-product + 10px;
+    top: 0;
+    position: absolute;
+  }
+
+  &:before {
+    content: $product__shop-icon-content-before--single-product;
+    color: $product__shop-icon-before-color--single-product;
+  }
+
+  &:after {
+    content: $product__shop-icon-content--single-product;
+    color: $product__shop-icon-color--single-product;
+  }
+
   img {
     width: auto;
     height: auto;
@@ -151,5 +168,12 @@
 
   .text-shop {
     margin-top: 15px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    &:before, &:after {
+      font-size: $product__shop-icon-size--single-product;
+      right: $product__shop-icon-pos-right--single-product;
+    }
   }
 }
