@@ -20,6 +20,22 @@
             this.updateSocials($tmpElement);
             this.updateBtnActions($tmpElement);
             this.updateTextActions($tmpElement);
+
+            //lazy loading blocks
+            if(this.model.get('initialDOMItem') == false) {
+                this.updateBlazy($tmpElement);
+                this.updateNexx($tmpElement);
+            }
+        },
+        updateBlazy: function($pContainer) {
+            if(Drupal.behaviors.blazy != undefined) {
+                Drupal.behaviors.blazy.attach($pContainer[0], drupalSettings);
+            }
+        },
+        updateNexx: function($pContainer) {
+            if(Drupal.behaviors.nexx != undefined) {
+                Drupal.behaviors.nexx.attach($pContainer[0], drupalSettings);
+            }
         },
         updateSocials: function ($pContainer) {
             /**

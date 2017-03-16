@@ -4,7 +4,9 @@
 
     BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
         defaults: {
-            inviewEnabled: true
+            inviewEnabled: true,
+            initialDOMItem: true,
+            type: "root"
         },
         initialize: function (pModel, pOptions) {
             _.extend(this, pOptions);
