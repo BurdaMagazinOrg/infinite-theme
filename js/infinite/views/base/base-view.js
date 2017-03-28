@@ -5,6 +5,7 @@
     BurdaInfinite.views.base.BaseView = Backbone.View.extend({
         enabled: true,
         deviceModel: null,
+        infiniteBlockDataModel: new Backbone.Model(),
         initialize: function (pOptions) {
             _.extend(this, pOptions || {});
             //console.log("this.model.get('initialDOMItem')", this.model.get('initialDOMItem'));

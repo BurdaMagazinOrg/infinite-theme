@@ -66,7 +66,8 @@
             $items = $data.filter(this.options.items)
         }
 
-        $items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
+        //$items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
+        $items.appendTo(this.$container.find('.container-feed-items'));
         this.$container.removeClass(this.options.loadingClass)
 
         if (!$newMore.length) {
