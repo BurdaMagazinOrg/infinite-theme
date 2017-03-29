@@ -83,7 +83,8 @@
             this.$more.remove()
         }
 
-        this.options.onAfterPageLoad($items)
+        this.options.onAfterPageLoad($items);
+        Drupal.attachBehaviors($items);
     }
 
     /* Public */
