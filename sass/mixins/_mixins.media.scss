@@ -76,6 +76,18 @@
     }
   }
 
+  .slick__slide {
+    display: none;
+
+    &:first-child {
+      display: inline-block;
+    }
+  }
+
+  .slick-slide {
+    display: inline-block;
+  }
+
   .img-container {
     height: 0;
     padding-bottom: 75%; //default - overrides in paragraphs layoutswitcher
