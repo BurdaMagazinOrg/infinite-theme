@@ -17,27 +17,32 @@
             this.updateInternalURL($tmpElement);
             this.updateExternalURL($tmpElement);
             this.updateTimeAgo($tmpElement);
-            this.loadResponsiveImages($tmpElement);
             this.updateSocials($tmpElement);
             this.updateBtnActions($tmpElement);
             this.updateTextActions($tmpElement);
 
+            //this.loadResponsiveImages($tmpElement);
+
             //lazy loading blocks
-            if(this.model.get('initialDOMItem') == false) {
-                this.updateBlazy($tmpElement);
-                this.updateNexx($tmpElement);
-            }
+            //if(this.model.get('initialDOMItem') == false) {
+            //    this.updateBlazy($tmpElement);
+            //    this.updateNexx($tmpElement);
+            //}
         },
-        updateBlazy: function($pContainer) {
-            if(Drupal.behaviors.blazy != undefined) {
-                Drupal.behaviors.blazy.attach($pContainer[0], drupalSettings);
-            }
-        },
-        updateNexx: function($pContainer) {
-            if(Drupal.behaviors.nexx != undefined) {
-                Drupal.behaviors.nexx.attach($pContainer[0], drupalSettings);
-            }
-        },
+        //updateBlazy: function($pContainer) {
+        //    if(Drupal.behaviors.blazy != undefined) {
+        //        Drupal.behaviors.blazy.attach($pContainer[0], drupalSettings);
+        //    }
+        //},
+        //updateNexx: function($pContainer) {
+        //    if(Drupal.behaviors.nexx != undefined) {
+        //        Drupal.behaviors.nexx.attach($pContainer[0], drupalSettings);
+        //    }
+        //},
+        //loadResponsiveImages: function ($pContainer) {
+        //    if (typeof picturefill == "undefined") return;
+        //    picturefill({reevaluate: true});
+        //},
         updateSocials: function ($pContainer) {
             /**
              * Whatsapp
@@ -172,10 +177,6 @@
         },
         updateTimeAgo: function ($pContainer) {
             $pContainer.find('.text-timestamp').timeago();
-        },
-        loadResponsiveImages: function ($pContainer) {
-            if (typeof picturefill == "undefined") return;
-            picturefill({reevaluate: true});
         },
         updateInternalURL: function ($pContainer) {
             var $internalUrls = $pContainer.find('[data-internal-url]').addBack().filter('[data-internal-url]');
