@@ -10,11 +10,11 @@
   }
 }
 
-.swiper-slide {
+.swiper-slide, .slick__slide {
   @extend %flex-shrink-0;
 }
 
-.swiper-wrapper {
+.swiper-wrapper, .slick__slider {
   @extend %flexbox;
   position: relative;
   width: 100%;

@@ -80,7 +80,7 @@
     height: 0;
     padding-bottom: 75%; //default - overrides in paragraphs layoutswitcher
 
-    & > * {
+    & > *, picture {
       width: 100%;
       height: 100%;
       position: absolute;
@@ -93,7 +93,6 @@
     @extend %flexbox;
     @extend %justify-content-center;
     @extend %align-items-center;
-    max-height: 100%;
   }
 
   .item-media--image-landscape {

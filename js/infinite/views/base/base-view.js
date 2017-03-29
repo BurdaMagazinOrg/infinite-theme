@@ -22,13 +22,19 @@
             this.updateTextActions($tmpElement);
 
             //this.loadResponsiveImages($tmpElement);
-
-            //lazy loading blocks
+            //
+            ////lazy loading blocks
             //if(this.model.get('initialDOMItem') == false) {
+            //    this.updateSlick($tmpElement);
             //    this.updateBlazy($tmpElement);
             //    this.updateNexx($tmpElement);
             //}
         },
+        //updateSlick: function($pContainer) {
+        //    if(Drupal.behaviors.slick != undefined) {
+        //        Drupal.behaviors.slick.attach($pContainer[0], drupalSettings);
+        //    }
+        //},
         //updateBlazy: function($pContainer) {
         //    if(Drupal.behaviors.blazy != undefined) {
         //        Drupal.behaviors.blazy.attach($pContainer[0], drupalSettings);
