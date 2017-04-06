@@ -75,11 +75,13 @@
 ] %}
 
 <article {{ attributes.addClass(classes) }} data-view-type="articleView">
-    <div class="item-content__header">
-        {% block content_header %}
-            <h1 class="title--article">{{ label }}</h1>
-        {% endblock %}
-    </div>
+    {% block content_header_container %}
+        <div class="item-content__header">
+            {% block content_header %}
+                <h1 class="title--article">{{ label }}</h1>
+            {% endblock %}
+        </div>
+    {% endblock %}
     <div class="item-content__content">
         {% block content_body %}
             {{ content }}
