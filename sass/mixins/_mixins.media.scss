@@ -76,11 +76,23 @@
     }
   }
 
+  .slick__slide {
+    display: none;
+
+    &:first-child {
+      display: inline-block;
+    }
+  }
+
+  .slick-slide {
+    display: inline-block;
+  }
+
   .img-container {
     height: 0;
     padding-bottom: 75%; //default - overrides in paragraphs layoutswitcher
 
-    & > * {
+    & > *, picture {
       width: 100%;
       height: 100%;
       position: absolute;
@@ -225,5 +237,54 @@
 
   @media (min-width: $screen-xl-min) {
     padding-bottom: $media__header-ratio-xl;
+  }
+}
+
+@mixin blazy-components() {
+  .b-lazy,
+  .b-responsive {
+    display: block;
+    opacity: 0;
+    -webkit-transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
+  }
+
+  /* Needed to display preloader with CSS BG image, otherwise hidden. */
+  .b-loaded,
+  .media--loading.media--background {
+    opacity: 1;
+  }
+
+  .media--loading {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
+  }
+
+  .media--loading::before {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+    //text-indent: -9999em;
+    border-top: 0.1em solid $gray-light;
+    border-right: 0.1em solid $gray-light;
+    border-bottom: 0.1em solid $gray-light;
+    border-left: 0.1em solid $color-brand;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: loadingSpinner 1.1s infinite linear;
+    animation: loadingSpinner 1.1s infinite linear;
+  }
+
+  .media--background {
+    background-size: cover;
+    background-position: center center;
   }
 }

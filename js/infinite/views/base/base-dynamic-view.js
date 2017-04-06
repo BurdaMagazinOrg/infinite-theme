@@ -6,6 +6,7 @@
         type: 'baseDynamicView',
         initialCall: false,
         initialDOMItem: true,
+        infiniteBlockDataModel: null,
         initialize: function (pOptions) {
             BaseInviewView.prototype.initialize.call(this, pOptions);
 
@@ -17,7 +18,7 @@
             var tmpSettings = _.extend({
                     modelList: this.model,
                     initialCall: false, //todo find a better name
-                    delegateElements: false,
+                    //delegateElements: false,
                     initialDOMItem: this.initialDOMItem
                 }, pSettings),
                 $tmpContainer = $(pContainer),

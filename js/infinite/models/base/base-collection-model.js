@@ -17,6 +17,10 @@
             }, this);
         },
         add: function (pItems, pOptions) {
+            if(typeof pItems.setParentModel !== 'undefined') {
+                pItems.setParentModel(this);
+            }
+
             this.getItems().add(pItems, pOptions);
         },
         getModel: function (pId) {
