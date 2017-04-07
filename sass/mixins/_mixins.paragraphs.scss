@@ -621,6 +621,28 @@
   .seo-linker__link-list--image {
     @extend %list__links--module;
   }
+
+  .img-container {
+    @extend %ratio-hide;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .img-container {
+      padding-bottom: $seo-linker__img-ratio-mobile--grid-four;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .img-container {
+      padding-bottom: $seo-linker__img-ratio-tablet--grid-four;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .img-container {
+      padding-bottom: $seo-linker__img-ratio-desktop--grid-four;
+    }
+  }
 }
 
 @mixin item-paragraph--viversum-zodiac() {

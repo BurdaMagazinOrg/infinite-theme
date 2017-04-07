@@ -2,6 +2,10 @@
   @include clearfix();
 }
 
+%ratio-hide {
+  @include ratio-hide();
+}
+
 %disabled {
   @include disabled();
 }

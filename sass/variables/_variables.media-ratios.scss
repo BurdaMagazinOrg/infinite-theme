@@ -1,0 +1,44 @@
+/** Teasers**/
+$teaser__img-ratio-mobile--presenter-multi: floor(percentage(210/375)) !default;
+$teaser__img-ratio-tablet--presenter-multi: floor(percentage(210/375)) !default;
+$teaser__img-ratio-desktop--presenter-multi: floor(percentage(210/375)) !default;
+
+$teaser__img-ratio--full-content-mobile: 41.7% !default;
+$teaser__img-ratio--full-content-tablet: 41.7% !default;
+$teaser__img-ratio--full-content-desktop: 41.7% !default;
+
+$teaser__img-ratio-mobile--square: floor(percentage(360/360)) !default;
+$teaser__img-ratio-tablet--square: floor(percentage(360/360)) !default;
+$teaser__img-ratio-desktop--square: floor(percentage(360/360)) !default;
+
+$teaser__img-ratio-mobile--landscape-large: floor(percentage(456/744)) !default;
+$teaser__img-ratio-tablet--landscape-large: floor(percentage(456/744)) !default;
+$teaser__img-ratio-desktop--landscape-large: floor(percentage(550/895)) !default;
+
+$teaser__img-ratio-mobile--portrait-medium: floor(percentage(500/360)) !default;
+$teaser__img-ratio-tablet--portrait-medium: floor(percentage(500/360)) !default;
+$teaser__img-ratio-desktop--portrait-medium: floor(percentage(500/360)) !default;
+
+$teaser__img-ratio-mobile--portrait-small: floor(percentage(400/288)) !default;
+$teaser__img-ratio-tablet--portrait-small: floor(percentage(400/288)) !default;
+$teaser__img-ratio-desktop--portrait-small: floor(percentage(400/288)) !default;
+
+/** Gallery **/
+$gallery-ratio-full: 75% !default;
+$gallery-ratio-middle: 56% !default;
+$gallery-ratio-small: 75% !default;
+
+/** Header **/
+$media__header-ratio-xs: floor(percentage(160/480)) !default;
+$media__header-ratio-sm: floor(percentage(200/1000)) !default;
+$media__header-ratio-md: floor(percentage(200/1400)) !default;
+$media__header-ratio-lg: floor(percentage(200/1400)) !default;
+$media__header-ratio-xl: floor(percentage(200/1800)) !default;
+
+/** SEO Linker **/
+$seo-linker__img-ratio-mobile--grid-four: floor(percentage(210/375)) !default;
+$seo-linker__img-ratio-tablet--grid-four: floor(percentage(210/375)) !default;
+$seo-linker__img-ratio-desktop--grid-four: floor(percentage(210/375)) !default;
+
+/** Products **/
+$products__img-ratio-mobile--grid-article: floor(percentage(210/210)) !default;
