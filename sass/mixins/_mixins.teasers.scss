@@ -346,12 +346,8 @@
 
   @media (max-width: $screen-xs-max) {
     .teaser__img-container {
-
       .media--image {
         padding-bottom: $teaser__img-ratio-mobile--portrait-small;
-      }
-
-      img {
         width: 75%;
       }
     }
@@ -371,25 +367,18 @@
 }
 
 @mixin teaser--portrait-medium() {
-  .teaser__img-container {
-    @include make-sm-column(floor($grid-columns/2.05));
+  .teaser__img-container, .teaser__caption {
+    @include make-sm-column($grid-columns/2);
 
     .media--image {
       @extend %ratio-hide;
     }
   }
 
-  .caption-teaser, .teaser__caption {
-    @include make-sm-column($grid-columns - floor($grid-columns/2.05));
-  }
-
   @media (max-width: $screen-xs-max) {
     .teaser__img-container {
       .media--image {
         padding-bottom: $teaser__img-ratio-mobile--portrait-medium;
-      }
-
-      img {
         width: 75%;
       }
     }

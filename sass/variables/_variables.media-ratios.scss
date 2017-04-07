@@ -15,11 +15,11 @@ $teaser__img-ratio-mobile--landscape-large: floor(percentage(456/744)) !default;
 $teaser__img-ratio-tablet--landscape-large: floor(percentage(456/744)) !default;
 $teaser__img-ratio-desktop--landscape-large: floor(percentage(550/895)) !default;
 
-$teaser__img-ratio-mobile--portrait-medium: floor(percentage(500/360)) !default;
+$teaser__img-ratio-mobile--portrait-medium: 104% !default;
 $teaser__img-ratio-tablet--portrait-medium: floor(percentage(500/360)) !default;
 $teaser__img-ratio-desktop--portrait-medium: floor(percentage(500/360)) !default;
 
-$teaser__img-ratio-mobile--portrait-small: floor(percentage(400/288)) !default;
+$teaser__img-ratio-mobile--portrait-small: 104% !default;
 $teaser__img-ratio-tablet--portrait-small: floor(percentage(400/288)) !default;
 $teaser__img-ratio-desktop--portrait-small: floor(percentage(400/288)) !default;
 
