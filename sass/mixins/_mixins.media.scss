@@ -272,6 +272,12 @@
   .media--loading::before {
     @include blazy-spinner();
   }
+
+  .item-media--image {
+    .media--blazy {
+      background-color: transparent;
+    }
+  }
 }
 
 @mixin blazy-spinner() {
