@@ -3,9 +3,14 @@ $teaser__img-ratio-mobile--presenter-multi: floor(percentage(210/375)) !default;
 $teaser__img-ratio-tablet--presenter-multi: floor(percentage(210/375)) !default;
 $teaser__img-ratio-desktop--presenter-multi: floor(percentage(210/375)) !default;
 
+//TODO rename
 $teaser__img-ratio--full-content-mobile: 41.7% !default;
 $teaser__img-ratio--full-content-tablet: 41.7% !default;
 $teaser__img-ratio--full-content-desktop: 41.7% !default;
+
+$teaser__img-ratio-mobile--landscape-medium: 61.5% !default;
+$teaser__img-ratio-tablet--landscape-medium: 61.5% !default;
+$teaser__img-ratio-desktop--landscape-medium: 61.5% !default;
 
 $teaser__img-ratio-mobile--square: floor(percentage(360/360)) !default;
 $teaser__img-ratio-tablet--square: floor(percentage(360/360)) !default;
