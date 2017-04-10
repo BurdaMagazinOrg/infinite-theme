@@ -414,7 +414,7 @@
             }
 
             tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
-            console.log(">>> ecommerce", tmpTrackingObject);
+            //console.log(">>> ecommerce", tmpTrackingObject);
             if (typeof window.dataLayer != "undefined") {
                 window.dataLayer.push(tmpTrackingObject);
             } else {

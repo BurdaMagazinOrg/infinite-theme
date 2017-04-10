@@ -49,6 +49,10 @@
     margin-top: 10px;
   }
 
+  .media--blazy {
+    background-color: transparent;
+  }
+
   .img-container {
     text-align: center;
     margin-bottom: $gap-size-xs;
@@ -123,11 +127,14 @@
 }
 
 @mixin product__item--single-product() {
-  padding: $product-padding--single-product;
-  border: $product-border--single-product;
-  -webkit-border-radius: $product-border-radius--single-product;
-  -moz-border-radius: $product-border-radius--single-product;
-  border-radius: $product-border-radius--single-product;
+
+  .item-product__wrapper {
+    padding: $product-padding--single-product;
+    border: $product-border--single-product;
+    -webkit-border-radius: $product-border-radius--single-product;
+    -moz-border-radius: $product-border-radius--single-product;
+    border-radius: $product-border-radius--single-product;
+  }
 
   img {
     width: auto;

@@ -1,3 +1,5 @@
+@import "variables/variables.media-ratios";
+
 /**
 ** Specific Lists Gaps
 **/
@@ -184,7 +186,7 @@ $menu--sidebar-misc-hover-color: $color-highlighted-hover !default;
 **/
 
 $newsletter__title-font-id--horizontal: $font-headline-id !default;
-$newsletter__title-text-transform--horizontal: normal !default;
+$newsletter__title-text-transform--horizontal: none !default;
 $newsletter--horizontal--title-size--mobile: $title-size-md !default;
 $newsletter--horizontal--title-size--tablet: $title-size-lg !default;
 $newsletter--horizontal--title-size--desktop: $title-size-lg !default;
@@ -545,10 +547,6 @@ $teaser__sponsored-padding--full-content-mobile: 0 21px 0 !default;
 $teaser__sponsored-padding--full-content-tablet: 0 21px 0 !default;
 $teaser__sponsored-padding--full-content-desktop: 0 21px 0 !default;
 
-$teaser__img-ratio--full-content-mobile: 41.7% !default;
-$teaser__img-ratio--full-content-tablet: 41.7% !default;
-$teaser__img-ratio--full-content-desktop: 41.7% !default;
-
 //no mobile absolute position
 $teaser__caption-use-pos-absolute--full-content: true !default;
 $teaser__caption-bottom--full-content-tablet: -33px !default;
@@ -838,9 +836,6 @@ $seo-linker__link-list-color: $text-color !default;
 $seo-linker__link-list-hover-color: $color-hover !default;
 
 /** Gallery */
-$gallery-ratio-full: 75% !default;
-$gallery-ratio-middle: 56% !default;
-$gallery-ratio-small: 75% !default;
 $gallery__header-margin: 0 0 $grid-gutter-width 0 !default;
 $gallery__count-font-id: $font-label-id !default;
 $gallery__count-size-mobile: $title--content-block-mobile !default;
@@ -852,12 +847,7 @@ $gallery__navigation-arrow-margin: 0 $grid-gutter-width 0 0 !default;
 /**
 ** Media
 **/
-
-$media__header-ratio-xs: floor(percentage(160/480)) !default;
-$media__header-ratio-sm: floor(percentage(200/1000)) !default;
-$media__header-ratio-md: floor(percentage(200/1400)) !default;
-$media__header-ratio-lg: floor(percentage(200/1400)) !default;
-$media__header-ratio-xl: floor(percentage(200/1800)) !default;
+$media__lazyloading-bg-color: #fbfbfb !default;
 
 $media__description-margin: 5px 0 0 0 !default;
 $media__description-font-id: $font-tiny-id !default;

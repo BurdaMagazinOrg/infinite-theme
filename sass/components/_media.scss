@@ -27,6 +27,8 @@
   }
 }
 
+@include blazy-components();
+
 .item-media--image {
   @extend %item-media--image;
 }

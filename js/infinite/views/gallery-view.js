@@ -4,100 +4,52 @@
 
     BurdaInfinite.views.GalleryView = BaseView.extend({
         mediaId: null,
-        itemSpace: 10,
+        slick: null,
+        $slickElement: [],
         positionInnerNav: false,
         $innerNav: [],
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
             this.mediaId = this.$el.data('media-id').toString();
-            this.itemSpace = this.$el.data('item-space') || this.itemSpace;
             this.createView();
         },
         createView: function () {
-            var $tmpSwiper = this.$el.find('.gallery-container').swiper({
-                speed: parseInt($.browser.version, 10) <= 9 ? 0 : 350,
-                keyboardControl: false,
-                loop: true,
-                spaceBetween: this.itemSpace,
-                lazyLoading: false,
-                lazyLoadingInPrevNext: true,
-                lazyLoadingOnTransitionStart: true,
-                preloadImages: true,
-                setWrapperSize: true,
-                runCallbacksOnInit: false,
-                grabCursor: true,
-                onSlideChangeStart: $.proxy(function (pSwiper, pEvent) {
-                    var tmpCurrentIndex = this.getCurrentIndex(pSwiper);
-                    this.el.find('.text-item-count span').text(tmpCurrentIndex);
-                    this.resizeContent(pSwiper);
-
-                    if (typeof TrackingManager != 'undefined') {
-                        TrackingManager.trackIVW();
-                        TrackingManager.trackPageView(Backbone.history.location.pathname + '/gallery_' + this.mediaId);
-                        TrackingManager.trackEvent({
-                            category: 'click',
-                            action: 'gallery',
-                            label: this.mediaId
-                        }, TrackingManager.getAdvTrackingByElement(this.$el));
-                    }
-                }, this)
-            });
-
+            this.$slickElement = this.$el.find('.slick');
             this.$innerNav = this.$el.find('.gallery-container .gallery-navigation');
             this.positionInnerNav = this.$innerNav.length > 0;
+            this.$slickElement.on('init', _.bind(this.initSlick, this));
+            this.$slickElement.on('beforeChange', _.bind(this.onBeforeChangeHandler, this));
+        },
+        initSlick: function(pEvent, pSlick, pCurrentSlide, pNextSlide) {
+            this.slick = pSlick;
 
-            this.updateSocials(this.$el.find('.swiper-slide-duplicate'));
-            this.resizeContent($tmpSwiper);
-            this.fitImages($tmpSwiper);
-
-            $(window).on('resize', $.proxy(function (pEvent) {
-                _.delay(_.bind(function () {
-                    this.resizeContent($tmpSwiper);
-                    this.fitImages($tmpSwiper);
-                }, this), 10);
+            this.$el.find('.swiper-button-prev').on('click', _.bind(function () {
+                this.slick.slickPrev();
             }, this));
 
-            this.$el.data('api', $tmpSwiper);
-            this.$el.find('.swiper-button-prev').on('click', function () {
-                $tmpSwiper.slidePrev();
-            });
-            this.$el.find('.swiper-button-next').on('click', function () {
-                $tmpSwiper.slideNext();
-            });
+            this.$el.find('.swiper-button-next').on('click', _.bind(function () {
+                this.slick.slickNext();
+            }, this));
         },
-        getCurrentIndex: function (pSwiperApi) {
-            var tmpSliderItems = $(pSwiperApi.container).find('.swiper-slide').not('.swiper-slide-duplicate'),
-                tmpActiveSlide = pSwiperApi.activeIndex;
+        onBeforeChangeHandler: function(pEvent, pSlick, pCurrentSlide, pNextSlide) {
+            var tmpPath = this.infiniteBlockDataModel != null
+            && this.infiniteBlockDataModel.has('path')
+            && this.infiniteBlockDataModel.get('path') != ""
+                ? this.infiniteBlockDataModel.get('path') : Backbone.history.location.pathname;
 
-            if (tmpActiveSlide > tmpSliderItems.length) {
-                tmpActiveSlide = Math.abs(tmpSliderItems.length - tmpActiveSlide);
-            } else if (tmpActiveSlide == 0) {
-                tmpActiveSlide = tmpSliderItems.length;
+            this.$el.find('.text-item-count span').text((pNextSlide + 1));
+
+            if (typeof TrackingManager != 'undefined') {
+                TrackingManager.trackIVW();
+                TrackingManager.trackPageView(tmpPath + '/gallery_' + this.mediaId);
+                TrackingManager.trackEvent({
+                    category: 'click',
+                    action: 'gallery',
+                    label: this.mediaId,
+                    location: tmpPath
+                });
             }
-
-            return Math.max(1, tmpActiveSlide - tmpSliderItems.slice(0, tmpActiveSlide).filter('.ads-container-gallery').length);
-        },
-        resizeContent: function (pSwiper) {
-            var $tmpContainer = $(pSwiper.container),
-                $tmpGalleryWrapper = $tmpContainer.find('.swiper-wrapper'),
-                $tmpCurrentElement = $tmpGalleryWrapper.find('.swiper-slide-active'),
-                tmpImgHeight = $tmpCurrentElement.find('.img-container').outerHeight(true),
-                tmpHeight = tmpImgHeight + $tmpCurrentElement.find('.caption').outerHeight(true);
-
-            if(this.positionInnerNav) {
-                this.$innerNav.css('top', Math.round(tmpImgHeight/2));
-            }
-
-            //todo check if still relevant (orientation change bug)
-            $tmpGalleryWrapper.height(tmpHeight);
-            $tmpContainer.height($tmpGalleryWrapper.position().top + tmpHeight);
-        },
-        fitImages: function (pSwiper) {
-            //orientation render bug :(
-            //if ($.browser.chrome || $.browser.android) {
-            this.$el.find('img').height(this.$el.find('.img-container').eq(0).outerHeight(true));
-            //}
         }
     });
 
