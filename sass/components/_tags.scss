@@ -3,3 +3,7 @@
     @extend %tags--article;
   }
 }
+
+.tags .unmanaged {
+  text-decoration:line-through;
+}
