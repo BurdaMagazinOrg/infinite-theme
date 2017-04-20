@@ -10,10 +10,17 @@
         initialize: function (pOptions) {
             BaseInviewView.prototype.initialize.call(this, pOptions);
 
-            this.parseInfiniteView(this.$el, {initialCall: this.initialCall});
+            /**
+             *  AcquiaLift grab the HTMLNode an manipulate it
+             * After this our saved $element this.$el.find('article') is invalid because
+             * AcquiaLift change the HTMLNode after our declaration
+             */
+            _.delay(_.bind(function () {
+                this.parseInfiniteView(this.$el, {initialCall: this.initialCall});
+            }, this), 1);
         },
         parseInfiniteView: function (pContainer, pSettings) {
-            if(pSettings.initialDOMItem === false) this.initialDOMItem = false;
+            if (pSettings.initialDOMItem === false) this.initialDOMItem = false;
 
             var tmpSettings = _.extend({
                     modelList: this.model,
