@@ -6,8 +6,6 @@
         mediaId: null,
         slick: null,
         $slickElement: [],
-        positionInnerNav: false,
-        $innerNav: [],
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
@@ -16,8 +14,6 @@
         },
         createView: function () {
             this.$slickElement = this.$el.find('.slick');
-            this.$innerNav = this.$el.find('.gallery-container .gallery-navigation');
-            this.positionInnerNav = this.$innerNav.length > 0;
             this.$slickElement.on('init', _.bind(this.initSlick, this));
             this.$slickElement.on('beforeChange', _.bind(this.onBeforeChangeHandler, this));
         },
