@@ -123,11 +123,9 @@
             this.onStickyHandler();
         },
         activateOffset: function () {
-            //console.log(">>> activateOffset");
             this.pageOffsetsModel.add(this.getOffsetManagerModel());
         },
         deactivateOffset: function () {
-            //console.log(">>> deactivateOffset");
             this.pageOffsetsModel.deactivate(this.getOffsetManagerModel());
         },
         getOffsetManagerModel: function () {

@@ -19,10 +19,12 @@ function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $
 
   /* @var $parent \Drupal\Core\Entity\EntityInterface */
   $parent = $paragraph->getParentEntity();
-  $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId();
-  $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__default';
-  $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__' . $parent->bundle();
-  $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__' . $parent->bundle() . '__default';
+  if ($parent) {
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId();
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__default';
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__' . $parent->bundle();
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__' . $parent->bundle() . '__default';
+  }
 }
 
 /**

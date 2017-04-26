@@ -404,13 +404,33 @@
     @include make-md-column(15);
   }
 
+  .media--image {
+    @extend %ratio-hide;
+  }
+
   .teaser__caption {
     @include make-md-column(9);
   }
 
   @media (max-width: $screen-xs-max) {
+    .media--image {
+      padding-bottom: $teaser__img-ratio-mobile--landscape-medium;
+    }
+
     .teaser__caption {
       padding: $teaser__caption-padding-mobile--landscape-medium;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .media--image {
+      padding-bottom: $teaser__img-ratio-tablet--landscape-medium;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .media--image {
+      padding-bottom: $teaser__img-ratio-desktop--landscape-medium;
     }
   }
 }

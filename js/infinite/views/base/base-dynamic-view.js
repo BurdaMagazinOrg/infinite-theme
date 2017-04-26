@@ -13,7 +13,7 @@
             this.parseInfiniteView(this.$el, {initialCall: this.initialCall});
         },
         parseInfiniteView: function (pContainer, pSettings) {
-            if(pSettings.initialDOMItem === false) this.initialDOMItem = false;
+            if (pSettings.initialDOMItem === false) this.initialDOMItem = false;
 
             var tmpSettings = _.extend({
                     modelList: this.model,

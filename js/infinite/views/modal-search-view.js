@@ -9,6 +9,7 @@
             "click .close": "close"
         },
         offsetsPageModel: {},
+        offsetMenuMainModel: {},
         pageOffsetsModel: {},
         feedModel: {},
         feedView: {},
@@ -23,10 +24,12 @@
 
             this.pageOffsetsModel = BM.reuseModel(ModelIds.pageOffsetsModel);
             this.offsetsPageModel = this.pageOffsetsModel.getModel('offsetPage');
+            this.offsetMenuMainModel = this.pageOffsetsModel.getModel('offsetMenuMain');
             this.feedModel = this.$feed.data('infiniteModel');
             this.feedView = this.feedModel.get('view');
 
-            this.listenTo(this.offsetsPageModel, 'change:offsets', this.onOffsetHandler, this);
+
+            this.listenTo(this.offsetMenuMainModel, 'change:offsets change:active', this.onOffsetHandler, this);
             this.listenTo(this.model, 'change:is_open', this.onStateHandler, this);
             this.listenTo(this.model, 'request', this.clearFeed, this);
             this.listenTo(this.model, 'sync', this.renderFeed, this);
@@ -36,8 +39,11 @@
             this.$searchInputField = this.$el.find('#modal-search-input');
         },
         onOffsetHandler: function () {
-            //console.log(this.id, ">>>>onOffsetHandler", this.offsetsPageModel.get('offsets').top, this.$el[0]);
-            this.$el.css('padding-top', this.offsetsPageModel.get('offsets').top);
+            if(this.offsetMenuMainModel.get('active') === true) {
+                this.$el.css('padding-top', this.offsetMenuMainModel.get('offsets').height);
+            } else {
+                this.$el.css('padding-top', '');
+            }
         },
         clearFeed: function () {
             this.model.reset();

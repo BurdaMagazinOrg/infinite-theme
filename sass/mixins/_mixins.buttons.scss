@@ -30,7 +30,9 @@
   $size-desktop: nth($sizes, 3);
 
   @include text-helper($font);
-  @include transition-default();
+  @include transition-property(color, background-color, border-color);
+  @include transition-duration($transition-duration);
+  @include transition-timing-function($transition-easing);
   background-color: $btn--small-bg-color;
   color: $btn--small-color;
   border: $btn--small-border;

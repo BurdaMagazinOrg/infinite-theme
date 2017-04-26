@@ -24,7 +24,7 @@
 
             _.extend(this, pOptions);
 
-            this.listenTo(this.getItems(), 'change:offsets change:active', _.throttle(this.onCalculatePageHandler, 50, this), this);
+            this.listenTo(this.getItems(), 'change:offsets change:active', this.onCalculatePageHandler, this);
         },
         onCalculatePageHandler: function (pModel) {
             if (pModel.id == "offsetPage") return;
@@ -68,7 +68,7 @@
             tmpModel.set('active', true);
         },
         deactivate: function (pModel, pOptions) {
-            if (!pModel) return;
+            if (!pModel || this.getItems().get(pModel.id) === undefined) return;
 
             this.getModel(pModel.id).set('active', false);
         },

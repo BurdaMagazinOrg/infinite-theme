@@ -92,7 +92,9 @@
             <div class="spotlight__anchor-nav" data-view-type="anchorNavigationView">
                 <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open"
                      class="btn__open-tree">
-                    <span>Menü</span>
+                    {% block anchor_label_block %}
+                        <span>Menü</span>
+                    {% endblock %}
                 </div>
                 {{ anchor_links }}
             </div>
