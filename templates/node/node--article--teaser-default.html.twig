@@ -12,16 +12,18 @@
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
-    <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject"
-         data-internal-url="{{ url }}">
-        {% block teaser_img_container %}
-            {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
-                {{ content.field_presenter_media }}
-            {% else %}
-                {{ content.field_teaser_media }}
-            {% endif %}
-        {% endblock %}
-    </div>
+    {% block teaser_img_container_wrapper %}
+        <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject"
+             data-internal-url="{{ url }}">
+            {% block teaser_img_container %}
+                {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
+                    {{ content.field_presenter_media }}
+                {% else %}
+                    {{ content.field_teaser_media }}
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endblock %}
 
     {% block teaser_caption_block %}
         <div class="teaser__caption">
