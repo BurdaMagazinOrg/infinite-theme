@@ -53,6 +53,24 @@ $btn__label-size-mobile--small: 13px !default;
 $btn__label-size-tablet--small: 13px !default;
 $btn__label-size-desktop--small: 14px !default;
 
+/** lined **/
+$btn--small-bordered-font-id: $font-label-id !default;
+$btn--small-bordered-border: 1px solid $color-highlighted !default;
+$btn--small-bordered-radius: 15px !default;
+$btn--small-bordered-color: $color-brand !default;
+$btn--small-bordered-bg-color: transparent !default;
+$btn--small-bordered-letter-spacing: 0.05em !default;
+$btn--small-bordered-highlighted-color: $color-hover !default;
+$btn--small-bordered-highlighted-bg-color: transparent !default;
+$btn--small-bordered-highlighted-border: 1px solid $color-hover !default;
+$btn--small-bordered-text-transform: uppercase !default;
+$btn--small-bordered-padding-mobile: 4px 20px !default;
+$btn--small-bordered-padding-tablet: 4px 20px !default;
+$btn--small-bordered-padding-desktop: 4px 20px !default;
+$btn__label-size-mobile--small-bordered: 13px !default;
+$btn__label-size-tablet--small-bordered: 13px !default;
+$btn__label-size-desktop--small-bordered: 14px !default;
+
 $btn--large-font-id: $font-headline-bold-id !default;
 $btn--large-text-transform: uppercase !default;
 $btn--large-border: 1px solid $color-highlighted !default;

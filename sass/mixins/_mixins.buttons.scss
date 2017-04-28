@@ -68,6 +68,62 @@
   border: $btn--small-highlighted-border;
 }
 
+
+@mixin btn--small-bordered($sizes: ($btn__label-size-mobile--small-bordered, $btn__label-size-desktop--small-bordered, $btn__label-size-desktop--small-bordered), $font: $btn--small-bordered-font-id) {
+  $size-mobile: nth($sizes, 1);
+  $size-tablet: nth($sizes, 2);
+  $size-desktop: nth($sizes, 3);
+
+  @include text-helper($font);
+  @include transition-property(color, background-color, border-color);
+  @include transition-duration($transition-duration);
+  @include transition-timing-function($transition-easing);
+  @include icon-arrow-right-small(true, '&:after');
+  @extend %icon--after;
+  background-color: $btn--small-bordered-bg-color;
+  color: $btn--small-bordered-color;
+  border: $btn--small-bordered-border;
+  border-radius: $btn--small-bordered-radius;
+  letter-spacing: $btn--small-bordered-letter-spacing;
+  display: inline-block;
+  text-transform: $btn--small-bordered-text-transform;
+  cursor: pointer;
+
+  &:hover {
+    @extend %btn--small-bordered--highlighted;
+  }
+
+  &:after {
+    margin-left: 1px;
+    font-size: $font-size-base + 3px;
+    font-weight: bold;
+    margin-top: -2px;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @include text-helper-size($font, $size-mobile);
+    padding: $btn--small-bordered-padding-mobile;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($font, $size-tablet);
+    padding: $btn--small-bordered-padding-tablet;
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($font, $size-desktop);
+    padding: $btn--small-bordered-padding-desktop;
+  }
+}
+
+
+@mixin btn--small-bordered--highlighted() {
+  background-color: $btn--small-bordered-highlighted-bg-color;
+  color: $btn--small-bordered-highlighted-color;
+  border: $btn--small-bordered-highlighted-border;
+}
+
+
 @mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font-id) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
