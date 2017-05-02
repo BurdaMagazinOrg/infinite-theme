@@ -263,8 +263,7 @@ function infinite_preprocess_field(&$variables) {
     $items = &$variables['items'];
     foreach ($items as $delta => &$item) {
       $term = $item['content']['#options']['entity'];
-      $vid = $term->getVocabularyId();
-      $item['vocabulary'] = $vid;
+      $item['status'] = $term->get('status')->value;
     }
   }
 }
