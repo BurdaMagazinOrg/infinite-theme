@@ -13,7 +13,11 @@
  */
 #}
 
-{% set count = content.field_images['#items']|length %}
+{% set count = 1 %}
+
+{% if content.field_images['#build']['settings']['count'] is defined %}
+    {% set count = content.field_images['#build']['settings']['count'] %}
+{% endif %}
 
 {% if content %}
     <div class="item-media item-media--gallery" data-view-type="galleryView" data-media-id="{{ media_id }}">
@@ -29,7 +33,7 @@
 
         {% block gallery_container_block %}
         <div class="gallery-container">
-            <div class="gallery-wrapper swiper-wrapper">
+            <div class="gallery-wrapper">
                 {{ content.field_images }}
             </div>
         </div>

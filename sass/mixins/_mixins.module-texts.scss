@@ -133,6 +133,7 @@
   $size-desktop: nth($sizes, 3);
 
   .teaser__title {
+    @include text-headline();
     text-transform: $feed-teaser-headline-text-transform;
   }
 

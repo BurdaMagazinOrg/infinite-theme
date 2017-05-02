@@ -88,6 +88,7 @@ stylesheets-remove:
   - "@paragraphs_starterkit/css/paragraphs_starterkit.css"
   - "@nexx_integration/css/styles.css"
   - "@hm_newsletter/css/hm_newsletter.css"
+  - "@blazy/css/components/blazy.loading.css"
 
 #libraries-override:
 #  core/jquery: infinite/jquery

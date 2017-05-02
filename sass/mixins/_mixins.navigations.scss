@@ -30,7 +30,13 @@
 
 @mixin item-anchor-navigation--full() {
   @include item-anchor-nav__text();
-  z-index: 2;
+  z-index: 5;
+
+  &.stuck {
+    width: 100% !important;
+    bottom: auto !important;
+    z-index: 11;
+  }
 
   li {
     display: inline-block;

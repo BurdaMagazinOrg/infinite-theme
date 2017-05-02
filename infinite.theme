@@ -5,13 +5,25 @@ use Drupal\block\Entity\Block;
 use Drupal\image\Entity\ImageStyle;
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
+  /* @var $paragraph \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+
   // TODO: find a better way to extract media bundle from paragraph item.
   if (!empty($variables['elements']['field_media']['0']['#media'])) {
-    $paragraph = $variables['elements']['#paragraph'];
-    /* @var Drupal\media_entity\Entity\Media $media */
+
+    /* @var $media \Drupal\media_entity\Entity\Media */
     $media = $variables['elements']['field_media']['0']['#media'];
     $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $media->getEntityTypeId() . '_' . $media->bundle();
     $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $media->getEntityTypeId() . '_' . $media->bundle() . '__default';  // TODO: Fix static view mode.
+  }
+
+  /* @var $parent \Drupal\Core\Entity\EntityInterface */
+  $parent = $paragraph->getParentEntity();
+  if ($parent) {
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId();
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__default';
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__' . $parent->bundle();
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $parent->getEntityTypeId() . '__' . $parent->bundle() . '__default';
   }
 }
 

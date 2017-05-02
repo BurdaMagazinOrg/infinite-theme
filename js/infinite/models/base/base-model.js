@@ -6,6 +6,7 @@
         defaults: {
             inviewEnabled: true,
             initialDOMItem: true,
+            _parentModel: null,
             type: "root"
         },
         initialize: function (pModel, pOptions) {
@@ -16,6 +17,12 @@
         },
         hasItems: function() {
             return false;
+        },
+        setParentModel: function(pModel) {
+            this._parentModel = pModel;
+        },
+        getParentModel: function() {
+            return this._parentModel;
         }
     });
 

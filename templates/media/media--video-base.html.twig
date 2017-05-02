@@ -20,16 +20,18 @@
                     allowfullscreen></iframe>
         </div>
         <div class="caption">
-            {% if content.field_copyright | render is not empty or content.field_source | render is not empty %}
-                <div class="text-copyright">
-                    {% if content.field_copyright | render %}
-                        <span>{{ content.field_copyright }}</span>
-                    {% endif %}
-                    {% if content.field_source | render %}
-                        <span>{{ content.field_source }}</span>
-                    {% endif %}
-                </div>
-            {% endif %}
+            {% block copyright_block %}
+                {% if content.field_copyright | render is not empty or content.field_source | render is not empty %}
+                    <div class="text-copyright">
+                        {% if content.field_copyright | render %}
+                            <span>{{ content.field_copyright }}</span>
+                        {% endif %}
+                        {% if content.field_source | render %}
+                            <span>{{ content.field_source }}</span>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endblock %}
 
             {% if content.field_description|render %}
                 <div class="text-description">{{ content.field_description }}</div>

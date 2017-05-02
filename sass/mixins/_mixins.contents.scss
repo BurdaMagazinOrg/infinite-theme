@@ -405,6 +405,7 @@
       padding: $article__header-padding-mobile;
     }
 
+    //TODO check include - multi @usage of media
     .item-content__content {
       //padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
       @include padding--v-region(top, (($gap-v-region-mobile*2), ($gap-v-region-tablet*2), ($gap-v-region-desktop*2)));

@@ -1,3 +1,8 @@
+@mixin ratio-hide() {
+  height: 0;
+  overflow: hidden;
+}
+
 @mixin disabled() {
   @include opacity($opacity-disabled);
   pointer-events: none;
