@@ -19,7 +19,7 @@
         initialize: function (pOptions) {
             _.extend(this, pOptions);
 
-            if ($.cookie != undefined) $.cookie.json = true;
+            //if ($.cookie != undefined) $.cookie.json = true;
             if ($.timeago != undefined)  $.timeago.settings.localeTitle = true;
 
             if (_.isFunction(history.pushState)) Backbone.history.start({pushState: true});
@@ -32,6 +32,8 @@
             this.createModels();
             this.createManagers();
             this.createViews();
+
+            //console.log("UUID", this.deviceModel.get('uuid'));
 
             /**
              * Infinite Model Helper
@@ -76,7 +78,7 @@
             this.infiniteViewsModel = new BaseCollectionModel();
             this.modalSearchModel = new ModalSearchModel();
             this.pageOffsetsModel = new PageOffsetsModel();
-            this.deviceModel = new DeviceModel({}, JSON.parse(this.$el.find('[data-breakpoint-settings]').text()));
+            this.deviceModel = new DeviceModel({}, _.extend(JSON.parse(this.$el.find('[data-breakpoint-settings]').text())));
 
             /**
              * Backbone Manager - push Models

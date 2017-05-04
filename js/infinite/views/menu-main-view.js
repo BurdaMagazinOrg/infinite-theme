@@ -31,7 +31,7 @@
             this.createViews();
             _.delay(_.bind(this.createByContext, this), 10);
 
-            if (this.deviceModel.isActive) {
+            if (this.deviceModel != undefined && this.deviceModel.get('isActive')) {
                 this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
 
                 //shitty drupal 8 js-menu-active

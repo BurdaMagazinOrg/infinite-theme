@@ -23,7 +23,7 @@
 
             if (!this.hasDeviceModel) return;
 
-            this.cookieName = this.deviceModel.basehost + this.cookieName;
+            this.cookieName = this.deviceModel.get("basehost") + this.cookieName;
             if (this.elementBreakpoints.length <= 0) this.elementBreakpoints.push('tablet', 'desktop');
             this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({active: true});
             this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
@@ -37,7 +37,7 @@
             var tmpCurrentBreakpoint = this.breakpointDeviceModel.id;
 
             console.log("newsletter_modal",
-                " \n | isGoogleBot", this.deviceModel.isGoogleBot,
+                " \n | isGoogleBot", this.deviceModel.get("isGoogleBot"),
                 " \n | currentBreakpoint >> " + tmpCurrentBreakpoint, 'is allowed > ', this.elementBreakpoints.indexOf(tmpCurrentBreakpoint),
                 " \n | cookieName", this.cookieName,
                 " \n | cookie", this.getCookie(),
@@ -45,7 +45,7 @@
                 " \n | referrerIsMe >> " + this.isRefererAccepted(),
                 " \n | >>> SHOW", (this.deviceModel.isGoogleBot != true && this.elementBreakpoints.indexOf(tmpCurrentBreakpoint) >= 0 && this.getCookie() === undefined && this.lastBreakpoint != tmpCurrentBreakpoint) && this.isRefererAccepted());
 
-            if (this.deviceModel.isGoogleBot === false
+            if (this.deviceModel.get("isGoogleBot") === false
                 && this.elementBreakpoints.indexOf(tmpCurrentBreakpoint) >= 0
                 && this.lastBreakpoint != tmpCurrentBreakpoint
                 && this.isRefererAccepted() == true
@@ -101,7 +101,7 @@
             }
         },
         isRefererAccepted: function () {
-            return this.deviceModel.getRefererCookie() != undefined && this.deviceModel.getRefererCookie().referrerIsMe == true;
+            return this.deviceModel.getReferrerCookie() != undefined && this.deviceModel.getReferrerCookie().referrerIsMe == true;
         },
         getCookie: function () {
             return this.deviceModel.getCookie(this.cookieName);

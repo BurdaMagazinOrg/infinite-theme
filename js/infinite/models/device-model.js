@@ -3,8 +3,15 @@
     "use strict";
 
     BurdaInfinite.models.DeviceModel = Backbone.Model.extend({
-        isActive: false,
-        cookieRefererName: '_referer',
+        defaults: {
+            isActive: false,
+            uid: -1,
+            uid_cookie_name: "tc_ptid",
+            basehost: window.location.hostname.split(".")[0],
+            cookieReferrerName: '_referrer',
+            isGoogleBot: navigator.userAgent.toLowerCase().indexOf('googlebot') > 0,
+            useWhatsapp: ((navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i)) ? true : false)
+        },
         breakpoints: {},
         breakpointValues: [],
         breakpointKeys: [],
@@ -13,16 +20,11 @@
         deviceMapping: {},
         deviceValues: [],
         deviceKeys: [],
-        currentBreakpoint: {},
         lastBreakpoint: {},
         lastDeviceBreakpoint: {},
-        useWhatsapp: ((navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i)) ? true : false),
-        isGoogleBot: navigator.userAgent.toLowerCase().indexOf('googlebot') > 0,
-        basehost: window.location.hostname.split(".")[0],
         initialize: function (pAttributes, pOptions) {
+            //var tmpOptions = _.extend(this.defaults, pOptions);
             Backbone.Model.prototype.initialize.call(this, pAttributes, pOptions);
-
-            this.cookieRefererName = this.basehost + this.cookieRefererName;
 
             this.breakpoints = pOptions.Breakpoints;
             this.breakpointValues = _.values(this.breakpoints);
@@ -34,10 +36,13 @@
             this.deviceBreakpointValues = [];
             this.deviceBreakpointKeys = [];
 
+            this.set("uuid", this.getCookie(this.get("uid_cookie_name")));
+            this.set("cookieReferrerName", this.get("basehost") + this.getReferrerCookieName());
             this.set('breakpoints', new Backbone.Collection());
             this.set('deviceBreakpoints', new Backbone.Collection());
+            this.set('isActive', this.getBreakpoints().length > 0);
 
-            this.writeRefererCookie();
+            this.writeReferrerCookie();
             this.createBreakpoints();
             this.createDeviceBreakpoints();
             this.checkActiveBreakpoint();
@@ -48,9 +53,8 @@
                 this.checkActiveDevice();
             }, 200), this));
 
-            if (this.getBreakpoints().length > 0) this.isActive = true;
 
-            console.log("deviceModelInfo", this.getCookie(this.cookieRefererName));
+            console.log("deviceModelInfo", JSON.parse(this.getReferrerCookie()));
         },
         createBreakpoints: function () {
             var tmpModelItem = {},
@@ -164,9 +168,9 @@
                 return tmpSize.width < pVal;
             }, this));
         },
-        writeRefererCookie: function () {
+        writeReferrerCookie: function () {
             var tmpParams = this.getURLParams(),
-                tmpCookie = $.extend(this.getCookie(this.cookieRefererName), {}),
+                tmpCookie = $.extend(this.getCookie(this.getReferrerCookieName()), {}),
                 tmpReferrer = document.referrer,
                 tmpHostname = this.parseUrl(tmpReferrer).hostname,
                 tmpUtmCampaign = tmpParams.utm_campaign;
@@ -178,7 +182,7 @@
                 tmpCookie.lastKnownUtmCampaign = tmpUtmCampaign;
             }
 
-            tmpCookie.referrerIsMe = tmpReferrer != "" && tmpHostname.indexOf(this.basehost) > -1;
+            tmpCookie.referrerIsMe = tmpReferrer != "" && tmpHostname.indexOf(this.get('basehost')) > -1;
             tmpCookie.referrerIsFb = tmpHostname.indexOf("facebook") > -1;
 
             //counting clicks after FB referrer - needed for the FB layer/ads/likegates policy
@@ -189,7 +193,7 @@
                 tmpCookie.clicksAfterFbReferrer++;
             }
 
-            this.setCookieValue(this.cookieRefererName, tmpCookie);
+            this.setCookieValue(this.getReferrerCookieName(), JSON.stringify(tmpCookie));
         },
         parseUrl: function (pUrl) {
             var a = document.createElement('a');
@@ -203,8 +207,11 @@
         getCookie: function (pCookieName) {
             return $.cookie(pCookieName);
         },
-        getRefererCookie: function () {
-            return $.cookie(this.cookieRefererName);
+        getReferrerCookieName: function () {
+            return this.get("cookieReferrerName");
+        },
+        getReferrerCookie: function () {
+            return $.cookie(this.getReferrerCookieName());
         },
         getURLParams: function (pParam) {
             return _.object(_.compact(_.map(location.search.slice(1).split('&'), function (item) {
