@@ -40,7 +40,6 @@
             this.set("cookieReferrerName", this.get("basehost") + this.getReferrerCookieName());
             this.set('breakpoints', new Backbone.Collection());
             this.set('deviceBreakpoints', new Backbone.Collection());
-            this.set('isActive', this.getBreakpoints().length > 0);
 
             this.writeReferrerCookie();
             this.createBreakpoints();
@@ -54,6 +53,7 @@
             }, 200), this));
 
 
+            this.set('isActive', this.getBreakpoints().length > 0);
             console.log("deviceModelInfo", JSON.parse(this.getReferrerCookie()));
         },
         createBreakpoints: function () {

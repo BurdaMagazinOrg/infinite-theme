@@ -42,6 +42,32 @@
         updateViews: function () {
             this.swiperApi = this.$swiperContainer.swiper(this.settings);
             this.$swiperContainer.data('swiperApi', this.swiperApi);
+
+            if (this.isMobileMode) {
+                this.enableMobileMode();
+            } else {
+                this.disableMobileMode();
+            }
+        },
+        enableMobileMode: function () {
+            if (Blazy == undefined) return;
+
+            this.swiperApi.on('onSlideChangeStart', function (pSwiperApi) {
+                var tmpIndex = Math.min(pSwiperApi.activeIndex + 1, pSwiperApi.slides.length),
+                    $tmpSlide = $(pSwiperApi.slides[tmpIndex]).find('.b-lazy'),
+                    tmpBlazy;
+
+                if (!$tmpSlide.hasClass('b-loaded')) {
+                    tmpBlazy = new Blazy();
+                    tmpBlazy.load($tmpSlide[0]);
+                }
+
+            });
+        },
+        disableMobileMode: function () {
+            if (Blazy == undefined) return;
+
+            this.swiperApi.off('slideChangeStart');
         },
         removeSwiper: function () {
             this.$swiperContainer.data('swiperApi').destroy(true, true);
@@ -52,13 +78,13 @@
 
             if (pModel.id == 'smartphone' && this.isMobileMode == false) {
 
-                if(this.swiperNavUsage) this.swiperNavActive = true;
+                if (this.swiperNavUsage) this.swiperNavActive = true;
                 this.isMobileMode = true;
 
                 this.updateViews();
             } else if (pModel.id != 'smartphone' && this.isMobileMode) {
 
-                if(this.swiperNavUsage) this.swiperNavActive = false;
+                if (this.swiperNavUsage) this.swiperNavActive = false;
                 this.isMobileMode = false;
 
                 this.removeSwiper();
