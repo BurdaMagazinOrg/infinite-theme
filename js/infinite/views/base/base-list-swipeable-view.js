@@ -55,15 +55,17 @@
             this.swiperApi.on('onSlideChangeStart', function (pSwiperApi) {
                 var tmpIndex = Math.min(pSwiperApi.activeIndex + 1, pSwiperApi.slides.length - 1),
                     $tmpSlide = $(pSwiperApi.slides[tmpIndex]).find('.b-lazy'),
+                    $tmpSlideContainer = $(pSwiperApi.slides[tmpIndex]).find('.media--loading'),
                     tmpBlazy;
-
-                console.log(">>>> tmpIndex", tmpIndex, $tmpSlide);
 
                 if (!$tmpSlide.hasClass('b-loaded')) {
                     tmpBlazy = new Blazy();
                     tmpBlazy.load($tmpSlide[0]);
                 }
 
+                if($tmpSlideContainer.hasClass('media--loading')) {
+                    $tmpSlideContainer.removeClass('media--loading');
+                }
             });
         },
         disableMobileMode: function () {
