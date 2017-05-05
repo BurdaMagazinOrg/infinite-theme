@@ -53,9 +53,11 @@
             if (Blazy == undefined) return;
 
             this.swiperApi.on('onSlideChangeStart', function (pSwiperApi) {
-                var tmpIndex = Math.min(pSwiperApi.activeIndex + 1, pSwiperApi.slides.length),
+                var tmpIndex = Math.min(pSwiperApi.activeIndex + 1, pSwiperApi.slides.length - 1),
                     $tmpSlide = $(pSwiperApi.slides[tmpIndex]).find('.b-lazy'),
                     tmpBlazy;
+
+                console.log(">>>> tmpIndex", tmpIndex, $tmpSlide);
 
                 if (!$tmpSlide.hasClass('b-loaded')) {
                     tmpBlazy = new Blazy();
