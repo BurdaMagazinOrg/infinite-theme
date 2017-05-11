@@ -258,6 +258,16 @@ function infinite_preprocess_paragraph(&$variables) {
   }
 }
 
+function infinite_preprocess_field(&$variables) {
+  if ($variables['element']['#field_name'] == 'field_tags') {
+    $items = &$variables['items'];
+    foreach ($items as $delta => &$item) {
+      $term = $item['content']['#options']['entity'];
+      $item['status'] = $term->get('status')->value;
+    }
+  }
+}
+
 function infinite_page_attachments_alter(array &$attachments) {
 //  foreach($attachments['#attached']['html_head'] as $key => $attachment) {
 //    if(isset($attachment[1]) && $attachment[1] == 'breakpoint_settings_loader') {

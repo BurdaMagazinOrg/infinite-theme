@@ -4,7 +4,7 @@
             <div class="label">Mehr zum Thema:</div>
             <ul>
                 {% for item in items %}
-                    <li>{{ item.content }}</li>
+                    <li{{ item.status == 0 ? ' class="unpublished"' }} >{{ item.content }}</li>
                 {% endfor %}
             </ul>
         </div>
