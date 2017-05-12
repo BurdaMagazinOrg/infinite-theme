@@ -536,8 +536,13 @@
     text-align: center;
     border-bottom: $horoscope__img-container-border--node;
 
-    img {
+    .media--blazy {
+      width: 360px;
       max-width: 70%;
+
+      img {
+        width: 100%;
+      }
     }
   }
 
@@ -545,6 +550,10 @@
     .item-horoscope__img-container {
       margin-bottom: $horoscope__img-container-margin-mobile--node;
       padding-bottom: $horoscope__img-container-padding-mobile--node;
+
+      .media--blazy {
+        display: inline-block;
+      }
     }
   }
 
