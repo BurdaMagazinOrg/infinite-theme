@@ -3,6 +3,8 @@
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 {% set url = url ~ "?utm_medium=social&utm_campaign=Sharing&utm_source=" %}
 
+{{ attach_library('infinite/infinite.social-apis') }}
+
 {% block social_facebook %}
     <div class="item-social icon-facebook" data-url="{{ url ~ "Sharing_Facebook" | e('url') }}"
          data-description="{{ label | e('html_attr') }}" data-social-type="facebook">
