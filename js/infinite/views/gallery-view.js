@@ -38,7 +38,7 @@
 
             if (typeof TrackingManager != 'undefined') {
                 TrackingManager.trackIVW();
-                TrackingManager.trackPageView(tmpPath + '/gallery_' + this.mediaId);
+                //TrackingManager.trackPageView(tmpPath + '/gallery_' + this.mediaId);
                 TrackingManager.trackEvent({
                     category: 'click',
                     action: 'gallery',
