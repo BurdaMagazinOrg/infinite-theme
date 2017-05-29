@@ -84,7 +84,7 @@
         }
 
         this.options.onAfterPageLoad($items);
-        Drupal.attachBehaviors($items);
+        Drupal.attachBehaviors($items[0]);
     }
 
     /* Public */
