@@ -56,7 +56,7 @@
   }
 
   //orbyd size bug
-  @media (min-device-width: 767px) and (max-device-width: 1024px) and (orientation:landscape) {
+  @media (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: landscape) {
     .region-content .region-marketing.ad-active iframe {
       max-width: $ad-width !important;
     }
@@ -155,6 +155,35 @@
   }
 }
 
+/**
+** Feed AD
+*/
+.col--left .ad-content {
+  &.ad-active {
+    border-top: $feed-teaser-h-line;
+
+    @media (max-width: $screen-xxs-max) {
+      padding-top: $feed-teaser-gap-top-mobile;
+      margin-top: $feed-teaser-gap-top-mobile;
+    }
+
+    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+      padding-top: $feed-teaser-gap-top-tablet;
+      margin-top: $feed-teaser-gap-top-tablet;
+    }
+
+    @media (min-width: $screen-md-min) {
+      padding-top: $feed-teaser-gap-top-desktop;
+      margin-top: $feed-teaser-gap-top-desktop;
+    }
+  }
+}
+
+/**
+** Article Content AD
+*/
+
+/** old **/
 .item-content .sticky-intext-roll {
   @extend %margin--v-region;
 }
