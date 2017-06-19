@@ -178,41 +178,6 @@ function infinite_preprocess_views_view(&$variables) {
 /**
  * Implements hook_preprocess_product().
  */
-function infinite_preprocess_product(&$variables) {
-  $product = $variables['elements']['#product'];
-  $data_attributes = new Drupal\Core\Template\Attribute;
-  $data_attributes->setAttribute('data-title', $product->title->value)
-    ->setAttribute('data-shop', $product->shop->value)
-    ->setAttribute('data-brand', $product->brand->value)
-    ->setAttribute('data-price', $product->price->value)
-    ->setAttribute('data-currency', $product->currency->value)
-    ->setAttribute('data-sku', $product->sku->value)
-    ->setAttribute('data-provider', 'tracdelight');
-
-  $host = parse_url($product->detailpageurl->uri, PHP_URL_HOST);
-  $product_url = $product->detailpageurl->uri;
-  // This is needed only for tracdelight products, not manually added ones
-  if ($host == 'td.oo34.net') {
-    $sub_id = 0;
-    if (Drupal::request()->attributes->has('node')) {
-      $node = Drupal::request()->attributes->get('node');
-      $sub_id = 'node-' . $node->id();
-    }
-    elseif (Drupal::request()->attributes->has('taxonomy_term')) {
-      $term = Drupal::request()->attributes->get('taxonomy_term');
-      $sub_id = 'term-' . $term->id();
-    }
-    $product_url .= '&subid=' . $sub_id;
-  }
-
-  $variables['product_url'] = $product_url;
-  $data_attributes->setAttribute('data-external-url', $variables['product_url']);
-  $variables['data_attributes'] = $data_attributes;
-}
-
-/**
- * Implements hook_preprocess_product().
- */
 function infinite_preprocess_advertising_product(&$variables) {
   $product = $variables['elements']['#advertising_product'];
   // Set the data attributes for tracking purposes
@@ -228,6 +193,7 @@ function infinite_preprocess_advertising_product(&$variables) {
   // This is needed only for tracdelight products
   if ($product->getType() == 'advertising_product_tracdelight') {
     $sub_id = 0;
+
     if (Drupal::request()->attributes->has('node')) {
       $node = Drupal::request()->attributes->get('node');
       $sub_id = 'node-' . $node->id();
@@ -236,7 +202,7 @@ function infinite_preprocess_advertising_product(&$variables) {
       $term = Drupal::request()->attributes->get('taxonomy_term');
       $sub_id = 'term-' . $term->id();
     }
-    $tracking_url .= '&subid=' . $sub_id;
+    $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
   }
 
   $variables['tracking_url'] = $tracking_url;

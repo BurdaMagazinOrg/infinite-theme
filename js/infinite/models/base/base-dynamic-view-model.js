@@ -6,7 +6,7 @@
         defaults: {
             el: [],
             infiniteBlock: false,
-            initialDOMItem: true,
+            initialDOMItem: true
         },
         initialize: function (pModel, pOptions) {
             BaseCollectionModel.prototype.initialize.call(this, pModel, pOptions);

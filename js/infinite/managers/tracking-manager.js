@@ -303,7 +303,7 @@
         },
         onProductsHandler: function ($pContainer, pOptions) {
             var $tmpContainer = $($pContainer),
-                $tmpProductItems = $tmpContainer.find('.item-product'),
+                $tmpProductItems = $tmpContainer.find('.item-ecommerce'),
                 tmpOptions = _.extend({provider: 'tracdelight', list: 'Product Widget'}, pOptions),
                 tmpItemData = {},
                 tmpItemsData = [];
