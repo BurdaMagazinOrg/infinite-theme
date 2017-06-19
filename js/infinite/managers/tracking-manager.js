@@ -322,6 +322,10 @@
 
                 tmpOptions.provider = tmpProvider;
 
+                if($tmpProductItem.hasClass('item-product--single')) {
+                  tmpOptions.list = 'Product Widget Single';
+                }
+
                 /**
                  * Impression Data
                  * @type {{name: *, id: *, price: *, brand: *, position: *}}
