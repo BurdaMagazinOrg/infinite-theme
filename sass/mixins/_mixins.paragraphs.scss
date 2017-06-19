@@ -791,29 +791,23 @@
 
 
 
-// Slick icon entity codes outputs the following
-// "\2190" outputs ascii character "←"
-// "\2192" outputs ascii character "→"
-// "\2022" outputs ascii character "•"
-
-
-$slick-loader-path: "./" !default;
-$slick-arrow-color: white !default;
-$slick-dot-color: black !default;
-$slick-dot-color-active: $slick-dot-color !default;
-$slick-prev-character: "\2190" !default;
-$slick-next-character: "\2192" !default;
-$slick-dot-character: "\2022" !default;
-$slick-dot-size: 6px !default;
-$slick-opacity-default: 0.75 !default;
-$slick-opacity-on-hover: 1 !default;
-$slick-opacity-not-active: 0.25 !default;
-
-
 @mixin item-paragraph-ecommerce-slider--full() {
 
   background-color: $ecommere-slider__background-color;
+  padding: 30px 0;
+  margin: 0 -40px;
 
+  .ecommerce-slider__title {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  .ecommerce-slider__company {
+    text-align: center;
+  }
 
   .slick-slider {
     margin: 30px 130px;
@@ -827,7 +821,7 @@ $slick-opacity-not-active: 0.25 !default;
   .slick-next {
     position: absolute;
     display: block;
-    height: 50px;
+    height:  50px;
     width: 50px;
     line-height: 0px;
     font-size: 0px;
@@ -870,6 +864,7 @@ $slick-opacity-not-active: 0.25 !default;
     }
 
   }
+
 
 }
 
