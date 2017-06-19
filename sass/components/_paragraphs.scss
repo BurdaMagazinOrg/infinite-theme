@@ -94,3 +94,7 @@
 .item-paragraph--single-product {
   @extend %item-paragraph--single-product;
 }
+
+.item-paragraph--ecommerce-slider-paragraph {
+  @extend %item-paragraph--ecommerce-slider;
+}
