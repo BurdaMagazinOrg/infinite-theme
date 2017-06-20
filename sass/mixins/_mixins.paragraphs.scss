@@ -789,45 +789,45 @@
 
 }
 
-
-
 @mixin item-paragraph-ecommerce-slider--full() {
 
   @include gap__container--h-negative();
   @include padding--v-item-content__item();
 
   background-color: $ecommere-slider__background-color;
-  position: relative;
 
   .ecommerce-slider {
+    position: relative;
+  }
+
+  .ecommerce-slider__content-wrapper {
     @extend %flexbox;
     @extend %justify-content-center;
     @extend %align-items-center;
-
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 56%;
+    position: absolute;
+    top: 0;
+    left: 130px;
+    right : 130px;
+    bottom: 0;
   }
 
   .ecommerce-slider__content {
     position: relative;
     z-index: 1;
-    margin: 30px 130px;
+    width: 100%;
     padding-top: 20px;
   }
 
   .ecommerce-slider__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56%;
 
     img {
       width: 100%;
       height: auto;
     }
   }
-
 
   .ecommerce-slider__title {
     font-size: 2rem;
@@ -860,7 +860,6 @@
     }
   }
 
-
   /* Arrows */
 
   .slick-prev,
@@ -868,7 +867,7 @@
     @extend %icon--after;
     position: absolute;
     display: block;
-    height:  50px;
+    height: 50px;
     width: 50px;
     line-height: 0px;
     font-size: 0px;
@@ -896,7 +895,6 @@
 
   }
 
-
   .slick-prev {
     @include icon-arrow-left-small(true, "&:after");
     left: -130px;
@@ -906,7 +904,6 @@
     @include icon-arrow-right-small(true, "&:after");
     right: -130px;
   }
-
 
 }
 
