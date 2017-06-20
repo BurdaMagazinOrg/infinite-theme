@@ -4,20 +4,31 @@
 
 <div class="ecommerce-slider" data-view-type="ecommerceSlider">
 
-    <h3 class="ecommerce-slider__title">{{ label }}</h3>
-    <div class="ecommerce-slider__company">{{ content.field_campaign }}</div>
+    <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};" >
 
-    <div class="ecommerce-slider__inner" style="background-color: {{ content.field_color_box.0 }};" class="ecommerce-slider__color-box">
-        {{ content.field_advertising_products }}
+        <h3 class="ecommerce-slider__title">{{ label }}</h3>
+        <div class="ecommerce-slider__company">{{ content.field_campaign }}</div>
+
+        <div class="ecommerce-slider__inner" class="ecommerce-slider__color-box">
+            {{ content.field_advertising_products }}
+        </div>
     </div>
 
-    <div>BG  media: {{ content.field_background_media }}</div>
-
+    <div class="ecommerce-slider__bg">
+        {{ content.field_background_media }}
+    </div>
 </div>
 
 <style>
-    .ecommerce-slider__inner .slick-arrow {
+    .item-paragraph--full.item-paragraph--ecommerce-slider-paragraph .slick-prev,
+    .item-paragraph--full.item-paragraph--ecommerce-slider-paragraph .slick-next {
         color: {{ content.field_color_contrast.0 }};
         background-color: {{ content.field_color_button.0 }};
+    }
+
+    .slick-slider .item-product .text-shop {
+        color: {{ content.field_color_contrast.0 }};
+        background-color: {{ content.field_color_button.0 }};
+        border-color: {{ content.field_color_button.0 }};
     }
 </style>

@@ -795,23 +795,58 @@
 
   @include gap__container--h-negative();
   @include padding--v-item-content__item();
+
   background-color: $ecommere-slider__background-color;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56%;
+
+  .ecommerce-slider__content {
+    position: relative;
+    z-index: 1;
+    margin: 30px 130px;
+    padding-top: 20px;
+  }
+
+  .ecommerce-slider__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
 
   .ecommerce-slider__title {
     font-size: 2rem;
     font-weight: bold;
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 30px;
     text-align: center;
   }
 
   .ecommerce-slider__company {
     text-align: center;
+    margin-bottom: 20px;
+
+    .native_campaign_ecommerce_slider > .brand > img {
+      width: 100px;
+    }
+
   }
 
   .slick-slider {
-    margin: 30px 130px;
-    padding: 60px;
+    background-color: #ffffff;
+    padding: 20px 20px 25px 20px;
+
+    .item-product {
+      margin-bottom: 0;
+    }
   }
 
 
