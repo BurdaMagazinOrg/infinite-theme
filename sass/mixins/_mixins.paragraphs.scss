@@ -798,9 +798,16 @@
 
   background-color: $ecommere-slider__background-color;
   position: relative;
-  height: 0;
-  overflow: hidden;
-  padding-bottom: 56%;
+
+  .ecommerce-slider {
+    @extend %flexbox;
+    @extend %justify-content-center;
+    @extend %align-items-center;
+
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56%;
+  }
 
   .ecommerce-slider__content {
     position: relative;
@@ -846,6 +853,10 @@
 
     .item-product {
       margin-bottom: 0;
+    }
+
+    .item-product .img-container {
+      height: inherit;
     }
   }
 
