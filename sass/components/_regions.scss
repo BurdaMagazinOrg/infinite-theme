@@ -63,3 +63,8 @@
   border-top: 0;
   padding-top: 0;
 }
+
+.region-ecommerceslider {
+  @extend %ecommerce-slider--full;
+  @include gap__container--h-negative();
+}
