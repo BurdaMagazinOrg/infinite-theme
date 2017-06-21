@@ -219,15 +219,12 @@
 
   }
 
-  .slick-slider {
+  .item-product {
     background-color: #ffffff;
     padding: 20px 20px 25px 20px;
+    margin-bottom: 0;
 
-    .item-product {
-      margin-bottom: 0;
-    }
-
-    .item-product .img-container {
+    .img-container {
       height: inherit;
     }
   }
