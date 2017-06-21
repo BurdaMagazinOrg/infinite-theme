@@ -6,8 +6,10 @@
   }
 }
 
-@mixin product__item--horizontal-block {
-  @include make-sm-column($grid-columns/3);
+@mixin product__item--default {
+
+  @include product__item-text();
+
   position: relative;
   overflow: hidden;
   margin-bottom: $gap-size-lg;
@@ -96,19 +98,6 @@
       height: $product__item-text-headline-height-mobile;
     }
 
-    .img-container, .caption {
-      @include make-xxs-column($grid-columns/2);
-    }
-
-    .img-container {
-      height: auto;
-      margin-bottom: 0;
-      padding-left: 0;
-    }
-
-    .caption {
-      padding-left: 0;
-    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
@@ -124,6 +113,29 @@
       margin-bottom: $product__item-text-headline-gap-bottom-desktop;
     }
   }
+}
+
+@mixin product__item--horizontal-block {
+
+  @include make-sm-column($grid-columns/3);
+
+  @media (max-width: $screen-xs-max) {
+
+    .img-container, .caption {
+      @include make-xxs-column($grid-columns/2);
+    }
+
+    .img-container {
+      height: auto;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    .caption {
+      padding-left: 0;
+    }
+  }
+
 }
 
 @mixin product__item--single-product() {
@@ -167,6 +179,12 @@
   @include padding--v-item-content__item();
 
   background-color: $ecommere-slider__background-color;
+
+  .item-product-slider {
+
+    @include product__item--default();
+  }
+
 
   .ecommerce-slider {
     position: relative;
@@ -219,7 +237,7 @@
 
   }
 
-  .item-product {
+  .item-product-slider {
     background-color: #ffffff;
     padding: 20px 20px 25px 20px;
     margin-bottom: 0;
@@ -228,6 +246,8 @@
       height: inherit;
     }
   }
+
+
 
   /* Arrows */
 
@@ -272,6 +292,39 @@
   .slick-next {
     @include icon-arrow-right-small(true, "&:after");
     right: -130px;
+  }
+
+
+  // Mobile
+  @media (max-width: $screen-xs-max) {
+
+    .ecommerce-slider__content-wrapper {
+      left: 0;
+      right : 0;
+    }
+
+    .slick-prev, .slick-next {
+      display: none;
+    }
+
+    .slick-list {
+      padding:0 30% 0 0
+    }
+
+    .ecommerce-slider__bg {
+      padding-bottom: 172%;
+    }
+
+  }
+
+  // Tablet
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+
+  }
+
+  // Desktop
+  @media (min-width: $screen-md-min) {
+
   }
 
 }
