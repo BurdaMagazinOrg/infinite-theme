@@ -22,7 +22,7 @@
     border-top: 0;
   }
 
-  .region-marketing.ad-active + .region-full-content {
+  .region-marketing.ad-active + .region-full-content:not(.no-v-padding) {
     @if ($region-v-lined) {
       margin-top: -$h-line-width; //double line
     } @else {
@@ -66,5 +66,16 @@
 
 .region-ecommerceslider {
   @extend %ecommerce-slider--full;
-  @include gap__container--h-negative();
+  padding-left: 0;
+  padding-right: 0;
+
+  .ecommerce-slider__inner {
+    @extend %flexbox;
+    overflow: hidden;
+
+    .item-product {
+      @extend %flex-shrink-0;
+      width: 25%;
+    }
+  }
 }
