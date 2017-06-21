@@ -96,3 +96,7 @@
 %item-paragraph--ecommerce-slider {
   @include item-paragraph--ecommerce-slider();
 }
+
+%ecommerce-slider--full {
+  @include ecommerce-slider--full();
+}
