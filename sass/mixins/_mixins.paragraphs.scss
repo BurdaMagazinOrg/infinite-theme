@@ -780,7 +780,9 @@
 }
 
 @mixin item-paragraph--ecommerce-slider() {
+  @include padding--v-item-content__item();
+
   &.item-paragraph--full {
-    @include ecommerce-slider--full()
+    @include ecommerce-slider--full();
   }
 }

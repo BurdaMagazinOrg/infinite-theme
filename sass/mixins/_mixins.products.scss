@@ -164,7 +164,6 @@
 @mixin ecommerce-slider--full() {
 
   @include gap__container--h-negative();
-  @include padding--v-item-content__item();
 
   background-color: $ecommere-slider__background-color;
 
