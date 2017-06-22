@@ -22,15 +22,25 @@
 </div>
 
 <style>
-    .item-paragraph--ecommerce-slider-paragraph .slick-prev,
-    .item-paragraph--ecommerce-slider-paragraph .slick-next {
+
+    .slick-slider .slick-prev,
+    .slick-slider .slick-next,
+    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .slick-prev,
+    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .slick-next
+
+    {
         color: {{ content.field_color_contrast.0 }};
         background-color: {{ content.field_color_button.0 }};
     }
 
-    .slick-slider .item-product .text-shop {
+    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .item-product-slider .text-shop,
+    .page-ecommerce-slider .ecommerce-slider .item-product-slider .text-shop,
+    .region-ecommerceslider .item-product-slider .text-shop
+    {
         color: {{ content.field_color_contrast.0 }};
         background-color: {{ content.field_color_button.0 }};
         border-color: {{ content.field_color_button.0 }};
     }
+
+
 </style>
