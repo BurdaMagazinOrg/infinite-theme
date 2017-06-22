@@ -206,6 +206,11 @@
     bottom: 0;
   }
 
+  .ecommerce-slider__title {
+    @include text-helper($font-headline-id);
+    text-align: center;
+  }
+
   .ecommerce-slider__content {
     position: relative;
     z-index: 1;
@@ -224,20 +229,12 @@
     }
   }
 
-  .ecommerce-slider__title {
-    font-size: 2rem;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
   .ecommerce-slider__company {
     text-align: center;
     margin-bottom: 20px;
 
     .native_campaign_ecommerce_slider > .brand > img {
-      width: 100px;
+      height: 20px;
     }
 
   }
@@ -323,25 +320,11 @@
 
 }
 
-
-@mixin ecommerce-slider--middle() {
-
-  .ecommerce-slider__content-wrapper {
-    left: $ecommere-slider__padding--middle;
-    right: $ecommere-slider__padding--middle;
-  }
-
-  .slick-prev {
-    left: -$ecommere-slider__padding--middle;
-  }
-
-  .slick-next {
-    right: -$ecommere-slider__padding--middle;
-  }
-
-}
-
 @mixin ecommerce-slider--small() {
+
+  .ecommerce-slider__content {
+    padding: 20px;
+  }
 
   .ecommerce-slider__content-wrapper {
     left: 0;
@@ -360,8 +343,37 @@
     padding-bottom: 172%;
   }
 
+  .ecommerce-slider__title {
+    @include text-helper-size($font-headline-id, $title-size-sm);
+  }
+
+}
+
+@mixin ecommerce-slider--middle() {
+
+  .ecommerce-slider__content-wrapper {
+    left: $ecommere-slider__padding--middle;
+    right: $ecommere-slider__padding--middle;
+  }
+
+  .slick-prev {
+    left: -$ecommere-slider__padding--middle;
+  }
+
+  .slick-next {
+    right: -$ecommere-slider__padding--middle;
+  }
+
+  .ecommerce-slider__title {
+    @include text-helper-size($font-headline-id, $title-size-md);
+  }
+
 }
 
 @mixin ecommerce-slider--full() {
   @include gap__container--h-negative();
+
+  .ecommerce-slider__title {
+    @include text-helper-size($font-headline-id, $title-size-lg);
+  }
 }

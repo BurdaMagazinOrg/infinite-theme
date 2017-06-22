@@ -65,12 +65,16 @@
 }
 
 .region-ecommerceslider {
-
   @extend %ecommerce-slider;
+}
+
+.region-ecommerceslider.region-full-content {
   @extend %ecommerce-slider--full;
 
   padding-left: 0;
   padding-right: 0;
+}
 
-
+.region-ecommerceslider.region-middle-content {
+  @extend %region--fixed-content;
 }
