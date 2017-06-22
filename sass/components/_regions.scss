@@ -65,6 +65,8 @@
 }
 
 .region-ecommerceslider {
+
+  @extend %ecommerce-slider;
   @extend %ecommerce-slider--full;
 
   padding-left: 0;
