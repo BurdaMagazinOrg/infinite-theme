@@ -66,16 +66,9 @@
 
 .region-ecommerceslider {
   @extend %ecommerce-slider--full;
+
   padding-left: 0;
   padding-right: 0;
 
-  .ecommerce-slider__inner {
-    @extend %flexbox;
-    overflow: hidden;
 
-    .item-product {
-      @extend %flex-shrink-0;
-      width: 25%;
-    }
-  }
 }

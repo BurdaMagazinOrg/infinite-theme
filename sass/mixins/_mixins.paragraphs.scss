@@ -782,7 +782,12 @@
 @mixin item-paragraph--ecommerce-slider() {
   @include padding--v-item-content__item();
 
-  &.item-paragraph--full {
+  .ecommerce-slider {
+    @include ecommerce-slider();
+  }
+
+  &.item-paragraph--full .ecommerce-slider {
     @include ecommerce-slider--full();
   }
+
 }

@@ -1,3 +1,7 @@
+%ecommerce-slider {
+  @include ecommerce-slider();
+}
+
 %ecommerce-slider--full {
   @include ecommerce-slider--full();
 }
