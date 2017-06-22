@@ -790,4 +790,12 @@
     @include ecommerce-slider--full();
   }
 
+  &.item-paragraph--middle .ecommerce-slider {
+    @include ecommerce-slider--middle();
+  }
+
+  &.item-paragraph--small .ecommerce-slider {
+    @include ecommerce-slider--small();
+  }
+
 }

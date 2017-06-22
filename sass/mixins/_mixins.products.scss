@@ -184,6 +184,7 @@
     @include product__item--default();
   }
 
+  /*
   .ecommerce-slider__inner {
     @extend %flexbox;
     overflow: hidden;
@@ -192,6 +193,7 @@
       @extend %flex-shrink-0;
     }
   }
+  */
 
   .ecommerce-slider__content-wrapper {
     @extend %flexbox;
@@ -199,8 +201,8 @@
     @extend %align-items-center;
     position: absolute;
     top: 0;
-    left: 130px;
-    right : 130px;
+    left: $ecommere-slider__padding--full;
+    right : $ecommere-slider__padding--full;
     bottom: 0;
   }
 
@@ -259,8 +261,8 @@
     @extend %icon--after;
     position: absolute;
     display: block;
-    height: 50px;
-    width: 50px;
+    height: $ecommere-slider__slick-arrowbox-width;
+    width: $ecommere-slider__slick-arrowbox-width;
     line-height: 0px;
     font-size: 0px;
     cursor: pointer;
@@ -289,35 +291,18 @@
 
   .slick-prev {
     @include icon-arrow-left-small(true, "&:after");
-    left: -130px;
+    left: -$ecommere-slider__padding--full;
   }
 
   .slick-next {
     @include icon-arrow-right-small(true, "&:after");
-    right: -130px;
+    right: -$ecommere-slider__padding--full;
   }
 
 
   // Mobile
   @media (max-width: $screen-xs-max) {
-
-    .ecommerce-slider__content-wrapper {
-      left: 0;
-      right : 0;
-    }
-
-    .slick-prev, .slick-next {
-      display: none;
-    }
-
-    .slick-list {
-      padding:0 30% 0 0
-    }
-
-    .ecommerce-slider__bg {
-      padding-bottom: 172%;
-    }
-
+    @include ecommerce-slider--small();
   }
 
   // Tablet
@@ -336,11 +321,47 @@
 
   }
 
+}
+
+
+@mixin ecommerce-slider--middle() {
+
+  .ecommerce-slider__content-wrapper {
+    left: $ecommere-slider__padding--middle;
+    right: $ecommere-slider__padding--middle;
+  }
+
+  .slick-prev {
+    left: -$ecommere-slider__padding--middle;
+  }
+
+  .slick-next {
+    right: -$ecommere-slider__padding--middle;
+  }
+
+}
+
+@mixin ecommerce-slider--small() {
+
+  .ecommerce-slider__content-wrapper {
+    left: 0;
+    right : 0;
+  }
+
+  .slick-prev, .slick-next {
+    display: none;
+  }
+
+  .slick-list {
+    padding:0 30% 0 0
+  }
+
+  .ecommerce-slider__bg {
+    padding-bottom: 172%;
+  }
 
 }
 
 @mixin ecommerce-slider--full() {
-
   @include gap__container--h-negative();
-
 }
