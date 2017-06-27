@@ -206,7 +206,7 @@
   }
 
   .ecommerce-slider__title {
-    @include text-helper($font-headline-id);
+    @include text-helper($ecommere-slider__title-font-id);
     text-align: center;
   }
 
@@ -214,13 +214,13 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    padding-top: 40px;
+    padding: $ecommere-slider__content-padding;
   }
 
   .ecommerce-slider__bg {
     height: 0;
     overflow: hidden;
-    padding-bottom: 56%;
+    padding-bottom: $ecommere-slider__ratio-s;
 
     img {
       width: 100%;
@@ -230,21 +230,21 @@
 
   .ecommerce-slider__company {
     text-align: center;
-    margin-bottom: 20px;
+    margin: $ecommere-slider__company-margin;
 
     .native_campaign_ecommerce_slider > .separator {
-      margin-right: 10px;
+      margin: $ecommere-slider__brand-seperator-margin;
     }
 
     .native_campaign_ecommerce_slider > .brand > img {
-      height: 20px;
+      height: $ecommere-slider__brand-height;
     }
   }
 
   .item-product-slider {
-    background-color: #ffffff;
-    padding: 20px 20px 25px 20px;
-    margin-bottom: 0;
+    background-color: $ecommere-slider__item-background-color;
+    padding: $ecommere-slider__item-padding;
+    margin: $ecommere-slider__item-margin;
 
     .img-container {
       height: inherit;
@@ -258,6 +258,11 @@
   .slick-prev,
   .slick-next {
     @extend %icon--after;
+    @extend %transition-default;
+
+    background: $ecommere-slider__arrows-background;
+    color: $ecommere-slider__arrows-color;
+
     position: absolute;
     display: block;
     height: $ecommere-slider__slick-arrowbox-width;
@@ -265,25 +270,22 @@
     line-height: 0px;
     font-size: 0px;
     cursor: pointer;
-    background: #00a0e6;
-    color: #ffffff;
     top: 50%;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
-    padding: 0;
-    border: none;
-    outline: none;
+    padding: $ecommere-slider__arrows-padding;
 
     &:after, &:before {
-      color: $white;
-      font-size: 40px; //TODO variable
+      color: $ecommere-slider__arrows-color;
+      font-size: $ecommere-slider__arrows-font-size;
     }
 
     &:hover, &:focus {
       outline: none;
-      background: #a5e6d2;
-      color: #ffffff;
+      background-color: $ecommere-slider__arrows-background-color-hover;
+      color: $ecommere-slider__arrows-color-hover;
+      border: $ecommere-slider__arrows-border-hover;
     }
 
   }
@@ -314,7 +316,7 @@
   @media (min-width: $screen-md-min) {
 
     .ecommerce-slider__bg {
-      padding-bottom: 49.5%;
+      padding-bottom: $ecommere-slider__ratio-xl;
     }
 
 
@@ -332,7 +334,7 @@
 @mixin ecommerce-slider--small() {
 
   .ecommerce-slider__content {
-    padding: 20px;
+    padding: $ecommere-slider__content-padding-s;
   }
 
   .ecommerce-slider__content-wrapper {
@@ -349,7 +351,7 @@
   }
 
   .ecommerce-slider__bg {
-    padding-bottom: 172%;
+    padding-bottom: $ecommere-slider__ratio-s;
   }
 
   .ecommerce-slider__title {
