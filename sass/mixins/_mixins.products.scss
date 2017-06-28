@@ -360,6 +360,29 @@
     @include text-helper-size($font-headline-id, $title-size-sm);
   }
 
+  // Desktop
+  @media (min-width: $screen-md-min) {
+
+    .slick-prev {
+      z-index: 100;
+      left: -20px;
+    }
+
+    .slick-next {
+      z-index: 100;
+      right: -20px;
+    }
+
+    .ecommerce-slider__bg {
+      padding-bottom: $ecommere-slider__ratio-xl--small;
+    }
+  }
+
+  // Tablet and smaller
+  @media (max-width: $screen-sm-max) {
+
+  }
+
 }
 
 @mixin ecommerce-slider--middle() {
