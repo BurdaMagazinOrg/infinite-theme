@@ -194,4 +194,7 @@
             this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
         }
     });
+
+  window.MainView = window.MainView || BurdaInfinite.views.MainView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

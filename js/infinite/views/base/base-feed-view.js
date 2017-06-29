@@ -90,4 +90,6 @@
         }
     });
 
+  window.BaseFeedView = window.BaseFeedView || BurdaInfinite.views.base.BaseFeedView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

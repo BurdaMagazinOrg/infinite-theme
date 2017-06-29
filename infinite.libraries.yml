@@ -17,7 +17,7 @@ infinite.social-apis:
 
 infinite.libs:
   js:
-    js/infinite/libs/jquery.browser.js: {}
+#    js/infinite/libs/jquery.browser.js: {}
     js/infinite/libs/jquery.dotdotdot.min.js: {}
     js/infinite/libs/jquery.waypoints.js: {}
     js/infinite/libs/shortcuts/infinite_custom.js: {}
@@ -38,7 +38,7 @@ infinite.init:
 
   js:
     js/infinite/backbone-manager.js: {}
-    js/infinite/burda-infinite.js: {}
+    js/infinite/burda-infinite.js: { }
     js/infinite/adIntegration.js: {}
     js/infinite/consts/app-config.js: {}
     js/infinite/consts/view-ids.js: {}
@@ -62,15 +62,12 @@ infinite.manager.tracking-manager:
   version: 1
   js:
     js/infinite/managers/tracking-manager.js: {}
-    js/brand/managers/tracking-manager.js: {}
 
 
 infinite.manager.scroll-manager:
   version: 1
   js:
     js/infinite/managers/scroll-manager.js: {}
-    js/brand/managers/scroll-manager.js: {}
-
 
 
 ##### base models #####
@@ -79,15 +76,12 @@ infinite.models.base.base-model:
   version: 1
   js:
     js/infinite/models/base/base-model.js: {}
-    js/brand/models/base/base-model.js: {}
 
 
 infinite.models.base.base-collection-model:
   version: 1
   js:
     js/infinite/models/base/base-collection-model.js: {}
-    js/brand/models/base/base-collection-model.js: {}
-
 
 
 ##### models #####
@@ -96,36 +90,30 @@ infinite.models.ajax-model:
   version: 1
   js:
     js/infinite/models/ajax-model.js: {}
-    js/brand/models/ajax-model.js: {}
 
 
 infinite.models.page-offsets-model:
   version: 1
   js:
     js/infinite/models/page-offsets-model.js: {}
-    js/brand/models/page-offsets-model.js: {}
 
 
 infinite.models.device-model:
   version: 1
   js:
     js/infinite/models/device-model.js: {}
-    js/brand/models/device-model.js: {}
 
 
 infinite.models.adsc-model:
   version: 1
   js:
     js/infinite/models/adsc-model.js: {}
-    js/brand/models/adsc-model.js: {}
 
 
 infinite.models.infinite-block-data-model:
   version: 1
   js:
     js/infinite/models/infinite-block-data-model.js: {}
-    js/brand/models/infinite-block-data-model.js: {}
-
 
 
 ##### base views #####
@@ -134,52 +122,43 @@ infinite.views.base.base-view:
   version: 1
   js:
     js/infinite/views/base/base-view.js: { }
-    js/brand/views/base/base-view.js: { }
 
 
 infinite.views.base.base-inview-view:
   version: 1
   js:
     js/infinite/views/base/base-inview-view.js: { }
-    js/brand/views/base/base-inview-view.js: { }
 
 
 infinite.views.base.base-dynamic-view:
   version: 1
   js:
     js/infinite/views/base/base-dynamic-view.js: { }
-    js/brand/views/base/base-dynamic-view.js: { }
     js/infinite/models/base/base-dynamic-view-model.js: {}
-    js/brand/models/base/base-dynamic-view-model.js: {}
 
 
 infinite.views.base.base-feed-view:
   version: 1
   js:
     js/infinite/views/base/base-feed-view.js: { }
-    js/brand/views/base/base-feed-view.js: { }
 
 
 infinite.views.base.base-sidebar-view:
   version: 1
   js:
     js/infinite/views/base/base-sidebar-view.js: { }
-    js/brand/views/base/base-sidebar-view.js: { }
     js/infinite/models/base/base-sidebar-model.js: {}
-    js/brand/models/base/base-sidebar-model.js: {}
 
 
 infinite.views.base.base-newsletter-view:
   version: 1
   js:
     js/infinite/views/base/base-newsletter-view.js: { }
-    js/brand/views/base/base-newsletter-view.js: { }
 
 infinite.views.base.base-list-swipeable-view:
   version: 1
   js:
     js/infinite/views/base/base-list-swipeable-view.js: {}
-    js/brand/views/base/base-list-swipeable-view.js: {}
 
 
 ##### views #####
@@ -188,101 +167,84 @@ infinite.views.main-view:
   version: 1
   js:
     js/infinite/views/main-view.js: { }
-    js/brand/views/main-view.js: { }
 
 
 infinite.views.infinite-block-view:
   version: 1
   js:
     js/infinite/views/infinite-block-view.js: {}
-    js/brand/views/infinite-block-view.js: {}
-
 
 infinite.views.menu-main-view:
   version: 1
   js:
     js/infinite/views/menu-main-view.js: {}
-    js/brand/views/menu-main-view.js: {}
 
 
 infinite.views.menu-sidebar-view:
   version: 1
   js:
     js/infinite/views/menu-sidebar-view.js: {}
-    js/brand/views/menu-sidebar-view.js: {}
 
 
 infinite.views.modal-search-view:
   version: 1
   js:
     js/infinite/views/modal-search-view.js: {}
-    js/brand/views/modal-search-view.js: {}
     js/infinite/models/modal-search-model.js: {}
-    js/brand/models/modal-search-model.js: {}
 
 
 infinite.views.article-view:
   version: 1
   js:
     js/infinite/views/article-view.js: {}
-    js/brand/views/article-view.js: {}
 
 
 infinite.views.gallery-view:
   version: 1
   js:
     js/infinite/views/gallery-view.js: {}
-    js/brand/views/gallery-view.js: {}
 
 
 infinite.views.sticky-view:
   version: 1
   js:
     js/infinite/views/sticky-view.js: {}
-    js/brand/views/sticky-view.js: {}
 
 
 infinite.views.products-view:
   version: 1
   js:
     js/infinite/views/products-view.js: {}
-    js/brand/views/products-view.js: {}
 
 
 infinite.views.marketing-view:
   version: 1
   js:
     js/infinite/views/marketing-view.js: {}
-    js/brand/views/marketing-view.js: {}
 
 infinite.views.anchor-navigation-view:
   version: 1
   js:
     js/infinite/views/anchor-navigation-view.js: {}
-    js/brand/views/anchor-navigation-view.js: {}
 
 
 infinite.views.marketing-view:
   version: 1
   js:
     js/infinite/views/marketing-view.js: {}
-    js/brand/views/marketing-view.js: {}
 
 
 infinite.views.spinner:
   version: 1
   js:
     js/infinite/views/components/spinner-cube-view.js: {}
-    js/brand/views/components/spinner-cube-view.js: {}
 
 infinite.views.newsletter.hmnewsletter-view:
   version: 1
   js:
     js/infinite/views/newsletter/hmnewsletter-view.js: {}
-    js/brand/views/newsletter/hmnewsletter-view.js: {}
 
 infinite.views.newsletter.newsletter-modal-view:
   version: 1
   js:
     js/infinite/views/newsletter/newsletter-modal-view.js: {}
-    js/brand/views/newsletter/newsletter-modal-view.js: {}

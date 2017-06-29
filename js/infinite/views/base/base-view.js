@@ -225,4 +225,6 @@
         }
     });
 
+  window.BaseView = window.BaseView || BurdaInfinite.views.base.BaseView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
