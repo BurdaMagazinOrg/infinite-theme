@@ -232,13 +232,17 @@
     text-align: center;
     margin: $ecommere-slider__company-margin;
 
-    .native_campaign_ecommerce_slider > .separator {
+    & > .separator {
       margin: $ecommere-slider__brand-seperator-margin;
     }
 
-    .native_campaign_ecommerce_slider > .brand > img {
+    & > .brand > img {
       height: $ecommere-slider__brand-height;
     }
+  }
+
+  .ecommerce-slider__title + .ecommerce-slider__inner {
+    margin-top: 10px;
   }
 
   .item-product-slider {

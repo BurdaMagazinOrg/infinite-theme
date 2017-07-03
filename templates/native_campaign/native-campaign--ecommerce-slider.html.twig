@@ -1,9 +1,9 @@
 {% if content.logo %}
-<div{{ attributes.addClass('native_campaign_ecommerce_slider') }}>
-    <span class="separator">Sponsored by</span>
-      <span class="brand">
-        {{ content.logo }}
-      </span>
-</div>
-{% endif %}
+    <div class="ecommerce-slider__company">
+        <span class="separator">Sponsored by</span>
+        <span class="brand">
+            {{ content.logo }}
+        </span>
+    </div>
+{% else %}
 {{ content.tracking_pixel }}
