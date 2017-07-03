@@ -16,6 +16,10 @@
  * @ingroup themeable
  */
 #}
+
+{% set data_attributes = data_attributes.setAttribute('data-text-action', 'text-overflow') %}
+{% set data_attributes = data_attributes.setAttribute('data-text-action-target', '.text-headline') %}
+
 {% if content.status %}
     <div class="item-ecommerce item-product-slider" {{ data_attributes }}>
         <div class="img-container">
