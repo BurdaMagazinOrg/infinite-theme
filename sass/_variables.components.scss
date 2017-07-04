@@ -326,7 +326,13 @@ $ecommere-slider__padding--full: 146px !default;
 $ecommere-slider__padding--middle: 70px !default;
 $ecommere-slider__padding--small: 52px !default;
 
-$ecommere-slider__slick-arrowbox-width: 50px !default;
+$ecommere-slider__padding-xs--full: 50px !default;
+$ecommere-slider__padding-sm--full: 80px !default;
+$ecommere-slider__padding-md--full: $ecommere-slider__padding--full;
+
+
+
+$ecommere-slider__arrowbox-width: 50px !default;
 
 $ecommere-slider__ratio-s: 172% !default;
 $ecommere-slider__ratio-m: 56% !default;
@@ -335,7 +341,7 @@ $ecommere-slider__ratio-xl: 49.5% !default;
 
 $ecommere-slider__ratio-xxs--full: 192% !default;
 $ecommere-slider__ratio-xs--full: 172% !default;
-$ecommere-slider__ratio-sm--full: 68% !default;
+$ecommere-slider__ratio-sm--full: 72% !default;
 $ecommere-slider__ratio-md--full: 56% !default;
 $ecommere-slider__ratio-lg--full: 56% !default;
 $ecommere-slider__ratio-xl--full: 49.5% !default;
@@ -366,7 +372,7 @@ $ecommere-slider__item-margin: 0 !default;
 $ecommere-slider__arrows-background: #ea331e !default;
 $ecommere-slider__arrows-color: $white !default;
 $ecommere-slider__arrows-padding: 0 !default;
-$ecommere-slider__arrows-font-size: 40px !default;
+$ecommere-slider__arrows-font-size: 30px !default;
 $ecommere-slider__arrows-background-color-hover: #7d8482 !default;
 $ecommere-slider__arrows-color-hover: $ecommere-slider__arrows-color !default;
 $ecommere-slider__arrows-border-hover: 1px solid #7d8482 !default;

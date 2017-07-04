@@ -1,17 +1,23 @@
-{{ attach_library('slick/slick') }}
 {{ attach_library('instyle_infinite/instyle_infinite.views.ecommerce-slider-view') }}
-
 
 <div class="ecommerce-slider" data-view-type="ecommerceSlider">
 
     <div class="ecommerce-slider__content-wrapper">
+
+        <div class="swiper-button swiper-button-prev"></div>
+        <div class="swiper-button swiper-button-next"></div>
+
         <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};">
 
             <h3 class="ecommerce-slider__title">{{ label }}</h3>
             {{ content.field_campaign }}
-            <div class="ecommerce-slider__inner" class="ecommerce-slider__color-box">
-                {{ content.field_advertising_products }}
+
+            <div class="swiper-container">
+                <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
+                    {{ content.field_advertising_products }}
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -20,12 +26,13 @@
     </div>
 </div>
 
+
 <style>
 
-    .slick-slider .slick-prev,
-    .slick-slider .slick-next,
-    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .slick-prev,
-    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .slick-next
+    .swiper-button-next,
+    .swiper-button-next,
+    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .swiper-button-prev,
+    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .swiper-button-next
 
     {
         color: {{ content.field_color_contrast.0 }};
@@ -40,6 +47,5 @@
         background-color: {{ content.field_color_button.0 }};
         border-color: {{ content.field_color_button.0 }};
     }
-
 
 </style>
