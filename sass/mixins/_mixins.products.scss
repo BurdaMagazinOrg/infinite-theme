@@ -121,7 +121,10 @@
 
   position: relative;
   overflow: hidden;
-  margin-bottom: $gap-size-lg;
+
+  background-color: $ecommere-slider__item-background-color;
+  padding: $ecommere-slider__item-padding;
+  margin: $ecommere-slider__item-margin;
 
   .text-headline {
     overflow: hidden;
@@ -166,7 +169,7 @@
 
   .img-container {
     margin-bottom: $gap-size-xs;
-    height: 200px;
+    height: inherit;
     overflow: hidden;
 
     img {
@@ -190,8 +193,6 @@
 
     display: block;
     width: auto;
-    margin-right: 0;
-    padding-left: 0;
 
     &:first-child {
       @include gap__container--v-reset(true);
@@ -300,14 +301,6 @@
 
   .item-product-slider {
     @include product__item--ecommerce-slider();
-
-    background-color: $ecommere-slider__item-background-color;
-    padding: $ecommere-slider__item-padding;
-    margin: $ecommere-slider__item-margin;
-
-    .img-container {
-      height: inherit;
-    }
   }
 
   .ecommerce-slider__content-wrapper {
@@ -422,7 +415,6 @@
       right : $ecommere-slider__padding-xs--full;
     }
 
-    /*
     .swiper-button-prev {
       left: -$ecommere-slider__padding-xs--full;
     }
@@ -430,7 +422,6 @@
     .swiper-button-next {
       right: -$ecommere-slider__padding-xs--full;
     }
-    */
 
   }
 
@@ -446,7 +437,6 @@
       right : $ecommere-slider__padding-sm--full;
     }
 
-    /*
     .swiper-button-prev {
       left: -$ecommere-slider__padding-sm--full;
     }
@@ -454,7 +444,6 @@
     .swiper-button-next {
       right: -$ecommere-slider__padding-sm--full;
     }
-    */
 
   }
 
@@ -503,10 +492,12 @@ $ecommerce-slider__item_width--small: 90%;
     @include text-helper-size($font-headline-id, $title-size-sm);
   }
 
-
   // Mobil
   @media (min-width: $screen-xs-min) {
 
+    .swiper-button {
+      display: none;
+    }
 
   }
 
@@ -517,22 +508,23 @@ $ecommerce-slider__item_width--small: 90%;
       padding-bottom: $ecommere-slider__ratio-sm--small;
     }
 
+    .swiper-button {
+      display: none;
+    }
+
+
   }
 
   // Desktop
   @media (min-width: $screen-md-min) {
 
-    /*
     .swiper-button-prev {
-      z-index: 100;
       left: -20px;
     }
 
     .swiper-button-next {
-      z-index: 100;
       right: -20px;
     }
-    */
 
   }
 
