@@ -114,6 +114,117 @@
   }
 }
 
+
+@mixin product__item--ecommerce-slider {
+
+  @include product__item-text--ecommerce-slider();
+
+  position: relative;
+  overflow: hidden;
+  margin-bottom: $gap-size-lg;
+
+  .text-headline {
+    overflow: hidden;
+  }
+
+  .text-brand {
+    overflow: hidden;
+    display: block;
+    margin-bottom: $product__item-text-brand-gap-bottom;
+
+    @media (min-width: $screen-sm-min) {
+      &:after {
+        content: " ";
+        white-space: pre;
+      }
+    }
+  }
+
+  .text-shipping, .text-price {
+    position: absolute;
+    width: 100%;
+  }
+
+  .text-shipping {
+    right: 0;
+    bottom: $product__item-text-shipping-pos-bottom;
+  }
+
+  .text-price {
+    left: 0;
+    color: $product__item-text-price-color;
+    bottom: $product__item-text-price-pos-bottom;
+  }
+
+  .text-shop {
+    margin-top: 10px;
+  }
+
+  .media--blazy {
+    background-color: transparent;
+  }
+
+  .img-container {
+    margin-bottom: $gap-size-xs;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      display: inline-block;
+    }
+  }
+
+  .caption {
+    position: relative;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    @if ($product__item-lined-mobile) {
+      @include gap--v-xl();
+      border-top: $h-line-style;
+    }
+
+    display: block;
+    width: auto;
+    margin-right: 0;
+    padding-left: 0;
+
+    &:first-child {
+      @include gap__container--v-reset(true);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .text-headline {
+      margin-bottom: $product__item-text-headline-gap-bottom-mobile;
+      height: $product__item-text-headline-height-mobile;
+    }
+
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .text-headline {
+      height: $product__item-text-headline-height-tablet;
+      margin-bottom: $product__item-text-headline-gap-bottom-tablet;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .text-headline {
+      height: $product__item-text-headline-height-desktop;
+      margin-bottom: $product__item-text-headline-gap-bottom-desktop;
+    }
+  }
+
+}
+
+
 @mixin product__item--horizontal-block {
 
   @include make-sm-column($grid-columns/3);
@@ -188,10 +299,7 @@
   }
 
   .item-product-slider {
-    @include product__item--default();
-
-    //padding-left: 0;
-    //padding-right: 0;
+    @include product__item--ecommerce-slider();
 
     background-color: $ecommere-slider__item-background-color;
     padding: $ecommere-slider__item-padding;

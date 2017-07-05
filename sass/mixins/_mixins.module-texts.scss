@@ -331,6 +331,42 @@
   }
 }
 
+@mixin product__item-text--ecommerce-slider() {
+
+  &:hover {
+    .text-shop {
+      @extend %btn--small--highlighted;
+    }
+  }
+
+  .text-headline {
+    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size);
+    color: $product__item-text-headline-color;
+  }
+
+  .text-brand {
+    @include text-helper($product__item-text-brand-font-id, $product__item-text-brand-size);
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $product__item-text-brand-color;
+  }
+
+  .text-price {
+    @include text-helper($product__item-text-price-font-id, $product__item-text-price-size);
+    color: $product__item-text-price-color;
+  }
+
+  .text-shipping {
+    @include text-helper($product__item-text-shipping-font-id, $product__item-text-shipping-size);
+    color: $product__item-text-shipping-color;
+  }
+
+  .text-shop {
+    @extend %btn--small;
+  }
+}
+
 @mixin product__item-text--single-product() {
   @extend %icon;
   @extend %icon--after;
