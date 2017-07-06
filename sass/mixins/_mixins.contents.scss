@@ -157,6 +157,13 @@
     @extend %flex-item-1;
     width: 100%;
     overflow: hidden;
+
+    @media (max-width: $screen-xs-max) {
+      margin-left: -$container-h-gap--mobile;
+      margin-right: -$container-h-gap--mobile;
+      padding-left: $container-h-gap--mobile;
+      padding-right: $container-h-gap--mobile;
+    }
   }
 
   & > .col--right {

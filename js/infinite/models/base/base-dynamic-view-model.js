@@ -18,7 +18,6 @@
         createDynamicItem: function (pSettings, pOptions) {
 
             var tmpView = {},
-                tmpAdscModel,
                 $tmpElement = pSettings.el,
                 tmpType = pSettings.type,
                 tmpSettings = _.extend({
@@ -56,13 +55,6 @@
                     tmpView = new GalleryView(tmpSettings);
                     break;
                 case 'marketingView':
-                    //dynamic adsc model
-                    if (pSettings.initialDOMItem === false && $tmpElement.parents('[data-adunit1]').length > 0) {
-                        tmpAdscModel = new AdscModel();
-                        tmpAdscModel.setByElement($tmpElement.parents('[data-adunit1]'));
-                        tmpSettings.dynamicAdscModel = tmpAdscModel;
-                    }
-
                     tmpView = new MarketingView(tmpSettings);
                     break;
                 case 'listSwipeableView':

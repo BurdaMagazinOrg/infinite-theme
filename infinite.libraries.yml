@@ -113,19 +113,11 @@ infinite.models.device-model:
     js/brand/models/device-model.js: {}
 
 
-infinite.models.adsc-model:
-  version: 1
-  js:
-    js/infinite/models/adsc-model.js: {}
-    js/brand/models/adsc-model.js: {}
-
-
 infinite.models.infinite-block-data-model:
   version: 1
   js:
     js/infinite/models/infinite-block-data-model.js: {}
     js/brand/models/infinite-block-data-model.js: {}
-
 
 
 ##### base views #####
