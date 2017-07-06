@@ -72,6 +72,11 @@ infinite.manager.scroll-manager:
     js/brand/managers/scroll-manager.js: {}
 
 
+infinite.manager.marketing-manager:
+  version: 1
+  js:
+    js/infinite/managers/marketing-manager.js: {}
+    js/brand/managers/marketing-manager.js: {}
 
 ##### base models #####
 

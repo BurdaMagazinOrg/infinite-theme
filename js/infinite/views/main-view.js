@@ -88,6 +88,8 @@
             BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
         },
         createManagers: function () {
+            new MarketingManager();
+            
             /**
              * TrackingManager
              */

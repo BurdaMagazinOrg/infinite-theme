@@ -11,6 +11,7 @@ libraries:
   - infinite/infinite.init
   - infinite/infinite.manager.tracking-manager
   - infinite/infinite.manager.scroll-manager
+  - infinite/infinite.manager.marketing-manager
 
   - infinite/infinite.models.base.base-model
   - infinite/infinite.models.base.base-collection-model
