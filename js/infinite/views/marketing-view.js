@@ -2,7 +2,7 @@
 
   "use strict";
 
-  window.MarketingView = BaseView.extend({
+  BurdaInfinite.views.MarketingView = BaseView.extend({
     adType: "",
     adEntityType: "",
     adContainerType: "",
