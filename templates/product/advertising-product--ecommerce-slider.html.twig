@@ -29,7 +29,7 @@
             <div class="text-brand">{{ content.product_brand }}</div>
             <div class="text-headline">{{ content.product_name }}</div>
             <div class="text-price">{{ content.product_price }} {{ formatted_currency }}</div>
-            <div class="text-shop">Zum Shop</div>
+            <div class="text-shop" style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }}; border-color: {{ content.field_color_button.0 }};">Zum Shop</div>
         </div>
 </div>
 {% endif %}
