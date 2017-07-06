@@ -123,7 +123,11 @@ function infinite_preprocess_node(&$variables) {
     }
 
     foreach ( $variables['content']['field_advertising_products'] AS $k => &$advertising_product ) {
-      $advertising_product = array_merge($advertising_product, $transfer);
+
+      if ( is_array( $advertising_product ) && is_array( $transfer ) ) {
+        $advertising_product = array_merge($advertising_product, $transfer);
+      }
+
     }
 
   }
