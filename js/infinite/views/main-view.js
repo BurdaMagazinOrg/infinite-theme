@@ -88,15 +88,17 @@
             BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
         },
         createManagers: function () {
-            new MarketingManager();
-            
+            new MarketingManager({
+              infiniteViewsModel: this.infiniteViewsModel
+            });
+
             /**
              * TrackingManager
              */
             new TrackingManager({
                 id: ManagerIds.trackingManager,
                 el: this.$el,
-                infiniteModel: this.infiniteViewsModel,
+                infiniteViewsModel: this.infiniteViewsModel,
                 model: new Backbone.Model({
                     initialLocation: AppConfig.initialLocation,
                     gtmEventName: AppConfig.gtmEventName,
@@ -111,7 +113,7 @@
             new ScrollManager({
                 id: ManagerIds.scrollManager,
                 el: this.$el,
-                infiniteModel: this.infiniteViewsModel,
+                infiniteViewsModel: this.infiniteViewsModel,
                 model: new Backbone.Model({
                     initialLocation: AppConfig.initialLocation
                 })

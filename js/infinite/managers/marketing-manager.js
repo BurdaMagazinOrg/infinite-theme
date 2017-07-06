@@ -2,20 +2,19 @@
 
   "use strict";
 
-  window.MarketingManager = Backbone.View.extend({
+  BurdaInfinite.managers.MarketingManager = Backbone.View.extend({
     infiniteViewsModel: {},
     deviceModel: {},
     adsObject: {},
     breakpointDeviceModel: {},
     currentBreakpoint: {},
     lastScrollTopPos: -1,
-    lastEnabledElement: [],
+    lastEnabledState: [],
     firstRun: true,
     initialize: function (pOptions) {
       _.extend(this, pOptions);
 
       if (ModelIds != undefined && BM != undefined) {
-        this.infiniteViewsModel = BM.reuseModel(ModelIds.infiniteViewsModel);
         this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
         this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({active: true});
         this.currentBreakpoint = this.breakpointDeviceModel.id;
@@ -69,8 +68,8 @@
       }
     },
     inviewChangeHandler: function (pModel) {
-      if (this.lastEnabledElement == pModel.get('inview').state || this.lastScrollTopPos == $(window).scrollTop()) return;
-      console.log("MOUZ!!!", this.lastEnabledElement, pModel.get('inview').state, this.lastScrollTopPos, $(window).scrollTop());
+      if (this.lastEnabledState == pModel.get('inview').state) return;
+      //|| this.lastScrollTopPos == $(window).scrollTop()
 
       var $tmpElement = pModel.get('el'),
         tmpInviewModel = pModel.get('inview');
@@ -82,8 +81,7 @@
         // console.log("MarketingManager INVIEW CHANGED", tmpInviewModel.state);
       }
 
-
-      this.lastEnabledElement = pModel.get('inview').state;
+      this.lastEnabledState = pModel.get('inview').state;
       this.lastScrollTopPos = $(window).scrollTop();
 
     },

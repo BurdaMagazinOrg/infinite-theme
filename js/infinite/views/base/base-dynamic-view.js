@@ -64,7 +64,7 @@
                 el: $tmpItem,
                 type: tmpViewType,
                 //TODO check performance
-                initialDOMItem: $tmpItem.parents('.region-feed').length <= 0,
+                initialDOMItem: $tmpItem.closest('.region-feed').length <= 0,
                 'infiniteBlock': tmpViewType == 'infiniteBlockView'
             }, {
                 deviceModel: this.deviceModel,

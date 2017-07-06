@@ -2,9 +2,9 @@
 
     "use strict";
 
-    window.ScrollManager = BurdaInfinite.managers.ScrollManager.extend({
+    window.MarketingManager = BurdaInfinite.managers.MarketingManager.extend({
         initialize: function (pOptions) {
-            BurdaInfinite.managers.ScrollManager.prototype.initialize.call(this, pOptions);
+            BurdaInfinite.managers.MarketingManager.prototype.initialize.call(this, pOptions);
         }
     });
 

@@ -44,6 +44,7 @@
                     if(!tmpSettings.initialDOMItem) {
                         tmpView.delegateElements();
                     }
+
                     break;
                 case 'articleView':
                     tmpView = new ArticleView(tmpSettings);
