@@ -4,7 +4,7 @@
 
     <div class="ecommerce-slider__content-wrapper">
 
-        <div class="swiper-button swiper-button-prev"></div>
+        <div class="swiper-button swiper-button-prev" style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }};"></div>
 
         <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};">
 
@@ -19,7 +19,7 @@
 
         </div>
 
-        <div class="swiper-button swiper-button-next"></div>
+        <div class="swiper-button swiper-button-next" style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }};"></div>
 
     </div>
 
@@ -30,16 +30,6 @@
 
 
 <style>
-
-    .swiper-button-next,
-    .swiper-button-next,
-    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .swiper-button-prev,
-    .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .swiper-button-next
-
-    {
-        color: {{ content.field_color_contrast.0 }};
-        background-color: {{ content.field_color_button.0 }};
-    }
 
     .item-paragraph--ecommerce-slider-paragraph .ecommerce-slider .item-product-slider .text-shop,
     .page-ecommerce-slider .ecommerce-slider .item-product-slider .text-shop,
