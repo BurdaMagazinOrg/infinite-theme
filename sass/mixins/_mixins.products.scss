@@ -460,7 +460,7 @@
 
   .ecommerce-slider__content {
     padding: $ecommerce-slider__content-padding-s;
-    width: 83%;
+    width: 90%;
   }
 
   .ecommerce-slider__content-wrapper {
@@ -488,7 +488,7 @@
     }
 
     .ecommerce-slider__content {
-      width: 83%;
+      width: 90%;
     }
 
 
@@ -569,6 +569,7 @@
 
   .ecommerce-slider__title {
     @include text-helper-size($font-headline-id, $title-size-md);
+    padding: 0 10px;
   }
 
   .item-product-slider {
