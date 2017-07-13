@@ -119,7 +119,7 @@
       this.visible = true;
     },
     hide: function () {
-      this.$el.removeClass('ad-active').addClass('ad-inactive');
+      this.$el.removeClass('ad-active ad-fba').addClass('ad-inactive');
       this.adType = "";
       this.clear();
       this.removeFixHeight();
@@ -137,6 +137,7 @@
         this.getAdTechAd().empty();
       }
 
+      console.log("CLEAR");
       this.removeFixHeight();
     },
     removeFixHeight: function () {

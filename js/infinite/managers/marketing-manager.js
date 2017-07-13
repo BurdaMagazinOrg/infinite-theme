@@ -87,7 +87,9 @@
     },
     onDeviceBreakpointHandler: function (pModel) {
       this.breakpointDeviceModel = pModel;
-      this.updateView();
+      _.delay(_.bind(function () {
+        this.updateView();
+      }, this), 1);
     },
     onAtfBeforeLoadHandler: function (pEvent, pElements) {
       this.beforeAtfLoad(pElements);
