@@ -45,12 +45,12 @@
   $gap-tablet: nth($gaps, 2);
   $gap-desktop: nth($gaps, 3);
 
-  @media (max-width: $screen-xxs-max) {
+  @media (max-width: $screen-xs-max) {
     margin-top: round($gap-mobile);
     padding-top: round($gap-mobile);
   }
 
-  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     margin-top: round($gap-tablet);
     padding-top: round($gap-tablet);
   }
