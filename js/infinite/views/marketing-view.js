@@ -49,7 +49,7 @@
     updateEnableView: function () {
       if (this.adRenderModel.visibility == "visible" && this.enabled) {
         this.show();
-      } else if (this.adType != MarketingView.AD_TYPE_FBSA) {
+      } else if (this.adType != MarketingView.AD_TYPE_FBSA && this.adType != MarketingView.AD_TYPE_INREAD) {
         this.freeze();
 
         // if (this.$el.hasClass('region-full-content')) {
@@ -84,16 +84,14 @@
       this.breakpointDeviceModel = pModel;
       this.currentBreakpoint = this.breakpointDeviceModel.id;
 
+      if (this.adType == MarketingView.AD_TYPE_FBSA || this.adType == MarketingView.AD_TYPE_INREAD) {
+        return;
+      }
+
       this.hide();
-      // if (!this.isActive()) {
-      //   this.hide();
-      // } else {
-      //   //TODO check this
-      //   this.removeFixHeight();
-      // }
     },
     isAllowedToWrite: function () {
-      if (this.adType == MarketingView.AD_TYPE_FBSA) {
+      if (this.adType == MarketingView.AD_TYPE_FBSA || this.adType == MarketingView.AD_TYPE_INREAD) {
         return false;
       }
 
@@ -188,7 +186,8 @@
     CONTAINER_TYPE_LEADERBOARD: "CONTAINER_TYPE_LEADERBOARD",
     AD_ENTITY_TYPE_LEADERBOARD: "AD_ENTITY_TYPE_LEADERBOARD",
     AD_ENTITY_TYPE_SPECIAL: "AD_ENTITY_TYPE_SPECIAL",
-    AD_TYPE_FBSA: "fba"
+    AD_TYPE_FBSA: "fba",
+    AD_TYPE_INREAD: "inread"
   });
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
