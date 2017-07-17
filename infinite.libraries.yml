@@ -283,3 +283,9 @@ infinite.views.newsletter.newsletter-modal-view:
   js:
     js/infinite/views/newsletter/newsletter-modal-view.js: {}
     js/brand/views/newsletter/newsletter-modal-view.js: {}
+
+infinite.views.ecommerce-slider-view:
+  version: 1
+  js:
+    js/infinite/views/ecommerce-slider-view.js: {}
+    js/brand/views/ecommerce-slider-view.js: {}

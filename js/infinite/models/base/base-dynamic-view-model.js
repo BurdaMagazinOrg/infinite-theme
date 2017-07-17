@@ -31,7 +31,7 @@
              */
             this.set(pSettings);
 
-            //console.log(">>> createView", tmpType, tmpSettings);
+            console.log(">>> createView", tmpType, tmpSettings);
 
             switch (tmpType) {
                 case 'feedView':
@@ -75,6 +75,9 @@
                     break;
                 case 'anchorNavigationView':
                     tmpView = new AnchorNavigationView(tmpSettings);
+                    break;
+                case 'ecommerceSlider':
+                    tmpView = new EcommerceSliderView(tmpSettings);
                     break;
                 default:
                     tmpView = new BaseView(tmpSettings);

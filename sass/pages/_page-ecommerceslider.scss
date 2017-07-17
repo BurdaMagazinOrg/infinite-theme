@@ -1,0 +1,6 @@
+.page-ecommerce-slider {
+  .ecommerce-slider {
+    @extend %ecommerce-slider;
+    @extend %ecommerce-slider--full;
+  }
+}
