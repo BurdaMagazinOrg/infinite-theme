@@ -25,26 +25,12 @@
     text-align: center;
   }
 
-  .item-label {
-    position: absolute;
-    left: 0;
-    top: $gap-section;
-    text-align: left;
-  }
-
   .ad-container {
     //background-color: $white;
     //border: $ad__border;
     max-width: 100%;
     overflow: hidden;
     display: inline-block;
-  }
-
-  @media (max-width: $screen-sm-max) {
-    .item-label {
-      top: 10px;
-      left: 5px;
-    }
   }
 
   $ad-width: 728px;
@@ -54,25 +40,12 @@
     padding-left: $tablet-gap;
     padding-right: $tablet-gap;
   }
-
-  //orbyd size bug
-  @media (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: landscape) {
-    .region-content .region-marketing.ad-active iframe {
-      max-width: $ad-width !important;
-    }
-  }
 }
 
 @include ads-native();
 
 .container-marketing {
   position: relative;
-
-  .item-label {
-    @extend %label--marketing;
-    margin-bottom: 5px;
-    display: block;
-  }
 }
 
 [data-view-type="marketingView"] {
