@@ -111,7 +111,7 @@
   }
 
   @media (max-width: $screen-md-max) {
-    letter-spacing: 0px;
+    letter-spacing: $menu--main-navigation__item-letter-spacing-md;
     margin: $menu--main-navigation__item-margin-tablet;
 
     & > a {
@@ -121,6 +121,7 @@
 
   @media (min-width: $screen-lg-min) {
     margin: $menu--main-navigation__item-margin-desktop;
+    letter-spacing: $menu--main-navigation__item-letter-spacing-lg;
 
     & > a {
       padding: $menu--main-navigation__item-padding-desktop;

@@ -29,7 +29,8 @@
 
             this.delegateEvents();
             this.createViews();
-            _.delay(_.bind(this.createByContext, this), 10);
+            this.createByContext();
+            //_.delay(_.bind(this.createByContext, this), 10);
 
             if (this.deviceModel != undefined && this.deviceModel.get('isActive')) {
                 this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);

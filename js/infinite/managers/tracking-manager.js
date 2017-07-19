@@ -303,7 +303,7 @@
         },
         onProductsHandler: function ($pContainer, pOptions) {
             var $tmpContainer = $($pContainer),
-                $tmpProductItems = $tmpContainer.find('.item-product'),
+                $tmpProductItems = $tmpContainer.find('.item-ecommerce'),
                 tmpOptions = _.extend({provider: 'tracdelight', list: 'Product Widget'}, pOptions),
                 tmpItemData = {},
                 tmpItemsData = [];
@@ -321,6 +321,10 @@
                     tmpProvider = $tmpProductItem.data('provider') || '';
 
                 tmpOptions.provider = tmpProvider;
+
+                if($tmpProductItem.hasClass('item-product--single')) {
+                  tmpOptions.list = 'Product Widget Single';
+                }
 
                 /**
                  * Impression Data

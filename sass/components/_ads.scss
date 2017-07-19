@@ -158,6 +158,16 @@
 /**
 ** Feed AD
 */
+.ad-content {
+  text-align: center;
+  position: relative;
+
+  @media (min-width: $screen-xs-min) {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
 .col--left .ad-content {
   &.ad-active {
     border-top: $feed-teaser-h-line;
@@ -176,6 +186,26 @@
       padding-top: $feed-teaser-gap-top-desktop;
       margin-top: $feed-teaser-gap-top-desktop;
     }
+  }
+}
+
+.ad-fba {
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  .container-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .container-fixed-content {
+    max-width: none;
+  }
+
+  @media (max-width: $screen-xxs-max) {
+    margin-left: -$container-h-gap--mobile;
+    margin-right: -$container-h-gap--mobile;
   }
 }
 

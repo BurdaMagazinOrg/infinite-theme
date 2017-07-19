@@ -190,7 +190,7 @@
             window.addEventListener('adRendered', onAdRendered, false);
         },
         onToolbarHandler: function (pModel, pAttr) {
-            pModel.set('orientation', 'horizontal');
+            //pModel.set('orientation', 'horizontal');
             this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
         }
     });

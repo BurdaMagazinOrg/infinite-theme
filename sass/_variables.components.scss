@@ -122,6 +122,10 @@ $header-home__logo-padding: $gap-size-sm 0 !default;
 /**
 ** Main Navigation
 **/
+
+$navigation-fade-delay: 0.05s !default;
+$navigation-letter-spacing: 1px !default;
+
 $menu--main-navigation-font-id: $font-navigation-id !default;
 $menu--main-navigation-size: 14px !default;
 $menu--main-navigation-bg: $white !default;
@@ -130,6 +134,8 @@ $menu--main-navigation-padding-mobile: 0 90px 0 90px !default;
 $menu--main-navigation-padding-tablet: 0 90px 0 90px !default;
 $menu--main-navigation-padding-desktop: 0 100px 0 100px !default;
 
+$menu--main-navigation__item-letter-spacing-md: 0 !default;
+$menu--main-navigation__item-letter-spacing-lg: $navigation-letter-spacing !default;
 $menu--main-navigation__item-color: $text-color !default;
 $menu--main-navigation__item-active-color: $color-hover !default;
 $menu--main-navigation__item-active-bg: $white !default;
@@ -158,9 +164,6 @@ $menu--main-navigation__flyout-bg-color: $white !default;
 $menu--main-navigation__flyout-border: 1px solid $gray !default;
 $menu--main-navigation__flyout-padding: 10px !default;
 $menu--main-navigation__flyout__item-margin: 10px 5px !default;
-
-$navigation-fade-delay: 0.05s !default;
-$navigation-letter-spacing: 1px !default;
 
 $navigation-menu-icon-color: $text-color !default;
 $navigation-menu-icon-size: 17px !default;
