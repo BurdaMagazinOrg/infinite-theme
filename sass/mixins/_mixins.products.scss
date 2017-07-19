@@ -669,6 +669,10 @@
 @mixin ecommerce-slider--full() {
   @include gap__container--h-negative();
 
+  .ecommerce-slider__content {
+    max-width: 1150px;
+  }
+
   .ecommerce-slider__title {
     @include text-helper-size($font-headline-id, $title-size-lg);
   }
