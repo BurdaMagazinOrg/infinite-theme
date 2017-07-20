@@ -371,10 +371,9 @@
     padding: $ecommerce-slider__arrows-padding;
 
     &:after, &:before {
-      color: $ecommerce-slider__arrows-color;
       font-size: $ecommerce-slider__arrows-font-size;
       top: 8px;
-      left: 16px;
+      left: 8px;
       position: relative;
     }
 
@@ -394,6 +393,11 @@
   .swiper-button-next {
     @include icon-arrow-large-right(true, "&:after");
     right: -$ecommerce-slider__padding--full;
+
+    &:after, &:before {
+      left: 12px;
+    }
+
   }
 
   // Mobile
