@@ -778,3 +778,24 @@
   //todo
   font-weight: normal;
 }
+
+@mixin item-paragraph--ecommerce-slider() {
+  @include padding--v-item-content__item();
+
+  .ecommerce-slider {
+    @include ecommerce-slider();
+  }
+
+  &.item-paragraph--full .ecommerce-slider {
+    @include ecommerce-slider--full();
+  }
+
+  &.item-paragraph--middle .ecommerce-slider {
+    @include ecommerce-slider--middle();
+  }
+
+  &.item-paragraph--small .ecommerce-slider {
+    @include ecommerce-slider--small();
+  }
+
+}

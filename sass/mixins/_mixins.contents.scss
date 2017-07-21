@@ -157,6 +157,20 @@
     @extend %flex-item-1;
     width: 100%;
     overflow: hidden;
+
+    @media (max-width: $screen-xs-max) {
+      margin-left: -$container-h-gap--mobile;
+      margin-right: -$container-h-gap--mobile;
+      padding-left: $container-h-gap--mobile;
+      padding-right: $container-h-gap--mobile;
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      margin-left: -$container-h-gap--tablet;
+      margin-right: -$container-h-gap--tablet;
+      padding-left: $container-h-gap--tablet;
+      padding-right: $container-h-gap--tablet;
+    }
   }
 
   & > .col--right {
