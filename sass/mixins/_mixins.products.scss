@@ -305,6 +305,9 @@
   .ecommerce-slider__title {
     @include text-helper($ecommerce-slider__title-font-id);
     text-align: center;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
   }
 
   .ecommerce-slider__content {
@@ -343,7 +346,7 @@
   }
 
   .ecommerce-slider__title + .swiper-container {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
 
@@ -370,7 +373,6 @@
     padding: $ecommerce-slider__arrows-padding;
 
     &:after, &:before {
-      color: $ecommerce-slider__arrows-color;
       font-size: $ecommerce-slider__arrows-font-size;
       top: 8px;
       left: 8px;
@@ -393,6 +395,11 @@
   .swiper-button-next {
     @include icon-arrow-large-right(true, "&:after");
     right: -$ecommerce-slider__padding--full;
+
+    &:after, &:before {
+      left: 12px;
+    }
+
   }
 
   // Mobile
@@ -668,6 +675,10 @@
 
 @mixin ecommerce-slider--full() {
   @include gap__container--h-negative();
+
+  .ecommerce-slider__content {
+    max-width: 1150px;
+  }
 
   .ecommerce-slider__title {
     @include text-helper-size($font-headline-id, $title-size-lg);

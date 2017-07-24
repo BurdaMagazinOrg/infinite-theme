@@ -8,10 +8,18 @@
 
         <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};">
 
-            <h3 class="ecommerce-slider__title" style="color: {{ content.field_color_text.0 }};">{{ label }}</h3>
-            <span style="color: {{ content.field_color_text.0 }};">
+            {% if content.field_title_color.0 %}
+                <h3 class="ecommerce-slider__title" style="color: {{ content.field_title_color.0 }};">{{ label }}</h3>
+            {% else %}
+                <h3 class="ecommerce-slider__title">{{ label }}</h3>
+            {% endif %}
+            {% if content.field_campaign|render %}
+            <span style="color: {{ content.field_title_color.0 }};">
                 {{ content.field_campaign }}
             </span>
+            {% else %}
+                {{ content.field_campaign }}
+            {% endif %}
 
             <div class="swiper-container">
                 <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">

@@ -1,3 +1,7 @@
 .page-taxonomy {
   @include page-taxonomy();
 }
+
+.pargraph--ecommerce-slider-paragraph--taxonomy-term {
+  @include _margin--v(bottom, ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop));
+}
