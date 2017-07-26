@@ -32,7 +32,7 @@
              */
             this.set(pSettings);
 
-            console.log(">>> createView", tmpType, tmpSettings);
+            // console.log(">>> createView", tmpType, tmpSettings);
 
             switch (tmpType) {
                 case 'feedView':
