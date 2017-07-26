@@ -49,6 +49,6 @@ $seo-linker__img-ratio-desktop--grid-four: floor(percentage(210/375)) !default;
 $products__img-ratio-mobile--grid-article: floor(percentage(210/210)) !default;
 
 /** Spotlight **/
-$spotlight__img-ratio-mobile--full: $teaser__img-ratio--full-content-mobile;
+$spotlight__img-ratio-mobile--full: 100% !default;
 $spotlight__img-ratio-tablet--full: $teaser__img-ratio--full-content-tablet;
 $spotlight__img-ratio-desktop--full: $teaser__img-ratio--full-content-desktop;
