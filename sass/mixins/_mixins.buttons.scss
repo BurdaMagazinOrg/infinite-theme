@@ -68,7 +68,6 @@
   border: $btn--small-highlighted-border;
 }
 
-
 @mixin btn--small-bordered($sizes: ($btn__label-size-mobile--small-bordered, $btn__label-size-desktop--small-bordered, $btn__label-size-desktop--small-bordered), $font: $btn--small-bordered-font-id) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
@@ -95,7 +94,6 @@
 
   &:after {
     margin-left: 1px;
-    font-size: $font-size-base + 3px;
     font-weight: bold;
     margin-top: -2px;
     margin-right: -7px;
@@ -104,26 +102,36 @@
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($font, $size-mobile);
     padding: $btn--small-bordered-padding-mobile;
+
+    &:after {
+      font-size: $size-mobile + 5px;
+    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include text-helper-size($font, $size-tablet);
     padding: $btn--small-bordered-padding-tablet;
+
+    &:after {
+      font-size: $size-tablet + 5px;
+    }
   }
 
   @media (min-width: $screen-md-min) {
     @include text-helper-size($font, $size-desktop);
     padding: $btn--small-bordered-padding-desktop;
+
+    &:after {
+      font-size: $size-desktop + 5px;
+    }
   }
 }
-
 
 @mixin btn--small-bordered--highlighted() {
   background-color: $btn--small-bordered-highlighted-bg-color;
   color: $btn--small-bordered-highlighted-color;
   border: $btn--small-bordered-highlighted-border;
 }
-
 
 @mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font-id) {
   $size-mobile: nth($sizes, 1);

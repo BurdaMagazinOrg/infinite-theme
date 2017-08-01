@@ -16,7 +16,7 @@
              * @type {{top: number, right: number, left: number, bottom: number}}
              */
 
-            this.defaultPageOffset = {top: 0, right: 0, left: 0, bottom: 0};
+            this.defaultPageOffset = {top: 0, right: 0, left: 0, bottom: 0, height: 0};
             this.set('items', new Backbone.Collection());
             this.add({id: 'offsetPage', $el: {}, active: false, offsets: this.defaultPageOffset});
             this.add({id: 'offsetToolbar', $el: {}, active: false, offsets: this.defaultPageOffset}, {silent: true});
