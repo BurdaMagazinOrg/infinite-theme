@@ -1,0 +1,124 @@
+{% set classes = [
+'region-full-content',
+'item-content',
+'item-content--article',
+'recipe',
+] %}
+
+<article {{ attributes.addClass(classes) }} data-view-type="articleView">
+    <div class="item-content__header">
+        <h1 class="title--article recipe__title">{{ label }}</h1>
+        <div class="item-content__block recipe__text recipe__description text--highlighted">
+            {{ content.recipe_description }}
+        </div>
+    </div>
+    <div class="item-content__content">
+        <div class="item-paragraph--media--image item-paragraph item-paragraph--full item-paragraph--media">
+            <div class="item-content__block item-paragraph--media recipe__img">
+                {{ content.field_teaser_media }}
+            </div>
+        </div>
+        <div class="item-content__block item-group--outer-wrapper">
+            <div class="item-group--outer">
+                <div class="item-content__block item-group--inner">
+                    <div class="item-content__row--sidebar">
+                        <div class="item-content__row-col col--left">
+
+                            <div class="item-content__block recipe__ingredient">
+                                {{ content.recipe_ingredient }}
+
+                                <div class="recipe__yield">
+                                    <span class="recipe__yield-amount">{{ content.recipe_yield_amount }}</span>
+                                    <span class="recipe__yield-unit">{{ content.recipe_yield_unit }}</span>
+                                </div>
+                            </div>
+
+                            <div class="item-content__block recipe__text recipe__instructions">
+                                <h2>Zubereitung</h2>
+                                {{ content.recipe_instructions }}
+                            </div>
+
+                            {% if content.recipe_notes|render %}
+                                <div class="item-content__block recipe__text recipe__notes">
+                                    <h2>Tipp</h2>
+                                    {{ content.recipe_notes }}
+                                </div>
+                            {% endif %}
+
+                            {% if (content.recipe_prep_time|plain_text > 0) and (content.recipe_cook_time|plain_text > 0) %}
+                                <div class="item-content__block recipe__times">
+
+                                    <div class="recipe__prep-time">
+                                        <div class="recipe__prep-time">Vorbereitungszeit: {{ content.recipe_prep_time }}</div>
+                                        <div class="recipe__cook-time">Kochzeit: {{ content.recipe_cook_time }}</div>
+                                    </div>
+
+                                    <div class="recipe__total-time">{{ content.recipe_total_time }}</div>
+                                </div>
+                            {% endif %}
+
+                            {% if content.field_rewe_button|plain_text > 0 %}
+                                <div class="item-content__block recipe__rewe-button" data-rewe-button-size="m" data-rewe-button
+                                     data-rewe-button-allow-image-use="true"></div>
+                                <script type="text/javascript"
+                                        src="https://shop.rewe.de/ingredients/button.js"></script>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="item-content__row-col col--right">
+                            {% if content.field_sidebar_blocks is not empty %}
+                                <div class="item-sticky" data-view-type="stickyView">
+                                {% block content_sidebar %}
+                                    {{ content.field_sidebar_blocks }}
+                                    </div>
+                                {% endblock %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <span class="cet"></span>
+
+                <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
+                    {% block socials_vertical_bar %}
+                        {% embed '@freundin_infinite/embeds/social_icons.html.twig' with {
+                        'url': content.url,
+                        'label': content.label,
+                        'twitter_share_via': content.twitter_share_via,
+                        'email_share_text': content.email_share_text,
+                        'email_subject': content.email_subject,
+                        'whatsapp_share_text': content.whatsapp_share_text,
+                        } %}
+                        {% endembed %}
+                    {% endblock %}
+                </aside>
+
+                {% block content_author_bottom %}
+                    {% if content.created[0]['#markup'] %}
+                        <div class="item-content__block item-content__block--meta-data">
+                            <div class="item-date--vita-short">
+                                {% set date = content.created[0]['#markup'] %}
+                                <time itemprop="date" datetime="{{ date|format_date('html_datetime') }}" title="{{ date|format_date('custom', 'd.M.Y G:i:s') }}">{{ date|format_date('custom', 'd. F Y') }}</time>
+                            </div>
+
+                            {{ content.uid }}
+                        </div>
+                    {% endif %}
+
+                {% endblock %}
+
+                {% block adsense_3 %}
+                    {% if content.adsense_3 %}
+                        {{ content.adsense_3 }}
+                    {% endif %}
+                {% endblock %}
+
+                {% block content_tags %}
+                    {{ content.field_tags }}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+</article>
