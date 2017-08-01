@@ -26,12 +26,10 @@
       }
     },
     scrollToElement: function (pElementId) {
-      window.scrollTo(0, Math.round($(pElementId).offset().top - this.offsetTop - AppConfig.padding));
-
-      // $("html, body").animate({scrollTop: Math.round($(pElementId).offset().top - this.offsetTop - AppConfig.padding)}, {
-      //     duration: 1000,
-      //     easing: 'easeInOutCubic'
-      // });
+      $("html, body").animate({scrollTop: Math.round($(pElementId).offset().top - this.offsetTop - AppConfig.padding)}, {
+        duration: 1000,
+        easing: 'easeInOutCubic'
+      });
 
       return false;
     },
