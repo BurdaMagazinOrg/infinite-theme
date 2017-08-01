@@ -8,6 +8,7 @@
         initialize: function (pOptions) {
             BaseView.prototype.initialize.call(this, pOptions);
 
+            return;
             this.$products = this.$el.find('.item-ecommerce');
             this.$productHeadlines = this.$products.find('.text-headline');
             this.checkText();
