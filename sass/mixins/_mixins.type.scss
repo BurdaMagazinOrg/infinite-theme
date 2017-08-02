@@ -189,7 +189,7 @@
   }
 
   h2, h3, h4, h5, h6 {
-    @include title--text-block();
+    @include title--text-block(false);
   }
 
   h2 {
