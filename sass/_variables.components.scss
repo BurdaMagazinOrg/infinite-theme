@@ -1,4 +1,5 @@
 @import "variables/variables.media-ratios";
+@import "variables/variables.buttons";
 
 /**
 ** Specific Lists Gaps
@@ -298,8 +299,8 @@ $product__item-text-headline-size: $title-size-xxs !default;
 $product__item-text-headline-color: $text-color !default;
 
 $product__item-text-headline-height-mobile: 39px !default;
-$product__item-text-headline-height-tablet: 43px !default;
-$product__item-text-headline-height-desktop: 43px !default;
+$product__item-text-headline-height-tablet: 41px !default;
+$product__item-text-headline-height-desktop: 41px !default;
 
 $product__item-text-headline-gap-bottom-mobile: 33px !default;
 $product__item-text-headline-gap-bottom-tablet: 33px !default;

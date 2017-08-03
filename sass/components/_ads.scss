@@ -26,8 +26,6 @@
   }
 
   .ad-container {
-    //background-color: $white;
-    //border: $ad__border;
     max-width: 100%;
     overflow: hidden;
     display: inline-block;
@@ -107,27 +105,6 @@
   border-top: 0 !important;
 }
 
-.ad-js {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  border-top: 0 !important;
-  //max-width: 100%;
-
-  .ad-js-active {
-    @media (max-width: $screen-xxs-max) {
-      margin-top: $gap-v-region-mobile !important;
-    }
-
-    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-      margin-top: $gap-v-region-tablet !important;
-    }
-
-    @media (min-width: $screen-md-min) {
-      margin-top: $gap-v-region-desktop !important;
-    }
-  }
-}
-
 /**
 ** Feed AD
 */
@@ -141,29 +118,22 @@
   }
 }
 
-.col--left .ad-content {
+.teaser-list-large .ad-content {
   &.ad-active {
-    border-top: $feed-teaser-h-line;
+    @extend %teaser-feed-large-gap;
+  }
+}
 
-    @media (max-width: $screen-xxs-max) {
-      padding-top: $feed-teaser-gap-top-mobile;
-      margin-top: $feed-teaser-gap-top-mobile;
-    }
-
-    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-      padding-top: $feed-teaser-gap-top-tablet;
-      margin-top: $feed-teaser-gap-top-tablet;
-    }
-
-    @media (min-width: $screen-md-min) {
-      padding-top: $feed-teaser-gap-top-desktop;
-      margin-top: $feed-teaser-gap-top-desktop;
-    }
+/**
+** Article Content AD
+*/
+.item-content .ad-content {
+  &.ad-active {
+    @extend %margin--v-item-content__item;
   }
 }
 
 .ad-fba {
-
   padding-left: 0 !important;
   padding-right: 0 !important;
 
