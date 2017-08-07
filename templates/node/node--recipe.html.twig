@@ -46,23 +46,25 @@
                                 </div>
                             {% endif %}
 
-                            {% if (content.recipe_prep_time|plain_text > 0) and (content.recipe_cook_time|plain_text > 0) %}
-                                <div class="item-content__block recipe__times">
-
-                                    <div class="recipe__yield">
-                                        <span class="recipe__yield-unit">{{content.recipe_yield_unit}}</span>
-                                        <span class="recipe__yield-amount">{{ content.recipe_yield_amount }}</span>
-                                    </div>
-
-                                    <div class="recipe__prep-time">
-                                        <div class="recipe__prep-time">
-                                            Vorbereitungszeit: {{ content.recipe_prep_time }}</div>
-                                        <div class="recipe__cook-time">Kochzeit: {{ content.recipe_cook_time }}</div>
-                                    </div>
-
-                                    <div class="recipe__total-time">{{ content.recipe_total_time }}</div>
+                            <div class="item-content__block recipe__times">
+                                {% if (content.recipe_yield_unit|plain_text) and (content.recipe_yield_amount|plain_text) %}
+                                <div class="recipe__yield">
+                                    <span class="recipe__yield-unit">{{content.recipe_yield_unit}}</span>
+                                    <span class="recipe__yield-amount">{{ content.recipe_yield_amount }}</span>
                                 </div>
-                            {% endif %}
+                                {% endif %}
+
+                                {% if (content.recipe_prep_time|plain_text > 0) and (content.recipe_cook_time|plain_text > 0) %}
+                                <div class="recipe__prep-time">
+                                    <div class="recipe__prep-time">
+                                        Vorbereitungszeit: {{ content.recipe_prep_time }}</div>
+                                    <div class="recipe__cook-time">Kochzeit: {{ content.recipe_cook_time }}</div>
+                                </div>
+                                {% endif %}
+
+                                <div class="recipe__total-time">{{ content.recipe_total_time }}</div>
+                            </div>
+
 
                             {% if content.field_rewe_button|plain_text > 0 %}
                                 <div class="item-content__block recipe__rewe-button" data-rewe-button-size="m"
