@@ -6,6 +6,11 @@
 ] %}
 
 <article {{ attributes.addClass(classes) }} data-view-type="articleView">
+
+    {% block article_header_blocks %}
+        {{ content.field_header_blocks }}
+    {% endblock %}
+
     <div class="item-content__header">
         <h1 class="title--article recipe__title">{{ label }}</h1>
     </div>
