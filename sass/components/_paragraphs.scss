@@ -33,6 +33,10 @@
 
 .item-paragraph--spotlight {
   @extend %item-paragraph--spotlight;
+
+  &.gradient-transparency--1 {
+    @extend %item-paragraph--spotlight__transparent;
+  }
 }
 
 .item-paragraph--instagram {

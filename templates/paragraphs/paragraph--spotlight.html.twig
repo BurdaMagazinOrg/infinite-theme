@@ -37,7 +37,8 @@
  */
 #}
 {% set classes = [
-'item-paragraph--' ~ (paragraph.bundle ~ '-' ~ text_position )|clean_class,
+    'item-paragraph--' ~ (paragraph.bundle ~ '-' ~ text_position )|clean_class,
+    'gradient-transparency--'~(content.field_gradient_transparency | plain_text | trim )
 ] %}
 
 {% set attributes = attributes.addClass(classes) %}

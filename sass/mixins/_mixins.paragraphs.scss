@@ -181,6 +181,17 @@
   }
 }
 
+@mixin item-paragraph--spotlight__transparent() {
+  @media (min-width: $screen-md-min) {
+    .spotlight__wrapper {
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
+
 @mixin _spotlight--small() {
   @include item-content--spotlight-small-text();
 
