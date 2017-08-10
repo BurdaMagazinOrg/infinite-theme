@@ -28,6 +28,8 @@
       this.listenTo(this.model, 'change:inviewEnabled', this.onEnabledHandler, this);
     },
     updateView: function () {
+      this.removeFixHeight();
+
       if (this.adRenderModel.visibility == "visible") {
         this.show();
       } else {
@@ -146,7 +148,7 @@
       this.visible = false;
     },
     freeze: function () {
-      this.setFixHeight(this.$adSlotContainer.height());
+      this.setFixHeight(this.getAdEntityContainer().height());
       this.clear();
     },
     clear: function () {
