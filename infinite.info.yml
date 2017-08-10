@@ -5,6 +5,7 @@ base theme: false
 package: Infinite
 core: 8.x
 screenshot: images/infinite.png
+hidden: true
 libraries:
   - infinite/infinite.external
   - infinite/infinite.libs
