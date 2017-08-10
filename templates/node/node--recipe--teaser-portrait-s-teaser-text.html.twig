@@ -1,0 +1,11 @@
+{% extends "node--article--teaser-default.html.twig" %}
+
+{% set attributes = attributes.addClass('teaser-content-right', 'teaser-portrait-small') %}
+
+{% block teaser_text %}
+    {% if content.recipe_description %}
+        <div class="teaser__copy">
+            {{ content.recipe_description }}
+        </div>
+    {% endif %}
+{% endblock %}

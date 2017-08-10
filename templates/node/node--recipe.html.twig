@@ -7,10 +7,6 @@
 
 <article {{ attributes.addClass(classes) }} data-view-type="articleView">
 
-    {% block article_header_blocks %}
-        {{ content.field_header_blocks }}
-    {% endblock %}
-
     <div class="item-content__header">
         <h1 class="title--article recipe__title">{{ label }}</h1>
     </div>
@@ -26,10 +22,11 @@
                     <div class="item-content__row--sidebar">
                         <div class="item-content__row-col col--left">
 
+                            {% if content.recipe_description | render is not empty %}
                             <div class="item-content__block recipe__text recipe__description text--highlighted">
                                 {{ content.recipe_description }}
                             </div>
-
+                            {% endif %}
 
                             <div class="item-content__block recipe__ingredient">
                                 <h2>Zutaten</h2>
@@ -39,10 +36,12 @@
                                 </div>
                             </div>
 
+                            {% if content.recipe_instructions | render is not empty %}
                             <div class="item-content__block recipe__text recipe__instructions">
                                 <h2>Zubereitung</h2>
                                 {{ content.recipe_instructions }}
                             </div>
+                            {% endif %}
 
                             {% if content.recipe_notes|render %}
                                 <div class="item-content__block recipe__text recipe__notes">
