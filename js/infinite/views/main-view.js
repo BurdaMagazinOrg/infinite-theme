@@ -47,7 +47,7 @@
                 _.delay(function () {
                     var tmpBlazy = new Blazy();
                     tmpBlazy.revalidate();
-                }, 1);
+                }, 100);
             }
 
             /**
