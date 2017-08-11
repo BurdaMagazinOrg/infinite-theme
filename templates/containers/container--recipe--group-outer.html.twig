@@ -1,0 +1,13 @@
+<div class="item-content__block item-group--outer-wrapper">
+    <div class="item-group--outer">
+
+        {{ children }}
+
+        <span class="cet"></span>
+
+        {% block content_tags %}
+            {{ parent.field_tags }}
+        {% endblock %}
+
+    </div>
+</div>
