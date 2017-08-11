@@ -34,6 +34,10 @@
   @include item-paragraph--spotlight();
 }
 
+%item-paragraph--spotlight__transparent {
+  @include item-paragraph--spotlight__transparent();
+}
+
 %item-paragraph--instagram {
   @include item-paragraph--instagram();
 }
