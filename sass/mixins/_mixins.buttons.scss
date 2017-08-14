@@ -208,6 +208,7 @@
   -moz-border-radius: $button__border-radius--default;
   border-radius: $button__border-radius--default;
   letter-spacing: $button__letter-spacing--default;
+  text-transform: $button__text-transform--default;
 }
 
 @mixin button--size($font-id, $size, $height, $line-height, $padding) {
@@ -235,7 +236,7 @@
 
 @mixin button--responsive-lg() {
   @media (max-width: $screen-xs-max) {
-    @include button--sm();
+    @include button--md();
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {

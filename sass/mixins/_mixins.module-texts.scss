@@ -375,7 +375,7 @@
 
   &:hover {
     .text-shop {
-      @extend %btn--large--highlighted;
+      @extend %button--lined-colored-hover;
     }
   }
 
@@ -408,6 +408,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     color: $product__item-text-brand-color--single-product;
+    min-height: $product__item-text-brand-size--single-product + 7px;
   }
 
   .text-price {
@@ -417,10 +418,13 @@
   }
 
   .text-shop {
-    @extend %btn--large;
+    @extend %button;
+    @extend %button--responsive-lg;
+    @extend %button--lined-colored-default;
     -webkit-border-radius: $product__item-btn-radius--single-product;
     -moz-border-radius: $product__item-btn-radius--single-product;
     border-radius: $product__item-btn-radius--single-product;
+    display: inline-block;
   }
 
   @media (min-width: $screen-md-min) {

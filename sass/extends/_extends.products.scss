@@ -9,3 +9,7 @@
 %ecommerce-slider--full {
   @include ecommerce-slider--full();
 }
+
+%products__info-box--grid {
+  @include products__info-box--grid();
+}
