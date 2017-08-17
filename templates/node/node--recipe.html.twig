@@ -28,6 +28,7 @@
                             </div>
                             {% endif %}
 
+                            {% if content.recipe_ingredient | render is not empty %}
                             <div class="item-content__block recipe__ingredient">
                                 <h2>Zutaten</h2>
 
@@ -35,6 +36,7 @@
                                     {{ content.recipe_ingredient }}
                                 </div>
                             </div>
+                            {% endif %}
 
                             {% if content.recipe_instructions | render is not empty %}
                             <div class="item-content__block recipe__text recipe__instructions">
