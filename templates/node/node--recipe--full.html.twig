@@ -101,13 +101,15 @@
     {% block article_footer_blocks_lazyloading %}{% endblock %}
 </div>
 
-{% if content.field_footer_blocks | render is not empty %}
-    <div class="region-full-content region-feed" data-view-type="feedView">
-        {% block article_footer_blocks_full %}
-            {% if view_mode == 'full' and content.field_footer_blocks | render %}
-                {{ content.field_footer_blocks }}
-                <div class="region-full-content container-content-dynamic container-feed-items"></div>
-            {% endif %}
-        {% endblock %}
-    </div>
-{% endif %}
+{% block article_footer_feed_block %}
+    {% if content.field_footer_blocks | render is not empty %}
+        <div class="region-full-content region-feed" data-view-type="feedView">
+            {% block article_footer_blocks_full %}
+                {% if view_mode == 'full' and content.field_footer_blocks | render %}
+                    {{ content.field_footer_blocks }}
+                    <div class="region-full-content container-content-dynamic container-feed-items"></div>
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
