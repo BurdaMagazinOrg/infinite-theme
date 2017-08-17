@@ -75,30 +75,18 @@
 ] %}
 
 {# Add data attributes #}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-title', node_seo_title) %}
-{% if adsc_adunit1 is not empty %}
-    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-adunit1', adsc_adunit1) %}
-{% endif %}
-{% if adsc_adunit2 is not empty %}
-    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-adunit2', adsc_adunit2) %}
-{% endif %}
-{% if adsc_adunit3 is not empty %}
-    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-adunit3', adsc_adunit3) %}
-{% endif %}
-{% if adsc_keyword is not empty %}
-    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-adkeyword', adsc_keyword) %}
-{% endif %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
+{% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set attributes = attributes.setAttribute('data-history-url', path) %}
+{% set attributes = attributes.setAttribute('data-history-title', node_seo_title) %}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 
 {# Add data attribute data-no-track only for view mode full #}
 {% if view_mode == 'full' %}
-    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-no-track', 'true') %}
+    {% set attributes = attributes.setAttribute('data-no-track', 'true') %}
 {% endif %}
 
-<div{{ wrapper_attributes.addClass(wrapper_classes) }} >
+<div{{ attributes.addClass(wrapper_classes) }}>
     {% block article_header_blocks %}
         {{ content.field_header_blocks }}
     {% endblock %}
