@@ -68,10 +68,58 @@
  */
 #}
 
-{% extends "node--article--full.html.twig" %}
+{#{% extends "node--article--full.html.twig" %}#}
 
-{% block article_node_content %}
-    {% embed 'node--recipe.html.twig' %}
-    {% endembed %}
+{#{% block article_node_content %}#}
+    {#{% embed 'node--recipe.html.twig' %}#}
+    {#{% endembed %}#}
+{#{% endblock %}#}
+
+
+{# Add wrapper classes #}
+{% set wrapper_classes = [
+'region-full-content',
+'region-infinite-block',
+'infinite-item',
+] %}
+
+{# Add data attributes #}
+{% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set attributes = attributes.setAttribute('data-history-url', path) %}
+{% set attributes = attributes.setAttribute('data-history-title', node_seo_title) %}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-uuid', uuid) %}
+
+{# Add data attribute data-no-track only for view mode full #}
+{% if view_mode == 'full' %}
+    {% set attributes = attributes.setAttribute('data-no-track', 'true') %}
+{% endif %}
+
+<div{{ attributes.addClass(wrapper_classes) }}>
+    {% block article_header_blocks %}
+        {{ content.field_header_blocks }}
+    {% endblock %}
+
+    {% if label | render is not empty %}
+        {% block article_node_content %}
+            {% embed 'node--recipe.html.twig' %}
+            {% endembed %}
+        {% endblock %}
+    {% endif %}
+
+    {% block article_footer_blocks_lazyloading %}{% endblock %}
+</div>
+
+{% block article_footer_feed_block %}
+    {% if content.field_footer_blocks | render is not empty %}
+        <div class="region-full-content region-footer-blocks">
+            {% block article_footer_blocks_full %}
+                {% if view_mode == 'full' and content.field_footer_blocks | render %}
+                    {{ content.field_footer_blocks }}
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endif %}
 {% endblock %}
+
 
