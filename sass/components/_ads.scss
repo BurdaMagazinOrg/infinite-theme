@@ -38,13 +38,6 @@
     padding-left: $tablet-gap;
     padding-right: $tablet-gap;
   }
-
-  //orbyd size bug
-  @media (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: landscape) {
-    .region-content .region-marketing.ad-active iframe {
-      max-width: $ad-width !important;
-    }
-  }
 }
 
 @include ads-native();
@@ -119,7 +112,7 @@
   text-align: center;
   position: relative;
 
-  @media (min-width: $screen-xs-min) {
+  @media (min-width: $screen-md-min) {
     max-width: 100%;
     overflow: hidden;
   }
@@ -156,5 +149,24 @@
   @media (max-width: $screen-xxs-max) {
     margin-left: -$container-h-gap--mobile;
     margin-right: -$container-h-gap--mobile;
+  }
+}
+
+/**
+** Article Content AD
+*/
+
+/** old **/
+.item-content .sticky-intext-roll {
+  @extend %margin--v-region;
+}
+
+.region-feed > .ad-bdsa .ad-js-active {
+  @include _margin--v(bottom, ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop));
+}
+
+.teaser-list-large {
+  .sticky-intext-roll {
+    @extend %gap--v-region;
   }
 }

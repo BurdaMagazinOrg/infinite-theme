@@ -3,6 +3,7 @@
     "use strict";
 
     BurdaInfinite.managers.ScrollManager = Backbone.View.extend({
+        infiniteViewsModel: {},
         scrollTopAdSettings: 0,
         scrollTop: 0,
         initialize: function (pOptions) {
@@ -12,7 +13,7 @@
 
             this.scrollTopAdSettings = $(window).scrollTop();
             this.scrollTop = $(window).scrollTop();
-            this.listenTo(this.infiniteModel, 'change:inview', this.onInviewChangeHandler, this);
+            this.listenTo(this.infiniteViewsModel, 'change:inview', this.onInviewChangeHandler, this);
         },
         onInviewChangeHandler: function (pModel) {
             this.urlChangeHandler(pModel);
