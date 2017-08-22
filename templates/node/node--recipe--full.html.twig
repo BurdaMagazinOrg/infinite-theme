@@ -67,6 +67,15 @@
  * @ingroup themeable
  */
 #}
+
+{#{% extends "node--article--full.html.twig" %}#}
+
+{#{% block article_node_content %}#}
+    {#{% embed 'node--recipe.html.twig' %}#}
+    {#{% endembed %}#}
+{#{% endblock %}#}
+
+
 {# Add wrapper classes #}
 {% set wrapper_classes = [
 'region-full-content',
@@ -75,29 +84,25 @@
 ] %}
 
 {# Add data attributes #}
-{% set wrapper_attributes = wrapper_attributes is empty ? attributes : wrapper_attributes %}
-
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-title', node_seo_title) %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
-
-{% set wrapper_attributes = wrapper_attributes.removeAttribute('role') %}
+{% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set attributes = attributes.setAttribute('data-history-url', path) %}
+{% set attributes = attributes.setAttribute('data-history-title', node_seo_title) %}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 
 {# Add data attribute data-no-track only for view mode full #}
 {% if view_mode == 'full' %}
-    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-no-track', 'true') %}
+    {% set attributes = attributes.setAttribute('data-no-track', 'true') %}
 {% endif %}
 
-<div{{ wrapper_attributes.addClass(wrapper_classes) }} >
+<div{{ attributes.addClass(wrapper_classes) }}>
     {% block article_header_blocks %}
         {{ content.field_header_blocks }}
     {% endblock %}
 
-    {% if content.field_paragraphs | render is not empty %}
+    {% if label | render is not empty %}
         {% block article_node_content %}
-            {% embed 'node--article.html.twig' %}
+            {% embed 'node--recipe.html.twig' %}
             {% endembed %}
         {% endblock %}
     {% endif %}
@@ -107,13 +112,14 @@
 
 {% block article_footer_feed_block %}
     {% if content.field_footer_blocks | render is not empty %}
-        <div class="region-full-content region-feed" data-view-type="feedView">
+        <div class="region-full-content region-footer-blocks">
             {% block article_footer_blocks_full %}
                 {% if view_mode == 'full' and content.field_footer_blocks | render %}
                     {{ content.field_footer_blocks }}
-                    <div class="region-full-content container-content-dynamic container-feed-items"></div>
                 {% endif %}
             {% endblock %}
         </div>
     {% endif %}
 {% endblock %}
+
+

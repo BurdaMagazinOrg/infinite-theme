@@ -316,6 +316,19 @@ $product__item-text-shipping-size: 13px !default;
 $product__item-text-shipping-color: $gray-base !default;
 $product__item-text-shipping-pos-bottom: 40px !default;
 
+/**
+** Info Box
+**/
+$products-info-box__padding-mobile--grid: 20px !default;
+$products-info-box__padding-tablet--grid: 20px !default;
+$products-info-box__padding-desktop--grid: 20px !default;
+$products-info-box__text-align--grid: center !default;
+$products-info-box__bg-color--grid: $bg-color-gray-light !default;
+$products-info-box__text-id--grid: $font-content-id !default;
+$products-info-box__text-size-mobile--grid: $font-size-base !default;
+$products-info-box__text-size-tablet--grid: $font-size-large !default;
+$products-info-box__text-size-desktop--grid: $font-size-large !default;
+
 
 /**
 ** eCommerce-Slider

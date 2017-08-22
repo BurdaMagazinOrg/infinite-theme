@@ -193,8 +193,14 @@ function infinite_preprocess_views_view(&$variables) {
   /* @var Drupal\views\ViewExecutable $view */
   $view = $variables['view'];
 
-  // Render title for all other views, because we aren't using pagetitle block. // todo: check how to add pagetitle block as default?
-  $variables['title']['#markup'] = $view->getTitle();
+  // Render title for all other views, because we aren't using pagetitle block.
+  // todo: check how to add pagetitle block as default?
+  if(isset($variables['title']) && is_array($variables['title'])){
+    $variables['title']['#markup'] = $view->getTitle();
+  }
+  else {
+    $variables['title'] = $view->getTitle();
+  }
 }
 
 /**

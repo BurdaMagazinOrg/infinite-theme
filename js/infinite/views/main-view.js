@@ -34,6 +34,21 @@
 
             //console.log("UUID", this.deviceModel.get('uuid'));
 
+
+            /**
+             * Blazy Viewport fix
+             *
+             * Sometimes in safari browser on a page reload (especially when reloading through browser reload button)
+             * images that are initially present in the viewport are not loaded by blazy. This snippet is a workaround
+             * for this bug.
+             */
+            if (jQuery.browser != undefined && jQuery.browser.safari && Blazy != undefined) {
+                _.delay(function () {
+                    var tmpBlazy = new Blazy();
+                    tmpBlazy.revalidate();
+                }, 100);
+            }
+
             /**
              * Infinite Model Helper
              */
