@@ -9,7 +9,7 @@
     initialize: function (pOptions) {
       _.extend(this, pOptions || {});
 
-      this.listenTo(this.model, "refresh", this.onRefreshHandler);
+      this.listenTo(this.model, "refresh", this.onRefreshHandler, this);
     },
     delegateElements: function ($pElement) {
       var $tmpElement = $pElement || this.$el;
@@ -217,7 +217,8 @@
     enableView: function () {
       this.enabled = true;
     },
-    onRefreshHandler: function () {
+    onRefreshHandler: function (pEvent) {
+      console.log("BJKSHAKSA REFRESH HANDLER", pEvent.data, this.model);
       this.refresh();
     },
     refresh: function () {

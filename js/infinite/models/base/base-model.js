@@ -18,9 +18,8 @@
     hasItems: function () {
       return false;
     },
-    refresh: function (pType) {
-      console.log("REFRESH MODEL CALL", pType);
-      this.trigger('refresh', {data: this, type: pType});
+    refresh: function (pTypesArr) {
+      this.trigger('refresh', {data: this, typesArr: pTypesArr});
     },
     setParentModel: function (pModel) {
       this._parentModel = pModel;

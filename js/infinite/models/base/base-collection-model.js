@@ -54,18 +54,23 @@
         }
       }, this))
     },
-    refresh: function (pItems) {
+    refreshAll: function (pItems) {
       var tmpItems = pItems || this.getItems();
 
       _.each(tmpItems.models, _.bind(function (pModel, pIndex) {
         if (pModel.hasItems()) {
-          this.refresh(pModel.get('items'));
+          this.refreshAll(pModel.get('items'));
         }
 
         if (_.isFunction(pModel.refresh)) {
-          pModel.refresh();
+          this.refresh(pModel);
         }
       }, this))
+    },
+    refresh: function (pModel) {
+      var tmpModel = pModel || this;
+
+      BaseModel.prototype.refresh.call(tmpModel);
     },
     inviewEnable: function (pState, pCollection) {
       var tmpCollection = pCollection || this.getItems();
