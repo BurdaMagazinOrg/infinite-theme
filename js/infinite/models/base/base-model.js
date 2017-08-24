@@ -12,6 +12,9 @@
     initialize: function (pModel, pOptions) {
       _.extend(this, pOptions);
     },
+    create: function (pData) {
+      this.set(pData);
+    },
     inviewEnable: function (pState) {
       this.set('inviewEnabled', pState);
     },
