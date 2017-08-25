@@ -50,7 +50,7 @@
             {{ content|without('field_title', 'field_e_view_mode', 'field_text') }}
         </div>
 
-        {% if content.field_text %}
+        {% if content.field_text | render is not empty %}
             <div class="products__info-box--grid">
                 {{ content.field_text }}
             </div>
