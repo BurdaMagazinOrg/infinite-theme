@@ -319,10 +319,14 @@ $product__item-text-shipping-pos-bottom: 40px !default;
 /**
 ** Info Box
 **/
+$products-info-box__margin-mobile--grid: $gap-v-region-mobile 0 0 0 !default;
+$products-info-box__margin-tablet--grid: 0px !default;
+$products-info-box__margin-desktop--grid: 0px !default;
+
+$products-info-box__text-align--grid: center !default;
 $products-info-box__padding-mobile--grid: 20px !default;
 $products-info-box__padding-tablet--grid: 20px !default;
 $products-info-box__padding-desktop--grid: 20px !default;
-$products-info-box__text-align--grid: center !default;
 $products-info-box__bg-color--grid: $bg-color-gray-light !default;
 $products-info-box__text-id--grid: $font-content-id !default;
 $products-info-box__text-size-mobile--grid: $font-size-base !default;

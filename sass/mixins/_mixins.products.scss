@@ -740,7 +740,12 @@
     display: inline-block;
   }
 
+  p:first-child > .button, & > .button:first-child {
+    margin-top: 0;
+  }
+
   @media (max-width: $screen-xs-max) {
+    margin: $products-info-box__margin-mobile--grid;
     padding: $products-info-box__padding-mobile--grid;
 
     p {
@@ -749,6 +754,7 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    margin: $products-info-box__margin-tablet--grid;
     padding: $products-info-box__padding-tablet--grid;
 
     p {
@@ -757,6 +763,7 @@
   }
 
   @media (min-width: $screen-md-min) {
+    margin: $products-info-box__margin-desktop--grid;
     padding: $products-info-box__padding-desktop--grid;
 
     p {
