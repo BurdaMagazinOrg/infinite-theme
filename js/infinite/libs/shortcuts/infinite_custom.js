@@ -21,7 +21,7 @@
       this.container = this.options.container;
     }
 
-    if (typeof OdoscopeManager !== 'undefined' && OdoscopeManager.getOdoscopeArticleGroup() && this.container.is('#feed')) {
+    if (typeof OdoscopeManager !== 'undefined' && OdoscopeManager.getInstance().isOdoscopeArticleGroup() && this.container.is('#feed')) {
       OdoscopeManager.getInstance().get('articleModel').on('set:articleModel', this.onOdoscopeArticelModelHandler, this);
       this.onOdoscopeArticelModelHandler(OdoscopeManager.getInstance().get('articleModel'));
     }
