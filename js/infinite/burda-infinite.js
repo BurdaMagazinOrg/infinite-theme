@@ -32,7 +32,7 @@
     if ($tmpAdContainer.data('infiniteModel') != undefined) {
       tmpView = $tmpAdContainer.data('infiniteModel').get('view');
       tmpView.setRenderModel(tmpModel);
-      console.log('No ad rendered for ' + event.element_id, tmpView.adRenderModel.visibility, tmpView.$el);
+      console.log("%c marketing | no marketing rendered for ", 'background-color: black; color: yellow; font-weight: bold;', event.element_id, tmpView.adRenderModel.visibility, tmpView.$el);
     }
   }, false);
 
@@ -41,7 +41,7 @@
       tmpModel = {visibility: 'visible', event: event},
       tmpView;
 
-    console.log('Ad rendered for ' + event.element_id);
+    console.log("%c marketing | marketing rendered for ", 'background-color: black; color: yellow; font-weight: bold;', event.element_id);
 
     if ($tmpAdContainer.data('infiniteModel') != undefined) {
       tmpView = $tmpAdContainer.data('infiniteModel').get('view');
@@ -57,7 +57,8 @@
       tmpView = $tmpAdContainer.data('infiniteModel').get('view');
       tmpView.setRenderedAdType(pType, pElement);
     }
-    console.log('atf_fba', $tmpAdContainer, pType);
+
+    console.log("%c marketing | atf_fba ", 'background-color: black; color: yellow; font-weight: bold;', pType, $tmpAdContainer);
   }
 
 })(jQuery, Drupal, drupalSettings, Backbone, window);

@@ -80,7 +80,6 @@
             this.$el.trigger("sticky_kit:recalc_offset_top", [this.offsetTop + AppConfig.padding]);
         },
         onContentHeightHandler: function (pModel) {
-            console.log("REFRESH STICKY");
             this.refresh();
         }
     });

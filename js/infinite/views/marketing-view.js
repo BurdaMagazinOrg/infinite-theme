@@ -69,21 +69,11 @@
     enableView: function () {
       if (this.enabled) return;
 
-      // if (this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR && this.adRenderModel.visibility == "visible" && this.currentBreakpoint == "desktop") {
-      //   $(window).bind('scroll.' + this.getAdEntityContainer().attr('id'), _.bind(this.checkHeight, this));
-      //   console.log("CHECK HEIGHT > ENABLE");
-      // }
-
       this.enabled = true;
       this.updateEnableView();
     },
     disableView: function () {
       if (!this.enabled) return;
-
-      // if (this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR) {
-      //   $(window).unbind('scroll.' + this.getAdEntityContainer().attr('id'));
-      //   console.log("CHECK HEIGHT > DISABLE");
-      // }
 
       this.enabled = false;
       this.updateEnableView();
@@ -100,17 +90,7 @@
     checkHeight: function () {
       if (this.height != this.$adSlotContainer.height()) {
         this.height = this.$adSlotContainer.height();
-
-        // if (this.getAdTechAd().find('iframe').length > 0) {
-        //   this.height = this.getAdTechAd().find('iframe').height();
-        //   console.log("IFRAME HEIGHT", this.getAdTechAd().find('iframe').height());
-        // }
-
-        // this.setFixHeight(this.height);
-
-        console.log("CHECK HEIGHT", this.height);
         this.model.set('contentHeight', this.height);
-        //Waypoint.refreshAll();
       }
     },
     onDeviceBreakpointHandler: function (pModel) {

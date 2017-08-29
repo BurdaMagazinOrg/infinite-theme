@@ -218,7 +218,6 @@
       this.enabled = true;
     },
     onRefreshHandler: function (pEvent) {
-      console.log("BJKSHAKSA REFRESH HANDLER", pEvent.data, this.model);
       this.refresh();
     },
     refresh: function () {
