@@ -32,6 +32,12 @@
           this.parseTrackingElements(pModel.get('el'));
         }
       }, this);
+
+      this.listenTo(this.infiniteViewsModel, 'refresh', function (pModel) {
+        if (pModel.get('type') === 'infiniteBlockView') {
+          this.parseTrackingElements(pModel.get('el'));
+        }
+      }, this);
     },
     inviewChangeHandler: function (pModel) {
       if (this.lastViewState == pModel.get('inview').state) return;

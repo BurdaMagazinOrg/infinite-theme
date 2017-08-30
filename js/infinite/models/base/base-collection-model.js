@@ -52,7 +52,7 @@
         if (pModel.has('view') && _.isFunction(pModel.get('view').destroy)) {
           pModel.get('view').destroy();
         }
-      }, this))
+      }, this));
     },
     refreshAll: function (pItems) {
       var tmpItems = pItems || this.getItems();
@@ -65,7 +65,7 @@
         if (_.isFunction(pModel.refresh)) {
           this.refresh(pModel);
         }
-      }, this))
+      }, this));
     },
     refresh: function (pModel) {
       var tmpModel = pModel || this;
