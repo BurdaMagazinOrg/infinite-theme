@@ -31,7 +31,7 @@
   }
 
   Infinite.prototype.onOdoscopeArticelModelHandler = function (pModel) {
-    console.log("onOdoscopeArticelModelHandler", pModel);
+    console.log("onOdoscopeArticelModelHandler", "color: green; font-weight: bold;", pModel);
     this.useOdoscope = true;
     this.odoscopeArticleModel = pModel;
   }
@@ -94,6 +94,14 @@
     if (!$newMore.length) {
       $newMore = $data.filter(this.options.more);
     }
+
+    if (TrackingManager != undefined) {
+      TrackingManager.trackEvent({
+        category: 'lazy-loading',
+        action: this.$more.attr('href')
+      });
+    }
+
     if ($newMore.length) {
       this.$more.remove();
       this.$container.append($newMore);
