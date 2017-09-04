@@ -34,7 +34,7 @@
 .item-paragraph--spotlight {
   @extend %item-paragraph--spotlight;
 
-  &.gradient-transparency--1 {
+  &.bg-overlay-disabled {
     @extend %item-paragraph--spotlight__transparent;
   }
 }
