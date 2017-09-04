@@ -407,8 +407,8 @@
 
       if (typeof window.dataLayer != "undefined") {
 
-        if (OdoscopeManager != undefined && window.odoscopelist != undefined) {
-          tmpTrackingObject.odoscopelist = window.odoscopelist;
+        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != undefined) {
+          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
         }
 
         // tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
