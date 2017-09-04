@@ -83,7 +83,7 @@
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
 
-{% set wrapper_attributes = wrapper_attributes.removeAttribute('role') %}
+{#{% set wrapper_attributes = wrapper_attributes.removeAttribute('role') %}#}
 
 {# Add data attribute data-no-track only for view mode full #}
 {% if view_mode == 'full' %}
