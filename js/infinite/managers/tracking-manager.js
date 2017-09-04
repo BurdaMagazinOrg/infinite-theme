@@ -17,6 +17,7 @@
         throw new Error("TrackingManager Model Error > initialLocation | gtmEventName | gtmIndexEvent | gtmIndexPosEvent > needed");
       }
 
+
       this.initialLocation = this.model.get('initialLocation');
       this.gtmEventName = TrackingManager.gtmEventName = this.model.get('gtmEventName');
       this.gtmIndexEvent = this.model.get('gtmIndexEvent');
@@ -380,21 +381,21 @@
         tmpCurrentPath = TrackingManager.getCurrentPath();
 
       tmpTrackingObject = _.extend({
-        'event': TrackingManager.gtmEventName,
-        'location': tmpCurrentPath,
-        'label': '',
-        'value': '',
-        'eventNonInteraction': '',
+        event: TrackingManager.gtmEventName,
+        location: tmpCurrentPath,
+        label: '',
+        value: '',
+        eventNonInteraction: ''
       }, tmpTrackingObject, tmpAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
 
-        if (OdoscopeManager != undefined && window.odoscopelist != undefined) {
-          tmpTrackingObject.odoscopelist = window.odoscopelist;
+        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != undefined) {
+          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
         }
 
         window.dataLayer.push(tmpTrackingObject);
-        console.log(">> trackEvent >>", tmpTrackingObject);
+        console.log(">> trackEvent >>", tmpTrackingObject, TrackingManager.gtmEventName);
       } else {
         console.log("No Google Tag Manager available");
       }

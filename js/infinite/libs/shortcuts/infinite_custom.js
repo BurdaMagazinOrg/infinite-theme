@@ -56,8 +56,7 @@
 
     this.options.handler = $.proxy(function () {
       var $tmpMoreLink = this.$container.find(this.options.more),
-        tmpURL = $tmpMoreLink.attr('href'),
-        tmpOdoscopeURL;
+        tmpURL = $tmpMoreLink.attr('href');
 
       if (this.useOdoscope && this.odoscopeArticleModel != null) {
         tmpURL = this.odoscopeArticleModel.getNextURL() || tmpURL;

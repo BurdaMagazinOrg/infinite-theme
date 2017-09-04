@@ -15,6 +15,12 @@ infinite.social-apis:
     //platform.twitter.com/widgets.js: { type: external, minified: true, attributes: { async: true} }
     //platform.instagram.com/en_US/embeds.js: { type: external, minified: true, attributes: { async: true} }
 
+#infinite.header:
+#  version: 1.0
+#  header: true
+#  js:
+#    js/infinite/utils/utils-head.js: {}
+
 infinite.libs:
   js:
     js/infinite/libs/jquery.browser.js: {}
