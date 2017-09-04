@@ -436,6 +436,10 @@
     .media--image {
       padding-bottom: $teaser__img-ratio-tablet--landscape-medium;
     }
+
+    .teaser__caption {
+      padding: $teaser__caption-padding-tablet--landscape-medium;
+    }
   }
 
   @media (min-width: $screen-md-min) {
