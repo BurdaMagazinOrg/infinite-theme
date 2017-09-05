@@ -390,7 +390,7 @@
 
       if (typeof window.dataLayer != "undefined") {
 
-        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != null) {
+        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
           tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
         }
 
@@ -407,7 +407,7 @@
 
       if (typeof window.dataLayer != "undefined") {
 
-        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != null) {
+        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
           tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
         }
 
