@@ -390,12 +390,12 @@
 
       if (typeof window.dataLayer != "undefined") {
 
-        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != undefined) {
+        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != null) {
           tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
         }
 
         window.dataLayer.push(tmpTrackingObject);
-        console.log(">> trackEvent >>", tmpTrackingObject, TrackingManager.gtmEventName);
+        console.log(">> trackEvent >>", tmpTrackingObject);
       } else {
         console.log("No Google Tag Manager available");
       }
@@ -407,7 +407,7 @@
 
       if (typeof window.dataLayer != "undefined") {
 
-        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != undefined) {
+        if (OdoscopeManager != undefined && OdoscopeManager.getInstance().getTrackingObject() != null) {
           tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
         }
 
