@@ -9,7 +9,6 @@
       initialDOMItem: true
     },
     initialize: function (pModel, pOptions) {
-      console.log("BurdaInfinite.models.base.BaseDynamicViewModel");
       BaseCollectionModel.prototype.initialize.call(this, pModel, pOptions);
 
       if (!_.isUndefined(pModel)) {
@@ -19,7 +18,6 @@
     createDynamicItem: function (pSettings, pOptions) {
 
       var tmpView = {},
-        tmpAdscModel,
         $tmpElement = pSettings.el,
         tmpType = pSettings.type,
         tmpSettings = _.extend({
@@ -33,7 +31,7 @@
        */
       this.set(pSettings);
 
-      //console.log(">>> createView", tmpType, tmpSettings);
+      // console.log(">>> createView", tmpType, tmpSettings);
 
       switch (tmpType) {
         case 'feedView':
@@ -46,6 +44,7 @@
           if (!tmpSettings.initialDOMItem) {
             tmpView.delegateElements();
           }
+
           break;
         case 'articleView':
           tmpView = new ArticleView(tmpSettings);
@@ -57,13 +56,6 @@
           tmpView = new GalleryView(tmpSettings);
           break;
         case 'marketingView':
-          //dynamic adsc model
-          if (pSettings.initialDOMItem === false && $tmpElement.parents('[data-adunit1]').length > 0) {
-            tmpAdscModel = new AdscModel();
-            tmpAdscModel.setByElement($tmpElement.parents('[data-adunit1]'));
-            tmpSettings.dynamicAdscModel = tmpAdscModel;
-          }
-
           tmpView = new MarketingView(tmpSettings);
           break;
         case 'listSwipeableView':
@@ -83,6 +75,9 @@
           break;
         case 'anchorNavigationView':
           tmpView = new AnchorNavigationView(tmpSettings);
+          break;
+        case 'ecommerceSlider':
+          tmpView = new EcommerceSliderView(tmpSettings);
           break;
         default:
           tmpView = new BaseView(tmpSettings);

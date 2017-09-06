@@ -1,0 +1,21 @@
+{% if use_container %}
+    <{{ block_tag|raw }} {{ attributes }}>
+{% endif %}
+
+  {% if not label is empty and label_display is defined %}
+
+  <{{ title_tag }} {{ title_attributes }}>{{ label }}</{{ title_tag }}>
+
+  {% endif %}
+
+  {% block content %}
+      <div class="ad-content ad-inactive marketing-view" data-view-type="marketingView">
+          <div class="item-marketing">
+            {{ content }}
+          </div>
+      </div>
+  {% endblock %}
+
+{% if use_container %}
+</{{ block_tag|raw }}>
+{% endif %}

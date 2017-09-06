@@ -14,12 +14,7 @@
         subCategory: '',
         contentType: '',
         contentSubType: '',
-        noTrack: '',
-        //ad-options
-        adunit_1: '',
-        adunit_2: '',
-        adunit_3: '',
-        adkeyWord: '',
+        noTrack: ''
       }
     },
     initialize: function (pAttributes, pOptions) {
@@ -35,11 +30,7 @@
         tmpSubCategory = $pElement.data('sub-category') || '',
         tmpContentType = $pElement.data('content-type') || '',
         tmpContentSubType = $pElement.data('content-sub-type') || '',
-        tmpNoTrack = $pElement.data('no-track') || '',
-        tmpAdUnit_1 = $pElement.data('adunit1') || '',
-        tmpAdUnit_2 = $pElement.data('adunit2') || '',
-        tmpAdUnit_3 = $pElement.data('adunit3') || '',
-        tmpAdkeyWord = $pElement.data('adkeyword') || $pElement.data('adsc-keyword') || '';
+        tmpNoTrack = $pElement.data('no-track') || '';
 
 
       this.set({
@@ -51,16 +42,11 @@
         'subCategory': tmpSubCategory,
         'contentType': tmpContentType,
         'contentSubType': tmpContentSubType,
-        'noTrack': tmpNoTrack,
-        'adunit_1': tmpAdUnit_1,
-        'adunit_2': tmpAdUnit_2,
-        'adunit_3': tmpAdUnit_3,
-        'adkeyWord': tmpAdkeyWord,
+        'noTrack': tmpNoTrack
       });
     }
   });
 
   window.InfiniteBlockDataModel = window.InfiniteBlockDataModel || BurdaInfinite.models.InfiniteBlockDataModel;
-
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

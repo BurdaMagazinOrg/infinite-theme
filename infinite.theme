@@ -109,7 +109,29 @@ function infinite_preprocess_node(&$variables) {
   $variables['email_subject'] = theme_get_setting('email_subject');
 
   $bundle = $node->bundle();
-  if ($bundle == 'article' || $bundle == 'page') {
+
+  if ($bundle == 'ecommerce_slider') {
+
+    $transfer = array();
+
+    if ( $node->hasField('field_color_button') ) {
+      $transfer['field_color_button'] = $variables['content']['field_color_button'];
+    }
+
+    if ( $node->hasField('field_color_contrast') ) {
+      $transfer['field_color_contrast'] = $variables['content']['field_color_contrast'];
+    }
+
+    foreach ( $variables['content']['field_advertising_products'] AS $k => &$advertising_product ) {
+
+      if ( is_array( $advertising_product ) && is_array( $transfer ) ) {
+        $advertising_product = array_merge($advertising_product, $transfer);
+      }
+
+    }
+
+  }
+  elseif ($bundle == 'article' || $bundle == 'page') {
     // todo: switch later to publish date.
     $variables['datetime'] = \Drupal::service('date.formatter')
       ->format($node->created->value, 'html_datetime');
@@ -171,8 +193,14 @@ function infinite_preprocess_views_view(&$variables) {
   /* @var Drupal\views\ViewExecutable $view */
   $view = $variables['view'];
 
-  // Render title for all other views, because we aren't using pagetitle block. // todo: check how to add pagetitle block as default?
-  $variables['title']['#markup'] = $view->getTitle();
+  // Render title for all other views, because we aren't using pagetitle block.
+  // todo: check how to add pagetitle block as default?
+  if(isset($variables['title']) && is_array($variables['title'])){
+    $variables['title']['#markup'] = $view->getTitle();
+  }
+  else {
+    $variables['title'] = $view->getTitle();
+  }
 }
 
 /**

@@ -3,131 +3,90 @@
   "use strict";
 
   BurdaInfinite.views.MarketingView = BaseView.extend({
-    $adSlotContainer: [],
-    $dynamicIframe: [],
-    marketingSlotId: '',
-    adProvider: null,
-    marketingSettings: null,
-    breakpointDeviceModel: null,
-    dynamicAdscModel: null,
-    initialized: false,
-    enabled: true,
-    adTagsModel: null,
     adType: "",
-    adFormat: "",
+    adEntityType: "",
+    adContainerType: "",
+    currentBreakpoint: "",
+    adRenderModel: null,
+    breakpointDeviceModel: {},
+    $adSlotContainer: [],
+    $adTechAd: [],
+    $adEntityContainer: [],
+    height: 0,
+    visible: false,
+    enabled: null,
+    fbaIsFilled: false,
+    targeting: null,
     initialize: function (pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
-      if (!drupalSettings.hasOwnProperty('AdProvider') || !drupalSettings.hasOwnProperty('AdvertisingSlots')) {
-        console.log("marketingView needs drupalSettings.AdProvider && drupalSettings.AdvertisingSlots settings")
-        return;
-      }
-
-      this.configureView();
-      this.hide();
-
+      this.$adSlotContainer = this.$el.find(".item-marketing");
+      this.checkContainerType();
       this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({active: true});
-
+      this.currentBreakpoint = this.breakpointDeviceModel.id;
       this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
       this.listenTo(this.model, 'change:inviewEnabled', this.onEnabledHandler, this);
-      this.buildAd();
     },
-    configureView: function () {
-      this.adProvider = drupalSettings.AdProvider;
-      this.$adSlotContainer = this.$el.find(".ad-container");
-      this.marketingSlotId = this.$adSlotContainer.attr('id');
-
-      if (this.dynamicAdscModel == undefined || this.dynamicAdscModel == null) {
-        this.adTagsModel = BM.reuseModel(ModelIds.adscModel);
-      } else {
-        this.adTagsModel = this.dynamicAdscModel;
-      }
-
-      if (_.has(drupalSettings.AdvertisingSlots, this.marketingSlotId)) {
-        this.marketingSettings = drupalSettings.AdvertisingSlots[this.marketingSlotId];
-      }
-    },
-    buildAd: function () {
-      if (!this.marketingSettings) return;
-
-      this.adType = this.breakpointDeviceModel.id;
-      this.adFormat = this.marketingSettings[this.adType];
-      this.$adSlotContainer.empty();
-
-      //console.log(">>>", this.adType, this.adFormat, this.breakpointDeviceModel);
-
-      //this.$el.hasClass('container-sidebar-content') && this.adType != 'desktop'
-      if (this.adFormat == undefined || this.adFormat == '') return;
-
-      //i want the TFM API back :((( tfm ftw!! sounds sad/mad but it's true
-      this.createOrbydAd();
-      this.initialized = true;
-    },
-    createOrbydAd: function (pSettings) {
-
-      var tmpAdURL = '//cdn-tags.orbyd.com/' + this.adFormat.toString(),
-        tmpReferer = window.location.host + AppConfig.initialLocation,
-        tmpDataStr = '';
-
-      this.$dynamicIframe = document.createElement('iframe');
-      this.$dynamicIframe.src = 'about:blank';
-      this.$dynamicIframe.seamless = "";
-      this.$dynamicIframe.scrolling = "no";
-      this.$dynamicIframe.frameBorder = "0";
-      this.$dynamicIframe.marginWidth = "0";
-      this.$dynamicIframe.marginHeight = "0";
-      this.$dynamicIframe.width = "0";
-      this.$dynamicIframe.height = "0";
-      this.$dynamicIframe.allowtransparency = "true";
-
-      this.$adSlotContainer.append(this.$dynamicIframe);
-
-      tmpDataStr = 'adunit1=' + this.adTagsModel.get('adsc').adunit1;
-      tmpDataStr += '&adunit2=' + this.adTagsModel.get('adsc').adunit2;
-      tmpDataStr += '&adunit3=' + this.adTagsModel.get('adsc').adunit3;
-      tmpDataStr += '&keyword=' + this.adTagsModel.get('adsc').adkeyword;
-
-      console.info("BUILD ORBYD", tmpDataStr);
-
-      var content = '<!DOCTYPE html>'
-        + '<head>'
-        + '<body>'
-        + '<script type="text/javascript">'
-        + 'var aplus_passback = "";'
-        + 'var aplus_data = "' + tmpDataStr + '";'
-        + 'var aplus_clickurl = "";'
-        + 'var aplus_referrer = "' + tmpReferer + '";'
-        + '<\/script>'
-        + '<script type="text/javascript" src="' + tmpAdURL + '">'
-        + '<\/script>'
-        + '</body></html>';
-
-      //console.log(">>> AD aplus_data", tmpDataStr, this.adFormat.toString(), this.$el);
-
-      this.$dynamicIframe.contentWindow.contents = content;
-      this.$dynamicIframe.src = 'javascript:window["contents"]';
-
-      $(this.$dynamicIframe).load(_.bind(function (pEvent) {
-        //var tmpIFrameWidth = $(this.$dynamicIframe).contents().width(),
-        //    tmpIFrameHeight = $(this.$dynamicIframe).contents().height();
-
-        //$(this.$dynamicIframe).css({'height': tmpIFrameHeight, 'width': tmpIFrameWidth});
-        //this.$adSlotContainer.height(tmpIFrameHeight);
-        //
-        ////ad-shizzl bug ://
-        ////todo check this after orbyd-fix | > 0
-        //if (tmpIFrameHeight > 20) {
-        //    this.show();
-        //} else {
-        //    this.hide();
-        //}
-      }, this));
-
-    },
-    onDeviceBreakpointHandler: function (pModel) {
-      this.breakpointDeviceModel = pModel;
+    updateView: function () {
       this.removeFixHeight();
-      if (this.enabled === true) this.buildAd();
+
+      if (this.adRenderModel.visibility == "visible") {
+        this.show();
+      } else {
+        this.hide();
+      }
+    },
+    checkContainerType: function () {
+      this.adEntityType = this.$el.find('[data-atf-format]');
+
+      if (this.$el.hasClass('container-sidebar-content')) {
+        this.adContainerType = MarketingView.CONTAINER_TYPE_SIDEBAR;
+      } else if (this.$el.hasClass('region-full-content') && this.adEntityType == MarketingView.AD_ENTITY_TYPE_LEADERBOARD) {
+        this.adContainerType = MarketingView.CONTAINER_TYPE_LEADERBOARD;
+      } else if (this.$el.hasClass('region-full-content') && this.adEntityType == MarketingView.AD_ENTITY_TYPE_SPECIAL) {
+        this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
+      } else if (this.$el.hasClass('ad-content') && this.adEntityType == MarketingView.AD_ENTITY_TYPE_SPECIAL) {
+        this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
+      }
+    },
+    updateEnableView: function () {
+      /**
+       * No atf_ad_rendered fired / only enabled
+       */
+      if (this.adRenderModel == null) return;
+
+
+      if (this.adRenderModel.visibility == "visible" && this.enabled) {
+        this.show();
+      } else if (
+        this.adType != MarketingView.AD_TYPE_FBSA &&
+        this.adType != MarketingView.AD_TYPE_INREAD &&
+        this.adContainerType != MarketingView.CONTAINER_TYPE_SIDEBAR
+      ) {
+        this.freeze();
+      }
+    },
+    enableView: function () {
+      if (this.enabled) return;
+
+      // if (this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR && this.adRenderModel.visibility == "visible" && this.currentBreakpoint == "desktop") {
+      //   $(window).bind('scroll.' + this.getAdEntityContainer().attr('id'), _.bind(this.checkHeight, this));
+      //   console.log("CHECK HEIGHT > ENABLE");
+      // }
+
+      this.enabled = true;
+      this.updateEnableView();
+    },
+    disableView: function () {
+      if (!this.enabled) return;
+
+      // if (this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR) {
+      //   $(window).unbind('scroll.' + this.getAdEntityContainer().attr('id'));
+      //   console.log("CHECK HEIGHT > DISABLE");
+      // }
+
+      this.enabled = false;
+      this.updateEnableView();
     },
     onEnabledHandler: function (pModel) {
       if (pModel != this.model) return; //event bubbling
@@ -138,43 +97,125 @@
         this.disableView();
       }
     },
-    enableView: function () {
-      if (this.enabled) return;
+    checkHeight: function () {
+      if (this.height != this.$adSlotContainer.height()) {
+        this.height = this.$adSlotContainer.height();
 
-      this.buildAd();
-      this.enabled = true;
+        // if (this.getAdTechAd().find('iframe').length > 0) {
+        //   this.height = this.getAdTechAd().find('iframe').height();
+        //   console.log("IFRAME HEIGHT", this.getAdTechAd().find('iframe').height());
+        // }
+
+        // this.setFixHeight(this.height);
+
+        console.log("CHECK HEIGHT", this.height);
+        this.model.set('contentHeight', this.height);
+        //Waypoint.refreshAll();
+      }
     },
-    disableView: function () {
-      if (this.$el.hasClass('ad-bsad') || !this.enabled) return;
+    onDeviceBreakpointHandler: function (pModel) {
+      this.breakpointDeviceModel = pModel;
+      this.currentBreakpoint = this.breakpointDeviceModel.id;
 
-      if (this.$el.hasClass('region-full-content')) {
-        //var tmpHeight = this.$adSlotContainer.height();
-        //this.$adSlotContainer.css('height', this.$adSlotContainer.height());
-        this.$adSlotContainer.empty();
-      } else {
-        this.hide();
-        this.$adSlotContainer.empty();
+      if (!this.isAllowedToWrite()) return;
+
+      this.hide();
+    },
+    isAllowedToWrite: function () {
+      if (this.adType == MarketingView.AD_TYPE_FBSA || this.adType == MarketingView.AD_TYPE_INREAD) {
+        return false;
       }
 
-      this.enabled = false;
+      return this.enabled;
     },
-    removeFixHeight: function () {
-      //if (this.$adSlotContainer.prop("style")["height"] !== '') this.$adSlotContainer.css('height', 'auto');
+    isActive: function () {
+      if (this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR && this.currentBreakpoint != "desktop") {
+        return false;
+      }
+
+      return this.enabled;
     },
     show: function () {
       this.$el.removeClass('ad-inactive').addClass('ad-active');
-      this.model.set('contentHeight', this.$el.height());
-      Waypoint.refreshAll();
+      this.checkHeight();
+      this.visible = true;
     },
     hide: function () {
-      this.$el.removeClass('ad-active').addClass('ad-inactive');
-      this.model.set('contentHeight', 0);
+      this.$el.removeClass('ad-active ad-fba').addClass('ad-inactive');
+      this.adType = "";
+      this.clear();
+      this.removeFixHeight();
+      this.visible = false;
+    },
+    freeze: function () {
+      this.setFixHeight(this.getAdEntityContainer().height());
+      this.clear();
+    },
+    clear: function () {
+      if (this.adType == MarketingView.AD_TYPE_FBSA && this.fbaIsFilled) {
+        window.ftNuke();
+        this.fbaIsFilled = false;
+      } else if (this.getAdTechAd().length > 0) {
+        this.getAdTechAd().empty();
+      }
+    },
+    setFixHeight: function (pHeight) {
+      this.getAdEntityContainer().css('height', pHeight);
+    },
+    removeFixHeight: function () {
+      if (this.getAdEntityContainer().prop("style") && this.getAdEntityContainer().prop("style")["height"] !== '') {
+        this.getAdEntityContainer().css('height', 'auto');
+      }
+    },
+    getAdEntityContainer: function () {
+      if (this.$adEntityContainer.length <= 0) {
+        this.$adEntityContainer = this.$el.find('.ad-entity-container');
+      }
+
+      return this.$adEntityContainer;
+    },
+    getAdTechAd: function () {
+      if (this.$adTechAd.length <= 0) {
+        this.$adTechAd = this.$el.find('.adtech-factory-ad');
+      }
+
+      return this.$adTechAd;
+    },
+    getTargeting: function () {
+      var tmpTargeting = this.getAdTechAd().attr('data-ad-entity-targeting') || {};
+      return JSON.parse(tmpTargeting);
+    },
+    getAdContainerType: function () {
+      return this.adContainerType;
+    },
+    setRenderedAdType: function (pAdType, pElement) {
+      this.adType = pAdType;
+
+      if (pAdType == MarketingView.AD_TYPE_FBSA) {
+        this.$el.addClass('ad-' + MarketingView.AD_TYPE_FBSA);
+        this.fbaIsFilled = true;
+
+        if (pElement != undefined) {
+          pElement.contentWindow.addEventListener("DOMContentLoaded", _.bind(function (pTest) {
+            this.checkHeight();
+          }, this));
+        }
+      }
+
+      console.log("setRenderedAdType", this.adType);
+    },
+    setRenderModel: function (pAdModel) {
+      this.adRenderModel = pAdModel;
+      this.updateView();
     }
-    //,
-    //setModel: function (pAdModel) {
-    //    this.adModel = pAdModel;
-    //    this.updateView();
-    //}
+  }, {
+    CONTAINER_TYPE_SIDEBAR: "CONTAINER_TYPE_SIDEBAR",
+    CONTAINER_TYPE_SPECIAL: "CONTAINER_TYPE_SPECIAL",
+    CONTAINER_TYPE_LEADERBOARD: "CONTAINER_TYPE_LEADERBOARD",
+    AD_ENTITY_TYPE_LEADERBOARD: "AD_ENTITY_TYPE_LEADERBOARD",
+    AD_ENTITY_TYPE_SPECIAL: "AD_ENTITY_TYPE_SPECIAL",
+    AD_TYPE_FBSA: "fba",
+    AD_TYPE_INREAD: "inread"
   });
 
   window.MarketingView = window.MarketingView || BurdaInfinite.views.MarketingView;

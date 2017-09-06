@@ -1,0 +1,15 @@
+%ecommerce-slider {
+  @include ecommerce-slider();
+}
+
+%ecommerce-slider--middle {
+  @include ecommerce-slider--middle();
+}
+
+%ecommerce-slider--full {
+  @include ecommerce-slider--full();
+}
+
+%products__info-box--grid {
+  @include products__info-box--grid();
+}

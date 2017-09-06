@@ -2,6 +2,57 @@ body {
   position: relative;
 }
 
+/*  Debug RWD */
+/**
+body:after {
+
+  z-index: 999999;
+  width: 100%;
+  padding: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  content: "Minimal (Mobil)";
+  background-color: #7e7f87;
+
+  // Mobil
+  @media (min-width: $screen-xxs-min) and (max-width: $screen-xxs-max) {
+    content: "XXS";
+    background-color: red;
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+    content: "XS";
+    background-color: #ffc886;
+  }
+
+  // Tablet
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    content: "SM (Tablet)";
+    background-color: #fffd8a;
+  }
+
+  // Desktop
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    content: "MD (Desktop)";
+    background-color: #fffd8a;
+  }
+
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max)  {
+    content: "LG";
+    background-color: rgba(118, 255, 157, 0.55);
+  }
+
+  @media (min-width: $screen-xl-min)  {
+    content: "XL";
+    background-color: rgba(171, 255, 33, 0.55);
+  }
+
+}
+*/
+
+
 @media (min-width: $screen-lg-min) {
   #header-home {
 

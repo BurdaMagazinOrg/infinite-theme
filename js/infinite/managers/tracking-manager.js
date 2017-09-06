@@ -3,6 +3,7 @@
   "use strict";
 
   BurdaInfinite.managers.TrackingManager = Backbone.View.extend({
+    infiniteViewsModel: {},
     initialLocation: "",
     gtmEventName: "",
     gtmIndexEvent: "",
@@ -21,13 +22,12 @@
       this.gtmIndexEvent = this.model.get('gtmIndexEvent');
       this.gtmIndexPosEvent = this.model.get('gtmIndexPosEvent');
 
-      this.listenTo(this.infiniteModel, 'change:inview', this.inviewChangeHandler, this);
+      this.listenTo(this.infiniteViewsModel, 'change:inview', this.inviewChangeHandler, this);
       this.initBaseElements();
       this.parseTrackingElements(this.$el);
 
-
       //parse on lazyloading
-      this.listenTo(this.infiniteModel, 'change:infiniteBlock', function (pModel) {
+      this.listenTo(this.infiniteViewsModel, 'change:infiniteBlock', function (pModel) {
         if (pModel.get('type') === 'infiniteBlockView' && pModel.get('initialDOMItem') === false) {
           this.parseTrackingElements(pModel.get('el'));
         }
@@ -43,7 +43,7 @@
         tmpIndex = 0;
 
       if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
-        //set current infiniteModel
+        //set current infiniteViewsModel
         TrackingManager.activeInfiniteBlockModel = pModel;
       }
 
@@ -322,7 +322,7 @@
 
         tmpOptions.provider = tmpProvider;
 
-        if ($tmpProductItem.hasClass('item-product--single')) {
+        if($tmpProductItem.hasClass('item-product--single')) {
           tmpOptions.list = 'Product Widget Single';
         }
 

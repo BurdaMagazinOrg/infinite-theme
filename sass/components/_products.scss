@@ -1,5 +1,5 @@
 .item-product {
-  @include product__item-text();
+  @include product__item--default();
   @include product__item--horizontal-block();
 }
 

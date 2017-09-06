@@ -34,11 +34,6 @@
       this.listenTo(this.model, 'change:contentHeight', this.onContentHeightHandler, this);
       this.listenTo(this.offsetsPageModel, 'change:offsets', this.onOffsetHandler, this);
 
-      //TODO check if throttle or debounce is better
-      //$(this.context).bind('scroll.sticky', _.bind(_.throttle(function () {
-      //    this.onCheckHandler();
-      //}, 500), this));
-
       this.updateView();
     },
     updateView: function () {
@@ -80,22 +75,6 @@
       this.breakpointDeviceModel = pModel;
       this.updateView();
     },
-    //onCheckHandler: function (pDirection) {
-    //    if (this.$sticky == null || this.enabled == false) return;
-    //
-    //    var tmpHeight = Math.floor(this.$el.height()),
-    //        tmpPosTop;
-    //
-    //    if (tmpHeight == 0) return;
-    //
-    //    tmpPosTop = Math.floor(this.$el.offset().top);
-    //
-    //    if (this.posTop == tmpPosTop && this.height == tmpHeight) return;
-    //
-    //    this.posTop = tmpPosTop;
-    //    this.height = tmpHeight;
-    //    this.refresh();
-    //},
     onOffsetHandler: function (pModel) {
       this.offsetTop = pModel.get('offsets').top;
       this.$el.trigger("sticky_kit:recalc_offset_top", [this.offsetTop + AppConfig.padding]);

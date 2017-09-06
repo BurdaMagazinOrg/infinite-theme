@@ -1,3 +1,7 @@
+/**
+** Deprecated
+ */
+
 @mixin btn($bg-color: $color-highlighted, $color: $white) {
   @include transition-property(color, background-color, border-color);
   @include transition-duration(.35s);
@@ -68,7 +72,6 @@
   border: $btn--small-highlighted-border;
 }
 
-
 @mixin btn--small-bordered($sizes: ($btn__label-size-mobile--small-bordered, $btn__label-size-desktop--small-bordered, $btn__label-size-desktop--small-bordered), $font: $btn--small-bordered-font-id) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
@@ -95,7 +98,6 @@
 
   &:after {
     margin-left: 1px;
-    font-size: $font-size-base + 3px;
     font-weight: bold;
     margin-top: -2px;
     margin-right: -7px;
@@ -104,26 +106,36 @@
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($font, $size-mobile);
     padding: $btn--small-bordered-padding-mobile;
+
+    &:after {
+      font-size: $size-mobile + 5px;
+    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include text-helper-size($font, $size-tablet);
     padding: $btn--small-bordered-padding-tablet;
+
+    &:after {
+      font-size: $size-tablet + 5px;
+    }
   }
 
   @media (min-width: $screen-md-min) {
     @include text-helper-size($font, $size-desktop);
     padding: $btn--small-bordered-padding-desktop;
+
+    &:after {
+      font-size: $size-desktop + 5px;
+    }
   }
 }
-
 
 @mixin btn--small-bordered--highlighted() {
   background-color: $btn--small-bordered-highlighted-bg-color;
   color: $btn--small-bordered-highlighted-color;
   border: $btn--small-bordered-highlighted-border;
 }
-
 
 @mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font-id) {
   $size-mobile: nth($sizes, 1);
@@ -181,4 +193,198 @@
   &.is-active {
     @include icon-arrow-up-small();
   }
+}
+
+/**
+** New Styleguide
+ */
+
+@mixin button() {
+  @include transition-property(color, background-color, border-color);
+  @include transition-duration(.35s);
+  @include transition-timing-function(ease);
+  @include text-helper($button__font-id--default);
+  -webkit-border-radius: $button__border-radius--default;
+  -moz-border-radius: $button__border-radius--default;
+  border-radius: $button__border-radius--default;
+  letter-spacing: $button__letter-spacing--default;
+  text-transform: $button__text-transform--default;
+}
+
+@mixin button--size($font-id, $size, $height, $line-height, $padding) {
+  @include text-helper-size($font-id, $size);
+  height: $height;
+  line-height: $line-height;
+  padding: $padding;
+}
+
+@mixin button--sm() {
+  @include button--size($button__font-id--default, $button__label-size--sm-default, $button__height--sm-default, $button__line-height--sm-default, $button__padding--sm-default);
+}
+
+@mixin button--md() {
+  @include button--size($button__font-id--default, $button__label-size--md-default, $button__height--md-default, $button__line-height--md-default, $button__padding--md-default);
+}
+
+@mixin button--lg() {
+  @include button--size($button__font-id--default, $button__label-size--lg-default, $button__height--lg-default, $button__line-height--lg-default, $button__padding--lg-default);
+}
+
+@mixin button--xl() {
+  @include button--size($button__font-id--default, $button__label-size--xl-default, $button__height--xl-default, $button__line-height--xl-default, $button__padding--xl-default);
+}
+
+@mixin button--responsive-lg() {
+  @media (max-width: $screen-xs-max) {
+    @include button--md();
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include button--md();
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include button--lg();
+  }
+}
+
+@mixin button--responsive-md() {
+
+  @media (max-width: $screen-xs-max) {
+    @include button--sm();
+  }
+
+  @media (min-width: $screen-sm-min) {
+    @include button--md();
+  }
+}
+
+@mixin button--responsive-icon-before-md() {
+  @media (max-width: $screen-xs-max) {
+    &:before {
+      margin-top: -2px;
+      margin-left: -2px;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    &:before {
+      margin-top: -3px;
+      margin-left: -3px;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    &:before {
+      margin-top: -4px;
+      margin-left: -4px;
+    }
+  }
+}
+
+/**
+** BG Colored
+ */
+
+@mixin button--bg-colored($bg-color: $button__bg-color--bg-colored-default, $color: $button__color--bg-colored-default) {
+  background-color: $bg-color;
+  color: $color;
+}
+
+@mixin button--bg-colored-default() {
+  @include button--bg-colored($button__bg-color--bg-colored-default, $button__color--bg-colored-default);
+}
+
+@mixin button--bg-colored-hover() {
+  @include button--bg-colored($button__bg-color--bg-colored-hover, $button__color--bg-colored-hover);
+}
+
+@mixin button--bg-colored-pressed() {
+  @include button--bg-colored($button__bg-color--bg-colored-pressed, $button__color--bg-colored-pressed);
+}
+
+@mixin button--bg-colored-disabled() {
+  @include button--bg-colored($button__bg-color--bg-colored-disabled, $button__color--bg-colored-disabled);
+}
+
+/**
+** BG Lined
+ */
+@mixin button--lined-colored($border-color: $button__border-color--lined-colored-default, $color: $button__color--lined-colored-default) {
+  border: 1px solid $border-color;
+  color: $color;
+}
+
+@mixin button--lined-colored-default() {
+  @include button--lined-colored($button__border-color--lined-colored-default, $button__color--lined-colored-default);
+}
+
+@mixin button--lined-colored-hover() {
+  @include button--lined-colored($button__border-color--lined-colored-hover, $button__color--lined-colored-hover);
+}
+
+@mixin button--lined-colored-pressed() {
+  @include button--lined-colored($button__border-color--lined-colored-pressed, $button__color--lined-colored-pressed);
+}
+
+/**
+** BG Lined Gray
+ */
+@mixin button--lined-gray($border-color: $button__border-color--lined-gray-default, $color: $button__color--lined-gray-default) {
+  border: 1px solid $border-color;
+  color: $color;
+}
+
+@mixin button--lined-gray-default() {
+  @include button--lined-gray($button__border-color--lined-gray-default, $button__color--lined-gray-default);
+}
+
+@mixin button--lined-light() {
+  @include button--lined-gray($white, $white);
+}
+
+@mixin button--lined-gray-hover() {
+  @include button--lined-gray($button__border-color--lined-gray-hover, $button__color--lined-gray-hover);
+}
+
+@mixin button--lined-gray-pressed() {
+  @include button--lined-gray($button__border-color--lined-gray-pressed, $button__color--lined-gray-pressed);
+}
+
+/**
+** BG Plain Colored
+ */
+@mixin button--plain-colored($color: $button__color--plain-colored-default) {
+  color: $color;
+}
+
+@mixin button--plain-colored-default() {
+  @include button--plain-colored($button__color--plain-colored-default);
+}
+
+@mixin button--plain-colored-hover() {
+  @include button--plain-colored($button__color--plain-colored-hover);
+}
+
+@mixin button--plain-colored-pressed() {
+  @include button--plain-colored($button__color--plain-colored-pressed);
+}
+
+/**
+** BG Plain Gray
+ */
+@mixin button--plain-gray($color: $button__color--plain-gray-default) {
+  color: $color;
+}
+
+@mixin button--plain-gray-default() {
+  @include button--plain-gray($button__color--plain-gray-default);
+}
+
+@mixin button--plain-gray-hover() {
+  @include button--plain-gray($button__color--plain-gray-hover);
+}
+
+@mixin button--plain-gray-pressed() {
+  @include button--plain-gray($button__color--plain-gray-pressed);
 }

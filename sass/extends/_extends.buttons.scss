@@ -1,3 +1,7 @@
+/**
+** Deprecated
+ */
+
 %btn {
   @include btn();
 }
@@ -28,4 +32,192 @@
 
 %btn--large--highlighted {
   @include btn--large--highlighted();
+}
+
+/**
+** New Styleguide
+ */
+
+%button {
+  @include button();
+}
+
+%button--sm {
+  @include button--sm();
+}
+
+%button--md {
+  @include button--md();
+}
+
+%button--lg {
+  @include button--lg();
+}
+
+%button--xl {
+  @include button--xl();
+}
+
+%button--responsive-lg {
+  @include button--responsive-lg();
+}
+
+%button--responsive-md {
+  @include button--responsive-md();
+}
+
+%button--responsive-icon-before-md {
+  @include button--responsive-icon-before-md();
+}
+
+%button--bg-colored-default {
+  @include button--bg-colored-default();
+
+  &:hover {
+    @extend %button--bg-colored-hover;
+  }
+
+  &:active {
+    @extend %button--bg-colored-pressed;
+  }
+
+  &:disabled, &.disabled {
+    @extend %button--bg-colored-disabled;
+  }
+}
+
+%button--bg-colored-hover {
+  @include button--bg-colored-hover();
+}
+
+%button--bg-colored-pressed {
+  @include button--bg-colored-pressed();
+}
+
+%button--bg-colored-disabled {
+  @include button--bg-colored-pressed();
+}
+
+/**
+** Lined Colored
+ */
+%button--lined-colored-default {
+  @include button--lined-colored-default();
+
+  &:hover {
+    @extend %button--lined-colored-hover;
+  }
+
+  &:active {
+    @extend %button--lined-colored-pressed;
+  }
+
+  &:disabled, &.disabled {
+    @extend %button--bg-colored-disabled;
+  }
+}
+
+%button--lined-colored-hover {
+  @include button--lined-colored-hover();
+}
+
+%button--lined-colored-pressed {
+  @include button--lined-colored-pressed();
+}
+
+/**
+** Lined Gray
+ */
+%button--lined-gray-default {
+  @include button--lined-gray-default();
+
+  &:hover {
+    @extend %button--lined-gray-hover;
+  }
+
+  &:active {
+    @extend %button--lined-gray-hover;
+  }
+
+  &:disabled, &.disabled {
+    @extend %button--bg-colored-disabled;
+  }
+}
+
+%button--lined-light {
+  @include button--lined-light();
+
+  &:hover {
+    @extend %button--lined-gray-hover;
+  }
+
+  &:active {
+    @extend %button--lined-gray-pressed;
+  }
+
+  &:disabled, &.disabled {
+    @extend %button--bg-colored-disabled;
+  }
+}
+
+%button--lined-gray-hover {
+  @include button--lined-gray-hover();
+}
+
+%button--lined-gray-pressed {
+  @include button--lined-gray-pressed();
+}
+
+/**
+** Plain Colored
+ */
+%button--plain-colored-default {
+  @include button--plain-colored-default();
+
+  &:hover {
+    @extend %button--plain-colored-hover;
+  }
+
+  &:active {
+    @extend %button--plain-colored-pressed;
+  }
+
+  &:disabled, &.disabled {
+    @extend %button--bg-colored-disabled;
+  }
+}
+
+%button--plain-colored-hover {
+  @include button--plain-colored-hover();
+}
+
+%button--plain-colored-pressed {
+  @include button--plain-colored-pressed();
+}
+
+/**
+** Plain Gray
+ */
+%button--plain-gray-default {
+  @include button--plain-gray-default();
+
+  &:hover {
+    @extend %button--plain-gray-hover;
+  }
+
+  &:active {
+    @extend %button--plain-gray-pressed;
+  }
+
+  &:disabled, &.disabled {
+    @extend %button--bg-colored-disabled;
+  }
+}
+
+%button--plain-gray-hover {
+  @include button--plain-gray-hover();
+}
+
+%button--plain-gray-pressed {
+  @include button--plain-gray-pressed();
 }

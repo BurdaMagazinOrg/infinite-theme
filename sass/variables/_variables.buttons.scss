@@ -1,0 +1,76 @@
+/**
+** BTN Defaults
+ */
+$button__border-radius--default: 4px !default;
+$button__font-id--default: $font-label-id !default;
+$button__letter-spacing--default: 1px !default;
+$button__text-transform--default: uppercase !default;
+
+$button__label-size--sm-default: $font-size-tiny !default;
+$button__height--sm-default: 24px !default;
+$button__line-height--sm-default: $button__height--sm-default;
+$button__padding--sm-default: 0px 8px !default;
+
+$button__label-size--md-default: $font-size-small !default;
+$button__height--md-default: 32px !default;
+$button__line-height--md-default: $button__height--md-default;
+$button__padding--md-default: 0px 16px !default;
+
+$button__label-size--lg-default: $font-size-medium !default;
+$button__height--lg-default: 40px !default;
+$button__line-height--lg-default: $button__height--lg-default;
+$button__padding--lg-default: 0px 16px !default;
+
+$button__label-size--xl-default: $font-size-large !default;
+$button__height--xl-default: 48px !default;
+$button__line-height--xl-default: $button__height--xl-default;
+$button__padding--xl-default: 0px 16px !default;
+
+/**
+** BTN BG Colored
+ */
+$button__bg-color--bg-colored-default: #ed3109 !default;
+$button__bg-color--bg-colored-hover: #bd2707 !default;
+$button__bg-color--bg-colored-pressed: #f69884 !default;
+$button__bg-color--bg-colored-disabled: #f1f1f1 !default;
+
+$button__color--bg-colored-default: $white !default;
+$button__color--bg-colored-hover: $white !default;
+$button__color--bg-colored-pressed: $white !default;
+$button__color--bg-colored-disabled: #b1b5b4 !default;
+
+/**
+** BTN Lined Colored
+ */
+$button__border-color--lined-colored-default: $button__bg-color--bg-colored-default;
+$button__border-color--lined-colored-hover: $button__bg-color--bg-colored-hover;
+$button__border-color--lined-colored-pressed: $button__bg-color--bg-colored-pressed;
+
+$button__color--lined-colored-default: $button__border-color--lined-colored-default;
+$button__color--lined-colored-hover: $button__border-color--lined-colored-hover;
+$button__color--lined-colored-pressed: $button__border-color--lined-colored-pressed;
+
+/**
+** BTN Lined Gray
+ */
+$button__border-color--lined-gray-default: #cccccc !default;
+$button__border-color--lined-gray-hover: #555555 !default;
+$button__border-color--lined-gray-pressed: #aaaaaa !default;
+
+$button__color--lined-gray-default: $button__border-color--lined-gray-default;
+$button__color--lined-gray-hover: $button__border-color--lined-gray-hover;
+$button__color--lined-gray-pressed: $button__border-color--lined-gray-pressed;
+
+/**
+** BTN Plain Colored
+ */
+$button__color--plain-colored-default: $button__color--lined-colored-default;
+$button__color--plain-colored-hover: $button__color--lined-colored-hover;
+$button__color--plain-colored-pressed: $button__color--lined-colored-pressed;
+
+/**
+** BTN Plain Gray
+ */
+$button__color--plain-gray-default: $button__color--lined-gray-default;
+$button__color--plain-gray-hover: $button__color--lined-gray-hover;
+$button__color--plain-gray-pressed: $button__color--lined-gray-pressed;

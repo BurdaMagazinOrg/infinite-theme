@@ -69,6 +69,11 @@ infinite.manager.scroll-manager:
   js:
     js/infinite/managers/scroll-manager.js: {}
 
+infinite.manager.marketing-manager:
+  version: 1
+  js:
+    js/infinite/managers/marketing-manager.js: {}
+    js/brand/managers/marketing-manager.js: {}
 
 ##### base models #####
 
@@ -104,17 +109,10 @@ infinite.models.device-model:
     js/infinite/models/device-model.js: {}
 
 
-infinite.models.adsc-model:
-  version: 1
-  js:
-    js/infinite/models/adsc-model.js: {}
-
-
 infinite.models.infinite-block-data-model:
   version: 1
   js:
     js/infinite/models/infinite-block-data-model.js: {}
-
 
 ##### base views #####
 
@@ -248,3 +246,8 @@ infinite.views.newsletter.newsletter-modal-view:
   version: 1
   js:
     js/infinite/views/newsletter/newsletter-modal-view.js: {}
+
+infinite.views.ecommerce-slider-view:
+  version: 1
+  js:
+    js/infinite/views/ecommerce-slider-view.js: {}

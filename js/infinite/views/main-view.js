@@ -3,7 +3,6 @@
     "use strict";
 
     BurdaInfinite.views.MainView = Backbone.View.extend({
-        adscModel: {},
         menuSidebarModel: {},
         modalSearchModel: {},
         pageOffsetsModel: {},
@@ -34,6 +33,21 @@
             this.createViews();
 
             //console.log("UUID", this.deviceModel.get('uuid'));
+
+
+            /**
+             * Blazy Viewport fix
+             *
+             * Sometimes in safari browser on a page reload (especially when reloading through browser reload button)
+             * images that are initially present in the viewport are not loaded by blazy. This snippet is a workaround
+             * for this bug.
+             */
+            if (jQuery.browser != undefined && jQuery.browser.safari && Blazy != undefined) {
+                _.delay(function () {
+                    var tmpBlazy = new Blazy();
+                    tmpBlazy.revalidate();
+                }, 100);
+            }
 
             /**
              * Infinite Model Helper
@@ -73,7 +87,6 @@
             }
         },
         createModels: function () {
-            this.adscModel = new AdscModel(); //{render: true}
             this.menuSidebarModel = new BaseSidebarModel();
             this.infiniteViewsModel = new BaseCollectionModel();
             this.modalSearchModel = new ModalSearchModel();
@@ -83,7 +96,6 @@
             /**
              * Backbone Manager - push Models
              */
-            BM.reuseModel(ModelIds.adscModel, this.adscModel);
             BM.reuseModel(ModelIds.menuSidebarModel, this.menuSidebarModel);
             BM.reuseModel(ModelIds.infiniteViewsModel, this.infiniteViewsModel);
             BM.reuseModel(ModelIds.modalSearchModel, this.modalSearchModel);
@@ -91,13 +103,17 @@
             BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
         },
         createManagers: function () {
+            new MarketingManager({
+              infiniteViewsModel: this.infiniteViewsModel
+            });
+
             /**
              * TrackingManager
              */
             new TrackingManager({
                 id: ManagerIds.trackingManager,
                 el: this.$el,
-                infiniteModel: this.infiniteViewsModel,
+                infiniteViewsModel: this.infiniteViewsModel,
                 model: new Backbone.Model({
                     initialLocation: AppConfig.initialLocation,
                     gtmEventName: AppConfig.gtmEventName,
@@ -112,8 +128,7 @@
             new ScrollManager({
                 id: ManagerIds.scrollManager,
                 el: this.$el,
-                infiniteModel: this.infiniteViewsModel,
-                adscModel: this.adscModel,
+                infiniteViewsModel: this.infiniteViewsModel,
                 model: new Backbone.Model({
                     initialLocation: AppConfig.initialLocation
                 })
@@ -190,11 +205,15 @@
             window.addEventListener('adRendered', onAdRendered, false);
         },
         onToolbarHandler: function (pModel, pAttr) {
-            pModel.set('orientation', 'horizontal');
+            //pModel.set('orientation', 'horizontal');
             this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
         }
     });
+<<<<<<< HEAD
 
   window.MainView = window.MainView || BurdaInfinite.views.MainView;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+=======
+})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+>>>>>>> 8.x-2.x

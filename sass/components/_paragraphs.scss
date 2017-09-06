@@ -33,6 +33,10 @@
 
 .item-paragraph--spotlight {
   @extend %item-paragraph--spotlight;
+
+  &.bg-overlay-disabled {
+    @extend %item-paragraph--spotlight__transparent;
+  }
 }
 
 .item-paragraph--instagram {
@@ -93,4 +97,8 @@
 
 .item-paragraph--single-product {
   @extend %item-paragraph--single-product;
+}
+
+.item-paragraph--ecommerce-slider-paragraph {
+  @extend %item-paragraph--ecommerce-slider;
 }

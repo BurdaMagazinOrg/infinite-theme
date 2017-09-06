@@ -1,0 +1,14 @@
+{%
+set classes = [
+    'region-full-content',
+    'pargraph--ecommerce-slider-paragraph--taxonomy-term'
+]
+%}
+
+{% set attributes = attributes.addClass(classes) %}
+
+{% extends "paragraph.html.twig" %}
+
+{% block content_block %}
+    {{ content.field_content }}
+{% endblock %}

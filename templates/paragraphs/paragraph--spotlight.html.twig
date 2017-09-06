@@ -37,8 +37,12 @@
  */
 #}
 {% set classes = [
-'item-paragraph--' ~ (paragraph.bundle ~ '-' ~ text_position )|clean_class,
+    'item-paragraph--' ~ (paragraph.bundle ~ '-' ~ text_position )|clean_class,
 ] %}
+
+{% if (content.field_bg_overlay_disabled | plain_text | trim ) %}
+    {% set classes = classes|merge(['bg-overlay-disabled']) %}
+{% endif %}
 
 {% set attributes = attributes.addClass(classes) %}
 

@@ -1,7 +1,7 @@
 {% if user.status %}
     <div class="item-author item-author--vita-short" data-internal-url="{{ url('entity.user.canonical', {'user': user.id}) }}" itemprop="author" itemscope itemtype="https://schema.org/Person">
         {% if content.user_picture | render is not empty %}
-            <div class="img-container item-author__profile-image item-author__profile-image--vita-short">
+            <div class="img-container item-author__profile-image item-author__profile-image--vita-short" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                 {{ content.user_picture }}
             </div>
         {% endif %}
