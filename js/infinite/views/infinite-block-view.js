@@ -1,5 +1,3 @@
-console.log("InfiniteBlockView");
-
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";
