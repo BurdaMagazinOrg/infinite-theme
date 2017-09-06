@@ -39,7 +39,6 @@ infinite.init:
   js:
     js/infinite/backbone-manager.js: {}
     js/infinite/burda-infinite.js: { }
-    js/infinite/adIntegration.js: {}
     js/infinite/consts/app-config.js: {}
     js/infinite/consts/view-ids.js: {}
     js/infinite/consts/model-ids.js: {}
@@ -73,7 +72,6 @@ infinite.manager.marketing-manager:
   version: 1
   js:
     js/infinite/managers/marketing-manager.js: {}
-    js/brand/managers/marketing-manager.js: {}
 
 ##### base models #####
 

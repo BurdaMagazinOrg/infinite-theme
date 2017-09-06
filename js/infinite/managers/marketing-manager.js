@@ -96,4 +96,6 @@
     }
   });
 
+  window.MarketingManager = window.MarketingManager || BurdaInfinite.managers.MarketingManager;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
