@@ -38,5 +38,6 @@
 
     });
 
+  window.EcommerceSliderView = window.EcommerceSliderView || BurdaInfinite.views.EcommerceSliderView;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

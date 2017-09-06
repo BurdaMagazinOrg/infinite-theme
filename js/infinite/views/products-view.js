@@ -10,4 +10,6 @@
     }
   });
 
+  window.ProductsView = window.ProductsView || BurdaInfinite.views.ProductsView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

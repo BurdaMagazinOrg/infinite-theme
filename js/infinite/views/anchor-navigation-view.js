@@ -44,4 +44,6 @@
     }
   });
 
+  window.AnchorNavigationView = window.AnchorNavigationView || BurdaInfinite.views.AnchorNavigationView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

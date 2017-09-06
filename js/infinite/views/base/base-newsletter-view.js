@@ -274,4 +274,6 @@
         }
     });
 
+  window.BaseNewsletterView = window.BaseNewsletterView || BurdaInfinite.views.base.BaseNewsletterView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

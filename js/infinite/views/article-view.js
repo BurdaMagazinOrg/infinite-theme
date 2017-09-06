@@ -81,4 +81,6 @@
         }
     });
 
+    window.ArticleView = window.ArticleView || BurdaInfinite.views.ArticleView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

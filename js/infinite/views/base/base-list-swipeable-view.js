@@ -96,4 +96,6 @@
         }
     });
 
+  window.BaseListSwipeableView = window.BaseListSwipeableView || BurdaInfinite.views.base.BaseListSwipeableView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
