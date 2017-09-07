@@ -12,5 +12,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "bower-asset/blockadblock": "dev-master"
+    }
 }
