@@ -47,7 +47,8 @@
     }
   }
 
-  .region-full-content + .region-full-content:not(.item-content--article) {
+  .region-full-content + .region-full-content:not(.item-content--article),
+  .region-full-content + .region-full-content:not(.no-v-padding) {
     @extend %gap--v-region;
     @if ($region-v-lined) {
       border-top: $h-line-style;

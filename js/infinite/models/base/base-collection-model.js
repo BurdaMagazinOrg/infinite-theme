@@ -85,5 +85,6 @@
     }
   });
 
+  window.BaseCollectionModel = window.BaseCollectionModel || BurdaInfinite.models.base.BaseCollectionModel;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

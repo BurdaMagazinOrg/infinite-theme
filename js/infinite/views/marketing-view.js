@@ -198,4 +198,6 @@
     AD_TYPE_INREAD: "inread"
   });
 
+  window.MarketingView = window.MarketingView || BurdaInfinite.views.MarketingView;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

@@ -56,7 +56,7 @@
   }
 
   .item-paragraph--full {
-    &:first-child {
+    &:first-child:not(.item-paragraph--seo-links) {
       margin-top: 0;
     }
 

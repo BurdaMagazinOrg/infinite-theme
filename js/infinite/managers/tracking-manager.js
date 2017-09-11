@@ -17,7 +17,6 @@
         throw new Error("TrackingManager Model Error > initialLocation | gtmEventName | gtmIndexEvent | gtmIndexPosEvent > needed");
       }
 
-
       this.initialLocation = this.model.get('initialLocation');
       this.gtmEventName = TrackingManager.gtmEventName = this.model.get('gtmEventName');
       this.gtmIndexEvent = this.model.get('gtmIndexEvent');
@@ -381,11 +380,11 @@
         tmpCurrentPath = TrackingManager.getCurrentPath();
 
       tmpTrackingObject = _.extend({
-        event: TrackingManager.gtmEventName,
-        location: tmpCurrentPath,
-        label: '',
-        value: '',
-        eventNonInteraction: ''
+        'event': TrackingManager.gtmEventName,
+        'location': tmpCurrentPath,
+        'label': '',
+        'value': '',
+        'eventNonInteraction': '',
       }, tmpTrackingObject, tmpAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
@@ -532,5 +531,7 @@
       return tmpLocation;
     }
   });
+
+  window.TrackingManager = window.TrackingManager || BurdaInfinite.managers.TrackingManager;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

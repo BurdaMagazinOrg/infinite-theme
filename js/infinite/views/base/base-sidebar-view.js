@@ -31,4 +31,6 @@
     }
   });
 
+  window.BaseSidebar = window.BaseSidebar || BurdaInfinite.views.base.BaseSidebar;
+
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

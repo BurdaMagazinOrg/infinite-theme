@@ -1,22 +1,24 @@
 (function ($, Drupal, drupalSettings, Backbone, window) {
 
-  'use strict';
+    "use strict";
 
-  window.BurdaInfinite = {
-    views: {
-      base: {},
-      newsletter: {}
-    },
-    managers: {},
-    models: {
-      base: {}
-    }
-  };
+    window.BurdaInfinite = {
+        views: {
+            base: {},
+            newsletter: {}
+        },
+        managers: {},
+        models: {
+            base: {}
+        }
+    };
 
-  Drupal.behaviors.burdaInfinite = {
-    attach: function (context) {
-      var $context = $(context);
+    Drupal.behaviors.burdaInfinite = {
+        attach: function (context) {
+            var $context = $(context);
 
+
+      console.log("1");
       $('body').once(ViewIds.mainView).each(function () {
         var mainView = new MainView({el: $context, id: ViewIds.mainView});
         BM.reuseView(ViewIds.mainView, mainView);
@@ -24,41 +26,16 @@
     }
   };
 
-  window.addEventListener('atf_no_ad_rendered', function (event) {
-    var $tmpAdContainer = jQuery('#' + event.element_id).closest('.marketing-view'),
-      tmpModel = {visibility: 'hidden', event: event},
-      tmpView;
-
-    if ($tmpAdContainer.data('infiniteModel') != undefined) {
-      tmpView = $tmpAdContainer.data('infiniteModel').get('view');
-      tmpView.setRenderModel(tmpModel);
-      console.log("%c marketing | no marketing rendered for ", 'background-color: black; color: yellow; font-weight: bold;', event.element_id, tmpView.adRenderModel.visibility, tmpView.$el);
-    }
-  }, false);
-
-  window.addEventListener('atf_ad_rendered', function (event) {
-    var $tmpAdContainer = jQuery('#' + event.element_id).closest('.marketing-view'),
-      tmpModel = {visibility: 'visible', event: event},
-      tmpView;
-
-    console.log("%c marketing | marketing rendered for ", 'background-color: black; color: yellow; font-weight: bold;', event.element_id);
-
-    if ($tmpAdContainer.data('infiniteModel') != undefined) {
-      tmpView = $tmpAdContainer.data('infiniteModel').get('view');
-      tmpView.setRenderModel(tmpModel);
-    }
-  }, false);
-
-  window.atf_ad = function (pElement, pType) {
-    var $tmpAdContainer = $(pElement).closest('.marketing-view'),
-      tmpView;
-
-    if ($tmpAdContainer.data('infiniteModel') != undefined) {
-      tmpView = $tmpAdContainer.data('infiniteModel').get('view');
-      tmpView.setRenderedAdType(pType, pElement);
-    }
-
-    console.log("%c marketing | atf_fba ", 'background-color: black; color: yellow; font-weight: bold;', pType, $tmpAdContainer);
-  }
+  // if (typeof blockAdBlock === 'undefined') {
+  //   adBlockDetected();
+  // } else {
+  //   blockAdBlock.onDetected(adBlockDetected);
+  //   blockAdBlock.onNotDetected(adBlockNotDetected);
+  //   // and|or
+  //   blockAdBlock.on(true, adBlockDetected);
+  //   blockAdBlock.on(false, adBlockNotDetected);
+  //   // and|or
+  //   blockAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
+  // }
 
 })(jQuery, Drupal, drupalSettings, Backbone, window);

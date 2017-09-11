@@ -1,6 +1,6 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
-  "use strict";
+    "use strict";
 
   BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
     defaults: {
@@ -32,5 +32,6 @@
     }
   });
 
+  window.BaseModel = window.BaseModel || BurdaInfinite.models.base.BaseModel;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
