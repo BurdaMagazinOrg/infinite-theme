@@ -33,11 +33,17 @@
         }
       }, this);
 
-      this.listenTo(this.infiniteViewsModel, 'refresh', function (pModel) {
-        if (pModel.get('type') === 'infiniteBlockView') {
-          this.parseTrackingElements(pModel.get('el'));
-        }
-      }, this);
+      if (typeof blockAdBlock === 'undefined') {
+        this.onAdBlockDetected();
+      } else {
+        window.blockAdBlock.on(true, _.bind(this.onAdBlockDetected, this)).onNotDetected(_.bind(this.onAdBlockNotDetected, this));
+      }
+    },
+    onAdBlockDetected: function () {
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active'});
+    },
+    onAdBlockNotDetected: function () {
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive'});
     },
     inviewChangeHandler: function (pModel) {
       if (this.lastViewState == pModel.get('inview').state) return;
@@ -156,22 +162,20 @@
        */
 
       $tmpItems = $pContainer.find('.outbrain_div_container');
-      if ($tmpItems.length > 0) {
-        $tmpItems.on('click', '.ob-dynamic-rec-link', $.proxy(function (pEvent) {
-          var $tmpElement = $(pEvent.currentTarget),
-            tmpIndex = ($tmpElement.parent().index() + 1),
-            tmpMagazineName = $tmpElement.find('.ob-rec-source').text(),
-            tmpTrackingObject = {
-              event: this.gtmEventName,
-              category: 'mkt-userInteraction',
-              action: 'outbrainClick',
-              label: tmpMagazineName,
-              index: 'index_' + tmpIndex
-            };
+      $tmpItems.on('click', '.ob-dynamic-rec-link', $.proxy(function (pEvent) {
+        var $tmpElement = $(pEvent.currentTarget),
+          tmpIndex = ($tmpElement.parent().index() + 1),
+          tmpMagazineName = $tmpElement.find('.ob-rec-source').text(),
+          tmpTrackingObject = {
+            event: this.gtmEventName,
+            category: 'mkt-userInteraction',
+            action: 'outbrainClick',
+            label: tmpMagazineName,
+            index: 'index_' + tmpIndex
+          };
 
-          TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
-        }, this));
-      }
+        TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
+      }, this));
 
       /**
        * Presenter Full
@@ -203,14 +207,14 @@
        * Horizontal Teaser Block
        */
       tmpSelector = '.region-teaser-list-horizontal .teaser';
-      $tmpItems = $pContainer.find(tmpSelector).filter(tmpSelector);
+      $tmpItems = $pContainer.find(tmpSelector).addBack().filter(tmpSelector);
       if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onTeaserHorizontalClickHandler).bind('click', $.proxy(this.onTeaserHorizontalClickHandler, this));
 
       /**
        * Feed Teaser
        */
       tmpSelector = '.region-teaser-list .img-container, .region-teaser-list .text-headline';
-      $tmpItems = $pContainer.find(tmpSelector).filter(tmpSelector);
+      $tmpItems = $pContainer.find(tmpSelector).addBack().filter(tmpSelector);
       if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onFeedTeaserClickHandler).bind('click', $.proxy(this.onFeedTeaserClickHandler, this));
 
       /**
@@ -229,28 +233,16 @@
       }, this));
     },
     onFeedTeaserClickHandler: function (pEvent) {
-      var $tmpItem = $(pEvent.currentTarget).closest('.teaser'),
-        tmpIndex,
-        tmpTrackingObject,
-        $tmpTeaserParent;
+      var $tmpItem = $(pEvent.currentTarget).parents('.teaser'),
+        tmpIndex = ($tmpItem.parents('.region-feed').find('.region-teaser-list .teaser').index($tmpItem) + 1),
+        tmpTrackingObject = {
+          event: this.gtmIndexEvent,
+          category: 'teaser',
+          action: 'feed_teaser',
+          index: 'index_' + tmpIndex
+        };
 
-      if ($tmpItem.closest('#content').length > 0) {
-        $tmpTeaserParent = $tmpItem.closest('#content').find('> .region-infinite-block');
-      } else if ($tmpItem.closest('#feed-modal-search').length > 0) {
-        $tmpTeaserParent = $tmpItem.closest('#feed-modal-search');
-      } else {
-        return;
-      }
-
-      tmpIndex = ($tmpTeaserParent.find('.teaser[data-nid]').index($tmpItem) + 1);
-
-      tmpTrackingObject = {
-        event: this.gtmIndexEvent,
-        category: 'teaser',
-        action: 'feed_teaser',
-        index: 'index_' + tmpIndex
-      };
-
+      if ($tmpItem.parents('[data-view-type]').data('view-type') != 'feedTeaserView') return;
       TrackingManager.trackEvent(tmpTrackingObject);
     },
     onTeaserCategoryClickHandler: function (pEvent) {
@@ -342,7 +334,7 @@
 
         tmpOptions.provider = tmpProvider;
 
-        if ($tmpProductItem.hasClass('item-product--single')) {
+        if($tmpProductItem.hasClass('item-product--single')) {
           tmpOptions.list = 'Product Widget Single';
         }
 
@@ -388,11 +380,6 @@
       }, tmpTrackingObject, tmpAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
-
-        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
-          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
-        }
-
         window.dataLayer.push(tmpTrackingObject);
         console.log(">> trackEvent >>", tmpTrackingObject);
       } else {
@@ -402,15 +389,10 @@
     trackPageView: function (pPath, pAdvObject) {
       var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1"),
         tmpAdvObject = pAdvObject || TrackingManager.getAdvTrackingByElement(),
-        tmpTrackingObject = _.extend({event: 'page_view', 'location': tmpPath}, tmpAdvObject);
+        tmpTrackingObject = _.extend({event: 'page_view', 'location': tmpPath}, pAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
-
-        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
-          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
-        }
-
-        // tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
+        tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
         window.dataLayer.push(tmpTrackingObject);
         console.log(">> trackPageView >>", document.title, tmpPath);
       } else {

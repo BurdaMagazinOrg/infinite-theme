@@ -26,16 +26,4 @@
     }
   };
 
-  // if (typeof blockAdBlock === 'undefined') {
-  //   adBlockDetected();
-  // } else {
-  //   blockAdBlock.onDetected(adBlockDetected);
-  //   blockAdBlock.onNotDetected(adBlockNotDetected);
-  //   // and|or
-  //   blockAdBlock.on(true, adBlockDetected);
-  //   blockAdBlock.on(false, adBlockNotDetected);
-  //   // and|or
-  //   blockAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
-  // }
-
 })(jQuery, Drupal, drupalSettings, Backbone, window);
