@@ -1,6 +1,19 @@
 {{ attach_library('infinite/infinite.views.ecommerce-slider-view') }}
 
-<div class="ecommerce-slider" data-view-type="ecommerceSlider">
+{% set ecommerceSliderId = 'ecommerce-slider-' ~ nid %}
+{% set ecommerceSliderCSSId = '#' ~ ecommerceSliderId %}
+
+{% block ecommerce_style_block %}
+<style>
+    {{ ecommerceSliderCSSId }} .text-shop {
+        color: {{ content.field_color_contrast.0 }};
+        background-color: {{ content.field_color_button.0 }};
+        border-color: {{ content.field_color_button.0 }};
+    }
+</style>
+{% endblock %}
+
+<div id="{{ ecommerceSliderId }}" class="ecommerce-slider" data-view-type="ecommerceSlider">
 
     <div class="ecommerce-slider__content-wrapper">
 
@@ -36,4 +49,5 @@
     <div class="ecommerce-slider__bg">
         {{ content.field_background_media }}
     </div>
+
 </div>
