@@ -32,6 +32,18 @@
           this.parseTrackingElements(pModel.get('el'));
         }
       }, this);
+
+      if (typeof blockAdBlock === 'undefined') {
+        this.onAdBlockDetected();
+      } else {
+        window.blockAdBlock.on(true, _.bind(this.onAdBlockDetected, this)).onNotDetected(_.bind(this.onAdBlockNotDetected, this));
+      }
+    },
+    onAdBlockDetected: function () {
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active'});
+    },
+    onAdBlockNotDetected: function () {
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive'});
     },
     inviewChangeHandler: function (pModel) {
       if (this.lastViewState == pModel.get('inview').state) return;
@@ -322,7 +334,7 @@
 
         tmpOptions.provider = tmpProvider;
 
-        if($tmpProductItem.hasClass('item-product--single')) {
+        if ($tmpProductItem.hasClass('item-product--single')) {
           tmpOptions.list = 'Product Widget Single';
         }
 
