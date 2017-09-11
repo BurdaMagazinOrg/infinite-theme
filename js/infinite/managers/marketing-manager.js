@@ -60,7 +60,7 @@
       }, this));
 
       if (tmpLoadArguments.length > 0) {
-        console.log("WRITE", tmpLoadArguments);
+        console.log("%c marketing | write ", 'background-color: black; color: yellow; font-weight: bold;', tmpLoadArguments);
         window.atf_lib.load_tag(tmpLoadArguments);
 
         //TODO check this
@@ -133,5 +133,7 @@
     }
     console.log("atf_fba", $tmpAdContainer, pType);
   };
+
+  window.MarketingManager = window.MarketingManager || BurdaInfinite.managers.MarketingManager;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

@@ -334,7 +334,7 @@
 
         tmpOptions.provider = tmpProvider;
 
-        if ($tmpProductItem.hasClass('item-product--single')) {
+        if($tmpProductItem.hasClass('item-product--single')) {
           tmpOptions.list = 'Product Widget Single';
         }
 

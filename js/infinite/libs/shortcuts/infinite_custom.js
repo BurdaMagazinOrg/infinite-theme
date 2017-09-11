@@ -5,113 +5,141 @@
  https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
  */
 (function () {
-    'use strict'
+  'use strict'
 
-    var $ = window.jQuery
-    var Waypoint = window.Waypoint
+  var $ = window.jQuery;
+  var Waypoint = window.Waypoint;
 
-    /* http://imakewebthings.com/waypoints/shortcuts/infinite-scroll */
-    function Infinite(options) {
-        this.options = $.extend({}, Infinite.defaults, options)
-        this.container = this.options.element
-        if (this.options.container !== 'auto') {
-            this.container = this.options.container
-        }
-        this.$container = $(this.container)
-        this.reInit();
+  /* http://imakewebthings.com/waypoints/shortcuts/infinite-scroll */
+  function Infinite(options) {
+    this.options = $.extend({}, Infinite.defaults, options);
+    this.container = this.options.element;
+    this.odoscopeArticleModel = null;
+    this.useOdoscope = false;
+
+    if (this.options.container !== 'auto') {
+      this.container = this.options.container;
     }
 
-    Infinite.prototype.reInit = function () {
-        /**
-         * line updated $(this.options.more) -> this.$container.find(this.options.more)
-         * search more link in context...
-         */
-
-        this.$more = this.$container.find(this.options.more)
-
-        if (this.$more.length) {
-            this.setupHandler()
-            this.waypoint = new Waypoint(this.options)
-            this.destroyed = false;
-        }
+    if (typeof OdoscopeManager !== 'undefined' && OdoscopeManager.getInstance().isOdoscopeArticleGroup() && this.container.is('#feed')) {
+      OdoscopeManager.getInstance().get('articleModel').on('set:articleModel', this.onOdoscopeArticelModelHandler, this);
+      this.onOdoscopeArticelModelHandler(OdoscopeManager.getInstance().get('articleModel'));
     }
 
-    /* Private */
-    Infinite.prototype.setupHandler = function () {
+    this.$container = $(this.container);
+    this.reInit();
+  }
 
-        this.options.handler = $.proxy(function () {
-            var tmpURL = this.$container.find(this.options.more).attr('href'),
-                $tmpMoreLink = this.$container.find(this.options.more);
+  Infinite.prototype.onOdoscopeArticelModelHandler = function (pModel) {
+    console.log("onOdoscopeArticelModelHandler", "color: green; font-weight: bold;", pModel);
+    this.useOdoscope = true;
+    this.odoscopeArticleModel = pModel;
+  }
 
-            this.options.onBeforePageLoad()
-            this.destroy()
-            this.$container.addClass(this.options.loadingClass)
+  Infinite.prototype.reInit = function () {
+    /**
+     * line updated $(this.options.more) -> this.$container.find(this.options.more)
+     * search more link in context...
+     */
 
-            var tmpAjaxModel = new AjaxModel({
-                url: tmpURL,
-                element: $tmpMoreLink[0],
-                callback: _.bind(this.appendInfiniteItem, this)
-            });
-            tmpAjaxModel.execute();
+    this.$more = this.$container.find(this.options.more);
 
-        }, this)
+    if (this.$more.length) {
+      this.setupHandler();
+      this.waypoint = new Waypoint(this.options);
+      this.destroyed = false;
+    }
+  }
+
+  /* Private */
+  Infinite.prototype.setupHandler = function () {
+
+    this.options.handler = $.proxy(function () {
+      var $tmpMoreLink = this.$container.find(this.options.more),
+        tmpURL = $tmpMoreLink.attr('href');
+
+      if (this.useOdoscope && this.odoscopeArticleModel != null) {
+        tmpURL = this.odoscopeArticleModel.getNextURL() || tmpURL;
+      }
+
+      this.options.onBeforePageLoad();
+      this.destroy();
+      this.$container.addClass(this.options.loadingClass);
+
+      var tmpAjaxModel = new AjaxModel({
+        url: tmpURL,
+        element: $tmpMoreLink[0],
+        callback: _.bind(this.appendInfiniteItem, this)
+      });
+
+      tmpAjaxModel.execute();
+
+    }, this);
+  }
+
+  Infinite.prototype.appendInfiniteItem = function ($pContent) {
+    var $data = $pContent;
+    var $newMore = $data.find(this.options.more);
+    var $items = $data.find(this.options.items);
+
+    if (!$items.length) {
+      $items = $data.filter(this.options.items);
     }
 
-    Infinite.prototype.appendInfiniteItem = function ($pContent) {
-        var $data = $pContent;
-        var $newMore = $data.find(this.options.more)
-        var $items = $data.find(this.options.items)
+    //$items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
+    $items.appendTo(this.$container.find('.container-feed-items'));
+    this.$container.removeClass(this.options.loadingClass);
 
-        if (!$items.length) {
-            $items = $data.filter(this.options.items)
-        }
-
-        //$items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
-        $items.appendTo(this.$container.find('.container-feed-items'));
-        this.$container.removeClass(this.options.loadingClass)
-
-        if (!$newMore.length) {
-            $newMore = $data.filter(this.options.more)
-        }
-        if ($newMore.length) {
-            this.$more.remove();
-            this.$container.append($newMore);
-            this.$more = $newMore
-            this.waypoint = new Waypoint(this.options)
-        }
-        else {
-            this.$more.remove()
-        }
-
-        this.options.onAfterPageLoad($items);
-        Drupal.attachBehaviors($items[0]);
+    if (!$newMore.length) {
+      $newMore = $data.filter(this.options.more);
     }
 
-    /* Public */
-    Infinite.prototype.destroy = function () {
-        if (this.waypoint) {
-            this.waypoint.destroy()
-            this.destroyed = true;
-        }
+    if (TrackingManager != undefined) {
+      TrackingManager.trackEvent({
+        category: 'lazy-loading',
+        action: this.$more.attr('href')
+      });
     }
 
-    Infinite.prototype.refresh = function () {
-        if (this.waypoint && this.destroyed == false) {
-            this.destroy();
-        }
-        this.reInit();
+    if ($newMore.length) {
+      this.$more.remove();
+      this.$container.append($newMore);
+      this.$more = $newMore;
+      this.waypoint = new Waypoint(this.options);
+    }
+    else {
+      this.$more.remove();
     }
 
-    Infinite.defaults = {
-        container: 'auto',
-        items: '.infinite-item',
-        more: '.infinite-more-link',
-        offset: 'bottom-in-view',
-        loadingClass: 'infinite-loading',
-        onBeforePageLoad: $.noop,
-        onAfterPageLoad: $.noop
-    }
+    this.options.onAfterPageLoad($items);
+    Drupal.attachBehaviors($items[0]);
+  }
 
-    Waypoint.Infinite = Infinite
+  /* Public */
+  Infinite.prototype.destroy = function () {
+    if (this.waypoint) {
+      this.waypoint.destroy();
+      this.destroyed = true;
+    }
+  }
+
+  Infinite.prototype.refresh = function () {
+    if (this.waypoint && this.destroyed == false) {
+      this.destroy();
+    }
+    this.reInit();
+  }
+
+  Infinite.defaults = {
+    container: 'auto',
+    items: '.infinite-item',
+    more: '.infinite-more-link',
+    offset: 'bottom-in-view',
+    loadingClass: 'infinite-loading',
+    onBeforePageLoad: $.noop,
+    onAfterPageLoad: $.noop
+  }
+
+  Waypoint.Infinite = Infinite;
 }())
 ;

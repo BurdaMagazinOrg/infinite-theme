@@ -8,9 +8,7 @@
 }
 
 @mixin page-wrapper__region-presenter() {
-  padding-top: 0;
-
-  .teaser-content-right, .teaser--content-right {
+  .teaser-presenter--lg {
     @extend %container--v-padding;
   }
 }

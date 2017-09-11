@@ -26,8 +26,6 @@
       //TFM.Debug.start();
 
       this.initBeforeUnloadBehavior();
-      this.initAdBehavior();
-      //this.delegateEvents();
       this.createModels();
       this.createManagers();
       this.createViews();
@@ -186,23 +184,6 @@
       BM.reuseView(ViewIds.menuSidebarView, this.menuSidebarView);
       BM.reuseView(ViewIds.infiniteView, this.infiniteView);
       BM.reuseView(ViewIds.modalSearchView, this.modalSearchView);
-    },
-    initAdBehavior: function () {
-      var onAdRendered = function (e) {
-        var $tmpMarketingView = $(e.detail.container).parents('[data-view-type="marketingView"]'),
-          tmpInfiniteModel = $tmpMarketingView.data('infiniteModel'),
-          tmpView;
-
-        console.log(">>> onAdRendered", e.detail);
-
-        if (!_.isUndefined(tmpInfiniteModel) && tmpInfiniteModel.has('view')) {
-          tmpView = tmpInfiniteModel.get('view');
-          tmpView.setModel(e.detail);
-        }
-      };
-
-      //window.addEventListener('adReceived', onAdReceived, false);
-      window.addEventListener('adRendered', onAdRendered, false);
     },
     onToolbarHandler: function (pModel, pAttr) {
       //pModel.set('orientation', 'horizontal');

@@ -16,5 +16,4 @@
 
   window.BaseSidebarModel = window.BaseSidebarModel || BurdaInfinite.models.base.BaseSidebarModel;
 
-
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

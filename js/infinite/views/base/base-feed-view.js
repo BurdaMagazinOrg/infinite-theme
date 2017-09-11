@@ -72,10 +72,10 @@
       if (this.infinite == null) {
         this.rebuildFeed();
       } else {
-        this.refresh();
+        this.refreshFeed();
       }
     },
-    refresh: function () {
+    refreshFeed: function () {
       this.infinite.refresh();
     },
     clear: function () {
