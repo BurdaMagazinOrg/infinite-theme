@@ -214,6 +214,7 @@
       BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
     });
 
+    console.log("bind custom link refresh handler");
     $(window).bind('base-utils:update-links', function (pEvent, $pContainer) {
       console.log("base-utils:update-links", $pContainer);
       BurdaInfinite.utils.BaseUtils.updateLinks($pContainer);
