@@ -2,7 +2,7 @@ infinite.header:
   version: 1.0
   header: true
   js:
-    js/infinite/utils/utils-head.js: {}
+    js/infinite/utils/head-utils.js: {}
   dependencies:
     - core/jquery
 
@@ -45,6 +45,7 @@ infinite.init:
   js:
     js/infinite/backbone-manager.js: {}
     js/infinite/burda-infinite.js: { }
+    js/infinite/utils/base-utils.js: { }
     js/infinite/consts/app-config.js: {}
     js/infinite/consts/view-ids.js: {}
     js/infinite/consts/model-ids.js: {}

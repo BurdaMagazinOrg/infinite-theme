@@ -1,3 +1,5 @@
+$ = jQuery;
+
 function createCookie(name, value, days) {
   var expires = "";
   if (days) {

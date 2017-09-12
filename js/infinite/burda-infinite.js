@@ -1,24 +1,23 @@
 (function ($, Drupal, drupalSettings, Backbone, window) {
 
-    "use strict";
+  "use strict";
 
-    window.BurdaInfinite = {
-        views: {
-            base: {},
-            newsletter: {}
-        },
-        managers: {},
-        models: {
-            base: {}
-        }
-    };
+  window.BurdaInfinite = {
+    views: {
+      base: {},
+      newsletter: {}
+    },
+    utils: {},
+    managers: {},
+    models: {
+      base: {}
+    }
+  };
 
-    Drupal.behaviors.burdaInfinite = {
-        attach: function (context) {
-            var $context = $(context);
+  Drupal.behaviors.burdaInfinite = {
+    attach: function (context) {
+      var $context = $(context);
 
-
-      console.log("1");
       $('body').once(ViewIds.mainView).each(function () {
         var mainView = new MainView({el: $context, id: ViewIds.mainView});
         BM.reuseView(ViewIds.mainView, mainView);
