@@ -6,7 +6,7 @@ package: Infinite
 core: 8.x
 screenshot: images/infinite.png
 libraries:
-#  - infinite/infinite.external
+  - infinite/infinite.header
   - infinite/blockadblock
   - infinite/infinite.libs
   - infinite/infinite.init
@@ -92,4 +92,4 @@ stylesheets-remove:
   - "@blazy/css/components/blazy.loading.css"
 
 #libraries-override:
-#  hm_newsletter/base: false
+#  ad_integration/ad_helper: false
