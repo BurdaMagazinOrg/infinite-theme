@@ -27,6 +27,10 @@
 #}
 <div{{ attributes.addClass('region-full-content item-content item-content--taxonomy no-v-padding') }}>
     {% block content_header_block %}
+        {% if content.field_header_blocks | render is not empty %}
+           {{ content.field_header_blocks }}
+        {% endif %}
+
         {% if not has_spotlight_title and not term_title_hidden %}
             <div class="item-content__header">
                 <div class="ratio-wrapper">
