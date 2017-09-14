@@ -25,3 +25,72 @@ button {
 .btn--large {
   @extend %btn--large;
 }
+
+/**
+** New Button Stuff
++*/
+.button {
+  @extend %button;
+  display: inline-block;
+}
+
+.button--sm {
+  @extend %button--sm;
+}
+
+.button--md {
+  @extend %button--md;
+}
+
+.button--lg {
+  @extend %button--lg;
+}
+
+.button--xl {
+  @extend %button--xl;
+}
+
+.button--responsive-lg {
+  @extend %button--responsive-lg;
+}
+
+.button--responsive-md {
+  @extend %button--responsive-md;
+}
+
+.button--bg-colored-default {
+  @extend %button--bg-colored-default;
+}
+
+/**
+** Lined Colored
+ */
+.button--lined-colored-default {
+  @extend %button--lined-colored-default;
+}
+
+/**
+** Lined Gray
+ */
+.button--lined-gray-default {
+  @extend %button--lined-gray-default;
+}
+
+.button--lined-light {
+  @extend %button--lined-light;
+}
+
+/**
+** Plain Colored
+ */
+.button--plain-colored-default {
+  @extend %button--plain-colored-default;
+}
+
+
+/**
+** Plain Gray
+ */
+.button--plain-gray-default {
+  @extend %button--plain-gray-default;
+}

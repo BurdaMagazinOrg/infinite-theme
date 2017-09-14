@@ -733,11 +733,7 @@
   }
 
   .button {
-    @extend %button;
-    @extend %button--responsive-lg;
-    @extend %button--bg-colored-default;
     @extend %margin--v-sm;
-    display: inline-block;
   }
 
   p:first-child > .button, & > .button:first-child {

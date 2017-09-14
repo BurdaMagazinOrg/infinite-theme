@@ -40,7 +40,7 @@
        * images that are initially present in the viewport are not loaded by blazy. This snippet is a workaround
        * for this bug.
        */
-      if (jQuery.browser != undefined && jQuery.browser.safari && Blazy != undefined) {
+      if (typeof jQuery.browser != "undefined" && jQuery.browser.safari && typeof Blazy != "undefined") {
         _.delay(function () {
           var tmpBlazy = new Blazy();
           tmpBlazy.revalidate();
