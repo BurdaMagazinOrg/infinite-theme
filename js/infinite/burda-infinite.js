@@ -25,4 +25,9 @@
     }
   };
 
+  window.addEventListener('acquiaLiftDecision', function(e) {
+    console.log("acquiaLiftDecision", e.detail.decision_slot_id);
+    jQuery(document).trigger('base-utils:update-links', [jQuery('[data-lift-slot="' + e.detail.decision_slot_id + '"]').find('.promotion')]);
+  });
+
 })(jQuery, Drupal, drupalSettings, Backbone, window);
