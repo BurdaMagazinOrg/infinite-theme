@@ -580,6 +580,7 @@
 }
 
 @mixin item-paragraph--seo-links() {
+  position: relative;
 
   &.item-paragraph--small {
     .swipeable__wrapper {
