@@ -85,7 +85,7 @@ infinite.manager.marketing-manager:
 infinite.models.base.base-model:
   version: 1
   js:
-    js/infinite/models/base/base-model.js: {}
+    js/infinite/models/base/base-model.js: { }
 
 
 infinite.models.base.base-collection-model:
