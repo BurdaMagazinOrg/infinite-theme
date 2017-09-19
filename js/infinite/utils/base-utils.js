@@ -3,6 +3,9 @@
   "use strict";
 
   BurdaInfinite.utils.BaseUtils = {
+    attach: function () {
+
+    },
     delegateElements: function ($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateExternalURL($pContainer);
@@ -12,10 +15,14 @@
       BurdaInfinite.utils.BaseUtils.updateTimeAgo($pContainer);
     },
     updateSocials: function ($pContainer) {
+      var tmpDeviceModel;
+
+      if (typeof BM != "undefined") tmpDeviceModel = BM.reuseModel(ModelIds.deviceModel);
+
       /**
        * Whatsapp
        */
-      if (this.deviceModel != undefined && this.deviceModel.get("useWhatsapp")) {
+      if (tmpDeviceModel != undefined && tmpDeviceModel.get("useWhatsapp")) {
         $pContainer.find('.icon-whatsapp').addClass('active');
         $pContainer.find('.icon-whatsapp').css('display', 'inline-flex');
       }
@@ -38,7 +45,7 @@
           tmpPinterestDefaultURL += '&media=' + encodeURIComponent(tmpMedia);
           tmpPinterestDefaultURL += '&description=' + encodeURIComponent(tmpDescription);
 
-          this.disableBeforeUnloadHandler();
+          BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
           window.open(tmpPinterestDefaultURL, '_blank');
         }
 
@@ -79,7 +86,7 @@
 
           FB.ui(fbParams);
         } else {
-          this.disableBeforeUnloadHandler();
+          BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
           window.open(tmpFacebookURL + encodeURIComponent(tmpURL), '_blank');
         }
 
@@ -100,7 +107,7 @@
             + tmpSpacer
             + tmpURL;
 
-        this.disableBeforeUnloadHandler();
+        BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
         window.open(tmpEmailURL, '_top');
         return false;
       }, this));
@@ -206,6 +213,12 @@
           $.proxy(function (pEvent) {
             pEvent.stopPropagation();
           }, this));
+    },
+    disableBeforeUnloadHandler: function () {
+      window.allowBeforeUnload = false;
+      _.delay(function () {
+        window.allowBeforeUnload = true;
+      }, 100);
     }
   };
 

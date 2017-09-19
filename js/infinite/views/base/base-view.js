@@ -18,12 +18,6 @@
         BurdaInfinite.utils.BaseUtils.delegateElements($tmpElement);
       }
     },
-    disableBeforeUnloadHandler: function () {
-      window.allowBeforeUnload = false;
-      _.delay(function () {
-        window.allowBeforeUnload = true;
-      }, 100);
-    },
     enableView: function () {
       this.enabled = true;
     },
