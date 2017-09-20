@@ -212,6 +212,12 @@ function infinite_preprocess_advertising_product(&$variables) {
     $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
   }
 
+  $price = $product->product_price->value;
+  $original_price = $product->product_original_price->value;
+  if($price < $original_price){
+    $variables['show_strikethrough_price'] = TRUE;
+  }
+
   $variables['tracking_url'] = $tracking_url;
   $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
 

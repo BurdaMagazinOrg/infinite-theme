@@ -1,0 +1,12 @@
+<div class="img-container">
+    {{ content.product_image }}
+</div>
+<div class="caption">
+    <div class="text-brand">{{ content.product_brand }}</div>
+    <div class="text-headline">{{ content.product_name }}</div>
+    <div class="text-price">{{ content.product_price }} {{ formatted_currency }}</div>
+    {% if show_strikethrough_price %}
+        <div class="text-strikethrough-price">{{ content.product_original_price }} {{ formatted_currency }}</div>
+    {% endif %}
+    <div class="text-shop">Zum Shop</div>
+</div>

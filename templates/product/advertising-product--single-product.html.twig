@@ -19,15 +19,7 @@
 {% if content.status %}
     <div class="item-ecommerce item-product--single" {{ data_attributes }}>
         <div class="item-product__wrapper">
-            <div class="img-container">
-                {{ content.product_image }}
-            </div>
-            <div class="caption">
-                <div class="text-brand">{{ content.product_brand }}</div>
-                <div class="text-headline">{{ content.product_name }}</div>
-                <div class="text-price">{{ content.product_price }} {{ formatted_currency }}</div>
-                <div class="text-shop">Zum Shop</div>
-            </div>
+            {% include '@infinite/product/advertising-product-inner.html.twig' %}
         </div>
     </div>
 {% endif %}
