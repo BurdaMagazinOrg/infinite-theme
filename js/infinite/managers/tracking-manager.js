@@ -227,10 +227,10 @@
       /**
        * Products
        */
-      $tmpItems = $pContainer.find('[data-view-type="productsView"]');
-      $.each($tmpItems, $.proxy(function (pIndex, $pItem) {
-        this.onProductsHandler($pItem);
-      }, this));
+      // $tmpItems = $pContainer.find('[data-view-type="productsView"]');
+      // $.each($tmpItems, $.proxy(function (pIndex, $pItem) {
+      //   this.onProductsHandler($pItem);
+      // }, this));
     },
     onFeedTeaserClickHandler: function (pEvent) {
       var $tmpItem = $(pEvent.currentTarget).parents('.teaser'),

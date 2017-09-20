@@ -37,7 +37,7 @@
  */
 #}
 {% set attributes = attributes.addClass('item-paragraph--' ~ content.field_e_view_mode | render | striptags | trim | replace('_', '-')) %}
-{% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}
+{#{% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}#}
 
 {% extends "paragraph.html.twig" %}
 

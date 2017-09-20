@@ -38,8 +38,8 @@ libraries:
   - infinite/infinite.views.article-view
   - infinite/infinite.views.gallery-view
   - infinite/infinite.views.sticky-view
-  - infinite/infinite.views.products-view
-  - infinite/infinite.views.anchor-navigation-view
+#  - infinite/infinite.views.products-view
+#  - infinite/infinite.views.anchor-navigation-view
   - infinite/infinite.views.marketing-view
   - infinite/infinite.views.spinner
   - infinite/infinite.views.newsletter.hmnewsletter-view

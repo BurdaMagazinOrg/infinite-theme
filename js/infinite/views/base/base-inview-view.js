@@ -13,6 +13,8 @@
 
       if (this.inview != null) this.inview.destroy();
 
+      console.log("CREATE");
+
       this.inview = new Waypoint.Inview({
         element: this.$el,
         exited: _.bind(function (direction) {
@@ -38,7 +40,7 @@
             this.onEnterHandler(direction);
           }, this), 10);
         }, this)
-      })
+      });
     },
     onExitedHandler: function (pDirection) {
       this.model.inviewEnable(false);

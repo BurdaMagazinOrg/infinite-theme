@@ -214,10 +214,22 @@ infinite.views.sticky-view:
     js/infinite/views/sticky-view.js: {}
 
 
-infinite.views.products-view:
+#infinite.views.products-view:
+#  version: 1
+#  js:
+#    js/infinite/views/products/products-view.js: {}
+
+infinite.views.product-view:
   version: 1
   js:
-    js/infinite/views/products-view.js: {}
+    js/infinite/views/products/product-view.js: {}
+
+infinite.views.product-eslider-view:
+  version: 1
+  js:
+    js/infinite/views/products/product-eslider-view.js: {}
+  dependencies:
+    - infinite/infinite.views.product-view
 
 
 infinite.views.marketing-view:
@@ -255,4 +267,4 @@ infinite.views.newsletter.newsletter-modal-view:
 infinite.views.ecommerce-slider-view:
   version: 1
   js:
-    js/infinite/views/ecommerce-slider-view.js: {}
+    js/infinite/views/products/ecommerce-slider-view.js: {}

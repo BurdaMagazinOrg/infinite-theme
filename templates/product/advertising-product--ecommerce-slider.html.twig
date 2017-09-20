@@ -21,7 +21,9 @@
 {% set data_attributes = data_attributes.setAttribute('data-text-action-target', '.text-headline') %}
 
 {% if content.status %}
-    <div class="item-ecommerce item-product-slider swiper-slide" {{ data_attributes }}>
+    {{ attach_library('infinite/infinite.views.product-eslider-view') }}
+
+    <div class="item-ecommerce item-product-slider swiper-slide" {{ data_attributes }} data-view-type="productSliderView">
         <div class="img-container">
             {{ content.product_image }}
         </div>
