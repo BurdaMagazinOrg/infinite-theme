@@ -312,59 +312,59 @@
       tmpTrackingObject.label = TrackingManager.getItemType($tmpItem);
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
-    },
-    onProductsHandler: function ($pContainer, pOptions) {
-      var $tmpContainer = $($pContainer),
-        $tmpProductItems = $tmpContainer.find('.item-ecommerce'),
-        tmpOptions = _.extend({provider: 'tracdelight', list: 'Product Widget'}, pOptions),
-        tmpItemData = {},
-        tmpItemsData = [];
-
-      if ($tmpProductItems.length == 0) return;
-
-      $.each($tmpProductItems, function (pIndex, pItem) {
-        var $tmpProductItem = $(pItem),
-          tmpProdID = $tmpProductItem.data('sku') || $tmpProductItem.data('product-id') || '',
-          tmpTitle = $tmpProductItem.data('title') || '',
-          tmpBrand = $tmpProductItem.data('brand') || '',
-          tmpPrice = $tmpProductItem.data('price') || '',
-          tmpShop = $tmpProductItem.data('shop') || '',
-          tmpCurrency = $tmpProductItem.data('currency') || '',
-          tmpProvider = $tmpProductItem.data('provider') || '';
-
-        tmpOptions.provider = tmpProvider;
-
-        if($tmpProductItem.hasClass('item-product--single')) {
-          tmpOptions.list = 'Product Widget Single';
-        }
-
-        /**
-         * Impression Data
-         * @type {{name: *, id: *, price: *, brand: *, position: *}}
-         */
-        tmpItemData = {
-          category: tmpShop,
-          list: tmpOptions.list,
-          name: tmpTitle,
-          id: tmpProdID.toString(),
-          price: tmpPrice.toString(),
-          brand: tmpBrand,
-          position: (pIndex + 1)
-        }
-
-        tmpItemsData.push(tmpItemData);
-
-        /**
-         * Click Data
-         */
-        $tmpProductItem.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', {clickData: tmpItemData}, $.proxy(function (pEvent) {
-          var tmpData = pEvent.data.clickData;
-          TrackingManager.trackEcommerce(tmpData, 'productClick', TrackingManager.getAdvTrackingByElement($tmpContainer));
-        }, this));
-      });
-
-      TrackingManager.trackEcommerce(tmpItemsData, 'impressions', TrackingManager.getAdvTrackingByElement($tmpContainer));
     }
+    // onProductsHandler: function ($pContainer, pOptions) {
+    //   var $tmpContainer = $($pContainer),
+    //     $tmpProductItems = $tmpContainer.find('.item-ecommerce'),
+    //     tmpOptions = _.extend({provider: 'tracdelight', list: 'Product Widget'}, pOptions),
+    //     tmpItemData = {},
+    //     tmpItemsData = [];
+    //
+    //   if ($tmpProductItems.length == 0) return;
+    //
+    //   $.each($tmpProductItems, function (pIndex, pItem) {
+    //     var $tmpProductItem = $(pItem),
+    //       tmpProdID = $tmpProductItem.data('sku') || $tmpProductItem.data('product-id') || '',
+    //       tmpTitle = $tmpProductItem.data('title') || '',
+    //       tmpBrand = $tmpProductItem.data('brand') || '',
+    //       tmpPrice = $tmpProductItem.data('price') || '',
+    //       tmpShop = $tmpProductItem.data('shop') || '',
+    //       tmpCurrency = $tmpProductItem.data('currency') || '',
+    //       tmpProvider = $tmpProductItem.data('provider') || '';
+    //
+    //     tmpOptions.provider = tmpProvider;
+    //
+    //     if($tmpProductItem.hasClass('item-product--single')) {
+    //       tmpOptions.list = 'Product Widget Single';
+    //     }
+    //
+    //     /**
+    //      * Impression Data
+    //      * @type {{name: *, id: *, price: *, brand: *, position: *}}
+    //      */
+    //     tmpItemData = {
+    //       category: tmpShop,
+    //       list: tmpOptions.list,
+    //       name: tmpTitle,
+    //       id: tmpProdID.toString(),
+    //       price: tmpPrice.toString(),
+    //       brand: tmpBrand,
+    //       position: (pIndex + 1)
+    //     }
+    //
+    //     tmpItemsData.push(tmpItemData);
+    //
+    //     /**
+    //      * Click Data
+    //      */
+    //     $tmpProductItem.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', {clickData: tmpItemData}, $.proxy(function (pEvent) {
+    //       var tmpData = pEvent.data.clickData;
+    //       TrackingManager.trackEcommerce(tmpData, 'productClick', TrackingManager.getAdvTrackingByElement($tmpContainer));
+    //     }, this));
+    //   });
+    //
+    //   TrackingManager.trackEcommerce(tmpItemsData, 'impressions', TrackingManager.getAdvTrackingByElement($tmpContainer));
+    // }
   }, {
     trackEvent: function (pTrackingObject, pAdvObject) {
       var tmpTrackingObject = pTrackingObject,
@@ -429,9 +429,9 @@
           return;
       }
 
-      tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
       //console.log(">>> ecommerce", tmpTrackingObject);
       if (typeof window.dataLayer != "undefined") {
+        tmpTrackingObject = _.extend(tmpTrackingObject, tmpAdvObject);
         window.dataLayer.push(tmpTrackingObject);
       } else {
         console.log("No Google Tag Manager available");
@@ -473,7 +473,7 @@
       var tmpAdvObject;
 
       if (drupalSettings.datalayer != undefined) {
-        var tmpUuid = $($pElement).parents('[data-uuid]').addBack().data('uuid');
+        var tmpUuid = $($pElement).closest('[data-uuid]').addBack().data('uuid');
 
         /** use specific tracking object when parent got an uuid **/
         if (drupalSettings.datalayer[tmpUuid]) {
