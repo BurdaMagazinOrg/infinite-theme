@@ -13,8 +13,6 @@
 
       if (this.inview != null) this.inview.destroy();
 
-      console.log("CREATE");
-
       this.inview = new Waypoint.Inview({
         element: this.$el,
         exited: _.bind(function (direction) {
