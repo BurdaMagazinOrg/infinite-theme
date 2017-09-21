@@ -213,8 +213,13 @@ function infinite_preprocess_advertising_product(&$variables) {
   }
 
   $price = $product->product_price->value;
+  $sold_out = $product->product_sold_out->value;
+  if($price <= 0 || $sold_out){
+    $variables['sold_out'] = TRUE;
+  }
+
   $original_price = $product->product_original_price->value;
-  if($price < $original_price){
+  if(!$sold_out && $price < $original_price){
     $variables['show_strikethrough_price'] = TRUE;
   }
 
