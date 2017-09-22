@@ -1,17 +1,42 @@
+{% set attachment_before_classes = [
+'region-infinite-block',
+'region-full-content',
+] %}
+
+{% set first_infinite_block_classes = [
+'region-infinite-block',
+'region-full-content',
+] %}
+
+{% set infinite_block_classes = [
+'region-infinite-block',
+'region-full-content',
+'region-lazy-loading',
+'infinite-item',
+] %}
+
+{% set attachment_before_attributes = attachment_before_attributes is empty ? create_attribute() : attachment_before_attributes %}
+{% set first_infinite_block_attributes = first_infinite_block_attributes is empty ? create_attribute() : first_infinite_block_attributes %}
+{% set infinite_block_attributes = infinite_block_attributes is empty ? create_attribute() : infinite_block_attributes %}
+
+{% set attachment_before_attributes = attachment_before_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set first_infinite_block_attributes = first_infinite_block_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set infinite_block_attributes = infinite_block_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+
 {% if rows %}
     {% if attachment_before and view.getCurrentPage == 0 %}
-        <div class="region-full-content region-infinite-block" data-view-type="infiniteBlockView">
+        <div {{ attachment_before_attributes.addClass(attachment_before_classes) }}>
             {{ attachment_before }}
         </div>
     {% endif %}
 
-    <div data-view-type="infiniteBlockView"
+    <div
             {% if view.getCurrentPage == 0 %}
-                class="region-full-content region-infinite-block"
+                {{ first_infinite_block_attributes.addClass(first_infinite_block_classes) }}
             {% endif %}
 
             {% if view.getCurrentPage > 0 %}
-                class="region-full-content region-infinite-block region-lazy-loading infinite-item"
+                {{ infinite_block_attributes.addClass(infinite_block_classes) }}
                 {% if path %}
                     data-history-url="{{ path }}"
                 {% endif %}
@@ -20,7 +45,7 @@
                     data-history-title="{{ content.field_seo_title | plain_text | replace({'"': ''}) }}"
                 {% endif %}
             {% endif %}
-            >
+    >
 
         {% if header %}
             {{ header }}
@@ -56,7 +81,7 @@
                 {% if use_view_type is not defined or use_view_type != false %}
                     data-view-type="feedView"
                 {% endif %}
-                >
+        >
             <div class="region-full-content container-content-dynamic container-feed-items"></div>
             {% endif %}
             {% if pager %}

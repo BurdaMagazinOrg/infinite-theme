@@ -4,17 +4,48 @@
 
   BurdaInfinite.views.ProductView = BaseInviewView.extend({
     advancedTrackingData: null,
+    $containerElement: [],
     initialize: function (pOptions) {
       BaseInviewView.prototype.initialize.call(this, pOptions);
 
+      this.delegateInview();
+      this.addListener();
+      this.createModel();
+
+      /**
+       * infiniteBlockDataModel set in base-dynamic-view
+       */
+      // console.log(">>> this.infiniteBlockDataModel", this.infiniteBlockDataModel);
+
+      if (this.infiniteBlockDataModel) {
+
+        if (this.infiniteBlockDataModel.has('trackingContainerType')) {
+          this.model.set('containerType', this.infiniteBlockDataModel.get('trackingContainerType'));
+        }
+
+        if (this.infiniteBlockDataModel.has('uuid')) {
+          this.advancedTrackingData = TrackingManager.getAdvTrackingByUuid(this.infiniteBlockDataModel.has('uuid'));
+          this.extendDataLayerInfo();
+        }
+
+        if (this.infiniteBlockDataModel.getElement().length > 0) {
+          this.$containerElement = this.infiniteBlockDataModel.getElement();
+          this.setProductIndex(); //set on this position to override the function
+        }
+
+      }
+
+      this.initCustomTracking();
+      this.collectTrackingData();
+    },
+    delegateInview: function () {
       /**
        * activate inview functions
        */
       BaseInviewView.prototype.delegateInview.call(this);
-
-      this.createModel();
-      this.initCustomTracking();
-      this.collectEnhancedData();
+    },
+    addListener: function () {
+      this.$el.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', $.proxy(this.onProductClickHandler, this));
     },
     createModel: function () {
       var tmpComponentType = '';
@@ -46,41 +77,62 @@
         this.model.set('provider', ProductView.PROVIDER_GENERIC);
       }
 
-      if (typeof dataLayer != "undefined") {
-        this.advancedTrackingData = TrackingManager.getAdvTrackingByElement(this.$el);
-
+      //generic products has no id
+      if (this.model.get('productId') == 'undefined') {
+        this.model.set('productId', 'generic');
+      }
+    },
+    extendDataLayerInfo: function () {
+      if (this.advancedTrackingData.hasOwnProperty('page')) {
         this.model.set('entityType', this.advancedTrackingData.page.entityType);
         this.model.set('contentType', this.advancedTrackingData.page.contentType);
         this.model.set('entityID', this.advancedTrackingData.page.entityID);
         this.model.set('entityName', this.advancedTrackingData.page.name);
-      } else {
-        console.log("BurdaInfinite.views.ProductView | dataLayer not available!! Tracking not valid");
       }
     },
     initCustomTracking: function () {
+      /**
+       * ask Steffen Schulz for this shizzl
+       */
       var tmpExternalTrackingURL = this.model.get('url'),
-        tmpSlicedString = "";
+        tmpSlicedString = "",
+        tmpComponent;
+
+      if (this.model.has('containerType') && this.model.get('containerType') != '') {
+        tmpComponent = '-' + this.model.get('containerType');
+      }
 
       switch (this.model.get('provider')) {
         case ProductView.PROVIDER_TRACDELIGHT:
 
-          if (tmpExternalTrackingURL.indexOf("subid=node-") > -1) {
-            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf("subid=node-"), tmpExternalTrackingURL.length), "subid=mp");
+          if (tmpExternalTrackingURL.indexOf("subid=") > -1) {
+            tmpExternalTrackingURL = BaseUtils.replaceUrlParam(tmpExternalTrackingURL, 'subid', window.getURLParam('subid', tmpExternalTrackingURL) + tmpComponent);
           }
 
           break;
         case ProductView.PROVIDER_AMAZON:
 
           if (tmpExternalTrackingURL.indexOf("ins0c-21") > -1) {
-            tmpExternalTrackingURL = tmpExternalTrackingURL.replace("ins0c-21", "ins0cmp-21");
+            tmpExternalTrackingURL = tmpExternalTrackingURL.replace("ins0c-21", 'ins0' + tmpComponent + '-21');
           }
 
           break;
         case ProductView.PROVIDER_GENERIC:
 
           if (tmpExternalTrackingURL.indexOf("//td.") > -1 && tmpExternalTrackingURL.indexOf("&link") > -1) {
+            console.log("GENERIC 1", _.clone(tmpExternalTrackingURL));
             tmpSlicedString = tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf('&link'), tmpExternalTrackingURL.length);
-            tmpSlicedString = "&subid=mp" + tmpSlicedString;
+
+            if (this.model.has('entityType')) {
+
+              var tmpSlicedTitle = this.model.get('title').replace(/[\/. ,:-]+/g, "_").toLowerCase().slice(0, Math.min(10, this.model.get('title').length));
+              tmpSlicedString = "&subid="
+                + this.model.get('entityType')
+                + '-' + this.model.get('entityID')
+                + '-' + tmpSlicedTitle
+                + tmpComponent;
+            }
+
             tmpExternalTrackingURL = tmpExternalTrackingURL.replace(tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf("&link"), tmpExternalTrackingURL.length), tmpSlicedString);
           }
 
@@ -93,9 +145,8 @@
         this.$el.attr("data-external-url", tmpExternalTrackingURL);
       }
     },
-    collectEnhancedData: function () {
-
-      this.model.set('enhancedEcommerce', {
+    collectTrackingData: function () {
+      var tmpEnhancedEcommerceData = {
         list: this.model.get('componentType'),
         category: this.model.get('shop'),
         name: this.model.get('title'),
@@ -104,24 +155,34 @@
         brand: this.model.get('brand'),
         provider: this.model.get('provider'),
         productCategory: this.model.get('productCategory'),
-        // position: (pIndex + 1)
-      });
+        containerType: this.model.get('containerType') || ''
+      };
 
-      /**
-       * Click Data
-       */
-      // $tmpProductItem.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', {clickData: tmpItemData}, $.proxy(function (pEvent) {
-      //   var tmpData = pEvent.data.clickData;
-      //   TrackingManager.trackEcommerce(tmpData, 'productClick', TrackingManager.getAdvTrackingByElement($tmpContainer));
-      // }, this));
+      if (this.model.has('productIndex')) {
+        tmpEnhancedEcommerceData.index = this.model.get('productIndex');
+      }
+
+      this.model.set('enhancedEcommerce', tmpEnhancedEcommerceData);
+    },
+    setProductIndex: function () {
+      if (this.$containerElement.length > 0) {
+        var tmpProductIndex = this.$containerElement.find('.item-ecommerce').not('.item-product-slider').index(this.$el);
+        this.model.set('productIndex', tmpProductIndex);
+      }
     },
     trackImpression: function () {
-      // TrackingManager.trackEcommerce(tmpItemsData, 'impressions', TrackingManager.getAdvTrackingByElement($tmpContainer));
+      TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
+    },
+    trackProductClick: function () {
+      TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
+    },
+    onProductClickHandler: function (pEvent) {
+      this.trackProductClick();
     },
     onEnterHandler: function (pDirection) {
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackImpression();
-      console.log("ON ENTER");
+      this.destroy();
     }
   }, {
     PROVIDER_TRACDELIGHT: 'tracdelight',

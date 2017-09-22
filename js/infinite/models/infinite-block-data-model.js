@@ -22,16 +22,21 @@
       this.parseElement(this.$el);
     },
     parseElement: function ($pElement) {
-      var tmpNid = $pElement.data('nid') || '',
-        tmpUuid = $pElement.data('uuid') || '',
-        tmpPath = $pElement.data('path') || $pElement.data('history-url') || '',
-        tmpTitle = $pElement.data('title') || $pElement.data('history-title') || '',
-        tmpCategory = $pElement.data('category') || '',
-        tmpSubCategory = $pElement.data('sub-category') || '',
-        tmpContentType = $pElement.data('content-type') || '',
-        tmpContentSubType = $pElement.data('content-sub-type') || '',
-        tmpNoTrack = $pElement.data('no-track') || '';
+      var tmpNid = $pElement.data('nid'),
+        tmpUuid = $pElement.data('uuid'),
+        tmpPath = $pElement.data('path') || $pElement.data('history-url'),
+        tmpTitle = $pElement.data('title') || $pElement.data('history-title'),
+        tmpCategory = $pElement.data('category'),
+        tmpSubCategory = $pElement.data('sub-category'),
+        tmpContentType = $pElement.data('content-type'),
+        tmpContentSubType = $pElement.data('content-sub-type'),
+        // tmpClasses = [],
+        tmpTrackingContainerType = $pElement.data('tr-container-type'),
+        tmpNoTrack = $pElement.data('no-track');
 
+      // if ($pElement.find('.item-content').addBack().prop("css")) {
+      //   tmpClasses = $pElement.find('.item-content').addBack().attr('class').split(' ') || [];
+      // }
 
       this.set({
         'nid': tmpNid,
@@ -42,8 +47,15 @@
         'subCategory': tmpSubCategory,
         'contentType': tmpContentType,
         'contentSubType': tmpContentSubType,
+        // 'cssClass': tmpClasses,
+        'trackingContainerType': tmpTrackingContainerType,
         'noTrack': tmpNoTrack
       });
+
+      console.log("THIS", this.attributes);
+    },
+    getElement: function () {
+      return this.get('$el') || [];
     }
   });
 

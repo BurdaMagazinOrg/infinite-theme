@@ -75,13 +75,14 @@
 ] %}
 
 {# Add data attributes #}
-{% set wrapper_attributes = wrapper_attributes is empty ? attributes : wrapper_attributes %}
+{% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
 
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-title', node_seo_title) %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-title', node_seo_title) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-tr-container-type', 'article') %}
 
 {#{% set wrapper_attributes = wrapper_attributes.removeAttribute('role') %}#}
 

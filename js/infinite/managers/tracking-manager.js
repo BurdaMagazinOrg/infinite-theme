@@ -46,7 +46,10 @@
       TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive'});
     },
     inviewChangeHandler: function (pModel) {
-      if (this.lastViewState == pModel.get('inview').state) return;
+      /**
+       * use only infiniteBlockView for tracking and complex inview logic
+       */
+      if (this.lastViewState == pModel.get('inview').state || pModel.get('type') != 'infiniteBlockView') return;
 
       var $tmpElement = pModel.get('el'),
         tmpInviewModel = pModel.get('inview'),
@@ -223,14 +226,6 @@
       tmpSelector = '.teaser__overhead [data-internal-url]';
       $tmpItems = $pContainer.find(tmpSelector);
       if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onTeaserCategoryClickHandler).bind('click', $.proxy(this.onTeaserCategoryClickHandler, this));
-
-      /**
-       * Products
-       */
-      // $tmpItems = $pContainer.find('[data-view-type="productsView"]');
-      // $.each($tmpItems, $.proxy(function (pIndex, $pItem) {
-      //   this.onProductsHandler($pItem);
-      // }, this));
     },
     onFeedTeaserClickHandler: function (pEvent) {
       var $tmpItem = $(pEvent.currentTarget).parents('.teaser'),
@@ -313,58 +308,6 @@
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     }
-    // onProductsHandler: function ($pContainer, pOptions) {
-    //   var $tmpContainer = $($pContainer),
-    //     $tmpProductItems = $tmpContainer.find('.item-ecommerce'),
-    //     tmpOptions = _.extend({provider: 'tracdelight', list: 'Product Widget'}, pOptions),
-    //     tmpItemData = {},
-    //     tmpItemsData = [];
-    //
-    //   if ($tmpProductItems.length == 0) return;
-    //
-    //   $.each($tmpProductItems, function (pIndex, pItem) {
-    //     var $tmpProductItem = $(pItem),
-    //       tmpProdID = $tmpProductItem.data('sku') || $tmpProductItem.data('product-id') || '',
-    //       tmpTitle = $tmpProductItem.data('title') || '',
-    //       tmpBrand = $tmpProductItem.data('brand') || '',
-    //       tmpPrice = $tmpProductItem.data('price') || '',
-    //       tmpShop = $tmpProductItem.data('shop') || '',
-    //       tmpCurrency = $tmpProductItem.data('currency') || '',
-    //       tmpProvider = $tmpProductItem.data('provider') || '';
-    //
-    //     tmpOptions.provider = tmpProvider;
-    //
-    //     if($tmpProductItem.hasClass('item-product--single')) {
-    //       tmpOptions.list = 'Product Widget Single';
-    //     }
-    //
-    //     /**
-    //      * Impression Data
-    //      * @type {{name: *, id: *, price: *, brand: *, position: *}}
-    //      */
-    //     tmpItemData = {
-    //       category: tmpShop,
-    //       list: tmpOptions.list,
-    //       name: tmpTitle,
-    //       id: tmpProdID.toString(),
-    //       price: tmpPrice.toString(),
-    //       brand: tmpBrand,
-    //       position: (pIndex + 1)
-    //     }
-    //
-    //     tmpItemsData.push(tmpItemData);
-    //
-    //     /**
-    //      * Click Data
-    //      */
-    //     $tmpProductItem.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', {clickData: tmpItemData}, $.proxy(function (pEvent) {
-    //       var tmpData = pEvent.data.clickData;
-    //       TrackingManager.trackEcommerce(tmpData, 'productClick', TrackingManager.getAdvTrackingByElement($tmpContainer));
-    //     }, this));
-    //   });
-    //
-    //   TrackingManager.trackEcommerce(tmpItemsData, 'impressions', TrackingManager.getAdvTrackingByElement($tmpContainer));
-    // }
   }, {
     trackEvent: function (pTrackingObject, pAdvObject) {
       var tmpTrackingObject = pTrackingObject,
@@ -392,7 +335,7 @@
         tmpTrackingObject = _.extend({event: 'page_view', 'location': tmpPath}, pAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
-        tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
+        tmpTrackingObject = _.extend(tmpTrackingObject, tmpAdvObject);
         window.dataLayer.push(tmpTrackingObject);
         console.log(">> trackPageView >>", document.title, tmpPath);
       } else {
@@ -406,8 +349,7 @@
       iom.c(iamDataObject, 1);
     },
     trackEcommerce: function (pData, pType, pAdvObject) {
-      var tmpTrackingObject = {},
-        tmpAdvObject = pAdvObject || TrackingManager.getAdvTrackingByElement();
+      var tmpTrackingObject = {};
 
       switch (pType) {
         case 'impressions':
@@ -429,9 +371,9 @@
           return;
       }
 
-      //console.log(">>> ecommerce", tmpTrackingObject);
       if (typeof window.dataLayer != "undefined") {
-        tmpTrackingObject = _.extend(tmpTrackingObject, tmpAdvObject);
+        tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
+        console.log(">> trackEcommerce >>", tmpTrackingObject);
         window.dataLayer.push(tmpTrackingObject);
       } else {
         console.log("No Google Tag Manager available");
@@ -470,31 +412,57 @@
       return tmpAction;
     },
     getAdvTrackingByElement: function ($pElement) {
-      var tmpAdvObject;
+      var tmpAdvObject,
+        $tmpUuidElement = [],
+        tmpUuid = '';
 
+      /**
+       * get advanced drupalSettings.datalayer informations
+       */
       if (drupalSettings.datalayer != undefined) {
-        var tmpUuid = $($pElement).closest('[data-uuid]').addBack().data('uuid');
+        $tmpUuidElement = $($pElement).closest('[data-uuid]').addBack();
+        tmpUuid = $tmpUuidElement.data('uuid');
 
         /** use specific tracking object when parent got an uuid **/
-        if (drupalSettings.datalayer[tmpUuid]) {
-          tmpAdvObject = drupalSettings.datalayer[tmpUuid];
-        }
-        /** use active infiniteBlockModel when the parent has no uuid (example: menu open / close in infinite-scrolling) **/
-        else if (TrackingManager.activeInfiniteBlockModel != null) {
-          tmpUuid = TrackingManager.activeInfiniteBlockModel.get('el').data('uuid');
-
-          if (drupalSettings.datalayer[tmpUuid]) {
-            tmpAdvObject = drupalSettings.datalayer[tmpUuid];
-          } else if (drupalSettings.datalayer.hasOwnProperty('page') && drupalSettings.datalayer.page != "") {
-            tmpAdvObject = drupalSettings.datalayer.page;
-          }
-        }
-        /** use global/initial tracking object **/
-        else if (drupalSettings.datalayer.hasOwnProperty('page') && drupalSettings.datalayer.page != "") {
-          tmpAdvObject = drupalSettings.datalayer.page;
-        }
+        tmpAdvObject = TrackingManager.getAdvTrackingByUuid(tmpUuid);
       } else {
         console.log(">>> no drupalSettings.datalayer found");
+      }
+
+      tmpAdvObject = _.extend(tmpAdvObject, {trackingHelper: {$uuidElement: $tmpUuidElement, uuid: tmpUuid}});
+      return tmpAdvObject;
+    },
+    getAdvTrackingByUuid: function (pUuid) {
+      var tmpAdvObject,
+        tmpUuid = pUuid,
+        $tmpUuidElement = [];
+
+      if (drupalSettings.datalayer[tmpUuid]) {
+        tmpAdvObject = drupalSettings.datalayer[tmpUuid];
+      }
+      /** use active infiniteBlockModel when the parent has no uuid (example: menu open / close in infinite-scrolling) **/
+      else if (TrackingManager.activeInfiniteBlockModel != null && TrackingManager.activeInfiniteBlockModel.has('el')) {
+        $tmpUuidElement = TrackingManager.activeInfiniteBlockModel.get('el');
+        tmpUuid = $tmpUuidElement.data('uuid');
+
+        if (drupalSettings.datalayer[tmpUuid]) {
+          tmpAdvObject = drupalSettings.datalayer[tmpUuid];
+        } else {
+          tmpAdvObject = TrackingManager.getAdvTrackingByIndex(0);
+        }
+      }
+      /** use global/initial tracking object **/
+      else {
+        tmpAdvObject = TrackingManager.getAdvTrackingByIndex(0);
+      }
+
+      return tmpAdvObject;
+    },
+    getAdvTrackingByIndex: function (pIndex) {
+      var tmpAdvObject;
+
+      if (typeof drupalSettings.datalayer != 'undefined' && _.values(drupalSettings.datalayer).length >= pIndex) {
+        tmpAdvObject = _.values(drupalSettings.datalayer)[pIndex];
       }
 
       return tmpAdvObject;

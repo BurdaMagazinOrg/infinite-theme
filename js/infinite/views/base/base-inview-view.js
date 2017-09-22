@@ -9,7 +9,7 @@
     },
     delegateInview: function () {
       //this.model.set('inview', 'init');
-      //console.log(">>> delegateInview");
+      // console.log(">>> delegateInview");
 
       if (this.inview != null) this.inview.destroy();
 
@@ -31,7 +31,7 @@
           this.onEnteredHandler(direction);
         }, this),
         enter: _.bind(function (direction) {
-          this.$el.addClass('in');
+          // this.$el.addClass('in');
           _.delay(_.bind(function () {
             //console.log('Enter triggered with direction ' + direction)
             this.model.set('inview', {state: 'enter', direction: direction});

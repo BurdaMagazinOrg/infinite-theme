@@ -224,10 +224,10 @@ infinite.views.product-view:
   js:
     js/infinite/views/products/product-view.js: {}
 
-infinite.views.product-eslider-view:
+infinite.views.product-slider-view:
   version: 1
   js:
-    js/infinite/views/products/product-eslider-view.js: {}
+    js/infinite/views/products/product-slider-view.js: {}
   dependencies:
     - infinite/infinite.views.product-view
 
