@@ -60,11 +60,16 @@
       }, this));
 
       if (tmpLoadArguments.length > 0) {
-        console.log("%c marketing | write ", 'background-color: black; color: yellow; font-weight: bold;', tmpLoadArguments);
-        window.atf_lib.load_tag(tmpLoadArguments);
-
-        //TODO check this
-        // Waypoint.refreshAll();
+        this.writeMarketing(tmpLoadArguments);
+      }
+    },
+    writeMarketing: function (pLoadArguments) {
+      if (typeof atf_lib !== 'undefined') {
+        window.atf_lib.load_tag(pLoadArguments);
+        console.log("%c marketing | write ", 'background-color: black; color: yellow; font-weight: bold;', pLoadArguments, "window.atf_lib", typeof window.atf_lib);
+      } else {
+        console.log(">>> atf_lib is not defined > try again");
+        _.delay(_.bind(this.writeMarketing, this), 100, pLoadArguments);
       }
     },
     inviewChangeHandler: function (pModel) {
