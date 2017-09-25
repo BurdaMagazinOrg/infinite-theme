@@ -5,6 +5,7 @@
   BurdaInfinite.views.ProductView = BaseInviewView.extend({
     advancedTrackingData: null,
     $containerElement: [],
+    posTop: 0,
     initialize: function (pOptions) {
       BaseInviewView.prototype.initialize.call(this, pOptions);
 
@@ -35,8 +36,11 @@
 
       }
 
+      this.posTop = Math.floor(this.$el.offset().top);
+
       this.initCustomTracking();
       this.collectTrackingData();
+      this.checkPos();
     },
     delegateInview: function () {
       /**
@@ -44,8 +48,16 @@
        */
       BaseInviewView.prototype.delegateInview.call(this);
     },
+    checkPos: function () {
+      var tmpPos = Math.floor(this.$el.offset().top);
+      if (tmpPos != this.posTop) {
+        this.refresh();
+        this.posTop = tmpPos;
+      }
+    },
     addListener: function () {
       this.$el.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', $.proxy(this.onProductClickHandler, this));
+      $(window).scroll(_.bind(this.checkPos, this));
     },
     createModel: function () {
       var tmpComponentType = '';
@@ -176,6 +188,16 @@
     },
     trackProductClick: function () {
       TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
+    },
+    refresh: function () {
+      var tmpWaypoints;
+
+      if (this.inview && typeof this.inview.waypoints != 'undefined') {
+        tmpWaypoints = this.inview.waypoints || [];
+        $.each(tmpWaypoints, function (pIndex, pWaypoint) {
+          pWaypoint.context.refresh();
+        });
+      }
     },
     onProductClickHandler: function (pEvent) {
       this.trackProductClick();

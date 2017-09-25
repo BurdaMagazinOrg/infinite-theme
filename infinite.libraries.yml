@@ -7,16 +7,6 @@ infinite.header:
     - core/jquery
 
 blockadblock:
-  remote: https://github.com/nolimits4web/Swiper
-  version: 3.4.2
-  license:
-    name: MIT
-    gpl-compatible: true
-  js:
-    /libraries/swiper/blockadblock.js: { }
-
-
-swiper:
   remote: https://github.com/sitexw/BlockAdBlock
   version: 3.2.1
   license:

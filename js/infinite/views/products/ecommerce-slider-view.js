@@ -37,23 +37,38 @@
       this.swiperApi = this.$swiperContainer.swiper(this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
 
-      this.swiperApi.off('onSlideChangeStart').on('onSlideChangeStart', _.bind(this.onSliderChangeHandler, this));
+      this.swiperApi.off('onSlideChangeEnd').on('onSlideChangeEnd', _.bind(this.onSliderChangeHandler, this));
+      this.swiperApi.off('onTouchEnd').on('onTouchEnd', _.bind(this.onSliderChangeHandler, this));
     },
     trackVisibleProductImpressions: function () {
-      var tmpView;
+      var tmpView,
+        tmpExternalURL = "",
+        $tmpElement = [];
 
       //.not('.swiper-slide-duplicate')
-      this.$el.find('.swiper-slide-visible').each(function (pIndex, pItem) {
-        if (typeof $(pItem).data('infiniteModel') != 'undefined') {
-          tmpView = $(pItem).data('infiniteModel').get('view');
+      this.$el.find('.swiper-slide-visible').each(_.bind(function (pIndex, pItem) {
+        $tmpElement = $(pItem);
 
-          // console.log(">>> tmpView.model.get('trackImpression')", tmpView.model.get('trackImpression'));
+        /**
+         * search original element
+         */
+        if ($tmpElement.hasClass('swiper-slide-duplicate')) {
+          tmpExternalURL = $tmpElement.data('external-url');
+          $tmpElement = this.$el.find("[data-external-url='" + tmpExternalURL + "']").not('.swiper-slide-duplicate');
+        }
+
+        /**
+         * get model and track impression
+         */
+        if (typeof $tmpElement.data('infiniteModel') != 'undefined') {
+          tmpView = $tmpElement.data('infiniteModel').get('view');
 
           if (tmpView.model.get('trackImpression') != true) {
             tmpView.trackImpression();
           }
         }
-      });
+
+      }, this));
     },
     onSliderChangeHandler: function (pSwiperApi) {
       this.trackVisibleProductImpressions();
@@ -62,9 +77,6 @@
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackVisibleProductImpressions();
     }
-    // onDeviceBreakpointHandler: function (pModel) {
-    //   this.breakpointDeviceModel = pModel
-    // }
 
   });
 
