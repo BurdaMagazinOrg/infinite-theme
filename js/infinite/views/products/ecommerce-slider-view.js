@@ -19,6 +19,7 @@
       this.createView();
       this.updateView();
       this.delegateInview();
+      this.duplicateElementClick();
 
       // this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
       // this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({active: true});
@@ -67,6 +68,34 @@
             tmpView.trackImpression();
           }
         }
+
+      }, this));
+    },
+    duplicateElementClick: function () {
+      var $tmpElement = [],
+        tmpExternalURL = "",
+        tmpView;
+
+      this.$el.find('.swiper-slide-duplicate').each(_.bind(function (pIndex, pItem) {
+
+        $(pItem).unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', _.bind(function (pEvent) {
+          $tmpElement = $(pEvent.currentTarget);
+          tmpExternalURL = $tmpElement.data('external-url');
+
+          /**
+           * search original element
+           */
+          $tmpElement = this.$el.find("[data-external-url='" + tmpExternalURL + "']").not('.swiper-slide-duplicate');
+
+          /**
+           * get model and track impression
+           */
+          if (typeof $tmpElement.data('infiniteModel') != 'undefined') {
+            tmpView = $tmpElement.data('infiniteModel').get('view');
+            tmpView.trackProductClick();
+          }
+        }, this));
+
 
       }, this));
     },
