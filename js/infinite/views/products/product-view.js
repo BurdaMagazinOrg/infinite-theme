@@ -171,6 +171,7 @@
       }
     },
     trackImpression: function () {
+      this.model.set('trackImpression', true);
       TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
     },
     trackProductClick: function () {

@@ -51,8 +51,6 @@
         'trackingContainerType': tmpTrackingContainerType,
         'noTrack': tmpNoTrack
       });
-
-      console.log("THIS", this.attributes);
     },
     getElement: function () {
       return this.get('$el') || [];
