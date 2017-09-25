@@ -8,6 +8,7 @@ screenshot: images/infinite.png
 libraries:
   - infinite/infinite.header
   - infinite/blockadblock
+  - infinite/swiper
   - infinite/infinite.libs
   - infinite/infinite.init
   - infinite/infinite.manager.tracking-manager

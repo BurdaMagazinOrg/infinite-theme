@@ -25,6 +25,15 @@ swiper:
   js:
     /libraries/blockadblock/blockadblock.js: { }
 
+swiper:
+  remote: https://github.com/nolimits4web/Swiper
+  version: 3.4.2
+  license:
+    name: MIT
+    gpl-compatible: true
+  js:
+    /libraries/swiper/dist/js/swiper.jquery.min.js: { }
+
 infinite.social-apis:
   js:
     //assets.pinterest.com/js/pinit.js: { type: external, attributes: { async: true} }
