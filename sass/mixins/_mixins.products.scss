@@ -47,8 +47,12 @@
 
   .text-price {
     left: 0;
-    color: $product__item-text-price-color;
     bottom: $product__item-text-price-pos-bottom;
+  }
+
+  .text-price--strikethrough {
+    display: inline-block;
+    margin-left: 7px;
   }
 
   .text-shop {
@@ -162,6 +166,11 @@
     bottom: $ecommerce-slider__item-text-price-pos-bottom;
   }
 
+  .text-price--strikethrough {
+    display: inline-block;
+    margin-left: 7px;
+  }
+
   .text-shop {
     margin-top: 10px;
   }
@@ -268,6 +277,11 @@
 
   .text-price {
     margin-top: 15px;
+  }
+
+  .text-price--strikethrough {
+    display: inline-block;
+    margin-left: 7px;
   }
 
   .text-shop {

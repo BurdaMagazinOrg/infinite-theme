@@ -297,9 +297,27 @@
 //todo only text
 @mixin product__item-text() {
 
-  &:hover {
+  &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @extend %btn--small--highlighted;
+      @extend %button--lined-colored-hover;
+    }
+  }
+
+  &.item-product--strikethrough {
+    .text-price--default {
+      @include text-helper-size($product__item-text-price-font-id--strikethrough, $product__item-text-price-size--strikethrough);
+      color: $product__item-text-price-color--strikethrough;
+      text-decoration: line-through;
+
+      background-image: -webkit-linear-gradient($product__item-text-price-filter--strikethrough);
+      background-image: -o-linear-gradient($product__item-text-price-filter--strikethrough);
+      background-image: linear-gradient($product__item-text-price-filter--strikethrough);
+    }
+  }
+
+  &.item-product--sold-out {
+    .text-shop {
+      @extend %button--bg-colored-disabled;
     }
   }
 
@@ -316,9 +334,14 @@
     color: $product__item-text-brand-color;
   }
 
-  .text-price {
+  .text-price--default {
     @include text-helper($product__item-text-price-font-id, $product__item-text-price-size);
     color: $product__item-text-price-color;
+  }
+
+  .text-price--strikethrough {
+    @include text-helper($product__item-text-price-strikethrough-font-id, $product__item-text-price-strikethrough-size);
+    color: $product__item-text-price-strikethrough-color;
   }
 
   .text-shipping {
@@ -327,15 +350,39 @@
   }
 
   .text-shop {
-    @extend %btn--small;
+    @extend %button;
+    @extend %button--sm;
+    @extend %button--lined-colored-default;
+    display: inline-block;
   }
 }
 
 @mixin product__item-text--ecommerce-slider() {
 
-  &:hover {
+  &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @extend %btn--small--highlighted;
+      @include button--lined-colored($button__border-color--lined-colored-hover !important, $color: $button__color--lined-colored-hover !important);
+    }
+  }
+
+  &.item-product--strikethrough {
+    .text-price--default {
+      @include text-helper-size($ecommerce-slider__item-text-price-font-id--strikethrough, $ecommerce-slider__item-text-price-size--strikethrough);
+      color: $ecommerce-slider__item-text-price-color--strikethrough;
+      text-decoration: line-through;
+
+      background-image: -webkit-linear-gradient($ecommerce-slider__item-text-price-filter--strikethrough);
+      background-image: -o-linear-gradient($ecommerce-slider__item-text-price-filter--strikethrough);
+      background-image: linear-gradient($ecommerce-slider__item-text-price-filter--strikethrough);
+    }
+
+  }
+
+  &.item-product--sold-out {
+    .text-shop {
+      @include button--bg-colored($button__bg-color--bg-colored-disabled !important, $color: $button__color--bg-colored-disabled !important);
+      border: none !important;
+      pointer-events: none;
     }
   }
 
@@ -352,9 +399,14 @@
     color: $ecommerce-slider__item-text-brand-color;
   }
 
-  .text-price {
+  .text-price--default {
     @include text-helper($ecommerce-slider__item-text-price-font-id, $ecommerce-slider__item-text-price-size);
     color: $ecommerce-slider__item-text-price-color;
+  }
+
+  .text-price--strikethrough {
+    @include text-helper($ecommerce-slider__item-text-price-strikethrough-font-id, $ecommerce-slider__item-text-price-strikethrough-size);
+    color: $ecommerce-slider__item-text-price-strikethrough-color;
   }
 
   .text-shipping {
@@ -363,7 +415,10 @@
   }
 
   .text-shop {
-    @extend %btn--small;
+    @extend %button;
+    @extend %button--sm;
+    @include button--lined-colored($button__border-color--lined-colored-default !important, $color: $button__color--lined-colored-default !important);
+    display: inline-block;
   }
 }
 
@@ -373,9 +428,28 @@
   text-align: $product-text-align--single-product;
   position: relative;
 
-  &:hover {
+  &:hover:not(.item-product--sold-out) {
     .text-shop {
       @extend %button--lined-colored-hover;
+    }
+  }
+
+  &.item-product--sold-out {
+    &:before, &:after {
+      content: none;
+    }
+
+    .text-shop {
+      @extend %button--bg-colored-disabled;
+    }
+
+  }
+
+  &.item-product--strikethrough {
+    .text-price--default {
+      @include text-helper-size($product__item-text-price-font-id--single-product-strikethrough, $product__item-text-price-size--single-product-strikethrough);
+      color: $product__item-text-price-color--single-product-strikethrough;
+      text-decoration: line-through;
     }
   }
 
@@ -411,10 +485,15 @@
     min-height: $product__item-text-brand-size--single-product + 7px;
   }
 
-  .text-price {
+  .text-price--default {
     @include text-helper($product__item-text-price-font-id--single-product, $product__item-text-price-size--single-product);
     color: $product__item-text-price-color--single-product;
     letter-spacing: 1px;
+  }
+
+  .text-price--strikethrough {
+    @include text-helper($product__item-text-price-strikethrough-font-id--single-product, $product__item-text-price-strikethrough-size--single-product);
+    color: $product__item-text-price-strikethrough-color--single-product;
   }
 
   .text-shop {

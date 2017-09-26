@@ -17,11 +17,26 @@
  */
 #}
 
+{% set classes = [
+'item-ecommerce',
+'item-product-slider',
+'swiper-slide',
+] %}
+
 {% set data_attributes = data_attributes.setAttribute('data-text-action', 'text-overflow') %}
 {% set data_attributes = data_attributes.setAttribute('data-text-action-target', '.text-headline') %}
 
+{% if show_strikethrough_price %}
+    {% set attributes = attributes.addClass('item-product--strikethrough') %}
+{% endif %}
+
+{% if sold_out %}
+    {% set attributes = attributes.addClass('item-product--sold-out') %}
+    {% set data_attributes = data_attributes.removeAttribute('data-external-url') %}
+{% endif %}
+
 {% if content.status %}
-    <div class="item-ecommerce item-product-slider swiper-slide" {{ data_attributes }}>
+    <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
         {% include '@infinite/product/advertising-product-inner.html.twig' %}
     </div>
 {% endif %}

@@ -212,9 +212,8 @@
 }
 
 @mixin button--size($font-id, $size, $height, $line-height, $padding) {
-  @include text-helper-size($font-id, $size);
+  @include text-helper-size($font-id, $size, $line-height);
   height: $height;
-  line-height: $line-height;
   padding: $padding;
 }
 
@@ -305,6 +304,8 @@
 
 @mixin button--bg-colored-disabled() {
   @include button--bg-colored($button__bg-color--bg-colored-disabled, $button__color--bg-colored-disabled);
+  border: none;
+  pointer-events: none;
 }
 
 /**

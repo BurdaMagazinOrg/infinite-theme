@@ -5,12 +5,17 @@
     <div class="text-brand">{{ content.product_brand }}</div>
     <div class="text-headline">{{ content.product_name }}</div>
     {% if sold_out %}
+        <div class="text-price">
+            <span class="text-price--default">{{ content.product_price }} {{ formatted_currency }}</span>
+        </div>
         <div class="text-shop text-sold-out">Ausverkauft</div>
     {% else %}
-        <div class="text-price">{{ content.product_price }} {{ formatted_currency }}</div>
-        {% if show_strikethrough_price %}
-            <div class="text-strikethrough-price">{{ content.product_original_price }} {{ formatted_currency }}</div>
-        {% endif %}
+        <div class="text-price">
+            <span class="text-price--default">{{ content.product_price }} {{ formatted_currency }}</span>
+            {% if show_strikethrough_price %}
+                <span class="text-price--strikethrough">{{ content.product_original_price }} {{ formatted_currency }}</span>
+            {% endif %}
+        </div>
         <div class="text-shop">Zum Shop</div>
     {% endif %}
 </div>

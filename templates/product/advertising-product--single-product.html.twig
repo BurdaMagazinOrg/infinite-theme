@@ -16,8 +16,23 @@
  * @ingroup themeable
  */
 #}
+
+{% set classes = [
+'item-ecommerce',
+'item-product--single',
+] %}
+
+{% if show_strikethrough_price %}
+    {% set attributes = attributes.addClass('item-product--strikethrough') %}
+{% endif %}
+
+{% if sold_out %}
+    {% set attributes = attributes.addClass('item-product--sold-out') %}
+    {% set data_attributes = data_attributes.removeAttribute('data-external-url') %}
+{% endif %}
+
 {% if content.status %}
-    <div class="item-ecommerce item-product--single" {{ data_attributes }}>
+    <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
         <div class="item-product__wrapper">
             {% include '@infinite/product/advertising-product-inner.html.twig' %}
         </div>
