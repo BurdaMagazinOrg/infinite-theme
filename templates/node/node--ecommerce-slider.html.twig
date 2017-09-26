@@ -20,7 +20,10 @@
     </style>
 {% endblock %}
 
-<div id="{{ ecommerceSliderId }}" {{ attributes.addClass(container_classes) }} data-view-type="ecommerceSlider">
+{% set attributes = attributes.setAttribute('data-view-type', 'ecommerceSlider') %}
+{% set attributes = attributes.setAttribute('data-nid', nid ) %}
+
+<div id="{{ ecommerceSliderId }}" {{ attributes.addClass(container_classes) }}>
 
     <div class="ecommerce-slider__content-wrapper">
 

@@ -10,5 +10,6 @@ var AppConfig = {
     articleReadedDelay: 2000,
     ad_fag: 'fag',
     ad_orbyd: 'orbyd',
+    amazonURLTrId: 'ins0c-21',
     initialDocumentTitle: document.title
 }

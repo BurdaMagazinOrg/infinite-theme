@@ -20,8 +20,8 @@
 
       if (this.infiniteBlockDataModel) {
 
-        if (this.infiniteBlockDataModel.has('trackingContainerType')) {
-          this.model.set('containerType', this.infiniteBlockDataModel.get('trackingContainerType'));
+        if (this.infiniteBlockDataModel.has('trackingContainerType') && this.model.get('componentType') != ProductView.COMPONENT_TYPE_SLIDER) {
+          this.model.set('containerType', this.infiniteBlockDataModel.get('trackingContainerType').toLowerCase());
         }
 
         if (this.infiniteBlockDataModel.has('uuid')) {
@@ -34,6 +34,10 @@
           this.setProductIndex(); //set on this position to override the function
         }
 
+      }
+
+      if (this.model.get('componentType') == ProductView.COMPONENT_TYPE_SLIDER) {
+        this.model.set('containerType', ProductView.COMPONENT_TYPE_SLIDER);
       }
 
       this.posTop = Math.floor(this.$el.offset().top);
@@ -75,11 +79,11 @@
       this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
 
       if (this.$el.hasClass('item-product--single')) {
-        tmpComponentType = 'Single';
+        tmpComponentType = ProductView.COMPONENT_TYPE_SINGLE;
       } else if (this.$el.hasClass('item-product-slider')) {
-        tmpComponentType = 'Slider';
+        tmpComponentType = ProductView.COMPONENT_TYPE_SLIDER;
       } else {
-        tmpComponentType = 'Grid';
+        tmpComponentType = ProductView.COMPONENT_TYPE_GRID;
       }
 
       this.model.set('componentType', tmpComponentType);
@@ -91,7 +95,7 @@
 
       //generic products has no id
       if (this.model.get('productId') == 'undefined') {
-        this.model.set('productId', 'generic');
+        this.model.set('productId', ProductView.PROVIDER_GENERIC);
       }
     },
     extendDataLayerInfo: function () {
@@ -111,7 +115,7 @@
         tmpComponent;
 
       if (this.model.has('containerType') && this.model.get('containerType') != '') {
-        tmpComponent = '-' + this.model.get('containerType');
+        tmpComponent = '-' + this.model.get('containerType').toLowerCase();
       }
 
       switch (this.model.get('provider')) {
@@ -124,15 +128,15 @@
           break;
         case ProductView.PROVIDER_AMAZON:
 
-          if (tmpExternalTrackingURL.indexOf("ins0c-21") > -1) {
-            tmpExternalTrackingURL = tmpExternalTrackingURL.replace("ins0c-21", 'ins0' + tmpComponent + '-21');
+          //TODO change this to dynamic value for all platforms
+          if (tmpExternalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
+            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(AppConfig.amazonURLTrId, AppConfig.amazonURLTrId + tmpComponent);
           }
 
           break;
         case ProductView.PROVIDER_GENERIC:
 
           if (tmpExternalTrackingURL.indexOf("//td.") > -1 && tmpExternalTrackingURL.indexOf("&link") > -1) {
-            console.log("GENERIC 1", _.clone(tmpExternalTrackingURL));
             tmpSlicedString = tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf('&link'), tmpExternalTrackingURL.length);
 
             if (this.model.has('entityType')) {
@@ -210,7 +214,10 @@
   }, {
     PROVIDER_TRACDELIGHT: 'tracdelight',
     PROVIDER_AMAZON: 'amazon',
-    PROVIDER_GENERIC: 'generic'
+    PROVIDER_GENERIC: 'generic',
+    COMPONENT_TYPE_SLIDER: 'slider',
+    COMPONENT_TYPE_GRID: 'grid',
+    COMPONENT_TYPE_SINGLE: 'single'
   });
 
   window.ProductView = window.ProductView || BurdaInfinite.views.ProductView;
