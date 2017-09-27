@@ -107,7 +107,7 @@
 }
 
 %button--bg-colored-disabled {
-  @include button--bg-colored-pressed();
+  @include button--bg-colored-disabled();
 }
 
 /**
