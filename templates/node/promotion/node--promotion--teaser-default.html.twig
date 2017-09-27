@@ -1,0 +1,31 @@
+{% extends "@infinite/node/node--article--teaser-default.html.twig" %}
+
+{% set attributes = attributes.setAttribute('data-external-url', (content.field_url[0]['#url'] | render | plain_text) ) %}
+{% set promotionTeaserId = 'promotion--teaser-' ~ nid %}
+{% set promotionTeaserCSSId = '#' ~ promotionTeaserId %}
+{% set attributes = attributes.setAttribute('id', promotionTeaserId) %}
+
+{% block teaser_img_container_wrapper %}
+    <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject">
+        {% block teaser_img_container %}
+            {{ content.field_teaser_media }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block teaser_caption_channel %}
+{% endblock %}
+
+{% block teaser_text_headline %}
+    <div class="promotion__title teaser__title">
+        {{ label }}
+    </div>
+{% endblock %}
+
+{% block header_block %}
+    <header>
+        <div class="promotion__btn">
+            {{ content.field_url }}
+        </div>
+    </header>
+{% endblock %}

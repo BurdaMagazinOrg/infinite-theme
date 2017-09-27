@@ -2,7 +2,21 @@
     <div class="item-content__row--sidebar">
         <div class="item-content__row-col col--left">
             {{ children }}
-            {% block acquia_lift_article_bottom_block %}{% endblock %}
+
+            {% block acquia_lift_article_bottom_block %}
+                {% if drupal_block('promotion_teaser_block_footer') %}
+                    {% set promo_teaser_block = drupal_block('promotion_teaser_block_footer') %}
+
+                    {% if parent['#node'] and parent['#node'].hasField('field_promotion_teaser_disable') %}
+                        {% set block_is_disabled = parent['#node'].get('field_promotion_teaser_disable').value %}
+
+                        {% if block_is_disabled != true and promo_teaser_block | render is not empty %}
+                            {{ promo_teaser_block }}
+                        {% endif %}
+                    {% endif %}
+
+                {% endif %}
+            {% endblock %}
         </div>
 
         <div class="item-content__row-col col--right">
