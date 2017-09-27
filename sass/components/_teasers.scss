@@ -6,6 +6,10 @@
       color: $text-highlighted;
     }
   }
+
+  .text-headline {
+    @extend %transition-color;
+  }
 }
 
 /**

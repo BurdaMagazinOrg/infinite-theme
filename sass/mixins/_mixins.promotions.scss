@@ -9,13 +9,20 @@
     }
 
     .promotion__btn a {
-      @extend %btn--small-bordered--highlighted;
+      @extend %button--lined-colored-hover;
     }
   }
 
+  .promotion__title {
+    @extend %transition-color;
+  }
+
   .promotion__btn a {
-    @extend %btn--small-bordered;
+    @extend %button;
+    @extend %button--sm;
+    @extend %button--lined-colored-default;
     pointer-events: none;
+    display: inline-block;
   }
 }
 
