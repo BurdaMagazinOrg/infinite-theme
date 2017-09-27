@@ -7,10 +7,6 @@
     .promotion__title {
       color: $text-highlighted;
     }
-
-    .promotion__btn a {
-      @extend %button--lined-colored-hover;
-    }
   }
 
   .promotion__title {
@@ -20,9 +16,33 @@
   .promotion__btn a {
     @extend %button;
     @extend %button--sm;
-    @extend %button--lined-colored-default;
+    @extend %icon-arrow-right-after--sm;
     pointer-events: none;
     display: inline-block;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    &:hover {
+      .promotion__btn a {
+        @include button--plain-colored-hover();
+      }
+    }
+
+    .promotion__btn a {
+      @include button--plain-colored-default();
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    &:hover {
+      .promotion__btn a {
+        @include button--lined-colored-hover();
+      }
+    }
+
+    .promotion__btn a {
+      @include button--lined-colored-default();
+    }
   }
 }
 
@@ -42,7 +62,7 @@
   }
 
   .promotion__btn {
-    line-height: 1;
+    //line-height: 1;
 
     a, a:hover {
       text-decoration: none;
@@ -56,18 +76,7 @@
     }
 
     .teaser__title {
-      margin-bottom: 4px;
-    }
-
-    .promotion__btn a, .promotion__btn a:hover {
-      border: none !important;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    .promotion__btn a {
-      padding-left: 0;
-      padding-right: 0;
+      margin-bottom: 5px;
     }
   }
 
