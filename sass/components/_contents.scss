@@ -68,3 +68,17 @@
     }
   }
 }
+
+.item-content__block .promotion--text-teaser {
+  @include _margin--v(top, ($margin-v-item-content__item-mobile, $margin-v-item-content__item-tablet, $margin-v-item-content__item-desktop));
+}
+
+.item-content__block .promotion {
+  //@extend %margin--v-region;
+  @include _margin--v(top, ($margin-v-item-content__item-mobile, $margin-v-item-content__item-tablet, $margin-v-item-content__item-desktop));
+  @include _margin--v(bottom, ($margin-v-item-content__item-mobile, $margin-v-item-content__item-tablet, $margin-v-item-content__item-desktop));
+  @include padding--v-sm(top);
+  @include padding--v-sm(bottom);
+  border-top: $h-line-style;
+  border-bottom: $h-line-style;
+}
