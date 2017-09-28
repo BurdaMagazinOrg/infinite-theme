@@ -492,6 +492,7 @@
     @include text-helper($product__item-text-price-strikethrough-font-id--single-product, $product__item-text-price-strikethrough-size--single-product);
     color: $product__item-text-price-strikethrough-color--single-product;
     text-decoration: line-through;
+    letter-spacing: 1px;
   }
 
   .text-shop {
