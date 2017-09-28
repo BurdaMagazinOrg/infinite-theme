@@ -304,14 +304,9 @@
   }
 
   &.item-product--strikethrough {
-    .text-price--default {
+    .text-price--current {
       @include text-helper-size($product__item-text-price-font-id--strikethrough, $product__item-text-price-size--strikethrough);
       color: $product__item-text-price-color--strikethrough;
-      text-decoration: line-through;
-
-      background-image: -webkit-linear-gradient($product__item-text-price-filter--strikethrough);
-      background-image: -o-linear-gradient($product__item-text-price-filter--strikethrough);
-      background-image: linear-gradient($product__item-text-price-filter--strikethrough);
     }
   }
 
@@ -334,14 +329,18 @@
     color: $product__item-text-brand-color;
   }
 
-  .text-price--default {
-    @include text-helper($product__item-text-price-font-id, $product__item-text-price-size);
-    color: $product__item-text-price-color;
-  }
-
   .text-price--strikethrough {
     @include text-helper($product__item-text-price-strikethrough-font-id, $product__item-text-price-strikethrough-size);
     color: $product__item-text-price-strikethrough-color;
+    text-decoration: line-through;
+    background-image: -webkit-linear-gradient($product__item-text-price-strikethrough-filter);
+    background-image: -o-linear-gradient($product__item-text-price-strikethrough-filter);
+    background-image: linear-gradient($product__item-text-price-strikethrough-filter);
+  }
+
+  .text-price--current {
+    @include text-helper($product__item-text-price-font-id, $product__item-text-price-size);
+    color: $product__item-text-price-color;
   }
 
   .text-shipping {
@@ -366,14 +365,9 @@
   }
 
   &.item-product--strikethrough {
-    .text-price--default {
+    .text-price--current {
       @include text-helper-size($ecommerce-slider__item-text-price-font-id--strikethrough, $ecommerce-slider__item-text-price-size--strikethrough);
       color: $ecommerce-slider__item-text-price-color--strikethrough;
-      text-decoration: line-through;
-
-      background-image: -webkit-linear-gradient($ecommerce-slider__item-text-price-filter--strikethrough);
-      background-image: -o-linear-gradient($ecommerce-slider__item-text-price-filter--strikethrough);
-      background-image: linear-gradient($ecommerce-slider__item-text-price-filter--strikethrough);
     }
 
   }
@@ -399,7 +393,7 @@
     color: $ecommerce-slider__item-text-brand-color;
   }
 
-  .text-price--default {
+  .text-price--current {
     @include text-helper($ecommerce-slider__item-text-price-font-id, $ecommerce-slider__item-text-price-size);
     color: $ecommerce-slider__item-text-price-color;
   }
@@ -407,6 +401,10 @@
   .text-price--strikethrough {
     @include text-helper($ecommerce-slider__item-text-price-strikethrough-font-id, $ecommerce-slider__item-text-price-strikethrough-size);
     color: $ecommerce-slider__item-text-price-strikethrough-color;
+    text-decoration: line-through;
+    background-image: -webkit-linear-gradient($ecommerce-slider__item-text-price-strikethrough-filter);
+    background-image: -o-linear-gradient($ecommerce-slider__item-text-price-strikethrough-filter);
+    background-image: linear-gradient($ecommerce-slider__item-text-price-strikethrough-filter);
   }
 
   .text-shipping {
@@ -446,10 +444,9 @@
   }
 
   &.item-product--strikethrough {
-    .text-price--default {
+    .text-price--current {
       @include text-helper-size($product__item-text-price-font-id--single-product-strikethrough, $product__item-text-price-size--single-product-strikethrough);
       color: $product__item-text-price-color--single-product-strikethrough;
-      text-decoration: line-through;
     }
   }
 
@@ -485,7 +482,7 @@
     min-height: $product__item-text-brand-size--single-product + 7px;
   }
 
-  .text-price--default {
+  .text-price--current {
     @include text-helper($product__item-text-price-font-id--single-product, $product__item-text-price-size--single-product);
     color: $product__item-text-price-color--single-product;
     letter-spacing: 1px;
@@ -494,6 +491,7 @@
   .text-price--strikethrough {
     @include text-helper($product__item-text-price-strikethrough-font-id--single-product, $product__item-text-price-strikethrough-size--single-product);
     color: $product__item-text-price-strikethrough-color--single-product;
+    text-decoration: line-through;
   }
 
   .text-shop {
