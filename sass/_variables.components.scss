@@ -318,7 +318,7 @@ $product__item-text-price-color--strikethrough: $product__item-text-price-color 
 $product__item-text-price-strikethrough-font-id: $product__item-text-price-font-id !default;
 $product__item-text-price-strikethrough-size: $product__item-text-price-size !default;
 $product__item-text-price-strikethrough-color: lighten($gray-base, 10) !default;
-$product__item-text-price-strikethrough-filter: transparent 7px, rgba($product__item-text-price-color--strikethrough, 0.75) 0px, rgba($product__item-text-price-color--strikethrough, 0.75) 9px, transparent 0px !default;
+$product__item-text-price-strikethrough-filter: transparent 8px, rgba($product__item-text-price-color--strikethrough, 0.75) 0px, rgba($product__item-text-price-color--strikethrough, 0.75) 9px, transparent 0px !default;
 
 $product__item-text-shipping-font-id: $font-label-id !default;
 $product__item-text-shipping-size: 13px !default;
