@@ -130,7 +130,15 @@
 
           //TODO change this to dynamic value for all platforms
           if (tmpExternalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
-            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(AppConfig.amazonURLTrId, AppConfig.amazonURLTrId + tmpComponent);
+
+            tmpSlicedString = AppConfig.amazonURLTrId.split('-');
+            if (tmpSlicedString.length > 1) {
+              tmpSlicedString = tmpSlicedString[0] + tmpComponent + '-' + tmpSlicedString[1];
+            } else {
+              tmpSlicedString = AppConfig.amazonURLTrId + tmpComponent;
+            }
+
+            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(AppConfig.amazonURLTrId, tmpSlicedString);
           }
 
           break;
