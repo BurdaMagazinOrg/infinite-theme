@@ -33,6 +33,10 @@ $gallery-ratio-full: 97.533% !default;
 $gallery-ratio-middle: 97.533% !default;
 $gallery-ratio-small: 97.533% !default;
 
+$gallery-ratio-full--landscape: 75% !default;
+$gallery-ratio-middle--landscape: 56% !default;
+$gallery-ratio-small--landscape: 75% !default;
+
 /** Header **/
 $media__header-ratio-xs: floor(percentage(160/480)) !default;
 $media__header-ratio-sm: floor(percentage(200/1000)) !default;
