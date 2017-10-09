@@ -75,7 +75,7 @@
 ] %}
 
 {# Add data attributes #}
-{% set wrapper_attributes = wrapper_attributes is empty ? attributes : wrapper_attributes %}
+{% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
 
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
