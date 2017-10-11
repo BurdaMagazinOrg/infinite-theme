@@ -17,23 +17,28 @@
  */
 #}
 
+{% set classes = [
+'item-ecommerce',
+'item-product-slider',
+'swiper-slide',
+] %}
+
 {% set data_attributes = data_attributes.setAttribute('data-text-action', 'text-overflow') %}
 {% set data_attributes = data_attributes.setAttribute('data-text-action-target', '.text-headline') %}
+
+{% if show_strikethrough_price %}
+    {% set attributes = attributes.addClass('item-product--strikethrough') %}
+{% endif %}
+
+{% if sold_out %}
+    {% set attributes = attributes.addClass('item-product--sold-out') %}
+    {% set data_attributes = data_attributes.removeAttribute('data-external-url') %}
+{% endif %}
 
 {% if content.status %}
     {{ attach_library('infinite/infinite.views.product-slider-view') }}
 
-    <div class="item-ecommerce item-product-slider swiper-slide" {{ data_attributes }}
-         data-product-category="{{ content.field_product_category_txt | render | striptags | trim }}"
-         data-view-type="productSliderView">
-        <div class="img-container">
-            {{ content.product_image }}
-        </div>
-        <div class="caption">
-            <div class="text-brand">{{ content.product_brand }}</div>
-            <div class="text-headline">{{ content.product_name }}</div>
-            <div class="text-price">{{ content.product_price }} {{ formatted_currency }}</div>
-            <div class="text-shop">Zum Shop</div>
-        </div>
+    <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
+        {% include '@infinite/product/advertising-product-inner.html.twig' %}
     </div>
 {% endif %}

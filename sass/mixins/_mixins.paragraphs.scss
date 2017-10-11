@@ -106,6 +106,19 @@
   @extend %text-content-html;
   @extend %copytext--text-block;
 
+  .button {
+    @extend %margin--v-sm;
+    text-decoration: none;
+  }
+
+  .button--lg {
+    @extend %button--responsive-lg;
+  }
+
+  .button--md {
+    @extend %button--responsive-md;
+  }
+
   & > iframe, .instagram-media {
     //margin-top: $gap-section !important;
     //TODO check if important is necessary - when it is we have to override it in the amp themes

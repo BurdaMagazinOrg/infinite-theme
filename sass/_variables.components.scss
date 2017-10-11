@@ -311,6 +311,15 @@ $product__item-text-price-size: 13px !default;
 $product__item-text-price-color: $text-color !default;
 $product__item-text-price-pos-bottom: 45px !default;
 
+$product__item-text-price-font-id--strikethrough: $product__item-text-price-font-id !default;
+$product__item-text-price-size--strikethrough: $product__item-text-price-size !default;
+$product__item-text-price-color--strikethrough: $product__item-text-price-color !default;
+
+$product__item-text-price-strikethrough-font-id: $product__item-text-price-font-id !default;
+$product__item-text-price-strikethrough-size: $product__item-text-price-size !default;
+$product__item-text-price-strikethrough-color: lighten($gray-base, 10) !default;
+$product__item-text-price-strikethrough-filter: transparent 8px, rgba($product__item-text-price-color--strikethrough, 0.75) 0px, rgba($product__item-text-price-color--strikethrough, 0.75) 9px, transparent 0px !default;
+
 $product__item-text-shipping-font-id: $font-label-id !default;
 $product__item-text-shipping-size: 13px !default;
 $product__item-text-shipping-color: $gray-base !default;
@@ -380,9 +389,6 @@ $ecommerce-slider__title-font-id: $font-headline-id !default;
 
 $ecommerce-slider__content-padding: 30px 0 0 0 !default;
 $ecommerce-slider__content-padding-s: 20px 0 0 0 !default;
-
-
-
 $ecommerce-slider__company-margin: 10px 0 20px 0 !default;
 
 $ecommerce-slider__brand-height: 20px !default;
@@ -436,6 +442,14 @@ $ecommerce-slider__item-text-shipping-size: 13px !default;
 $ecommerce-slider__item-text-shipping-color: $gray-base !default;
 $ecommerce-slider__item-text-shipping-pos-bottom: 40px !default;
 
+$ecommerce-slider__item-text-price-font-id--strikethrough: $ecommerce-slider__item-text-price-font-id !default;
+$ecommerce-slider__item-text-price-size--strikethrough: $ecommerce-slider__item-text-price-size !default;
+$ecommerce-slider__item-text-price-color--strikethrough: $product__item-text-price-color--strikethrough !default;
+
+$ecommerce-slider__item-text-price-strikethrough-font-id: $ecommerce-slider__item-text-price-font-id !default;
+$ecommerce-slider__item-text-price-strikethrough-size: $ecommerce-slider__item-text-price-size !default;
+$ecommerce-slider__item-text-price-strikethrough-color: $product__item-text-price-strikethrough-color !default;
+$ecommerce-slider__item-text-price-strikethrough-filter: $product__item-text-price-strikethrough-filter !default;
 
 /**
 ** Single Product
@@ -468,6 +482,14 @@ $product__item-text-headline-size-desktop--single-product: $title-size-sm !defau
 $product__item-text-price-font-id--single-product: $product__item-text-price-font-id !default;
 $product__item-text-price-size--single-product: 20px !default;
 $product__item-text-price-color--single-product: $product__item-text-price-color !default;
+
+$product__item-text-price-font-id--single-product-strikethrough: $product__item-text-price-font-id--single-product !default;
+$product__item-text-price-size--single-product-strikethrough: $product__item-text-price-size--single-product !default;
+$product__item-text-price-color--single-product-strikethrough: $product__item-text-price-color--single-product !default;
+
+$product__item-text-price-strikethrough-font-id--single-product: $product__item-text-price-font-id--single-product !default;
+$product__item-text-price-strikethrough-size--single-product: $product__item-text-price-size--single-product !default;
+$product__item-text-price-strikethrough-color--single-product: $product__item-text-price-strikethrough-color !default;
 
 /**
 ** Labels

@@ -1,0 +1,15 @@
+.promotion--text-teaser {
+  @include promotion--text-teaser();
+}
+
+.promotion--teaser-square-m, .promotion--teaser-article-inline {
+  @include promotion--teaser-square-and-article();
+}
+
+.promotion--teaser-article-inline {
+  @include promotion--teaser-article-inline();
+}
+
+.promotion--teaser-square-m {
+  @include promotion--teaser-square-m();
+}

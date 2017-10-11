@@ -1,0 +1,21 @@
+<div class="img-container">
+    {{ content.product_image }}
+</div>
+<div class="caption">
+    <div class="text-brand">{{ content.product_brand }}</div>
+    <div class="text-headline">{{ content.product_name }}</div>
+    {% if sold_out %}
+        <div class="text-price">
+            <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
+        </div>
+        <div class="text-shop text-sold-out">Ausverkauft</div>
+    {% else %}
+        <div class="text-price">
+            {% if show_strikethrough_price %}
+                <span class="text-price--strikethrough">{{ content.product_original_price }} {{ formatted_currency }}</span>
+            {% endif %}
+            <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
+        </div>
+        <div class="text-shop">Zum Shop</div>
+    {% endif %}
+</div>

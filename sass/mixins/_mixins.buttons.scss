@@ -212,9 +212,8 @@
 }
 
 @mixin button--size($font-id, $size, $height, $line-height, $padding) {
-  @include text-helper-size($font-id, $size);
+  @include text-helper-size($font-id, $size, $line-height);
   height: $height;
-  line-height: $line-height;
   padding: $padding;
 }
 
@@ -259,23 +258,43 @@
   }
 }
 
-@mixin button--responsive-icon-before-md() {
+@mixin button--responsive-icon-pseudo-sm($container: "&:before") {
+  #{$container} {
+    margin-top: -1px;
+  }
+  //@media (max-width: $screen-xs-max) {
+  //}
+  //
+  //@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  //  #{$container} {
+  //    margin-top: -1px;
+  //  }
+  //}
+  //
+  //@media (min-width: $screen-md-min) {
+  //  #{$container} {
+  //    margin-top: -1px;
+  //  }
+  //}
+}
+
+@mixin button--responsive-icon-pseudo-md($container: "&:before") {
   @media (max-width: $screen-xs-max) {
-    &:before {
+    #{$container} {
       margin-top: -2px;
       margin-left: -2px;
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    &:before {
+    #{$container} {
       margin-top: -3px;
       margin-left: -3px;
     }
   }
 
   @media (min-width: $screen-md-min) {
-    &:before {
+    #{$container} {
       margin-top: -4px;
       margin-left: -4px;
     }
@@ -305,6 +324,8 @@
 
 @mixin button--bg-colored-disabled() {
   @include button--bg-colored($button__bg-color--bg-colored-disabled, $button__color--bg-colored-disabled);
+  border: none;
+  pointer-events: none;
 }
 
 /**
@@ -356,6 +377,8 @@
  */
 @mixin button--plain-colored($color: $button__color--plain-colored-default) {
   color: $color;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @mixin button--plain-colored-default() {
@@ -375,6 +398,8 @@
  */
 @mixin button--plain-gray($color: $button__color--plain-gray-default) {
   color: $color;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @mixin button--plain-gray-default() {

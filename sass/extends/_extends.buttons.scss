@@ -66,8 +66,20 @@
   @include button--responsive-md();
 }
 
+%button--responsive-icon-before-sm {
+  @include button--responsive-icon-pseudo-sm();
+}
+
 %button--responsive-icon-before-md {
-  @include button--responsive-icon-before-md();
+  @include button--responsive-icon-pseudo-md();
+}
+
+%button--responsive-icon-after-sm {
+  @include button--responsive-icon-pseudo-sm("&:after");
+}
+
+%button--responsive-icon-after-md {
+  @include button--responsive-icon-pseudo-md("&:after");
 }
 
 %button--bg-colored-default {
@@ -95,7 +107,7 @@
 }
 
 %button--bg-colored-disabled {
-  @include button--bg-colored-pressed();
+  @include button--bg-colored-disabled();
 }
 
 /**

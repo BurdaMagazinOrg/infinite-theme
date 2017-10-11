@@ -30,7 +30,7 @@
       $pContainer.find('.icon-pinterest[data-url]').unbind('click.socialsPinterest').bind('click.socialsPinterest', $.proxy(function (pEvent) {
         var $tmpItem = $(pEvent.currentTarget),
           tmpURL = $tmpItem.data('url'),
-          tmpMedia = $tmpItem.data('media-url').replace(/\?itok=([^&]$|[^&]*)/i, ""),
+          tmpMedia = $tmpItem.data('media-url'),
           tmpDescription = $tmpItem.data('description'),
           tmpPinterestDefaultURL = 'https://pinterest.com/pin/create/button/';
 

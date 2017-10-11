@@ -7,6 +7,18 @@
   @include icon('&:after');
 }
 
+%icon-bold--after {
+  &:after {
+    font-weight: bold;
+  }
+}
+
+%icon-bold--before {
+  &:before {
+    font-weight: bold;
+  }
+}
+
 %icon-star--full {
   @include icon-star--full();
   @extend %icon;
@@ -132,4 +144,26 @@
 
 %icon-copyright {
   @include icon-copyright();
+}
+
+%icon-arrow-right-after--sm {
+  @extend %icon--after;
+  @extend %icon-bold--after;
+  @include icon-arrow-right-small(true, "&:after");
+
+  &:after {
+    font-size: $button__icon-arrow-right-after-size--sm;
+    margin-top: $button__icon-arrow-right-after-top--sm;
+  }
+}
+
+%icon-arrow-left-before--sm {
+  @extend %icon;
+  @extend %icon-bold--before;
+  @include icon-arrow-left-small();
+
+  &:before {
+    font-size: $button__icon-arrow-right-after-size--sm;
+    margin-top: $button__icon-arrow-right-after-top--sm;
+  }
 }
