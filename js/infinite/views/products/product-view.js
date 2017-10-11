@@ -114,6 +114,8 @@
         tmpSlicedString = "",
         tmpComponent;
 
+      if(tmpExternalTrackingURL == '' || tmpExternalTrackingURL == undefined) return;
+
       if (this.model.has('containerType') && this.model.get('containerType') != '') {
         tmpComponent = '-' + this.model.get('containerType').toLowerCase();
       }
