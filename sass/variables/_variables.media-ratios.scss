@@ -29,9 +29,13 @@ $teaser__img-ratio-tablet--portrait-small: floor(percentage(400/288)) !default;
 $teaser__img-ratio-desktop--portrait-small: floor(percentage(400/288)) !default;
 
 /** Gallery **/
-$gallery-ratio-full: 75% !default;
-$gallery-ratio-middle: 56% !default;
-$gallery-ratio-small: 75% !default;
+$gallery-ratio-full: 97.533% !default;
+$gallery-ratio-middle: 97.533% !default;
+$gallery-ratio-small: 97.533% !default;
+
+$gallery-ratio-full--landscape: 75% !default;
+$gallery-ratio-middle--landscape: 56% !default;
+$gallery-ratio-small--landscape: 75% !default;
 
 /** Header **/
 $media__header-ratio-xs: floor(percentage(160/480)) !default;
