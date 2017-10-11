@@ -36,6 +36,8 @@
 {% endif %}
 
 {% if content.status %}
+    {{ attach_library('infinite/infinite.views.product-slider-view') }}
+
     <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
         {% include '@infinite/product/advertising-product-inner.html.twig' %}
     </div>

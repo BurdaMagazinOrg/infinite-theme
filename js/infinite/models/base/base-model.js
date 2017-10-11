@@ -1,12 +1,11 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
-    "use strict";
+  "use strict";
 
   BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
     defaults: {
       inviewEnabled: true,
       initialDOMItem: true,
-      _parentModel: null,
       type: "root"
     },
     initialize: function (pModel, pOptions) {
@@ -25,10 +24,10 @@
       this.trigger('refresh', this);
     },
     setParentModel: function (pModel) {
-      this._parentModel = pModel;
+      this.set('parentModel', pModel, {silent: true});
     },
     getParentModel: function () {
-      return this._parentModel;
+      return this.get('parentModel');
     }
   });
 
