@@ -1,0 +1,16 @@
+<div{{ attributes }}>
+    {% for widget in items %}
+        <div{{ widget.attributes }}>
+
+            {% set product_id %}
+                {{ widget.content }}
+            {% endset %}
+
+            {{ drupal_entity('advertising_product', product_id|striptags|render|trim) }}
+
+
+            <div{{ widget.pin_attributes }}>{{ widget.pin_content }}</div>
+            <div{{ widget.content_attributes }}>{{ widget.content }}</div>
+        </div>
+    {% endfor %}
+</div>
