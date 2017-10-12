@@ -25,10 +25,17 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass('region-full-content item-content item-content--taxonomy no-v-padding') }}>
+{% set classes = [
+'region-full-content',
+'item-content',
+'item-content--taxonomy',
+'no-v-padding',
+] %}
+
+<div {{ attributes.addClass(classes) }}>
     {% block content_header_block %}
         {% if content.field_header_blocks | render is not empty %}
-           {{ content.field_header_blocks }}
+            {{ content.field_header_blocks }}
         {% endif %}
 
         {% if not has_spotlight_title and not term_title_hidden %}

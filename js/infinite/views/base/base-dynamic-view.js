@@ -50,11 +50,8 @@
         tmpViewType = $tmpItem.data('view-type'),
         tmpModel = new BaseDynamicViewModel();
 
-      if (tmpViewType == "infiniteBlockView") {
-        if ($tmpItem.attr('data-adunit1') || $tmpItem.attr('data-content-type')) {
-          //tmpModel.set('infiniteBlockDataModel', new InfiniteBlockDataModel({$el: $tmpItem}));
-          this.infiniteBlockDataModel = new InfiniteBlockDataModel({$el: $tmpItem});
-        }
+      if (tmpViewType == "infiniteBlockView" && $tmpItem.data('uuid') || tmpViewType == "infiniteBlockView" && $tmpItem.data('tr-container-type')) {
+        this.infiniteBlockDataModel = new InfiniteBlockDataModel({$el: $tmpItem});
       }
 
       pSettings.modelList.add(tmpModel);

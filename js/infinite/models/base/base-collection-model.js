@@ -17,6 +17,7 @@
       }, this);
     },
     add: function (pItems, pOptions) {
+      //check if multi items -> array
       if (typeof pItems.setParentModel !== 'undefined') {
         pItems.setParentModel(this);
       }

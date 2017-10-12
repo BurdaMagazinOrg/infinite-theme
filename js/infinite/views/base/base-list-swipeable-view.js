@@ -37,7 +37,7 @@
             }
         },
         createView: function () {
-            this.$swiperContainer = this.$el.find('.container-content')
+            this.$swiperContainer = this.$el.find('.container-content');
         },
         updateViews: function () {
             this.swiperApi = this.$swiperContainer.swiper(this.settings);

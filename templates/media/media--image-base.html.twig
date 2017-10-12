@@ -35,7 +35,7 @@
                 {% endif %}
             {% endblock %}
             {% block description_block %}
-                {% if content.field_description %}
+                {% if content.field_description | render is not empty %}
                     <div class="text-description">{{ content.field_description }}</div>
                 {% endif %}
             {% endblock %}

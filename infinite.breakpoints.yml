@@ -1,13 +1,6 @@
-infinite.xxs:
-  label: xxs
-  mediaQuery: 'all and (min-width: 0px)'
-  weight: 0
-  multipliers:
-    - 2x
-    - 1x
 infinite.mobile_sm:
   label: mobile_sm
-  mediaQuery: 'all and (min-width: 360px)'
+  mediaQuery: 'all and (min-width: 0px)'
   weight: 1
   multipliers:
     - 2x
