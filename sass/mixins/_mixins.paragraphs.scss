@@ -100,7 +100,19 @@
   &.item-paragraph--small {
     .item-media--image-portrait {
       .img-container {
-        padding-bottom: $gallery-ratio-small;
+
+        @media (max-width: $screen-xs-max) {
+          padding-bottom: $gallery-ratio-small--portrait--mobile;
+        }
+
+        @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+          padding-bottom: $gallery-ratio-small--portrait--tablet;
+        }
+
+        @media (min-width: $screen-md-min) {
+          padding-bottom: $gallery-ratio-small--portrait--desktop;
+        }
+
       }
     }
 

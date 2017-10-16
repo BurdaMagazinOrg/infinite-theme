@@ -29,7 +29,10 @@ $teaser__img-ratio-tablet--portrait-small: floor(percentage(400/288)) !default;
 $teaser__img-ratio-desktop--portrait-small: floor(percentage(400/288)) !default;
 
 /** Gallery **/
-$gallery-ratio-small: 139.533% !default;
+$gallery-ratio-small--portrait--mobile: 139.533% !default;
+$gallery-ratio-small--portrait--tablet: 91.59% !default;
+$gallery-ratio-small--portrait--desktop: 97.6% !default;
+
 $gallery-ratio-full: 97.533% !default;
 $gallery-ratio-middle: 97.533% !default;
 
