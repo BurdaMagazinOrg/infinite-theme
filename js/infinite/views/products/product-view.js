@@ -185,7 +185,7 @@
       };
 
       if (this.model.has('productIndex')) {
-        tmpEnhancedEcommerceData.index = this.model.get('productIndex');
+        tmpEnhancedEcommerceData.position = this.model.get('productIndex');
       }
 
       this.model.set('enhancedEcommerce', tmpEnhancedEcommerceData);
