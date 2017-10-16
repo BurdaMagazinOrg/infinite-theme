@@ -64,7 +64,7 @@
         if (typeof $tmpElement.data('infiniteModel') != 'undefined') {
           tmpView = $tmpElement.data('infiniteModel').get('view');
 
-          if (tmpView.model.get('trackImpression') != true) {
+          if (tmpView.model.get('disabled') != true && tmpView.model.get('trackImpression') != true) {
             tmpView.trackImpression();
           }
         }
