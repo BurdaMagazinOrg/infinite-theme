@@ -9,6 +9,11 @@
     initialize: function (pOptions) {
       BaseInviewView.prototype.initialize.call(this, pOptions);
 
+      if (this.$el.hasClass('item-product--sold-out')) {
+        this.model.set('disabled', true);
+        return;
+      }
+
       this.delegateInview();
       this.addListener();
       this.createModel();
@@ -114,6 +119,8 @@
         tmpSlicedString = "",
         tmpComponent;
 
+      if (tmpExternalTrackingURL == '' || tmpExternalTrackingURL == undefined) return;
+
       if (this.model.has('containerType') && this.model.get('containerType') != '') {
         tmpComponent = '-' + this.model.get('containerType').toLowerCase();
       }
@@ -183,7 +190,7 @@
       };
 
       if (this.model.has('productIndex')) {
-        tmpEnhancedEcommerceData.index = this.model.get('productIndex');
+        tmpEnhancedEcommerceData.position = this.model.get('productIndex');
       }
 
       this.model.set('enhancedEcommerce', tmpEnhancedEcommerceData);
@@ -195,6 +202,8 @@
       }
     },
     trackImpression: function () {
+      if(this.model.get('disabled') == true) return;
+
       this.model.set('trackImpression', true);
       TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
     },

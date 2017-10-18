@@ -355,7 +355,7 @@
         case 'impressions':
           tmpTrackingObject.event = 'productImpressions';
           tmpTrackingObject.ecommerce = {
-            'impressions': pData
+            'impressions': [pData]
           }
           break;
         case 'productClick':
