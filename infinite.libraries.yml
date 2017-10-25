@@ -24,6 +24,18 @@ swiper:
   js:
     /libraries/swiper/dist/js/swiper.jquery.min.js: { }
 
+infinite.slick:
+  remote: http://kenwheeler.github.io/slick
+  version: 1.8.1
+  license:
+    name: MIT
+    gpl-compatible: true
+  js:
+    /libraries/slick-carousel/slick/slick.min.js: { }
+  css:
+    base:
+      /libraries/slick-carousel/slick/slick.css: { }
+
 infinite.social-apis:
   js:
     //assets.pinterest.com/js/pinit.js: { type: external, attributes: { async: true} }
@@ -227,6 +239,13 @@ infinite.views.sticky-view:
 #  version: 1
 #  js:
 #    js/infinite/views/products/products-view.js: {}
+
+infinite.views.product-preview-view:
+  version: 1
+  js:
+    js/infinite/views/product_preview/products-preview-view.js: {}
+  dependencies:
+    - infinite/infinite.slick
 
 infinite.views.product-view:
   version: 1
