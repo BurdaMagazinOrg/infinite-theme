@@ -1,0 +1,36 @@
+<div class="region-full-content region-lazy-loading region-infinite-block infinite-item" data-view-type="infiniteBlockView" data-history-url="{{ path }}"
+     data-history-title="{{ content.field_seo_title | plain_text | replace({'"': ''}) }}">
+    {% if header %}
+        {{ header }}
+    {% endif %}
+
+    {% if rows %}
+        <div class="region-full-content region-teaser-list">
+            <div class="container-fixed-content">
+                <div class="item-content__row--sidebar">
+                    <div class="item-content__row-col col--left teaser-list-large">
+                        {{ rows }}
+                    </div>
+                    <div class="item-content__row-col col--right">
+                        {% if sidebar %}
+                            <div class="item-sticky" data-view-type="stickyView">
+                                {{ sidebar }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% elseif empty %}
+        {{ empty }}
+    {% endif %}
+
+    {% if footer %}
+        {{ footer }}
+    {% endif %}
+
+    {% if pager %}
+        {{ pager }}
+    {% endif %}
+</div>
+
