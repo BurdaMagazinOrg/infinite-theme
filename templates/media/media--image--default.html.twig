@@ -12,8 +12,18 @@
  * @ingroup themeable
  */
 #}
+
+
+{% set classes = [
+'item-media',
+'item-media--image',
+'item-media--image-' ~ calculated_dimension,
+] %}
+
+{% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
+
 {% if content %}
-    <div class="item-media item-media--image item-media--image-{{ calculated_dimension }}">
+    <div {{ wrapper_attributes.addClass(classes) }}>
         {% include 'media--image-base.html.twig' %}
     </div>
 {% endif %}

@@ -1,0 +1,16 @@
+{% set classes = [
+'item-media--look',
+'item-media--image-' ~ calculated_dimension,
+] %}
+
+{% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
+
+{% if content %}
+    <div {{ wrapper_attributes.addClass(classes) }}>
+        <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
+            {{ content.field_image }}
+        </div>
+    </div>
+{% endif %}
+
+

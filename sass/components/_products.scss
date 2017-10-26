@@ -1,4 +1,4 @@
-.item-product {
+.item-product:not(.imagepin-widget .item-product) {
   @include product__item--default();
   @include product__item--horizontal-block();
 }
