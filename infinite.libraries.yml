@@ -45,6 +45,7 @@ infinite.libs:
     js/infinite/libs/jquery.sticky-kit.min.js: {}
     js/infinite/libs/bootstrap/modal.js: {}
     js/infinite/libs/bootstrap/transition.js: {}
+    js/infinite/libs/jquery.inview.js: {}
 
 infinite.init:
   css:
