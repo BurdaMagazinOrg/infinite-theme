@@ -2,12 +2,12 @@
 
   "use strict";
 
-  BurdaInfinite.views.ProductView = BaseInviewView.extend({
+  BurdaInfinite.views.ProductView = BaseView.extend({
     advancedTrackingData: null,
     $containerElement: [],
-    posTop: 0,
+    inview: null,
     initialize: function (pOptions) {
-      BaseInviewView.prototype.initialize.call(this, pOptions);
+      BaseView.prototype.initialize.call(this, pOptions);
 
       if (this.$el.hasClass('item-product--sold-out')) {
         this.model.set('disabled', true);
@@ -45,28 +45,28 @@
         this.model.set('containerType', ProductView.COMPONENT_TYPE_SLIDER);
       }
 
-      this.posTop = Math.floor(this.$el.offset().top);
-
       this.initCustomTracking();
       this.collectTrackingData();
-      this.checkPos();
     },
     delegateInview: function () {
-      /**
-       * activate inview functions
-       */
-      BaseInviewView.prototype.delegateInview.call(this);
+      if (this.inview != null) this.inview.destroy();
+
+      this.inview = this.$el.find('.img-container')
+        .inview({
+          offset: 'bottom',
+          enter: _.bind(this.onInviewEnterHandler, this),
+          exit: _.bind(this.onInviewExitHandler, this)
+        });
     },
-    checkPos: function () {
-      var tmpPos = Math.floor(this.$el.offset().top);
-      if (tmpPos != this.posTop) {
-        this.refresh();
-        this.posTop = tmpPos;
-      }
+    onInviewEnterHandler: function (pDirection) {
+      this.onEnterHandler(pDirection);
+    },
+    onInviewExitHandler: function (pDirection) {
+
     },
     addListener: function () {
       this.$el.unbind('click.enhanced_ecommerce').bind('click.enhanced_ecommerce', $.proxy(this.onProductClickHandler, this));
-      $(window).scroll(_.bind(this.checkPos, this));
+      // $(window).scroll(_.bind(this.checkPos, this));
     },
     createModel: function () {
       var tmpComponentType = '';
@@ -202,7 +202,7 @@
       }
     },
     trackImpression: function () {
-      if(this.model.get('disabled') == true) return;
+      if (this.model.get('disabled') == true) return;
 
       this.model.set('trackImpression', true);
       TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
@@ -210,23 +210,13 @@
     trackProductClick: function () {
       TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
     },
-    refresh: function () {
-      var tmpWaypoints;
-
-      if (this.inview && typeof this.inview.waypoints != 'undefined') {
-        tmpWaypoints = this.inview.waypoints || [];
-        $.each(tmpWaypoints, function (pIndex, pWaypoint) {
-          pWaypoint.context.refresh();
-        });
-      }
-    },
     onProductClickHandler: function (pEvent) {
       this.trackProductClick();
     },
     onEnterHandler: function (pDirection) {
-      BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
+      // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackImpression();
-      this.destroy();
+      this.inview.destroy();
     }
   }, {
     PROVIDER_TRACDELIGHT: 'tracdelight',
