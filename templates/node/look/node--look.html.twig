@@ -12,6 +12,9 @@
 
 <div {{ attributes.addClass(classes) }}>
     {% block content_body %}
+
+        {{ attach_library('infinite/infinite.views.look-view') }}
+
         {{ content }}
     {% endblock %}
 </div>

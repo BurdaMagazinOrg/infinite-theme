@@ -2,7 +2,7 @@
 
   "use strict";
 
-  BurdaInfinite.views.EcommerceSliderView = BaseDynamicView.extend({
+  BurdaInfinite.views.products.EcommerceSliderView = BaseDynamicView.extend({
     $swiperContainer: [],
     swiperApi: null,
     // deviceModel: null,
@@ -109,6 +109,6 @@
 
   });
 
-  window.EcommerceSliderView = window.EcommerceSliderView || BurdaInfinite.views.EcommerceSliderView;
+  window.EcommerceSliderView = window.EcommerceSliderView || BurdaInfinite.views.products.EcommerceSliderView;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

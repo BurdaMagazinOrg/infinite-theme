@@ -2,7 +2,7 @@
 
   "use strict";
 
-  BurdaInfinite.views.ProductSliderView = ProductView.extend({
+  BurdaInfinite.views.products.ProductSliderView = ProductView.extend({
     ecommerceSliderModel: new Backbone.Model(),
     $ecommerceSlider: [],
     initialize: function (pOptions) {
@@ -31,6 +31,6 @@
     }
   });
 
-  window.ProductSliderView = window.ProductSliderView || BurdaInfinite.views.ProductSliderView;
+  window.ProductSliderView = window.ProductSliderView || BurdaInfinite.views.products.ProductSliderView;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

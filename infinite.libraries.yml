@@ -223,12 +223,6 @@ infinite.views.sticky-view:
   js:
     js/infinite/views/sticky-view.js: {}
 
-
-#infinite.views.products-view:
-#  version: 1
-#  js:
-#    js/infinite/views/products/products-view.js: {}
-
 infinite.views.product-view:
   version: 1
   js:
@@ -238,6 +232,13 @@ infinite.views.product-slider-view:
   version: 1
   js:
     js/infinite/views/products/product-slider-view.js: {}
+  dependencies:
+    - infinite/infinite.views.product-view
+
+infinite.views.look-view:
+  version: 1
+  js:
+    js/infinite/views/products/look-view.js: {}
   dependencies:
     - infinite/infinite.views.product-view
 

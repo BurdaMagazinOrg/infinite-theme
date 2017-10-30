@@ -2,7 +2,7 @@
 
   "use strict";
 
-  BurdaInfinite.views.ProductView = BaseView.extend({
+  BurdaInfinite.views.products.ProductView = BaseView.extend({
     advancedTrackingData: null,
     $containerElement: [],
     inview: null,
@@ -227,6 +227,6 @@
     COMPONENT_TYPE_SINGLE: 'single'
   });
 
-  window.ProductView = window.ProductView || BurdaInfinite.views.ProductView;
+  window.ProductView = window.ProductView || BurdaInfinite.views.products.ProductView;
 
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
