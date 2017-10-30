@@ -4,6 +4,8 @@
 {% set attributes = attributes.setAttribute('id', promotionTeaserId) %}
 {% set attributes = attributes.addClass('promotion--text-teaser') %}
 
-<div {{ attributes }}>
-    {{ content.field_text }}
-</div>
+{% if content.field_text | render is not empty %}
+    <div {{ attributes }}>
+        {{ content.field_text[0]['#text'] | raw }}
+    </div>
+{% endif %}
