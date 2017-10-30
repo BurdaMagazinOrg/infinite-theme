@@ -1,4 +1,4 @@
-.item-product:not(.imagepin-widget .item-product) {
+.item-paragraph--advertising-products-paragraph.item-paragraph--default .item-product {
   @include product__item--default();
   @include product__item--horizontal-block();
 }
