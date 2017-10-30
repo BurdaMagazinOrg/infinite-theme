@@ -2,10 +2,12 @@
 
   "use strict";
 
-  BurdaInfinite.views.products.LookView = BaseView.extend({
+  BurdaInfinite.views.products.LookView = BaseDynamicView.extend({
     $hotspots: [],
     initialize: function (pOptions) {
-      BaseView.prototype.initialize.call(this, pOptions);
+      BaseDynamicView.prototype.initialize.call(this, pOptions);
+
+      console.log("CREATE");
 
       this.createView();
       this.init();
@@ -21,11 +23,25 @@
       $.each(this.$hotspots, function () {
         $(this).bind('overlay:show', function (pEvent, $pOverlay) {
           var tmpWidgetId = $pOverlay.data('imagepin-key'),
-            $tmpOriginalWidget = [];
-
+            $tmpOriginalWidget = [],
+            $tmpOriginalProduct = [],
+            tmpView,
+            tmpInfiniteModel;
 
           $tmpOriginalWidget = $that.$el.find('.imagepin-widgets [data-imagepin-key="' + tmpWidgetId + '"]');
-          console.log(tmpWidgetId, $tmpOriginalWidget, $tmpOriginalWidget.find('.item-ecommerce').data('infiniteModel'));
+          $tmpOriginalProduct = $tmpOriginalWidget.find('.item-ecommerce');
+          tmpInfiniteModel = $tmpOriginalProduct.data('infiniteModel');
+
+          /**
+           * get model and track impression
+           */
+          if (typeof tmpInfiniteModel != "undefined") {
+            tmpView = $tmpOriginalProduct.data('infiniteModel').get('view');
+            if ($tmpOriginalProduct.data('trackImpression') != true) {
+              $tmpOriginalProduct.data('trackImpression', true);
+              tmpView.trackImpression();
+            }
+          }
         });
       });
     }

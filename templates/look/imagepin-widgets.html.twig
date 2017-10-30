@@ -6,7 +6,7 @@
                 {{ widget.content }}
             {% endset %}
 
-            {{ drupal_entity('advertising_product', product_id|striptags|render|trim) }}
+            {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'look') }}
 
 
             <div{{ widget.pin_attributes }}>{{ widget.pin_content }}</div>

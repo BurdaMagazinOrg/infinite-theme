@@ -76,6 +76,9 @@
         case 'productSliderView':
           tmpView = new ProductSliderView(tmpSettings);
           break;
+          case 'productLookView':
+          tmpView = new ProductLookView(tmpSettings);
+          break;
         case 'anchorNavigationView':
           tmpView = new AnchorNavigationView(tmpSettings);
           break;

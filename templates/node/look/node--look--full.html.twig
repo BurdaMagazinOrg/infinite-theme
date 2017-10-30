@@ -2,7 +2,7 @@
 'region-full-content',
 'region-infinite-block',
 'infinite-item',
-'look',
+'item-content--look',
 ] %}
 
 {# Add data attributes #}
@@ -20,5 +20,5 @@
 {% endif %}
 
 <div{{ wrapper_attributes.addClass(wrapper_classes) }} >
-    {{ content }}
+    {% include '@infinite/node/look/node--look.html.twig' %}
 </div>

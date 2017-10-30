@@ -1,0 +1,46 @@
+{#
+/**
+ * @file advertising-product-ecommerce-slider.html.twig
+ * Default theme implementation to present Advertising Product data.
+ *
+ * This template is used when viewing Advertising Product pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ * - data_attributes: HTML data-* attributes for tracking properties.
+ *
+ * @see template_preprocess_advertising_product()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = [
+'item-ecommerce',
+'item-product--look',
+] %}
+
+{% set data_attributes = data_attributes.setAttribute('data-view-type', 'productLookView') %}
+
+{% if show_strikethrough_price %}
+    {% set attributes = attributes.addClass('item-product--strikethrough') %}
+{% endif %}
+
+{% if sold_out %}
+    {% set attributes = attributes.addClass('item-product--sold-out') %}
+    {% set data_attributes = data_attributes.removeAttribute('data-external-url') %}
+{% endif %}
+
+{% if content.field_product_category_txt | render is not empty %}
+    {% set data_attributes = data_attributes.setAttribute('data-product-category', content.field_product_category_txt | render | striptags | trim) %}
+{% endif %}
+
+{% if content.status %}
+    {{ attach_library('infinite/infinite.views.product-look-view') }}
+
+    <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
+        {% include '@infinite/product/advertising-product-inner.html.twig' %}
+    </div>
+{% endif %}

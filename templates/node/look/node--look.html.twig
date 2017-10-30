@@ -2,7 +2,6 @@
 'look',
 ] %}
 
-
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
 {% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 {% set attributes = attributes.setAttribute('data-tr-container-type', 'look') %}
@@ -12,9 +11,7 @@
 
 <div {{ attributes.addClass(classes) }}>
     {% block content_body %}
-
         {{ attach_library('infinite/infinite.views.look-view') }}
-
         {{ content }}
     {% endblock %}
 </div>
