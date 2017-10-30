@@ -33,6 +33,11 @@
         nextButton: this.$el.find('.swiper-button-next')[0],
         prevButton: this.$el.find('.swiper-button-prev')[0]
       });
+
+      if(this.$el.attr('data-slider') !== 'undefined'){
+        var $dataSlider = JSON.parse(this.$el.attr('data-slider'));
+        _.extend(this.settings, $dataSlider);
+      }
     },
     updateView: function () {
       this.swiperApi = this.$swiperContainer.swiper(this.settings);

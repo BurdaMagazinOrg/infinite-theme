@@ -3,6 +3,7 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
 use Drupal\image\Entity\ImageStyle;
+use Psy\Util\Json;
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
   /* @var $paragraph \Drupal\paragraphs\Entity\Paragraph */
@@ -160,6 +161,18 @@ function infinite_preprocess_node(&$variables) {
     if ($variables['view_mode'] === 'full' || $variables['view_mode'] === 'lazyloading') {
       $variables['wrapper_attributes'] = new Attribute();
     }
+  }
+
+  if($bundle == 'ecommerce_slider') {
+    $data_slider = [];
+    $start_position = $node->get('field_slider_start_position')->value;
+    if(is_numeric($start_position)) {
+      $data_slider['initialSlide'] = $node->get('field_slider_start_position')->value - 1;
+    }
+    else {
+      $data_slider['initialSlide'] = 0;
+    }
+    $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
   }
 }
 
