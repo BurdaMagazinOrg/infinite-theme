@@ -48,7 +48,7 @@
         {% if content.field_title|render %}
             <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
         {% endif %}
-        <div class="slicki-container-content">
+        <div class="container-content">
             {{ content|without('field_title', 'field_e_view_mode', 'field_text') }}
         </div>
 

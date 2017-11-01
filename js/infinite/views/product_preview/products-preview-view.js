@@ -1,10 +1,11 @@
 (function ($, Drupal, drupalSettings) {
 
-    $('.slicki-container-content').slick({
+    $('.ecommerce-product-row-6').slick({
         lazyLoad: 'ondemand',
         infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1
+        slidesToShow: 6,
+        slidesToScroll: 1,
+
     });
 
 })(jQuery, Drupal, drupalSettings);

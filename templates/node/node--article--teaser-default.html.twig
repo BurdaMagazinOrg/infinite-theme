@@ -4,6 +4,7 @@
 'contextual-region',
 ] %}
 
+
 {% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
     {% set smart_teaser_class = content.field_smart_teaser_class|render %}
     {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
@@ -66,3 +67,12 @@
         {{ title_suffix.contextual_links }}
     {% endif %}
 </article>
+{% if content.field_product_preview_row is defined and content.field_product_preview_row is not empty %}
+    konsum:
+    {{ attach_library('infinite/infinite.slick') }}
+    {{ attach_library('infinite/infinite.views.product-preview-view') }}
+
+    <div class="ecommerce-product-row-6">
+        {{ drupal_view('ecommerce_preview_row', 'default', nid ) }}
+    </div>
+{% endif %}
