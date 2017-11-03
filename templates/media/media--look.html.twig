@@ -1,4 +1,5 @@
 {% set classes = [
+'item-media',
 'item-media--look',
 'item-media--image-' ~ calculated_dimension,
 ] %}
@@ -6,11 +7,13 @@
 {% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
 
 {% if content %}
-    <div {{ wrapper_attributes.addClass(classes) }}>
-        <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
-            {{ content.field_image }}
+    {% if content %}
+        <div {{ wrapper_attributes.addClass(classes) }}>
+            {% embed 'media--image-base.html.twig' %}
+                {% block socials_block %}{% endblock %}
+            {% endembed %}
         </div>
-    </div>
+    {% endif %}
 {% endif %}
 
 
