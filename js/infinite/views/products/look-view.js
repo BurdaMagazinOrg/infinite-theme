@@ -4,10 +4,9 @@
 
   BurdaInfinite.views.products.LookView = BaseDynamicView.extend({
     $hotspots: [],
+    blazy: null,
     initialize: function (pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
-
-      console.log("CREATE");
 
       this.createView();
       this.init();
@@ -15,7 +14,9 @@
     createView: function () {
       this.$hotspots = this.$el.find('.imagepin');
 
-      console.log(">>> this.$hotspots", this.$hotspots);
+      if (typeof Blazy != 'undefined') {
+        this.blazy = new Blazy();
+      }
     },
     init: function () {
       var $that = this;
@@ -25,6 +26,7 @@
           var tmpWidgetId = $pOverlay.data('imagepin-key'),
             $tmpOriginalWidget = [],
             $tmpOriginalProduct = [],
+            $tmpImage = $pOverlay.find('img'),
             tmpView,
             tmpInfiniteModel;
 
@@ -41,6 +43,13 @@
               $tmpOriginalProduct.data('trackImpression', true);
               tmpView.trackImpression();
             }
+          }
+
+          /**
+           * Load blazy shizzl
+           */
+          if ($that.blazy != null && $tmpImage.hasClass('b-lazy') && $tmpImage.hasClass('b-loaded') == false) {
+            $that.blazy.load($tmpImage[0]);
           }
         });
       });
