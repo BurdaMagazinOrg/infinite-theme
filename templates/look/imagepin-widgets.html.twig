@@ -1,3 +1,9 @@
+{% set url = url('<current>') %}
+
+{% if 'fia/nodes.xml' in url|render|render %}
+    <h3 class="item-paragraph__title">{{ 'Shop-the-look: Mit diesen Produkten den Look easy nachstylen'|trans }}</h3>{% else %}
+{% endif %}
+
 <div{{ attributes }}>
     {% for widget in items %}
         <div{{ widget.attributes }}>
@@ -6,7 +12,15 @@
                 {{ widget.content }}
             {% endset %}
 
-            {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'look') }}
+
+
+            {% if 'fia/nodes.xml' in url|render|render %}
+                {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'facebook_instant_articles_rss') }}
+            {% else %}
+                {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'look') }}
+            {% endif %}
+
+
 
 
             <div{{ widget.pin_attributes }}>{{ widget.pin_content }}</div>
