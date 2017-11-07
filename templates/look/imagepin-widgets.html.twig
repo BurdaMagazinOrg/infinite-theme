@@ -6,7 +6,7 @@
                 {{ widget.content }}
             {% endset %}
 
-            {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'look') }}
+            {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'facebook_instant_articles_rss') }}
 
 
             <div{{ widget.pin_attributes }}>{{ widget.pin_content }}</div>
