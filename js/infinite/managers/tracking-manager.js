@@ -323,6 +323,11 @@
       }, tmpTrackingObject, tmpAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
+
+        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
+          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
+        }
+
         window.dataLayer.push(tmpTrackingObject);
         console.log(">> trackEvent >>", tmpTrackingObject);
       } else {
@@ -332,10 +337,15 @@
     trackPageView: function (pPath, pAdvObject) {
       var tmpPath = pPath.replace(/([^:]\/)\/+/g, "$1"),
         tmpAdvObject = pAdvObject || TrackingManager.getAdvTrackingByElement(),
-        tmpTrackingObject = _.extend({event: 'page_view', 'location': tmpPath}, pAdvObject);
+        tmpTrackingObject = _.extend({event: 'page_view', 'location': tmpPath}, tmpAdvObject);
 
       if (typeof window.dataLayer != "undefined") {
-        tmpTrackingObject = _.extend(tmpTrackingObject, tmpAdvObject);
+
+        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
+          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
+        }
+
+        // tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
         window.dataLayer.push(tmpTrackingObject);
         console.log(">> trackPageView >>", document.title, tmpPath);
       } else {
@@ -372,6 +382,10 @@
       }
 
       if (typeof window.dataLayer != "undefined") {
+        if (typeof OdoscopeManager != "undefined" && OdoscopeManager.getInstance().getTrackingObject() != null) {
+          tmpTrackingObject.odoscopelist = OdoscopeManager.getInstance().getTrackingObject();
+        }
+
         tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
         console.log(">> trackEcommerce >>", tmpTrackingObject);
         window.dataLayer.push(tmpTrackingObject);

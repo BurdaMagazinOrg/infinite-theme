@@ -32,7 +32,7 @@
   }
 
   Infinite.prototype.onOdoscopeArticelModelHandler = function (pModel) {
-    console.log("onOdoscopeArticelModelHandler", "color: green; font-weight: bold;", pModel);
+    console.log("%conOdoscopeArticelModelHandler", "color: green; font-weight: bold;", pModel);
     this.useOdoscope = true;
     this.odoscopeArticleModel = pModel;
   }
