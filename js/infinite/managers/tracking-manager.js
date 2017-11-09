@@ -38,6 +38,12 @@
       } else {
         window.blockAdBlock.on(true, _.bind(this.onAdBlockDetected, this)).onNotDetected(_.bind(this.onAdBlockNotDetected, this));
       }
+
+      this.listenTo(this.infiniteViewsModel, 'refresh', function (pModel) {
+        if (pModel.get('type') === 'infiniteBlockView') {
+          this.parseTrackingElements(pModel.get('el'));
+        }
+      }, this);
     },
     onAdBlockDetected: function () {
       TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active'});
@@ -228,16 +234,28 @@
       if ($tmpItems.length > 0) $tmpItems.unbind('click', this.onTeaserCategoryClickHandler).bind('click', $.proxy(this.onTeaserCategoryClickHandler, this));
     },
     onFeedTeaserClickHandler: function (pEvent) {
-      var $tmpItem = $(pEvent.currentTarget).parents('.teaser'),
-        tmpIndex = ($tmpItem.parents('.region-feed').find('.region-teaser-list .teaser').index($tmpItem) + 1),
-        tmpTrackingObject = {
-          event: this.gtmIndexEvent,
-          category: 'teaser',
-          action: 'feed_teaser',
-          index: 'index_' + tmpIndex
-        };
+      var $tmpItem = $(pEvent.currentTarget).closest('.teaser'),
+        tmpIndex,
+        tmpTrackingObject,
+        $tmpTeaserParent;
 
-      if ($tmpItem.parents('[data-view-type]').data('view-type') != 'feedTeaserView') return;
+      if ($tmpItem.closest('#content').length > 0) {
+        $tmpTeaserParent = $tmpItem.closest('#content').find('> .region-infinite-block');
+      } else if ($tmpItem.closest('#feed-modal-search').length > 0) {
+        $tmpTeaserParent = $tmpItem.closest('#feed-modal-search');
+      } else {
+        return;
+      }
+
+      tmpIndex = ($tmpTeaserParent.find('.teaser[data-nid]').index($tmpItem) + 1);
+
+      tmpTrackingObject = {
+        event: this.gtmIndexEvent,
+        category: 'teaser',
+        action: 'feed_teaser',
+        index: 'index_' + tmpIndex
+      };
+
       TrackingManager.trackEvent(tmpTrackingObject);
     },
     onTeaserCategoryClickHandler: function (pEvent) {
