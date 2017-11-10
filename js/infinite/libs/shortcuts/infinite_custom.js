@@ -24,7 +24,6 @@
     if (typeof OdoscopeManager !== 'undefined' && OdoscopeManager.getInstance().isOdoscopeArticleGroup() && this.container.is('#feed')) {
       OdoscopeManager.getInstance().get('articleModel').on('set:articleModel', this.onOdoscopeArticelModelHandler, this);
       this.onOdoscopeArticelModelHandler(OdoscopeManager.getInstance().get('articleModel'));
-      console.log("infinite_custom odoscope active");
     }
 
     this.$container = $(this.container);
@@ -32,7 +31,7 @@
   }
 
   Infinite.prototype.onOdoscopeArticelModelHandler = function (pModel) {
-    console.log("%conOdoscopeArticelModelHandler", "color: green; font-weight: bold;", pModel);
+    console.log("%cinfiniteCustom", "color: deepskyblue;", pModel);
     this.useOdoscope = true;
     this.odoscopeArticleModel = pModel;
   }

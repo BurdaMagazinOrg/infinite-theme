@@ -154,8 +154,6 @@
       $pContainer.find('.text-timestamp').timeago();
     },
     updateLinks: function ($pContainer) {
-      console.log("updateLinks");
-
       if ($pContainer.data('internal-url')) {
         BurdaInfinite.utils.BaseUtils.updateInternalURL($pContainer);
       } else if ($pContainer.data('external-url')) {
@@ -200,8 +198,6 @@
               url = $tmpElement.attr('data-external-url'),
               target = $tmpElement.attr('data-target') || '_blank';
 
-            console.log("updateExternalURL >>> URL", url, "TARGET", target);
-
             window.open(url, target);
           }, this));
 
@@ -235,9 +231,7 @@
       BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
     });
 
-    console.log("bind custom link refresh handler");
     $(window).bind('base-utils:update-links', function (pEvent, $pContainer) {
-      console.log("base-utils:update-links", $pContainer);
       BurdaInfinite.utils.BaseUtils.updateLinks($pContainer);
     });
   });

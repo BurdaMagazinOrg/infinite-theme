@@ -54,7 +54,7 @@
 
 
       this.set('isActive', this.getBreakpoints().length > 0);
-      console.log("deviceModelInfo", JSON.parse(this.getReferrerCookie()));
+      // console.log("deviceModelInfo", JSON.parse(this.getReferrerCookie()));
     },
     createBreakpoints: function () {
       var tmpModelItem = {},
