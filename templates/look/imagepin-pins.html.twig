@@ -1,6 +1,6 @@
 {% set url = url('<current>') %}
- {% if 'fia/nodes.xml' in url|render|render %}
 
+{% if 'fia/nodes.xml' in url|render|render %}
     {% if content %}
         <figure data-feedback="fb:likes,fb:comments">
             {{ content }}
