@@ -16,7 +16,7 @@
 {% set url = url('<current>') %}
 
 {% if 'fia/nodes.xml' in url|render|render %}
-xxxx{{ content.field_image }}xxxx
+{{ content.field_image }}
 {% else %}
 {% if content %}
     {% block img_container_block %}
