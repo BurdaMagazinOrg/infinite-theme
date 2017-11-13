@@ -13,7 +13,11 @@
  */
 #}
 {% set share_url = absolute_node_url ~ "?utm_medium=social&utm_campaign=Sharing&utm_source=" %}
+{% set url = url('<current>') %}
 
+{% if 'fia/nodes.xml' in url|render|render %}
+{{ content.field_image }}
+{% else %}
 {% if content %}
     {% block img_container_block %}
         <div class="img-container" itemscope="" itemtype="http://schema.org/imageObject">
@@ -57,4 +61,5 @@
             {% endblock %}
         </div>
     {% endblock %}
+{% endif %}
 {% endif %}
