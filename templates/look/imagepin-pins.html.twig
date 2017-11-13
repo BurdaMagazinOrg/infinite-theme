@@ -1,39 +1,30 @@
-{{ content }}
 {% set url = url('<current>') %}
 
 {% if 'fia/nodes.xml' in url|render|render %}
-<div class="caption">
-    {% block copyright_source_block %}
-        {% if copyright | plain_text or source | plain_text %}
-            <div class="text-copyright">
-                {% if copyright | plain_text %}
-                    <span>{{ copyright }}</span>
+    {% if content %}
+        <figure data-feedback="fb:likes,fb:comments">
+            {{ content }}
+            <figcaption>
+                {% if content.field_description | render %}
+                    <h1>{{ content.field_description | basic_format }}</h1>
                 {% endif %}
-                {% if source | plain_text %}
-                    <span>{{ source }}</span>
+                {% if content.field_copyright | plain_text or content.field_source | plain_text %}
+                    <cite>
+                    <span class="text-copyright">
+                        &copy;
+                        {% if content.field_copyright  %}
+                            {{ content.field_copyright | plain_text}}
+                        {% endif %}
+                        {% if content.field_source  %}
+                            <span class="text-source">{{ content.field_source | plain_text }}</span>
+                        {% endif %}
+                    </span>
+                    </cite>
                 {% endif %}
-            </div>
-        {% endif %}
-    {% endblock %}
-
-    {% if description %}
-        <div class="text-description">
-            {{ description }}
-        </div>
+            </figcaption>
+        </figure>
     {% endif %}
-
-    {% block socials_block %}
-        <div class="socials socials-bar">
-            <amp-social-share width="32" height="32" class="item-social icon-facebook" type="facebook"
-                              data-param-href="{{ share_url ~ "Sharing_Facebook" }}"
-                              data-param-app_id="{{ fb_app_id }}"></amp-social-share>
-
-            <amp-social-share width="32" height="32" class="item-social icon-pinterest" type="pinterest"
-                              data-param-url="{{ (share_url ~ "Sharing_Pinterest") | e('html_attr') }}"
-                              data-param-media="{{ share_img_url | e('html_attr') }}"
-                              data-param-description="{{ description | plain_text | e('html_attr') }}"></amp-social-share>
-        </div>
-    {% endblock %}
-</div>
+{% else %}
+    {{ content }}
 {% endif %}
 {{ pins }}
