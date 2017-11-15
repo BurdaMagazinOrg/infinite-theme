@@ -21,10 +21,14 @@
       this.container = this.options.container;
     }
 
-    if (typeof OdoscopeManager !== 'undefined' && OdoscopeManager.getInstance().isOdoscopeArticleGroup() && this.container.is('#feed')) {
+    if (typeof OdoscopeManager !== 'undefined' && this.container.is('#feed') && OdoscopeManager.getInstance().has('articleModel')) {
       OdoscopeManager.getInstance().get('articleModel').on('set:articleModel', this.onOdoscopeArticelModelHandler, this);
-      this.onOdoscopeArticelModelHandler(OdoscopeManager.getInstance().get('articleModel'));
+
+      if (OdoscopeManager.getInstance().isOdoscopeArticleGroup()) {
+        this.onOdoscopeArticelModelHandler(OdoscopeManager.getInstance().get('articleModel'));
+      }
     }
+
 
     this.$container = $(this.container);
     this.reInit();
