@@ -1,0 +1,24 @@
+{% set wrapper_classes = [
+'region-full-content',
+'region-infinite-block',
+'infinite-item',
+'item-content--look',
+] %}
+
+{# Add data attributes #}
+{% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
+
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-title', node_seo_title) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-tr-container-type', 'look') %}
+
+{% if view_mode == 'full' %}
+    {% set wrapper_attributes = wrapper_attributes.setAttribute('data-no-track', 'true') %}
+{% endif %}
+
+<div{{ wrapper_attributes.addClass(wrapper_classes) }} >
+    {% include '@infinite/node/look/node--look.html.twig' %}
+</div>

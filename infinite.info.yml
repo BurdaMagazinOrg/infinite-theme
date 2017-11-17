@@ -91,6 +91,8 @@ stylesheets-remove:
   - "@nexx_integration/css/styles.css"
   - "@hm_newsletter/css/hm_newsletter.css"
   - "@blazy/css/components/blazy.loading.css"
+  - "@imagepin/css/extensions/imagepin.slick.css"
+  - "@imagepin/css/imagepin.css"
 
 #libraries-override:
 #  ad_integration/ad_helper: false

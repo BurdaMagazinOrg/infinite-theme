@@ -1,0 +1,30 @@
+{% set url = url('<current>') %}
+
+{% if 'fia/nodes.xml' in url|render|render %}
+    {% if content %}
+        <figure data-feedback="fb:likes,fb:comments">
+            {{ content }}
+            <figcaption>
+                {% if description %}
+                    <h1>{{ description | plain_text}}</h1>
+                {% endif %}
+                {% if copyright or source %}
+                    <cite>
+                    <span class="text-copyright">
+                        &copy;
+                        {% if copyright  %}
+                            {{ copyright }}
+                        {% endif %}
+                        {% if source  %}
+                            <span class="text-source">{{ source }}</span>
+                        {% endif %}
+                    </span>
+                    </cite>
+                {% endif %}
+            </figcaption>
+        </figure>
+    {% endif %}
+{% else %}
+     {{ content }}
+{% endif %}
+{{ pins }}

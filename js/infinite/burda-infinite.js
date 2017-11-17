@@ -5,6 +5,7 @@
   window.BurdaInfinite = {
     views: {
       base: {},
+      products: {},
       newsletter: {}
     },
     utils: {},

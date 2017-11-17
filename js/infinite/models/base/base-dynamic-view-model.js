@@ -70,20 +70,23 @@
         case 'newsletterModalView':
           tmpView = new NewsletterModalView(tmpSettings);
           break;
-        // case 'productsView':
-        //   tmpView = new ProductsView(tmpSettings);
-        //   break;
         case 'productView':
           tmpView = new ProductView(tmpSettings);
           break;
         case 'productSliderView':
           tmpView = new ProductSliderView(tmpSettings);
           break;
+          case 'productLookView':
+          tmpView = new ProductLookView(tmpSettings);
+          break;
         case 'anchorNavigationView':
           tmpView = new AnchorNavigationView(tmpSettings);
           break;
         case 'ecommerceSlider':
           tmpView = new EcommerceSliderView(tmpSettings);
+          break;
+        case 'lookView':
+          tmpView = new LookView(tmpSettings);
           break;
         default:
           tmpView = new BaseView(tmpSettings);

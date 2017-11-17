@@ -258,6 +258,14 @@ function infinite_preprocess_paragraph(&$variables) {
 }
 
 function infinite_preprocess_field(&$variables) {
+  // INREL-2807 Set all links in promotion to nofollow
+  if($variables['element']['#field_name'] === 'field_url' && $variables['element']['#bundle'] === 'promotion') {
+    /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $item */
+    foreach ($variables['items'] as &$item) {
+      $item['content']['#options']['attributes']['rel'] = 'nofollow';
+    }
+  }
+
   if ($variables['element']['#field_name'] == 'field_tags') {
     $items = &$variables['items'];
     foreach ($items as $delta => &$item) {
