@@ -205,10 +205,14 @@
       if (this.model.get('disabled') == true) return;
 
       this.model.set('trackImpression', true);
-      TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
+      if(typeof TrackingManager != 'undefined') {
+        TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
+      }
     },
     trackProductClick: function () {
-      TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
+      if(typeof TrackingManager != 'undefined') {
+        TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
+      }
     },
     onProductClickHandler: function (pEvent) {
       this.trackProductClick();
