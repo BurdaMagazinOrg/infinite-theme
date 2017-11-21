@@ -8,16 +8,21 @@
     {% for widget in items %}
         <div{{ widget.attributes }}>
 
-            {% set product_id %}
-                {{ widget.content }}
+            {% set product_one %}
+                {{ widget.content.product_one }}
+            {% endset %}
+
+            {% set product_two %}
+                {{ widget.content.product_two }}
             {% endset %}
 
 
-
             {% if 'fia/nodes.xml' in url|render|render %}
-                {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'facebook_instant_articles_rss') }}
+                {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'facebook_instant_articles_rss') }}
+                {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'facebook_instant_articles_rss') }}
             {% else %}
-                {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'look') }}
+                {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
+                {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
             {% endif %}
 
 
