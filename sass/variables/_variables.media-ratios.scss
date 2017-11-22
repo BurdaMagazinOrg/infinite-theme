@@ -4,9 +4,9 @@ $teaser__img-ratio-tablet--presenter-multi: floor(percentage(210/375)) !default;
 $teaser__img-ratio-desktop--presenter-multi: floor(percentage(210/375)) !default;
 
 /**presenter half **/
-$teaser__img-ratio-mobile--presenter-l: 56.25%;
-$teaser__img-ratio-tablet--presenter-l: 56.25%;
-$teaser__img-ratio-desktop--presenter-l: 56.25%;
+$teaser__img-ratio-mobile--presenter-l: 56.25% !default;
+$teaser__img-ratio-tablet--presenter-l: 56.25% !default;
+$teaser__img-ratio-desktop--presenter-l: 36.25% !default;
 
 //TODO rename
 $teaser__img-ratio--full-content-mobile: 41.7% !default;
