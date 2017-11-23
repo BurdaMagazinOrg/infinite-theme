@@ -450,12 +450,12 @@
 }
 
 @mixin teaser-landscape-large() {
-  .teaser__img-container {
+  .media--image {
     @extend %ratio-hide;
   }
 
   @media (max-width: $screen-xs-max) {
-    .teaser__img-container {
+    .media--image {
       padding-bottom: $teaser__img-ratio-mobile--landscape-large;
     }
 
@@ -465,7 +465,7 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    .teaser__img-container {
+    .media--image {
       padding-bottom: $teaser__img-ratio-tablet--landscape-large;
     }
 
@@ -475,7 +475,7 @@
   }
 
   @media (min-width: $screen-md-min) {
-    .teaser__img-container {
+    .media--image {
       padding-bottom: $teaser__img-ratio-desktop--landscape-large;
     }
 
@@ -598,6 +598,7 @@
 
   .teaser__img-container {
     height: 0;
+    background-color: $bg-color-gray-light;
   }
 
   .teaser__caption-wrapper {
