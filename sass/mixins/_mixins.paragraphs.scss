@@ -853,7 +853,14 @@
   }
 
   &.item-paragraph--small .ecommerce-slider {
-    @include ecommerce-slider--small();
+
+    @media (max-width: $screen-xxs-max) {
+      @include ecommerce-slider--small();
+    }
+
+    @media (min-width: $screen-xs-min) {
+      @include ecommerce-slider--middle();
+    }
   }
 
 }
