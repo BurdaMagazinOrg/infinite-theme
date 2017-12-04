@@ -156,7 +156,7 @@
       var chunkSize = 10;
 
       function run() {
-        var tolerance = 2;
+        var tolerance = 8;
         window.setTimeout(function () {
           var chunk = elements.slice(0, chunkSize);
           for (var i = 0; i < chunk.length; i++) {
