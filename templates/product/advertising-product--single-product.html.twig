@@ -22,6 +22,8 @@
 'item-product--single',
 ] %}
 
+{% set data_attributes = data_attributes.setAttribute('data-text-action', 'text-overflow') %}
+{% set data_attributes = data_attributes.setAttribute('data-text-action-target', '.text-headline') %}
 {% set data_attributes = data_attributes.setAttribute('data-view-type', 'productView') %}
 
 {% if show_strikethrough_price %}
