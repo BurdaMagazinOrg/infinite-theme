@@ -557,18 +557,19 @@
 }
 
 @mixin _ecommerce-slider--middle() {
+
   .ecommerce-slider__content-wrapper {
     left: 0;
     right: 0;
   }
 
-  .ecommerce-slider__bg {
-    height: 572px;
-
-    img {
-      height: 572px;
-    }
-  }
+  //.ecommerce-slider__bg {
+  //  height: 572px;
+  //
+  //  img {
+  //    height: 572px;
+  //  }
+  //}
 
   .ecommerce-slider__title {
     @include text-helper-size($font-headline-id, $title-size-md);
