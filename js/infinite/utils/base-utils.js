@@ -165,7 +165,7 @@
               while (c.innerText.length && c.scrollHeight > c.clientHeight + tolerance) {
                 c.innerText = c.innerText.slice(0, -2) + '…';
               }
-              c.innerText = c.innerText.slice(0, -1);
+              c.innerText = c.innerText.slice(0, -3);
               c.innerText += '…';
             }
           }
