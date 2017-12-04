@@ -13,6 +13,12 @@
       ProductView.prototype.createModel.call(this);
 
       this.model.set('componentType', 'look');
+      this.model.set('variantType', 'look'); // Orignal oder Alternatib aus data attribut holen
+    },
+    collectTrackingData: function (){
+      ProductView.prototype.collectTrackingData.call(this);
+      this.model.get('enhancedEcommerce').productExtraInformation =  this.model.get('variantType');
+
     }
   });
 

@@ -32,24 +32,34 @@
 
           $tmpOriginalWidget = $that.$el.find('.imagepin-widgets [data-imagepin-key="' + tmpWidgetId + '"]');
           $tmpOriginalProduct = $tmpOriginalWidget.find('.item-ecommerce');
-          tmpInfiniteModel = $tmpOriginalProduct.data('infiniteModel');
 
-          /**
-           * get model and track impression
-           */
-          if (typeof tmpInfiniteModel != "undefined") {
-            tmpView = $tmpOriginalProduct.data('infiniteModel').get('view');
-            if ($tmpOriginalProduct.data('trackImpression') != true) {
-              $tmpOriginalProduct.data('trackImpression', true);
-              tmpView.trackImpression();
-            }
-          }
+            $.each($tmpOriginalProduct, function( index, element ){
+
+                var $targetElement = $tmpOriginalProduct.eq(index);
+                tmpInfiniteModel = $targetElement.data('infiniteModel');
+
+                /**
+                 * get model and track impression
+                 */
+                if (typeof tmpInfiniteModel != "undefined") {
+                    tmpView = $targetElement.data('infiniteModel').get('view');
+                    if ($targetElement.data('trackImpression') != true) {
+                        $targetElement.data('trackImpression', true);
+                        tmpView.trackImpression();
+                    }
+                }
+
+            });
+
+
+
 
           /**
            * Load blazy shizzl
            */
           if ($that.blazy != null && $tmpImage.hasClass('b-lazy') && $tmpImage.hasClass('b-loaded') == false) {
             $that.blazy.load($tmpImage[0]);
+            $that.blazy.load($tmpImage[1]);
           }
         });
       });

@@ -18,11 +18,23 @@
 
 
             {% if 'fia/nodes.xml' in url|render|render %}
-                {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'facebook_instant_articles_rss') }}
-                {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'facebook_instant_articles_rss') }}
+                {% if product_one|striptags|render|trim is not empty %}
+                    <h6>{{ high }}</h6>
+                    {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'facebook_instant_articles_rss') }}
+                {% endif %}
+                {% if product_one|striptags|render|trim is not empty %}
+                    <h6>{{ low }}</h6>
+                    {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'facebook_instant_articles_rss') }}
+                {% endif %}
             {% else %}
-                {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
-                {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
+                {% if product_one|striptags|render|trim is not empty %}
+                    <h6 class="item-ecommerce">{{ high }}</h6>
+                    {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
+                {% endif %}
+                {% if product_two|striptags|render|trim is not empty %}
+                    <h6 class="item-ecommerce">{{ low }}</h6>
+                    {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
+                {% endif %}
             {% endif %}
 
 
