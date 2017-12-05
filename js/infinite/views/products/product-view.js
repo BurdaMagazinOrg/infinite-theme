@@ -185,8 +185,8 @@
         price: this.model.get('price'),
         brand: this.model.get('brand'),
         provider: this.model.get('provider'),
-        productCategory: this.model.get('productCategory'),
-        containerType: this.model.get('containerType') || ''
+        dimension19: this.model.get('productCategory'),
+        dimension24: this.model.get('containerType') || ''
       };
 
       if (this.model.has('productIndex')) {
