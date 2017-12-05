@@ -105,5 +105,17 @@
                 {{ anchor_links }}
             </div>
         {% endblock %}
+    {% elseif lexicon_links %}
+        {{ attach_library('infinite/infinite.views.anchor-navigation-view') }}
+
+        <div class="spotlight__anchor-nav" data-view-type="anchorNavigationView">
+            <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open"
+                 class="btn__open-tree">
+                {% block lexicon_label_block %}
+                    <span>Menü</span>
+                {% endblock %}
+            </div>
+            {{ lexicon_links }}
+        </div>
     {% endif %}
 {% endblock %}
