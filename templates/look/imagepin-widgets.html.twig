@@ -27,16 +27,25 @@
                     {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'facebook_instant_articles_rss') }}
                 {% endif %}
             {% else %}
+            {% if product_one|striptags|render|trim is not empty and product_two|striptags|render|trim is not empty%}
+                <div class="product-widgets two-items">
+            {% else %}
+                <div class="product-widgets one-item">
+            {% endif %}
                 {% if product_one|striptags|render|trim is not empty %}
-                    <h6 class="item-ecommerce">{{ high }}</h6>
-                    {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
+                    <div class="high">
+                        <span class="label">{{ high }}</span>
+                        {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
+                    </div>
                 {% endif %}
                 {% if product_two|striptags|render|trim is not empty %}
-                    <h6 class="item-ecommerce">{{ low }}</h6>
-                    {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
+                    <div class="low">
+                        <span class="label">{{ low }}</span>
+                        {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
+                    </div>
                 {% endif %}
             {% endif %}
-
+            </div>
 
 
 
