@@ -81,7 +81,7 @@
 
 
       if (options.offset == 'bottom') {
-        offsetTopCondition = (elementOffset.top + elementSize.height < viewportOffset.top + viewportSize.height);
+        offsetTopCondition = (elementOffset.top + elementSize.height < viewportOffset.top + viewportSize.height && elementOffset.top + elementSize.height > viewportOffset.top);
       } else {
         offsetTopCondition = (elementOffset.top + elementSize.height > viewportOffset.top && elementOffset.top < viewportOffset.top + viewportSize.height);
       }

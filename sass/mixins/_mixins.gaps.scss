@@ -11,6 +11,15 @@
   margin-top: 0;
 }
 
+//@mixin gap__container--v-reset-important($lined: false) {
+//  @if ($region-v-lined or $lined) {
+//    border-top: 0 !important;
+//  }
+//
+//  padding-top: 0;
+//  margin-top: 0;
+//}
+
 /** Lists Gaps **/
 @mixin gap--v-tiny($gaps: ($gap-v-tiny-mobile, $gap-v-tiny-tablet, $gap-v-tiny-desktop)) {
   @include _gap($gaps);
