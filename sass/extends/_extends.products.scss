@@ -2,6 +2,10 @@
   @include ecommerce-slider();
 }
 
+%ecommerce-slider--small {
+  @include ecommerce-slider--small();
+}
+
 %ecommerce-slider--middle {
   @include ecommerce-slider--middle();
 }
