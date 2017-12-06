@@ -1,7 +1,6 @@
 @mixin socials-bar-container() {
-  overflow: hidden;
-  font-family: initial;
   font-size: 0;
+  display: flex;
 
   .item-social {
     &:first-child {
