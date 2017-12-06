@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display an ingredient.
+ *
+ * Available variables:
+ * - quantity: The ingredient quantity.
+ * - unit_text: The full name of the ingredient quantity's unit.
+ * - unit_abbreviation: The abbreviated name of the ingredient quantity's unit.
+ * - unit_display: A flag that indicates whether to display the full
+ *     name of the unit or the abbreviation.
+ * - name: The ingredient name.
+ * - note: The ingredient note.
+ *
+ * @todo Use attributes to set the element classes.
+ *
+ * @see template_preprocess_ingredient_formatter()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set title_string = 'Title'|t %}
+
+{% if name == 'Title' or name == title_string  %}
+    <h4 class="recipe__ingredient--group-title text-title">{{ note }}</h4>
+{% else %}
+    <span class="quantity-unit">{{ quantity|raw }}{% if unit_name %}{% if unit_display %} {{ unit_name }}{% else %} <abbr title="{{ unit_name }}">{{ unit_abbreviation }}</abbr>{% endif %}{% endif %}</span> <span class="ingredient-name">{{ name }}{% if note|length > 0 %} ({{ note }}){% endif %}</span>
+{% endif %}
