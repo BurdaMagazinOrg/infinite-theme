@@ -4,7 +4,8 @@
   font-family: initial;
   #header-home & {
     display: flex;
-    overflow: auto;
+    overflow: visible;
+    font-family: $font-content;
   }
 
   .item-social {
