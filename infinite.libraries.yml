@@ -33,7 +33,6 @@ infinite.social-apis:
 infinite.libs:
   js:
 #    js/infinite/libs/jquery.browser.js: {}
-    js/infinite/libs/jquery.dotdotdot.min.js: {}
     js/infinite/libs/jquery.waypoints.js: {}
     js/infinite/libs/shortcuts/infinite_custom.js: {}
     js/infinite/libs/shortcuts/sticky.js: {}
