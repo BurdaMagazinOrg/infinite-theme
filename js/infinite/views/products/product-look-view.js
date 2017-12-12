@@ -13,11 +13,11 @@
       ProductView.prototype.createModel.call(this);
 
       this.model.set('componentType', 'look');
-      this.model.set('variantType', 'look'); // Orignal oder Alternatib aus data attribut holen
+      this.model.set('variantType', 'look');
     },
     collectTrackingData: function (){
       ProductView.prototype.collectTrackingData.call(this);
-      this.model.get('enhancedEcommerce').productExtraInformation =  this.model.get('variantType');
+      this.model.get('enhancedEcommerce').productExtraInformation =  this.$el.parent().data('product-variant');
 
     }
   });
