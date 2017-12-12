@@ -23,8 +23,6 @@
         var mainView = new MainView({el: $context, id: ViewIds.mainView});
         BM.reuseView(ViewIds.mainView, mainView);
       });
-
-      this.initBlazyOnContainer('#modal-search');
     },
 
     initBlazyOnContainer: function(containerSelector){
