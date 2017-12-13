@@ -58,6 +58,7 @@
       this.feedView.appendElement($tmpElement);
       this.feedView.onAfterLoad($tmpElement);
       this.activateScrollBehavior();
+      Drupal.behaviors.burdaInfinite.initBlazyOnContainer('#modal-search');
     },
     onInputChangeHandler: function (pEvent) {
       var tmpStringLength = this.$searchInputField.val().length,
