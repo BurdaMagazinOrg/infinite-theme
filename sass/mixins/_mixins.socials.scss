@@ -1,7 +1,12 @@
 @mixin socials-bar-container() {
+  font-size: 0;
   overflow: hidden;
   font-family: initial;
-  font-size: 0;
+  #header-home & {
+    display: flex;
+    overflow: visible;
+    font-family: $font-content;
+  }
 
   .item-social {
     &:first-child {
