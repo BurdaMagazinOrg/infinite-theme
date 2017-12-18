@@ -1,11 +1,11 @@
-.region--full-content, .region-full-content {
-  @extend %region--full-content;
-  @extend %region__children--full-content;
-}
-
 //padded / lined teaser
 .region-content, .region-feed-teasers {
   @include region-content();
+}
+
+.region--full-content, .region-full-content {
+  @include region--full-content();
+  @include region__children--full-content();
 }
 
 .region-lazy-loading, .region-content > .region-infinite-block {

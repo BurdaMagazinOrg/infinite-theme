@@ -36,8 +36,8 @@
     right: 0;
   }
 
-  @media (max-width: $screen-xxs-max) {
-    .socials-bar {
+  @media (max-width: $screen-xs-max) {
+    .socials-bar > div:first-child {
       @include fade-out();
     }
   }

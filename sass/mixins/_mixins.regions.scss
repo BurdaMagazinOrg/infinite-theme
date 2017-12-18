@@ -22,6 +22,13 @@
   & > .item-content__header:first-child {
     padding-top: 0;
   }
+
+  & + .region-full-content:not(.no-v-padding):not(.item-content--article) {
+    @extend %gap--v-region;
+    @if ($region-v-lined) {
+      border-top: $h-line-style;
+    }
+  }
 }
 
 @mixin region__teasers--horizontal() {
@@ -44,14 +51,6 @@
     //TODO check if :first-child necessary
     .no-v-padding:first-child {
       @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
-    }
-  }
-
-  .region-full-content + .region-full-content:not(.item-content--article),
-  .region-full-content + .region-full-content:not(.no-v-padding) {
-    @extend %gap--v-region;
-    @if ($region-v-lined) {
-      border-top: $h-line-style;
     }
   }
 }
