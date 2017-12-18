@@ -46,6 +46,9 @@
           }
 
           break;
+        case 'teaserFeedView':
+          tmpView = new TeaserFeedView(tmpSettings);
+          break;
         case 'articleView':
           tmpView = new ArticleView(tmpSettings);
           break;
