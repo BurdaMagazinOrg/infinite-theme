@@ -20,14 +20,14 @@
         {% if 'fia/nodes.xml' in url|render|render %}
         {% if product_one|striptags|render|trim is not empty %}
             {% set attributes = create_attribute({'data-product-variant': 'high'}) %}
-            <div {{ attributes }}>
+            <div {{ attributes.addClass('product-widget__variant') }}>
                 <h6>{{ high }}</h6>
                 {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'facebook_instant_articles_rss') }}
             </div>
         {% endif %}
         {% if product_one|striptags|render|trim is not empty %}
             {% set attributes = create_attribute({'data-product-variant': 'low'}) %}
-            <div {{ attributes }}>
+            <div {{ attributes.addClass('product-widget__variant') }}>
                 <h6>{{ low }}</h6>
                 {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'facebook_instant_articles_rss') }}
             </div>
@@ -40,7 +40,7 @@
                 {% endif %}
                 {% if product_one|striptags|render|trim is not empty %}
                     {% set attributes = create_attribute({'data-product-variant': 'high'}) %}
-                    <div {{ attributes }} class="high">
+                    <div {{ attributes }} class="product-widget__variant high">
                         <span class="label">{{ high }}</span>
                         {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
                     </div>
@@ -49,7 +49,7 @@
                 {% if product_two|striptags|render|trim is not empty %}
                     {% set attributes = create_attribute({'data-product-variant': 'low'}) %}
 
-                    <div {{ attributes }} class="low">
+                    <div {{ attributes }} class="product-widget__variant low">
                         <span class="label">{{ low }}</span>
                         {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
                     </div>
