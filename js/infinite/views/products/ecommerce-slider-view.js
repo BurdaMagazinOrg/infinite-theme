@@ -43,7 +43,11 @@
       this.swiperApi = this.$swiperContainer.swiper(this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
 
-      this.swiperApi.off('onSlideChangeEnd').on('onSlideChangeEnd', _.bind(this.onSliderChangeHandler, this));
+      this.swiperApi.off('onSlideChangeEnd')
+        .on('onSlideChangeEnd', _.bind(this.onSliderChangeHandler, this))
+        .on('onSlideChangeEnd', function () {
+          window.dispatchEvent(new Event('infinite-wishlist--update-icons'));
+        });
       this.swiperApi.off('onTouchEnd').on('onTouchEnd', _.bind(this.onSliderChangeHandler, this));
     },
     trackVisibleProductImpressions: function () {

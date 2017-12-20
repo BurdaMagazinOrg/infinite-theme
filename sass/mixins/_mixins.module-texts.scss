@@ -421,8 +421,6 @@
 }
 
 @mixin product__item-text--single-product() {
-  @extend %icon;
-  @extend %icon--after;
   text-align: $product-text-align--single-product;
   position: relative;
 
@@ -433,10 +431,6 @@
   }
 
   &.item-product--sold-out {
-    &:before, &:after {
-      content: none;
-    }
-
     .text-shop {
       @extend %button--bg-colored-disabled;
     }
@@ -448,23 +442,6 @@
       @include text-helper-size($product__item-text-price-font-id--single-product-strikethrough, $product__item-text-price-size--single-product-strikethrough);
       color: $product__item-text-price-color--single-product-strikethrough;
     }
-  }
-
-  &:before, &:after {
-    font-size: $product__shop-icon-size--single-product - 10px;
-    right: $product__shop-icon-pos-right--single-product + 10px;
-    top: 0;
-    position: absolute;
-  }
-
-  &:before {
-    content: icon($product__shop-icon-content-before--single-product);
-    color: $product__shop-icon-before-color--single-product;
-  }
-
-  &:after {
-    content: icon($product__shop-icon-content--single-product);
-    color: $product__shop-icon-color--single-product;
   }
 
   .text-headline {

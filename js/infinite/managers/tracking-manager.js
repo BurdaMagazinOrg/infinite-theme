@@ -395,20 +395,6 @@
             }
           }
           break;
-        case 'addToCart':
-          tmpTrackingObject.event = 'addToCart';
-          tmpTrackingObject.ecommerce = {
-              currencyCode: pData.currencyCode,
-              products: [pData]
-          };
-          break;
-        case 'removeFromCart':
-          tmpTrackingObject.event = 'removeFromCart';
-          tmpTrackingObject.ecommerce = {
-              currencyCode: pData.currencyCode,
-              products: [pData]
-          };
-          break;
         default:
           return;
       }
