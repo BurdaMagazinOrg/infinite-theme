@@ -41,7 +41,9 @@
                 {% if product_one|striptags|render|trim is not empty %}
                     {% set attributes = create_attribute({'data-product-variant': 'high'}) %}
                     <div {{ attributes }} class="product-widget__variant high">
-                        <span class="label">{{ high }}</span>
+                        {% if product_one|striptags|render|trim is not empty and product_two|striptags|render|trim is not empty%}
+                            <span class="label">{{ high }}</span>
+                        {% endif %}
                         {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
                     </div>
 
@@ -50,7 +52,9 @@
                     {% set attributes = create_attribute({'data-product-variant': 'low'}) %}
 
                     <div {{ attributes }} class="product-widget__variant low">
+                    {% if product_one|striptags|render|trim is not empty and product_two|striptags|render|trim is not empty%}
                         <span class="label">{{ low }}</span>
+                    {% endif %}
                         {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
                     </div>
 
