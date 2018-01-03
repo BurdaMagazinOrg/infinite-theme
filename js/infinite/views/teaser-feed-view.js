@@ -13,8 +13,6 @@
             this.addListener();
             this.createModel();
 
-            console.log("TEASER FEED VIEW");
-
             if (this.infiniteBlockDataModel) {
 
                 if (this.infiniteBlockDataModel.has('trackingContainerType') && this.model.get('componentType') != ProductView.COMPONENT_TYPE_SLIDER) {
