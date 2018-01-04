@@ -52,9 +52,17 @@
             this.$el.unbind('click.teaser_feed').bind('click.teaser_feed', $.proxy(this.onTeaserClickHandler, this));
         },
         createModel: function () {
-            this.model.set('nid', this.$el.data('nid'));
+            //var tmpURL = this.$el.data('external-url') || this.$el.data('internal-url'),
+            //    $tmpURLElement = [];
+            //
+            //if(!tmpURL) {
+            //    $tmpURLElement = this.$el.find('.teaser__img-container');
+            //    tmpURL = $tmpURLElement.data('external-url') || $tmpURLElement.data('internal-url'));
+            //}
+
+            this.model.set('nid', this.$el.data('nid') + '');
             this.model.set('title', jQuery.trim(this.$el.find('.teaser__title').text()));
-            this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
+            //this.model.set('url', tmpURL);
         },
         extendDataLayerInfo: function () {
             if (this.advancedTrackingData.hasOwnProperty('page')) {
@@ -68,7 +76,7 @@
             var tmpData = {
                 category: 'teaser-feed-ctr',
                 label: this.model.get('title'),
-                value: this.model.get('url')
+                value: this.model.get('nid')
             };
 
             if (this.model.has('productIndex')) {
@@ -101,7 +109,6 @@
         },
         refresh: function () {
             BaseView.prototype.refresh.call(this);
-
             this.delegateInview();
         },
         onTeaserClickHandler: function (pEvent) {
