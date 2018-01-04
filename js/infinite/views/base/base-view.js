@@ -10,6 +10,7 @@
       _.extend(this, pOptions || {});
 
       this.listenTo(this.model, "refresh", this.onRefreshHandler, this);
+      this.listenTo(this.model, "change:el", this.onElementChangedHandler, this);
     },
     delegateElements: function ($pElement) {
       var $tmpElement = $pElement || this.$el;
@@ -20,6 +21,10 @@
     },
     enableView: function () {
       this.enabled = true;
+    },
+    onElementChangedHandler: function (pEvent) {
+      this.$el = this.model.get('el');
+      this.refresh();
     },
     onRefreshHandler: function (pEvent) {
       this.refresh();

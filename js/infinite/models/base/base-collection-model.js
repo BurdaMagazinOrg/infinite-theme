@@ -36,6 +36,9 @@
     at: function (pIndex) {
       return this.getItems().at(pIndex);
     },
+    findByViewType: function (pViewType) {
+      return this.getItems().where({"type": pViewType});
+    },
     reset: function (pDestroyItems) {
       var tmpDestroyItems = pDestroyItems || false;
 

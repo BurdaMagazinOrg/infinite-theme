@@ -9,9 +9,12 @@
     {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
 {% endif %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
-{% set attributes = attributes.setAttribute('data-view-type', 'teaserFeedView') %}
+{% if dataViewType is not defined %}
+    {% set dataViewType = 'teaserFeedView' %}
+{% endif %}
 
+{% set attributes = attributes.setAttribute('data-view-type', dataViewType) %}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
 {{ attach_library('infinite/infinite.views.teaser-feed-view') }}
 
 <article{{ attributes.addClass(wrapper_classes) }}>

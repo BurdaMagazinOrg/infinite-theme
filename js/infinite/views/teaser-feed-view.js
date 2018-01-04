@@ -108,6 +108,7 @@
             }
         },
         refresh: function () {
+            console.log(">>>> onRefreshHandler");
             BaseView.prototype.refresh.call(this);
             this.delegateInview();
         },
