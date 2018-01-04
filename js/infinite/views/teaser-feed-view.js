@@ -99,6 +99,11 @@
                 TrackingManager.trackEvent(this.model.get('teaserTracking'), this.advancedTrackingData);
             }
         },
+        refresh: function () {
+            BaseView.prototype.refresh.call(this);
+
+            this.delegateInview();
+        },
         onTeaserClickHandler: function (pEvent) {
             this.trackTeaserClick();
         },
