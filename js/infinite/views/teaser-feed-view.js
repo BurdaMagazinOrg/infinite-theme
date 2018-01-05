@@ -108,8 +108,10 @@
             }
         },
         refresh: function () {
-            console.log(">>>> onRefreshHandler");
             BaseView.prototype.refresh.call(this);
+            this.addListener();
+            this.createModel();
+            this.collectTrackingData();
             this.delegateInview();
         },
         onTeaserClickHandler: function (pEvent) {
