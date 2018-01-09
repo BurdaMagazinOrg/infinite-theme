@@ -1,0 +1,37 @@
+/** sizes **/
+$gap-section: 31px !default;
+$padding: floor($grid-gutter-width / 2) !default;
+
+$gap-size-xxs: 8px !default;
+$gap-size-xs: 16px !default;
+$gap-size-sm: 24px !default;
+$gap-size-md: 28px !default;
+$gap-size-lg: 31px !default;
+$gap-size-xl: 36px !default;
+$gap-size-xxl: 48px !default;
+$gap-size-xxxl: 61px !default;
+
+/**
+** Lists Gaps
+** padding + margin
+**/
+
+$gap-v-tiny-mobile: $gap-size-xxs !default;
+$gap-v-tiny-tablet: $gap-size-xs !default;
+$gap-v-tiny-desktop: $gap-size-xs !default;
+
+$gap-v-xs-mobile: $gap-size-xs !default;
+$gap-v-xs-tablet: $gap-size-xs !default;
+$gap-v-xs-desktop: $gap-size-xs !default;
+
+$gap-v-sm-mobile: $gap-size-xs !default;
+$gap-v-sm-tablet: $gap-size-sm !default;
+$gap-v-sm-desktop: $gap-size-sm !default;
+
+$gap-v-xl-mobile: $gap-size-md !default;
+$gap-v-xl-tablet: $gap-size-lg !default;
+$gap-v-xl-desktop: $gap-size-lg !default;
+
+$gap-v-xxl-mobile: $gap-size-md !default;
+$gap-v-xxl-tablet: $gap-size-xxxl !default;
+$gap-v-xxl-desktop: $gap-size-xxxl !default;

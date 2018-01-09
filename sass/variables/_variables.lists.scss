@@ -1,0 +1,42 @@
+/**
+**  Lists **
+**/
+$list__links--module-font-id: $font-content-id !default;
+$list__links--module-font-size: 16px !default;
+$list__links-margin--module: $gap-size-xs 0 0 0 !default;
+$list__links-padding--module: 0 0 $gap-size-md 0 !default;
+$list__links-item-h-line--module: $h-line-style !default;
+$list__links-item-margin--module: 5px 0 0 !default;
+
+$list__glossary-font-id: $font-label-id !default;
+$list__glossary-font-size: $title-size-xxs !default;
+$list__glossary-text-transform: none !default;
+$list__glossary-line-height: 32px !default;
+$list__glossary-margin: 0 4px 4px 0 !default;
+$list__glossary-padding: 0 8px !default;
+$list__glossary-border: $h-line-style !default;
+$list__glossary-background-color: $bg-color-gray-light !default;
+$list__glossary-background-color-active: $color-highlighted !default;
+$list__glossary-background-disabled-color: $bg-color-gray-light !default;
+$list__glossary-color: $text-color !default;
+$list__glossary-disabled-color: $gray-base !default;
+$list__glossary-color-active: $white !default;
+
+/** list--content-teaser **/
+$list__content-teaser--horizontal-count--small: 3 !default;
+$list__content-teaser--horizontal-count--middle: 4 !default;
+$list__content-teaser--horizontal-count--full: 5 !default;
+
+$list__content-teaser--horizontal-gap-h-mobile: 0 !default;
+$list__content-teaser--horizontal-gap-h-tablet: floor($gap-size-sm/2) !default;
+$list__content-teaser--horizontal-gap-h-desktop: floor($gap-size-sm/2) !default;
+
+$list__content-teaser__item--horizontal-gap-top-mobile: $gap-size-xxs !default;
+$list__content-teaser__item--horizontal-gap-top-tablet: 12px !default;
+$list__content-teaser__item--horizontal-gap-top-desktop: $gap-size-md !default;
+
+/** list--alphabetical **/
+$list--alphabetical-headline-padding: 5px 0 !default;
+$list--alphabetical-headline-margin: 0 0 $gap-size-xs 0 !default;
+$list--alphabetical-headline-color: $color-brand !default;
+$list--alphabetical-list-item-margin: 10px 0 0 0 !default;

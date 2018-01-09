@@ -1,0 +1,107 @@
+/**
+** eCommerce-Slider
+**/
+$ecommerce-slider__background-color: #fff;
+
+$ecommerce-slider__padding--full: 146px !default;
+$ecommerce-slider__padding--middle: 70px !default;
+$ecommerce-slider__padding--small: 52px !default;
+
+$ecommerce-slider__padding-xs--full: 16px !default;
+$ecommerce-slider__padding-sm--full: 80px !default;
+$ecommerce-slider__padding-md--full: $ecommerce-slider__padding--full;
+
+$ecommerce-slider__arrowbox-width: 50px !default;
+
+$ecommerce-slider__ratio-s: 172% !default;
+$ecommerce-slider__ratio-m: 56% !default;
+$ecommerce-slider__ratio-l: 56% !default;
+$ecommerce-slider__ratio-xl: 49.5% !default;
+
+$ecommerce-slider__ratio-xxs--full: 192% !default;
+$ecommerce-slider__ratio-xs--full: 172% !default;
+$ecommerce-slider__ratio-sm--full: 72% !default;
+$ecommerce-slider__ratio-md--full: 56% !default;
+$ecommerce-slider__ratio-lg--full: 56% !default;
+$ecommerce-slider__ratio-xl--full: 49.5% !default;
+
+$ecommerce-slider__ratio-xxs--middle: 187% !default;
+$ecommerce-slider__ratio-xs--middle: 145% !default;
+$ecommerce-slider__ratio-sm--middle: 90% !default;
+$ecommerce-slider__ratio-md--middle: 65% !default;
+$ecommerce-slider__ratio-lg--middle: 61% !default;
+$ecommerce-slider__ratio-xl--middle: 61% !default;
+
+$ecommerce-slider__ratio-xxs--small: 180% !default;
+$ecommerce-slider__ratio-xs--small: 142% !default;
+$ecommerce-slider__ratio-sm--small: 110% !default;
+$ecommerce-slider__ratio-md--small: 153% !default;
+$ecommerce-slider__ratio-lg--small: 115% !default;
+$ecommerce-slider__ratio-xl--small: 115% !default;
+
+
+$ecommerce-slider__title-font-id: $font-headline-id !default;
+
+$ecommerce-slider__content-padding: 30px 0 0 0 !default;
+$ecommerce-slider__content-padding-s: 20px 0 0 0 !default;
+$ecommerce-slider__company-margin: 10px 0 20px 0 !default;
+
+$ecommerce-slider__brand-height: 20px !default;
+$ecommerce-slider__brand-seperator-margin: 0 10px 0 0 !default;
+
+$ecommerce-slider__item-background-color: $white !default;
+$ecommerce-slider__item-padding: 20px 20px 25px 20px !default;
+$ecommerce-slider__item-margin: 0 !default;
+
+$ecommerce-slider__item_width--small: 65%;
+$ecommerce-slider__item_width--tablet: 33.333%;
+$ecommerce-slider__item_width--desktop: 25%;
+
+$ecommerce-slider__arrows-background: #ea331e !default;
+$ecommerce-slider__arrows-color: $white !default;
+$ecommerce-slider__arrows-padding: 0 !default;
+$ecommerce-slider__arrows-font-size: 30px !default;
+$ecommerce-slider__arrows-background-color-hover: #7d8482 !default;
+$ecommerce-slider__arrows-color-hover: $ecommerce-slider__arrows-color !default;
+$ecommerce-slider__arrows-border-hover: 1px solid #7d8482 !default;
+
+
+$ecommerce-slider__item-lined-mobile: true !default;
+
+
+$ecommerce-slider__item-text-brand-font-id: $font-label-id !default;
+$ecommerce-slider__item-text-brand-size: 13px !default;
+$ecommerce-slider__item-text-brand-color: $gray-base !default;
+$ecommerce-slider__item-text-brand-letter-spacing: 0.15em !default;
+$ecommerce-slider__item-text-brand-gap-bottom: 5px !default;
+
+$ecommerce-slider__item-text-headline-font-id: $font-headline-id !default;
+$ecommerce-slider__item-text-headline-size: $title-size-xxs !default;
+$ecommerce-slider__item-text-headline-color: $text-color !default;
+
+$ecommerce-slider__item-text-headline-height-mobile: 43px !default;
+$ecommerce-slider__item-text-headline-height-tablet: 43px !default;
+$ecommerce-slider__item-text-headline-height-desktop: 43px !default;
+
+$ecommerce-slider__item-text-headline-gap-bottom-mobile: 33px !default;
+$ecommerce-slider__item-text-headline-gap-bottom-tablet: 33px !default;
+$ecommerce-slider__item-text-headline-gap-bottom-desktop: 33px !default;
+
+$ecommerce-slider__item-text-price-font-id: $font-content-bold-id !default;
+$ecommerce-slider__item-text-price-size: 13px !default;
+$ecommerce-slider__item-text-price-color: $text-color !default;
+$ecommerce-slider__item-text-price-pos-bottom: 45px !default;
+
+$ecommerce-slider__item-text-shipping-font-id: $font-label-id !default;
+$ecommerce-slider__item-text-shipping-size: 13px !default;
+$ecommerce-slider__item-text-shipping-color: $gray-base !default;
+$ecommerce-slider__item-text-shipping-pos-bottom: 40px !default;
+
+$ecommerce-slider__item-text-price-font-id--strikethrough: $ecommerce-slider__item-text-price-font-id !default;
+$ecommerce-slider__item-text-price-size--strikethrough: $ecommerce-slider__item-text-price-size !default;
+$ecommerce-slider__item-text-price-color--strikethrough: $product__item-text-price-color--strikethrough !default;
+
+$ecommerce-slider__item-text-price-strikethrough-font-id: $ecommerce-slider__item-text-price-font-id !default;
+$ecommerce-slider__item-text-price-strikethrough-size: $ecommerce-slider__item-text-price-size !default;
+$ecommerce-slider__item-text-price-strikethrough-color: $product__item-text-price-strikethrough-color !default;
+$ecommerce-slider__item-text-price-strikethrough-filter: $product__item-text-price-strikethrough-filter !default;

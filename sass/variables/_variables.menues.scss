@@ -1,0 +1,83 @@
+
+/**
+** Main Navigation
+**/
+
+$navigation-fade-delay: 0.05s !default;
+$navigation-letter-spacing: 1px !default;
+
+$menu--main-navigation-font-id: $font-navigation-id !default;
+$menu--main-navigation-size: 14px !default;
+$menu--main-navigation-bg: $white !default;
+$menu--main-navigation-min-height: 60px !default;
+$menu--main-navigation-padding-mobile: 0 90px 0 90px !default;
+$menu--main-navigation-padding-tablet: 0 90px 0 90px !default;
+$menu--main-navigation-padding-desktop: 0 100px 0 100px !default;
+
+$menu--main-navigation__item-letter-spacing-md: 0 !default;
+$menu--main-navigation__item-letter-spacing-lg: $navigation-letter-spacing !default;
+$menu--main-navigation__item-color: $text-color !default;
+$menu--main-navigation__item-active-color: $color-hover !default;
+$menu--main-navigation__item-active-bg: $white !default;
+$menu--main-navigation__item-margin-tablet: 0 5px !default;
+$menu--main-navigation__item-margin-desktop: 0 5px !default;
+$menu--main-navigation__item-padding-desktop: 5px 7px 4px !default;
+$menu--main-navigation__item-padding-tablet: 5px 7px 4px !default;
+
+$menu--main-navigation-logo-sticky-margin: 0 28px 0 0 !default;
+
+$menu--main-navigation__menu-label-font-id: $menu--main-navigation-font-id !default;
+$menu--main-navigation__menu-label-size: $menu--main-navigation-size !default;
+$menu--main-navigation__menu-label-margin: 0 0 0 $gap-size-sm !default;
+$menu--main-navigation__menu-label-color: $text-color !default;
+$menu--main-navigation__menu-label-text-transform: uppercase !default;
+
+//flyout
+$menu--main-navigation__flyout-font-id: $font-label-id !default;
+$menu--main-navigation__flyout-size: $menu--main-navigation-size !default;
+$menu--main-navigation__flyout-color: $text-color !default;
+$menu--main-navigation__flyout-fade-duration: 0.1s !default;
+$menu--main-navigation__flyout-fade-delay: 0.1s !default;
+$menu--main-navigation__flyout-top: 43px !default;
+$menu--main-navigation__flyout-width: 200px !default;
+$menu--main-navigation__flyout-bg-color: $white !default;
+$menu--main-navigation__flyout-border: 1px solid $gray !default;
+$menu--main-navigation__flyout-padding: 10px !default;
+$menu--main-navigation__flyout__item-margin: 10px 5px !default;
+
+$navigation-menu-icon-color: $text-color !default;
+$navigation-menu-icon-size: 17px !default;
+$navigation-menu-icon-hover-color: $color-hover !default;
+
+$navigation-search-icon-color: $text-color !default;
+$navigation-search-icon-size: 19px !default;
+
+//submenu
+$menu--submenu-navigation-font-id: $font-label-id !default;
+$menu--submenu-navigation-color: $text-color !default;
+$menu--submenu-navigation-size: $menu--main-navigation-size !default;
+$menu--submenu-navigation-mobile-color: $gray-base !default;
+$menu--submenu-navigation-mobile-color-active: $gray-base !default;
+$menu--submenu-navigation-padding-mobile: $menu--submenu-navigation-size 0 0 0 !default;
+$menu--submenu-navigation-padding-mobile--open: ($menu--submenu-navigation-size + $gap-size-md) 0 0 0 !default;
+$menu--submenu-navigation__item_padding: 3px 7px !default;
+$menu--submenu-navigation__item_margin-mobile: 15px 0px !default;
+$menu--submenu-navigation__item_margin-tablet: 15px 0px !default;
+$menu--submenu-navigation__item_margin-desktop: 0 5px !default;
+
+//sidebar
+$menu--sidebar-logo-width: 150px !default;
+$menu--sidebar-bg: rgba($white, 0.85) !default;
+$menu__item--sidebar-gap-top: 12px !default;
+$menu__item--sidebar-soft-color: $gray-base !default;
+$menu__item-active-color--sidebar: $color-hover !default;
+
+$menu--sidebar-main-font-id: $font-label-id !default;
+$menu--sidebar-main-size: $menu--main-navigation-size !default;
+$menu--sidebar-main-text-transform: uppercase !default;
+
+$menu--sidebar-misc-font-id: $font-content-id !default;
+$menu--sidebar-misc-size: 14px !default;
+$menu--sidebar-misc-text-transform: uppercase !default;
+$menu--sidebar-misc-color: $gray-base !default;
+$menu--sidebar-misc-hover-color: $color-highlighted-hover !default;
