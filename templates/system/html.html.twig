@@ -10,6 +10,8 @@ db_offline ? 'db-offline',
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/themes/contrib/infinite/js/infinite/utils/head-cookie-utils.js"></script>
+        {{ page.head_top }}
         <head-placeholder token="{{ placeholder_token|raw }}">
         <title>{{ head_title|safe_join(' | ') }}</title>
         <css-placeholder token="{{ placeholder_token|raw }}">
@@ -30,7 +32,7 @@ db_offline ? 'db-offline',
         {% block fb_tracking_pixel_block %}{% endblock %}
         <div id="page-wrapper">
             {{ page_top }}
-            {{ page }}
+            {{ page | without([page.head_top, page.body_bottom]) }}
             {{ page_bottom }}
 
         </div>
@@ -38,5 +40,6 @@ db_offline ? 'db-offline',
         {#<script async src="//assets.pinterest.com/js/pinit.js"></script>#}
         {#<script async src="//platform.twitter.com/widgets.js"></script>#}
         {#<script async src="//platform.instagram.com/en_US/embeds.js"></script>#}
+        {{ page.body_bottom }}
     </body>
 </html>

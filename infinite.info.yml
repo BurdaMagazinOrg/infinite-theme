@@ -47,6 +47,7 @@ libraries:
   - infinite/infinite.views.newsletter.newsletter-modal-view
 
 regions:
+  head_top: 'Head Top'
   header_large: 'Header large'
   header: 'Header'
 #  primary_menu: 'Primary menu'
@@ -61,6 +62,7 @@ regions:
   modal: Modal
   dyn_blocks_taxonomy_term: 'Dynamic blocks for taxonomy terms'
   dyn_blocks_node: 'Dynamic blocks for nodes'
+  body_bottom: 'Body Bottom'
   hidden: Hidden
 stylesheets-remove:
   - core/modules/system/css/system.module.css
