@@ -1,7 +1,7 @@
 @mixin newsletter--horizontal() {
   overflow: hidden;
   text-align: center;
-  color: $white;
+  color: $newsletter__color--horizontal;
   position: relative;
   padding-left: 0;
   padding-right: 0;
