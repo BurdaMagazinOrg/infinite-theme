@@ -60,7 +60,7 @@
             //    tmpURL = $tmpURLElement.data('external-url') || $tmpURLElement.data('internal-url'));
             //}
 
-            this.model.set('nid', this.$el.data('nid') + '');
+            this.model.set('nid', this.$el.data('nid'));
             this.model.set('title', jQuery.trim(this.$el.find('.teaser__title').text()));
             //this.model.set('url', tmpURL);
         },
@@ -76,7 +76,7 @@
             var tmpData = {
                 category: 'teaser-feed-ctr',
                 label: this.model.get('title'),
-                value: this.model.get('nid')
+                entityID: this.model.get('nid')
             };
 
             if (this.model.has('productIndex')) {
