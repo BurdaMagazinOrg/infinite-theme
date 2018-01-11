@@ -76,7 +76,7 @@
             var tmpData = {
                 category: 'teaser-feed-ctr',
                 label: this.model.get('title'),
-                entityID: this.model.get('nid')
+                elementEntityID: this.model.get('nid')
             };
 
             if (this.model.has('productIndex')) {
