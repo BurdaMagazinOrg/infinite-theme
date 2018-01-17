@@ -5,11 +5,15 @@
     <div class="text-brand">{{ content.product_brand }}</div>
     <div class="text-headline">{{ content.product_name }}</div>
     {% if sold_out %}
-        {% if content.product_price.0|render != '0,00' %}
         <div class="text-price">
-            <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
+            <span class="text-price--current">
+                {% if content.product_price.0|render != '' and content.product_price.0|render != '0,00' %}
+                    {{ content.product_price }} {{ formatted_currency }}
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </span>
         </div>
-        {% endif %}
         <div class="text-shop text-sold-out">Ausverkauft</div>
     {% else %}
         <div class="text-price">
