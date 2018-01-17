@@ -67,7 +67,12 @@ $menu--submenu-navigation__item_margin-desktop: 0 5px !default;
 
 //sidebar
 $menu--sidebar-logo-width: 150px !default;
-$menu--sidebar-bg: rgba($white, 0.85) !default;
+$menu--sidebar-bg: rgba($white, 0.85) !default; //right content overlay
+$menu__bg-color--sidebar: $white !default;
+$menu__color--sidebar: $text-color !default;
+$menu__item-sidebar-block-border--sidebar: $h-line-style !default;
+$menu__item-sidebar-block-padding--sidebar: 32px 22px !default;
+$menu__item-sidebar-block-margin--sidebar: 0 !default;
 $menu__item--sidebar-gap-top: 12px !default;
 $menu__item--sidebar-soft-color: $gray-base !default;
 $menu__item-active-color--sidebar: $color-hover !default;
