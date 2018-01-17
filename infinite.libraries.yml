@@ -69,6 +69,7 @@ infinite.init:
     - core/jquery.once
     - core/picturefill
     - core/jquery.cookie
+    - blazy/blazy
 
 
 ##### manager #####
