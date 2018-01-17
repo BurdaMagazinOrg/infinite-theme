@@ -20,9 +20,25 @@
  */
 #}
 {% set title_string = 'Title'|t %}
+{% set quantity_empty = quantity | raw | replace({'&nbsp;' : ''}) is empty %}
+{% set quantity_attributes = create_attribute().addClass('quantity-unit') %}
 
-{% if name == 'Title' or name == title_string  %}
+{% if quantity_empty %}
+    {% set quantity_attributes = quantity_attributes.addClass('quantity-unit--empty') %}
+{% endif %}
+
+{% if name == 'Title' or name == title_string %}
     <h4 class="recipe__ingredient--group-title text-title">{{ note }}</h4>
 {% else %}
-    <span class="quantity-unit">{{ quantity|raw }}{% if unit_name %}{% if unit_display %} {{ unit_name }}{% else %} <abbr title="{{ unit_name }}">{{ unit_abbreviation }}</abbr>{% endif %}{% endif %}</span> <span class="ingredient-name">{{ name }}{% if note|length > 0 %} ({{ note }}){% endif %}</span>
+    <span {{ quantity_attributes }}>{{ quantity | raw }}
+        {% if unit_name %}
+            {% if unit_display %}
+                {{ unit_name }}
+            {% else %}
+                <abbr title="{{ unit_name }}">{{ unit_abbreviation }}</abbr>
+            {% endif %}
+        {% endif %}
+    </span>
+
+    <span class="ingredient-name">{{ name }}{% if note|length > 0 %} ({{ note }}){% endif %}</span>
 {% endif %}
