@@ -58,6 +58,10 @@
 
 .region-ecommerceslider {
   @extend %ecommerce-slider;
+
+  .ecommerce-slider__title {
+    @extend %title--horizontal-block;
+  }
 }
 
 .region-ecommerceslider.region-full-content {

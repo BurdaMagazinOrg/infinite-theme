@@ -41,6 +41,17 @@ $ecommerce-slider__ratio-xl--small: 115% !default;
 
 
 $ecommerce-slider__title-font-id: $font-headline-id !default;
+$ecommerce-slider__title-size-mobile--small: $title--text-block-mobile !default;
+$ecommerce-slider__title-size-tablet--small: $title--text-block-tablet !default;
+$ecommerce-slider__title-size-desktop--small: $title--text-block-desktop !default;
+
+$ecommerce-slider__title-size-mobile--middle: $title--content-block-mobile !default;
+$ecommerce-slider__title-size-tablet--middle: $title--content-block-tablet !default;
+$ecommerce-slider__title-size-desktop--middle: $title--content-block-desktop !default;
+
+$ecommerce-slider__title-size-mobile--full: $title--horizontal-block-mobile !default;
+$ecommerce-slider__title-size-tablet--full: $title--horizontal-block-tablet !default;
+$ecommerce-slider__title-size-desktop--full: $title--horizontal-block-desktop !default;
 
 $ecommerce-slider__content-padding: 30px 0 0 0 !default;
 $ecommerce-slider__content-padding-s: 20px 0 0 0 !default;

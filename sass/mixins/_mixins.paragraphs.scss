@@ -846,13 +846,24 @@
 
   &.item-paragraph--full .ecommerce-slider {
     @include ecommerce-slider--full();
+
+    .ecommerce-slider__title {
+      @extend %title--horizontal-block;
+    }
   }
 
   &.item-paragraph--middle .ecommerce-slider {
     @include ecommerce-slider--middle();
+
+    .ecommerce-slider__title {
+      @extend %title--content-block;
+    }
   }
 
   &.item-paragraph--small .ecommerce-slider {
+    .ecommerce-slider__title {
+      @extend %title--text-block;
+    }
 
     @media (max-width: $screen-xxs-max) {
       @include ecommerce-slider--small();
