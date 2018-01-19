@@ -86,11 +86,12 @@
 
   .teaser__overhead {
     @include text-helper($overhead-font);
-    text-transform: uppercase;
+    text-transform: $teaser__overhead-text-transform--full-content;
   }
 
   .teaser__title {
     @include text-helper($title-font);
+    text-transform: $teaser__title-text-transform--full-content;
   }
 
   @media (max-width: $screen-xs-max) {

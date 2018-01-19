@@ -68,6 +68,8 @@ $teaser-list__gap-desktop--teaser-horoscope-middle: $gap-v-sm-region-desktop !de
 /**
 ** Full Content Teaser
 **/
+$teaser__overhead-text-transform--full-content: uppercase !default;
+$teaser__title-text-transform--full-content: none !default;
 $teaser__padding-bottom--full-content-tablet: 25px !default;
 $teaser__padding-bottom--full-content-desktop: 65px !default;
 
