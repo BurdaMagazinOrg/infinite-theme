@@ -1,0 +1,68 @@
+$fonts-path: '../fonts/' !default;
+$icons-font-path: '../fonts/icons/' !default;
+$icons-font-family: "icons" !default;
+
+$font-navigation: 'Verdana' !default;
+$font-label: 'Verdana' !default;
+$font-tiny: 'Verdana' !default;
+$font-headline: 'Arial' !default;
+$font-headline-bold: 'Arial' !default;
+$font-content: 'Arial' !default;
+$font-content-bold: 'Arial' !default;
+
+$font-navigation-id: "font-navigation";
+$font-label-id: "font-label";
+$font-tiny-id: "font-tiny";
+$font-headline-id: "font-headline";
+$font-headline-bold-id: "font-headline-bold";
+$font-content-id: "font-content";
+$font-content-bold-id: "font-content-bold";
+
+$label-letter-spacing: 1px !default;
+$headline-letter-spacing: 0px !default;
+$headline-bold-letter-spacing: 0px !default;
+$headline-font-weight: normal !default;
+$headline-bold-font-weight: normal !default;
+$tiny-letter-spacing: 0px !default;
+$content-letter-spacing: 0px !default;
+$content-bold-letter-spacing: 0px !default;
+$content-bold-font-weight: normal !default;
+
+$titles__font-id--default: $font-headline-id !default;
+$titles__text-transform--default: none !default;
+
+$line-height-headline: 1.2 !default;
+$line-height-content: 1.55 !default;
+$line-height-label: 1.4 !default;
+$line-height-text-tiny: 1.4 !default;
+$line-height-text-navigation: 1 !default;
+
+$font-size-base: 16px;
+$font-size-tiny: 12px;
+$font-size-small: 14px;
+$font-size-medium: 16px;
+$font-size-large: 18px;
+
+$icon-size-tiny: 13px !default;
+$icon-size-small: 15px !default;
+$icon-size-medium: 17px !default;
+$icon-size-large: 24px !default;
+$icon-size-xl: 30px !default;
+$icon-size-xxl: 35px !default;
+
+/** new variables **/
+$title-size-xxxs: 15px !default;
+$title-size-xxs: 18px !default;
+$title-size-xs: 20px !default;
+$title-size-sm: 24px !default;
+$title-size-md: 28px !default;
+$title-size-lg: 32px !default;
+$title-size-xl: 40px !default;
+$title-size-xxl: 48px !default;
+
+$label-size-xxl: 24px !default;
+$label-size-xl: 21px !default;
+$label-size-large: 18px !default;
+$label-size-medium: 16px !default;
+$label-size-small: 13px !default;
+$label-size-tiny: 11px !default;

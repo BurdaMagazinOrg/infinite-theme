@@ -1,0 +1,33 @@
+/**
+** Media
+**/
+$media__lazyloading-bg-color: #fbfbfb !default;
+
+$media__description-margin: 5px 0 0 0 !default;
+$media__description-font-id: $font-tiny-id !default;
+$media__description-size-mobile: 14px !default;
+$media__description-size-tablet: 14px !default;
+$media__description-size-desktop: 18px !default;
+$media__description-color: $text-color !default;
+
+//file
+$media__min-height--file: 35px !default;
+$media__title-font-id--file: $title--text-block-font-id !default;
+$media__title-color--file: $title--text-block-color !default;
+$media__title-size-mobile--file: $title--text-block-mobile !default;
+$media__title-size-tablet--file: $title--text-block-tablet !default;
+$media__title-size-desktop--file: $title--text-block-desktop !default;
+$media__title-margin--file: 0 !default;
+
+$media__description-font-id--file: $font-content-id !default;
+$media__description-color--file: $gray-base !default;
+$media__description-size-mobile--file: $copytext--text-block-mobile !default;
+$media__description-size-tablet--file: $copytext--text-block-tablet !default;
+$media__description-size-desktop--file: $copytext--text-block-desktop !default;
+$media__description-margin--file: 1px 0 0 !default;
+
+$media__btn-download-font-id--file: $font-headline-bold-id !default;
+$media__btn-download-size-mobile--file: 15px !default;
+$media__btn-download-size-tablet--file: 15px !default;
+$media__btn-download-size-desktop--file: 15px !default;
+$media__btn-download-margin-mobile--file: 15px 0 0 !default;

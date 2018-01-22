@@ -21,14 +21,6 @@
     margin-top: 0;
     border-top: 0;
   }
-
-  .region-marketing.ad-active + .region-full-content:not(.no-v-padding) {
-    @if ($region-v-lined) {
-      margin-top: -$h-line-width; //double line
-    } @else {
-      margin-top: 0;
-    }
-  }
 }
 
 .region-infinite-block {
@@ -66,6 +58,10 @@
 
 .region-ecommerceslider {
   @extend %ecommerce-slider;
+
+  .ecommerce-slider__title {
+    @extend %title--horizontal-block;
+  }
 }
 
 .region-ecommerceslider.region-full-content {
