@@ -66,8 +66,9 @@
 
 <div class="container-content container-fixed-content">
     {% set attributes = attributes.addClass('teaser-presenter', 'teaser-presenter--lg') %}
+
     {% block teaser_block %}
-        {% embed "node--article--teaser-default.html.twig" %}
+        {% embed "node--article--teaser-default.html.twig" with {'dataViewType': ''} %}
             {% block teaser_author %}{% endblock %}
         {% endembed %}
     {% endblock %}

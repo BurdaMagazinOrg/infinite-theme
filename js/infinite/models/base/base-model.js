@@ -26,6 +26,10 @@
     setParentModel: function (pModel) {
       this.set('parentModel', pModel, {silent: true});
     },
+    setElement: function ($pElement) {
+      this.set('el', $pElement, {silent: true});
+      this.trigger('elementChanged', this.get('el'));
+    },
     getParentModel: function () {
       return this.get('parentModel');
     }

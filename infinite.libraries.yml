@@ -69,6 +69,7 @@ infinite.init:
     - core/jquery.once
     - core/picturefill
     - core/jquery.cookie
+    - blazy/blazy
 
 
 ##### manager #####
@@ -221,6 +222,11 @@ infinite.views.sticky-view:
   version: 1
   js:
     js/infinite/views/sticky-view.js: {}
+
+infinite.views.teaser-feed-view:
+  version: 1
+  js:
+    js/infinite/views/teaser-feed-view.js: {}
 
 infinite.views.product-view:
   version: 1

@@ -36,8 +36,12 @@
     right: 0;
   }
 
-  @media (max-width: $screen-xs-max) {
-    .socials-bar > div:first-child {
+  @include header__socials--home();
+}
+
+@mixin header__socials--home() {
+  @media (max-width: $screen-xxs-max) {
+    .socials-bar {
       @include fade-out();
     }
   }
