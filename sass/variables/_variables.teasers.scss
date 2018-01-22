@@ -1,0 +1,191 @@
+/**
+** Teaser Default
+**/
+$teaser__use-multi-links--default: true !default;
+$teaser__copy--default-font-id: $font-content-id !default;
+$teaser__copy-color--default: $text-color !default;
+$teaser__copy-letter-spacing--default: 0.012em !default;
+$teaser__copy--default-mobile: $copytext--text-block-mobile !default;
+$teaser__copy--default-tablet: $copytext--text-block-tablet !default;
+$teaser__copy--default-desktop: $copytext--text-block-desktop !default;
+
+$teaser__author-gap-top-mobile--default: $gap-size-sm !default;
+$teaser__author-gap-top-tablet--default: $gap-size-sm !default;
+$teaser__author-gap-top-desktop--default: $gap-size-lg !default;
+
+$teaser__socials-gap-top-mobile--default: $gap-size-sm !default;
+$teaser__socials-gap-top-tablet--default: $gap-size-sm !default;
+$teaser__socials-gap-top-desktop--default: $gap-size-lg !default;
+
+$teaser__category-gap-bottom-mobile--default: $gap-size-sm !default;
+$teaser__category-gap-bottom-tablet--default: $gap-size-sm !default;
+$teaser__category-gap-bottom-desktop--default: $gap-size-sm !default;
+
+$teaser__overhead-font-id--default: $label--category-font-id !default;
+$teaser__overhead-color--default: $label--category-color !default;
+$teaser__overhead-letter-spacing--default: $tiny-letter-spacing !default;
+$teaser__overhead-size-mobile--default: $label--category-size--mobile !default;
+$teaser__overhead-size-tablet--default: $label--category-size--tablet !default;
+$teaser__overhead-size-desktop--default: $label--category-size--desktop !default;
+$teaser__overhead-gap-bottom-mobile--default: $teaser__category-gap-bottom-mobile--default !default;
+$teaser__overhead-gap-bottom-tablet--default: $teaser__category-gap-bottom-tablet--default !default;
+$teaser__overhead-gap-bottom-desktop--default: $teaser__category-gap-bottom-desktop--default !default;
+
+/**
+** Native Teaser
+**/
+$native-teaser__separator-padding--advertorial: 4px 0 0 0 !default;
+
+/**
+** Feed Teaser
+**/
+//TODO: rename this to $list__headline...-teaser-feed
+$feed-teaser-headline-size-mobile: $title-size-sm !default;
+$feed-teaser-headline-size-tablet: $title-size-md !default;
+$feed-teaser-headline-size-desktop: $title-size-lg !default;
+$feed-teaser-headline-text-transform: none !default;
+
+$feed-teaser-headline-middle-size-mobile: $feed-teaser-headline-size-mobile !default;
+$feed-teaser-headline-middle-size-tablet: $feed-teaser-headline-size-tablet !default;
+$feed-teaser-headline-middle-size-desktop: $feed-teaser-headline-size-desktop !default;
+
+$feed-teaser-h-line: $h-line-style !default;
+$feed-teaser-gap-top-mobile: $gap-v-region-mobile !default;
+$feed-teaser-gap-top-tablet: $gap-v-region-tablet !default;
+$feed-teaser-gap-top-desktop: $gap-v-region-desktop !default;
+
+/**
+** Horoscope List Teaser
+**/
+$teaser-list__headline-font-id--teaser-horoscope-middle: $font-headline-id !default;
+$teaser-list__headline-size-mobile--teaser-horoscope-middle: $title-size-sm !default;
+$teaser-list__headline-size-tablet--teaser-horoscope-middle: $title-size-md !default;
+$teaser-list__headline-size-desktop--teaser-horoscope-middle: $title-size-lg !default;
+$teaser-list__gap-mobile--teaser-horoscope-middle: $gap-v-sm-region-mobile !default;
+$teaser-list__gap-tablet--teaser-horoscope-middle: $gap-v-sm-region-tablet !default;
+$teaser-list__gap-desktop--teaser-horoscope-middle: $gap-v-sm-region-desktop !default;
+
+/**
+** Full Content Teaser
+**/
+$teaser__overhead-text-transform--full-content: uppercase !default;
+$teaser__title-text-transform--full-content: none !default;
+$teaser__padding-bottom--full-content-tablet: 25px !default;
+$teaser__padding-bottom--full-content-desktop: 65px !default;
+
+$teaser__title-font-id--full-content: $font-headline-id !default;
+$teaser__title-size--full-content-mobile: $title-size-sm !default;
+$teaser__title-size--full-content-tablet: $title-size-lg !default;
+$teaser__title-size--full-content-desktop: $title-size-xxl !default;
+$teaser__title-line-height--full-content-mobile: '' !default;
+$teaser__title-line-height--full-content-tablet: '' !default;
+$teaser__title-line-height--full-content-desktop: '' !default;
+$teaser__title-max-width--full-content: 888px !default;
+$teaser__title-bg--full-content: $white !default;
+$teaser__title-color--full-content: $text-color !default;
+$teaser__title-padding--full-content-mobile: $gap-size-xs 0 0 !default;
+$teaser__title-padding--full-content-tablet: $gap-size-sm 21px 0 !default;
+$teaser__title-padding--full-content-desktop: $gap-size-sm 21px 0 !default;
+
+$teaser__sponsored-padding--full-content-mobile: 0 21px 0 !default;
+$teaser__sponsored-padding--full-content-tablet: 0 21px 0 !default;
+$teaser__sponsored-padding--full-content-desktop: 0 21px 0 !default;
+
+//no mobile absolute position
+$teaser__caption-use-pos-absolute--full-content: true !default;
+$teaser__caption-bottom--full-content-tablet: -33px !default;
+$teaser__caption-bottom--full-content-desktop: -49px !default;
+
+$teaser__overhead-bg--full-content: $white !default;
+$teaser__overhead-color--full-content: $label--category-color !default;
+$teaser__overhead-font-id--full-content: $label--category-font-id !default;
+$teaser__overhead-padding--full-content-mobile: $gap-size-xs 0 0 !default;
+$teaser__overhead-padding--full-content-tablet: $gap-size-sm 21px 0 !default;
+$teaser__overhead-padding--full-content-desktop: $gap-size-sm 21px 0 !default;
+$teaser__overhead-size--full-content-mobile: $label--category-size--mobile !default;
+$teaser__overhead-size--full-content-tablet: $label--category-size--tablet !default;
+$teaser__overhead-size--full-content-desktop: $label--category-size--desktop !default;
+
+/**
+** Horizontal Feed Teaser
+**/
+$teaser__title-font-id--list-horizontal: $font-content-id !default;
+$teaser__title-color--list-horizontal: $text-color !default;
+$teaser__title-hover-color--list-horizontal: $color-hover !default;
+$teaser__title-size--list-horizontal-mobile: $title-size-xxxs !default;
+$teaser__title-size--list-horizontal-tablet: $title-size-xxxs !default;
+$teaser__title-size--list-horizontal-desktop: $title-size-xxs !default;
+
+$teaser__gap--list-horizontal-mobile: 6px !default;
+$teaser__gap--list-horizontal-tablet: 28px !default;
+$teaser__gap--list-horizontal-desktop: 35px !default;
+$teaser__shrinked-width--list-horizontal: 61% !default;
+
+/**
+** Teaser Square XS
+**/
+$teaser-square-xs-headline-size-mobile: $title-size-xxxs !default;
+$teaser-square-xs-headline-size-tablet: $title-size-sm !default;
+$teaser-square-xs-headline-size-desktop: $title-size-md !default;
+
+/**
+** Teaser Landscape
+**/
+$teaser__caption-padding-mobile--landscape-medium: $gap-size-xs $padding 0 $padding !default;
+$teaser__caption-padding-tablet--landscape-medium: $gap-size-xs $padding 0 $padding !default;
+
+$teaser__caption-padding-mobile--landscape-large: $gap-size-xs 0 0 0 !default;
+$teaser__caption-padding-tablet--landscape-large: $gap-size-sm 0 0 0 !default;
+$teaser__caption-padding-desktop--landscape-large: $gap-size-sm 0 0 0 !default;
+
+/**
+** Teaser Content
+**/
+$teaser--content-headline-font-id: $teaser__title-font-id--list-horizontal !default;
+$teaser--content-img-width-mobile: (120px + $padding) !default;
+$teaser--content-headline-text-transform: none !default;
+$teaser--content-headline-color: $teaser__title-color--list-horizontal !default;
+$teaser--content-headline-hover-color: $color-hover !default;
+$teaser--content-headline-size-mobile: $title-size-xxxs !default;
+$teaser--content-headline-size-tablet: $title-size-xxs !default;
+$teaser--content-headline-size-desktop: $title-size-xxs !default;
+$teaser--content-caption-height: 81px !default;
+$teaser--content-caption-height-mobile: 69px !default;
+$teaser--content-headline-line-height: '' !default;
+
+/**
+** Teaser Smart
+**/
+$teaser__opacity--smart: 1 !default;
+$teaser__opacity-hover--smart: 1 !default;
+$teaser__position-left--smart: 50% !default;
+$teaser__position-top--smart: 50% !default;
+$teaser__position-bottom--smart: auto !default;
+$teaser__position-right--smart: auto !default;
+$teaser__color--smart: $white !default;
+$teaser__text-shadow--smart: none !default; //0 1px 0 rgba($gray-darker, 0.2)
+$teaser__bg-color--smart: transparent !default;
+$teaser__bg-color-hover--smart: transparent !default;
+
+$teaser__icon-video-after--smart: "\e916";
+$teaser__icon-image-after--smart: "\e914";
+
+$teaser__padding--smart-large: 0 !default;
+$teaser__width-mobile--smart-large: auto !default;
+$teaser__height-mobile--smart-large: auto !default;
+$teaser__width-desktop--smart-large: auto !default;
+$teaser__height-desktop--smart-large: auto !default;
+$teaser__icon-size-mobile--smart-large: 40px !default;
+$teaser__icon-size-desktop--smart-large: 70px !default;
+$teaser__icon-margin-mobile--smart-large: 0 0 0 (- $teaser__icon-size-mobile--smart-large / 2) !default;
+$teaser__icon-margin-desktop--smart-large: 0 0 0 (- $teaser__icon-size-desktop--smart-large / 2) !default;
+
+$teaser__padding--smart-small: 0 !default;
+$teaser__width-mobile--smart-small: auto !default;
+$teaser__height-mobile--smart-small: auto !default;
+$teaser__width-desktop--smart-small: auto !default;
+$teaser__height-desktop--smart-small: auto !default;
+$teaser__icon-size-mobile--smart-small: 40px !default;
+$teaser__icon-size-desktop--smart-small: 40px !default;
+$teaser__icon-margin-mobile--smart-small: 0 0 0 (- $teaser__icon-size-mobile--smart-small / 2) !default;
+$teaser__icon-margin-desktop--smart-small: 0 0 0 (- $teaser__icon-size-desktop--smart-small / 2) !default;

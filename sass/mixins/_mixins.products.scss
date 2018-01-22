@@ -331,7 +331,7 @@
   }
 
   .ecommerce-slider__title {
-    @include text-helper($ecommerce-slider__title-font-id);
+    @include text-helper($ecommerce-slider__title-font-id);;
     text-align: center;
     padding: 0 20px;
   }
@@ -445,10 +445,6 @@
   .ecommerce-slider__content-wrapper {
     left: 0;
     right: 0;
-  }
-
-  .ecommerce-slider__title {
-    @include text-helper-size($font-headline-id, $title-size-sm);
   }
 
   .swiper-button {
@@ -598,10 +594,6 @@
 
   .ecommerce-slider__content {
     max-width: 1150px;
-  }
-
-  .ecommerce-slider__title {
-    @include text-helper-size($font-headline-id, $title-size-lg);
   }
 
   .item-product-slider {

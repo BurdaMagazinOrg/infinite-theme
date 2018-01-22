@@ -48,6 +48,10 @@
   @include menu--sidebar();
 }
 
+%menu__item-lined--sidebar {
+  @include menu__item-lined--sidebar();
+}
+
 %menu--sidebar-main {
   @include menu--sidebar-main();
 }

@@ -1,0 +1,98 @@
+/**
+** Products
+**/
+$product__item-lined-mobile: true !default;
+$product__item-text-brand-font-id: $font-label-id !default;
+$product__item-text-brand-size: 13px !default;
+$product__item-text-brand-color: $gray-base !default;
+$product__item-text-brand-letter-spacing: 0.15em !default;
+$product__item-text-brand-gap-bottom: 5px !default;
+
+$product__item-text-headline-font-id: $font-headline-id !default;
+$product__item-text-headline-size: $title-size-xxs !default;
+$product__item-text-headline-color: $text-color !default;
+
+$product__item-text-headline-height-mobile: 39px !default;
+$product__item-text-headline-height-tablet: 41px !default;
+$product__item-text-headline-height-desktop: 41px !default;
+
+$product__item-text-headline-gap-bottom-mobile: 33px !default;
+$product__item-text-headline-gap-bottom-tablet: 33px !default;
+$product__item-text-headline-gap-bottom-desktop: 33px !default;
+
+$product__item-text-price-font-id: $font-content-bold-id !default;
+$product__item-text-price-size: 13px !default;
+$product__item-text-price-color: $text-color !default;
+$product__item-text-price-pos-bottom: 45px !default;
+
+$product__item-text-price-font-id--strikethrough: $product__item-text-price-font-id !default;
+$product__item-text-price-size--strikethrough: $product__item-text-price-size !default;
+$product__item-text-price-color--strikethrough: $product__item-text-price-color !default;
+
+$product__item-text-price-strikethrough-font-id: $product__item-text-price-font-id !default;
+$product__item-text-price-strikethrough-size: $product__item-text-price-size !default;
+$product__item-text-price-strikethrough-color: lighten($gray-base, 10) !default;
+$product__item-text-price-strikethrough-filter: transparent 8px, rgba($product__item-text-price-color--strikethrough, 0.75) 0px, rgba($product__item-text-price-color--strikethrough, 0.75) 9px, transparent 0px !default;
+
+$product__item-text-shipping-font-id: $font-label-id !default;
+$product__item-text-shipping-size: 13px !default;
+$product__item-text-shipping-color: $gray-base !default;
+$product__item-text-shipping-pos-bottom: 40px !default;
+
+/**
+** Single Product
+**/
+$product-padding--single-product: 15px 30px 30px 30px !default;
+$product-border--single-product: $h-line-style !default;
+$product-border-radius--single-product: 0px !default;
+$product-text-align--single-product: center !default;
+
+$product__item-btn-radius--single-product: 0px !default;
+
+$product__shop-icon-content--single-product: "e93a" !default;
+$product__shop-icon-color--single-product: $color-brand !default;
+$product__shop-icon-size--single-product: 85px !default;
+$product__shop-icon-pos-right--single-product: -25px !default;
+
+$product__shop-icon-content-before--single-product: "e93b" !default;
+$product__shop-icon-before-color--single-product: $white !default;
+
+$product__item-text-brand-font-id--single-product: $product__item-text-brand-font-id !default;
+$product__item-text-brand-size--single-product: 15px !default;
+$product__item-text-brand-color--single-product: $product__item-text-brand-color !default;
+$product__item-text-brand-letter-spacing--single-product: $product__item-text-brand-letter-spacing !default;
+
+$product__item-text-headline-font-id--single-product: $product__item-text-headline-font-id !default;
+$product__item-text-headline-color--single-product: $product__item-text-headline-color !default;
+$product__item-text-headline-size-mobile--single-product: $title-size-xs !default;
+$product__item-text-headline-size-desktop--single-product: $title-size-sm !default;
+
+$product__item-text-price-font-id--single-product: $product__item-text-price-font-id !default;
+$product__item-text-price-size--single-product: 20px !default;
+$product__item-text-price-color--single-product: $product__item-text-price-color !default;
+
+$product__item-text-price-font-id--single-product-strikethrough: $product__item-text-price-font-id--single-product !default;
+$product__item-text-price-size--single-product-strikethrough: $product__item-text-price-size--single-product !default;
+$product__item-text-price-color--single-product-strikethrough: $product__item-text-price-color--single-product !default;
+
+$product__item-text-price-strikethrough-font-id--single-product: $product__item-text-price-font-id--single-product !default;
+$product__item-text-price-strikethrough-size--single-product: $product__item-text-price-size--single-product !default;
+$product__item-text-price-strikethrough-color--single-product: $product__item-text-price-strikethrough-color !default;
+
+
+/**
+** Info Box
+**/
+$products-info-box__margin-mobile--grid: $gap-v-region-mobile 0 0 0 !default;
+$products-info-box__margin-tablet--grid: 0px !default;
+$products-info-box__margin-desktop--grid: 0px !default;
+
+$products-info-box__text-align--grid: center !default;
+$products-info-box__padding-mobile--grid: 20px !default;
+$products-info-box__padding-tablet--grid: 20px !default;
+$products-info-box__padding-desktop--grid: 20px !default;
+$products-info-box__bg-color--grid: $bg-color-gray-light !default;
+$products-info-box__text-id--grid: $font-content-id !default;
+$products-info-box__text-size-mobile--grid: $font-size-base !default;
+$products-info-box__text-size-tablet--grid: $font-size-large !default;
+$products-info-box__text-size-desktop--grid: $font-size-large !default;
