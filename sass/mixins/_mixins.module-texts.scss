@@ -318,7 +318,7 @@
   }
 
   .text-headline {
-    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size);
+    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size, $product__item-text-headline-line-height);
     color: $product__item-text-headline-color;
   }
 
@@ -369,7 +369,8 @@
 
   &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @include button--lined-colored($button__border-color--lined-colored-hover !important, $color: $button__color--lined-colored-hover !important);
+      //@include button--lined-colored($button__border-color--lined-colored-hover !important, $color: $button__color--lined-colored-hover !important);
+      @include product__item-text-shop--ecommerce-slider-hover();
     }
   }
 
@@ -422,11 +423,20 @@
   }
 
   .text-shop {
-    @extend %button;
-    @extend %button--sm;
-    @include button--lined-colored($button__border-color--lined-colored-default !important, $color: $button__color--lined-colored-default !important);
-    display: inline-block;
+    //@extend %button;
+    //@extend %button--sm;
+    //@include button--lined-colored($button__border-color--lined-colored-default !important, $color: $button__color--lined-colored-default !important);
+    //display: inline-block;
+    @include product__item-text-shop--ecommerce-slider();
   }
+}
+
+@mixin product__item-text-shop--ecommerce-slider() {
+  @include product__item-text-shop--default();
+}
+
+@mixin product__item-text-shop--ecommerce-slider-hover() {
+  @include product__item-text-shop--hover();
 }
 
 @mixin product__item-text--single-product() {
