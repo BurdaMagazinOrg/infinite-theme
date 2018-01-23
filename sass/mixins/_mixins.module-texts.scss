@@ -86,11 +86,12 @@
 
   .teaser__overhead {
     @include text-helper($overhead-font);
-    text-transform: uppercase;
+    text-transform: $teaser__overhead-text-transform--full-content;
   }
 
   .teaser__title {
     @include text-helper($title-font);
+    text-transform: $teaser__title-text-transform--full-content;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -299,7 +300,7 @@
 
   &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @extend %button--lined-colored-hover;
+      @include product__item-text-shop--hover();
     }
   }
 
@@ -349,11 +350,19 @@
   }
 
   .text-shop {
-    @extend %button;
-    @extend %button--sm;
-    @extend %button--lined-colored-default;
-    display: inline-block;
+    @include product__item-text-shop--default();
   }
+}
+
+@mixin product__item-text-shop--default() {
+  @extend %button;
+  @extend %button--sm;
+  @extend %button--lined-colored-default;
+  display: inline-block;
+}
+
+@mixin product__item-text-shop--hover() {
+  @extend %button--lined-colored-hover;
 }
 
 @mixin product__item-text--ecommerce-slider() {

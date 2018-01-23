@@ -35,6 +35,7 @@
   max-width: $title--article-max-width;
   color: $title--article-color;
   text-transform: $title--article-text-transform;
+  text-align: $title--article-text-align;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($font, $size-mobile, $title--article-line-height);
@@ -68,7 +69,7 @@
   }
 }
 
-@mixin title--text-block($use-size: true) {
+@mixin title--text-block($use-size: true, $use-next-elements: true) {
   @include text-helper($title--text-block-font-id);
   color: $title--text-block-color;
   text-transform: $title--text-block-text-transform;
@@ -94,6 +95,12 @@
     margin: $title-margin-desktop--text-block;
   }
 
+  @if ($use-next-elements) {
+    @include title__next-elements--text-block();
+  }
+}
+
+@mixin title__next-elements--text-block() {
   &:first-child {
     margin-top: 0;
   }

@@ -1,0 +1,25 @@
+/**
+** Dates
+**/
+$date__font-id--node-created: $font-tiny-id !default;
+$date__size-mobile--node-created: $label-size-small !default;
+$date__size-tablet--node-created: $label-size-medium !default;
+$date__size-desktop--node-created: $label-size-large !default;
+$date__letter-spacing--node-created: 2px !default;
+$date__text-transform--node-created: uppercase !default;
+$date__color--node-created: $gray-base !default;
+$date__margin-desktop--node-created: 0 0 $gap-size-lg 0 !default;
+$date__margin-tablet--node-created: 0 0 $gap-size-lg 0 !default;
+$date__margin-mobile--node-created: 0 0 $gap-size-xs 0 !default;
+
+//horoscope
+$date__font-id--horoscope: $font-tiny-id !default;
+$date__size-mobile--horoscope: $label-size-medium !default;
+$date__size-tablet--horoscope: $label-size-medium !default;
+$date__size-desktop--horoscope: $label-size-large !default;
+$date__letter-spacing--horoscope: 2px !default;
+$date__text-transform--horoscope: uppercase !default;
+$date__color--horoscope: $gray-base !default;
+$date__margin-mobile--horoscope: 0 0 $gap-size-xs 0 !default;
+$date__margin-tablet--horoscope: 0 0 $gap-size-sm 0 !default;
+$date__margin-desktop--horoscope: 0 0 $gap-size-sm 0 !default;

@@ -13,7 +13,7 @@
 @mixin product__item--default {
 
   @include product__item-text();
-
+  text-align: $product__item-text-align--default;
   position: relative;
   overflow: hidden;
   margin-bottom: $gap-size-lg;
@@ -56,7 +56,7 @@
   }
 
   .text-shop {
-    margin-top: 10px;
+    margin-top: $product__item-text-shop-margin-top;
   }
 
   .media--blazy {
@@ -123,8 +123,8 @@
 }
 
 @mixin product__item--ecommerce-slider {
-
   @include product__item-text--ecommerce-slider();
+  text-align: $ecommerce-slider__item-text-align;
 
   position: relative;
   overflow: hidden;
@@ -331,7 +331,7 @@
   }
 
   .ecommerce-slider__title {
-    @include text-helper($ecommerce-slider__title-font-id);
+    @include text-helper($ecommerce-slider__title-font-id);;
     text-align: center;
     padding: 0 20px;
   }
@@ -445,10 +445,6 @@
   .ecommerce-slider__content-wrapper {
     left: 0;
     right: 0;
-  }
-
-  .ecommerce-slider__title {
-    @include text-helper-size($font-headline-id, $title-size-sm);
   }
 
   .swiper-button {
@@ -598,10 +594,6 @@
 
   .ecommerce-slider__content {
     max-width: 1150px;
-  }
-
-  .ecommerce-slider__title {
-    @include text-helper-size($font-headline-id, $title-size-lg);
   }
 
   .item-product-slider {
