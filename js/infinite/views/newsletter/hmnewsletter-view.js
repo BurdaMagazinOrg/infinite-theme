@@ -10,7 +10,8 @@
         if (typeof TrackingManager != 'undefined') {
           TrackingManager.trackEvent({
             category: 'newsletter',
-            action: 'success'
+            action: 'success',
+            'eventNonInteraction': 'false'
           }, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       })
@@ -18,7 +19,8 @@
         if (typeof TrackingManager != 'undefined') {
           TrackingManager.trackEvent({
             category: 'newsletter',
-            action: 'error'
+            action: 'error',
+            'eventNonInteraction': 'false'
           }, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       })

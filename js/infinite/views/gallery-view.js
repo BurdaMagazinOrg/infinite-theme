@@ -43,7 +43,8 @@
           category: 'click',
           action: 'gallery',
           label: this.mediaId,
-          location: tmpPath
+          location: tmpPath,
+          'eventNonInteraction': 'false'
         });
       }
     }

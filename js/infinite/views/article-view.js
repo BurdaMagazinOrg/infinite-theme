@@ -75,7 +75,7 @@
           category: 'mkt-userInteraction',
           action: 'readArticle',
           label: this.articleSEOTitle,
-          'eventNonInteraction': 'true',
+          'eventNonInteraction': 'false'
         }, TrackingManager.getAdvTrackingByElement(this.$el));
       }
     }

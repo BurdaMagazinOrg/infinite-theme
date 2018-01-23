@@ -101,7 +101,8 @@
     if (TrackingManager != undefined) {
       TrackingManager.trackEvent({
         category: 'lazy-loading',
-        action: this.$more.attr('href')
+        action: this.$more.attr('href'),
+        eventNonInteraction: 'false'
       });
     }
 
