@@ -34,6 +34,7 @@
   @include text-helper($font);
   color: $color;
   text-transform: $label--copyright-text-transform;
+  @extend %label--copyright--suffix !optional;
 
   span + span {
     &:before {
@@ -54,4 +55,8 @@
   @media (min-width: $screen-md-min) {
     @include text-helper-size($label--copyright-font-id, $size-desktop);
   }
+}
+
+@mixin label--copyright--suffix() {
+
 }
