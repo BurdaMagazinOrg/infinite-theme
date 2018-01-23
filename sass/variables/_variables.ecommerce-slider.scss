@@ -1,8 +1,8 @@
 /**
 ** eCommerce-Slider
 **/
-$ecommerce-slider__background-color: #fff;
-
+$ecommerce-slider__background-color: #fff !default;
+$ecommerce-slider__item-text-align: left !default;
 $ecommerce-slider__padding--full: 146px !default;
 $ecommerce-slider__padding--middle: 70px !default;
 $ecommerce-slider__padding--small: 52px !default;

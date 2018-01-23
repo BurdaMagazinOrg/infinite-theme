@@ -13,7 +13,7 @@
 @mixin product__item--default {
 
   @include product__item-text();
-
+  text-align: $product__item-text-align--default;
   position: relative;
   overflow: hidden;
   margin-bottom: $gap-size-lg;
@@ -56,7 +56,7 @@
   }
 
   .text-shop {
-    margin-top: 10px;
+    margin-top: $product__item-text-shop-margin-top;
   }
 
   .media--blazy {
@@ -123,8 +123,8 @@
 }
 
 @mixin product__item--ecommerce-slider {
-
   @include product__item-text--ecommerce-slider();
+  text-align: $ecommerce-slider__item-text-align;
 
   position: relative;
   overflow: hidden;
