@@ -1,6 +1,21 @@
 /**
 ** Products
 **/
+
+//defaults
+$product__percentage-saving-font-id--default: $font-label-id !default;
+$product__percentage-saving-size--default: $label-size-tiny !default;
+$product__percentage-saving-bottom--default: 5px !default;
+$product__percentage-saving-right--default: 5px !default;
+$product__percentage-saving-color--default: $color-highlighted !default;
+$product__percentage-saving-bg-color--default: $white !default;
+$product__percentage-saving-border--default: 1px solid $color-highlighted !default;
+$product__percentage-saving-border-radius--default: 0 !default;
+$product__percentage-saving-padding--default: 2px 4px !default;
+$product__percentage-saving-letter-spacing--default: normal !default;
+
+
+//horizontal
 $product__item-lined-mobile: true !default;
 $product__item-text-align--default: left !default;
 $product__item-text-brand-font-id: $font-label-id !default;
