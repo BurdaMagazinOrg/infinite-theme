@@ -171,7 +171,7 @@
 
     .newsletter__title {
       @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--mobile);
-      margin-bottom: $title--horizontal-block-gap-bottom-mobile;
+      margin-bottom: $newsletter__title-gap-bottom-mobile--horizontal;
     }
 
     .container-form {
@@ -230,7 +230,7 @@
 
     .newsletter__title {
       @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--tablet);
-      margin-bottom: $title--horizontal-block-gap-bottom-tablet;
+      margin-bottom: $newsletter__title-gap-bottom-tablet--horizontal;
     }
 
     .container-content-item {
@@ -251,7 +251,7 @@
 
     .newsletter__title {
       @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--desktop);
-      margin-bottom: $title--horizontal-block-gap-bottom-desktop;
+      margin-bottom: $newsletter__title-gap-bottom-desktop--horizontal;
     }
 
     .container-content-item {
