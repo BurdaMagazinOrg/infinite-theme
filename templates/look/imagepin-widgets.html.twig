@@ -6,25 +6,66 @@
 
 <div{{ attributes }}>
     {% for widget in items %}
-        <div{{ widget.attributes }}>
+    <div{{ widget.attributes }}>
 
-            {% set product_id %}
-                {{ widget.content }}
-            {% endset %}
+        {% set product_one %}
+            {{ widget.content.product_one }}
+        {% endset %}
+
+        {% set product_two %}
+            {{ widget.content.product_two }}
+        {% endset %}
 
 
-
-            {% if 'fia/nodes.xml' in url|render|render %}
-                {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'facebook_instant_articles_rss') }}
+        {% if 'fia/nodes.xml' in url|render|render %}
+        {% if product_one|striptags|render|trim is not empty %}
+            {% set attributes = create_attribute({'data-product-variant': 'high'}) %}
+            <div {{ attributes.addClass('product-widget__variant') }}>
+                <h6>{{ high }}</h6>
+                {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'facebook_instant_articles_rss') }}
+            </div>
+        {% endif %}
+        {% if product_one|striptags|render|trim is not empty %}
+            {% set attributes = create_attribute({'data-product-variant': 'low'}) %}
+            <div {{ attributes.addClass('product-widget__variant') }}>
+                <h6>{{ low }}</h6>
+                {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'facebook_instant_articles_rss') }}
+            </div>
+        {% endif %}
+    {% else %}
+        {% if product_one|striptags|render|trim is not empty and product_two|striptags|render|trim is not empty%}
+        <div class="product-widgets two-items">
             {% else %}
-                {{ drupal_entity('advertising_product', product_id|striptags|render|trim, 'look') }}
-            {% endif %}
+            <div class="product-widgets one-item">
+                {% endif %}
+                {% if product_one|striptags|render|trim is not empty %}
+                    {% set attributes = create_attribute({'data-product-variant': 'high'}) %}
+                    <div {{ attributes }} class="product-widget__variant high">
+                        {% if product_one|striptags|render|trim is not empty and product_two|striptags|render|trim is not empty%}
+                            <span class="label">{{ high }}</span>
+                        {% endif %}
+                        {{ drupal_entity('advertising_product', product_one|striptags|render|trim, 'look') }}
+                    </div>
 
+                {% endif %}
+                {% if product_two|striptags|render|trim is not empty %}
+                    {% set attributes = create_attribute({'data-product-variant': 'low'}) %}
+
+                    <div {{ attributes }} class="product-widget__variant low">
+                    {% if product_one|striptags|render|trim is not empty and product_two|striptags|render|trim is not empty%}
+                        <span class="label">{{ low }}</span>
+                    {% endif %}
+                        {{ drupal_entity('advertising_product', product_two|striptags|render|trim, 'look') }}
+                    </div>
+
+                {% endif %}
+                {% endif %}
+            </div>
 
 
 
             <div{{ widget.pin_attributes }}>{{ widget.pin_content }}</div>
-            
+
         </div>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
