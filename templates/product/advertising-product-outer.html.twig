@@ -16,7 +16,9 @@
 {% endif %}
 
 {% if content.status %}
-    {{ attach_library('infinite/infinite.views.product-view') }}
+    {% block product_attach_library %}
+        {{ attach_library('infinite/infinite.views.product-view') }}
+    {% endblock %}
 
     <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
         {% block content_block %}
