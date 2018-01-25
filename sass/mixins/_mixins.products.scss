@@ -143,11 +143,9 @@
     display: block;
     margin-bottom: $ecommerce-slider__item-text-brand-gap-bottom;
 
-    @media (min-width: $screen-sm-min) {
-      &:after {
-        content: " ";
-        white-space: pre;
-      }
+    &:after {
+      content: " ";
+      white-space: pre;
     }
   }
 
