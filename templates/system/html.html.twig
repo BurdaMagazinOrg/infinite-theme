@@ -32,7 +32,7 @@ db_offline ? 'db-offline',
         {% block fb_tracking_pixel_block %}{% endblock %}
         <div id="page-wrapper">
             {{ page_top }}
-            {{ page | without([page.head_top, page.body_bottom]) }}
+            {{ page | without('head_top', 'body_bottom') }}
             {{ page_bottom }}
 
         </div>

@@ -46,10 +46,10 @@
       }, this);
     },
     onAdBlockDetected: function () {
-      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active'});
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active', eventNonInteraction: 'true'});
     },
     onAdBlockNotDetected: function () {
-      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive'});
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive', eventNonInteraction: 'true'});
     },
     inviewChangeHandler: function (pModel) {
       /**
@@ -82,6 +82,7 @@
           tmpTrackingObject.event = tmpTrackingObject.category = 'scroll_depth';
           tmpTrackingObject.depth = 'index_' + tmpIndex;
           tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
+          tmpTrackingObject.eventNonInteraction = 'false';
 
           TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
           pModel.set('scrollDepthTracked', true);
@@ -96,7 +97,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'menu_sidebar',
-          label: 'open'
+          label: 'open',
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -104,7 +106,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'menu_sidebar',
-          label: 'close'
+          label: 'close',
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -114,7 +117,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'menu_sidebar',
-          label: tmpText
+          label: tmpText,
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -122,7 +126,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'menu_sidebar',
-          label: 'logo'
+          label: 'logo',
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -130,7 +135,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'main_navigation',
-          label: 'logo'
+          label: 'logo',
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -138,7 +144,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'header_home',
-          label: 'logo'
+          label: 'logo',
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -148,7 +155,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'main_navigation',
-          label: tmpText
+          label: tmpText,
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -158,7 +166,8 @@
         TrackingManager.trackEvent({
           category: 'click',
           action: 'sub_navigation',
-          label: tmpText
+          label: tmpText,
+          eventNonInteraction: 'false'
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
     },
@@ -180,7 +189,8 @@
             category: 'mkt-userInteraction',
             action: 'outbrainClick',
             label: tmpMagazineName,
-            index: 'index_' + tmpIndex
+            index: 'index_' + tmpIndex,
+            eventNonInteraction: 'false'
           };
 
         TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
@@ -253,7 +263,8 @@
         event: this.gtmIndexEvent,
         category: 'teaser',
         action: 'feed_teaser',
-        index: 'index_' + tmpIndex
+        index: 'index_' + tmpIndex,
+        eventNonInteraction: 'false'
       };
 
       TrackingManager.trackEvent(tmpTrackingObject);
@@ -266,7 +277,8 @@
         category: 'click',
         action: 'teaser_category',
         label: tmpText,
-        location: TrackingManager.getLocationType()
+        location: TrackingManager.getLocationType(),
+        eventNonInteraction: 'false'
       });
     },
     onPresenterFullClickHandler: function (pEvent) {
@@ -276,7 +288,8 @@
           event: this.gtmIndexEvent,
           category: 'teaser',
           action: 'presenter_full',
-          index: 'index_' + tmpIndex
+          index: 'index_' + tmpIndex,
+          eventNonInteraction: 'false'
         };
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
@@ -288,7 +301,8 @@
           event: this.gtmIndexEvent,
           category: 'teaser',
           action: 'presenter_half',
-          index: 'index_' + tmpIndex
+          index: 'index_' + tmpIndex,
+          eventNonInteraction: 'false'
         };
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
@@ -302,7 +316,8 @@
           category: 'teaser',
           action: 'presenter_multi',
           index: 'index_' + tmpIndex,
-          pos: 'pos_' + tmpItemIndex
+          pos: 'pos_' + tmpItemIndex,
+          eventNonInteraction: 'false'
         };
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
@@ -314,6 +329,7 @@
 
       tmpTrackingObject.action = tmpAction;
       tmpTrackingObject.label = $tmpItem.find('[data-social-type]').addBack().filter('[data-social-type]').data('social-type');
+      tmpTrackingObject.eventNonInteraction = 'false';
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     },
@@ -323,6 +339,7 @@
 
       tmpTrackingObject.action = $tmpItem.find('.text-author span').text();
       tmpTrackingObject.label = TrackingManager.getItemType($tmpItem);
+      tmpTrackingObject.eventNonInteraction = 'false';
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     }
