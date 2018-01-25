@@ -838,7 +838,7 @@
 }
 
 @mixin item-paragraph--ecommerce-slider() {
-  @include padding--v-item-content__item();
+  //@include padding--v-item-content__item();
 
   .ecommerce-slider {
     @include ecommerce-slider();
