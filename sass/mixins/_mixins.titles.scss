@@ -56,7 +56,8 @@
   @include text-helper($title--page-center-font-id);
   text-align: center;
   color: $title--page-center-color;
-  letter-spacing: -1px;
+  letter-spacing: $title--page-center-letter-spacing;
+  text-transform: $title--page-center-text-transform;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($title--page-center-font-id, $title--page-center-mobile);

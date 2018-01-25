@@ -257,24 +257,24 @@
 
 @mixin teaser-square-xs-text() {
   .teaser__title {
-    @include text-headline();
+    @include text-helper($teaser-square-xs-font-id);
   }
 
   @media (max-width: $screen-xs-max) {
     .teaser__title {
-      @include text-headline-size($teaser-square-xs-headline-size-mobile);
+      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .teaser__title {
-      @include text-headline-size($teaser-square-xs-headline-size-tablet);
+      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .teaser__title {
-      @include text-headline-size($teaser-square-xs-headline-size-desktop);
+      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-desktop);
     }
   }
 }
