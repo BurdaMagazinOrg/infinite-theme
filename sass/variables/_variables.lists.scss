@@ -12,15 +12,19 @@ $list__glossary-font-id: $font-label-id !default;
 $list__glossary-font-size: $title-size-xxs !default;
 $list__glossary-text-transform: none !default;
 $list__glossary-line-height: 32px !default;
+$list__glossary-height: $list__glossary-line-height !default;
 $list__glossary-margin: 0 4px 4px 0 !default;
 $list__glossary-padding: 0 8px !default;
 $list__glossary-border: $h-line-style !default;
 $list__glossary-background-color: $bg-color-gray-light !default;
 $list__glossary-background-color-active: $color-highlighted !default;
-$list__glossary-background-disabled-color: $bg-color-gray-light !default;
 $list__glossary-color: $text-color !default;
-$list__glossary-disabled-color: $gray-base !default;
+
 $list__glossary-color-active: $white !default;
+
+$list__glossary-border-disabled: 1px solid transparent !default;
+$list__glossary-background-disabled-color: $bg-color-gray-light !default;
+$list__glossary-disabled-color: $gray-base !default;
 
 /** list--content-teaser **/
 $list__content-teaser--horizontal-count--small: 3 !default;
