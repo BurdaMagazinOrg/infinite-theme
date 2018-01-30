@@ -151,8 +151,10 @@
           break;
         case ProductView.PROVIDER_GENERIC:
 
-          if (tmpExternalTrackingURL.indexOf("//td.") > -1 && tmpExternalTrackingURL.indexOf("&link") > -1) {
-            tmpSlicedString = tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf('&link'), tmpExternalTrackingURL.length);
+          var tmpLinkPosition = tmpExternalTrackingURL.indexOf("&link");
+
+          if (tmpExternalTrackingURL.indexOf("//td.") > -1 && tmpLinkPosition > -1) {
+            tmpSlicedString = tmpExternalTrackingURL.substring(tmpLinkPosition, tmpExternalTrackingURL.length);
 
             if (this.model.has('entityType')) {
 
@@ -164,7 +166,7 @@
                 + tmpComponent;
             }
 
-            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf("&link"), tmpExternalTrackingURL.length), tmpSlicedString);
+            tmpExternalTrackingURL = tmpExternalTrackingURL.substr(0, tmpLinkPosition) + tmpSlicedString + tmpExternalTrackingURL.substr(tmpLinkPosition)
           }
 
           break;
