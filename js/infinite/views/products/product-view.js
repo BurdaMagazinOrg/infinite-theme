@@ -112,70 +112,72 @@
       }
     },
     initCustomTracking: function () {
-      /**
-       * ask Steffen Schulz for this shizzl
-       */
-      var tmpExternalTrackingURL = this.model.get('url'),
-        tmpSlicedString = "",
-        tmpComponent;
+      var externalTrackingURL = this.model.get('url');
+      var slicedString = '';
+      var containerType = '';
+      var positionOfLinkParam = externalTrackingURL.indexOf("&link");
+      var hasLinkParam = positionOfLinkParam > -1;
+      var productTitle = '';
+      var isTracdelightURL = externalTrackingURL.indexOf("//td.") > -1;
+      var hasSubid = externalTrackingURL.indexOf("subid=") > -1;
 
-      if (tmpExternalTrackingURL == '' || tmpExternalTrackingURL == undefined) return;
+      if (externalTrackingURL === '' || externalTrackingURL === undefined) return;
 
-      if (this.model.has('containerType') && this.model.get('containerType') != '') {
-        tmpComponent = '-' + this.model.get('containerType').toLowerCase();
+      if (this.model.has('containerType') && this.model.get('containerType') !== '') {
+        containerType = '-' + this.model.get('containerType').toLowerCase();
       }
 
       switch (this.model.get('provider')) {
         case ProductView.PROVIDER_TRACDELIGHT:
 
-          if (tmpExternalTrackingURL.indexOf("subid=") > -1) {
-            tmpExternalTrackingURL = BaseUtils.replaceUrlParam(tmpExternalTrackingURL, 'subid', window.getURLParam('subid', tmpExternalTrackingURL) + tmpComponent);
+          if (hasSubid) {
+            externalTrackingURL = BaseUtils.replaceUrlParam(externalTrackingURL, 'subid', window.getURLParam('subid', externalTrackingURL) + containerType);
           }
 
           break;
         case ProductView.PROVIDER_AMAZON:
 
           //TODO change this to dynamic value for all platforms
-          if (tmpExternalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
+          if (externalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
 
-            tmpSlicedString = AppConfig.amazonURLTrId.split('-');
-            if (tmpSlicedString.length > 1) {
-              tmpSlicedString = tmpSlicedString[0] + tmpComponent + '-' + tmpSlicedString[1];
+            slicedString = AppConfig.amazonURLTrId.split('-');
+            if (slicedString.length > 1) {
+              slicedString = slicedString[0] + containerType + '-' + slicedString[1];
             } else {
-              tmpSlicedString = AppConfig.amazonURLTrId + tmpComponent;
+              slicedString = AppConfig.amazonURLTrId + containerType;
             }
 
-            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(AppConfig.amazonURLTrId, tmpSlicedString);
+            externalTrackingURL = externalTrackingURL.replace(AppConfig.amazonURLTrId, slicedString);
           }
 
           break;
         case ProductView.PROVIDER_GENERIC:
 
-          var tmpLinkPosition = tmpExternalTrackingURL.indexOf("&link");
-
-          if (tmpExternalTrackingURL.indexOf("//td.") > -1 && tmpLinkPosition > -1) {
-            tmpSlicedString = tmpExternalTrackingURL.substring(tmpLinkPosition, tmpExternalTrackingURL.length);
+          if (isTracdelightURL && hasLinkParam) {
+            slicedString = externalTrackingURL.substring(positionOfLinkParam, externalTrackingURL.length);
 
             if (this.model.has('entityType')) {
 
-              var tmpSlicedTitle = this.model.get('title').replace(/[\/. ,:-]+/g, "_").toLowerCase().slice(0, Math.min(10, this.model.get('title').length));
-              tmpSlicedString = "&subid="
+              productTitle = this.model.get('title');
+              productTitle = productTitle.replace(/[\/. ,:-]+/g, "_").toLowerCase().slice(0, Math.min(10, productTitle.length));
+
+              slicedString = "&subid="
                 + this.model.get('entityType')
                 + '-' + this.model.get('entityID')
-                + '-' + tmpSlicedTitle
-                + tmpComponent;
+                + '-' + productTitle
+                + containerType;
             }
 
-            tmpExternalTrackingURL = tmpExternalTrackingURL.substr(0, tmpLinkPosition) + tmpSlicedString + tmpExternalTrackingURL.substr(tmpLinkPosition)
+            externalTrackingURL = externalTrackingURL.substr(0, positionOfLinkParam) + slicedString + externalTrackingURL.substr(positionOfLinkParam)
           }
 
           break;
 
       }
 
-      if (tmpExternalTrackingURL != this.model.get('url')) {
-        this.model.set('tracking-url', tmpExternalTrackingURL);
-        this.$el.attr("data-external-url", tmpExternalTrackingURL);
+      if (externalTrackingURL != this.model.get('url')) {
+        this.model.set('tracking-url', externalTrackingURL);
+        this.$el.attr("data-external-url", externalTrackingURL);
       }
     },
     collectTrackingData: function () {
