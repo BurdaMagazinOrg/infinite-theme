@@ -119,6 +119,7 @@
       var hasLinkParam = positionOfLinkParam > -1;
       var productTitle = '';
       var isTracdelightURL = externalTrackingURL.indexOf("//td.") > -1;
+      var isDrupalEntityOrNode = this.model.has('entityType');
       var hasSubid = externalTrackingURL.indexOf("subid=") > -1;
 
       if (externalTrackingURL === '' || externalTrackingURL === undefined) return;
@@ -156,7 +157,7 @@
           if (isTracdelightURL && hasLinkParam) {
             slicedString = externalTrackingURL.substring(positionOfLinkParam, externalTrackingURL.length);
 
-            if (this.model.has('entityType')) {
+            if (isDrupalEntityOrNode) {
 
               productTitle = this.model.get('title');
               productTitle = productTitle.replace(/[\/. ,:-]+/g, "_").toLowerCase().slice(0, Math.min(10, productTitle.length));
@@ -168,7 +169,9 @@
                 + containerType;
             }
 
-            externalTrackingURL = externalTrackingURL.substr(0, positionOfLinkParam) + slicedString + externalTrackingURL.substr(positionOfLinkParam)
+            externalTrackingURL = externalTrackingURL.substr(0, positionOfLinkParam) + slicedString + externalTrackingURL.substr(positionOfLinkParam);
+
+            console.log(externalTrackingURL);
           }
 
           break;
