@@ -134,6 +134,7 @@
   color: $menu--main-navigation__item-active-color;
 }
 
+
 @mixin menu--main-navigation__flyout() {
   @include transition-fade($menu--main-navigation__flyout-fade-duration, $transition-easing, $menu--main-navigation__flyout-fade-delay);
   @extend %fade-out;
@@ -347,9 +348,7 @@
   left: 0;
   top: 0;
   right: 0;
-  left: 0;
   bottom: 0;
-  top: 0;
   background-color: $menu--sidebar-bg;
 
   &.open {
@@ -433,6 +432,8 @@
   .item-soft {
     color: $menu__item--sidebar-soft-color;
   }
+
+  @content;
 }
 
 @mixin menu__item-lined--sidebar() {
