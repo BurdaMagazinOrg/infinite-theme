@@ -247,6 +247,10 @@ function infinite_preprocess_advertising_product(&$variables) {
 
   $variables['data_attributes'] = $data_attributes;
 
+  // change image style for look
+  if ('look' === $variables['elements']['#view_mode']) {
+    $variables['content']['product_image'][0]['#build']['settings']['image_style'] = 'shop_the_look_product';
+  }
 }
 
 /**

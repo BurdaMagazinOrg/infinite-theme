@@ -112,80 +112,68 @@
       }
     },
     initCustomTracking: function () {
-      var externalTrackingURL = this.model.get('url');
-      var slicedString = '';
-      var containerType = '';
-      var positionOfLinkParam = externalTrackingURL.indexOf("&link");
-      var hasLinkParam = positionOfLinkParam > -1;
-      var productTitle = '';
-      var productTitleProcessed = '';
-      var isTracdelightURL = externalTrackingURL.indexOf("//td.") > -1;
-      var isDrupalEntityOrNode = this.model.has('entityType');
-      var hasSubid = externalTrackingURL.indexOf("subid=") > -1;
+      /**
+       * ask Steffen Schulz for this shizzl
+       */
+      var tmpExternalTrackingURL = this.model.get('url'),
+        tmpSlicedString = "",
+        tmpComponent;
 
-      if (externalTrackingURL === '' || externalTrackingURL === undefined) return;
+      if (tmpExternalTrackingURL == '' || tmpExternalTrackingURL == undefined) return;
 
-      if (this.model.has('containerType') && this.model.get('containerType') !== '') {
-        containerType = '-' + this.model.get('containerType').toLowerCase();
+      if (this.model.has('containerType') && this.model.get('containerType') != '') {
+        tmpComponent = '-' + this.model.get('containerType').toLowerCase();
       }
 
       switch (this.model.get('provider')) {
         case ProductView.PROVIDER_TRACDELIGHT:
 
-          if (hasSubid) {
-            externalTrackingURL = BaseUtils.replaceUrlParam(externalTrackingURL, 'subid', window.getURLParam('subid', externalTrackingURL) + containerType);
+          if (tmpExternalTrackingURL.indexOf("subid=") > -1) {
+            tmpExternalTrackingURL = BaseUtils.replaceUrlParam(tmpExternalTrackingURL, 'subid', window.getURLParam('subid', tmpExternalTrackingURL) + tmpComponent);
           }
 
           break;
         case ProductView.PROVIDER_AMAZON:
 
           //TODO change this to dynamic value for all platforms
-          if (externalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
+          if (tmpExternalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
 
-            slicedString = AppConfig.amazonURLTrId.split('-');
-            if (slicedString.length > 1) {
-              slicedString = slicedString[0] + containerType + '-' + slicedString[1];
+            tmpSlicedString = AppConfig.amazonURLTrId.split('-');
+            if (tmpSlicedString.length > 1) {
+              tmpSlicedString = tmpSlicedString[0] + tmpComponent + '-' + tmpSlicedString[1];
             } else {
-              slicedString = AppConfig.amazonURLTrId + containerType;
+              tmpSlicedString = AppConfig.amazonURLTrId + tmpComponent;
             }
 
-            externalTrackingURL = externalTrackingURL.replace(AppConfig.amazonURLTrId, slicedString);
+            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(AppConfig.amazonURLTrId, tmpSlicedString);
           }
 
           break;
         case ProductView.PROVIDER_GENERIC:
 
-          if (isTracdelightURL && hasLinkParam) {
-            slicedString = externalTrackingURL.substring(positionOfLinkParam, externalTrackingURL.length);
+          if (tmpExternalTrackingURL.indexOf("//td.") > -1 && tmpExternalTrackingURL.indexOf("&link") > -1) {
+            tmpSlicedString = tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf('&link'), tmpExternalTrackingURL.length);
 
-            if (isDrupalEntityOrNode) {
+            if (this.model.has('entityType')) {
 
-              productTitle = this.model.get('title');
-              productTitleProcessed = productTitle
-                  .replace(/[\/. ,:-]+/g, "_")
-                  .toLowerCase()
-                  .slice(
-                      0,
-                      Math.min(10, productTitle.length)
-                  );
-
-              slicedString = "&subid="
+              var tmpSlicedTitle = this.model.get('title').replace(/[\/. ,:-]+/g, "_").toLowerCase().slice(0, Math.min(10, this.model.get('title').length));
+              tmpSlicedString = "&subid="
                 + this.model.get('entityType')
                 + '-' + this.model.get('entityID')
-                + '-' + productTitleProcessed
-                + containerType;
+                + '-' + tmpSlicedTitle
+                + tmpComponent;
             }
 
-            externalTrackingURL = externalTrackingURL.substr(0, positionOfLinkParam) + slicedString + externalTrackingURL.substr(positionOfLinkParam);
+            tmpExternalTrackingURL = tmpExternalTrackingURL.replace(tmpExternalTrackingURL.substring(tmpExternalTrackingURL.indexOf("&link"), tmpExternalTrackingURL.length), tmpSlicedString);
           }
 
           break;
 
       }
 
-      if (externalTrackingURL != this.model.get('url')) {
-        this.model.set('tracking-url', externalTrackingURL);
-        this.$el.attr("data-external-url", externalTrackingURL);
+      if (tmpExternalTrackingURL != this.model.get('url')) {
+        this.model.set('tracking-url', tmpExternalTrackingURL);
+        this.$el.attr("data-external-url", tmpExternalTrackingURL);
       }
     },
     collectTrackingData: function () {
