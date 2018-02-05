@@ -96,7 +96,7 @@
       if (this.model.get('disabled') == true) return;
 
       this.model.set('trackImpression', true);
-      if (typeof TrackingManager != 'undefined') {
+      if (typeof TrackingManager !== 'undefined' && this.model.get('teaserTracking') !== undefined) {
         this.model.get('teaserTracking').action = 'impression';
         this.model.get('teaserTracking').eventNonInteraction = 'true';
 
