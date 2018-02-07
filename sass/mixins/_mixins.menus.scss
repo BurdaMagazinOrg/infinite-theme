@@ -239,7 +239,7 @@
 }
 
 @mixin menu--submenu-navigation__item() {
-  @include inline-block();
+  display: inline-block;
 
   &:first-child {
     margin-left: 0;
@@ -290,7 +290,7 @@
 
   .label-menu {
     @include text-helper($menu--main-navigation__menu-label-font-id, $menu--main-navigation__menu-label-size, 1);
-    @include inline-block();
+    display: inline-block; // TODO this is overwritten currently. Verify, if can be removed.
     margin: $menu--main-navigation__menu-label-margin;
     color: $menu--main-navigation__menu-label-color;
     text-transform: $menu--main-navigation__menu-label-text-transform;

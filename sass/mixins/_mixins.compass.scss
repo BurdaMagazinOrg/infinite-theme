@@ -1,0 +1,9 @@
+$default-translate-y: 1em !default;
+
+// Move an object along the y axis (2D)
+// @include translate( [ translate-y, perspective, 3D-only ] )
+//
+// **Note** This mixin cannot be combined with other transform mixins.
+@mixin translateY($trans-y: $default-translate-y) {
+  transform: translateY($trans-y);
+}
