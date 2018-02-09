@@ -1,0 +1,29 @@
+/** backgrounds **/
+$bg-color: #ffffff !default;
+$bg-color-gray-light: #f9f9f9 !default;
+
+/** colors **/
+$color-brand: #7d8482 !default;
+
+$white: #ffffff !default;
+$black: #000000 !default;
+$text-color: #383838;
+$text-highlighted: $color-brand;
+$color-highlighted: #ea331e;
+$color-highlighted-hover: #000;
+$color-hover: $color-brand;
+$color-notification--red: #ea331e !default;
+
+$color-facebook: #325bb7 !default;
+$color-twitter: #589ded !default;
+$color-email: #50e3c2 !default;
+$color-pinterest: #cb061e !default;
+$color-instagram: #fbb4b4 !default;
+$color-whatsapp: #5cbe4a !default;
+
+$gray-darker: #383838;
+$gray-dark: lighten($gray-base, 20%);
+$gray-base: #7d8482;
+$gray: #e8e4e4;
+$gray-light: #e7e7e7;
+$gray-lighter: #eee;

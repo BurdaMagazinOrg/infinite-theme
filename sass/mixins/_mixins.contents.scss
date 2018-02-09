@@ -373,8 +373,12 @@
   }
 }
 
-@mixin item-content--article() {
+@mixin item-content__padding-top--article() {
   @extend %container--v-sm-padding;
+}
+
+@mixin item-content--article() {
+  @include item-content__padding-top--article();
 
   .item-content__header {
     @extend %region--fixed-content;

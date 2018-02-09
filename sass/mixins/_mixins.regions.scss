@@ -9,15 +9,7 @@
 }
 
 @mixin region__children--full-content {
-  &:first-child.region-marketing {
-    &.ad-active {
-      //@include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
-    }
-
-    &.ad-inactive + .region-full-content {
-      @extend %gap__container--v-reset;
-    }
-  }
+  @include region__children-marketing--full-content();
 
   & > .item-content__header:first-child {
     padding-top: 0;
@@ -27,6 +19,22 @@
     @extend %gap--v-region;
     @if ($region-v-lined) {
       border-top: $h-line-style;
+    }
+  }
+}
+
+@mixin region__children-marketing--full-content() {
+  &:first-child.ad-inactive {
+    & + .region-full-content {
+      @extend %gap__container--v-reset;
+    }
+  }
+
+  &.ad-active + .region-full-content:not(.no-v-padding) {
+    @if ($region-v-lined) {
+      margin-top: -$h-line-width; //double line
+    } @else {
+      margin-top: 0;
     }
   }
 }
