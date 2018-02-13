@@ -76,7 +76,7 @@
 <article{{ attributes.addClass(wrapper_classes) }}>
     <div class="teaser__img-container-wrapper">
         {% block img_container_block %}
-            <div class="teaser__img-container" itemprop="associatedMedia">
+            <div class="teaser__img-container">
                 {% block presenter_media %}
                     {% if content.field_presenter_media['#items'] is not empty %}
                         {{ content.field_presenter_media }}
