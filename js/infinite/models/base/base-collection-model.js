@@ -1,4 +1,4 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+import BaseModel from './base-model'
 
   "use strict";
 
@@ -90,5 +90,4 @@
   });
 
   window.BaseCollectionModel = window.BaseCollectionModel || BurdaInfinite.models.base.BaseCollectionModel;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+  export default BurdaInfinite.models.base.BaseCollectionModel

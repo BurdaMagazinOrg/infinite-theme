@@ -1,3 +1,18 @@
+infinite.bundle:
+  version: 1.0
+  js:
+    dist/main.bundle.js: {}
+  dependencies:
+#        - core/jquery
+        - core/backbone
+        - core/drupal
+        - core/drupal.ajax
+        - core/drupalSettings
+        - core/jquery.once
+        - core/picturefill
+        - core/jquery.cookie
+        - blazy/blazy
+
 infinite.header:
   version: 1.0
   header: true
@@ -51,25 +66,25 @@ infinite.init:
     base:
       css/infinite-global.css: {}
 
-  js:
-    js/infinite/backbone-manager.js: {}
-    js/infinite/burda-infinite.js: { }
-    js/infinite/utils/base-utils.js: { }
-    js/infinite/consts/app-config.js: {}
-    js/infinite/consts/view-ids.js: {}
-    js/infinite/consts/model-ids.js: {}
-    js/infinite/consts/manager-ids.js: {}
+#  js:
+#    js/infinite/backbone-manager.js: {}
+#    js/infinite/burda-infinite.js: { }
+#    js/infinite/utils/base-utils.js: { }
+#    js/infinite/consts/app-config.js: {}
+#    js/infinite/consts/view-ids.js: {}
+#    js/infinite/consts/model-ids.js: {}
+#    js/infinite/consts/manager-ids.js: {}
 
   dependencies:
 #    - core/jquery
-    - core/backbone
-    - core/drupal
-    - core/drupal.ajax
-    - core/drupalSettings
-    - core/jquery.once
-    - core/picturefill
-    - core/jquery.cookie
-    - blazy/blazy
+#    - core/backbone
+#    - core/drupal
+#    - core/drupal.ajax
+#    - core/drupalSettings
+#    - core/jquery.once
+#    - core/picturefill
+#    - core/jquery.cookie
+#    - blazy/blazy
 
 
 ##### manager #####

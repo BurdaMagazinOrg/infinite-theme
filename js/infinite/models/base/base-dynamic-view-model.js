@@ -1,3 +1,6 @@
+import BaseCollectionModel from './base-collection-model'
+import BaseView from '../../views/base/base-view'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

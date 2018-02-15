@@ -1,4 +1,4 @@
-var ManagerIds = {
+export default {
   trackingManager: "trackingManager",
   scrollManager: "scrollManager"
 }

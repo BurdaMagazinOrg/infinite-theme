@@ -1,4 +1,4 @@
-var ModelIds = {
+export default {
   menuSidebarModel: "menuSidebarModel",
   infiniteViewsModel: "infiniteViewsModel",
   modalSearchModel: "modalSearchModel",

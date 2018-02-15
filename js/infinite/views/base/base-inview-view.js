@@ -1,3 +1,5 @@
+import BaseView from './base-view'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

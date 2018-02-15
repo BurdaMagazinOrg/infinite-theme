@@ -1,3 +1,5 @@
+import AppConfig from '../../consts/app-config'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";
