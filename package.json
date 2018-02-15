@@ -1,0 +1,37 @@
+{
+  "name": "infinite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "analyze": "webpack --config webpack.prod.js --profile --json > stats.json && webpack-bundle-analyzer stats.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BurdaMagazinOrg/infinite-theme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BurdaMagazinOrg/infinite-theme/issues"
+  },
+  "homepage": "https://github.com/BurdaMagazinOrg/infinite-theme#readme",
+  "devDependencies": {
+    "imports-loader": "^0.7.1",
+    "script-loader": "^0.7.2",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.11.0",
+    "webpack-bundle-analyzer": "^2.10.0",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "sticky-kit": "^1.1.2",
+    "swiper": "^3.4.2",
+    "timeago": "^1.4.2",
+    "waypoints": "^4.0.0"
+  }
+}
