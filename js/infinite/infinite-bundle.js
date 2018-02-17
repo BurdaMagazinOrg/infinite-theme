@@ -41,7 +41,7 @@ import './models/infinite-block-data-model'
 
 // infinite.views.base.*
 // import './views/base/base-view'
-import './views/base/base-inview-view'
+// import './views/base/base-inview-view'
 import './views/base/base-dynamic-view'
 import './models/base/base-dynamic-view-model'
 import './views/base/base-feed-view'
