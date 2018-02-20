@@ -1,3 +1,5 @@
+import ViewIds from './consts/view-ids'
+
 (function ($, Drupal, drupalSettings, Backbone, window) {
 
   "use strict";

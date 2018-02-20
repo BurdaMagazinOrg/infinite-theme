@@ -1,3 +1,5 @@
+import './product-view'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

@@ -1,3 +1,6 @@
+import AppConfig from '../../consts/app-config'
+import BaseView from '../base/base-view'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

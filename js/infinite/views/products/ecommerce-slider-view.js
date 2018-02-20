@@ -1,3 +1,5 @@
+// import ModelIds from '../consts/model-ids'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

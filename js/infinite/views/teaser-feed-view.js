@@ -1,4 +1,4 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+import BaseView from './base/base-view'
 
   "use strict";
 
@@ -128,5 +128,4 @@
   });
 
   window.TeaserFeedView = window.TeaserFeedView || BurdaInfinite.views.TeaserFeedView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+  export default BurdaInfinite.views.TeaserFeedView;

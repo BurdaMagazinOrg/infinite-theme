@@ -1,3 +1,6 @@
+import ModelIds from '../consts/model-ids'
+import BaseView from './base/base-view'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

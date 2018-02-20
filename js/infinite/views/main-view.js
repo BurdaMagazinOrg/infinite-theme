@@ -1,3 +1,12 @@
+import AppConfig from '../consts/app-config'
+import ModelIds from '../consts/model-ids'
+import ManagerIds from '../consts/manager-ids'
+import ViewIds from '../consts/view-ids'
+
+import TrackingManager from '../managers/tracking-manager'
+import ScrollManager from '../managers/scroll-manager'
+import MarketingManager from '../managers/marketing-manager'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";

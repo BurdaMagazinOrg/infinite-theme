@@ -1,4 +1,4 @@
-var ViewIds = {
+export default {
   mainView: "mainView",
   menuMainView: "menuMainView",
   menuSidebarView: "menuSidebarView",
