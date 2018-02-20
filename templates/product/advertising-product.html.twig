@@ -38,7 +38,8 @@
 {% endif %}
 
 {% if content.status %}
-    {{ attach_library('infinite/infinite.views.product-view') }}
+  {# TODO remove next line, after testing #}
+    {#{{ attach_library('infinite/infinite.views.product-view') }}#}
 
     <div {{ attributes.addClass(classes) }} {{ data_attributes }}>
         {% include '@infinite/product/advertising-product-inner.html.twig' %}

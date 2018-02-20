@@ -93,7 +93,8 @@
     </div>
     {% if anchor_links %}
         {% block anchor_block %}
-            {{ attach_library('infinite/infinite.views.anchor-navigation-view') }}
+          {# TODO remove next line, after testing #}
+            {#{{ attach_library('infinite/infinite.views.anchor-navigation-view') }}#}
 
             <div class="spotlight__anchor-nav" data-view-type="anchorNavigationView">
                 <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open"
@@ -106,7 +107,8 @@
             </div>
         {% endblock %}
     {% elseif lexicon_links %}
-        {{ attach_library('infinite/infinite.views.anchor-navigation-view') }}
+      {# TODO remove next line, after testing #}
+        {#{{ attach_library('infinite/infinite.views.anchor-navigation-view') }}#}
 
         <div class="spotlight__anchor-nav" data-view-type="anchorNavigationView">
             <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open"
