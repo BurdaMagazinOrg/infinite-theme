@@ -38,5 +38,4 @@ BurdaInfinite.views.base.BaseView = Backbone.View.extend({
   }
 });
 
-// window.BaseView = window.BaseView || BurdaInfinite.views.base.BaseView;
 export default BurdaInfinite.views.base.BaseView

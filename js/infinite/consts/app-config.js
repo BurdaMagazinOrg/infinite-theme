@@ -1,4 +1,4 @@
-export default  {
+export default {
     //searchApiUrl: '/themes/custom/infinite/dummy-content/lazy-loading-article.html',
     searchApiUrl: '/suche',
     padding: 10,

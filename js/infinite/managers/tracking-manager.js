@@ -529,6 +529,4 @@ BurdaInfinite.managers.TrackingManager = Backbone.View.extend({
   }
 });
 
-// window.TrackingManager = window.TrackingManager || BurdaInfinite.managers.TrackingManager;
-window.TrackingManager = window.TrackingManager || BurdaInfinite.managers.TrackingManager;
 export default BurdaInfinite.managers.TrackingManager

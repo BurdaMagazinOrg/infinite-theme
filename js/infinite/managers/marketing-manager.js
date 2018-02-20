@@ -139,5 +139,4 @@ window.atf_ad = function (pElement, pType) {
   console.log("atf_fba", $tmpAdContainer, pType);
 };
 
-window.MarketingManager = window.MarketingManager || BurdaInfinite.managers.MarketingManager;
 export default BurdaInfinite.managers.MarketingManager

@@ -33,5 +33,4 @@ BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
   }
 });
 
-window.BaseModel = window.BaseModel || BurdaInfinite.models.base.BaseModel;
 export default BurdaInfinite.models.base.BaseModel

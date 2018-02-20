@@ -1,6 +1,6 @@
 "use strict";
 
-BurdaInfinite.managers.ScrollManager = Backbone.View.extend({
+var ScrollManager = BurdaInfinite.managers.ScrollManager = Backbone.View.extend({
     infiniteViewsModel: {},
     scrollTopAdSettings: 0,
     scrollTop: 0,
@@ -49,5 +49,4 @@ BurdaInfinite.managers.ScrollManager = Backbone.View.extend({
     }
 });
 
-window.ScrollManager = window.ScrollManager || BurdaInfinite.managers.ScrollManager;
 export default BurdaInfinite.managers.ScrollManager
