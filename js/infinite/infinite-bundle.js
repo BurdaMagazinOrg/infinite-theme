@@ -18,6 +18,7 @@ import './libs/jquery.inview' // Dependency of teaser-feed-view
 // infinite.init
 
 import './backbone-manager'
+import './burda-infinite-init'
 import './burda-infinite'
 import './utils/base-utils'
 // import './consts/app-config'
