@@ -99,6 +99,11 @@ function infinite_preprocess_node(&$variables) {
   $node = $variables['node'];
   $variables['nid'] = $node->id();
 
+  // Override TWIG url with absolute alias URL.
+  // Variable 'path' is used for lazy loading history API.
+  $variables['path'] = $variables['url'];
+  $variables['url'] = $node->url('canonical', ['absolute' => TRUE]);
+
   // share buttons received from theme settings
   $variables['facebook_share_button'] = theme_get_setting('facebook_share_button');
   $variables['whatsapp_share_button'] = theme_get_setting('whatsapp_share_button');
@@ -111,16 +116,11 @@ function infinite_preprocess_node(&$variables) {
   $variables['email_subject'] = theme_get_setting('email_subject');
 
   $bundle = $node->bundle();
-
   if ($bundle == 'article' || $bundle == 'page') {
     // todo: switch later to publish date.
     $variables['datetime'] = \Drupal::service('date.formatter')
       ->format($node->created->value, 'html_datetime');
     $variables['timestamp'] = $node->created->value;
-
-    // Override TWIG url with absolute alias URL.
-    $variables['path'] = $variables['url'];  // used for lazy loading history API.
-    $variables['url'] = $node->url('canonical', ['absolute' => TRUE]);
 
     // Get share image URL from teaser media.
     if ($node->hasField('field_teaser_media') &&
@@ -247,10 +247,6 @@ function infinite_preprocess_advertising_product(&$variables) {
 
   $variables['data_attributes'] = $data_attributes;
 
-  // change image style for look
-  if ('look' === $variables['elements']['#view_mode']) {
-    $variables['content']['product_image'][0]['#build']['settings']['image_style'] = 'shop_the_look_product';
-  }
 }
 
 /**

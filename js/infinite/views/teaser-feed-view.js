@@ -15,7 +15,7 @@
 
       if (this.infiniteBlockDataModel) {
 
-        if (this.infiniteBlockDataModel.has('trackingContainerType') && this.model.get('componentType') != ProductView.COMPONENT_TYPE_SLIDER) {
+        if (this.infiniteBlockDataModel.has('trackingContainerType') && typeof ProductView !== 'undefined' && this.model.get('componentType') != ProductView.COMPONENT_TYPE_SLIDER) {
           this.model.set('containerType', this.infiniteBlockDataModel.get('trackingContainerType').toLowerCase());
         }
 
@@ -96,7 +96,7 @@
       if (this.model.get('disabled') == true) return;
 
       this.model.set('trackImpression', true);
-      if (typeof TrackingManager != 'undefined') {
+      if (typeof TrackingManager !== 'undefined' && this.model.get('teaserTracking') !== undefined) {
         this.model.get('teaserTracking').action = 'impression';
         this.model.get('teaserTracking').eventNonInteraction = 'true';
 

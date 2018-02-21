@@ -130,12 +130,12 @@
                 <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
                     {% block socials_vertical_bar %}
                         {% embed '@freundin_infinite/embeds/social_icons.html.twig' with {
-                        'url': content.url,
-                        'label': content.label,
-                        'twitter_share_via': content.twitter_share_via,
-                        'email_share_text': content.email_share_text,
-                        'email_subject': content.email_subject,
-                        'whatsapp_share_text': content.whatsapp_share_text,
+                        'url': url,
+                        'label': label,
+                        'twitter_share_via': twitter_share_via,
+                        'email_share_text': email_share_text,
+                        'email_subject': email_subject,
+                        'whatsapp_share_text': whatsapp_share_text,
                         } %}
                         {% endembed %}
                     {% endblock %}
