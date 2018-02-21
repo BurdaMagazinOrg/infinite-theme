@@ -19,8 +19,7 @@
 
 <article{{ attributes.addClass(wrapper_classes) }}>
     {% block teaser_img_container_wrapper %}
-        <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject"
-             data-internal-url="{{ url }}">
+        <div class="teaser__img-container" data-internal-url="{{ url }}">
             {% block teaser_img_container %}
                 {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
                     {{ content.field_presenter_media }}

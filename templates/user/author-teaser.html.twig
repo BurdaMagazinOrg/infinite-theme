@@ -30,9 +30,9 @@
         {{ author_picture }}
         {% if timestamp %}
             {% if use_absolute_date %}
-                <time itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
+                <time datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
             {% else %}
-                <time class="text-timestamp" itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
+                <time class="text-timestamp" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
             {% endif %}
         {% endif %}
         </div> {# TODO: opened in user--author-teaser.html.twig #}
@@ -40,9 +40,9 @@
         <div class="caption">
             {% if timestamp %}
                 {% if use_absolute_date %}
-                    <time itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
+                    <time datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
                 {% else %}
-                    <time class="text-timestamp" itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
+                    <time class="text-timestamp" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
                 {% endif %}
             {% endif %}
         </div>
