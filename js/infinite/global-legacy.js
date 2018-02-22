@@ -1,5 +1,5 @@
 // TODO refactor modules to use ES6 modules
-// Needed by external modules: infinite_custom, odoscope-manager
+// Needed by external modules: infinite_custom, odoscope-manager, infinite_wishlist
 
 import AppConfig from './consts/app-config'
 window.AppConfig = window.AppConfig || AppConfig;
