@@ -47,8 +47,7 @@
 
           break;
         case 'teaserFeedView':
-          tmpView = if (typeof TeaserFeedView === 'function') {
-            new TeaserFeedView(tmpSettings);}
+          tmpView = new TeaserFeedView(tmpSettings);
           break;
         case 'articleView':
           tmpView = new ArticleView(tmpSettings);
