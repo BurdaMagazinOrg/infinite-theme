@@ -13,7 +13,7 @@
 {% set attributes = attributes.setAttribute('data-text-action-target', '.teaser__caption') %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
-    <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject">
+    <div class="teaser__img-container">
         {% block teaser_img_container %}
             {{ content.field_teaser_media }}
         {% endblock %}
