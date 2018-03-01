@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "sticky-kit": "^1.1.2",
-    "swiper": "^3.4.2",
+    "swiper": "^4.1.6",
     "timeago": "^1.4.2",
     "waypoints": "^4.0.0"
   }

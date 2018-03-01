@@ -3,8 +3,8 @@
 // infinite.header
 import './utils/head-utils'
 
-// infinite/swiper
-import 'swiper'
+// infinite/npswiper
+// import 'swiper/dist/js/swiper.jquery'
 
 // infinite.libs
 import 'waypoints/lib/jquery.waypoints'

@@ -1,4 +1,7 @@
 import BaseView from './base-view'
+import { Swiper, Navigation } from 'swiper/dist/js/swiper.esm'
+
+Swiper.use(Navigation)
 
 "use strict";
 
@@ -24,8 +27,10 @@ BurdaInfinite.views.base.BaseListSwipeableView = BaseView.extend({
         if (this.$swiperNav.length > 0) {
             this.swiperNavUsage = true;
             _.extend(this.settings, {
-                nextButton: this.$swiperNav.find('.swiper-button-next')[0],
-                prevButton: this.$swiperNav.find('.swiper-button-prev')[0]
+              navigation: {
+                nextEl: this.$swiperNav.find('.swiper-button-next')[0],
+                prevEl: this.$swiperNav.find('.swiper-button-prev')[0]
+              }
             });
         }
 
@@ -40,7 +45,7 @@ BurdaInfinite.views.base.BaseListSwipeableView = BaseView.extend({
         this.$swiperContainer = this.$el.find('.container-content');
     },
     updateViews: function () {
-        this.swiperApi = this.$swiperContainer.swiper(this.settings);
+        this.swiperApi = new Swiper(this.$swiperContainer, this.settings);
         this.$swiperContainer.data('swiperApi', this.swiperApi);
 
         if (this.isMobileMode) {
@@ -52,10 +57,10 @@ BurdaInfinite.views.base.BaseListSwipeableView = BaseView.extend({
     enableMobileMode: function () {
         if (Blazy == undefined) return;
 
-        this.swiperApi.on('onSlideChangeStart', function (pSwiperApi) {
-            var tmpIndex = Math.min(pSwiperApi.activeIndex + 1, pSwiperApi.slides.length - 1),
-                $tmpSlide = $(pSwiperApi.slides[tmpIndex]).find('.b-lazy'),
-                $tmpSlideContainer = $(pSwiperApi.slides[tmpIndex]).find('.media--loading'),
+        this.swiperApi.on('slideChangeTransitionStart', function () {
+            var tmpIndex = Math.min(this.swiperApi.activeIndex + 1, this.swiperApi.slides.length - 1),
+                $tmpSlide = $(this.swiperApi.slides[tmpIndex]).find('.b-lazy'),
+                $tmpSlideContainer = $(this.swiperApi.slides[tmpIndex]).find('.media--loading'),
                 tmpBlazy;
 
             if (!$tmpSlide.hasClass('b-loaded')) {
@@ -66,12 +71,12 @@ BurdaInfinite.views.base.BaseListSwipeableView = BaseView.extend({
             if($tmpSlideContainer.hasClass('media--loading')) {
                 $tmpSlideContainer.removeClass('media--loading');
             }
-        });
+        }.bind(this));
     },
     disableMobileMode: function () {
         if (Blazy == undefined) return;
 
-        this.swiperApi.off('slideChangeStart');
+        this.swiperApi.off('slideChangeTransitionStart');
     },
     removeSwiper: function () {
         this.$swiperContainer.data('swiperApi').destroy(true, true);

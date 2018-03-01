@@ -1,6 +1,9 @@
 // import ModelIds from '../consts/model-ids'
 import BaseDynamicView from '../base/base-dynamic-view'
 import BaseInviewView from '../base/base-inview-view'
+import { Swiper, Navigation } from 'swiper/dist/js/swiper.esm'
+
+Swiper.use([Navigation])
 
 "use strict";
 
@@ -32,8 +35,10 @@ BurdaInfinite.views.products.EcommerceSliderView = BaseDynamicView.extend({
     this.$swiperContainer = this.$el.find('.swiper-container');
 
     _.extend(this.settings, {
-      nextButton: this.$el.find('.swiper-button-next')[0],
-      prevButton: this.$el.find('.swiper-button-prev')[0]
+      navigation: {
+        nextEl: this.$el.find('.swiper-button-next')[0],
+        prevEl: this.$el.find('.swiper-button-prev')[0]
+      }
     });
 
     if(this.$el.attr('data-slider') !== 'undefined'){
@@ -42,15 +47,15 @@ BurdaInfinite.views.products.EcommerceSliderView = BaseDynamicView.extend({
     }
   },
   updateView: function () {
-    this.swiperApi = this.$swiperContainer.swiper(this.settings);
+    this.swiperApi = new Swiper(this.$swiperContainer, this.settings);
     this.$swiperContainer.data('swiperApi', this.swiperApi);
 
-    this.swiperApi.off('onSlideChangeEnd')
-      .on('onSlideChangeEnd', _.bind(this.onSliderChangeHandler, this))
-      .on('onSlideChangeEnd', function () {
+    this.swiperApi.off('slideChangeTransitionEnd')
+      .on('slideChangeTransitionEnd', _.bind(this.onSliderChangeHandler, this))
+      .on('slideChangeTransitionEnd', function () {
         window.dispatchEvent(new Event('infinite-wishlist--update-icons'));
       });
-    this.swiperApi.off('onTouchEnd').on('onTouchEnd', _.bind(this.onSliderChangeHandler, this));
+    this.swiperApi.off('touchEnd').on('touchEnd', _.bind(this.onSliderChangeHandler, this));
   },
   trackVisibleProductImpressions: function () {
     var tmpView,
