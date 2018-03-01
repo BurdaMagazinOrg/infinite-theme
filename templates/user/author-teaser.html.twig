@@ -19,38 +19,33 @@
  * @ingroup themeable
  */
 #}
-{% set has_name = (author_forename | render is not empty or author_surname | render is not empty) %}
-{% set has_pircture = author_picture | render is not empty %}
-
 {% if author_id != 0 or (timestamp) %}
-    {% if has_pircture or has_name %}
-    <div class="author item-author"
-        {% if author_id != 0 and has_name %}
-            data-internal-url="{{ author_url }}"
-        {% endif %}
-    >
+<div class="author item-author"
+    {% if author_id != 0 and (author_forename is not empty or author_surname is not empty) %}
+        data-internal-url="{{ author_url }}"
+    {% endif %}
+>
 
-        {% if author_id != 0 %}
-            {{ author_picture }}
+    {% if author_id != 0 %}
+        {{ author_picture }}
+        {% if timestamp %}
+            {% if use_absolute_date %}
+                <time datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
+            {% else %}
+                <time class="text-timestamp" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
+            {% endif %}
+        {% endif %}
+        </div> {# TODO: opened in user--author-teaser.html.twig #}
+    {% else %}
+        <div class="caption">
             {% if timestamp %}
                 {% if use_absolute_date %}
-                    <time itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
+                    <time datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
                 {% else %}
-                    <time class="text-timestamp" itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
+                    <time class="text-timestamp" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
                 {% endif %}
             {% endif %}
-            </div> {# TODO: opened in user--author-teaser.html.twig #}
-        {% else %}
-            <div class="caption">
-                {% if timestamp %}
-                    {% if use_absolute_date %}
-                        <time itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
-                    {% else %}
-                        <time class="text-timestamp" itemprop="date" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
-                    {% endif %}
-                {% endif %}
-            </div>
-        {% endif %}
-    </div>
+        </div>
     {% endif %}
+</div>
 {% endif %}

@@ -6,7 +6,7 @@
 {% set attributes = attributes.setAttribute('id', promotionTeaserId) %}
 
 {% block teaser_img_container_wrapper %}
-    <div class="teaser__img-container" itemscope="" itemtype="http://schema.org/imageObject">
+    <div class="teaser__img-container">
         {% block teaser_img_container %}
             {{ content.field_teaser_media }}
         {% endblock %}
