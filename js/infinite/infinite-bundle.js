@@ -11,6 +11,7 @@ import 'waypoints/lib/shortcuts/inview'
 import 'script-loader!timeago'
 import 'sticky-kit/dist/sticky-kit'
 import './libs/jquery.inview' // Dependency of teaser-feed-view
+import 'jquery.easing/jquery.easing.1.3'
 
 // infinite.init
 import './backbone-manager'
