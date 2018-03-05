@@ -7,44 +7,7 @@ core: 8.x
 screenshot: images/infinite.png
 libraries:
   - infinite/infinite.header
-#  - infinite/blockadblock
-#  - infinite/swiper
-#  - infinite/infinite.libs
   - infinite/infinite.init
-#  - infinite/infinite.manager.tracking-manager
-#  - infinite/infinite.manager.scroll-manager
-#  - infinite/infinite.manager.marketing-manager
-#
-#  - infinite/infinite.models.base.base-model
-#  - infinite/infinite.models.base.base-collection-model
-#
-#  - infinite/infinite.models.ajax-model
-#  - infinite/infinite.models.page-offsets-model
-#  - infinite/infinite.models.device-model
-#  - infinite/infinite.models.infinite-block-data-model
-#
-#  - infinite/infinite.views.base.base-view
-#  - infinite/infinite.views.base.base-inview-view
-#  - infinite/infinite.views.base.base-dynamic-view
-#  - infinite/infinite.views.base.base-feed-view
-#  - infinite/infinite.views.base.base-sidebar-view
-#  - infinite/infinite.views.base.base-newsletter-view
-#  - infinite/infinite.views.base.base-list-swipeable-view
-#
-#  - infinite/infinite.views.main-view
-#  - infinite/infinite.views.infinite-block-view
-#  - infinite/infinite.views.menu-main-view
-#  - infinite/infinite.views.menu-sidebar-view
-#  - infinite/infinite.views.modal-search-view
-#  - infinite/infinite.views.article-view
-#  - infinite/infinite.views.gallery-view
-#  - infinite/infinite.views.sticky-view
-##  - infinite/infinite.views.products-view
-##  - infinite/infinite.views.anchor-navigation-view
-#  - infinite/infinite.views.marketing-view
-#  - infinite/infinite.views.spinner
-#  - infinite/infinite.views.newsletter.hmnewsletter-view
-#  - infinite/infinite.views.newsletter.newsletter-modal-view
 
 regions:
   head_top: 'Head Top'
