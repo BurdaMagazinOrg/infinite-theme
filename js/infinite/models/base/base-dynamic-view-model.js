@@ -1,23 +1,11 @@
-import BaseCollectionModel from './base-collection-model'
+import { BaseCollectionModel } from '../index'
 
-import BaseFeedView from '../../views/base/base-feed-view'
-import InfiniteBlockView from '../../views/infinite-block-view'
-import TeaserFeedView from '../../views/teaser-feed-view'
-import ArticleView from '../../views/article-view'
-import StickyView from '../../views/sticky-view'
-import GalleryView from '../../views/gallery-view'
-import MarketingView from '../../views/marketing-view'
-import BaseListSwipeableView from '../../views/base/base-list-swipeable-view'
-import BaseNewsletterView from '../../views/base/base-newsletter-view'
-import HmNewsletterView from '../../views/newsletter/hmnewsletter-view'
-import NewsletterModalView from '../../views/newsletter/newsletter-modal-view'
-import ProductView from '../../views/products/product-view'
-import ProductSliderView from '../../views/products/product-slider-view'
-import ProductLookView from '../../views/products/product-look-view'
-import AnchorNavigationView from '../../views/anchor-navigation-view'
-import EcommerceSliderView from '../../views/products/ecommerce-slider-view'
-import LookView from '../../views/products/look-view'
-import BaseView from '../../views/base/base-view'
+import {
+  BaseFeedView, InfiniteBlockView, TeaserFeedView, ArticleView,
+  StickyView, GalleryView, MarketingView, BaseListSwipeableView, BaseNewsletterView,
+  HmNewsletterView, NewsletterModalView, ProductView, ProductSliderView, ProductLookView,
+  AnchorNavigationView, EcommerceSliderView, LookView, BaseView
+} from '../../views'
 
 "use strict";
 

@@ -1,6 +1,5 @@
-import AppConfig from '../consts/app-config'
-import BaseCollectionModel from './base/base-collection-model'
-import AjaxModel from './ajax-model'
+import { AppConfig } from '../consts'
+import { BaseCollectionModel, AjaxModel } from './index'
 
 "use strict";
 

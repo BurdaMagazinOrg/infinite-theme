@@ -1,4 +1,4 @@
-import ModelIds from '../consts/model-ids'
+import { ModelIds } from '../consts'
 
 "use strict";
 

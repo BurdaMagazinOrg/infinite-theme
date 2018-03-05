@@ -1,4 +1,4 @@
-import BaseView from './base/base-view'
+import { BaseView } from './index'
 
 "use strict";
 

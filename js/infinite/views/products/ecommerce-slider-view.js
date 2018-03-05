@@ -1,6 +1,5 @@
 // import ModelIds from '../consts/model-ids'
-import BaseDynamicView from '../base/base-dynamic-view'
-import BaseInviewView from '../base/base-inview-view'
+import { BaseDynamicView, BaseInviewView } from '../index'
 import { Swiper, Navigation } from 'swiper/dist/js/swiper.esm'
 
 Swiper.use([Navigation])

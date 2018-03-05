@@ -1,5 +1,4 @@
-import BaseDynamicView from './base-dynamic-view'
-import SpinnerCubeView from '../components/spinner-cube-view'
+import { BaseDynamicView, SpinnerCubeView } from '../index'
 
 "use strict";
 

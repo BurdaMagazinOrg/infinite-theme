@@ -1,22 +1,18 @@
-import AppConfig from '../consts/app-config'
-import ModelIds from '../consts/model-ids'
-import ManagerIds from '../consts/manager-ids'
-import ViewIds from '../consts/view-ids'
-
-import TrackingManager from '../managers/tracking-manager'
-import ScrollManager from '../managers/scroll-manager'
-import MarketingManager from '../managers/marketing-manager'
-
-import BaseSidebarModel from '../models/base/base-sidebar-model'
-import BaseCollectionModel from '../models/base/base-collection-model'
-import ModalSearchModel from '../models/modal-search-model'
-import PageOffsetsModel from '../models/page-offsets-model'
-import DeviceModel from '../models/device-model'
-
-import BaseDynamicView from './base/base-dynamic-view'
-import MenuMainView from './menu-main-view'
-import MenuSidebarView from './menu-sidebar-view'
-import ModalSearchView from './modal-search-view'
+import { AppConfig, ModelIds, ManagerIds, ViewIds } from '../consts'
+import { TrackingManager, ScrollManager, MarketingManager } from '../managers'
+import { 
+  BaseSidebarModel, 
+  BaseCollectionModel, 
+  ModalSearchModel, 
+  PageOffsetsModel, 
+  DeviceModel
+} from '../models'
+import { 
+  BaseDynamicView, 
+  MenuMainView, 
+  MenuSidebarView, 
+  ModalSearchView
+} from './index'
 
 
 "use strict";

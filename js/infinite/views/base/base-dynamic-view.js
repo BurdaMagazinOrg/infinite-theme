@@ -1,6 +1,5 @@
-import BaseView from './base-view'
-import BaseInviewView from './base-inview-view'
-import InfiniteBlockDataModel from '../../models/infinite-block-data-model'
+import { BaseView, BaseInviewView } from '../index'
+import { InfiniteBlockDataModel } from '../../models/index'
 
 "use strict";
 

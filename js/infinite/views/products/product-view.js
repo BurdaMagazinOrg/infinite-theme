@@ -1,5 +1,5 @@
-import AppConfig from '../../consts/app-config'
-import BaseView from '../base/base-view'
+import { AppConfig } from '../../consts'
+import { BaseView } from '../index'
 
 "use strict";
 

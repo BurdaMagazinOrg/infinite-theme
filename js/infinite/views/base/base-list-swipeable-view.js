@@ -1,4 +1,4 @@
-import BaseView from './base-view'
+import { BaseView } from '../index'
 import { Swiper, Navigation } from 'swiper/dist/js/swiper.esm'
 
 Swiper.use(Navigation)

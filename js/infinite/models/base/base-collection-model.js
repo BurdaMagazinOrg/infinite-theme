@@ -1,4 +1,4 @@
-import BaseModel from './base-model'
+import { BaseModel } from '../index'
 
 "use strict";
 

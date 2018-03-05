@@ -1,6 +1,5 @@
-import AppConfig from '../consts/app-config'
-import ModelIds from '../consts/model-ids'
-import BaseDynamicView from './base/base-dynamic-view'
+import { AppConfig, ModelIds } from '../consts'
+import { BaseDynamicView } from './index'
 
 "use strict";
 

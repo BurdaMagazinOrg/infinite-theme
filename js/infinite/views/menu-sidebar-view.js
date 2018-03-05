@@ -1,5 +1,5 @@
-import ModelIds from '../consts/model-ids'
-import BaseSidebar from './base/base-sidebar-view'
+import { ModelIds } from '../consts'
+import { BaseSidebar } from './index'
 
 "use strict";
 

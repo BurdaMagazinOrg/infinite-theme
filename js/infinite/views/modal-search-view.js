@@ -1,6 +1,5 @@
-import ModelIds from '../consts/model-ids'
-import BaseView from './base/base-view'
-import SpinnerCubeView from './components/spinner-cube-view'
+import { ModelIds } from '../consts'
+import { BaseView, SpinnerCubeView } from './index'
 
 "use strict";
 

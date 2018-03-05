@@ -1,4 +1,4 @@
-import BaseDynamicView from '../views/base/base-dynamic-view';
+import { BaseDynamicView } from '../views';
 
 "use strict";
 

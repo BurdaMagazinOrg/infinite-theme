@@ -1,4 +1,4 @@
-import ProductView from './product-view'
+import { ProductView } from '../index'
 
 "use strict";
 
