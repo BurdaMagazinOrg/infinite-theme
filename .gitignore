@@ -45,3 +45,8 @@ drupal/sites/simpletest
 
 
 legacy_files
+
+#ignore node_module and compiled files
+node_modules
+dist
+stats.json

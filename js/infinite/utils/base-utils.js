@@ -1,3 +1,5 @@
+import ModelIds from '../consts/model-ids'
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
 
   "use strict";
@@ -254,7 +256,7 @@
       return url + (url.indexOf('?') > 0 ? '&' : '?') + paramName + '=' + paramValue
     }
   };
-
+  // TODO: why is that lying here? Can't that be put in a function?
   $('body').once('BaseUtils').each(function () {
     $(window).bind('base-utils:update', function (pEvent, $pContainer) {
       BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);

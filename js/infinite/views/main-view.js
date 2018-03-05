@@ -1,196 +1,209 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
-  BurdaInfinite.views.MainView = Backbone.View.extend({
-    menuSidebarModel: {},
-    modalSearchModel: {},
-    pageOffsetsModel: {},
-    infiniteViewsModel: {},
-    deviceModel: {},
-
-    menuMainView: {},
-    menuSidebarView: {},
-    infiniteView: {},
-    modalSearchView: {},
-
-    events: {},
-    initialize: function (pOptions) {
-      _.extend(this, pOptions);
-
-      //if ($.cookie != undefined) $.cookie.json = true;
-      if ($.timeago != undefined) $.timeago.settings.localeTitle = true;
-
-      if (_.isFunction(history.pushState)) Backbone.history.start({pushState: true});
-      AppConfig.initialLocation = Backbone.history.location.pathname + Backbone.history.location.search;
-      //TFM.Debug.start();
-
-      this.initBeforeUnloadBehavior();
-      this.createModels();
-      this.createManagers();
-      this.createViews();
-
-      //console.log("UUID", this.deviceModel.get('uuid'));
+import { AppConfig, ModelIds, ManagerIds, ViewIds } from '../consts'
+import { TrackingManager, ScrollManager, MarketingManager } from '../managers'
+import { 
+  BaseSidebarModel, 
+  BaseCollectionModel, 
+  ModalSearchModel, 
+  PageOffsetsModel, 
+  DeviceModel
+} from '../models'
+import { 
+  BaseDynamicView, 
+  MenuMainView, 
+  MenuSidebarView, 
+  ModalSearchView
+} from './index'
 
 
-      /**
-       * Blazy Viewport fix
-       *
-       * Sometimes in safari browser on a page reload (especially when reloading through browser reload button)
-       * images that are initially present in the viewport are not loaded by blazy. This snippet is a workaround
-       * for this bug.
-       */
-      if (typeof jQuery.browser != "undefined" && jQuery.browser.safari && typeof Blazy != "undefined") {
-        _.delay(function () {
-          var tmpBlazy = new Blazy();
-          tmpBlazy.revalidate();
-        }, 100);
-      }
+"use strict";
 
-      /**
-       * Infinite Model Helper
-       */
-      //TODO use for debugging
-      //this.listenTo(this.infiniteViewsModel, 'update', _.debounce(function (pType) {
-      //    console.info("global infiniteModel", this.infiniteViewsModel);
-      //}, 100, true), this);
+BurdaInfinite.views.MainView = Backbone.View.extend({
+  menuSidebarModel: {},
+  modalSearchModel: {},
+  pageOffsetsModel: {},
+  infiniteViewsModel: {},
+  deviceModel: {},
 
-      /**
-       * adjust sidebar if toolbar activated / displayed
-       */
-      setTimeout(_(function () {
-        if (typeof Drupal.toolbar !== "undefined" && typeof Drupal.toolbar.models.toolbarModel !== "undefined") {
-          Backbone.listenTo(Drupal.toolbar.models.toolbarModel, 'change:offsets', _(this.onToolbarHandler).bind(this));
-        }
-      }).bind(this));
-    },
-    initBeforeUnloadBehavior: function () {
-      /**
-       * fix the page reload problems
-       */
+  menuMainView: {},
+  menuSidebarView: {},
+  infiniteView: {},
+  modalSearchView: {},
 
-      if ($('body').hasClass('page-article')) {
-        window.allowBeforeUnload = true;
-        window.onbeforeunload = function (pEvent) {
-          if (!window.allowBeforeUnload) return;
+  events: {},
+  initialize: function (pOptions) {
+    _.extend(this, pOptions);
 
-          Waypoint.disableAll();
+    //if ($.cookie != undefined) $.cookie.json = true;
+    if ($.timeago != undefined) $.timeago.settings.localeTitle = true;
 
-          $('body').css({
-            top: $(window).scrollTop() * -1 + 'px',
-            left: $(window).scrollLeft() * -1 + 'px'
-          })
-          window.scrollTo(0, 0);
-        }
-      }
-    },
-    createModels: function () {
-      this.menuSidebarModel = new BaseSidebarModel();
-      this.infiniteViewsModel = new BaseCollectionModel();
-      this.modalSearchModel = new ModalSearchModel();
-      this.pageOffsetsModel = new PageOffsetsModel();
-      this.deviceModel = new DeviceModel({}, _.extend(JSON.parse(this.$el.find('[data-breakpoint-settings]').text())));
+    if (_.isFunction(history.pushState)) Backbone.history.start({pushState: true});
+    AppConfig.initialLocation = Backbone.history.location.pathname + Backbone.history.location.search;
+    //TFM.Debug.start();
 
-      /**
-       * Backbone Manager - push Models
-       */
-      BM.reuseModel(ModelIds.menuSidebarModel, this.menuSidebarModel);
-      BM.reuseModel(ModelIds.infiniteViewsModel, this.infiniteViewsModel);
-      BM.reuseModel(ModelIds.modalSearchModel, this.modalSearchModel);
-      BM.reuseModel(ModelIds.pageOffsetsModel, this.pageOffsetsModel);
-      BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
-    },
-    createManagers: function () {
-      new MarketingManager({
-        infiniteViewsModel: this.infiniteViewsModel
-      });
+    this.initBeforeUnloadBehavior();
+    this.createModels();
+    this.createManagers();
+    this.createViews();
 
-      /**
-       * TrackingManager
-       */
-      new TrackingManager({
-        id: ManagerIds.trackingManager,
-        el: this.$el,
-        infiniteViewsModel: this.infiniteViewsModel,
-        model: new Backbone.Model({
-          initialLocation: AppConfig.initialLocation,
-          gtmEventName: AppConfig.gtmEventName,
-          gtmIndexEvent: AppConfig.gtmIndexEvent,
-          gtmIndexPosEvent: AppConfig.gtmIndexPosEvent
-        })
-      });
-
-      /**
-       * ScrollManager
-       */
-      new ScrollManager({
-        id: ManagerIds.scrollManager,
-        el: this.$el,
-        infiniteViewsModel: this.infiniteViewsModel,
-        model: new Backbone.Model({
-          initialLocation: AppConfig.initialLocation
-        })
-      });
-    },
-    createViews: function () {
-      /**
-       * InfiniteView - parse and create views by data-view-type
-       * IMPORTANT - Needed for the initial parsing
-       */
-      this.infiniteView = new BaseDynamicView({
-        id: ViewIds.infiniteView,
-        el: this.$el,
-        model: this.infiniteViewsModel,
-        deviceModel: this.deviceModel,
-        initialCall: true
-      });
-
-      this.infiniteView.delegateElements();
-      /** **/
+    //console.log("UUID", this.deviceModel.get('uuid'));
 
 
-      /**
-       * MainMenuView
-       */
-      this.menuMainView = new MenuMainView({
-        id: ViewIds.menuMainView,
-        el: $('#menu-main-navigation', this.$el)
-      });
-
-      /**
-       * MenuSidebarView
-       */
-      this.menuSidebarView = new MenuSidebarView({
-        id: ViewIds.menuSidebarView,
-        el: $('#menu-sidebar', this.$el),
-        model: this.menuSidebarModel
-      });
-
-
-      /**
-       * ModalSearchView
-       */
-      this.modalSearchView = new ModalSearchView({
-        id: ViewIds.modalSearchView,
-        el: this.$el.find('#modal-search'),
-        model: this.modalSearchModel,
-        infiniteModel: this.infiniteViewsModel
-      });
-
-      /**
-       * Backbone Manager - push Views
-       */
-      BM.reuseView(ViewIds.menuMainView, this.menuMainView);
-      BM.reuseView(ViewIds.menuSidebarView, this.menuSidebarView);
-      BM.reuseView(ViewIds.infiniteView, this.infiniteView);
-      BM.reuseView(ViewIds.modalSearchView, this.modalSearchView);
-    },
-    onToolbarHandler: function (pModel, pAttr) {
-      //pModel.set('orientation', 'horizontal');
-      this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
+    /**
+     * Blazy Viewport fix
+     *
+     * Sometimes in safari browser on a page reload (especially when reloading through browser reload button)
+     * images that are initially present in the viewport are not loaded by blazy. This snippet is a workaround
+     * for this bug.
+     */
+    if (typeof jQuery.browser != "undefined" && jQuery.browser.safari && typeof Blazy != "undefined") {
+      _.delay(function () {
+        var tmpBlazy = new Blazy();
+        tmpBlazy.revalidate();
+      }, 100);
     }
-  });
 
-  window.MainView = window.MainView || BurdaInfinite.views.MainView;
+    /**
+     * Infinite Model Helper
+     */
+    //TODO use for debugging
+    //this.listenTo(this.infiniteViewsModel, 'update', _.debounce(function (pType) {
+    //    console.info("global infiniteModel", this.infiniteViewsModel);
+    //}, 100, true), this);
 
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+    /**
+     * adjust sidebar if toolbar activated / displayed
+     */
+    setTimeout(_(function () {
+      if (typeof Drupal.toolbar !== "undefined" && typeof Drupal.toolbar.models.toolbarModel !== "undefined") {
+        Backbone.listenTo(Drupal.toolbar.models.toolbarModel, 'change:offsets', _(this.onToolbarHandler).bind(this));
+      }
+    }).bind(this));
+  },
+  initBeforeUnloadBehavior: function () {
+    /**
+     * fix the page reload problems
+     */
+
+    if ($('body').hasClass('page-article')) {
+      window.allowBeforeUnload = true;
+      window.onbeforeunload = function (pEvent) {
+        if (!window.allowBeforeUnload) return;
+
+        Waypoint.disableAll();
+
+        $('body').css({
+          top: $(window).scrollTop() * -1 + 'px',
+          left: $(window).scrollLeft() * -1 + 'px'
+        })
+        window.scrollTo(0, 0);
+      }
+    }
+  },
+  createModels: function () {
+    this.menuSidebarModel = new BaseSidebarModel();
+    this.infiniteViewsModel = new BaseCollectionModel();
+    this.modalSearchModel = new ModalSearchModel();
+    this.pageOffsetsModel = new PageOffsetsModel();
+    this.deviceModel = new DeviceModel({}, _.extend(JSON.parse(this.$el.find('[data-breakpoint-settings]').text())));
+
+    /**
+     * Backbone Manager - push Models
+     */
+    BM.reuseModel(ModelIds.menuSidebarModel, this.menuSidebarModel);
+    BM.reuseModel(ModelIds.infiniteViewsModel, this.infiniteViewsModel);
+    BM.reuseModel(ModelIds.modalSearchModel, this.modalSearchModel);
+    BM.reuseModel(ModelIds.pageOffsetsModel, this.pageOffsetsModel);
+    BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
+  },
+  createManagers: function () {
+    new MarketingManager({
+      infiniteViewsModel: this.infiniteViewsModel
+    });
+
+    /**
+     * TrackingManager
+     */
+    new TrackingManager({
+      id: ManagerIds.trackingManager,
+      el: this.$el,
+      infiniteViewsModel: this.infiniteViewsModel,
+      model: new Backbone.Model({
+        initialLocation: AppConfig.initialLocation,
+        gtmEventName: AppConfig.gtmEventName,
+        gtmIndexEvent: AppConfig.gtmIndexEvent,
+        gtmIndexPosEvent: AppConfig.gtmIndexPosEvent
+      })
+    });
+
+    /**
+     * ScrollManager
+     */
+    new ScrollManager({
+      id: ManagerIds.scrollManager,
+      el: this.$el,
+      infiniteViewsModel: this.infiniteViewsModel,
+      model: new Backbone.Model({
+        initialLocation: AppConfig.initialLocation
+      })
+    });
+  },
+  createViews: function () {
+    /**
+     * InfiniteView - parse and create views by data-view-type
+     * IMPORTANT - Needed for the initial parsing
+     */
+    this.infiniteView = new BaseDynamicView({
+      id: ViewIds.infiniteView,
+      el: this.$el,
+      model: this.infiniteViewsModel,
+      deviceModel: this.deviceModel,
+      initialCall: true
+    });
+
+    this.infiniteView.delegateElements();
+    /** **/
+
+
+    /**
+     * MainMenuView
+     */
+    this.menuMainView = new MenuMainView({
+      id: ViewIds.menuMainView,
+      el: $('#menu-main-navigation', this.$el)
+    });
+
+    /**
+     * MenuSidebarView
+     */
+    this.menuSidebarView = new MenuSidebarView({
+      id: ViewIds.menuSidebarView,
+      el: $('#menu-sidebar', this.$el),
+      model: this.menuSidebarModel
+    });
+
+
+    /**
+     * ModalSearchView
+     */
+    this.modalSearchView = new ModalSearchView({
+      id: ViewIds.modalSearchView,
+      el: this.$el.find('#modal-search'),
+      model: this.modalSearchModel,
+      infiniteModel: this.infiniteViewsModel
+    });
+
+    /**
+     * Backbone Manager - push Views
+     */
+    BM.reuseView(ViewIds.menuMainView, this.menuMainView);
+    BM.reuseView(ViewIds.menuSidebarView, this.menuSidebarView);
+    BM.reuseView(ViewIds.infiniteView, this.infiniteView);
+    BM.reuseView(ViewIds.modalSearchView, this.modalSearchView);
+  },
+  onToolbarHandler: function (pModel, pAttr) {
+    //pModel.set('orientation', 'horizontal');
+    this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
+  }
+});
+
+export default BurdaInfinite.views.MainView;

@@ -11,7 +11,8 @@
 
 <div {{ attributes.addClass(classes) }}>
     {% block content_body %}
-        {{ attach_library('infinite/infinite.views.look-view') }}
+      {# TODO remove next line, after testing #}
+        {#{{ attach_library('infinite/infinite.views.look-view') }}#}
         {{ content }}
     {% endblock %}
 </div>
