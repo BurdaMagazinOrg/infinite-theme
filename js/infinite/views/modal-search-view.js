@@ -33,6 +33,7 @@
       this.listenTo(this.model, 'change:is_open', this.onStateHandler, this);
       this.listenTo(this.model, 'request', this.clearFeed, this);
       this.listenTo(this.model, 'sync', this.renderFeed, this);
+      this.listenTo(this.model, 'change:isUserSearching', this.onUserIsSearching, this);
     },
     createView: function () {
       this.$feed = $('#feed-modal-search', this.$el);
@@ -63,6 +64,7 @@
     onInputChangeHandler: function (pEvent) {
       var tmpStringLength = this.$searchInputField.val().length,
         tmpMinCharLength = parseInt(this.$searchInputField.data('min-char-length'));
+      this.model.set({isUserSearching: true});
 
       if (tmpStringLength >= tmpMinCharLength && this.isSearchEnabled == false) {
         this.isSearchEnabled = true;
@@ -71,7 +73,6 @@
         this.isSearchEnabled = false;
         this.$el.toggleClass('is_search_enabled', this.isSearchEnabled);
       }
-
       this.$el.find('.message-char-length .char-count').text(Math.max(0, (tmpMinCharLength - tmpStringLength)));
       this.$el.toggleClass('is_info_char', (tmpStringLength > 0 && tmpStringLength < tmpMinCharLength));
     },
@@ -81,17 +82,14 @@
       } else {
         this.onCloseHandler();
       }
-
-      //TODO check if we need this
-      //this.feedModel.set('is_disabled', !pIsOpen);
     },
     onOpenHandler: function () {
-      //Waypoint.destroyAll();
       this.enableBindings();
       this.$el.modal('show');
       setTimeout($.proxy(function () {
         this.$searchInputField.trigger('focus');
       }, this), 350);
+      this.model.set({isUserSearching: true});
     },
     onCloseHandler: function () {
       this.disableBindings();
@@ -100,6 +98,7 @@
       this.$searchInputField.focusout();
       setTimeout($.proxy(function () {
         this.clear();
+        this.model.set({isUserSearching: false});
       }, this), 350);
     },
     onKeyHandler: function (pEvent) {
@@ -110,6 +109,16 @@
         case 13 :
           if (this.isSearchEnabled) this.search();
           break;
+      }
+    },
+    onUserIsSearching: function () {
+      const isUserSearching = this.model.get('isUserSearching');
+      const className = 'is-user-searching';
+
+      if (isUserSearching) {
+        this.$el.addClass(className);
+      } else {
+        this.$el.removeClass(className);
       }
     },
     activateScrollBehavior: function () {
@@ -132,6 +141,7 @@
       if (this.preloader != undefined) this.preloader.destroy();
       this.preloader = new BurdaInfinite.views.SpinnerCubeView({el: this.$el});
       this.model.fetch(tmpSearchString);
+      this.model.set({isUserSearching: false});
     },
     scrollToInput: function () {
       this.$el.animate({scrollTop: (this.$searchInputField.offset().top)}, {
