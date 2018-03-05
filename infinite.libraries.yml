@@ -24,7 +24,6 @@ infinite.social-apis:
 #TODO: Do we need to add these libraries to the bundle?
 infinite.libs:
   js:
-    js/infinite/libs/jquery.browser.min.js: {}
     js/infinite/libs/bootstrap/modal.js: {}
     js/infinite/libs/bootstrap/transition.js: {}
 
