@@ -13,6 +13,8 @@ import 'sticky-kit/dist/sticky-kit'
 import './libs/jquery.inview' // Dependency of teaser-feed-view
 import 'jquery.easing/jquery.easing.1.3'
 import 'script-loader!jquery.browser'
+import 'bootstrap/js/modal'
+import 'bootstrap/js/transition'
 
 // infinite.init
 import './backbone-manager'
