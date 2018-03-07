@@ -232,21 +232,25 @@ function infinite_preprocess_advertising_product(&$variables) {
     $variables['sold_out'] = TRUE;
   }
 
+  $provider = explode("_", $product->product_provider->value)[0];
+  $data_attributes->setAttribute('data-provider', $provider);
+  $variables['provider'] = $provider;
+
   $original_price = $product->product_original_price->value;
   if(!isset($variables['sold_out']) || !$variables['sold_out']) {
     if($price < $original_price){
       $variables['show_strikethrough_price'] = TRUE;
     }
     $variables['tracking_url'] = $tracking_url;
-    $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
+    if ('tipser' === $provider) {
+      $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
+    } else {
+      $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
+    }
   }
 
 
-  $provider = explode("_", $product->product_provider->value);
-  $data_attributes->setAttribute('data-provider', $provider[0]);
-
   $variables['data_attributes'] = $data_attributes;
-
 }
 
 /**
