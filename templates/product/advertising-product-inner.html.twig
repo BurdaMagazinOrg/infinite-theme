@@ -18,6 +18,10 @@
             {% endif %}
             <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
         </div>
-        <div class="text-shop">Zum Shop</div>
+        {% if 'tipser' == provider %}
+            <div class="text-shop">Jetzt kaufen</div>
+        {% else %}
+            <div class="text-shop">Zum Shop</div>
+        {% endif %}
     {% endif %}
 </div>
