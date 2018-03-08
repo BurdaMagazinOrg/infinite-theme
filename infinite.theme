@@ -242,9 +242,7 @@ function infinite_preprocess_advertising_product(&$variables) {
       $variables['show_strikethrough_price'] = TRUE;
     }
     $variables['tracking_url'] = $tracking_url;
-    if ('tipser' === $provider) {
-      $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
-    } else {
+    if ('tipser' !== $provider) {
       $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
     }
   }

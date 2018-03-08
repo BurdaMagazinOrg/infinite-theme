@@ -11072,11 +11072,11 @@ form a {
 }
 
 /* line 1, ../sass/components/_teasers.scss */
-[data-internal-url], [data-external-url], [data-tipser-url] {
+[data-internal-url], [data-external-url], [data-provider="tipser"] {
   cursor: pointer;
 }
 /* line 5, ../sass/components/_teasers.scss */
-[data-internal-url]:hover .text-headline, [data-external-url]:hover .text-headline, [data-tipser-url]:hover .text-headline {
+[data-internal-url]:hover .text-headline, [data-external-url]:hover .text-headline, [data-provider="tipser"]:hover .text-headline {
   color: #7d8482;
 }
 
