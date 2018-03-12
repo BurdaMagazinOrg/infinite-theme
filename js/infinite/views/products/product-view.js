@@ -81,7 +81,7 @@
       this.model.set('brand', this.$el.data('brand'));
       this.model.set('viewType', this.$el.data('view-type'));
       this.model.set('productCategory', this.$el.data('product-category'));
-      this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
+      this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url') || this.$el.data('tipser-url'));
 
       if (this.$el.hasClass('item-product--single')) {
         tmpComponentType = ProductView.COMPONENT_TYPE_SINGLE;
