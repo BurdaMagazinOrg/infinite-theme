@@ -112,8 +112,8 @@
       }
     },
     onUserIsSearching: function () {
-      const isUserSearching = this.model.get('isUserSearching');
-      const className = 'is-user-searching';
+      var isUserSearching = this.model.get('isUserSearching');
+      var className = 'is-user-searching';
 
       if (isUserSearching) {
         this.$el.addClass(className);
