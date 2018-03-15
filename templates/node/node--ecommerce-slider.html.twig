@@ -64,9 +64,11 @@
       {% else %}
         {{ content.field_campaign }}
       {% endif %}
-      <div class="swiper-container">
-        <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
-          {{ content.field_advertising_products }}
+      <div class="swiper-limiter">
+        <div class="swiper-container">
+          <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
+            {{ content.field_advertising_products }}
+          </div>
         </div>
       </div>
       <div class="swiper-button swiper-button-next"></div>
