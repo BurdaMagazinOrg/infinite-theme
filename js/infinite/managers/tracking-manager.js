@@ -46,10 +46,10 @@
       }, this);
     },
     onAdBlockDetected: function () {
-      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active', eventNonInteraction: 'true'});
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active', eventNonInteraction: true});
     },
     onAdBlockNotDetected: function () {
-      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive', eventNonInteraction: 'true'});
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive', eventNonInteraction: true});
     },
     inviewChangeHandler: function (pModel) {
       /**
