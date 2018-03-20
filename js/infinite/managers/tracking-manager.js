@@ -82,7 +82,7 @@
           tmpTrackingObject.event = tmpTrackingObject.category = 'scroll_depth';
           tmpTrackingObject.depth = 'index_' + tmpIndex;
           tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
-          tmpTrackingObject.eventNonInteraction = 'false';
+          tmpTrackingObject.eventNonInteraction = false;
 
           TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
           pModel.set('scrollDepthTracked', true);
@@ -329,7 +329,7 @@
 
       tmpTrackingObject.action = tmpAction;
       tmpTrackingObject.label = $tmpItem.find('[data-social-type]').addBack().filter('[data-social-type]').data('social-type');
-      tmpTrackingObject.eventNonInteraction = 'false';
+      tmpTrackingObject.eventNonInteraction = false;
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     },
@@ -339,7 +339,7 @@
 
       tmpTrackingObject.action = $tmpItem.find('.text-author span').text();
       tmpTrackingObject.label = TrackingManager.getItemType($tmpItem);
-      tmpTrackingObject.eventNonInteraction = 'false';
+      tmpTrackingObject.eventNonInteraction = false;
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     }
