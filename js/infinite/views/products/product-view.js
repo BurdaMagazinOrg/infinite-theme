@@ -9,11 +9,6 @@
     initialize: function (pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
-      if (this.$el.hasClass('item-product--sold-out')) {
-        this.model.set('disabled', true);
-        return;
-      }
-
       this.delegateInview();
       this.addListener();
       this.createModel();
@@ -198,7 +193,8 @@
         brand: this.model.get('brand'),
         provider: this.model.get('provider'),
         productCategory: this.model.get('productCategory'),
-        containerType: this.model.get('containerType') || ''
+        containerType: this.model.get('containerType') || '',
+        soldOut: this.$el.attr('data-sold-out') === 'true'
       };
 
       if (this.model.has('productIndex')) {

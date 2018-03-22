@@ -197,7 +197,8 @@ function infinite_preprocess_advertising_product(&$variables) {
     ->setAttribute('data-price', $product->product_price->value)
     ->setAttribute('data-currency', $product->product_currency->value)
     ->setAttribute('data-uuid', $product->uuid->value)
-    ->setAttribute('data-product-id', $product->product_id->value);
+    ->setAttribute('data-product-id', $product->product_id->value)
+    ->setAttribute('data-sold-out', (string)$product->product_sold_out->value === "1" ? 'true' : 'false');
 
   $tracking_url = $product->product_url->uri;
   // This is needed only for tracdelight products
@@ -226,10 +227,9 @@ function infinite_preprocess_advertising_product(&$variables) {
     if($price < $original_price){
       $variables['show_strikethrough_price'] = TRUE;
     }
-    $variables['tracking_url'] = $tracking_url;
-    $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
   }
-
+  $variables['tracking_url'] = $tracking_url;
+  $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
 
   $provider = explode("_", $product->product_provider->value);
   $data_attributes->setAttribute('data-provider', $provider[0]);

@@ -32,7 +32,6 @@
 
 {% if sold_out %}
     {% set attributes = attributes.addClass('item-product--sold-out') %}
-    {% set data_attributes = data_attributes.removeAttribute('data-external-url') %}
 {% endif %}
 
 {% if content.field_product_category_txt | render is not empty %}
