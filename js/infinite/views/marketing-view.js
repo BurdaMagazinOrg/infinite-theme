@@ -37,6 +37,8 @@
       }
     },
     checkContainerType: function () {
+      // TODO: this doesn't return the data, just the element containing it.
+      // This also means, that the second to last condition will always fail
       this.adEntityType = this.$el.find('[data-atf-format]');
 
       if (this.$el.hasClass('container-sidebar-content')) {
@@ -162,7 +164,7 @@
       return this.$adTechAd;
     },
     getTargeting: function () {
-      var tmpTargeting = this.getAdTechAd().attr('data-ad-entity-targeting') || {};
+      var tmpTargeting = this.getAdEntityContainer().attr('data-ad-entity-targeting') || {};
       return JSON.parse(tmpTargeting);
     },
     getAdContainerType: function () {
