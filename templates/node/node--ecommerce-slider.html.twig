@@ -1,7 +1,7 @@
 {{ attach_library('infinite/infinite.views.ecommerce-slider-view') }}
 
 {% set container_classes = [
-  'ecommerce-slider',
+'ecommerce-slider',
 ] %}
 
 {% set ecommerceSliderId = 'ecommerce-slider-' ~ nid %}
@@ -10,34 +10,14 @@
 {% set attributes = hasBgImage == true ? attributes.addClass('bg-image') : attributes.addClass('no-bg-image') %}
 
 {% block ecommerce_style_block %}
-  <style>
-    {{ ecommerceSliderCSSId }}
-    .text-shop {
-      color: {{ content.field_color_contrast.0 }};
-      {#background-color: {{ content.field_color_button.0 }};#}
-      border-color: {{ content.field_color_button.0 }};
-    }
-
-    {{ ecommerceSliderCSSId }}
-    .text-shop:hover {
-      color: white;
-      background-color: #444;
-      border-color: #444;
-    }
-
-    {{ ecommerceSliderCSSId }}
-    .swiper-button {
-      color: {{ content.field_arrow_foreground.0 }};
-      background-color: {{ content.field_arrow_background.0 }};
-    }
-
-    {{ ecommerceSliderCSSId }}
-    .swiper-button:hover {
-      color: white;
-      background-color: #444;
-      border-color: #444;
-    }
-  </style>
+    <style>
+        {{ ecommerceSliderCSSId }}
+        .text-shop {
+            color: {{ content.field_color_contrast.0 }};
+            {#background-color: {{ content.field_color_button.0 }};#}
+            border-color: {{ content.field_color_button.0 }};
+        }
+    </style>
 {% endblock %}
 
 {% set attributes = attributes.setAttribute('data-view-type', 'ecommerceSlider') %}
@@ -45,34 +25,44 @@
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
 <div id="{{ ecommerceSliderId }}" {{ attributes.addClass(container_classes) }}>
-  <div class="ecommerce-slider__content-wrapper">
-    {% if hasBgImage %}
-      <div class="ecommerce-slider__bg">
-        {{ content.field_background_media }}
-      </div>
-    {% endif %}
-    <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};">
-      <div class="swiper-button swiper-button-prev"></div>
-      {% if content.field_title_color.0 %}
-        <h3 class="ecommerce-slider__title" style="color: {{ content.field_title_color.0 }};">{{ label }}</h3>
-      {% else %}
-        <h3 class="ecommerce-slider__title">{{ label }}</h3>
-      {% endif %}
-      {% if content.field_campaign|render %}
-        <span style="color: {{ content.field_title_color.0 }};">
+
+    <div class="ecommerce-slider__content-wrapper">
+
+        <div class="swiper-button swiper-button-prev"
+             style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }};"></div>
+
+        <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};">
+
+            {% if content.field_title_color.0 %}
+                <h3 class="ecommerce-slider__title" style="color: {{ content.field_title_color.0 }};">{{ label }}</h3>
+            {% else %}
+                <h3 class="ecommerce-slider__title">{{ label }}</h3>
+            {% endif %}
+            {% if content.field_campaign|render %}
+                <span style="color: {{ content.field_title_color.0 }};">
                 {{ content.field_campaign }}
             </span>
-      {% else %}
-        {{ content.field_campaign }}
-      {% endif %}
-      <div class="swiper-limiter">
-        <div class="swiper-container">
-          <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
-            {{ content.field_advertising_products }}
-          </div>
+            {% else %}
+                {{ content.field_campaign }}
+            {% endif %}
+
+            <div class="swiper-container">
+                <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
+                    {{ content.field_advertising_products }}
+                </div>
+            </div>
+
         </div>
-      </div>
-      <div class="swiper-button swiper-button-next"></div>
+
+        <div class="swiper-button swiper-button-next"
+             style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }};"></div>
+
     </div>
-  </div>
+
+    {% if hasBgImage %}
+        <div class="ecommerce-slider__bg">
+            {{ content.field_background_media }}
+        </div>
+    {% endif %}
+
 </div>
