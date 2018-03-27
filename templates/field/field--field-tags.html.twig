@@ -1,7 +1,9 @@
 {% if items|length > 0 %}
     <div class="item-content__block item-content__block--tags">
         <div class="tags">
-            <div class="label">Mehr zum Thema:</div>
+            {% block tag__label_block %}
+                <div class="label">Mehr zum Thema:</div>
+            {% endblock %}
             <ul>
                 {% for item in items %}
                     <li{{ item.status == 0 ? ' class="unpublished"' }} >{{ item.content }}</li>
