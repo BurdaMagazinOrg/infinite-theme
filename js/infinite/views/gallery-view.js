@@ -44,7 +44,7 @@
           action: 'gallery',
           label: this.mediaId,
           location: tmpPath,
-          'eventNonInteraction': 'false'
+          eventNonInteraction: false
         });
       }
     }

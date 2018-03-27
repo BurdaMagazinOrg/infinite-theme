@@ -46,10 +46,10 @@
       }, this);
     },
     onAdBlockDetected: function () {
-      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active', eventNonInteraction: 'true'});
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'active', eventNonInteraction: true});
     },
     onAdBlockNotDetected: function () {
-      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive', eventNonInteraction: 'true'});
+      TrackingManager.trackEvent({category: 'marketingBlocker', action: 'inactive', eventNonInteraction: true});
     },
     inviewChangeHandler: function (pModel) {
       /**
@@ -82,7 +82,7 @@
           tmpTrackingObject.event = tmpTrackingObject.category = 'scroll_depth';
           tmpTrackingObject.depth = 'index_' + tmpIndex;
           tmpTrackingObject.location = TrackingManager.getLocationType(this.initialLocation);
-          tmpTrackingObject.eventNonInteraction = 'false';
+          tmpTrackingObject.eventNonInteraction = false;
 
           TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
           pModel.set('scrollDepthTracked', true);
@@ -98,7 +98,7 @@
           category: 'click',
           action: 'menu_sidebar',
           label: 'open',
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -107,7 +107,7 @@
           category: 'click',
           action: 'menu_sidebar',
           label: 'close',
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -118,7 +118,7 @@
           category: 'click',
           action: 'menu_sidebar',
           label: tmpText,
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -127,7 +127,7 @@
           category: 'click',
           action: 'menu_sidebar',
           label: 'logo',
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -136,7 +136,7 @@
           category: 'click',
           action: 'main_navigation',
           label: 'logo',
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -145,7 +145,7 @@
           category: 'click',
           action: 'header_home',
           label: 'logo',
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -156,7 +156,7 @@
           category: 'click',
           action: 'main_navigation',
           label: tmpText,
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
 
@@ -167,7 +167,7 @@
           category: 'click',
           action: 'sub_navigation',
           label: tmpText,
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         }, TrackingManager.getAdvTrackingByElement($(this)));
       });
     },
@@ -190,7 +190,7 @@
             action: 'outbrainClick',
             label: tmpMagazineName,
             index: 'index_' + tmpIndex,
-            eventNonInteraction: 'false'
+            eventNonInteraction: false
           };
 
         TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpElement));
@@ -264,7 +264,7 @@
         category: 'teaser',
         action: 'feed_teaser',
         index: 'index_' + tmpIndex,
-        eventNonInteraction: 'false'
+        eventNonInteraction: false
       };
 
       TrackingManager.trackEvent(tmpTrackingObject);
@@ -278,7 +278,7 @@
         action: 'teaser_category',
         label: tmpText,
         location: TrackingManager.getLocationType(),
-        eventNonInteraction: 'false'
+        eventNonInteraction: false
       });
     },
     onPresenterFullClickHandler: function (pEvent) {
@@ -289,7 +289,7 @@
           category: 'teaser',
           action: 'presenter_full',
           index: 'index_' + tmpIndex,
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         };
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
@@ -302,7 +302,7 @@
           category: 'teaser',
           action: 'presenter_half',
           index: 'index_' + tmpIndex,
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         };
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
@@ -317,7 +317,7 @@
           action: 'presenter_multi',
           index: 'index_' + tmpIndex,
           pos: 'pos_' + tmpItemIndex,
-          eventNonInteraction: 'false'
+          eventNonInteraction: false
         };
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
@@ -329,7 +329,7 @@
 
       tmpTrackingObject.action = tmpAction;
       tmpTrackingObject.label = $tmpItem.find('[data-social-type]').addBack().filter('[data-social-type]').data('social-type');
-      tmpTrackingObject.eventNonInteraction = 'false';
+      tmpTrackingObject.eventNonInteraction = false;
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     },
@@ -339,7 +339,7 @@
 
       tmpTrackingObject.action = $tmpItem.find('.text-author span').text();
       tmpTrackingObject.label = TrackingManager.getItemType($tmpItem);
-      tmpTrackingObject.eventNonInteraction = 'false';
+      tmpTrackingObject.eventNonInteraction = false;
 
       TrackingManager.trackEvent(tmpTrackingObject, TrackingManager.getAdvTrackingByElement($tmpItem));
     }
