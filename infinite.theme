@@ -244,6 +244,7 @@ function infinite_preprocess_advertising_product(&$variables) {
     $variables['tracking_url'] = $tracking_url;
     if ('tipser' === $provider) {
       $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
+      $data_attributes->setAttribute('data-shop', $product->product_shop->value);
     } else {
       $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
     }
