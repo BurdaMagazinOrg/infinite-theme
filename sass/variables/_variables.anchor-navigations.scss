@@ -1,0 +1,23 @@
+//Anchor Navigation
+$anchor-nav__item-font-id: $font-navigation-id !default;
+$anchor-nav__item-text-transform: uppercase !default;
+$anchor-nav__padding-mobile: $gap-size-xs !default;
+$anchor-nav__padding-tablet: $gap-size-xs !default;
+$anchor-nav__padding-desktop: $gap-size-xs !default;
+
+$anchor-nav__item-size-mobile: $menu--submenu-navigation-size !default;
+$anchor-nav__item-size-tablet: $menu--submenu-navigation-size !default;
+$anchor-nav__item-size-desktop: $menu--submenu-navigation-size !default;
+$anchor-nav__item-mobile-color: $menu--submenu-navigation-mobile-color !default;
+$anchor-nav__item-color: $menu--submenu-navigation-color !default;
+$anchor-nav__item-color-hover: $menu--main-navigation__item-active-color !default;
+$anchor-nav__item-bg-color: transparent !default;
+$anchor-nav__item-bg-color-hover: transparent !default;
+
+$anchor-nav__item-margin-mobile: 0 !default;
+$anchor-nav__item-margin-tablet: 0 5px !default;
+$anchor-nav__item-margin-desktop: 0 5px !default;
+
+$anchor-nav__item-padding-mobile: $gap-size-xs 0 0 !default;
+$anchor-nav__item-padding-tablet: $menu--submenu-navigation__item_padding !default;
+$anchor-nav__item-padding-desktop: $menu--submenu-navigation__item_padding !default;

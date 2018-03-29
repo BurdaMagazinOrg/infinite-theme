@@ -26,8 +26,8 @@
     {% endif %}
     <div class="caption">  {# TODO: closed in author-teaser.html.twig #}
     {% if content.field_full_name|render is not empty %}
-        <div class="text-author" itemprop="author" itemscope itemtype="https://schema.org/Person">Artikel von
-            <span itemprop="name" typeof="schema:Person">{{ content.field_full_name }}</span>
+        <div class="text-author">Artikel von
+            <span>{{ content.field_full_name }}</span>
         </div>
     {% endif %}
 {% endif %}

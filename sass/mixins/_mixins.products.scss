@@ -13,7 +13,7 @@
 @mixin product__item--default {
 
   @include product__item-text();
-
+  text-align: $product__item-text-align--default;
   position: relative;
   overflow: hidden;
   margin-bottom: $gap-size-lg;
@@ -56,7 +56,7 @@
   }
 
   .text-shop {
-    margin-top: 10px;
+    margin-top: $product__item-text-shop-margin-top;
   }
 
   .media--blazy {
@@ -68,6 +68,7 @@
     height: 200px;
     overflow: hidden;
     text-align: center;
+    position: relative;
 
     img {
       width: auto;
@@ -123,9 +124,22 @@
   }
 }
 
-@mixin product__item--ecommerce-slider {
+@mixin product__percentage-saving--default() {
+  @include text-helper($product__percentage-saving-font-id--default, $product__percentage-saving-size--default);
+  position: absolute;
+  bottom: $product__percentage-saving-bottom--default;
+  right: $product__percentage-saving-right--default;
+  color: $product__percentage-saving-color--default;
+  background-color: $product__percentage-saving-bg-color--default;
+  border: $product__percentage-saving-border--default;
+  padding: $product__percentage-saving-padding--default;
+  border-radius: $product__percentage-saving-border-radius--default;
+  letter-spacing: $product__percentage-saving-letter-spacing--default;
+}
 
+@mixin product__item--ecommerce-slider {
   @include product__item-text--ecommerce-slider();
+  text-align: $ecommerce-slider__item-text-align;
 
   position: relative;
   overflow: hidden;
@@ -133,6 +147,10 @@
   background-color: $ecommerce-slider__item-background-color;
   padding: $ecommerce-slider__item-padding;
   margin: $ecommerce-slider__item-margin;
+
+  .product__percentage-saving {
+    @include product__percentage-saving--ecommerce-slider();
+  }
 
   .text-headline {
     overflow: hidden;
@@ -163,6 +181,7 @@
     left: 0;
     color: $ecommerce-slider__item-text-price-color;
     bottom: $ecommerce-slider__item-text-price-pos-bottom;
+    white-space: nowrap;
   }
 
   .text-price--strikethrough {
@@ -182,6 +201,7 @@
     margin-bottom: $gap-size-xs;
     height: inherit;
     overflow: hidden;
+    position: relative;
 
     img {
       width: auto;
@@ -221,12 +241,19 @@
       margin-bottom: $ecommerce-slider__item-text-headline-gap-bottom-desktop;
     }
   }
+}
 
+@mixin product__percentage-saving--ecommerce-slider() {
+  @include product__percentage-saving--default();
 }
 
 @mixin product__item--horizontal-block {
 
   @include make-sm-column($grid-columns/3);
+
+  .product__percentage-saving {
+    @include product__percentage-saving--horizontal-block();
+  }
 
   @media (max-width: $screen-xs-max) {
 
@@ -247,6 +274,10 @@
 
 }
 
+@mixin product__percentage-saving--horizontal-block() {
+  @include product__percentage-saving--default();
+}
+
 @mixin product__item--single-product() {
 
   .item-product__wrapper {
@@ -257,12 +288,20 @@
     border-radius: $product-border-radius--single-product;
   }
 
+  .img-container {
+    position: relative;
+  }
+
   img {
     width: auto;
     height: auto;
     max-width: 100%;
     max-height: 100%;
     display: inline-block;
+  }
+
+  .product__percentage-saving {
+    @include product__percentage-saving--single-product();
   }
 
   .text-brand {
@@ -286,6 +325,10 @@
   .text-shop {
     margin-top: 15px;
   }
+}
+
+@mixin product__percentage-saving--single-product() {
+  @include product__percentage-saving--default();
 }
 
 @mixin ecommerce-slider() {
@@ -330,7 +373,7 @@
   }
 
   .ecommerce-slider__title {
-    @include text-helper($ecommerce-slider__title-font-id);
+    @include text-helper($ecommerce-slider__title-font-id);;
     text-align: center;
     padding: 0 20px;
   }
@@ -444,10 +487,6 @@
   .ecommerce-slider__content-wrapper {
     left: 0;
     right: 0;
-  }
-
-  .ecommerce-slider__title {
-    @include text-helper-size($font-headline-id, $title-size-sm);
   }
 
   .swiper-button {
@@ -597,10 +636,6 @@
 
   .ecommerce-slider__content {
     max-width: 1150px;
-  }
-
-  .ecommerce-slider__title {
-    @include text-helper-size($font-headline-id, $title-size-lg);
   }
 
   .item-product-slider {

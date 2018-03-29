@@ -1,27 +1,35 @@
-<div class="img-container">
-    {{ content.product_image }}
-</div>
-<div class="caption">
-    <div class="text-brand">{{ content.product_brand }}</div>
-    <div class="text-headline">{{ content.product_name }}</div>
-    {% if sold_out %}
-        {% if content.product_price.0|render != '0,00' %}
-        <div class="text-price">
-            <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
-        </div>
+{% block product__img_container_block %}
+    <div class="img-container">
+        {{ content.product_image }}
+
+        {% if show_strikethrough_price %}
+            <div class="product__percentage-saving">{{ percentage_saving | round(0, 'floor') }}%</div>
         {% endif %}
-        <div class="text-shop text-sold-out">Ausverkauft</div>
-    {% else %}
-        <div class="text-price">
-            {% if show_strikethrough_price %}
-                <span class="text-price--strikethrough">{{ content.product_original_price }} {{ formatted_currency }}</span>
+    </div>
+{% endblock %}
+{% block product__caption_block %}
+    <div class="caption">
+        <div class="text-brand">{{ content.product_brand }}</div>
+        <div class="text-headline">{{ content.product_name }}</div>
+        {% if sold_out %}
+            {% if content.product_price.0|render != '0,00' %}
+                <div class="text-price">
+                    <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
+                </div>
             {% endif %}
-            <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
-        </div>
+            <div class="text-shop text-sold-out">Ausverkauft</div>
+        {% else %}
+            <div class="text-price">
+                {% if show_strikethrough_price %}
+                    <span class="text-price--strikethrough">{{ content.product_original_price }} {{ formatted_currency }}</span>
+                {% endif %}
+                <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
+            </div>
         {% if 'tipser' == provider %}
             <div class="text-shop">Jetzt kaufen</div>
         {% else %}
             <div class="text-shop">Zum Shop</div>
         {% endif %}
     {% endif %}
-</div>
+    </div>
+{% endblock %}

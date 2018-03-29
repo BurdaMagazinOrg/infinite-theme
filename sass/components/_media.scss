@@ -8,7 +8,7 @@
     min-height: $socials-size-md;
     padding-right: $item-image-socials-width + $grid-gutter-width;
     word-wrap: break-word;
-    margin-top: 15px;
+    margin-top: $media__caption-gap-v;
   }
 
   .text-description {

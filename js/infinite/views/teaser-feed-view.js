@@ -98,7 +98,7 @@
       this.model.set('trackImpression', true);
       if (typeof TrackingManager !== 'undefined' && this.model.get('teaserTracking') !== undefined) {
         this.model.get('teaserTracking').action = 'impression';
-        this.model.get('teaserTracking').eventNonInteraction = 'true';
+        this.model.get('teaserTracking').eventNonInteraction = true;
 
         TrackingManager.trackEvent(this.model.get('teaserTracking'), this.advancedTrackingData);
       }
@@ -106,7 +106,7 @@
     trackTeaserClick: function () {
       if (typeof TrackingManager != 'undefined') {
         this.model.get('teaserTracking').action = 'click';
-        this.model.get('teaserTracking').eventNonInteraction = 'false';
+        this.model.get('teaserTracking').eventNonInteraction = false;
         TrackingManager.trackEvent(this.model.get('teaserTracking'), this.advancedTrackingData);
       }
     },

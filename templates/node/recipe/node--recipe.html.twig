@@ -85,7 +85,7 @@
                                     <div class="item-content__block item-content__block--meta-data">
                                         <div class="item-date--vita-short">
                                             {% set date = content.created[0]['#markup'] %}
-                                            <time itemprop="date" datetime="{{ date|format_date('html_datetime') }}"
+                                            <time datetime="{{ date|format_date('html_datetime') }}"
                                                   title="{{ date|format_date('custom', 'd.M.Y G:i:s') }}">{{ date|format_date('custom', 'd. F Y') }}</time>
                                         </div>
 

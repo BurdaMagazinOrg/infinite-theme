@@ -4,7 +4,6 @@
   text-transform: $title--horizontal-block-text-transform;
   letter-spacing: $title--horizontal-block-letter-spacing;
   color: $title--horizontal-block-color;
-  padding-top: 6px; //umlaute fix
 
   .item-title {
     text-align: center;
@@ -13,16 +12,19 @@
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($title--horizontal-block-font-id, $title--horizontal-block-mobile);
     margin-bottom: $title--horizontal-block-gap-bottom-mobile;
+    padding-top: $title--horizontal-block-gap-top-mobile; //umlaute fix
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @include text-helper-size($title--horizontal-block-font-id, $title--horizontal-block-tablet);
     margin-bottom: $title--horizontal-block-gap-bottom-tablet;
+    padding-top: $title--horizontal-block-gap-top-tablet; //umlaute fix
   }
 
   @media (min-width: $screen-md-min) {
     @include text-helper-size($title--horizontal-block-font-id, $title--horizontal-block-desktop);
     margin-bottom: $title--horizontal-block-gap-bottom-desktop;
+    padding-top: $title--horizontal-block-gap-top-desktop; //umlaute fix
   }
 }
 
@@ -35,6 +37,7 @@
   max-width: $title--article-max-width;
   color: $title--article-color;
   text-transform: $title--article-text-transform;
+  text-align: $title--article-text-align;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($font, $size-mobile, $title--article-line-height);
@@ -53,7 +56,8 @@
   @include text-helper($title--page-center-font-id);
   text-align: center;
   color: $title--page-center-color;
-  letter-spacing: -1px;
+  letter-spacing: $title--page-center-letter-spacing;
+  text-transform: $title--page-center-text-transform;
 
   @media (max-width: $screen-xs-max) {
     @include text-helper-size($title--page-center-font-id, $title--page-center-mobile);
@@ -68,7 +72,7 @@
   }
 }
 
-@mixin title--text-block($use-size: true) {
+@mixin title--text-block($use-size: true, $use-next-elements: true) {
   @include text-helper($title--text-block-font-id);
   color: $title--text-block-color;
   text-transform: $title--text-block-text-transform;
@@ -94,6 +98,12 @@
     margin: $title-margin-desktop--text-block;
   }
 
+  @if ($use-next-elements) {
+    @include title__next-elements--text-block();
+  }
+}
+
+@mixin title__next-elements--text-block() {
   &:first-child {
     margin-top: 0;
   }

@@ -1,0 +1,47 @@
+/**
+* Common
+**/
+$content-max-width: 1128px !default;
+$opacity-disabled: 0.4 !default;
+$zindex-menu-sidebar: 100 !default;
+$zindex-modal-background: 10;
+$zindex-modal: 11;
+$teaser-hover-opacity: 0.85 !default;
+$menu-sidebar-width: 275px !default;
+$logo-sticky-width: 110px !default;
+$spinner-size: 30px !default;
+
+/**
+* Components Settings
+**/
+$teaser-list-horizontal-count-default: 4 !default;
+
+/**
+* Borders
+**/
+$h-line-width: 1px !default;
+$h-line-style: $h-line-width solid $gray !default;
+
+/**
+* Navigation
+**/
+$navigation-padding-top-bottom: 20px !default;
+
+/**
+* Feed
+**/
+$feed-ad-column-width: 300px !default;
+$feed-ad-column-margin: 84px !default;
+
+
+/**
+* Animation
+**/
+$menu-home-animated-logo: true !default;
+$transition-duration: 0.35s !default;
+$transition-easing: ease !default;
+
+/**
+** is amp?
+**/
+$is-mobile: false !default;

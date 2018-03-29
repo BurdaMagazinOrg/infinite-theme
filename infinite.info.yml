@@ -43,6 +43,7 @@ libraries:
 #  - infinite/infinite.views.anchor-navigation-view
   - infinite/infinite.views.marketing-view
   - infinite/infinite.views.spinner
+  - infinite/infinite.views.teaser-feed-view
   - infinite/infinite.views.newsletter.hmnewsletter-view
   - infinite/infinite.views.newsletter.newsletter-modal-view
 
