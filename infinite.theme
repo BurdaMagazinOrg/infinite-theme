@@ -46,6 +46,7 @@ function infinite_theme_suggestions_user_alter(array &$suggestions, array $varia
 
 function infinite_preprocess_page(&$variables) {
   $variables['theme_infinite_path'] = '/' . drupal_get_path('theme', 'infinite');
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
 
 function infinite_preprocess_block(&$variables) {
