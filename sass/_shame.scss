@@ -30,3 +30,13 @@
     top: -3px;
   }
 }
+
+// hide tipser icons in overlay
+.tipser__hide {
+  position: absolute;
+  width: calc(100% - 60px);
+  height: 60px;
+  background: #fff;
+  top: 0;
+  left: 0;
+}
