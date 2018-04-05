@@ -230,6 +230,7 @@ function infinite_preprocess_advertising_product(&$variables) {
   if(!isset($variables['sold_out']) || !$variables['sold_out']) {
     if($price < $original_price){
       $variables['show_strikethrough_price'] = TRUE;
+      $variables['percentage_saving'] = floor(($price - $original_price) / $original_price * 100);
     }
     $variables['tracking_url'] = $tracking_url;
     if ('tipser' === $provider) {

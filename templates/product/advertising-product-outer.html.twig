@@ -2,10 +2,6 @@
     {% set attributes = attributes.addClass('item-product--strikethrough') %}
 {% endif %}
 
-{% if show_strikethrough_price %}
-    {% set percentage_saving = (((content.product_price.0 | render | trim) - (content.product_original_price.0 | render  | trim)) / (content.product_original_price.0 | render  | trim )) * 100 %}
-{% endif %}
-
 {% if sold_out %}
     {% set attributes = attributes.addClass('item-product--sold-out') %}
     {% set data_attributes = data_attributes.removeAttribute('data-external-url') %}
