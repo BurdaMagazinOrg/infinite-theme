@@ -1,10 +1,6 @@
 {% block product__img_container_block %}
     <div class="img-container">
         {{ content.product_image }}
-
-        {% if show_strikethrough_price %}
-            <div class="product__percentage-saving">{{ percentage_saving | round(0, 'floor') }}%</div>
-        {% endif %}
     </div>
 {% endblock %}
 {% block product__caption_block %}
