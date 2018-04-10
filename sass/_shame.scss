@@ -8,7 +8,7 @@
 
 // hide tipser shopping cart icon until we repositioned it in tipser.js
 #twshoptab {
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 // tipser dummy icon will be shown until the user interacted with tipser
@@ -20,13 +20,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.848485);
   width: 55px;
 
   img {
-    opacity: 0.7;
-    max-height: 100%;
-    width: 30px;
+    fill: $color-dark-1;
+    width: 25px;
     position: relative;
     top: -3px;
   }
@@ -40,6 +38,12 @@
 }
 #tipser__dummy--socials-bar {
   right: 50px;
+  height: 38px;
+
+  #menu-main-navigation & {
+    right: 110px;
+    top: 7px;
+  }
 }
 
 // hide tipser icons in overlay
