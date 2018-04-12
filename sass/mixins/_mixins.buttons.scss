@@ -209,6 +209,7 @@
   border-radius: $button__border-radius--default;
   letter-spacing: $button__letter-spacing--default;
   text-transform: $button__text-transform--default;
+  white-space: $button__white-space--default;
 }
 
 @mixin button--size($font-id, $size, $height, $line-height, $padding) {

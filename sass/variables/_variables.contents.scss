@@ -1,0 +1,31 @@
+
+/**
+** Item Contents
+**/
+
+$article__header-padding-mobile: 0 0 $gap-size-lg 0 !default;
+$article__header-padding-tablet: 0 0 $gap-size-lg 0 !default;
+$article__header-padding-desktop: 0 0 $gap-size-lg 0 !default;
+
+$archive__list-title-font: $font-label !default;
+$archive__list-title-size: $title-size-xs !default;
+$archive__list-title-color: $color-brand !default;
+$archive__list-title-text-transform: uppercase !default;
+$archive__list-title-letter-spacing: 0.04em !default;
+
+$archive__teaser-list-title-color: $gray-base !default;
+$archive__open-tree-padding: 0 0 $gap-size-xxs 0 !default;
+$archive__open-tree-margin: 0 !default;
+$archive__open-tree-border: $h-line-style !default;
+
+
+/** profile **/
+$profile__title-size: $title-size-xxs !default;
+$profile__title-gap-bottom: $title-size-md !default;
+$profile__title-color: $gray-darker !default;
+
+$profile__fact-max-width: 360px !default;
+$profile__th-size: 16px !default;
+$profile__th-color: $gray-darker !default;
+$profile__td-size: 16px !default;
+$profile__td-color: $gray-darker !default;

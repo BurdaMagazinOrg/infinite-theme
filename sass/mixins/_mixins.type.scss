@@ -15,12 +15,16 @@
   } @else if ($font == $font-content-bold-id) {
     @extend %text-content-bold;
   } @else {
-    font-family: $font;
+    @include text-helper--custom($font, $size: '', $line-height: '');
   }
 
   @if ($size!= '') {
     @include text-helper-size($font, $size, $line-height);
   }
+}
+
+@mixin text-helper--custom($font, $size: '', $line-height: '') {
+  font-family: $font;
 }
 
 @mixin text-helper-size($font, $size, $line-height: '') {
@@ -188,6 +192,24 @@
     }
   }
 
+  @media (max-width: $screen-xs-max) {
+    & > p, .btn, .btn--small, .btn--large {
+      margin-top: $text-content__children-margin-top--mobile;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    & > p, .btn, .btn--small, .btn--large {
+      margin-top: $text-content__children-margin-top--tablet;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    & > p, .btn, .btn--small, .btn--large {
+      margin-top: $text-content__children-margin-top--desktop;
+    }
+  }
+
   h2, h3, h4, h5, h6 {
     @include title--text-block(false);
   }
@@ -212,10 +234,6 @@
     @extend %h6--text-block;
   }
 
-  & > p, .btn, .btn--small, .btn--large {
-    margin-top: $grid-gutter-width;
-  }
-
   a {
     text-decoration: underline;
   }
@@ -236,6 +254,18 @@
     margin-top: 1em;
 
     @extend %table--text-block;
+  }
+
+  @media (max-width: $screen-xs-max) {
+
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+
+  }
+
+  @media (min-width: $screen-md-min) {
+
   }
 }
 

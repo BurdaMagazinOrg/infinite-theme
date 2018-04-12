@@ -1,0 +1,11 @@
+/**
+** Rating
+**/
+$rating__size: inherit !default;
+$rating__letter-spacing: 5px !default;
+$rating__pos-right: 120px !default;
+$rating__pos-top: 0px !default;
+$rating__content-before: "\e913" !default;
+$rating__content-after: "\e913" !default;
+$rating__color: $gray-light !default;
+$rating__color-active: $color-highlighted !default;
