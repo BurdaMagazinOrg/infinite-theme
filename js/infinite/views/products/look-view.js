@@ -5,6 +5,7 @@
   BurdaInfinite.views.products.LookView = BaseDynamicView.extend({
     $hotspots: [],
     blazy: null,
+    trackedProducts: [],
     initialize: function (pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
@@ -14,50 +15,34 @@
     createView: function () {
       this.$hotspots = this.$el.find('.imagepin');
 
-      if (typeof Blazy != 'undefined') {
+      if (typeof Blazy !== 'undefined') {
         this.blazy = new Blazy();
       }
     },
     init: function () {
-      var $that = this;
+      var that = this;
 
       $.each(this.$hotspots, function () {
-        $(this).bind('overlay:show', function (pEvent, $pOverlay) {
-          var tmpWidgetId = $pOverlay.data('imagepin-key'),
-              $tmpOriginalWidget = [],
-              $tmpOriginalProduct = [],
-              $tmpImages = $pOverlay.find('img'),
-              tmpView,
-              tmpInfiniteModel;
+        $(this).on('overlay:show', function (evt, currentPin) {
+          var imagePinId = currentPin.data('imagepin-key');
+          var imagePinData = currentPin.find('.item-ecommerce').data('infiniteModel');
+          var imagePinDataView = imagePinData.get('view');
+          var basicTrackingData = imagePinData.get('enhancedEcommerce');
+          var additionalTrackingData = imagePinDataView.advancedTrackingData;
 
-          $tmpOriginalWidget = $that.$el.find('.imagepin-widgets [data-imagepin-key="' + tmpWidgetId + '"]');
-          $tmpOriginalProduct = $tmpOriginalWidget.find('.item-ecommerce');
-
-          $.each($tmpOriginalProduct, function (index, element) {
-
-            var $targetElement = $tmpOriginalProduct.eq(index);
-            tmpInfiniteModel = $targetElement.data('infiniteModel');
-
-            /**
-             * get model and track impression
-             */
-            if (typeof tmpInfiniteModel != "undefined") {
-              tmpView = $targetElement.data('infiniteModel').get('view');
-              if ($targetElement.data('trackImpression') != true) {
-                $targetElement.data('trackImpression', true);
-                tmpView.trackImpression();
-              }
+          if (typeof TrackingManager !== 'undefined') {
+            if (that.trackedProducts.indexOf(imagePinId) === -1) {
+              that.trackedProducts.push(imagePinId);
+              TrackingManager.trackEcommerce(basicTrackingData, 'impressions',  additionalTrackingData);
             }
+          }
 
-          });
+          // Lazyload images
+          if (that.blazy != null) {
+            var $pinImages = currentPin.find('img');
 
-
-          /**
-           * Load blazy shizzl
-           */
-          if ($that.blazy != null) {
-            $.each($tmpImages, function (pIndex, pImageItem) {
-              $that.blazy.load(pImageItem);
+            $.each($pinImages, function (index, imageItem) {
+              that.blazy.load(imageItem);
             });
           }
         });
