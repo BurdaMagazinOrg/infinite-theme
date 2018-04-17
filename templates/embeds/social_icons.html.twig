@@ -1,5 +1,6 @@
 {# Process label to be plain_text and trimmed always #}
 {% set label = label|plain_text|trim %}
+{% set pinterest_share_description = pinterest_share_description|plain_text|trim %}
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 {% set url = url ~ "?utm_medium=social&utm_campaign=Sharing&utm_source=" %}
 
@@ -25,7 +26,8 @@
 
 {% block social_pinterest %}
     <div class="item-social icon-pinterest" data-url="{{ (url ~ "Sharing_Pinterest") | e('html_attr') }}"
-         data-media-url="{{ (pinterest_share_img_url|default(share_img_url)) | e('html_attr') }}" data-description="{{ label | e('html_attr') }}"
+         data-media-url="{{ (pinterest_share_img_url|default(share_img_url)) | e('html_attr') }}"
+         data-description="{{ pinterest_share_description|default(label) | e('html_attr') }}"
          data-social-type="pinterest">
         {% if pinterest_share_button %}
             <span>{{ pinterest_share_button }}</span>
