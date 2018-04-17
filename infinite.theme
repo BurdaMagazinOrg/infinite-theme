@@ -46,6 +46,7 @@ function infinite_theme_suggestions_user_alter(array &$suggestions, array $varia
 
 function infinite_preprocess_page(&$variables) {
   $variables['theme_infinite_path'] = '/' . drupal_get_path('theme', 'infinite');
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
 
 function infinite_preprocess_block(&$variables) {
@@ -272,4 +273,30 @@ function infinite_page_attachments_alter(array &$attachments) {
 //      unset($attachments['#attached']['html_head'][$key]);
 //    }
 //  }
+}
+
+
+function infinite_preprocess_container(&$variables) {
+  if (isset($variables['element']['#parent'])) {
+    if (isset($variables['element']['#parent']['#node'])) {
+      $entity = $variables['element']['#parent']['#node'];
+    }
+    elseif (isset($variables['element']['#parent']['#taxonomy_term'])) {
+      $entity = $variables['element']['#parent']['#taxonomy_term'];
+    }
+    elseif (isset($variables['element']['#parent']['#user'])) {
+      $entity = $variables['element']['#parent']['#user'];
+    }
+  }
+  if (isset($entity)) {
+    $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
+      $entity,
+      'field_pinterest_image'
+    );
+    if (method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
+      if ($entity->hasField('field_seo_description')) {
+        $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
+      }
+    }
+  }
 }
