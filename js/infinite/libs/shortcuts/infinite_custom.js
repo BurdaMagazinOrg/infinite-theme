@@ -102,7 +102,7 @@
       TrackingManager.trackEvent({
         category: 'lazy-loading',
         action: this.$more.attr('href'),
-        eventNonInteraction: 'false'
+        eventNonInteraction: false
       });
     }
 

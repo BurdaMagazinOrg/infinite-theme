@@ -95,7 +95,7 @@
           TrackingManager.trackEvent({
             category: 'mkt-conversion',
             action: 'newsletterSignup',
-            'eventNonInteraction': 'false'
+            eventNonInteraction: false
           }, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       }
