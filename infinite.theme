@@ -274,3 +274,29 @@ function infinite_page_attachments_alter(array &$attachments) {
 //    }
 //  }
 }
+
+
+function infinite_preprocess_container(&$variables) {
+  if (isset($variables['element']['#parent'])) {
+    if (isset($variables['element']['#parent']['#node'])) {
+      $entity = $variables['element']['#parent']['#node'];
+    }
+    elseif (isset($variables['element']['#parent']['#taxonomy_term'])) {
+      $entity = $variables['element']['#parent']['#taxonomy_term'];
+    }
+    elseif (isset($variables['element']['#parent']['#user'])) {
+      $entity = $variables['element']['#parent']['#user'];
+    }
+  }
+  if (isset($entity)) {
+    $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
+      $entity,
+      'field_pinterest_image'
+    );
+    if (method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
+      if ($entity->hasField('field_seo_description')) {
+        $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
+      }
+    }
+  }
+}
