@@ -11,7 +11,7 @@
           TrackingManager.trackEvent({
             category: 'newsletter',
             action: 'success',
-            'eventNonInteraction': 'false'
+            eventNonInteraction: false
           }, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       })
@@ -20,7 +20,7 @@
           TrackingManager.trackEvent({
             category: 'newsletter',
             action: 'error',
-            'eventNonInteraction': 'false'
+            eventNonInteraction: false
           }, TrackingManager.getAdvTrackingByElement(this.$el));
         }
       })

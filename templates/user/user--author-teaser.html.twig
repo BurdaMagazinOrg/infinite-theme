@@ -26,6 +26,8 @@
     {% endif %}
     <div class="caption">  {# TODO: closed in author-teaser.html.twig #}
     {% if content.field_full_name|render is not empty %}
-        <div class="text-author">Artikel von {{ content.field_full_name }}</div>
+        <div class="text-author">Artikel von
+            <span>{{ content.field_full_name }}</span>
+        </div>
     {% endif %}
 {% endif %}
