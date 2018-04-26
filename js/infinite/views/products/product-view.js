@@ -11,7 +11,7 @@
 
       if (this.$el.hasClass('item-product--sold-out')) {
         this.model.set('disabled', true);
-        return;
+        /*return;*/
       }
 
       this.delegateInview();
@@ -82,6 +82,7 @@
       this.model.set('viewType', this.$el.data('view-type'));
       this.model.set('productCategory', this.$el.data('product-category'));
       this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
+      this.model.set('soldOut', this.$el.data('sold-out'));
 
       if (this.$el.hasClass('item-product--single')) {
         tmpComponentType = ProductView.COMPONENT_TYPE_SINGLE;
@@ -222,6 +223,7 @@
       }
     },
     trackProductClick: function () {
+        if (this.model.get('disabled') == true) return;
       if(typeof TrackingManager != 'undefined') {
         TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
       }

@@ -199,6 +199,7 @@ function infinite_preprocess_advertising_product(&$variables) {
         ->setAttribute('data-currency', $product->product_currency->value)
         ->setAttribute('data-uuid', $product->uuid->value)
         ->setAttribute('data-product-id', $product->product_id->value)
+        ->setAttribute('data-sold-out', $product->product_sold_out->value)
         ->setAttribute('data-external-url', $product->product_url->uri);
 
     $tracking_url = $product->product_url->uri;
