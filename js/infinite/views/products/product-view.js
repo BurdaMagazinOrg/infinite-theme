@@ -11,7 +11,6 @@
 
       if (this.$el.hasClass('item-product--sold-out')) {
         this.model.set('disabled', true);
-        /*return;*/
       }
 
       this.delegateInview();
