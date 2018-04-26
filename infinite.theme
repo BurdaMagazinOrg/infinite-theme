@@ -189,54 +189,54 @@ function infinite_preprocess_views_view(&$variables) {
  * Implements hook_preprocess_product().
  */
 function infinite_preprocess_advertising_product(&$variables) {
-    $product = $variables['elements']['#advertising_product'];
-    // Set the data attributes for tracking purposes
-    $data_attributes = new Drupal\Core\Template\Attribute;
-    $data_attributes->setAttribute('data-title', $product->product_name->value)
-        ->setAttribute('data-shop', $product->product_shop->value)
-        ->setAttribute('data-brand', $product->product_brand->value)
-        ->setAttribute('data-price', $product->product_price->value)
-        ->setAttribute('data-currency', $product->product_currency->value)
-        ->setAttribute('data-uuid', $product->uuid->value)
-        ->setAttribute('data-product-id', $product->product_id->value)
-        ->setAttribute('data-sold-out', $product->product_sold_out->value)
-        ->setAttribute('data-external-url', $product->product_url->uri);
+  $product = $variables['elements']['#advertising_product'];
+  // Set the data attributes for tracking purposes
+  $data_attributes = new Drupal\Core\Template\Attribute;
+  $data_attributes->setAttribute('data-title', $product->product_name->value)
+    ->setAttribute('data-shop', $product->product_shop->value)
+    ->setAttribute('data-brand', $product->product_brand->value)
+    ->setAttribute('data-price', $product->product_price->value)
+    ->setAttribute('data-currency', $product->product_currency->value)
+    ->setAttribute('data-uuid', $product->uuid->value)
+    ->setAttribute('data-product-id', $product->product_id->value)
+    ->setAttribute('data-sold-out', $product->product_sold_out->value)
+    ->setAttribute('data-external-url', $product->product_url->uri);
 
-    $tracking_url = $product->product_url->uri;
-    // This is needed only for tracdelight products
-    if ($product->getType() == 'advertising_product_tracdelight') {
-        $sub_id = 0;
+  $tracking_url = $product->product_url->uri;
+  // This is needed only for tracdelight products
+  if ($product->getType() == 'advertising_product_tracdelight') {
+    $sub_id = 0;
 
-        if (Drupal::request()->attributes->has('node')) {
-            $node = Drupal::request()->attributes->get('node');
-            $sub_id = 'node-' . $node->id();
-        } elseif (Drupal::request()->attributes->has('taxonomy_term')) {
-            $term = Drupal::request()->attributes->get('taxonomy_term');
-            $sub_id = 'term-' . $term->id();
-        }
-        $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
+    if (Drupal::request()->attributes->has('node')) {
+      $node = Drupal::request()->attributes->get('node');
+      $sub_id = 'node-' . $node->id();
+    } elseif (Drupal::request()->attributes->has('taxonomy_term')) {
+      $term = Drupal::request()->attributes->get('taxonomy_term');
+      $sub_id = 'term-' . $term->id();
     }
+    $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
+  }
 
-    $original_price = $product->product_original_price->value;
-    $price = $product->product_price->value;
+  $original_price = $product->product_original_price->value;
+  $price = $product->product_price->value;
 
-    $sold_out = $product->product_sold_out->value;
-    $in_stock = !isset($variables['sold_out']) || !$variables['sold_out'];
+  $sold_out = $product->product_sold_out->value;
+  $in_stock = !isset($variables['sold_out']) || !$variables['sold_out'];
 
-    if ($price <= 0 || $sold_out) {
-        $variables['sold_out'] = TRUE;
-    }
-
-
-    if ($in_stock && $price < $original_price) {
-        $variables['show_strikethrough_price'] = TRUE;
-    }
+  if ($price <= 0 || $sold_out) {
+    $variables['sold_out'] = TRUE;
+  }
 
 
-    $provider = explode("_", $product->product_provider->value);
-    $data_attributes->setAttribute('data-provider', $provider[0]);
+  if ($in_stock && $price < $original_price) {
+    $variables['show_strikethrough_price'] = TRUE;
+  }
 
-    $variables['data_attributes'] = $data_attributes;
+
+  $provider = explode("_", $product->product_provider->value);
+  $data_attributes->setAttribute('data-provider', $provider[0]);
+
+  $variables['data_attributes'] = $data_attributes;
 
 }
 
