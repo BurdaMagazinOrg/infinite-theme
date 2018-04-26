@@ -224,9 +224,9 @@
     },
     trackProductClick: function () {
         if (this.model.get('disabled') == true) return;
-      if(typeof TrackingManager != 'undefined') {
-        TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
-      }
+        if (typeof TrackingManager != 'undefined') {
+            TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'productClick', this.advancedTrackingData);
+        }
     },
     onProductClickHandler: function (pEvent) {
       this.trackProductClick();
