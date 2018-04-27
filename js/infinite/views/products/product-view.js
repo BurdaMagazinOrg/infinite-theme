@@ -215,8 +215,6 @@
       }
     },
     trackImpression: function () {
-      if (this.model.get('disabled') == true) return;
-
       this.model.set('trackImpression', true);
       if(typeof TrackingManager != 'undefined') {
         TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
