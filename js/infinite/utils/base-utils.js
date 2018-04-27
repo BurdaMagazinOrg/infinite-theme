@@ -193,28 +193,20 @@
       var $internalUrls = $pContainer.find('[data-internal-url]').addBack().filter('[data-internal-url]');
 
       $internalUrls
-        .unbind('click.updateInternalURL')
-        .bind('click.updateInternalURL',
-          $.proxy(function (pEvent) {
-            var $tmpElement = $(pEvent.currentTarget),
-              url = $tmpElement.attr('data-internal-url'),
-              target = $tmpElement.attr('data-target');
+        .off('click.updateInternalURL', $pContainer)
+        .on('click.updateInternalURL', $pContainer,
+          function (e) {
+            e.stopPropagation();
+            var currentTarget = e.currentTarget;
+            var internalURL = currentTarget.getAttribute('data-internal-url');
+            var target = currentTarget.getAttribute('data-target');
 
-            if (target) {
-              window.open(url, target);
+            if (target !== undefined) {
+              window.open(internalURL, target);
             } else {
-              location.href = url;
+              location.href = internalURL;
             }
-          }, this));
-
-      // Prevent click event of contained clickable elements from bubbling up.
-      $internalUrls
-        .find('[data-internal-url], [data-external-url]')
-        .unbind('click.updateInternalURLNoBubbling')
-        .bind('click.updateInternalURLNoBubbling',
-          $.proxy(function (pEvent) {
-            pEvent.stopPropagation();
-          }, this));
+          });
     },
     updateExternalURL: function ($pContainer) {
       var $externalUrls = $pContainer.find('[data-external-url]').addBack().filter('[data-external-url]');
@@ -256,11 +248,11 @@
   };
 
   $('body').once('BaseUtils').each(function () {
-    $(window).bind('base-utils:update', function (pEvent, $pContainer) {
+    $(window).on('base-utils:update', function (pEvent, $pContainer) {
       BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
     });
 
-    $(window).bind('base-utils:update-links', function (pEvent, $pContainer) {
+    $(window).on('base-utils:update-links', function (pEvent, $pContainer) {
       BurdaInfinite.utils.BaseUtils.updateLinks($pContainer);
     });
   });
