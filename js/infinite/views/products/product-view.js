@@ -198,7 +198,8 @@
         brand: this.model.get('brand'),
         provider: this.model.get('provider'),
         productCategory: this.model.get('productCategory'),
-        containerType: this.model.get('containerType') || ''
+        containerType: this.model.get('containerType') || '',
+        soldOut: this.model.get('soldOut')
       };
 
       if (this.model.has('productIndex')) {
