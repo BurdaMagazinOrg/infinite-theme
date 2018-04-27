@@ -83,7 +83,7 @@
         pModel.set('inviewEnabled', pState);
 
         if (pModel.hasItems()) {
-          if (typeof this.inviewEnable === 'function') {
+          if (this && typeof this.inviewEnable === 'function') {
             this.inviewEnable(pState, pModel.get('items'));
           }
         }
