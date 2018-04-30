@@ -9,10 +9,6 @@
     initialize: function (pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
-      if (this.$el.hasClass('item-product--sold-out')) {
-        this.model.set('disabled', true);
-      }
-
       this.delegateInview();
       this.addListener();
       this.createModel();
@@ -81,7 +77,7 @@
       this.model.set('viewType', this.$el.data('view-type'));
       this.model.set('productCategory', this.$el.data('product-category'));
       this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
-      this.model.set('soldOut', this.$el.data('sold-out'));
+      this.model.set('soldOut', this.$el.data('sold-out') || 0);
 
       if (this.$el.hasClass('item-product--single')) {
         tmpComponentType = ProductView.COMPONENT_TYPE_SINGLE;
