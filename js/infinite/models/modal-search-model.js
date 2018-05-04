@@ -8,6 +8,7 @@
     },
     ajaxModel: null,
     url: AppConfig.searchApiUrl,
+    isUserSearching: false,
     initialize: function (pOptions) {
       BaseCollectionModel.prototype.initialize.call(this, pOptions);
     },

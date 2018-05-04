@@ -1,7 +1,7 @@
 @mixin newsletter--horizontal() {
   overflow: hidden;
   text-align: center;
-  color: $white;
+  color: $newsletter__color--horizontal;
   position: relative;
   padding-left: 0;
   padding-right: 0;
@@ -114,18 +114,13 @@
     .input-email {
       @include text-helper($newsletter__input-font-id--horizontal, $newsletter__input-font-size--horizontal);
       width: $newsletter__input-width--horizontal;
+      height: $newsletter__input-height--horizontal;
       padding: $newsletter__input-padding--horizontal;
       margin: $newsletter__input-margin--horizontal;
     }
 
     button {
-      @extend %align-self-center;
-      @extend %btn--large;
-      width: $newsletter__submit-width--horizontal;
-      margin: $newsletter__submit-margin--horizontal;
-      height: $newsletter__submit-height--horizontal;
-      cursor: pointer;
-      line-height: 1;
+      @include newsletter__submit-button--horizontal;
     }
 
     p {
@@ -176,7 +171,7 @@
 
     .newsletter__title {
       @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--mobile);
-      margin-bottom: $title--horizontal-block-gap-bottom-mobile;
+      margin-bottom: $newsletter__title-gap-bottom-mobile--horizontal;
     }
 
     .container-form {
@@ -235,7 +230,7 @@
 
     .newsletter__title {
       @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--tablet);
-      margin-bottom: $title--horizontal-block-gap-bottom-tablet;
+      margin-bottom: $newsletter__title-gap-bottom-tablet--horizontal;
     }
 
     .container-content-item {
@@ -256,7 +251,7 @@
 
     .newsletter__title {
       @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--desktop);
-      margin-bottom: $title--horizontal-block-gap-bottom-desktop;
+      margin-bottom: $newsletter__title-gap-bottom-desktop--horizontal;
     }
 
     .container-content-item {
@@ -271,6 +266,18 @@
       }
     }
   }
+
+  @content;
+}
+
+@mixin newsletter__submit-button--horizontal() {
+  @extend %align-self-center;
+  @extend %btn--large;
+  width: $newsletter__submit-width--horizontal;
+  margin: $newsletter__submit-margin--horizontal;
+  height: $newsletter__submit-height--horizontal;
+  cursor: pointer;
+  line-height: 1;
 }
 
 @mixin newsletter--page() {
@@ -426,17 +433,9 @@
   .form-group--email {
     .input-email {
       border: 1px solid $gray-light;
-      //padding-right: $padding-small-horizontal;
-      height: 48px;
+      height: $newsletter__input-height--horizontal;
     }
-
-    //button {
-    //  height: 48px;
-    //}
   }
-
-  //@media (max-width: $screen-xs-max) {
-  //}
 
   @media (max-width: $screen-sm-max) {
     .newsletter-modal__col--left {

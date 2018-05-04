@@ -14,7 +14,7 @@
                 {% endif %}
             </span>
         </div>
-        <div class="text-shop text-sold-out">Ausverkauft</div>
+        <div class="text-shop text-sold-out">Sold out</div>
     {% else %}
         <div class="text-price">
             {% if show_strikethrough_price %}
@@ -22,6 +22,6 @@
             {% endif %}
             <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
         </div>
-        <div class="text-shop">Zum Produkt</div>
+        <div class="text-shop">Shop now</div>
     {% endif %}
 </div>

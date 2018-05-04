@@ -1,1 +1,25 @@
 //to specific - no extends necessary
+
+%product__item-text-shop--default {
+  @include product__item-text-shop--default();
+}
+
+%product__item-text-shop--hover {
+  @include product__item-text-shop--hover();
+}
+
+%product__item-text-shop--ecommerce-slider {
+  @include product__item-text-shop--ecommerce-slider();
+}
+
+%product__item-text-shop--ecommerce-slider-hover {
+  @include product__item-text-shop--ecommerce-slider-hover();
+}
+
+%product__item-text-shop--single-product {
+  @include product__item-text-shop--single-product();
+}
+
+%product__item-text-shop--single-product-hover {
+  @include product__item-text-shop--single-product-hover();
+}

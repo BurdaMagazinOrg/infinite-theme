@@ -9,3 +9,7 @@
 %label--copyright {
   @include label--copyright();
 }
+
+%label--copyright--suffix {
+  @include label--copyright--suffix();
+}

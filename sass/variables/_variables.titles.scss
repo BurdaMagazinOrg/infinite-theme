@@ -1,0 +1,105 @@
+/**
+** Titles
+**/
+$title--media-header-font-id: $titles__font-id--default !default;
+$title--media-header-mobile: $title-size-lg !default;
+$title--media-header-tablet: $title-size-xxl !default;
+$title--media-header-desktop: 72px !default;
+$title--media-header-text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 1px !default;
+$title--media-header-text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 1px !default;
+$title--media-header-letter-spacing: -3px !default;
+$title--media-header-color: $white !default;
+$title--media-header-color-plain: $text-color !default;
+$title--media-header-text-transform: $titles__text-transform--default !default;
+
+/** title--page-center **/
+$title--page-center-font-id: $titles__font-id--default !default;
+$title--page-center-mobile: 36px !default;
+$title--page-center-tablet: 59px !default;
+$title--page-center-desktop: 59px !default;
+$title--page-center-color: $gray-base !default;
+$title--page-center-letter-spacing: -1px !default;
+
+/** title--horizontal-block **/
+$title--horizontal-block-font-id: $titles__font-id--default !default;
+$title--horizontal-block-letter-spacing: 0px !default;
+$title--horizontal-block-text-transform: uppercase !default;
+$title--horizontal-block-color: $text-color !default;
+$title--horizontal-block-mobile: $title-size-xs !default;
+$title--horizontal-block-tablet: $title-size-sm !default;
+$title--horizontal-block-desktop: $title-size-md !default;
+
+$title--horizontal-block-gap-top-mobile: 6px !default;
+$title--horizontal-block-gap-top-tablet: 6px !default;
+$title--horizontal-block-gap-top-desktop: 6px !default;
+$title--horizontal-block-gap-bottom-mobile: $gap-size-sm !default;
+$title--horizontal-block-gap-bottom-tablet: $gap-size-md !default;
+$title--horizontal-block-gap-bottom-desktop: $gap-size-xxl !default;
+
+/** title--content-block **/
+$title--content-block-font-id: $titles__font-id--default !default;
+$title--content-block-mobile: $title-size-sm !default;
+$title--content-block-tablet: $title-size-md !default;
+$title--content-block-desktop: 30px !default;
+$title--content-block-color: $text-color !default;
+$title--content-block-text-transform: $titles__text-transform--default !default;
+$title--content-block-text-align: left !default;
+
+//fkn different design shizzl
+$title--content-block-gap-bottom-mobile: $gap-size-sm !default;
+$title--content-block-gap-bottom-tablet: $gap-size-md !default;
+$title--content-block-gap-bottom-desktop: $gap-size-xl !default;
+
+/** title--article **/
+$title--article-font-id: $titles__font-id--default !default;
+$title--article-mobile: $title-size-sm !default;
+$title--article-tablet: $title-size-md !default;
+$title--article-desktop: $title-size-xl !default;
+$title--article-color: $text-color !default;
+$title--article-max-width: 888px !default;
+$title--article-text-transform: $titles__text-transform--default !default;
+$title--article-text-align: left !default;
+$title--article-line-height: $line-height-headline !default;
+
+/** title--text-block **/
+$title--text-block-font-id: $titles__font-id--default !default;
+$title--text-block-mobile: $title-size-sm !default;
+$title--text-block-tablet: $title-size-md !default;
+$title--text-block-desktop: 30px !default;
+$title--text-block-color: $text-color !default;
+$title--text-block-text-transform: $titles__text-transform--default !default;
+$title-margin-mobile--text-block: $margin-v-item-content__item-mobile 0 0 0 !default;
+$title-margin-tablet--text-block: $margin-v-item-content__item-tablet 0 0 0 !default;
+$title-margin-desktop--text-block: $margin-v-item-content__item-desktop 0 0 0 !default;
+$title__children-margin-mobile--text-block: 16px 0 0 !default;
+$title__children-margin-tablet--text-block: 20px 0 0 !default;
+$title__children-margin-desktop--text-block: 24px 0 0 !default;
+//$title__headline-margin--text-block: 16px 0 0 !default; //legacy
+$title__headline-margin-mobile--text-block: 12px 0 0 0 !default;
+$title__headline-margin-tablet--text-block: 14px 0 0 0 !default;
+$title__headline-margin-desktop--text-block: 16px 0 0 0 !default;
+
+/** Headlines in Text-Blocks **/
+$h-line-height--text-block-mobile: 1.3 !default;
+$h-line-height--text-block-tablet: 1.3 !default;
+$h-line-height--text-block-desktop: 1.3 !default;
+
+$h2-size--text-block-mobile: $title-size-md !default;
+$h2-size--text-block-tablet: 36px !default;
+$h2-size--text-block-desktop: $title-size-xl !default;
+
+$h3-size--text-block-mobile: $title-size-sm !default;
+$h3-size--text-block-tablet: $title-size-lg !default;
+$h3-size--text-block-desktop: 36px !default;
+
+$h4-size--text-block-mobile: $title-size-xs !default;
+$h4-size--text-block-tablet: $title-size-md !default;
+$h4-size--text-block-desktop: $title-size-md !default;
+
+$h5-size--text-block-mobile: $title-size-xxs !default;
+$h5-size--text-block-tablet: $title-size-sm !default;
+$h5-size--text-block-desktop: $title-size-sm !default;
+
+$h6-size--text-block-mobile: $title-size-xxs !default;
+$h6-size--text-block-tablet: $title-size-sm !default;
+$h6-size--text-block-desktop: $title-size-sm !default;
