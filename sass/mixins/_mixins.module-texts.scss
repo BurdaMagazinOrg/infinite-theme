@@ -86,11 +86,12 @@
 
   .teaser__overhead {
     @include text-helper($overhead-font);
-    text-transform: uppercase;
+    text-transform: $teaser__overhead-text-transform--full-content;
   }
 
   .teaser__title {
     @include text-helper($title-font);
+    text-transform: $teaser__title-text-transform--full-content;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -256,24 +257,24 @@
 
 @mixin teaser-square-xs-text() {
   .teaser__title {
-    @include text-headline();
+    @include text-helper($teaser-square-xs-font-id);
   }
 
   @media (max-width: $screen-xs-max) {
     .teaser__title {
-      @include text-headline-size($teaser-square-xs-headline-size-mobile);
+      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-mobile);
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .teaser__title {
-      @include text-headline-size($teaser-square-xs-headline-size-tablet);
+      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-tablet);
     }
   }
 
   @media (min-width: $screen-md-min) {
     .teaser__title {
-      @include text-headline-size($teaser-square-xs-headline-size-desktop);
+      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-desktop);
     }
   }
 }
@@ -299,7 +300,7 @@
 
   &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @extend %button--lined-colored-hover;
+      @extend %product__item-text-shop--hover;
     }
   }
 
@@ -317,7 +318,7 @@
   }
 
   .text-headline {
-    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size);
+    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size, $product__item-text-headline-line-height);
     color: $product__item-text-headline-color;
   }
 
@@ -349,18 +350,27 @@
   }
 
   .text-shop {
-    @extend %button;
-    @extend %button--sm;
-    @extend %button--lined-colored-default;
-    display: inline-block;
+    @extend %product__item-text-shop--default;
   }
+}
+
+@mixin product__item-text-shop--default() {
+  @extend %button;
+  @extend %button--sm;
+  @extend %button--lined-colored-default;
+  display: inline-block;
+}
+
+@mixin product__item-text-shop--hover() {
+  @extend %button--lined-colored-hover;
 }
 
 @mixin product__item-text--ecommerce-slider() {
 
   &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @include button--lined-colored($button__border-color--lined-colored-hover !important, $color: $button__color--lined-colored-hover !important);
+      //@include button--lined-colored($button__border-color--lined-colored-hover !important, $color: $button__color--lined-colored-hover !important);
+      @extend %product__item-text-shop--ecommerce-slider-hover;
     }
   }
 
@@ -413,11 +423,20 @@
   }
 
   .text-shop {
-    @extend %button;
-    @extend %button--sm;
-    @include button--lined-colored($button__border-color--lined-colored-default !important, $color: $button__color--lined-colored-default !important);
-    display: inline-block;
+    //@extend %button;
+    //@extend %button--sm;
+    //@include button--lined-colored($button__border-color--lined-colored-default !important, $color: $button__color--lined-colored-default !important);
+    //display: inline-block;
+    @extend %product__item-text-shop--ecommerce-slider;
   }
+}
+
+@mixin product__item-text-shop--ecommerce-slider() {
+  @include product__item-text-shop--default();
+}
+
+@mixin product__item-text-shop--ecommerce-slider-hover() {
+  @include product__item-text-shop--hover();
 }
 
 @mixin product__item-text--single-product() {
@@ -426,7 +445,7 @@
 
   &:hover:not(.item-product--sold-out) {
     .text-shop {
-      @extend %button--lined-colored-hover;
+      @extend %product__item-text-shop--single-product-hover;
     }
   }
 
@@ -473,10 +492,7 @@
   }
 
   .text-shop {
-    @extend %button;
-    @extend %button--responsive-lg;
-    @extend %button--lined-colored-default;
-    display: inline-block;
+    @extend %product__item-text-shop--single-product;
   }
 
   @media (min-width: $screen-md-min) {
@@ -489,6 +505,14 @@
       @include text-helper-size($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-desktop--single-product);
     }
   }
+}
+
+@mixin product__item-text-shop--single-product() {
+  @include product__item-text-shop--default();
+}
+
+@mixin product__item-text-shop--single-product-hover() {
+  @include product__item-text-shop--hover();
 }
 
 /**
@@ -665,6 +689,8 @@
       }
     }
   }
+
+  @content;
 }
 
 /**

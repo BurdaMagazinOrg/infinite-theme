@@ -8,8 +8,6 @@
     },
     delegateElements: function ($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
-      BurdaInfinite.utils.BaseUtils.updateExternalURL($pContainer);
-      BurdaInfinite.utils.BaseUtils.updateInternalURL($pContainer);
       BurdaInfinite.utils.BaseUtils.updateSocials($pContainer);
       BurdaInfinite.utils.BaseUtils.updateTextActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateTimeAgo($pContainer);
@@ -182,63 +180,6 @@
     updateTimeAgo: function ($pContainer) {
       $pContainer.find('.text-timestamp').timeago();
     },
-    updateLinks: function ($pContainer) {
-      if ($pContainer.data('internal-url')) {
-        BurdaInfinite.utils.BaseUtils.updateInternalURL($pContainer);
-      } else if ($pContainer.data('external-url')) {
-        BurdaInfinite.utils.BaseUtils.updateExternalURL($pContainer);
-      }
-    },
-    updateInternalURL: function ($pContainer) {
-      var $internalUrls = $pContainer.find('[data-internal-url]').addBack().filter('[data-internal-url]');
-
-      $internalUrls
-        .unbind('click.updateInternalURL')
-        .bind('click.updateInternalURL',
-          $.proxy(function (pEvent) {
-            var $tmpElement = $(pEvent.currentTarget),
-              url = $tmpElement.attr('data-internal-url'),
-              target = $tmpElement.attr('data-target');
-
-            if (target) {
-              window.open(url, target);
-            } else {
-              location.href = url;
-            }
-          }, this));
-
-      // Prevent click event of contained clickable elements from bubbling up.
-      $internalUrls
-        .find('[data-internal-url], [data-external-url]')
-        .unbind('click.updateInternalURLNoBubbling')
-        .bind('click.updateInternalURLNoBubbling',
-          $.proxy(function (pEvent) {
-            pEvent.stopPropagation();
-          }, this));
-    },
-    updateExternalURL: function ($pContainer) {
-      var $externalUrls = $pContainer.find('[data-external-url]').addBack().filter('[data-external-url]');
-
-      $externalUrls
-        .unbind('click.updateExternalURL')
-        .bind('click.updateExternalURL',
-          $.proxy(function (pEvent) {
-            var $tmpElement = $(pEvent.currentTarget),
-              url = $tmpElement.attr('data-external-url'),
-              target = $tmpElement.attr('data-target') || '_blank';
-
-            window.open(url, target);
-          }, this));
-
-      // Prevent click event of contained clickable elements from bubbling up.
-      $externalUrls
-        .find('[data-internal-url], [data-external-url]')
-        .unbind('click.updateExternalURLNoBubbling')
-        .bind('click.updateExternalURLNoBubbling',
-          $.proxy(function (pEvent) {
-            pEvent.stopPropagation();
-          }, this));
-    },
     disableBeforeUnloadHandler: function () {
       window.allowBeforeUnload = false;
       _.delay(function () {
@@ -256,12 +197,8 @@
   };
 
   $('body').once('BaseUtils').each(function () {
-    $(window).bind('base-utils:update', function (pEvent, $pContainer) {
+    $(window).on('base-utils:update', function (pEvent, $pContainer) {
       BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
-    });
-
-    $(window).bind('base-utils:update-links', function (pEvent, $pContainer) {
-      BurdaInfinite.utils.BaseUtils.updateLinks($pContainer);
     });
   });
 

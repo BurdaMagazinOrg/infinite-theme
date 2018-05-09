@@ -1,0 +1,34 @@
+/**region full content **/
+$region-v-lined: true !default;
+
+/**
+** Header
+**/
+
+//Header Home
+$header-home__logo-width: 35% !default;
+$header-home__logo-min-width: 180px !default;
+$header-home__logo-align: "" !default;
+$header-home__logo-padding: $gap-size-sm 0 !default;
+
+/**
+** Ads
+**/
+$ad__border: $h-line-style !default;
+
+/**
+** Modal
+**/
+
+//used in bootstrap
+$modal-backdrop-bg: rgba($black, 0.75);
+$zindex-modal-background-overall: 999998 !default;
+
+
+/**
+** Outbrain
+**/
+$outbrain__padding-mobile: 0 6px !default;
+$outbrain__item-padding-mobile: 10px 6px !default;
+$outbrain__ob_what-padding-mobile: 20px 10px 20px !important;
+$outbrain__ob_what-padding-desktop: 20px 10px 20px !important;

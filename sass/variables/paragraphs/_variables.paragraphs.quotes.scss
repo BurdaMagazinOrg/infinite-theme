@@ -1,0 +1,45 @@
+/**
+** Quote
+**/
+$quote__border-style--article: $h-line-style !default;
+$quote__border-max-width--article: 46.5% !default;
+$quote__text-align--article: center !default;
+
+$quote__title-font-id--article: $font-content-id !default;
+$quote__title-size--article-mobile: $title-size-sm !default;
+$quote__title-size--article-tablet: $title-size-md !default;
+$quote__title-size--article-desktop: 30px !default;
+$quote__title-line-height--article: 1.5 !default;
+$quote__title-color--article: $gray-base !default;
+$quote__title-font-style--article: italic !default;
+$quote__title-max-width--article: 80% !default;
+$quote__title-padding--article: 10px 0 !default;
+
+$quote__quote-font-id--article: $font-content-bold-id !default;
+$quote__quote-size-mobile--article: 37px !default;
+$quote__quote-size-tablet--article: 45px !default;
+$quote__quote-size-desktop--article: 50px !default;
+$quote__quote-color--article: $text-highlighted !default;
+$quote__quote-font-style--article: italic !default;
+$quote__quote-top--article: 4px !default;
+$quote__quote-font-id--article: $quote__title-font-id--article !default;
+$quote__quote-display--article: inline !default;
+$quote__quote-line-height--article: 0 !default;
+$quote__quote-before--article: "\00bb" !default;
+$quote__quote-after--article: "\00ab" !default;
+$quote__quote-before-padding--article: 0 10px 0 0 !default;
+$quote__quote-after-padding--article: 10px 0 0 10px !default;
+
+$quote__author-font-id--article: $font-tiny-id !default;
+$quote__author-size--article-mobile: $title-size-xxs !default;
+$quote__author-size--article-tablet: $title-size-xs !default;
+$quote__author-size--article-desktop: $title-size-xs !default;
+$quote__author-line-height--article: 1 !default;
+$quote__author-color--article: $color-brand !default;
+$quote__author-font-style--article: normal !default;
+$quote__author-text-transform--article: normal !default;
+$quote__author-padding--article: 0 0 10px !default;
+$quote__author-text-align--article: inherit !default;
+$quote__author-before--article: "" !default;
+$quote__author-before-padding--article: 0 !default;
+$quote__author-v-align--article: baseline !default;

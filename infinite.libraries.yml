@@ -291,3 +291,9 @@ infinite.views.ecommerce-slider-view:
   version: 1
   js:
     js/infinite/views/products/ecommerce-slider-view.js: {}
+
+##### behaviors #####
+drupal.behaviors.redirect-on-click:
+  version: 1
+  js:
+    js/behaviors/drupal.behaviors.redirect-on-click.js: {}
