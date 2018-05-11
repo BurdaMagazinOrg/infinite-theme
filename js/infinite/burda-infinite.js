@@ -27,7 +27,7 @@
       this.initBlazyOnContainer('#modal-search');
     },
 
-    initBlazyOnContainer: function(containerSelector){
+    initBlazyOnContainer: function (containerSelector) {
       if (null === document.querySelector(containerSelector)) {
         return;
       }
@@ -40,8 +40,7 @@
     }
   };
 
-
-  window.addEventListener('acquiaLiftDecision', function(e) {
+  window.addEventListener('acquiaLiftDecision', function (e) {
     console.log("%cacquiaLift | decision", "color: blue; font-weight: bold;", e.detail.decision_slot_id);
     jQuery(document).trigger('base-utils:update-links', [jQuery('[data-lift-slot="' + e.detail.decision_slot_id + '"]').find('.promotion')]);
   });
