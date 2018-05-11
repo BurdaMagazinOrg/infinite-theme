@@ -232,9 +232,13 @@ function infinite_preprocess_advertising_product(&$variables) {
   $data_attributes->setAttribute('data-provider', $provider);
   $variables['provider'] = $provider;
 
-    $variables['show_strikethrough_price'] = TRUE;
+  $original_price = $product->product_original_price->value;
+  if(!isset($variables['sold_out']) || !$variables['sold_out']) {
+    if($price < $original_price){
+      $variables['show_strikethrough_price'] = TRUE;
       $variables['percentage_saving'] = floor(($price - $original_price) / $original_price * 100);
-    if ('tipser' === $provider) {
+    }
+    $variables['tracking_url'] = $tracking_url;    if ('tipser' === $provider) {
       // hack so we can track product category even though it uses another field
       // for the category than e.g. Amazon products
       $tipserFieldCategory = $product->get('field_category');
@@ -248,6 +252,7 @@ function infinite_preprocess_advertising_product(&$variables) {
 
       $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
       $data_attributes->setAttribute('data-shop', $product->product_shop->value);
+      $data_attributes->removeAttribute('data-external-url');
     } else {
       $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
     }
