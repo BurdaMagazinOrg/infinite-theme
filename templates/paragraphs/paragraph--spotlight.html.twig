@@ -56,6 +56,7 @@
         {% block spotlight_caption_block %}
             <div class="caption spotlight__caption">
                 <div class="title spotlight__title">
+                    <!-- if spotlight has_headline -->
                     {% if has_headline %}
                         <h1>{{ content.field_title | plain_text }}</h1>
                     {% else %}
