@@ -83,7 +83,9 @@
         pModel.set('inviewEnabled', pState);
 
         if (pModel.hasItems()) {
-          this.inviewEnable(pState, pModel.get('items'));
+          if (this && typeof this.inviewEnable === 'function') {
+            this.inviewEnable(pState, pModel.get('items'));
+          }
         }
       }, this);
     }

@@ -76,7 +76,7 @@
       this.model.set('brand', this.$el.data('brand'));
       this.model.set('viewType', this.$el.data('view-type'));
       this.model.set('productCategory', this.$el.data('product-category'));
-      this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
+      this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url') || this.$el.data('tipser-url'));
       this.model.set('soldOut', !!this.$el.data('sold-out'));
 
       if (this.$el.hasClass('item-product--single')) {

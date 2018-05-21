@@ -36,25 +36,16 @@
  * @ingroup themeable
  */
 #}
-{% set attributes = attributes.addClass('item-paragraph--' ~ content.field_e_view_mode | render | striptags | trim | replace('_', '-')) %}
-{#{% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}#}
 
-{% extends "paragraph.html.twig" %}
+{% set attributes = attributes.addClass('item-paragraph--advertising-products-paragraph') %}
+{#{% set attributes = attributes.addClass('item-paragraph--full') %}#}
+{#{% set attributes = attributes.addClass('item-paragraph--middle') %}#}
+{% set attributes = attributes.addClass('item-paragraph--small') %}
 
-{% block content_block %}
-    {% if content | render %}
-        {% if content.field_title|render %}
-            <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
-        {% endif %}
-        <div class="container-content">
-            {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode') }}
-        </div>
+{% if 'Single Product' == content.field_view_mode[0]['#markup'] %}
+    {% set attributes = attributes.addClass('item-paragraph--single-product') %}
+{% else %}
+    {% set attributes = attributes.addClass('item-paragraph--default') %}
+{% endif %}
 
-        {% if content.field_text | render is not empty %}
-            <div class="products__info-box--grid">
-                {{ content.field_text }}
-            </div>
-        {% endif %}
-
-    {% endif %}
-{% endblock %}
+{% include "@infinite/paragraphs/paragraph--advertising-products-paragraph.html.twig" %}
