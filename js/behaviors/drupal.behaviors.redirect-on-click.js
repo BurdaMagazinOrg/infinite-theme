@@ -8,7 +8,7 @@
       // Drupal context is not used
       // to make sure that events are always captured
       $(document)
-        .off('click.redirect')
+        .off('click.redirect', '[' + urlDataAttribute + ']')
         .on('click.redirect', '[' + urlDataAttribute + ']', function(e) {
           let currentTarget = e.currentTarget;
           let redirectUrl = currentTarget.getAttribute(urlDataAttribute);
