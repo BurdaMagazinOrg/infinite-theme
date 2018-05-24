@@ -15,11 +15,7 @@
     {% block teaser_img_container_wrapper %}
         <div class="teaser__img-container" data-internal-url="{{ url }}">
             {% block teaser_img_container %}
-                {% if (view_mode == 'presenter_half' and content.field_presenter_media['#items'] is not empty) %}
-                    {{ content.field_presenter_media }}
-                {% else %}
-                    {{ content.field_teaser_media }}
-                {% endif %}
+                {{ content.field_teaser_media }}
             {% endblock %}
         </div>
     {% endblock %}
@@ -33,9 +29,9 @@
             {% endblock %}
 
             {% block teaser_text_headline %}
-                <h2 class="teaser__title text-headline">
+                <h3 class="teaser__title text-headline">
                     <a href="{{ url }}" target="_self" rel="bookmark">{{ label }}</a>
-                </h2>
+                </h3>
             {% endblock %}
 
             {% block teaser_text %}
