@@ -1,0 +1,29 @@
+/**
+** Labels
+**/
+
+/** label-category **/
+$label--category-font-id: $font-label-id !default;
+$label--category-color: $color-highlighted !default;
+$label--category-size--mobile: $label-size-medium !default;
+$label--category-size--tablet: $label-size-medium !default;
+$label--category-size--desktop: $label-size-medium !default;
+
+/** label-marketing**/
+$label--marketing-font-id: $font-tiny-id !default;
+$label--marketing-color: $text-color !default;
+$label--marketing-size-default: 14px !default;
+
+/** label-marketing**/
+$label--advertorial-font-id: $font-content-id !default;
+$label--advertorial-color: $gray-base !default;
+$label--advertorial-size: 14px !default;
+$label--advertorial-text-transform: uppercase !default;
+
+/** label-copyright**/
+$label--copyright-font-id: $font-tiny-id !default;
+$label--copyright-color: $gray-base !default;
+$label--copyright-text-transform: uppercase !default;
+$label--copyright-size--mobile: 12px !default;
+$label--copyright-size--tablet: 14px !default;
+$label--copyright-size--desktop: 14px !default;

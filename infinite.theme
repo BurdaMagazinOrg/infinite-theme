@@ -46,6 +46,7 @@ function infinite_theme_suggestions_user_alter(array &$suggestions, array $varia
 
 function infinite_preprocess_page(&$variables) {
   $variables['theme_infinite_path'] = '/' . drupal_get_path('theme', 'infinite');
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
 
 function infinite_preprocess_block(&$variables) {
@@ -188,6 +189,7 @@ function infinite_preprocess_views_view(&$variables) {
  * Implements hook_preprocess_product().
  */
 function infinite_preprocess_advertising_product(&$variables) {
+  /** @var \Drupal\advertising_products\Entity\AdvertisingProduct $product */
   $product = $variables['elements']['#advertising_product'];
   // Set the data attributes for tracking purposes
   $data_attributes = new Drupal\Core\Template\Attribute;
@@ -197,7 +199,9 @@ function infinite_preprocess_advertising_product(&$variables) {
     ->setAttribute('data-price', $product->product_price->value)
     ->setAttribute('data-currency', $product->product_currency->value)
     ->setAttribute('data-uuid', $product->uuid->value)
-    ->setAttribute('data-product-id', $product->product_id->value);
+    ->setAttribute('data-product-id', $product->product_id->value)
+    ->setAttribute('data-sold-out', $product->product_sold_out->value)
+    ->setAttribute('data-external-url', $product->product_url->uri);
 
   $tracking_url = $product->product_url->uri;
   // This is needed only for tracdelight products
@@ -207,35 +211,55 @@ function infinite_preprocess_advertising_product(&$variables) {
     if (Drupal::request()->attributes->has('node')) {
       $node = Drupal::request()->attributes->get('node');
       $sub_id = 'node-' . $node->id();
-    }
-    elseif (Drupal::request()->attributes->has('taxonomy_term')) {
+    } elseif (Drupal::request()->attributes->has('taxonomy_term')) {
       $term = Drupal::request()->attributes->get('taxonomy_term');
       $sub_id = 'term-' . $term->id();
     }
     $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
   }
 
+  $original_price = $product->product_original_price->value;
   $price = $product->product_price->value;
+
   $sold_out = $product->product_sold_out->value;
-  if($price <= 0 || $sold_out){
+  $in_stock = !isset($variables['sold_out']) || !$variables['sold_out'];
+
+  if ($price <= 0 || $sold_out) {
     $variables['sold_out'] = TRUE;
   }
+
+  $provider = explode("_", $product->product_provider->value)[0];
+  $data_attributes->setAttribute('data-provider', $provider);
+  $variables['provider'] = $provider;
 
   $original_price = $product->product_original_price->value;
   if(!isset($variables['sold_out']) || !$variables['sold_out']) {
     if($price < $original_price){
       $variables['show_strikethrough_price'] = TRUE;
+      $variables['percentage_saving'] = floor(($price - $original_price) / $original_price * 100);
     }
-    $variables['tracking_url'] = $tracking_url;
-    $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
+    $variables['tracking_url'] = $tracking_url;    if ('tipser' === $provider) {
+      // hack so we can track product category even though it uses another field
+      // for the category than e.g. Amazon products
+      $tipserFieldCategory = $product->get('field_category');
+      if ($tipserFieldCategory->count()) {
+        /** @var \Drupal\taxonomy\Entity\Term $term */
+        $term = \Drupal\taxonomy\Entity\Term::load($tipserFieldCategory->first()->getValue()['target_id']);
+        if ($term) {
+          $variables['tipser_product_category'] = $term->getName();
+        }
+      }
+
+      $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
+      $data_attributes->setAttribute('data-shop', $product->product_shop->value);
+      $data_attributes->removeAttribute('data-external-url');
+    } else {
+      $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
+    }
   }
 
 
-  $provider = explode("_", $product->product_provider->value);
-  $data_attributes->setAttribute('data-provider', $provider[0]);
-
   $variables['data_attributes'] = $data_attributes;
-
 }
 
 /**

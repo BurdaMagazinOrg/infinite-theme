@@ -1,0 +1,136 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ *
+ * @ingroup themeable
+ */
+#}
+{# Add wrapper classes #}
+{% set wrapper_classes = [
+'item-content__content'
+] %}
+
+<div class="region-full-content item-content item-content--user no-v-padding">
+    {% block content_header_block %}{% endblock %}
+
+    <div{{ attributes.addClass(wrapper_classes) }} >
+
+        <div class="item-author--detail-large">
+            <div class="item-author__profile-image">
+                {{ content.user_picture }}
+            </div>
+            {% if content.has_header_block %}
+                <h2 class="item-author__name">{{ content.field_full_name }}</h2>
+            {% else %}
+                <h1 class="item-author__name">{{ content.field_full_name }}</h1>
+            {% endif %}
+            <div class="item-author__job">
+                {{ content.field_job_title }}
+            </div>
+            <div class="item-author__short-info">
+                {{ content.field_profile_text }}
+            </div>
+
+            {% block user_author_socials %}
+                <div class="item-author__socials">
+
+                    {% if content.group_social_media_links is defined or content.group_social_media_misc is defined %}
+                        {% block user_author_socials_title %}
+                            <div class="item-author__socials-title">Folgen Sie <span>{{ content.field_full_name }}</span></div>
+                        {% endblock %}
+                        {% if content.group_social_media_links is defined %}
+                            <div class="item-author__socials-icons socials socials-bar">
+                                <span>
+                                    {% if content.group_social_media_links.field_social_instagram | render is not empty %}
+                                        <a class="item-social icon-instagram"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_instagram }}"
+                                           target="_blank"
+                                           data-description="{{ content.field_full_name }}" data-social-type="instagram">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_facebook | render is not empty %}
+                                        <a class="item-social icon-facebook"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_facebook }}"
+                                           target="_blank"
+                                           data-description="{{ content.field_full_name }}" data-social-type="facebook">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_pinterest | render is not empty %}
+                                        <a class="item-social icon-pinterest"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_pinterest }}"
+                                           target="_blank"
+                                           data-description="{{ content.field_full_name }}" data-social-type="pinterest">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_twitter | render is not empty %}
+                                        <a class="item-social icon-twitter"
+                                           rel="nofollow"
+                                           href="{{ content.group_social_media_links.field_social_twitter }}"
+                                           target="_blank"
+                                           data-description="{{ content.field_full_name }}" data-social-type="twitter">
+                                        </a>
+                                    {% endif %}
+                                    {% if content.group_social_media_links.field_social_email | render is not empty %}
+                                        <a class="item-social icon-email"
+                                           rel="nofollow"
+                                           href="mailto:{{ content.group_social_media_links.field_social_email }}"
+                                           data-description="{{ content.field_full_name }}" data-social-type="email">
+                                        </a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        {% endif %}
+
+                        {% if content.group_social_media_misc is defined %}
+                            <div class="item-author__socials-misc">
+                                {% if content.group_social_media_misc.field_social_snapchat | render is not empty %}
+                                    <div class="item-author__socials-misc-item item-author__snapchat">
+                                        <span>Snapchat:</span> <a
+                                                href="https://www.snapchat.com/add/{{ content.group_social_media_misc.field_social_snapchat }}"
+                                                target="_blank"
+                                                rel="nofollow">@{{ content.group_social_media_misc.field_social_snapchat }}</a>
+                                    </div>
+                                {% endif %}
+                                {% if content.group_social_media_misc.field_social_blog | render is not empty %}
+                                    <div class="item-author__socials-misc-item item-author__blog"><span>Webseite:</span>
+                                        <a
+                                                href="{{ content.group_social_media_misc.field_social_blog }}"
+                                                target="_blank"
+                                                rel="nofollow">{{ content.group_social_media_misc.field_social_blog }}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock %}
+        </div>
+
+        {% block content_block %}
+            {{ content.field_paragraphs }}
+        {% endblock %}
+
+        {% block author_articles_title_block %}
+            <h3 class="text-headline item-author__article-title"><span>Artikel von {{ content.field_full_name }}</span></h3>
+        {% endblock %}
+    </div>
+</div>
+
+{# Display node teaser authored by this user. #}
+{{ drupal_view('infinite_author', 'embed_1', user.id()) }}

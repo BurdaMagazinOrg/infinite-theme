@@ -136,17 +136,19 @@
     text-align: center;
     background-color: $list__glossary-background-disabled-color;
     text-transform: $list__glossary-text-transform;
+    border: $list__glossary-border-disabled;
   }
 
   a {
     color: inherit;
-    display: inline-block;
+    display: block;
     cursor: pointer;
     width: 100%;
     color: $list__glossary-color;
     background-color: $list__glossary-background-color;
     padding: $list__glossary-padding;
     border: $list__glossary-border;
+    height: $list__glossary-height;
     line-height: $list__glossary-line-height - ($h-line-width*2);
 
     &.active, &:hover {

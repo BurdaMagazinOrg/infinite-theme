@@ -9,11 +9,6 @@
     initialize: function (pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
-      if (this.$el.hasClass('item-product--sold-out')) {
-        this.model.set('disabled', true);
-        return;
-      }
-
       this.delegateInview();
       this.addListener();
       this.createModel();
@@ -81,7 +76,8 @@
       this.model.set('brand', this.$el.data('brand'));
       this.model.set('viewType', this.$el.data('view-type'));
       this.model.set('productCategory', this.$el.data('product-category'));
-      this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url'));
+      this.model.set('url', this.$el.data('external-url') || this.$el.data('internal-url') || this.$el.data('tipser-url'));
+      this.model.set('soldOut', !!this.$el.data('sold-out'));
 
       if (this.$el.hasClass('item-product--single')) {
         tmpComponentType = ProductView.COMPONENT_TYPE_SINGLE;
@@ -198,7 +194,8 @@
         brand: this.model.get('brand'),
         provider: this.model.get('provider'),
         productCategory: this.model.get('productCategory'),
-        containerType: this.model.get('containerType') || ''
+        containerType: this.model.get('containerType') || '',
+        soldOut: this.model.get('soldOut')
       };
 
       if (this.model.has('productIndex')) {
@@ -214,8 +211,6 @@
       }
     },
     trackImpression: function () {
-      if (this.model.get('disabled') == true) return;
-
       this.model.set('trackImpression', true);
       if(typeof TrackingManager != 'undefined') {
         TrackingManager.trackEcommerce(this.model.get('enhancedEcommerce'), 'impressions', this.advancedTrackingData);
