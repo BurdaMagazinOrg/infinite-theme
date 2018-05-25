@@ -319,10 +319,10 @@ function infinite_preprocess_container(&$variables) {
     // as fallback, if no dedicated pinterest image is set
     // use a 2:3 format of share image
     if (empty($variables['pinterest_share_img_url'])) {
-      $variables['pinterest_share_img_url'] = preg_replace(
-        '#sites/default/files/styles/[^/]*/#',
-        'sites/default/files/styles/pinterest_fallback_teaser_image/',
-        $variables['share_img_url']
+      $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
+        $variables['parent']['#node'],
+        'field_teaser_media',
+        'pinterest_fallback_teaser_image'
       );
     }
     // use seo description for pinterest share description
