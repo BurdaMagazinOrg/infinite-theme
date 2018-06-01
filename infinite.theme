@@ -326,7 +326,7 @@ function infinite_preprocess_container(&$variables) {
       );
     }
     // use seo description for pinterest share description
-    if (method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
+    if (method_exists($entity, 'bundle') && method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
       switch ($entity->bundle()) {
         // field_teaser_text is misused as seo description on these content types
         // this should be fixed in https://jira.burda.com/browse/INREL-4095
