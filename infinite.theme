@@ -327,8 +327,20 @@ function infinite_preprocess_container(&$variables) {
     }
     // use seo description for pinterest share description
     if (method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
-      if ($entity->hasField('field_seo_description')) {
-        $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
+      switch ($entity->bundle()) {
+        // field_teaser_text is misused as seo description on these content types
+        // this should be fixed in https://jira.burda.com/browse/INREL-4095
+        case 'article':
+        case 'magazine_products':
+          if ($entity->hasField('field_teaser_text')) {
+            $variables['pinterest_share_description'] = $entity->get('field_teaser_text')->value;
+          }
+          break;
+        default:
+          if ($entity->hasField('field_seo_description')) {
+            $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
+          }
+          break;
       }
     }
   }
