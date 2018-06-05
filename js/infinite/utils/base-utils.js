@@ -9,7 +9,6 @@
     delegateElements: function ($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateSocials($pContainer);
-      BurdaInfinite.utils.BaseUtils.updateTextActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateTimeAgo($pContainer);
     },
     updateSocials: function ($pContainer) {
@@ -129,70 +128,6 @@
           }
         }
       });
-    },
-    updateTextActions: function ($pContainer) {
-      var truncateElements = [];
-        console.log("debug: updateTextActions");
-
-      $.each($pContainer.find('[data-text-action]'), function (index, item) {
-
-        var action = $(this).data('text-action') || '',
-            target = $(this).data('text-action-target') || '';
-
-        if (action == "" || target == "") return;
-
-
-        target = $(this).find(target);
-
-        if (target.length <= 0) return;
-        switch (action) {
-            case 'text-overflow':
-            Object.keys(target.get(0).children).forEach((key, i) => {
-              target.get(0).children[key].style.color = "red";
-              target.get(0).children[key].style.background = "yellow";
-            });
-            target.get(0).style.background = "yellow";
-            truncateElements.push(target.get(0));
-            console.log("debug: truncateElements", truncateElements);
-            break;
-        }
-
-      });
-        BurdaInfinite.utils.BaseUtils.ellipsis(truncateElements);
-    },
-    ellipsis: function (elements) {
-      console.log("debug ellipsis: ", elements);
-      var chunkSize = 10;
-      console.log("debug: elements.length: ", elements.length);
-      function run() {
-        console.log("debug: executing run()")
-        var tolerance = 0; // was 8
-        console.log("debug: tolerance: ", tolerance);
-        window.setTimeout(function () {
-          var chunk = elements.slice(0, chunkSize);
-          console.log("debug chunk: ", chunk);
-          for (var i = 0; i < chunk.length; i++) {
-            var c = chunk[i];
-            console.log("debug c: ", c);
-            if (c.scrollHeight > c.clientHeight + tolerance) {
-              console.log("debug: scrollHeight > clientHeight + tolerance");
-              while (c.innerText.length && c.scrollHeight > c.clientHeight + tolerance) {
-                c.innerText = c.innerText.slice(0, -2) + '…';
-              }
-              c.innerText = c.innerText.slice(0, -3);
-              c.innerText += '…';
-            }
-          }
-          elements = elements.slice(chunkSize);
-          if (elements.length) {
-            run();
-          }
-        }, 10);
-      }
-      console.log("debug: pre exec run()");
-      if (elements.length) {
-        //run();
-      }
     },
     updateTimeAgo: function ($pContainer) {
       $pContainer.find('.text-timestamp').timeago();
