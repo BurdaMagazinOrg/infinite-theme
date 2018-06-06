@@ -156,8 +156,6 @@
   .text-headline {
     overflow: hidden;
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
     /*
      * limit ecommerce slider title to three lines
      */
@@ -320,8 +318,6 @@
   .text-headline {
     margin-top: 18px;
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
   }
 
   .text-price {
