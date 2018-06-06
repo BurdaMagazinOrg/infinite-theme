@@ -20,6 +20,7 @@
 
   .text-headline {
     overflow: hidden;
+    flex: 1;
   }
 
   .text-brand {
@@ -154,6 +155,11 @@
 
   .text-headline {
     overflow: hidden;
+    flex-grow: 1;
+    /*
+     * limit ecommerce slider title to three lines
+     */
+    max-height: ($ecommerce-slider__item-text-headline-size * $line-height-headline) * 3;
   }
 
   .text-brand {
@@ -311,6 +317,7 @@
 
   .text-headline {
     margin-top: 18px;
+    flex-grow: 1;
   }
 
   .text-price {
@@ -616,6 +623,9 @@
 
   .item-product-slider {
     width: $ecommerce-slider__item_width--tablet;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
   }
 
   .swiper-button-prev {
@@ -640,5 +650,7 @@
 
   .item-product-slider {
     width: $ecommerce-slider__item_width--desktop;
+    display: flex;
+    flex-flow: column wrap;
   }
 }

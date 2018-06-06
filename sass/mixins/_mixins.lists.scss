@@ -31,7 +31,6 @@
   }
 
   @media (min-width: $screen-sm-min) {
-    float: left;
     width: percentage(($grid-columns / $count) / $grid-columns);
   }
 
@@ -48,6 +47,9 @@
 
 @mixin list__content-teaser--horizontal() {
   @include clearfix();
+
+  display: flex;
+  flex-flow: row wrap;
 
   @media (max-width: $screen-xs-max) {
     margin-left: -$list__content-teaser--horizontal-gap-h-mobile;
@@ -76,7 +78,6 @@
   }
 
   @media (min-width: $screen-sm-min) {
-    float: left;
     width: percentage(($grid-columns / $item-count) / $grid-columns);
   }
 
