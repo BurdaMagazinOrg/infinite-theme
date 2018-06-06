@@ -110,6 +110,7 @@
     },
     onSliderChangeHandler: function (pSwiperApi) {
       this.trackVisibleProductImpressions();
+      Drupal.blazy.init.revalidate();
     },
     onEnterHandler: function (pDirection) {
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
