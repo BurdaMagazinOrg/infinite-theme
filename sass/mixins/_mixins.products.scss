@@ -82,6 +82,7 @@
 
   .caption {
     position: relative;
+    max-width: 100%;
   }
 
   @media (max-width: $screen-xs-max) {
@@ -220,6 +221,7 @@
 
   .caption {
     position: relative;
+    max-width: 100%;
   }
 
   @media (max-width: $screen-xs-max) {
