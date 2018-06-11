@@ -30,6 +30,7 @@
 'item-content',
 'item-content--taxonomy',
 'no-v-padding',
+'lexicon',
 ] %}
 
 <div {{ attributes.addClass(classes) }}>
@@ -53,12 +54,13 @@
         {% endif %}
     {% endblock %}
 
-    {# Render embed view with anchor links #}
-    {{ drupal_view('lexicon_overview', 'embed_1', term.id()) }}
-
     {% if content|render %}
         <div class="item-content__content">
             {{ content.field_paragraphs }}
         </div>
     {% endif %}
+
+    {# Render embed view with anchor links #}
+    {{ drupal_view('lexicon_overview', 'embed_1', term.id()) }}
+
 </div>
