@@ -1,0 +1,41 @@
+.lexicon {
+  .list__glossary {
+    float: left;
+    width: auto;
+    margin: 20px 0;
+    a {
+      border: 1px solid $gray-base;
+    }
+    li, a {
+      background-color: transparent;
+    }
+  }
+
+
+  .list__alphabetical {
+
+    ul {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        flex-basis: 25%;
+        max-width: 25%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        align-self: auto;
+        padding-right: 24px;
+        margin-top: 10px !important;
+        box-sizing: border-box;
+
+        .teaser__img-container {
+          height: 124px;
+          background: #e7e7e7;
+        }
+        &:nth-child(4n) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
