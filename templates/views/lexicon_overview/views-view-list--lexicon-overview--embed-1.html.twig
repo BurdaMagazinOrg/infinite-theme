@@ -17,12 +17,10 @@
  * @ingroup themeable
  */
 #}
-<ul class="list__glossary">
-    {% if title %}
-      <li><a href="#{{ title|lower }}">{{ title }}</a>
-          {% for row in rows %}
-              {{ row.content }}
-          {% endfor %}
-      </li>
-    {% endif %}
-</ul>
+{% if title %}
+    <li><a href="#{{ title|lower }}">{{ title }}</a>
+        {% for row in rows %}
+            {{ row.content }}
+        {% endfor %}
+    </li>
+{% endif %}

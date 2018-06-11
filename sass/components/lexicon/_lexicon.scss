@@ -1,39 +1,101 @@
 .lexicon {
   .list__glossary {
-    float: left;
-    width: auto;
-    margin: 20px 0;
-    a {
-      border: 1px solid $gray-base;
-    }
-    li, a {
-      background-color: transparent;
+    @extend %list__glossary;
+    @extend %margin--v-region;
+
+    li {
+      display: inline-block;
     }
   }
 
+  .teaser--lexicon {
+    .teaser__title {
+      @include text-helper($font-content-bold);
+    }
+
+    .teaser__copy {
+      @include text-helper($font-content);
+    }
+
+    @media (max-width: $screen-xs-max) {
+      .teaser__title {
+        @include text-helper-size($font-content-bold, $title-size-xs);
+        margin-top: 8px;
+      }
+
+      .teaser__copy {
+        @include text-helper-size($font-content, $font-size-medium, 20px);
+        margin-top: 6px;
+      }
+    }
+
+    @media (min-width: $screen-sm-min){
+      .teaser__title {
+        @include text-helper-size($font-content-bold, $title-size-md);
+        margin-top: 8px;
+      }
+
+      .teaser__copy {
+        @include text-helper-size($font-content, $font-size-medium, 20px);
+        margin-top: 6px;
+      }
+    }
+  }
+
+  .lexicon__teaser-list {
+    @extend %margin--v-region;
+  }
 
   .list__alphabetical {
+    @extend %margin--v-region;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    h2 {
+      @include title--text-block();
+    }
 
     ul {
-      width: 100%;
-      display: flex;
+      @extend %flexbox;
       flex-wrap: wrap;
+
       li {
-        flex-basis: 25%;
-        max-width: 25%;
         flex-grow: 1;
         flex-shrink: 0;
         align-self: auto;
-        padding-right: 24px;
-        margin-top: 10px !important;
+        margin-top: 10px;
         box-sizing: border-box;
 
         .teaser__img-container {
           height: 124px;
           background: #e7e7e7;
         }
-        &:nth-child(4n) {
-          padding-right: 0;
+
+        @media (max-width: $screen-xs-max) {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+
+        @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+          flex-basis: 33.3%;
+          max-width: 33.3%;
+          padding-right: 24px;
+
+          &:nth-child(3n) {
+            padding-right: 0;
+          }
+        }
+
+        @media (min-width: $screen-md-min) {
+          flex-basis: 25%;
+          max-width: 25%;
+          padding-right: 24px;
+
+          &:nth-child(4n) {
+            padding-right: 0;
+          }
         }
       }
     }

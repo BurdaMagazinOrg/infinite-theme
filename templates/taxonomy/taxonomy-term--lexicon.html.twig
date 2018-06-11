@@ -25,15 +25,15 @@
  * @ingroup themeable
  */
 #}
-{% set classes = [
-'region-full-content',
-'item-content',
-'item-content--taxonomy',
-'no-v-padding',
-'lexicon',
-] %}
+{#{% set classes = [#}
+{#'region-full-content',#}
+{#'item-content',#}
+{#'item-content--taxonomy',#}
+{#'no-v-padding',#}
+{#'lexicon',#}
+{#] %}#}
 
-<div {{ attributes.addClass(classes) }}>
+{#<div {{ attributes.addClass(classes) }}>#}
     {% block content_header_block %}
         {% if content.field_header_blocks | render is not empty %}
             {{ content.field_header_blocks }}
@@ -63,4 +63,4 @@
     {# Render embed view with anchor links #}
     {{ drupal_view('lexicon_overview', 'embed_1', term.id()) }}
 
-</div>
+{#</div>#}
