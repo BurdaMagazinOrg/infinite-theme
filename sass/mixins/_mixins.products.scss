@@ -158,9 +158,9 @@
     overflow: hidden;
     flex-grow: 1;
     /*
-     * limit ecommerce slider title to three lines
+     * limit ecommerce slider title to two lines
      */
-    max-height: ($ecommerce-slider__item-text-headline-size * $line-height-headline) * 3;
+    height: ($ecommerce-slider__item-text-headline-size * $line-height-label) * 2;
   }
 
   .text-brand {
@@ -245,7 +245,6 @@
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      height: $ecommerce-slider__item-text-headline-height-desktop;
       margin-bottom: $ecommerce-slider__item-text-headline-gap-bottom-desktop;
     }
   }
