@@ -12,7 +12,12 @@
       loop: true,
       slidesPerView: 'auto',
       grabCursor: true,
-      watchSlidesVisibility: true
+      watchSlidesVisibility: true,
+      preloadImages: false,
+      lazy: {
+        loadOnTransitionStart: true
+        //loadPrevNext: true
+      }
     },
     initialize: function (pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
@@ -30,17 +35,21 @@
       this.$swiperContainer = this.$el.find('.swiper-container');
 
       _.extend(this.settings, {
-        nextButton: this.$el.find('.swiper-button-next')[0],
-        prevButton: this.$el.find('.swiper-button-prev')[0]
+        navigation: {
+          nextEl: this.$el.find('.swiper-button-next')[0],
+          prevEl: this.$el.find('.swiper-button-prev')[0]
+        }
       });
 
-      if(this.$el.attr('data-slider') !== 'undefined'){
+      if (this.$el.attr('data-slider') !== 'undefined') {
         var $dataSlider = JSON.parse(this.$el.attr('data-slider'));
         _.extend(this.settings, $dataSlider);
       }
     },
     updateView: function () {
-      this.swiperApi = this.$swiperContainer.swiper(this.settings);
+
+      this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
+      //this.swiperApi = this.$swiperContainer.swiper(this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
 
       this.swiperApi.off('onSlideChangeEnd')
