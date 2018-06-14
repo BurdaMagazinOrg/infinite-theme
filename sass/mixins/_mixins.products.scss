@@ -157,10 +157,6 @@
   .text-headline {
     overflow: hidden;
     flex-grow: 1;
-    /*
-     * limit ecommerce slider title to two lines
-     */
-    height: ($ecommerce-slider__item-text-headline-size * $line-height-label) * 2;
   }
 
   .text-brand {
@@ -246,6 +242,10 @@
   @media (min-width: $screen-md-min) {
     .text-headline {
       margin-bottom: $ecommerce-slider__item-text-headline-gap-bottom-desktop;
+     /*
+      * limit ecommerce slider title to two lines
+      */
+      height: ($ecommerce-slider__item-text-headline-size * $line-height-label) * 2;
     }
   }
 }
@@ -381,7 +381,7 @@
   }
 
   .ecommerce-slider__title {
-    @include text-helper($ecommerce-slider__title-font-id);;
+    @include text-helper($ecommerce-slider__title-font-id);
     text-align: center;
     padding: 0 20px;
   }
