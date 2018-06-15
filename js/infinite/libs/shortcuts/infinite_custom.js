@@ -86,6 +86,8 @@
     var $newMore = $data.find(this.options.more);
     var $items = $data.find(this.options.items);
 
+    this.options.onAfterPrePageLoad($items);
+
     if (!$items.length) {
       $items = $data.filter(this.options.items);
     }
