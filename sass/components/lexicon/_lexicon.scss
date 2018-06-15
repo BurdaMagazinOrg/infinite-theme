@@ -1,7 +1,6 @@
 @import "lexicon.variables.scss";
 
 .lexicon {
-
   @media (max-width: $screen-xs-max) {
     .item-content__content {
       padding-top: $gap-v-region-mobile;
@@ -36,7 +35,11 @@
       }
 
       .teaser__copy {
-        @include text-helper-size($font-content, $font-size-medium, $lexicon--line-height);
+        @include text-helper-size(
+          $font-content,
+          $font-size-medium,
+          $lexicon--line-height
+        );
         margin-top: $lexicon-teaser__copy--margin-top__mobile;
       }
     }
@@ -48,7 +51,11 @@
       }
 
       .teaser__copy {
-        @include text-helper-size($font-content, $font-size-medium, $lexicon--line-height);
+        @include text-helper-size(
+          $font-content,
+          $font-size-medium,
+          $lexicon--line-height
+        );
         margin-top: $lexicon-teaser__copy--margin-top__mobile;
       }
     }
@@ -102,8 +109,8 @@
         li {
           flex-basis: 100% / $lexicon-overview--column-count__tablet;
           max-width: 100% / $lexicon-overview--column-count__tablet;
-          padding-right:  $lexicon-overview--gutter / 2;
-          padding-left:  $lexicon-overview--gutter / 2;
+          padding-right: $lexicon-overview--gutter / 2;
+          padding-left: $lexicon-overview--gutter / 2;
         }
       }
 
@@ -111,8 +118,8 @@
         li {
           flex-basis: 100% / $lexicon-overview--column-count__desktop;
           max-width: 100% / $lexicon-overview--column-count__desktop;
-          padding-right:  $lexicon-overview--gutter / 2;
-          padding-left:  $lexicon-overview--gutter / 2;
+          padding-right: $lexicon-overview--gutter / 2;
+          padding-left: $lexicon-overview--gutter / 2;
         }
       }
     }
