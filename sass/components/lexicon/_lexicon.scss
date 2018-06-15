@@ -39,7 +39,7 @@
 
       .teaser__copy {
         @include text-helper-size($font-content, $font-size-medium, $lexicon--line-height);
-        margin-top: 6px;
+        margin-top: $lexicon-teaser__copy--margin-top__mobile;
       }
     }
   }
@@ -72,7 +72,7 @@
 
         .teaser__img-container {
           @include aspect-ratio(264, 148.5);
-          background: #e7e7e7;
+          background: $lexicon-teaser__placeholder--background-color;
         }
       }
 
