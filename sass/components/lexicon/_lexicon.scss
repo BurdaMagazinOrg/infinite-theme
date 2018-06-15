@@ -59,11 +59,11 @@
       @include title--text-block();
     }
 
-    ul {
+    .lexicon-teaser__letter {
       @extend %flexbox;
       flex-wrap: wrap;
 
-      li {
+      .lexicon-teaser__item {
         flex-grow: 1;
         flex-shrink: 0;
         align-self: auto;
