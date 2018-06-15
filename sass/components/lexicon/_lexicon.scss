@@ -1,6 +1,16 @@
 @import "lexicon.variables.scss";
 
 .lexicon {
+
+  @media (max-width: $screen-xs-max) {
+    .item-content__content {
+      padding-top: $gap-v-region-mobile;
+    }
+    .item-group--outer {
+      position: static;
+    }
+  }
+
   .list__glossary {
     @extend %list__glossary;
     @extend %margin--v-region;
