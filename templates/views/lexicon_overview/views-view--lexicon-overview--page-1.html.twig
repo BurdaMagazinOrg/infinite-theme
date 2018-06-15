@@ -35,29 +35,12 @@
 
 <div class="region-full-content region-lexicon item-content lexicon">
     {{ title_prefix }}
-
-    {#{% block content_header_block %}#}
-        {#<div class="item-content__header">#}
-            {#<div class="ratio-wrapper">#}
-                {#<div class="caption">#}
-                    {#<h1 class="title--page">{{ title }}</h1>#}
-                {#</div>#}
-            {#</div>#}
-            {#{% if header %}#}
-                {#<header>#}
-                {#</header>#}
-            {#{% endif %}#}
-        {#</div>#}
-    {#{% endblock %}#}
     <div class="container-fixed-content lexicon__header">
             {{ header }}
     </div>
     <div class="item-content__content lexicon__teaser-region">
         <div class="container-fixed-content">
             <div class="item-content__row">
-                {#<div class="item-content__row-col col--left">
-                    {{ attachment_before }}
-                </div>#}
 
                 <div class="lexicon__teaser-list">
                     {{ rows }}
