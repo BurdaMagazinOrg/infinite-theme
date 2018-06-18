@@ -5,9 +5,6 @@
   BurdaInfinite.views.products.EcommerceSliderView = BaseDynamicView.extend({
     $swiperContainer: [],
     swiperApi: null,
-    // deviceModel: null,
-    // breakpointDeviceModel: null,
-    // currentBreakpoint: null,
     settings: {
       loop: true,
       slidesPerView: 'auto',
@@ -16,7 +13,6 @@
       preloadImages: false,
       lazy: {
         loadOnTransitionStart: true
-        //loadPrevNext: true
       }
     },
     initialize: function (pOptions) {
@@ -25,11 +21,6 @@
       this.updateView();
       this.delegateInview();
       this.duplicateElementClick();
-
-      // this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
-      // this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({active: true});
-      // this.currentBreakpoint = this.breakpointDeviceModel.id;
-      // this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
     },
     createView: function () {
       this.$swiperContainer = this.$el.find('.swiper-container');
@@ -49,7 +40,6 @@
     updateView: function () {
 
       this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
-      //this.swiperApi = this.$swiperContainer.swiper(this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
 
       this.swiperApi.off('onSlideChangeEnd')
