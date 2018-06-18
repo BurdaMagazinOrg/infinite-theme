@@ -467,6 +467,30 @@
       left: 11px;
     }
   }
+
+
+  /*
+   * customisable styles
+   */
+  .text-shop {
+    color: $ecommerce-slider__button-color;
+    background-color: $ecommerce-slider__button-background-color;
+    border-color: $ecommerce-slider__button-border-color;
+  }
+
+  .swiper-button {
+    color: $ecommerce-slider__swiper-button-color; 
+    background-color: $ecommerce-slider__swiper-button-background-color;
+  }
+
+  .ecommerce-slider__content {
+    background-color: $ecommerce-slider__title-background-color;
+  }
+
+  .ecommerce-slider__title {
+    color: $ecommerce-slider__title-color;
+  }
+
 }
 
 @mixin ecommerce-slider--small() {
