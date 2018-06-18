@@ -11,43 +11,44 @@
 {% endif %}
 
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
+<a href="{{ url }}" target="_self" rel="bookmark">
+    <article{{ attributes.addClass(wrapper_classes) }}>
+        {% block teaser_img_container_wrapper %}
+            <div class="teaser__img-container" data-internal-url="{{ url }}">
+                {% block teaser_img_container %}
+                    {{ content.field_teaser_media }}
+                {% endblock %}
+            </div>
+        {% endblock %}
 
-<article{{ attributes.addClass(wrapper_classes) }}>
-    {% block teaser_img_container_wrapper %}
-        <div class="teaser__img-container" data-internal-url="{{ url }}">
-            {% block teaser_img_container %}
-                {{ content.field_teaser_media }}
-            {% endblock %}
-        </div>
-    {% endblock %}
+        {% block teaser_caption_block %}
+            <div class="teaser__caption">
+                {% block teaser_caption_channel %}
+                {% endblock %}
 
-    {% block teaser_caption_block %}
-        <div class="teaser__caption">
-            {% block teaser_caption_channel %}
-            {% endblock %}
+                {% block sponsored %}
+                {% endblock %}
 
-            {% block sponsored %}
-            {% endblock %}
+                {% block teaser_text_headline %}
+                    <h3 class="teaser__title text-headline">
+                        {{ label }}
+                    </h3>
+                {% endblock %}
 
-            {% block teaser_text_headline %}
-                <h3 class="teaser__title text-headline">
-                    <a href="{{ url }}" target="_self" rel="bookmark">{{ label }}</a>
-                </h3>
-            {% endblock %}
+                {% block teaser_text %}
+                    {% if content.field_teaser_text %}
+                        <p class="teaser__copy">
+                            {{ content.field_teaser_text }}
+                        </p>
+                    {% endif %}
+                {% endblock %}
 
-            {% block teaser_text %}
-                {% if content.field_teaser_text %}
-                    <p class="teaser__copy">
-                        {{ content.field_teaser_text }}
-                    </p>
-                {% endif %}
-            {% endblock %}
-
-            {% block header_block %}
-            {% endblock %}
-        </div>
-    {% endblock %}
-    {% if (show_contextual_links) %}
-        {{ title_suffix.contextual_links }}
-    {% endif %}
-</article>
+                {% block header_block %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+        {% if (show_contextual_links) %}
+            {{ title_suffix.contextual_links }}
+        {% endif %}
+    </article>
+</a>
