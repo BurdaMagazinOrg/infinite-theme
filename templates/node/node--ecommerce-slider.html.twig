@@ -13,25 +13,6 @@
     {% block ecommerce_style_block %}
         <style>
             {{ content.field_css_styles|render|striptags }}
-            {{ ecommerceSliderCSSId }}
-            .text-shop {
-                color: {{ content.field_color_contrast.0 }};
-                {#background-color: {{ content.field_color_button.0 }};#}
-                border-color: {{ content.field_color_button.0 }};
-            }
-
-            .swiper-button {
-                color: {{ content.field_color_contrast.0 }}; 
-                background-color: {{ content.field_color_button.0 }};
-            }
-
-            .ecommerce-slider__content {
-                background-color: {{ content.field_color_box.0 }};
-            }
-
-            .ecommerce-slider__title {
-                color: {{ content.field_title_color.0 }}; /* might not be set */
-            }
         </style>
     {% endblock %}
 {% endif %}
