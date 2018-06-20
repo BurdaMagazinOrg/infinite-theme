@@ -66,7 +66,7 @@
         tmpURL = this.odoscopeArticleModel.getNextURL() || tmpURL;
       }
 
-      this.options.onBeforePageLoad();
+      this.options.executeCallback();
       this.destroy();
       this.$container.addClass(this.options.loadingClass);
 
@@ -86,7 +86,7 @@
     var $newMore = $data.find(this.options.more);
     var $items = $data.find(this.options.items);
 
-    this.options.onAfterPrePageLoad($items);
+    this.options.preAppendCallback($items);
 
     if (!$items.length) {
       $items = $data.filter(this.options.items);
@@ -118,7 +118,7 @@
       this.$more.remove();
     }
 
-    this.options.onAfterPageLoad($items);
+    this.options.appendCallback($items);
     Drupal.attachBehaviors($items[0]);
   }
 

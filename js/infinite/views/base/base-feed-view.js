@@ -31,27 +31,27 @@
       this.infinite = new Waypoint.Infinite({
         context: this.context[0],
         element: this.$el,
-        onBeforePageLoad: _.bind(this.onBeforePageLoad, this),
-        onAfterPrePageLoad: _.bind(this.onAfterPrePageLoad, this),
-        onAfterPageLoad: _.bind(this.onAfterPageLoad, this),
+        executeCallback: _.bind(this.executeCallback, this),
+        preAppendCallback: _.bind(this.preAppendCallback, this),
+        appendCallback: _.bind(this.appendCallback, this),
         offset: function () {
           return (this.context.innerHeight() * 2) - this.adapter.outerHeight();
         }
       });
     },
-    onBeforePageLoad: function () {
+    executeCallback: function () {
       this.lastInfiniteItem = this.$el.find('.infinite-item:last').length > 0 ? this.$el.find('.infinite-item:last') : this.$el;
       if (this.preloader != null) this.preloader.hide(true, true);
       this.preloader = new SpinnerCubeView({el: this.lastInfiniteItem});
     },
-    onAfterPrePageLoad: function (pItem) {
+    preAppendCallback: function (pItem) {
       //scroll to new appended article if someone scroll to the bottom and saw the preloader
       var atBottomOfPageCheck = ((window.scrollY + window.innerHeight) === document.body.clientHeight);
       if (atBottomOfPageCheck) {
         this.atBottomOfPage = true;
       }
     },
-    onAfterPageLoad: function ($appendedElement) {
+    appendCallback: function ($appendedElement) {
       var appendedElement = $appendedElement[0];
 
       if (this.preloader != null) {
