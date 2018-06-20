@@ -448,9 +448,9 @@
 
     &:hover, &:focus {
       outline: none;
-      background-color: $ecommerce-slider__arrows-background-color-hover;
+      opacity: .9;
       color: $ecommerce-slider__arrows-color-hover;
-      border: $ecommerce-slider__arrows-border-hover;
+      box-shadow: $ecommerce-slider__arrows-border-hover;
     }
   }
 
