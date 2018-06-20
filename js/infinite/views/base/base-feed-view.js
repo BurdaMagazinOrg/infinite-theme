@@ -9,20 +9,17 @@
     preloader: null,
     infinite: null,
     initFeed: true,
-    scrollToAppendedElement: false,
-    onBeforeLoadCallback: $.noop,
-    onAfterPrePageLoad: $.noop,
-    onAfterLoadCallback: $.noop,
-    naviHeight: 56,
+    atBottomOfPage: false,
+    fallbackNaviHeight: 56,
+    naviHeight: 0,
     initialize: function (pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
-      this.naviHeight = document.querySelector('#menu-main-navigation').offsetHeight || this.naviHeight;
+      this.naviHeight = document.getElementById('menu-main-navigation').offsetHeight || this.fallbackNaviHeight;
       this.context = $(this.context); //force jquery element
       this.$feedItemsContainer = this.$el.find('.container-feed-items');
-      /**
-       * auto init
-       */
+
+      //auto init
       if (this.initFeed) this.rebuildFeed();
 
       this.listenTo(this.model, "change:is_disabled", this.onDisableHandler);
@@ -34,52 +31,46 @@
       this.infinite = new Waypoint.Infinite({
         context: this.context[0],
         element: this.$el,
-        onBeforePageLoad: _.bind(this.onBeforeLoad, this),
-        onAfterPrePageLoad: _.bind(this.onAfterPreLoad, this),
-        onAfterPageLoad: _.bind(this.onAfterLoad, this),
+        onBeforePageLoad: _.bind(this.onBeforePageLoad, this),
+        onAfterPrePageLoad: _.bind(this.onAfterPrePageLoad, this),
+        onAfterPageLoad: _.bind(this.onAfterPageLoad, this),
         offset: function () {
           return (this.context.innerHeight() * 2) - this.adapter.outerHeight();
         }
       });
     },
-    onBeforeLoad: function () {
+    onBeforePageLoad: function () {
       this.lastInfiniteItem = this.$el.find('.infinite-item:last').length > 0 ? this.$el.find('.infinite-item:last') : this.$el;
       if (this.preloader != null) this.preloader.hide(true, true);
       this.preloader = new SpinnerCubeView({el: this.lastInfiniteItem});
-      this.onBeforeLoadCallback(this.lastInfiniteItem);
     },
-    onAfterPreLoad: function (pItem) {
-      /**
-       * scroll to new appended article if someone scroll to the bottom and saw the preloader
-       */
-      if (((window.scrollY + window.innerHeight) === document.body.clientHeight) && $('body').hasClass('page-article')) {
-        this.scrollToAppendedElement = true;
+    onAfterPrePageLoad: function (pItem) {
+      //scroll to new appended article if someone scroll to the bottom and saw the preloader
+      var atBottomOfPageCheck = ((window.scrollY + window.innerHeight) === document.body.clientHeight);
+      if (atBottomOfPageCheck) {
+        this.atBottomOfPage = true;
       }
     },
-    onAfterLoad: function (pItem) {
-      //console.log("loading done", " View >> ", this.id || this.$el.attr('id') || this.$el.attr('class'));
-      var tmpElement = pItem[0];
+    onAfterPageLoad: function ($appendedElement) {
+      var appendedElement = $appendedElement[0];
 
       if (this.preloader != null) {
         this.preloader.hide(true, true);
         this.preloader = null;
       }
 
-      if (this.scrollToAppendedElement === true) {
-        $('html, body').animate({scrollTop: (tmpElement.offsetTop - this.naviHeight)}, {
+      if (this.atBottomOfPage === true && $('body').hasClass('page-article')) {
+        $('html, body').animate({scrollTop: (appendedElement.offsetTop - this.naviHeight)}, {
           duration: 500,
           easing: 'easeInOutCubic'
         });
 
-        this.scrollToAppendedElement = false;
+        this.atBottomOfPage = false;
       }
 
-      this.onAfterLoadCallback($(tmpElement));
-      this.parseInfiniteView($(tmpElement), {modelList: this.model, initialDOMItem: false}); //delegateElements: true,
-
+      this.parseInfiniteView($appendedElement, {modelList: this.model, initialDOMItem: false});
     },
     onDisableHandler: function (pDisabled) {
-      //console.log("AbstractFeedView onDisableHandler", " View >> ", this.id, pDisabled);
       if (this.infinite == null || this.infinite.waypoint == undefined) return;
 
       if (pDisabled) {
