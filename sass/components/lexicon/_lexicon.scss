@@ -1,0 +1,127 @@
+@import "lexicon.variables.scss";
+
+.lexicon {
+  @media (max-width: $screen-xs-max) {
+    .item-content__content {
+      padding-top: $gap-v-region-mobile;
+    }
+    .item-group--outer {
+      position: static;
+    }
+  }
+
+  .list__glossary {
+    @extend %list__glossary;
+    @extend %margin--v-region;
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  .teaser--lexicon {
+    .teaser__title {
+      @include text-helper($font-content-bold);
+    }
+
+    .teaser__copy {
+      @include text-helper($font-content);
+    }
+
+    @media (max-width: $screen-xs-max) {
+      .teaser__title {
+        @include text-helper-size($font-content-bold, $title-size-xs);
+        margin-top: $lexicon-teaser__title--margin-top__mobile;
+      }
+
+      .teaser__copy {
+        @include text-helper-size(
+          $font-content,
+          $font-size-medium,
+          $lexicon--line-height
+        );
+        margin-top: $lexicon-teaser__copy--margin-top__mobile;
+      }
+    }
+
+    @media (min-width: $screen-sm-min) {
+      .teaser__title {
+        @include text-helper-size($font-content-bold, $title-size-md);
+        margin-top: $lexicon-teaser__title--margin-top__tablet;
+      }
+
+      .teaser__copy {
+        @include text-helper-size(
+          $font-content,
+          $font-size-medium,
+          $lexicon--line-height
+        );
+        margin-top: $lexicon-teaser__copy--margin-top__mobile;
+      }
+    }
+  }
+
+  .lexicon__teaser-list {
+    @extend %margin--v-region;
+  }
+
+  .list__alphabetical {
+    @extend %margin--v-region;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    h2 {
+      @include title--text-block();
+    }
+
+    .lexicon-teaser__letter {
+      @extend %flexbox;
+      flex-wrap: wrap;
+
+      .lexicon-teaser__item {
+        flex-grow: 1;
+        flex-shrink: 0;
+        align-self: auto;
+        margin-top: $lexicon-teaser--margin-top;
+        box-sizing: border-box;
+
+        .teaser__img-container {
+          @include aspect-ratio(264, 148.5);
+          background: $lexicon-teaser__placeholder--background-color;
+        }
+      }
+
+      @media (max-width: $screen-xs-max) {
+        li {
+          flex-basis: 100% / $lexicon-overview--column-count__mobile;
+          max-width: 100% / $lexicon-overview--column-count__mobile;
+        }
+      }
+
+      @media (min-width: $screen-sm-min) {
+        margin-right: -$lexicon-overview--gutter / 2;
+        margin-left: -$lexicon-overview--gutter / 2;
+      }
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+        li {
+          flex-basis: 100% / $lexicon-overview--column-count__tablet;
+          max-width: 100% / $lexicon-overview--column-count__tablet;
+          padding-right: $lexicon-overview--gutter / 2;
+          padding-left: $lexicon-overview--gutter / 2;
+        }
+      }
+
+      @media (min-width: $screen-md-min) {
+        li {
+          flex-basis: 100% / $lexicon-overview--column-count__desktop;
+          max-width: 100% / $lexicon-overview--column-count__desktop;
+          padding-right: $lexicon-overview--gutter / 2;
+          padding-left: $lexicon-overview--gutter / 2;
+        }
+      }
+    }
+  }
+}
