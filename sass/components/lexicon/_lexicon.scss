@@ -79,6 +79,7 @@
     .lexicon-teaser__letter {
       @extend %flexbox;
       flex-wrap: wrap;
+      margin-top: 0;
 
       .lexicon-teaser__item {
         flex-grow: 1;
