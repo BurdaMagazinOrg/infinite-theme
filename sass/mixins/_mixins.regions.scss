@@ -24,8 +24,8 @@
 }
 
 @mixin region__children-marketing--full-content() {
-  &:first-child.ad-inactive {
-    & + .region-full-content {
+  &:first-child.region-marketing {
+    &.ad-inactive + .region-full-content {
       @extend %gap__container--v-reset;
     }
   }
