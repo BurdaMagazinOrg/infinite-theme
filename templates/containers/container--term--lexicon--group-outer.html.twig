@@ -1,0 +1,23 @@
+<div class="item-content__block item-group--outer-wrapper">
+    <div class="item-group--outer">
+
+        {{ children }}
+
+        <span class="cet"></span>
+
+        <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
+            {% block socials_vertical_bar %}
+                {% embed '@infinite/embeds/social_icons.html.twig' with {
+                'url': parent.url,
+                'label': parent.label,
+                'twitter_share_via': parent.twitter_share_via,
+                'email_share_text': parent.email_share_text,
+                'email_subject': parent.email_subject,
+                'whatsapp_share_text': parent.whatsapp_share_text,
+                } %}
+                {% endembed %}
+            {% endblock %}
+        </aside>
+
+    </div>
+</div>

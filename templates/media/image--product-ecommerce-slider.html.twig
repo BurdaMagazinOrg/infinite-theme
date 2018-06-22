@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation of an image.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the img tag.
+ * - style_name: (optional) The name of the image style applied.
+ *
+ * @see template_preprocess_image()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<img class="swiper-lazy" data-src="{{ attributes['src'] }}"/>
+<div class="swiper-lazy-preloader"></div>

@@ -200,9 +200,9 @@ function infinite_preprocess_advertising_product(&$variables) {
     ->setAttribute('data-currency', $product->product_currency->value)
     ->setAttribute('data-uuid', $product->uuid->value)
     ->setAttribute('data-product-id', $product->product_id->value)
-    ->setAttribute('data-sold-out', $product->product_sold_out->value)
-    ->setAttribute('data-external-url', $product->product_url->uri);
+    ->setAttribute('data-sold-out', $product->product_sold_out->value);
 
+  // tracking_url
   $tracking_url = $product->product_url->uri;
   // This is needed only for tracdelight products
   if ($product->getType() == 'advertising_product_tracdelight') {
@@ -218,27 +218,38 @@ function infinite_preprocess_advertising_product(&$variables) {
     $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
   }
 
-  $original_price = $product->product_original_price->value;
-  $price = $product->product_price->value;
+  $data_attributes->setAttribute('data-external-url', $tracking_url);
+  $variables['tracking_url'] = $tracking_url;
 
+  // original_price
+  $original_price = $product->product_original_price->value;
+
+  // price
+  $price = $product->product_price->value;
+ 
+  // provider
+  $provider = explode("_", $product->product_provider->value)[0];
+  $data_attributes->setAttribute('data-provider', $provider);
+  $variables['provider'] = $provider;
+
+  if ('tipser' === $provider) {
+    $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
+    $data_attributes->removeAttribute('data-external-url');
+  }
+
+  // sold_out
   $sold_out = $product->product_sold_out->value;
-  $in_stock = !isset($variables['sold_out']) || !$variables['sold_out'];
 
   if ($price <= 0 || $sold_out) {
     $variables['sold_out'] = TRUE;
   }
 
-  $provider = explode("_", $product->product_provider->value)[0];
-  $data_attributes->setAttribute('data-provider', $provider);
-  $variables['provider'] = $provider;
-
-  $original_price = $product->product_original_price->value;
   if(!isset($variables['sold_out']) || !$variables['sold_out']) {
     if($price < $original_price){
       $variables['show_strikethrough_price'] = TRUE;
       $variables['percentage_saving'] = floor(($price - $original_price) / $original_price * 100);
     }
-    $variables['tracking_url'] = $tracking_url;    if ('tipser' === $provider) {
+      if ('tipser' === $provider) {
       // hack so we can track product category even though it uses another field
       // for the category than e.g. Amazon products
       $tipserFieldCategory = $product->get('field_category');
@@ -249,15 +260,9 @@ function infinite_preprocess_advertising_product(&$variables) {
           $variables['tipser_product_category'] = $term->getName();
         }
       }
-
-      $data_attributes->setAttribute('data-tipser-url', $variables['tracking_url']);
       $data_attributes->setAttribute('data-shop', $product->product_shop->value);
-      $data_attributes->removeAttribute('data-external-url');
-    } else {
-      $data_attributes->setAttribute('data-external-url', $variables['tracking_url']);
     }
   }
-
 
   $variables['data_attributes'] = $data_attributes;
 }
