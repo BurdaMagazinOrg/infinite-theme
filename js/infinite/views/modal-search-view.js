@@ -57,7 +57,7 @@
 
       this.preloader.hide(true, true);
       this.feedView.appendElement($tmpElement);
-      this.feedView.onAfterLoad($tmpElement);
+      this.feedView.appendCallback($tmpElement);
       this.activateScrollBehavior();
       Drupal.behaviors.burdaInfinite.initBlazyOnContainer('#modal-search');
     },
