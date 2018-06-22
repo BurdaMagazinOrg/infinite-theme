@@ -46,6 +46,18 @@
       }
     }
   }
+
+  &.item-paragraph--small {
+    .item-media--image-landscape {
+      .img-container {
+        overflow: hidden;
+        height: 0;
+        padding-bottom: $media__ratio--image-langscape;
+        background-color: $media__lazyloading-bg-color;
+      }
+    }
+  }
+
 }
 
 @mixin item-paragraph--gallery() {
