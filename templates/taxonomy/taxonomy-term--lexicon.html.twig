@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a taxonomy term.
+ *
+ * Available variables:
+ * - url: URL of the current term.
+ * - name: Name of the current term.
+ * - content: Items for the content of the term (fields and description).
+ *   Use 'content' to print them all, or print a subset such as
+ *   'content.description'. Use the following code to exclude the
+ *   printing of a given child element:
+ *   @code
+ *   {{ content|without('description') }}
+ *   @endcode
+ * - attributes: HTML attributes for the wrapper.
+ * - page: Flag for the full page state.
+ * - term: The taxonomy term entity, including:
+ *   - id: The ID of the taxonomy term.
+ *   - bundle: Machine name of the current vocabulary.
+ * - view_mode: View mode, e.g. 'full', 'teaser', etc.
+ *
+ * @see template_preprocess_taxonomy_term()
+ *
+ * @ingroup themeable
+ */
+#}
+{#{% set classes = [#}
+{#'region-full-content',#}
+{#'item-content',#}
+{#'item-content--taxonomy',#}
+{#'no-v-padding',#}
+{#'lexicon',#}
+{#] %}#}
+
+{#<div {{ attributes.addClass(classes) }}>#}
+    {% block content_header_block %}
+        {% if content.field_header_blocks | render is not empty %}
+            {{ content.field_header_blocks }}
+        {% endif %}
+
+        {% if not has_spotlight_title and not term_title_hidden %}
+            <div class="item-content__header">
+                <div class="ratio-wrapper">
+                    <div class="caption">
+                        {% if has_header_block %}
+                            <h2 class="title--page">{{ name }}</h2>
+                        {% else %}
+                            <h1 class="title--page">{{ name }}</h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% if content|render %}
+        <div class="item-content__content">
+            {{ content.field_paragraphs }}
+        </div>
+    {% endif %}
+
+    {# Render embed view with anchor links #}
+    {{ drupal_view('lexicon_overview', 'embed_1', term.id()) }}
+
+{#</div>#}

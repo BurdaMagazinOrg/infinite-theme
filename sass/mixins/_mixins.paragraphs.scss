@@ -450,6 +450,16 @@
 
   .list__content-teaser--horizontal {
     @extend %list__content-teaser--horizontal;
+
+    .teaser-wrapper {
+      flex-basis: 33.3%;
+      max-width: 33.3%;
+
+      .teaser {
+        float: none;
+        width: initial;
+      }
+    }
   }
 
   .teaser {
@@ -478,10 +488,6 @@
   }
 
   @media (min-width: $screen-sm-min) {
-    .teaser__caption {
-      height: $teaser--content-caption-height;
-    }
-
     &.item-paragraph--full {
       .teaser {
         @include list__content-teaser__item--horizontal($list__content-teaser--horizontal-count--full);

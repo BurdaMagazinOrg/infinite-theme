@@ -9,7 +9,6 @@
     delegateElements: function ($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateSocials($pContainer);
-      BurdaInfinite.utils.BaseUtils.updateTextActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateTimeAgo($pContainer);
     },
     updateSocials: function ($pContainer) {
@@ -129,53 +128,6 @@
           }
         }
       });
-    },
-    updateTextActions: function ($pContainer) {
-      var truncateElements = [];
-      $.each($pContainer.find('[data-text-action]'), function (pIndex, pItem) {
-        var tmpAction = $(pItem).data('text-action') || '',
-          tmpTarget = $(pItem).data('text-action-target') || '',
-          $tmpTarget;
-
-        if (tmpAction == "" || tmpTarget == "") return;
-
-        $tmpTarget = $(this).find(tmpTarget);
-        if ($tmpTarget.length <= 0) return;
-        switch (tmpAction) {
-          case 'text-overflow':
-            truncateElements.push($tmpTarget.get(0));
-            break;
-        }
-
-      });
-        BurdaInfinite.utils.BaseUtils.ellipsis(truncateElements);
-    },
-    ellipsis: function (elements) {
-      var chunkSize = 10;
-
-      function run() {
-        var tolerance = 8;
-        window.setTimeout(function () {
-          var chunk = elements.slice(0, chunkSize);
-          for (var i = 0; i < chunk.length; i++) {
-            var c = chunk[i];
-            if (c.scrollHeight > c.clientHeight + tolerance) {
-              while (c.innerText.length && c.scrollHeight > c.clientHeight + tolerance) {
-                c.innerText = c.innerText.slice(0, -2) + '…';
-              }
-              c.innerText = c.innerText.slice(0, -3);
-              c.innerText += '…';
-            }
-          }
-          elements = elements.slice(chunkSize);
-          if (elements.length) {
-            run();
-          }
-        }, 0);
-      }
-      if (elements.length) {
-        run();
-      }
     },
     updateTimeAgo: function ($pContainer) {
       $pContainer.find('.text-timestamp').timeago();

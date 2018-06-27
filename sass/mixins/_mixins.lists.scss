@@ -49,6 +49,9 @@
 @mixin list__content-teaser--horizontal() {
   @include clearfix();
 
+  display: flex;
+  flex-flow: row wrap;
+
   @media (max-width: $screen-xs-max) {
     margin-left: -$list__content-teaser--horizontal-gap-h-mobile;
     margin-right: -$list__content-teaser--horizontal-gap-h-mobile;

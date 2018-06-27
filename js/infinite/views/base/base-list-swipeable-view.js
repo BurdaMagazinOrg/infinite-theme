@@ -40,7 +40,7 @@
             this.$swiperContainer = this.$el.find('.container-content');
         },
         updateViews: function () {
-            this.swiperApi = this.$swiperContainer.swiper(this.settings);
+            this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
             this.$swiperContainer.data('swiperApi', this.swiperApi);
 
             if (this.isMobileMode) {
@@ -74,7 +74,7 @@
             this.swiperApi.off('slideChangeStart');
         },
         removeSwiper: function () {
-            this.$swiperContainer.data('swiperApi').destroy(true, true);
+            this.swiperApi.destroy(true, true);
             this.$swiperContainer.removeData('swiperApi');
         },
         onDeviceBreakpointHandler: function (pModel) {

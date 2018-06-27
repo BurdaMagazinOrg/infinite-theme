@@ -9,16 +9,17 @@
     preloader: null,
     infinite: null,
     initFeed: true,
-    onBeforeLoadCallback: $.noop,
-    onAfterLoadCallback: $.noop,
+    atBottomOfPage: false,
+    fallbackNaviHeight: 56,
+    naviHeight: 0,
     initialize: function (pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
+      this.naviHeight = document.getElementById('menu-main-navigation').offsetHeight || this.fallbackNaviHeight;
       this.context = $(this.context); //force jquery element
       this.$feedItemsContainer = this.$el.find('.container-feed-items');
-      /**
-       * auto init
-       */
+
+      //auto init
       if (this.initFeed) this.rebuildFeed();
 
       this.listenTo(this.model, "change:is_disabled", this.onDisableHandler);
@@ -30,31 +31,46 @@
       this.infinite = new Waypoint.Infinite({
         context: this.context[0],
         element: this.$el,
-        onBeforePageLoad: _.bind(this.onBeforeLoad, this),
-        onAfterPageLoad: _.bind(this.onAfterLoad, this),
+        executeCallback: _.bind(this.executeCallback, this),
+        preAppendCallback: _.bind(this.preAppendCallback, this),
+        appendCallback: _.bind(this.appendCallback, this),
         offset: function () {
           return (this.context.innerHeight() * 2) - this.adapter.outerHeight();
         }
       });
     },
-    onBeforeLoad: function () {
+    executeCallback: function () {
       this.lastInfiniteItem = this.$el.find('.infinite-item:last').length > 0 ? this.$el.find('.infinite-item:last') : this.$el;
       if (this.preloader != null) this.preloader.hide(true, true);
       this.preloader = new SpinnerCubeView({el: this.lastInfiniteItem});
-      this.onBeforeLoadCallback(this.lastInfiniteItem);
     },
-    onAfterLoad: function (pItem) {
-      //console.log("loading done", " View >> ", this.id || this.$el.attr('id') || this.$el.attr('class'));
+    preAppendCallback: function (pItem) {
+      //scroll to new appended article if someone scroll to the bottom and saw the preloader
+      var atBottomOfPageCheck = ((window.scrollY + window.innerHeight) === document.body.clientHeight);
+      if (atBottomOfPageCheck) {
+        this.atBottomOfPage = true;
+      }
+    },
+    appendCallback: function ($appendedElement) {
+      var appendedElement = $appendedElement[0];
 
       if (this.preloader != null) {
         this.preloader.hide(true, true);
         this.preloader = null;
       }
-      this.onAfterLoadCallback($(pItem));
-      this.parseInfiniteView($(pItem), {modelList: this.model, initialDOMItem: false}); //delegateElements: true,
+
+      if (this.atBottomOfPage === true && $('body').hasClass('page-article')) {
+        $('html, body').animate({scrollTop: (appendedElement.offsetTop - this.naviHeight)}, {
+          duration: 500,
+          easing: 'easeInOutCubic'
+        });
+
+        this.atBottomOfPage = false;
+      }
+
+      this.parseInfiniteView($appendedElement, {modelList: this.model, initialDOMItem: false});
     },
     onDisableHandler: function (pDisabled) {
-      //console.log("AbstractFeedView onDisableHandler", " View >> ", this.id, pDisabled);
       if (this.infinite == null || this.infinite.waypoint == undefined) return;
 
       if (pDisabled) {

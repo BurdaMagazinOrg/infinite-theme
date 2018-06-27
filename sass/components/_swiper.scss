@@ -29,3 +29,12 @@
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
+
+.swiper-lazy {
+  @include transition-fade();
+  @include opacity(0);
+}
+
+.swiper-lazy-loaded {
+  @include opacity(1);
+}

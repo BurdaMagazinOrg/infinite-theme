@@ -17,12 +17,12 @@ blockadblock:
 
 swiper:
   remote: https://github.com/nolimits4web/Swiper
-  version: 3.4.2
+  version: 4.3.3
   license:
     name: MIT
     gpl-compatible: true
   js:
-    /libraries/swiper/dist/js/swiper.jquery.min.js: { }
+    /libraries/swiper/dist/js/swiper.min.js: { }
 
 infinite.social-apis:
   js:
