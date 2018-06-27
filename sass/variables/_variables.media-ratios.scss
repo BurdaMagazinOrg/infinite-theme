@@ -67,10 +67,17 @@ $products__img-ratio-desktop--single-product: 100% !default;
 /** Spotlight **/
 $spotlight__img-ratio-mobile--full: 100% !default;
 $spotlight__img-ratio-tablet--full: 59% !default;
-$spotlight__img-ratio-desktop--full: $teaser__img-ratio--full-content-desktop;
+$spotlight__img-ratio-desktop--full: $teaser__img-ratio--full-content-desktop !default;
 
 /** Content Teaser **/
 $teaser__img-ratio-desktop--teaser-small: 100% !default;
 
 /** Media **/
-$media__ratio--image-langscape: 74.6% !default;
+$media__ratio--image-langscape-small: 74.6% !default;
+$media__ratio--image-langscape-middle: 56.6% !default;
+$media__ratio--image-langscape-full: 59.7% !default;
+
+/** Profile **/
+$profile__media-ratio--small: 100% !default;
+$profile__media-ratio--middle: 100% !default;
+$profile__media-ratio--full: 127.9% !default;
