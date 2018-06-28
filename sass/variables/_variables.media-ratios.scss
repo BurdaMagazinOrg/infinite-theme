@@ -41,9 +41,16 @@ $gallery-ratio-small--portrait--desktop: 97.6% !default;
 $gallery-ratio-middle: 97.533% !default;
 $gallery-ratio-full: 97.533% !default;
 
-$gallery-ratio-full--landscape: 75% !default;
-$gallery-ratio-middle--landscape: 56% !default;
-$gallery-ratio-small--landscape: 75% !default;
+$gallery-ratio-full--landscape: 74.6% !default;
+$gallery-ratio-middle--landscape: 56.6% !default;
+$gallery-ratio-small--landscape: 74.6% !default;
+
+/** Media **/
+$media__ratio--image-langscape-small: $gallery-ratio-small--landscape !default;
+$media__ratio--image-langscape-middle: $gallery-ratio-middle--landscape !default;
+$media__ratio--image-langscape-full: 55.79% !default;
+
+$media__img-ratio--portrait-small: $gallery-ratio-small--portrait--desktop !default;
 
 /** Header **/
 $media__header-ratio-xs: floor(percentage(160/480)) !default;
@@ -74,10 +81,6 @@ $spotlight__img-ratio-desktop--full: $teaser__img-ratio--full-content-desktop !d
 /** Content Teaser **/
 $teaser__img-ratio-desktop--teaser-small: 100% !default;
 
-/** Media **/
-$media__ratio--image-langscape-small: 74.6% !default;
-$media__ratio--image-langscape-middle: 56.6% !default;
-$media__ratio--image-langscape-full: 55.79% !default;
 
 /** Profile **/
 $profile__media-ratio--small: 100% !default;
