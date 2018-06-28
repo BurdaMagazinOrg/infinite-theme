@@ -38,8 +38,8 @@ $gallery-ratio-small--portrait--mobile: 139.533% !default;
 $gallery-ratio-small--portrait--tablet: 91.59% !default;
 $gallery-ratio-small--portrait--desktop: 97.6% !default;
 
-$gallery-ratio-full: 97.533% !default;
 $gallery-ratio-middle: 97.533% !default;
+$gallery-ratio-full: 97.533% !default;
 
 $gallery-ratio-full--landscape: 75% !default;
 $gallery-ratio-middle--landscape: 56% !default;
@@ -64,6 +64,8 @@ $products__img-ratio-desktop--grid-article: floor(percentage(210/210)) !default;
 $products__img-ratio-mobile--single-product: 100% !default;
 $products__img-ratio-desktop--single-product: 100% !default;
 
+$products__img-ratio--ecommerce-slider: 108% !default;
+
 /** Spotlight **/
 $spotlight__img-ratio-mobile--full: 100% !default;
 $spotlight__img-ratio-tablet--full: 59% !default;
@@ -75,7 +77,7 @@ $teaser__img-ratio-desktop--teaser-small: 100% !default;
 /** Media **/
 $media__ratio--image-langscape-small: 74.6% !default;
 $media__ratio--image-langscape-middle: 56.6% !default;
-$media__ratio--image-langscape-full: 59.7% !default;
+$media__ratio--image-langscape-full: 55.79% !default;
 
 /** Profile **/
 $profile__media-ratio--small: 100% !default;

@@ -64,6 +64,8 @@
   .img-container {
     margin-bottom: $gap-size-xs;
     background-color: $media__lazyloading-bg-color;
+    padding-bottom: $products__img-ratio-desktop--grid-article;
+    height: 0;
     position: relative;
     overflow: hidden;
 
@@ -206,7 +208,7 @@
 
   .img-container {
     margin-bottom: $gap-size-xs;
-    padding-bottom: 108%;
+    padding-bottom: $products__img-ratio--ecommerce-slider;
     background-color: $media__lazyloading-bg-color;
     height: 0;
     position: relative;

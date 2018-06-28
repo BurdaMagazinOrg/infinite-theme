@@ -36,9 +36,12 @@
   @extend %item-paragraph--media;
 
   &.item-paragraph--full {
-    .img-container {
+    .item-media--image-landscape {
       @extend %gap__container--h-negative;
-      padding-bottom: $media__ratio--image-langscape-full;
+
+      .img-container {
+        padding-bottom: $media__ratio--image-langscape-full;
+      }
     }
 
     .item-media--image-portrait {
@@ -53,6 +56,14 @@
       .img-container {
         padding-bottom: $media__ratio--image-langscape-middle;
       }
+    }
+  }
+
+  .item-media--image-portrait {
+    .img-container {
+      padding-bottom: $gallery-ratio-small--landscape;
+      height: 0;
+      overflow: hidden;
     }
   }
 
