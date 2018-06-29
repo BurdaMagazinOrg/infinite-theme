@@ -50,7 +50,9 @@ $media__ratio--image-langscape-small: $gallery-ratio-small--landscape !default;
 $media__ratio--image-langscape-middle: $gallery-ratio-middle--landscape !default;
 $media__ratio--image-langscape-full: 55.79% !default;
 
-$media__img-ratio--portrait-small: $gallery-ratio-small--portrait--desktop !default;
+$media__img-ratio-small--portrait--mobile: $gallery-ratio-small--portrait--mobile !default;
+$media__img-ratio-small--portrait--tablet: $gallery-ratio-small--portrait--tablet !default;
+$media__img-ratio-small--portrait--desktop: $gallery-ratio-small--portrait--desktop !default;
 
 /** Header **/
 $media__header-ratio-xs: floor(percentage(160/480)) !default;
