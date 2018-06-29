@@ -1,0 +1,34 @@
+<iframe width='{{ iframe.width }}' height='{{ iframe.height }}' srcdoc='
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ iframe.title }}</title>
+    <script type="text/javascript">
+      // Disable consent layer. Related to INREL-4268.
+      var atf_disable_oil = true;
+    </script>
+    <script src="{{ library_source }}" type="text/javascript"></script>
+    <script type="text/javascript">
+      var page_targeting = {{ page_targeting|raw }};
+      if (typeof atf_lib !== "undefined") {
+        for (var key in page_targeting) {
+          if (page_targeting.hasOwnProperty(key)) {
+            atf_lib.add_page_targeting(key, page_targeting[key]);
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+  <div{{ attributes }}></div>
+  <script type="text/javascript">
+    atf_lib.load_tag([{
+      element: document.getElementById("{{- attributes.id -}}"),
+      targeting: {{ targeting|raw }}
+    }]);
+  </script>
+  </body>
+  </html>
+  '>
+</iframe>
