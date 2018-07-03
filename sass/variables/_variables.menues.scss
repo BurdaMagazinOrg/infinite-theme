@@ -86,3 +86,23 @@ $menu--sidebar-misc-size: 14px !default;
 $menu--sidebar-misc-text-transform: uppercase !default;
 $menu--sidebar-misc-color: $gray-base !default;
 $menu--sidebar-misc-hover-color: $color-highlighted-hover !default;
+
+//user menu
+$user-navigation__pos-right-mobile--main-navigation: 62px !default;
+$user-navigation__pos-right-desktop--main-navigation: 82px !default;
+
+$user-navigation__item-margin-mobile--header: 0 0 0 17px !default;
+$user-navigation__item-margin-desktop--header: 0 0 0 25px !default;
+$user-navigation__item-width-mobile--header: 24px !default;
+$user-navigation__item-height-mobile--header: $user-navigation__item-width-mobile--header !default;
+
+$user-navigation__item-width-desktop--header: 32px !default;
+$user-navigation__item-height-desktop--header: $user-navigation__item-width-desktop--header !default;
+
+$user-navigation__item-margin-mobile--main-navigation: 0 0 0 17px !default;
+$user-navigation__item-margin-desktop--main-navigation: 0 0 0 17px !default;
+$user-navigation__item-width-mobile--main-navigation: 24px !default;
+$user-navigation__item-height-mobile--main-navigation: $user-navigation__item-width-mobile--main-navigation !default;
+
+$user-navigation__item-width-desktop--main-navigation: 32px !default;
+$user-navigation__item-height-desktop--main-navigation: $user-navigation__item-width-desktop--main-navigation !default;
