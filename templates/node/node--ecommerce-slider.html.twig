@@ -4,8 +4,7 @@
 'ecommerce-slider',
 ] %}
 
-{% set ecommerceSliderId = 'ecommerce-slider-' ~ nid %}
-{% set ecommerceSliderCSSId = '#' ~ ecommerceSliderId %}
+{% set ecommerceSliderClass = 'ecommerce-slider-' ~ nid %}
 {% set hasBgImage = content.field_background_media | render is not empty %}
 {% set attributes = hasBgImage == true ? attributes.addClass('bg-image') : attributes.addClass('no-bg-image') %}
 
@@ -21,7 +20,7 @@
 {% set attributes = attributes.setAttribute('data-nid', nid ) %}
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
-<div id="{{ ecommerceSliderId }}" {{ attributes.addClass(container_classes) }}>
+<div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
 
     <div class="ecommerce-slider__content-wrapper">
 
@@ -30,11 +29,9 @@
         <div class="ecommerce-slider__content">
             <h3 class="ecommerce-slider__title">{{ label }}</h3>
             {% if content.field_campaign|render %}
-                <span style="color: {{ content.field_title_color.0 }};">
+                <span class="ecommerce-slider__campaign">
                     {{ content.field_campaign }}
                 </span>
-            {% else %}
-                {{ content.field_campaign }}
             {% endif %}
 
             <div class="swiper-container">
