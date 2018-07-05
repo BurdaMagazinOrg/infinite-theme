@@ -4,46 +4,34 @@
 'ecommerce-slider',
 ] %}
 
-{% set ecommerceSliderId = 'ecommerce-slider-' ~ nid %}
-{% set ecommerceSliderCSSId = '#' ~ ecommerceSliderId %}
+{% set ecommerceSliderClass = 'ecommerce-slider-' ~ nid %}
 {% set hasBgImage = content.field_background_media | render is not empty %}
 {% set attributes = hasBgImage == true ? attributes.addClass('bg-image') : attributes.addClass('no-bg-image') %}
 
-{% block ecommerce_style_block %}
-    <style>
-        {{ ecommerceSliderCSSId }}
-        .text-shop {
-            color: {{ content.field_color_contrast.0 }};
-            {#background-color: {{ content.field_color_button.0 }};#}
-            border-color: {{ content.field_color_button.0 }};
-        }
-    </style>
-{% endblock %}
+{% if content.field_css_styles|render is not empty %}
+    {% block ecommerce_style_block %}
+        <style>
+            {{ content.field_css_styles|render|striptags }}
+        </style>
+    {% endblock %}
+{% endif %}
 
 {% set attributes = attributes.setAttribute('data-view-type', 'ecommerceSlider') %}
 {% set attributes = attributes.setAttribute('data-nid', nid ) %}
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
-<div id="{{ ecommerceSliderId }}" {{ attributes.addClass(container_classes) }}>
+<div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
 
     <div class="ecommerce-slider__content-wrapper">
 
-        <div class="swiper-button swiper-button-prev"
-             style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }};"></div>
+        <div class="swiper-button swiper-button-prev"></div>
 
-        <div class="ecommerce-slider__content" style="background-color: {{ content.field_color_box.0 }};">
-
-            {% if content.field_title_color.0 %}
-                <h3 class="ecommerce-slider__title" style="color: {{ content.field_title_color.0 }};">{{ label }}</h3>
-            {% else %}
-                <h3 class="ecommerce-slider__title">{{ label }}</h3>
-            {% endif %}
+        <div class="ecommerce-slider__content">
+            <h3 class="ecommerce-slider__title">{{ label }}</h3>
             {% if content.field_campaign|render %}
-                <span style="color: {{ content.field_title_color.0 }};">
-                {{ content.field_campaign }}
-            </span>
-            {% else %}
-                {{ content.field_campaign }}
+                <span class="ecommerce-slider__campaign">
+                    {{ content.field_campaign }}
+                </span>
             {% endif %}
 
             <div class="swiper-container">
@@ -54,8 +42,7 @@
 
         </div>
 
-        <div class="swiper-button swiper-button-next"
-             style="color: {{ content.field_color_contrast.0 }}; background-color: {{ content.field_color_button.0 }};"></div>
+        <div class="swiper-button swiper-button-next"></div>
 
     </div>
 

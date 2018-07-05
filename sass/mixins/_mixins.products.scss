@@ -460,9 +460,8 @@
     &:hover,
     &:focus {
       outline: none;
-      background-color: $ecommerce-slider__arrows-background-color-hover;
       color: $ecommerce-slider__arrows-color-hover;
-      border: $ecommerce-slider__arrows-border-hover;
+      box-shadow: $ecommerce-slider__arrows-box-shadow-hover;
     }
   }
 
@@ -480,6 +479,30 @@
       left: 11px;
     }
   }
+
+
+  /*
+   * customisable styles
+   */
+  .text-shop {
+    color: $ecommerce-slider__button-color;
+    background-color: $ecommerce-slider__button-background-color;
+    border-color: 1px solid $ecommerce-slider__button-border-color;
+  }
+
+  .swiper-button {
+    color: $ecommerce-slider__swiper-button-color; 
+    background-color: $ecommerce-slider__swiper-button-background-color;
+  }
+
+  .ecommerce-slider__content {
+    background-color: $ecommerce-slider__title-background-color;
+  }
+
+  .ecommerce-slider__title {
+    color: $ecommerce-slider__title-color;
+  }
+
 }
 
 @mixin ecommerce-slider--small() {
