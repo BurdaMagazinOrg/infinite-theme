@@ -53,6 +53,7 @@
 
 .item-paragraph--content-teaser {
   @extend %item-paragraph--content-teaser;
+
 }
 
 .item-paragraph--term-teaser {
@@ -61,6 +62,15 @@
 
 .item-paragraph--recent-content {
   @extend %item-paragraph--recent-content;
+}
+
+.item-paragraph--content-teaser, .item-paragraph--term-teaser, .item-paragraph--recent-content {
+  .teaser__img-container {
+    padding-bottom: $teaser__img-ratio-desktop--teaser-small;
+    height: 0;
+    overflow: hidden;
+    background-color: $media__lazyloading-bg-color;
+  }
 }
 
 .item-paragraph--profile {

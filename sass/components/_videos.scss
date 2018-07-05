@@ -4,6 +4,7 @@
   padding-top: 0;
   height: 0;
   overflow: hidden;
+  background-color: $media__lazyloading-bg-color;
 
   iframe, .nexx-video {
     position: absolute !important;

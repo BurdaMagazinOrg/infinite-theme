@@ -77,7 +77,12 @@
     }
   }
 
+  .slick__slider {
+    @include flexbox();
+  }
+
   .slick__slide {
+    @include flex-item(1);
     display: none;
 
     &:first-child {
