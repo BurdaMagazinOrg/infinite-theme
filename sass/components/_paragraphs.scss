@@ -71,6 +71,12 @@
     overflow: hidden;
     background-color: $media__lazyloading-bg-color;
   }
+
+  @media (max-width: $screen-xs-max) {
+    .teaser__img-container {
+      padding-bottom: $teaser__img-ratio-mobile--teaser-small;
+    }
+  }
 }
 
 .item-paragraph--profile {
