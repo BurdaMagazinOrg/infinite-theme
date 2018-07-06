@@ -41,6 +41,8 @@ $product__item-text-price-font-id: $font-content-bold-id !default;
 $product__item-text-price-size: 13px !default;
 $product__item-text-price-color: $text-color !default;
 $product__item-text-price-pos-bottom: 45px !default;
+$product__item-text-price-pos-left-desktop: 0 !default;
+$product__item-text-price-pos-left-mobile: $padding !default;
 
 $product__item-text-price-font-id--strikethrough: $product__item-text-price-font-id !default;
 $product__item-text-price-size--strikethrough: $product__item-text-price-size !default;

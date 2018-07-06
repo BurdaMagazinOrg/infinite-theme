@@ -47,7 +47,7 @@
   }
 
   .text-price {
-    left: 0;
+    left: $product__item-text-price-pos-left-desktop;
     bottom: $product__item-text-price-pos-bottom;
   }
 
@@ -271,6 +271,10 @@
     .img-container,
     .caption {
       @include make-xxs-column($grid-columns/2);
+    }
+
+    .text-price {
+      left: $product__item-text-price-pos-left-mobile;
     }
 
     .img-container {
