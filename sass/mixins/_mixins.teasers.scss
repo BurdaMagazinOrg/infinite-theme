@@ -536,6 +536,9 @@
 
   .caption, .teaser__caption {
     @include gap__caption-top--h-teaser();
+    @include transition-property(color, background-color, border-color);
+    @include transition-duration(.35s);
+    @include transition-timing-function(ease);
   }
 
   .teaser__title {
@@ -554,13 +557,13 @@
 
     .img-container, .teaser__img-container {
       width: $teaser--content-img-width-mobile;
-      padding-right: $padding;
       float: left;
+      padding-right: 0;
     }
 
     .caption, .teaser__caption {
       margin-top: 0;
-      padding-right: $padding;
+      padding-left: $padding;
     }
 
     .teaser__title {
