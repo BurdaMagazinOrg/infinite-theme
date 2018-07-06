@@ -71,6 +71,11 @@ infinite.init:
     - core/jquery.cookie
     - blazy/blazy
 
+infinite.utils.ab-testing:
+  version: 1
+  js:
+    js/infinite/utils/ab-testing.js: { }
+
 
 ##### manager #####
 
