@@ -274,13 +274,10 @@
     }
 
     .img-container {
-      height: auto;
       margin-bottom: 0;
       padding-left: 0;
-    }
-
-    .caption {
-      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: $products__img-ratio-mobile--grid-article;
     }
   }
 }

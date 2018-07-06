@@ -67,7 +67,7 @@ $seo-linker__img-ratio-tablet--grid-four: floor(percentage(210/375)) !default;
 $seo-linker__img-ratio-desktop--grid-four: floor(percentage(210/375)) !default;
 
 /** Products **/
-$products__img-ratio-mobile--grid-article: floor(percentage(210/210)) !default;
+$products__img-ratio-mobile--grid-article: floor(percentage((210/210) / 2)) !default;
 $products__img-ratio-desktop--grid-article: floor(percentage(210/210)) !default;
 
 $products__img-ratio-mobile--single-product: 100% !default;
