@@ -65,16 +65,12 @@
 }
 
 .item-paragraph--content-teaser, .item-paragraph--term-teaser, .item-paragraph--recent-content {
-  .teaser__img-container {
-    padding-bottom: $teaser__img-ratio-desktop--teaser-small;
-    height: 0;
-    overflow: hidden;
-    background-color: $media__lazyloading-bg-color;
-  }
-
-  @media (max-width: $screen-xs-max) {
+  @media (min-width: $screen-sm-min) {
     .teaser__img-container {
-      padding-bottom: $teaser__img-ratio-mobile--teaser-small;
+      padding-bottom: $teaser__img-ratio-desktop--teaser-small;
+      height: 0;
+      overflow: hidden;
+      background-color: $media__lazyloading-bg-color;
     }
   }
 }
