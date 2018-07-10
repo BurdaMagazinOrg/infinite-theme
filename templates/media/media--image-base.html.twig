@@ -16,8 +16,10 @@
 
 {% if content %}
     {% block img_container_block %}
-        <div class="img-container">
-            {{ content.field_image }}
+        <div class="img-container__wrapper">
+            <div class="img-container">
+                {{ content.field_image }}
+            </div>
         </div>
     {% endblock %}
     {% block caption_block %}

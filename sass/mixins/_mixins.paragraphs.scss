@@ -36,8 +36,11 @@
   @extend %item-paragraph--media;
 
   &.item-paragraph--full {
+
     .item-media--image-landscape {
-      @extend %gap__container--h-negative;
+      .img-container__wrapper {
+        @extend %gap__container--h-negative;
+      }
 
       .img-container {
         padding-bottom: $media__ratio--image-langscape-full;
