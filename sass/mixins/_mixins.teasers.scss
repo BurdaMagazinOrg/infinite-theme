@@ -561,6 +561,7 @@
       height: $teaser--content-img-height-mobile;
       float: left;
       padding-right: 0;
+      background-color: $media__lazyloading-bg-color;
     }
 
     .caption, .teaser__caption {

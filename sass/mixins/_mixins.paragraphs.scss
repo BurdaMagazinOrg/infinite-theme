@@ -43,7 +43,17 @@
       }
 
       .img-container {
-        padding-bottom: $media__ratio--image-langscape-full;
+        @media (max-width: $screen-xs-max) {
+          padding-bottom: $media__ratio--image-langscape-full-mobile;
+        }
+
+        @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+          padding-bottom: $media__ratio--image-langscape-full-tablet;
+        }
+
+        @media (min-width: $screen-md-min) {
+          padding-bottom: $media__ratio--image-langscape-full-desktop;
+        }
       }
     }
 

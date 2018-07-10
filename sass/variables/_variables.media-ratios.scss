@@ -8,7 +8,6 @@ $teaser__img-ratio-mobile--presenter-l: 56.25% !default;
 $teaser__img-ratio-tablet--presenter-l: 56.25% !default;
 $teaser__img-ratio-desktop--presenter-l: 56.25% !default;
 
-//TODO rename
 $teaser__img-ratio--full-content-mobile: 41.7% !default;
 $teaser__img-ratio--full-content-tablet: 41.7% !default;
 $teaser__img-ratio--full-content-desktop: 41.7% !default;
@@ -48,7 +47,10 @@ $gallery-ratio-small--landscape: 74.6% !default;
 /** Media **/
 $media__ratio--image-langscape-small: $gallery-ratio-small--landscape !default;
 $media__ratio--image-langscape-middle: $gallery-ratio-middle--landscape !default;
-$media__ratio--image-langscape-full: 55.79% !default;
+
+$media__ratio--image-langscape-full-mobile: 74% !default;
+$media__ratio--image-langscape-full-tablet: 55.79% !default;
+$media__ratio--image-langscape-full-desktop: 55.79% !default;
 
 $media__img-ratio-small--portrait--mobile: $gallery-ratio-small--portrait--mobile !default;
 $media__img-ratio-small--portrait--tablet: $gallery-ratio-small--portrait--tablet !default;
