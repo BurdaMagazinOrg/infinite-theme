@@ -3,7 +3,6 @@ infinite.header:
   header: true
   js:
     js/head/head-cookie-utils.js: {}
-    js/head/head-utils.js: {}
   dependencies:
     - core/jquery
 
@@ -51,7 +50,7 @@ infinite.init:
       css/infinite-global.css: {}
   js:
     js/consts/app-config.js: {}
-    
+
   dependencies:
 #    - core/jquery
     - core/backbone
