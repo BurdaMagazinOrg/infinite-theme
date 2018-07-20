@@ -43,5 +43,7 @@ drupal/sites/simpletest
 # Ignore SimpleTest multi-site environment.
 # simpletest
 
-
 legacy_files
+
+# Ignore node modules
+node_modules/
