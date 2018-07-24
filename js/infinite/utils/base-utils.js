@@ -9,7 +9,7 @@
       BurdaInfinite.utils.BaseUtils.updateTimeAgo($pContainer);
     },
     closest(element, cssSelector) {
-      while (!element.matches(cssSelector) && element !== document.body) {
+      while (element !== null && !element.matches(cssSelector) && element !== document.body) {
         element = element.parentElement;
       }
       return element !== document.body ? element : null;
