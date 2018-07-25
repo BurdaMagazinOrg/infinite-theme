@@ -1,7 +1,4 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
   BurdaInfinite.views.SpinnerCubeView = Backbone.View.extend({
 
     height: 0,
@@ -17,53 +14,53 @@
       + '</div>'
       + '</div>'),
 
-    initialize: function (pSettings) {
+    initialize(pSettings) {
       _.extend(this, pSettings);
 
       this.render();
       if (!this.hidden) this.show();
     },
-    render: function () {
+    render() {
       if (typeof this.preRenderCallback === 'function') {
         this.$template = this.preRenderCallback($(this.template()));
-      } else {
+      }
+      else {
         this.$template = $(this.template()).appendTo(this.$el);
       }
 
-      //this.height = this.$template.height();
-      //this.$template.css('height', 0);
-      //this.$template.css('opacity', 0);
+      // this.height = this.$template.height();
+      // this.$template.css('height', 0);
+      // this.$template.css('opacity', 0);
       return this;
     },
-    show: function (pAnimated) {
+    show(pAnimated) {
       this.$template.addClass('in');
-      //var tmpDuration = pAnimated == false ? 0 : 350;
-      //this.$template.stop().animate({opacity: 1, height: this.height}, {
+      // var tmpDuration = pAnimated == false ? 0 : 350;
+      // this.$template.stop().animate({opacity: 1, height: this.height}, {
       //    duration: tmpDuration,
-      //    easing: 'easeInOutCubic'
-      //});
+      //    easing: 'swing'
+      // });
     },
-    hide: function (pAnimated, pRemove) {
+    hide(pAnimated, pRemove) {
       this.$template.removeClass('in');
 
-      //var tmpDuration = pAnimated == false ? 0 : 350,
+      // var tmpDuration = pAnimated == false ? 0 : 350,
       //    tmpRemove = pRemove || false;
       //
-      //this.$template.stop().animate({opacity: 0}, {duration: tmpDuration, easing: 'easeInOutCubic'});
-      //this.$template.animate({height: 0}, {
+      // this.$template.stop().animate({opacity: 0}, {duration: tmpDuration, easing: 'swing'});
+      // this.$template.animate({height: 0}, {
       //    duration: tmpDuration,
-      //    easing: 'easeInOutCubic',
+      //    easing: 'swing',
       //    complete: $.proxy(function () {
       //        if (tmpRemove) this.destroy();
       //    }, this)
-      //});
+      // });
     },
-    destroy: function () {
-      console.log("REMOVE");
+    destroy() {
+      console.log('REMOVE');
       this.$template.remove();
-    }
+    },
   });
 
   window.SpinnerCubeView = window.SpinnerCubeView || BurdaInfinite.views.SpinnerCubeView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

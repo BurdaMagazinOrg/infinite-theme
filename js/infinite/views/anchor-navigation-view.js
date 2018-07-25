@@ -1,13 +1,12 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
+  'use strict';
 
   BurdaInfinite.views.AnchorNavigationView = BaseView.extend({
     $links: [],
     pageOffsetsModel: null,
     offsetsPageModel: null,
     offsetTop: 0,
-    initialize: function (pOptions) {
+    initialize (pOptions) {
       this.$links = this.$el.find('li a');
       this.$links.click($.proxy(this.onClickHandler, this));
 
@@ -25,25 +24,24 @@
         }, this), 1500);
       }
     },
-    scrollToElement: function (pElementId) {
+    scrollToElement (pElementId) {
       $("html, body").animate({scrollTop: Math.round($(pElementId).offset().top - this.offsetTop - AppConfig.padding)}, {
         duration: 1000,
-        easing: 'easeInOutCubic'
+        easing: 'swing'
       });
 
       return false;
     },
-    onClickHandler: function (pEvent) {
+    onClickHandler (pEvent) {
       var tmpItemId = $(pEvent.currentTarget).attr('href');
       this.scrollToElement(tmpItemId);
 
       return false;
     },
-    onOffsetHandler: function (pModel) {
+    onOffsetHandler (pModel) {
       this.offsetTop = pModel.get('offsets').top;
-    }
+    },
   });
 
   window.AnchorNavigationView = window.AnchorNavigationView || BurdaInfinite.views.AnchorNavigationView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

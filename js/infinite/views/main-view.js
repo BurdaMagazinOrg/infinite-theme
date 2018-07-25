@@ -1,6 +1,5 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
+  'use strict';
 
   BurdaInfinite.views.MainView = Backbone.View.extend({
     menuSidebarModel: {},
@@ -15,7 +14,7 @@
     modalSearchView: {},
 
     events: {},
-    initialize: function (pOptions) {
+    initialize (pOptions) {
       _.extend(this, pOptions);
 
       //if ($.cookie != undefined) $.cookie.json = true;
@@ -31,21 +30,6 @@
       this.createViews();
 
       //console.log("UUID", this.deviceModel.get('uuid'));
-
-
-      /**
-       * Blazy Viewport fix
-       *
-       * Sometimes in safari browser on a page reload (especially when reloading through browser reload button)
-       * images that are initially present in the viewport are not loaded by blazy. This snippet is a workaround
-       * for this bug.
-       */
-      if (typeof jQuery.browser != "undefined" && jQuery.browser.safari && typeof Blazy != "undefined") {
-        _.delay(function () {
-          var tmpBlazy = new Blazy();
-          tmpBlazy.revalidate();
-        }, 100);
-      }
 
       /**
        * Infinite Model Helper
@@ -64,7 +48,7 @@
         }
       }).bind(this));
     },
-    initBeforeUnloadBehavior: function () {
+    initBeforeUnloadBehavior () {
       /**
        * fix the page reload problems
        */
@@ -84,7 +68,7 @@
         }
       }
     },
-    createModels: function () {
+    createModels () {
       this.menuSidebarModel = new BaseSidebarModel();
       this.infiniteViewsModel = new BaseCollectionModel();
       this.modalSearchModel = new ModalSearchModel();
@@ -100,7 +84,7 @@
       BM.reuseModel(ModelIds.pageOffsetsModel, this.pageOffsetsModel);
       BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
     },
-    createManagers: function () {
+    createManagers () {
       new MarketingManager({
         infiniteViewsModel: this.infiniteViewsModel
       });
@@ -132,7 +116,7 @@
         })
       });
     },
-    createViews: function () {
+    createViews () {
       /**
        * InfiniteView - parse and create views by data-view-type
        * IMPORTANT - Needed for the initial parsing
@@ -185,12 +169,11 @@
       BM.reuseView(ViewIds.infiniteView, this.infiniteView);
       BM.reuseView(ViewIds.modalSearchView, this.modalSearchView);
     },
-    onToolbarHandler: function (pModel, pAttr) {
+    onToolbarHandler (pModel, pAttr) {
       //pModel.set('orientation', 'horizontal');
       this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
-    }
+    },
   });
 
   window.MainView = window.MainView || BurdaInfinite.views.MainView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

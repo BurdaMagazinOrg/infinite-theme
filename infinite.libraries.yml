@@ -34,10 +34,6 @@ infinite.libs:
     js/infinite/libs/shortcuts/infinite_custom.js: {}
     js/infinite/libs/shortcuts/sticky.js: {}
     js/infinite/libs/shortcuts/inview.js: {}
-    js/infinite/libs/jquery.easing.1.3.js: {}
-    js/infinite/libs/jquery.browser.min.js: {}
-    js/infinite/libs/bootstrap/modal.js: {}
-    js/infinite/libs/bootstrap/transition.js: {}
     js/infinite/libs/jquery.inview.js: {}
 
 infinite.init:
