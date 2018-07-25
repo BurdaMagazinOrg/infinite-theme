@@ -1,3 +1,23 @@
+@mixin socials-vertical-bar() {
+  $stickyOffset: $menu--main-navigation-min-height;
+  position: sticky;
+  top: 10px;
+  padding-top: $stickyOffset;
+  margin-top: -$stickyOffset;
+  
+  .toolbar-fixed & {
+    $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--closed;
+    padding-top: $stickyOffset;
+    margin-top: -$stickyOffset;
+  }
+
+  .toolbar-tray-open & {
+    $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--open;
+    padding-top: $stickyOffset;
+    margin-top: -$stickyOffset;
+  }
+}
+
 @mixin socials-bar-container() {
   font-size: 0;
   overflow: hidden;

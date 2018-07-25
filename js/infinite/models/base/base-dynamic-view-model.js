@@ -1,21 +1,20 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
+  'use strict';
 
   BurdaInfinite.models.base.BaseDynamicViewModel = BaseCollectionModel.extend({
     defaults: {
       el: [],
       infiniteBlock: false,
-      initialDOMItem: true
+      initialDOMItem: true,
     },
-    initialize: function (pModel, pOptions) {
+    initialize (pModel, pOptions) {
       BaseCollectionModel.prototype.initialize.call(this, pModel, pOptions);
 
       if (!_.isUndefined(pModel)) {
         this.createDynamicItem(pModel);
       }
     },
-    createDynamicItem: function (pSettings, pOptions) {
+    createDynamicItem (pSettings, pOptions) {
 
       var tmpView = {},
         $tmpElement = pSettings.el,
@@ -51,9 +50,6 @@
           break;
         case 'articleView':
           tmpView = new ArticleView(tmpSettings);
-          break;
-        case 'stickyView':
-          tmpView = new StickyView(tmpSettings);
           break;
         case 'galleryView':
           tmpView = new GalleryView(tmpSettings);
@@ -97,9 +93,8 @@
       }
 
       this.set('view', tmpView);
-    }
+    },
   });
 
   window.BaseDynamicViewModel = window.BaseDynamicViewModel || BurdaInfinite.models.base.BaseDynamicViewModel;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

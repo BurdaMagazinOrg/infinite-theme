@@ -3,8 +3,6 @@ infinite.header:
   header: true
   js:
     js/infinite/utils/head-utils.js: {}
-  dependencies:
-    - core/jquery
 
 blockadblock:
   remote: https://github.com/sitexw/BlockAdBlock
@@ -32,16 +30,13 @@ infinite.social-apis:
 
 infinite.libs:
   js:
-#    js/infinite/libs/jquery.browser.js: {}
     js/infinite/libs/jquery.waypoints.js: {}
     js/infinite/libs/shortcuts/infinite_custom.js: {}
     js/infinite/libs/shortcuts/sticky.js: {}
     js/infinite/libs/shortcuts/inview.js: {}
     js/infinite/libs/jquery.easing.1.3.js: {}
     js/infinite/libs/jquery.timeago.js: {}
-#    js/infinite/libs/swiper.jquery.js: {}
     js/infinite/libs/jquery.browser.min.js: {}
-    js/infinite/libs/jquery.sticky-kit.min.js: {}
     js/infinite/libs/bootstrap/modal.js: {}
     js/infinite/libs/bootstrap/transition.js: {}
     js/infinite/libs/jquery.inview.js: {}
@@ -61,7 +56,7 @@ infinite.init:
     js/infinite/consts/manager-ids.js: {}
 
   dependencies:
-#    - core/jquery
+    - core/jquery
     - core/backbone
     - core/drupal
     - core/drupal.ajax
@@ -216,17 +211,10 @@ infinite.views.article-view:
   js:
     js/infinite/views/article-view.js: {}
 
-
 infinite.views.gallery-view:
   version: 1
   js:
     js/infinite/views/gallery-view.js: {}
-
-
-infinite.views.sticky-view:
-  version: 1
-  js:
-    js/infinite/views/sticky-view.js: {}
 
 infinite.views.teaser-feed-view:
   version: 1

@@ -168,6 +168,27 @@
     margin-left: $feed-ad-column-margin;
   }
 
+  .item-sticky {
+    $stickyOffset: $menu--main-navigation-min-height;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10px;
+    padding-top: $stickyOffset;
+    margin-top: -$stickyOffset;
+    
+    .toolbar-fixed & {
+      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--closed;
+      padding-top: $stickyOffset;
+      margin-top: -$stickyOffset;
+    }
+
+    .toolbar-tray-open & {
+      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--open;
+      padding-top: $stickyOffset;
+      margin-top: -$stickyOffset;
+    }
+  }
+
   @media (max-width: $screen-sm-max) {
     & > .col--right {
       display: none;

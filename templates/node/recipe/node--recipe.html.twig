@@ -115,7 +115,7 @@
 
                         <div class="item-content__row-col col--right">
                             {% if content.field_sidebar_blocks is not empty %}
-                                <div class="item-sticky" data-view-type="stickyView">
+                                <div class="item-sticky">
                                 {% block content_sidebar %}
                                     {{ content.field_sidebar_blocks }}
                                     </div>
@@ -127,7 +127,7 @@
 
                 <span class="cet"></span>
 
-                <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
+                <aside class="socials socials-bar socials-vertical-bar">
                     {% block socials_vertical_bar %}
                         {% embed '@freundin_infinite/embeds/social_icons.html.twig' with {
                         'url': url,
