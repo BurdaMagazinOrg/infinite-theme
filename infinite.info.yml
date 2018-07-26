@@ -102,5 +102,5 @@ stylesheets-remove:
   - "@imagepin/css/extensions/imagepin.slick.css"
   - "@imagepin/css/imagepin.css"
 
-#libraries-override:
-#  ad_integration/ad_helper: false
+libraries-override:
+ blazy/blazy: infinite/blazy

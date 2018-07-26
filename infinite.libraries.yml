@@ -22,6 +22,17 @@ swiper:
   js:
     /libraries/swiper/dist/js/swiper.min.js: { }
 
+blazy:
+  header: false
+  remote: https://github.com/dinbror/blazy
+  version: 1.x
+  license:
+    name: MIT
+    url: https://github.com/dinbror/blazy/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    /libraries/blazy/blazy.min.js: { weight: -4, minified: true }
+
 infinite.social-apis:
   js:
     //assets.pinterest.com/js/pinit.js: { type: external, attributes: { async: true} }
