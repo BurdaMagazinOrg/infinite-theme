@@ -1,3 +1,7 @@
+{% set AMAZON_EMPTY_PRICE = '0,00' %}
+{% set product_price = content.product_price.0|render %}
+{% set product_price_set =  product_price != AMAZON_EMPTY_PRICE and product_price is not empty %}
+
 {% block product__img_container_block %}
     <div class="img-container">
         {{ content.product_image }}
@@ -8,11 +12,13 @@
         <div class="text-brand">{{ content.product_brand }}</div>
         <div class="text-headline">{{ content.product_name }}</div>
         {% if sold_out %}
-            {% if content.product_price.0|render != '0,00' %}
                 <div class="text-price">
-                    <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
+                    <span class="text-price--current">
+                        {% if product_price_set %}
+                            {{ content.product_price }} {{ formatted_currency }}
+                        {% endif %}
+                    </span>
                 </div>
-            {% endif %}
             <div class="text-shop text-sold-out">Ausverkauft</div>
         {% else %}
             <div class="text-price">
