@@ -1,24 +1,23 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+  'use strict';
 
-    "use strict";
-
-    BurdaInfinite.views.base.BaseNewsletterView = BaseView.extend({
-        events: {
-            "submit": "formSubmit"
-        },
-        useAlerts: true,
-        useAjaxPermissions: true,
-        available: false,
-        settings: null,
-        useTracking: true,
-        permissions: null,
-        $formView: null,
-        $successView: null,
-        $privacyView: null,
-        $alerts: null,
-        removeTimer: 1000,
-        removeTimerDelay: 1000,
-        initialize: function (pOptions) {
+  BurdaInfinite.views.base.BaseNewsletterView = BaseView.extend({
+    events: {
+      'submit': 'formSubmit',
+    },
+    useAlerts: true,
+    useAjaxPermissions: true,
+    available: false,
+    settings: null,
+    useTracking: true,
+    permissions: null,
+    $formView: null,
+    $successView: null,
+    $privacyView: null,
+    $alerts: null,
+    removeTimer: 1000,
+    removeTimerDelay: 1000,
+    initialize (pOptions) {
             this.settings = _.extend({}, drupalSettings.hm_newsletter);
             this.settings.groupId = this.$el.data('newsletter-group-id');
             this.useAjaxPermissions = this.$el.data('use-ajax-permissions') == undefined ? true : this.$el.data('use-ajax-permissions');
@@ -40,7 +39,7 @@
                 this.ready();
             }
         },
-        initializeApi: function () {
+    initializeApi () {
             if (_.isUndefined(window.thsixtyQ)) {
                 window.thsixtyQ = window.thsixtyQ || [];
                 window.thsixtyQ.push(['init', {config: {env: this.settings.env}}]);
@@ -70,13 +69,13 @@
                 }]);
             }
         },
-        createView: function () {
+    createView () {
             this.$formView = this.$el.find('.container-form');
             this.$alerts = this.$el.find('.container-alerts');
             this.$successView = this.$el.find('.container-success');
             this.$privacyView = this.$el.find('.container-privacy');
         },
-        ready: function () {
+    ready () {
             this.$el.show();
             this.available = true;
 
@@ -94,7 +93,7 @@
                 this.$privacyView.find('.container-content-dynamic').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_body));
             }
         },
-        formSubmit: function (pEvent) {
+    formSubmit (pEvent) {
             var tmpValid = true,
                 tmpVal = "",
                 tmpData = {
@@ -115,7 +114,7 @@
             this.send(tmpData);
             return false;
         },
-        validateFields: function (pData) {
+    validateFields (pData) {
             var tmpField = null,
                 tmpVal = '',
                 tmpValid = true;
@@ -136,7 +135,7 @@
 
             return tmpValid;
         },
-        validateAgreements: function (pData) {
+    validateAgreements (pData) {
             var $tmpItem = null,
                 tmpAgreementVal = '',
                 tmpValid = true;
@@ -146,7 +145,7 @@
                 if ($tmpItem.is(':checked')) {
                     tmpAgreementVal = $tmpItem.val();
                     if (tmpAgreementVal == 'datenschutzeinwilligung') {
-                        pData.extra = {acquia_id: $.cookie('tc_ptid')};
+                        pData.extra = {acquia_id: window.readCookie('tc_ptid')};
                     }
 
                     if (this.permissions[tmpAgreementVal] !== undefined && this.permissions[tmpAgreementVal].version !== undefined) {
@@ -165,7 +164,7 @@
 
             return tmpValid;
         },
-        send: function (pData) {
+    send (pData) {
             window.thsixtyQ.push(['newsletter.subscribe', {
                 params: pData,
                 success: $.proxy(function () {
@@ -182,7 +181,7 @@
                 }, this)
             }]);
         },
-        setViewState: function (pState) {
+    setViewState (pState) {
             this.$el.removeClass(BaseNewsletterView.STATE_PRIVACY + ' ' + BaseNewsletterView.STATE_SUCCESS);
 
             switch (pState) {
@@ -192,13 +191,13 @@
                     break;
             }
         },
-        setValidationState: function ($pEl, pState) {
+    setValidationState ($pEl, pState) {
             $pEl.parents('.form-group').addClass(pState);
         },
-        formField: function (pName) {
+    formField (pName) {
             return this.$formView.find('[name="' + pName + '"]');
         },
-        addAlert: function (pType, pField, pMessage) {
+    addAlert (pType, pField, pMessage) {
 
             var $tmpItem = {};
 
@@ -215,11 +214,11 @@
                 });
             }, this), this.removeTimer + (this.removeTimerDelay * $tmpItem.index()));
         },
-        removeAlerts: function () {
+    removeAlerts () {
             this.$alerts.empty();
             this.$el.find('.form-group').removeClass('has-error');
         },
-        track: function (pObject) {
+    track (pObject) {
             if (typeof TrackingManager != 'undefined' && this.useTracking == true) {
                 TrackingManager.trackEvent(pObject, TrackingManager.getAdvTrackingByElement(this.$el));
 
@@ -232,24 +231,24 @@
                 }
             }
         },
-        destroy: function () {
+    destroy () {
 
-        }
-    }, {
-        STATE_INITIAL: 'state-initial',
-        STATE_PRIVACY: 'state-privacy',
-        STATE_SUCCESS: 'state-success',
-        permissions: null,
-        fields: {
-            salutation: null,
-            firstname: null,
-            lastname: null,
-            postalcode: null,
-            city: null,
-            birthday: null,
-            email: null
         },
-        responseInterpreter: function (responseData) {
+  }, {
+    STATE_INITIAL: 'state-initial',
+    STATE_PRIVACY: 'state-privacy',
+    STATE_SUCCESS: 'state-success',
+    permissions: null,
+    fields: {
+      salutation: null,
+      firstname: null,
+      lastname: null,
+      postalcode: null,
+      city: null,
+      birthday: null,
+      email: null,
+    },
+    responseInterpreter (responseData) {
             var interpretedResponse = {
                 code: responseData.code,
                 field: null,
@@ -271,9 +270,8 @@
             }
 
             return interpretedResponse;
-        }
-    });
+        },
+  });
 
   window.BaseNewsletterView = window.BaseNewsletterView || BurdaInfinite.views.base.BaseNewsletterView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

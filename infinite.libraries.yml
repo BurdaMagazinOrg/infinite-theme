@@ -69,7 +69,6 @@ infinite.init:
     - core/drupalSettings
     - core/jquery.once
     - core/picturefill
-    - core/jquery.cookie
     - blazy/blazy
 
 infinite.utils.ab-testing:

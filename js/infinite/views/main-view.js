@@ -1,5 +1,5 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-  'use strict';
+  
 
   BurdaInfinite.views.MainView = Backbone.View.extend({
     menuSidebarModel: {},
@@ -14,41 +14,38 @@
     modalSearchView: {},
 
     events: {},
-    initialize (pOptions) {
+    initialize(pOptions) {
       _.extend(this, pOptions);
 
-      //if ($.cookie != undefined) $.cookie.json = true;
-      if ($.timeago != undefined) $.timeago.settings.localeTitle = true;
-
-      if (_.isFunction(history.pushState)) Backbone.history.start({pushState: true});
+      if (_.isFunction(history.pushState)) Backbone.history.start({ pushState: true });
       AppConfig.initialLocation = Backbone.history.location.pathname + Backbone.history.location.search;
-      //TFM.Debug.start();
+      // TFM.Debug.start();
 
       this.initBeforeUnloadBehavior();
       this.createModels();
       this.createManagers();
       this.createViews();
 
-      //console.log("UUID", this.deviceModel.get('uuid'));
+      // console.log("UUID", this.deviceModel.get('uuid'));
 
       /**
        * Infinite Model Helper
        */
-      //TODO use for debugging
-      //this.listenTo(this.infiniteViewsModel, 'update', _.debounce(function (pType) {
+      // TODO use for debugging
+      // this.listenTo(this.infiniteViewsModel, 'update', _.debounce(function (pType) {
       //    console.info("global infiniteModel", this.infiniteViewsModel);
-      //}, 100, true), this);
+      // }, 100, true), this);
 
       /**
        * adjust sidebar if toolbar activated / displayed
        */
       setTimeout(_(function () {
-        if (typeof Drupal.toolbar !== "undefined" && typeof Drupal.toolbar.models.toolbarModel !== "undefined") {
+        if (typeof Drupal.toolbar !== 'undefined' && typeof Drupal.toolbar.models.toolbarModel !== 'undefined') {
           Backbone.listenTo(Drupal.toolbar.models.toolbarModel, 'change:offsets', _(this.onToolbarHandler).bind(this));
         }
       }).bind(this));
     },
-    initBeforeUnloadBehavior () {
+    initBeforeUnloadBehavior() {
       /**
        * fix the page reload problems
        */
@@ -61,14 +58,14 @@
           Waypoint.disableAll();
 
           $('body').css({
-            top: $(window).scrollTop() * -1 + 'px',
-            left: $(window).scrollLeft() * -1 + 'px'
-          })
+            top: `${$(window).scrollTop() * -1  }px`,
+            left: `${$(window).scrollLeft() * -1  }px`,
+          });
           window.scrollTo(0, 0);
-        }
+        };
       }
     },
-    createModels () {
+    createModels() {
       this.menuSidebarModel = new BaseSidebarModel();
       this.infiniteViewsModel = new BaseCollectionModel();
       this.modalSearchModel = new ModalSearchModel();
@@ -84,9 +81,9 @@
       BM.reuseModel(ModelIds.pageOffsetsModel, this.pageOffsetsModel);
       BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
     },
-    createManagers () {
+    createManagers() {
       new MarketingManager({
-        infiniteViewsModel: this.infiniteViewsModel
+        infiniteViewsModel: this.infiniteViewsModel,
       });
 
       /**
@@ -100,8 +97,8 @@
           initialLocation: AppConfig.initialLocation,
           gtmEventName: AppConfig.gtmEventName,
           gtmIndexEvent: AppConfig.gtmIndexEvent,
-          gtmIndexPosEvent: AppConfig.gtmIndexPosEvent
-        })
+          gtmIndexPosEvent: AppConfig.gtmIndexPosEvent,
+        }),
       });
 
       /**
@@ -112,11 +109,11 @@
         el: this.$el,
         infiniteViewsModel: this.infiniteViewsModel,
         model: new Backbone.Model({
-          initialLocation: AppConfig.initialLocation
-        })
+          initialLocation: AppConfig.initialLocation,
+        }),
       });
     },
-    createViews () {
+    createViews() {
       /**
        * InfiniteView - parse and create views by data-view-type
        * IMPORTANT - Needed for the initial parsing
@@ -126,11 +123,11 @@
         el: this.$el,
         model: this.infiniteViewsModel,
         deviceModel: this.deviceModel,
-        initialCall: true
+        initialCall: true,
       });
 
       this.infiniteView.delegateElements();
-      /** **/
+      /** * */
 
 
       /**
@@ -138,7 +135,7 @@
        */
       this.menuMainView = new MenuMainView({
         id: ViewIds.menuMainView,
-        el: $('#menu-main-navigation', this.$el)
+        el: $('#menu-main-navigation', this.$el),
       });
 
       /**
@@ -147,7 +144,7 @@
       this.menuSidebarView = new MenuSidebarView({
         id: ViewIds.menuSidebarView,
         el: $('#menu-sidebar', this.$el),
-        model: this.menuSidebarModel
+        model: this.menuSidebarModel,
       });
 
 
@@ -158,7 +155,7 @@
         id: ViewIds.modalSearchView,
         el: this.$el.find('#modal-search'),
         model: this.modalSearchModel,
-        infiniteModel: this.infiniteViewsModel
+        infiniteModel: this.infiniteViewsModel,
       });
 
       /**
@@ -169,9 +166,9 @@
       BM.reuseView(ViewIds.infiniteView, this.infiniteView);
       BM.reuseView(ViewIds.modalSearchView, this.modalSearchView);
     },
-    onToolbarHandler (pModel, pAttr) {
-      //pModel.set('orientation', 'horizontal');
-      this.pageOffsetsModel.add({id: 'offsetToolbar', offsets: pAttr, pageRelevant: true});
+    onToolbarHandler(pModel, pAttr) {
+      // pModel.set('orientation', 'horizontal');
+      this.pageOffsetsModel.add({ id: 'offsetToolbar', offsets: pAttr, pageRelevant: true });
     },
   });
 
