@@ -172,7 +172,7 @@
     $stickyOffset: $menu--main-navigation-min-height;
     position: -webkit-sticky;
     position: sticky;
-    top: 10px;
+    top: $sticky-padding;
     padding-top: $stickyOffset;
     margin-top: -$stickyOffset;
     

@@ -7,7 +7,7 @@
       basehost: window.location.hostname.split('.')[0],
       cookieReferrerName: '_referrer',
       isGoogleBot: navigator.userAgent.toLowerCase().indexOf('googlebot') > 0,
-      useWhatsapp: (!!((navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i)))),
+      useWhatsapp: !!navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i),
     },
     breakpoints: {},
     breakpointValues: [],

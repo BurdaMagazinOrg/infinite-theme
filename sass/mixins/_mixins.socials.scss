@@ -1,7 +1,7 @@
 @mixin socials-vertical-bar() {
   $stickyOffset: $menu--main-navigation-min-height;
   position: sticky;
-  top: 10px;
+  top: $sticky-padding;
   padding-top: $stickyOffset;
   margin-top: -$stickyOffset;
   
