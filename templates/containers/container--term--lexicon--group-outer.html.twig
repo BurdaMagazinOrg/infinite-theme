@@ -1,10 +1,5 @@
 <div class="item-content__block item-group--outer-wrapper">
     <div class="item-group--outer">
-
-        {{ children }}
-
-        <span class="cet"></span>
-
         <aside class="socials socials-bar socials-vertical-bar">
             {% block socials_vertical_bar %}
                 {% embed '@infinite/embeds/social_icons.html.twig' with {
@@ -19,5 +14,6 @@
             {% endblock %}
         </aside>
 
+        {{ children }}
     </div>
 </div>
