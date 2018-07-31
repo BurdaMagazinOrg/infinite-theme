@@ -38,6 +38,8 @@
 }
 
 .socials-vertical-bar {
+  @include socials-vertical-bar();
+  
   .item-social {
     @extend %socials-vertical-bar-item;
   }

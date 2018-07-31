@@ -1,16 +1,13 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
   BurdaInfinite.models.DeviceModel = Backbone.Model.extend({
     defaults: {
       isActive: false,
       uid: -1,
-      uid_cookie_name: "tc_ptid",
-      basehost: window.location.hostname.split(".")[0],
+      uid_cookie_name: 'tc_ptid',
+      basehost: window.location.hostname.split('.')[0],
       cookieReferrerName: '_referrer',
       isGoogleBot: navigator.userAgent.toLowerCase().indexOf('googlebot') > 0,
-      useWhatsapp: ((navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i)) ? true : false)
+      useWhatsapp: !!navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i),
     },
     breakpoints: {},
     breakpointValues: [],
@@ -22,8 +19,7 @@
     deviceKeys: [],
     lastBreakpoint: {},
     lastDeviceBreakpoint: {},
-    initialize: function (pAttributes, pOptions) {
-      //var tmpOptions = _.extend(this.defaults, pOptions);
+    initialize(pAttributes, pOptions) {
       Backbone.Model.prototype.initialize.call(this, pAttributes, pOptions);
 
       this.breakpoints = pOptions.Breakpoints;
@@ -36,12 +32,12 @@
       this.deviceBreakpointValues = [];
       this.deviceBreakpointKeys = [];
 
-      this.set("uuid", this.getCookie(this.get("uid_cookie_name")));
-      this.set("cookieReferrerName", this.get("basehost") + this.getReferrerCookieName());
+      this.set('uuid', window.readCookie(this.get('uid_cookie_name')));
+      this.set('cookieReferrerName', this.get('basehost') + this.getReferrerLSName());
       this.set('breakpoints', new Backbone.Collection());
       this.set('deviceBreakpoints', new Backbone.Collection());
 
-      this.writeReferrerCookie();
+      this.writeReferrerLS();
       this.createBreakpoints();
       this.createDeviceBreakpoints();
       this.checkActiveBreakpoint();
@@ -54,13 +50,13 @@
 
 
       this.set('isActive', this.getBreakpoints().length > 0);
-      // console.log("deviceModelInfo", JSON.parse(this.getReferrerCookie()));
+      // console.log('deviceModelInfo', JSON.parse(this.getReferrerLS()), this);
     },
-    createBreakpoints: function () {
-      var tmpModelItem = {},
+    createBreakpoints() {
+      let tmpModelItem = {},
         tmpMinVal = 0,
         tmpMaxVal = 0,
-        tmpKey = "";
+        tmpKey = '';
 
       _.each(this.breakpointValues, _.bind(function (pVal, pIndex) {
         tmpKey = this.breakpointKeys[pIndex];
@@ -68,7 +64,7 @@
         tmpModelItem = {
           id: tmpKey,
           min_width: tmpMinVal,
-          active: false
+          active: false,
         };
 
         if (pIndex < this.breakpointValues.length - 1) {
@@ -79,9 +75,9 @@
         this.getBreakpoints().add(tmpModelItem);
       }, this));
     },
-    createDeviceBreakpoints: function () {
-      var tmpModelItem = {},
-        tmpKey = "",
+    createDeviceBreakpoints() {
+      let tmpModelItem = {},
+        tmpKey = '',
         tmpNextKey;
 
 
@@ -93,7 +89,7 @@
           id: tmpKey,
           min_width: this.getBreakpoints().get(pVal).get('min_width'),
           active: false,
-          mapping: pVal
+          mapping: pVal,
         };
 
         if (pIndex < this.deviceValues.length - 1) {
@@ -105,11 +101,10 @@
         this.deviceBreakpointKeys.push(tmpKey);
         this.getDeviceBreakpoints().add(tmpModelItem);
       }, this));
-
     },
-    checkActiveBreakpoint: function () {
-      var tmpSize = {width: $(window).width(), height: $(window).height()},
-        tmpKey = "",
+    checkActiveBreakpoint() {
+      let tmpSize = { width: $(window).width(), height: $(window).height() },
+        tmpKey = '',
         tmpBreakpoint = null,
         tmpValues = _.clone(this.breakpointValues).reverse(),
         tmpKeys = _.clone(this.breakpointKeys).reverse();
@@ -117,8 +112,8 @@
       /**
        * reset active state
        */
-      _.each(this.getBreakpoints().models, _.bind(function (pItem) {
-        if (pItem.has('active')) pItem.set({active: false}, {silent: true});
+      _.each(this.getBreakpoints().models, _.bind((pItem) => {
+        if (pItem.has('active')) pItem.set({ active: false }, { silent: true });
       }, this));
 
       /**
@@ -128,7 +123,7 @@
         if (tmpSize.width >= pVal) {
           tmpKey = tmpKeys[pIndex];
           tmpBreakpoint = this.getBreakpoints().get(tmpKey);
-          tmpBreakpoint.set({active: true}, {silent: true});
+          tmpBreakpoint.set({ active: true }, { silent: true });
           if (tmpBreakpoint.id != this.lastBreakpoint.id) {
             this.getBreakpoints().trigger('change:active');
           }
@@ -137,18 +132,18 @@
         return tmpSize.width < pVal;
       }, this));
     },
-    checkActiveDevice: function () {
-      var tmpSize = {width: $(window).width(), height: $(window).height()},
+    checkActiveDevice() {
+      let tmpSize = { width: $(window).width(), height: $(window).height() },
         tmpValues = _.clone(this.deviceBreakpointValues).reverse(),
         tmpKeys = _.clone(this.deviceBreakpointKeys).reverse(),
         tmpBreakpoint = null,
-        tmpKey = "";
+        tmpKey = '';
 
       /**
        * reset active state
        */
-      _.each(this.getDeviceBreakpoints().models, _.bind(function (pItem) {
-        if (pItem.has('active')) pItem.set({active: false}, {silent: true});
+      _.each(this.getDeviceBreakpoints().models, _.bind((pItem) => {
+        if (pItem.has('active')) pItem.set({ active: false }, { silent: true });
       }, this));
 
       /**
@@ -159,7 +154,7 @@
           tmpKey = tmpKeys[pIndex];
 
           tmpBreakpoint = this.getDeviceBreakpoints().get(tmpKey);
-          tmpBreakpoint.set({active: true}, {silent: true});
+          tmpBreakpoint.set({ active: true }, { silent: true });
           if (tmpBreakpoint.id != this.lastDeviceBreakpoint.id) {
             this.getDeviceBreakpoints().trigger('change:active', tmpBreakpoint);
           }
@@ -168,64 +163,64 @@
         return tmpSize.width < pVal;
       }, this));
     },
-    writeReferrerCookie: function () {
-      var tmpParams = this.getURLParams(),
-        tmpCookie = $.extend(this.getCookie(this.getReferrerCookieName()), {}),
+    writeReferrerLS() {
+      let tmpParams = this.getURLParams(),
+        tmpReferrerLS = $.extend(this.getLS(this.getReferrerLSName()), {}),
         tmpReferrer = document.referrer,
         tmpHostname = this.parseUrl(tmpReferrer).hostname,
         tmpUtmCampaign = tmpParams.utm_campaign;
 
-      tmpCookie.referrer = tmpReferrer;
-      tmpCookie.currentUtmCampaign = tmpUtmCampaign; //could be undefined if no campaign in usage
+      tmpReferrerLS.referrer = tmpReferrer;
+      tmpReferrerLS.currentUtmCampaign = tmpUtmCampaign; // could be undefined if no campaign in usage
 
-      if (tmpUtmCampaign != "" && tmpUtmCampaign != undefined) {
-        tmpCookie.lastKnownUtmCampaign = tmpUtmCampaign;
+      if (tmpUtmCampaign != '' && tmpUtmCampaign != undefined) {
+        tmpReferrerLS.lastKnownUtmCampaign = tmpUtmCampaign;
       }
 
-      tmpCookie.referrerIsMe = tmpReferrer != "" && tmpHostname.indexOf(this.get('basehost')) > -1;
-      tmpCookie.referrerIsFb = tmpHostname.indexOf("facebook") > -1;
+      tmpReferrerLS.referrerIsMe = tmpReferrer != '' && tmpHostname.indexOf(this.get('basehost')) > -1;
+      tmpReferrerLS.referrerIsFb = tmpHostname.indexOf('facebook') > -1;
 
-      //counting clicks after FB referrer - needed for the FB layer/ads/likegates policy
-      if (tmpCookie.referrerIsFb) {
-        tmpCookie.comesFromFB = true;
-        tmpCookie.clicksAfterFbReferrer = 0;
-      } else if (tmpCookie.comesFromFB == true) {
-        tmpCookie.clicksAfterFbReferrer++;
+      // counting clicks after FB referrer - needed for the FB layer/ads/likegates policy
+      if (tmpReferrerLS.referrerIsFb) {
+        tmpReferrerLS.comesFromFB = true;
+        tmpReferrerLS.clicksAfterFbReferrer = 0;
+      }
+      else if (tmpReferrerLS.comesFromFB == true) {
+        tmpReferrerLS.clicksAfterFbReferrer++;
       }
 
-      this.setCookieValue(this.getReferrerCookieName(), JSON.stringify(tmpCookie));
+      this.setLSValue(this.getReferrerLSName(), JSON.stringify(tmpReferrerLS));
     },
-    parseUrl: function (pUrl) {
-      var a = document.createElement('a');
+    parseUrl(pUrl) {
+      const a = document.createElement('a');
       a.href = pUrl;
       return a;
     },
-    setCookieValue: function (pCookieName, pValue, pOptions) {
-      var tmpOptions = _.extend({path: '/'}, pOptions);
-      $.cookie(pCookieName, pValue, tmpOptions);
+    setLSValue(pCookieName, pValue, pOptions) {
+      const tmpOptions = _.extend({ path: '/' }, pOptions);
+      window.localStorage.setItem(pCookieName, pValue, tmpOptions);
     },
-    getCookie: function (pCookieName) {
-      return $.cookie(pCookieName);
+    getLS(pCookieName) {
+      return window.localStorage.getItem(pCookieName);
     },
-    getReferrerCookieName: function () {
-      return this.get("cookieReferrerName");
+    getReferrerLSName() {
+      return this.get('cookieReferrerName');
     },
-    getReferrerCookie: function () {
-      return $.cookie(this.getReferrerCookieName());
+    getReferrerLS() {
+      return window.localStorage.getItem(this.getReferrerLSName());
     },
-    getURLParams: function (pParam) {
-      return _.object(_.compact(_.map(location.search.slice(1).split('&'), function (item) {
+    getURLParams(pParam) {
+      return _.object(_.compact(_.map(location.search.slice(1).split('&'), (item) => {
         if (item) return item.split('=');
       })));
     },
-    getBreakpoints: function () {
+    getBreakpoints() {
       return this.get('breakpoints');
     },
-    getDeviceBreakpoints: function () {
+    getDeviceBreakpoints() {
       return this.get('deviceBreakpoints');
-    }
+    },
   });
 
   window.DeviceModel = window.DeviceModel || BurdaInfinite.models.DeviceModel;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

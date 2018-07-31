@@ -91,6 +91,10 @@ stylesheets-remove:
   - core/modules/system/css/components/tree-child.module.css
   - core/modules/views/css/views.module.css
   - core/modules/system/css/components/position-container.module.css
+  - core/modules/system/css/components/system-status-counter.css
+  - core/modules/system/css/components/system-status-report-counters.css
+  - core/modules/system/css/components/system-status-report-general-info.css
+  - profiles/contrib/thunder/modules/thunder_media/css/bartik_slick_fix.css
   - "@paragraphs_starterkit/css/paragraphs_starterkit.css"
   - "@nexx_integration/css/styles.css"
   - "@hm_newsletter/css/hm_newsletter.css"
@@ -98,5 +102,5 @@ stylesheets-remove:
   - "@imagepin/css/extensions/imagepin.slick.css"
   - "@imagepin/css/imagepin.css"
 
-#libraries-override:
-#  ad_integration/ad_helper: false
+libraries-override:
+ blazy/blazy: infinite/blazy

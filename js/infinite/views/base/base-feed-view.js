@@ -1,6 +1,5 @@
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
+  'use strict';
 
   BurdaInfinite.views.base.BaseFeedView = BaseDynamicView.extend({
     context: $(window),
@@ -12,7 +11,7 @@
     atBottomOfPage: false,
     fallbackNaviHeight: 56,
     naviHeight: 0,
-    initialize: function (pOptions) {
+    initialize (pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
       this.naviHeight = document.getElementById('menu-main-navigation').offsetHeight || this.fallbackNaviHeight;
@@ -25,7 +24,7 @@
       this.listenTo(this.model, "change:is_disabled", this.onDisableHandler);
       this.listenTo(this.model, "reset", this.onResetHandler, this);
     },
-    rebuildFeed: function () {
+    rebuildFeed () {
       if (this.infinite !== null) this.infinite.destroy();
 
       this.infinite = new Waypoint.Infinite({
@@ -39,19 +38,19 @@
         }
       });
     },
-    executeCallback: function () {
+    executeCallback () {
       this.lastInfiniteItem = this.$el.find('.infinite-item:last').length > 0 ? this.$el.find('.infinite-item:last') : this.$el;
       if (this.preloader != null) this.preloader.hide(true, true);
       this.preloader = new SpinnerCubeView({el: this.lastInfiniteItem});
     },
-    preAppendCallback: function (pItem) {
+    preAppendCallback (pItem) {
       //scroll to new appended article if someone scroll to the bottom and saw the preloader
       var atBottomOfPageCheck = ((window.scrollY + window.innerHeight) === document.body.clientHeight);
       if (atBottomOfPageCheck) {
         this.atBottomOfPage = true;
       }
     },
-    appendCallback: function ($appendedElement) {
+    appendCallback ($appendedElement) {
       var appendedElement = $appendedElement[0];
 
       if (this.preloader != null) {
@@ -62,7 +61,7 @@
       if (this.atBottomOfPage === true && $('body').hasClass('page-article')) {
         $('html, body').animate({scrollTop: (appendedElement.offsetTop - this.naviHeight)}, {
           duration: 500,
-          easing: 'easeInOutCubic'
+          easing: 'swing'
         });
 
         this.atBottomOfPage = false;
@@ -70,7 +69,7 @@
 
       this.parseInfiniteView($appendedElement, {modelList: this.model, initialDOMItem: false});
     },
-    onDisableHandler: function (pDisabled) {
+    onDisableHandler (pDisabled) {
       if (this.infinite == null || this.infinite.waypoint == undefined) return;
 
       if (pDisabled) {
@@ -79,10 +78,10 @@
         this.infinite.waypoint.enable();
       }
     },
-    onResetHandler: function () {
+    onResetHandler () {
       this.clear();
     },
-    appendElement: function (pElement) {
+    appendElement (pElement) {
       this.$feedItemsContainer.append(pElement).fadeIn();
 
       if (this.infinite == null) {
@@ -91,21 +90,20 @@
         this.refreshFeed();
       }
     },
-    refreshFeed: function () {
+    refreshFeed () {
       this.infinite.refresh();
     },
-    clear: function () {
+    clear () {
       this.$feedItemsContainer.empty();
       if (this.infinite != null) {
         this.infinite.destroy();
       }
     },
-    destroy: function () {
+    destroy () {
       this.infinite.destroy();
       BaseDynamicView.prototype.destroy.call(this);
-    }
+    },
   });
 
   window.BaseFeedView = window.BaseFeedView || BurdaInfinite.views.base.BaseFeedView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));

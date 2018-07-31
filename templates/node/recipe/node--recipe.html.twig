@@ -18,6 +18,19 @@
         </div>
         <div class="item-content__block item-group--outer-wrapper">
             <div class="item-group--outer">
+                <aside class="socials socials-bar socials-vertical-bar">
+                    {% block socials_vertical_bar %}
+                        {% embed '@freundin_infinite/embeds/social_icons.html.twig' with {
+                        'url': url,
+                        'label': label,
+                        'twitter_share_via': twitter_share_via,
+                        'email_share_text': email_share_text,
+                        'email_subject': email_subject,
+                        'whatsapp_share_text': whatsapp_share_text,
+                        } %}
+                        {% endembed %}
+                    {% endblock %}
+                </aside>
                 <div class="item-content__block item-group--inner">
                     <div class="item-content__row--sidebar">
                         <div class="item-content__row-col col--left">
@@ -115,7 +128,7 @@
 
                         <div class="item-content__row-col col--right">
                             {% if content.field_sidebar_blocks is not empty %}
-                                <div class="item-sticky" data-view-type="stickyView">
+                                <div class="item-sticky">
                                 {% block content_sidebar %}
                                     {{ content.field_sidebar_blocks }}
                                     </div>
@@ -124,23 +137,6 @@
                         </div>
                     </div>
                 </div>
-
-                <span class="cet"></span>
-
-                <aside class="socials socials-bar socials-vertical-bar" data-view-type="stickyView">
-                    {% block socials_vertical_bar %}
-                        {% embed '@freundin_infinite/embeds/social_icons.html.twig' with {
-                        'url': url,
-                        'label': label,
-                        'twitter_share_via': twitter_share_via,
-                        'email_share_text': email_share_text,
-                        'email_subject': email_subject,
-                        'whatsapp_share_text': whatsapp_share_text,
-                        } %}
-                        {% endembed %}
-                    {% endblock %}
-                </aside>
-
             </div>
         </div>
     </div>
