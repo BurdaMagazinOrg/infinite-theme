@@ -1,6 +1,11 @@
 @mixin socials-vertical-bar() {
+  @media (max-width: $screen-xs-max) {
+    position: absolute;
+  }
+
   @media (min-width: $screen-sm-min) {
     $stickyOffset: $menu--main-navigation-min-height;
+    float: left;
     position: sticky;
     top: $sticky-padding;
     padding-top: $stickyOffset;
