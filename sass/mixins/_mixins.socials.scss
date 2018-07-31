@@ -27,11 +27,11 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    width: $socials-media-horizontal-bar-size-tablet;
+    width: $socials-vertical-bar-size-tablet;
   }
 
   @media (min-width: $screen-md-min) {
-    width: $socials-media-horizontal-bar-size-desktop;
+    width: $socials-vertical-bar-size-desktop;
   }
 }
 
