@@ -5,8 +5,12 @@
 
 function ABTest(feature) {
   this.init = () => {
-    this.assignedGroups = JSON.parse(window.localStorage.getItem('abTests')) || [];
-    this.abTest = { feature };
+    this.assignedGroups = this.getAbGroupFromLocalStorage() || [];
+    this.abTest = {
+      feature,
+      featureActive: true,
+      abTestActive: true,
+    };
     this.abTest.group = this.getABGroup() || this.setABGroup();
 
     if (!this.getABGroup()) {
@@ -15,6 +19,8 @@ function ABTest(feature) {
     }
     window.dataLayer.push({ event: 'executeABTest', abTest: this.abTest });
   };
+
+  this.getAbGroupFromLocalStorage = () => JSON.parse(window.localStorage.getItem('abTests'));
 
   this.setABGroup = () => (Math.random() <= 0.5 ? 'a' : 'b');
 
