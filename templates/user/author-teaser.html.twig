@@ -41,9 +41,7 @@
             {% if timestamp %}
                 {% if use_absolute_date %}
                     <time datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp|format_date('custom', 'd. F Y') }}</time>
-                {% else %}
-                    <time class="text-timestamp" datetime="{{ timestamp|format_date('html_datetime') }}" title="">{{ timestamp }}</time>
-                {% endif %}
+                {%
             {% endif %}
         </div>
     {% endif %}
