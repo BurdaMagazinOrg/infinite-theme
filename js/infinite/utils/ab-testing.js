@@ -1,14 +1,13 @@
+/**
+ * @file
+ * Sets group A/B for A/B Tests.
+ */
+
 function ABTest(feature) {
   this.init = () => {
-    this.assignedGroups = JSON.parse(window.localStorage.getItem('abTests')) || [];
-    this.abTest = {
-      feature,
-      featureActive: true,
-      abTestActive: true,
-    };
+    this.assignedGroups = this.getAllTests() || [];
+    this.abTest = { feature };
     this.abTest.group = this.getABGroup() || this.setABGroup();
-
-    Object.assign(this.abTest, this.getTestFromLocalStorage());
 
     if (!this.getABGroup()) {
       this.assignedGroups.push(this.abTest);
@@ -17,8 +16,6 @@ function ABTest(feature) {
     window.dataLayer.push({ event: 'executeABTest', abTest: this.abTest });
   };
 
-  this.getTestFromLocalStorage = () => this.assignedGroups.find(item => item.feature === this.abTest.feature);
-
   this.setABGroup = () => (Math.random() <= 0.5 ? 'a' : 'b');
 
   this.getABGroup = () => {
@@ -26,11 +23,13 @@ function ABTest(feature) {
     return !!result && result.group;
   };
 
+  this.getAllTests = () => JSON.parse(window.localStorage.getItem('abTests'));
+  this.getTestObject = () => this.assignedGroups.find(item => item.feature === this.abTest.feature);
+
   this.showUserContent = () => {
-    const abSettingsAllow = !this.abTest.abTestActive
-    || (this.abTest.abTestActive && this.getTestFromLocalStorage().group === 'a');
-    const active = this.abTest.featureActive && abSettingsAllow;
-    return abSettingsAllow && active;
+    const abTest = this.getTestObject();
+    const abTestAllows = !abTest.abTestActive || this.abTest.group === 'a';
+    return abTest.featureActive && abTestAllows;
   };
 
   this.init();
