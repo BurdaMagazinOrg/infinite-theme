@@ -5,7 +5,7 @@
 
 function ABTest(feature) {
   this.init = () => {
-    this.assignedGroups = JSON.parse(window.localStorage.getItem('abTests')) || [];
+    this.assignedGroups = this.getAllTests() || [];
     this.abTest = { feature };
     this.abTest.group = this.getABGroup() || this.setABGroup();
 
@@ -21,6 +21,15 @@ function ABTest(feature) {
   this.getABGroup = () => {
     const result = this.assignedGroups.find(obj => obj.feature === this.abTest.feature, this);
     return !!result && result.group;
+  };
+
+  this.getAllTests = () => JSON.parse(window.localStorage.getItem('abTests'));
+  this.getTestObject = () => this.assignedGroups.find(item => item.feature === this.abTest.feature);
+
+  this.showUserContent = () => {
+    const abTest = this.getTestObject();
+    const abTestAllows = !abTest.abTestActive || this.abTest.group === 'a';
+    return abTest.featureActive && abTestAllows;
   };
 
   this.init();
