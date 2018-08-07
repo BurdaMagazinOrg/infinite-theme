@@ -43,7 +43,7 @@
 {% block content_block %}
     {% if content | render %}
         {% if content.field_title|render %}
-            <div class="text-headline item-title">{{ content.field_title  | plain_text }}</div>
+            <h3 class="text-headline item-title">{{ content.field_title  | plain_text }}</h3>
         {% endif %}
         <div class="container-content">
             {{ content|without('field_title') }}
