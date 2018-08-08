@@ -86,6 +86,7 @@
     onOpenHandler() {
       this.enableBindings();
       this.$el.show().addClass('in');
+      jQuery('body').addClass('modal-open');
       setTimeout($.proxy(function () {
         this.$searchInputField.trigger('focus');
       }, this), 350);
@@ -95,6 +96,7 @@
       this.disableBindings();
       this.activateScrollBehavior();
       this.$el.hide().removeClass('in');
+      jQuery('body').removeClass('modal-open');
       this.$searchInputField.focusout();
       setTimeout($.proxy(function () {
         this.clear();
