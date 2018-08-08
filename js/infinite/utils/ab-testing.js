@@ -27,7 +27,7 @@ function ABTest(feature) {
   this.getTestObject = () => this.assignedGroups.find(item => item.feature === this.abTest.feature);
 
   this.showUserContent = () => {
-    const abTest = this.getTestObject();
+    const abTest = Object.assign({ featureActive: true, abTestActive: true }, this.getTestObject());
     const abTestAllows = !abTest.abTestActive || this.abTest.group === 'a';
     return abTest.featureActive && abTestAllows;
   };
