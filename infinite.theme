@@ -4,6 +4,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\infinite_media\MediaHelper;
+use Drupal\views\Views;
 use Psy\Util\Json;
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
@@ -275,6 +276,21 @@ function infinite_preprocess_paragraph(&$variables) {
     $media = $variables['elements']['field_media']['0']['#media'];
     $variables['media_bundle'] = $media->bundle();
   }
+
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  switch ($paragraph->bundle()) {
+    case 'advertising_products_embed':
+      $view = Views::getView('advertising_products');
+      $view->setItemsPerPage((int) $paragraph->get('field_products_count')->value);
+      $view->setArguments([
+        'cat' => $paragraph->get('field_advertising_products_categ')->value
+      ]);
+
+      $variables['content']['embed_view'] = $view->render('embed_in_advertising_products_paragraph');
+      break;
+  }
+
 }
 
 function infinite_preprocess_field(&$variables) {
