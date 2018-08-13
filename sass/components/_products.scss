@@ -1,7 +1,10 @@
-.item-paragraph--advertising-products-paragraph.item-paragraph--default .item-product {
-  @include product__item--default();
-  @include product__item--horizontal-block();
-}
+.item-paragraph--advertising-products-paragraph.item-paragraph--default,
+.item-paragraph--advertising-products-embed {
+  .item-product {
+    @include product__item--default();
+    @include product__item--horizontal-block();
+  }
+} 
 
 .item-product--single {
   @include product__item-text--single-product();
