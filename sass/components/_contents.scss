@@ -50,6 +50,10 @@
   @extend %item-content--user;
 }
 
+.item-content--adv-products {
+  @extend %item-content--adv-products;
+}
+
 .item-content .container-row {
   margin-top: $gap-section;
 

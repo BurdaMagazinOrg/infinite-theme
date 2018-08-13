@@ -1,5 +1,4 @@
 @mixin content__header-center() {
-
 }
 
 @mixin item-content__header() {
@@ -86,7 +85,8 @@
       padding-right: 0;
     }
 
-    & > .item-paragraph--small, & > .item-paragraph--middle {
+    & > .item-paragraph--small,
+    & > .item-paragraph--middle {
       @include region--fixed-content();
       padding-left: $article-socials-column-width;
     }
@@ -103,7 +103,6 @@
   }
 
   @media (min-width: $screen-md-min) {
-
     .socials-vertical-bar {
       margin-left: -$article-socials-column-width;
     }
@@ -114,7 +113,10 @@
 
     //todo check if > necessary
     & > .item-paragraph--small,
-    & > .item-group--outer-wrapper > .item-group--outer > .item-paragraph--small,
+    &
+      > .item-group--outer-wrapper
+      > .item-group--outer
+      > .item-paragraph--small,
     .item-group--outer > .a-lift__article-container-bottom,
     .item-group--outer > .item-content__block--tags,
     .item-group--outer > .item-content__block--pager,
@@ -173,15 +175,17 @@
     top: $sticky-padding;
     padding-top: $stickyOffset;
     margin-top: -$stickyOffset;
-    
+
     .toolbar-fixed & {
-      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--closed;
+      $stickyOffset: $menu--main-navigation-min-height +
+        $toolbar-administration__height--closed;
       padding-top: $stickyOffset;
       margin-top: -$stickyOffset;
     }
 
     .toolbar-tray-open & {
-      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--open;
+      $stickyOffset: $menu--main-navigation-min-height +
+        $toolbar-administration__height--open;
       padding-top: $stickyOffset;
       margin-top: -$stickyOffset;
     }
@@ -265,7 +269,6 @@
 
     .block--archive-tree-ym {
       & > ul {
-
         & > li {
           &:first-child {
             margin-top: 0;
@@ -285,7 +288,7 @@
 
   .col--right {
     .title--list {
-      color: $archive__teaser-list-title-color //$gray-base;
+      color: $archive__teaser-list-title-color; //$gray-base;
     }
   }
 
@@ -404,7 +407,8 @@
   }
 
   .item-content__content {
-    & > .item-content__block:first-child, & > .item-block:first-child {
+    & > .item-content__block:first-child,
+    & > .item-block:first-child {
       margin-top: 0;
     }
   }
@@ -423,7 +427,6 @@
 
   //position socials on top
   @media (max-width: $screen-xs-max) {
-
     .item-content__header {
       padding: $article__header-padding-mobile;
     }
@@ -431,7 +434,14 @@
     //TODO check include - multi @usage of media
     .item-content__content {
       //padding-top: $socials-vertical-bar-size-mobile + $gap-v-region-mobile;
-      @include padding--v-region(top, (($gap-v-region-mobile*2), ($gap-v-region-tablet*2), ($gap-v-region-desktop*2)));
+      @include padding--v-region(
+        top,
+        (
+          ($gap-v-region-mobile * 2),
+          ($gap-v-region-tablet * 2),
+          ($gap-v-region-desktop * 2)
+        )
+      );
     }
 
     .item-group--outer-wrapper .item-group--outer {
@@ -490,8 +500,15 @@
 
   .col--left {
     .item-paragraph--text:first-child {
-      h2, .title--horoscopes {
-        @include title--article(($title--article-mobile - 3px, $title--article-tablet, $title--article-desktop - 5px));
+      h2,
+      .title--horoscopes {
+        @include title--article(
+          (
+            $title--article-mobile - 3px,
+            $title--article-tablet,
+            $title--article-desktop - 5px
+          )
+        );
       }
 
       p {
@@ -692,7 +709,8 @@
     .list__alphabetical {
       margin-top: $gap-size-xs;
 
-      h2, h3 {
+      h2,
+      h3 {
         @include region--full-content();
       }
     }
@@ -739,6 +757,66 @@
 
     .list__alphabetical {
       margin-top: $gap-size-xxxl;
+    }
+  }
+}
+
+@mixin item-content--adv-products() {
+  position: relative;
+
+  .adv-products__back-btn {
+    @include button;
+    @include button--md;
+    @include button--lined-gray;
+    position: absolute;
+    top: 15px;
+    z-index: 5;
+  }
+
+  .grid {
+    margin-top: $gap-size-sm;
+  }
+
+  .item-ecommerce {
+    &:after,
+    &:before {
+      content: none;
+    }
+
+    .text-headline {
+      margin-top: 0;
+      overflow: hidden;
+      height: $product__headline-height-mobile--adv-products;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .item-product__wrapper {
+      padding: 15px 10px 15px 10px;
+
+      .text-headline {
+        display: none;
+      }
+    }
+
+    .item-ecommerce .text-price--current {
+      display: inline-block;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .item-ecommerce {
+      .text-headline {
+        height: $product__headline-height-tablet--adv-products;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .item-ecommerce {
+      .text-headline {
+        height: $product__headline-height-desktop--adv-products;
+      }
     }
   }
 }

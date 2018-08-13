@@ -1,0 +1,50 @@
+{% set classes = [
+'region-infinite-block',
+'region-full-content',
+'infinite-item',
+'item-content',
+'item-content--adv-products',
+'adv-products--overview',
+] %}
+
+{% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+{% set attributes = attributes.setAttribute('data-tr-container-type', 'cv') %}
+
+<div {{ attributes.addClass(classes) }}>
+    {{ attachment_before }}
+
+    {% block content_header_block %}
+        <div class="item-content__header">
+            <div class="item-media--header item-media--header-plain">
+                <div class="item-media__ratio-wrapper">
+                    <div class="caption item-media__caption">
+                        <h1 class="text-title text-headline">{{ title }}</h1>
+                    </div>
+                </div>
+            </div>
+
+            {% if header.entity_block %}
+                {{ header.entity_block }}
+            {% endif %}
+
+        </div>
+    {% endblock %}
+
+    {% if header %}
+        {{ header }}
+    {% endif %}
+
+    <div class="item-content__content">
+        <div class="adv-products__rows">
+            {{ rows }}
+        </div>
+    </div>
+
+    {% if footer %}
+        {{ footer }}
+    {% endif %}
+
+    {% if attachment_after %}
+        {{ attachment_after }}
+    {% endif %}
+</div>
