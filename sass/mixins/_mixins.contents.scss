@@ -172,22 +172,16 @@
     $stickyOffset: $menu--main-navigation-min-height;
     position: -webkit-sticky;
     position: sticky;
-    top: $sticky-padding;
-    padding-top: $stickyOffset;
-    margin-top: -$stickyOffset;
+    top: $stickyOffset + $sticky-padding;
 
     .toolbar-fixed & {
-      $stickyOffset: $menu--main-navigation-min-height +
-        $toolbar-administration__height--closed;
-      padding-top: $stickyOffset;
-      margin-top: -$stickyOffset;
+      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--closed;
+      top: $stickyOffset + $sticky-padding;
     }
 
     .toolbar-tray-open & {
-      $stickyOffset: $menu--main-navigation-min-height +
-        $toolbar-administration__height--open;
-      padding-top: $stickyOffset;
-      margin-top: -$stickyOffset;
+      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--open;
+      top: $stickyOffset + $sticky-padding;
     }
   }
 
