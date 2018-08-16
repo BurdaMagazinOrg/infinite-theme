@@ -7,16 +7,16 @@
     $stickyOffset: $menu--main-navigation-min-height;
     float: left;
     position: sticky;
-    top: $sticky-padding + $padding;
+    top: $stickyOffset + $sticky-padding;
 
     .toolbar-fixed & {
       $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--closed;
-      top: $sticky-padding + $padding;
+      top: $stickyOffset + $sticky-padding;
     }
 
     .toolbar-tray-open & {
       $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--open;
-      top: $sticky-padding + $padding;
+      top: $stickyOffset + $sticky-padding;
     }
   }
 
