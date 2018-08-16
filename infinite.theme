@@ -286,8 +286,10 @@ function infinite_preprocess_paragraph(&$variables) {
       $view->setArguments([
         'cat' => $paragraph->get('field_advertising_products_categ')->value
       ]);
-
-      $variables['content']['embed_view'] = $view->render('embed_in_advertising_products_paragraph');
+      $displayMode = $variables['view_mode'] === 'facebook_instant_articles_rss'
+        ? 'fia_embed_in_advertising_products_paragraph'
+        : 'embed_in_advertising_products_paragraph';
+      $variables['content']['embed_view'] = $view->render($displayMode);
       break;
   }
 
