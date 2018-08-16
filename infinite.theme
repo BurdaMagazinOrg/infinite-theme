@@ -290,9 +290,19 @@ function infinite_preprocess_paragraph(&$variables) {
       $view->setArguments([
         'cat' => $paragraph->get('field_advertising_products_categ')->value
       ]);
+
+      // add required cache tags
+      if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        // You can get nid and anything else you need from the node object.
+        $variables['#cache']['tags'][] = sprintf('node/%s', $node->id());
+      } elseif ($term = \Drupal::routeMatch()->getParameter('taxonomy_term')) {
+        $variables['#cache']['tags'][] = sprintf('taxonomy_term/%s', $term->id());
+      }
+      
       $displayMode = $variables['view_mode'] === 'facebook_instant_articles_rss'
         ? 'fia_embed_in_advertising_products_paragraph'
         : 'embed_in_advertising_products_paragraph';
+
       $variables['content']['embed_view'] = $view->render($displayMode);
       break;
   }
