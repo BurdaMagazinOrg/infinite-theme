@@ -298,7 +298,8 @@ function infinite_preprocess_paragraph(&$variables) {
       } elseif ($term = \Drupal::routeMatch()->getParameter('taxonomy_term')) {
         $variables['#cache']['tags'][] = sprintf('taxonomy_term/%s', $term->id());
       }
-      
+      $variables['#cache']['tags'][] = sprintf('paragraph:%s', $paragraph->id());
+
       $displayMode = $variables['view_mode'] === 'facebook_instant_articles_rss'
         ? 'fia_embed_in_advertising_products_paragraph'
         : 'embed_in_advertising_products_paragraph';
