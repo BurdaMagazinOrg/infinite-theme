@@ -46,6 +46,7 @@ infinite.libs:
     js/infinite/libs/shortcuts/sticky.js: {}
     js/infinite/libs/shortcuts/inview.js: {}
     js/infinite/libs/jquery.inview.js: {}
+    ../../../core/assets/vendor/picturefill/picturefill.min.js: {preprocess: false}
 
 infinite.init:
   css:
@@ -68,7 +69,7 @@ infinite.init:
     - core/drupal.ajax
     - core/drupalSettings
     - core/jquery.once
-    - core/picturefill
+    # - core/picturefill
     - blazy/blazy
 
 infinite.utils.ab-testing:
