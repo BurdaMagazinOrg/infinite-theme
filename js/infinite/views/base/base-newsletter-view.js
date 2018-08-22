@@ -80,8 +80,11 @@
             this.available = true;
 
             if (this.useAjaxPermissions) {
-
-                this.$formView.find('.privacy-link').unbind('click.privacy_open').bind('click.privacy_open', $.proxy(function () {
+                
+                this.$privacyView.find('.container-content-dynamic').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_body));
+                this.$formView.find('.privacy-text').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_label));
+                
+                this.$formView.find('.privacy-text a').unbind('click.privacy_open').bind('click.privacy_open', $.proxy(function () {
                     this.setViewState(BaseNewsletterView.STATE_PRIVACY);
                     return false;
                 }, this));
@@ -90,7 +93,6 @@
                     this.setViewState(BaseNewsletterView.STATE_INITIAL);
                 }, this));
 
-                this.$privacyView.find('.container-content-dynamic').empty().append($(this.permissions.datenschutzeinwilligung.markup.text_body));
             }
         },
     formSubmit (pEvent) {
