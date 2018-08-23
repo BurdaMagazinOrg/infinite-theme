@@ -14,7 +14,12 @@
     .container-privacy {
       @extend %fade-in;
       overflow-y: scroll;
+      
+      .content-wrapper {
+        position: relative
+      }
     }
+
   }
 
   &.state-success {
@@ -70,7 +75,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $bg-color-gray-light;
+    background-color: $newsletter__content-item-bg-color;
   }
 
   .container-privacy, .container-success {
@@ -80,9 +85,19 @@
     line-height: 1.5;
   }
 
+  .container-success {
+    p {
+      margin-top: $gap-size-xxs;
+    }
+  }
+
   .container-privacy {
     text-align: left;
     padding: $grid-gutter-width;
+
+    p {
+      margin-top: $gap-size-xs;
+    }
 
     strong {
       @extend %text-headline;
@@ -101,7 +116,7 @@
 
   .container-form {
     @extend %fade-in;
-    background-color: transparent;
+    background-color: $newsletter__contianer-form-bg;
 
     .text-description {
       margin-bottom: $gap-section;
@@ -122,10 +137,6 @@
     button {
       @include newsletter__submit-button--horizontal;
     }
-
-    p {
-      line-height: 1.5;
-    }
   }
 
   .checkbox {
@@ -137,7 +148,7 @@
     font-size: $icon-size-medium;
     color: $text-color;
     top: $padding;
-    right: $grid-gutter-width;
+    right: $gap-size-xxs;
     z-index: 2;
   }
 
@@ -175,10 +186,6 @@
     }
 
     .container-form {
-      p {
-        font-size: 14px;
-      }
-
       .input-email {
         width: 100%;
         //padding-right: $padding-large-horizontal;
@@ -195,10 +202,6 @@
 
     .container-content-item {
       padding: $newsletter--horizontal--padding-mobile;
-
-      p {
-        margin-top: $padding;
-      }
     }
 
     .form-group--email {
@@ -314,10 +317,6 @@
     .container-privacy {
       display: block;
     }
-
-    .icon-close {
-      right: 35px;
-    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
@@ -341,7 +340,7 @@
       color: $text-color;
 
       .content-wrapper {
-        background-color: rgba($white, 0.8);
+        background-color: $newsletter-page__content-wrapper-bg-color;
         position: relative;
         width: $screen-sm-min;
         height: 400px;
