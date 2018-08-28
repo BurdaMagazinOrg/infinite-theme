@@ -32,8 +32,8 @@
         .find('.item-paragraph--text:last')
         .inview({
           offset: 'bottom',
-          enter: _.bind(this.handleArticleReadedEnter, this),
-          exit: _.bind(this.handleArticleReadedExit, this),
+          enter: this.handleArticleReadedEnter.bind(this),
+          exit: this.handleArticleReadedExit.bind(this),
         });
 
       if (!this.model.get('initialDOMItem')) {
@@ -41,7 +41,7 @@
           .find('.item-paragraph--text:first')
           .inview({
             offset: 'top',
-            enter: _.bind(this.handleArticleScrolledEnter, this),
+            enter: this.handleArticleScrolledEnter.bind(this),
           });
       }
     },
@@ -52,10 +52,10 @@
       this.stopArticleReadedInterval();
 
       this.readedInterval = setInterval(
-        _.bind(function () {
+        () => {
           this.trackArticleReaded();
           this.stopArticleReadedInterval();
-        }, this),
+        },
         this.articleReadedDelay,
       );
     },
@@ -112,11 +112,11 @@
       if (typeof tracdelight !== 'undefined') {
         window.tracdelight
           .then(
-            _.bind(function (td) {
+            () => {
               $.each(this.$el.find('.td-widget'), (pIndex, pItem) => {
                 td.parse(pItem);
               });
-            }, this),
+            },
           )
           .catch((err) => {
             console.error('Tracdelight Error', err);
