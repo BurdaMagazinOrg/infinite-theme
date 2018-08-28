@@ -1,86 +1,129 @@
+/* global AppConfig */
+/* global TrackingManager */
+/* global PinUtils */
+/* global twttr */
+/* global instgrm */
+/* global BurdaInfinite */
+/* global BaseDynamicView */
+
 (function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
   BurdaInfinite.views.ArticleView = BaseDynamicView.extend({
-    articleReadedTrigger: null,
+    articleScrolledInview: null,
+    articleReadedInview: null,
     articleReadedDelay: 0,
     articleSEOTitle: '',
-    initialize: function (pOptions) {
+    initialize(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
       this.articleReadedDelay = AppConfig.articleReadedDelay || 2000;
 
-      if (this.infiniteBlockDataModel != undefined && this.infiniteBlockDataModel.has('title')) {
+      if (
+        this.infiniteBlockDataModel !== undefined
+        && this.infiniteBlockDataModel.has('title')
+      ) {
         this.articleSEOTitle = this.infiniteBlockDataModel.get('title');
       }
 
       this.initTracking();
       this.renderParagraphSocials();
     },
-    initTracking: function () {
-      if (this.$el.find('.cet').length <= 0) return;
+    initTracking() {
+      this.articleReadedInview = this.$el
+        .find('.item-paragraph--text:last')
+        .inview({
+          offset: 'bottom',
+          enter: _.bind(this.handleArticleReadedEnter, this),
+          exit: _.bind(this.handleArticleReadedExit, this),
+        });
 
-      this.articleReadedTrigger = new Waypoint.Inview({
-        element: this.$el.find('.cet'),
-        exit: _.bind(function (pDirection) {
+      if (!this.model.get('initialDOMItem')) {
+        this.articleScrolledInview = this.$el
+          .find('.item-paragraph--text:first')
+          .inview({
+            offset: 'top',
+            enter: _.bind(this.handleArticleScrolledEnter, this),
+          });
+      }
+    },
+    handleArticleScrolledEnter() {
+      this.trackArticleScrolled();
+    },
+    handleArticleReadedEnter() {
+      this.stopArticleReadedInterval();
+
+      this.readedInterval = setInterval(
+        _.bind(function () {
+          this.trackArticleReaded();
           this.stopArticleReadedInterval();
         }, this),
-        enter: _.bind(function (pDirection) {
-          this.stopArticleReadedInterval();
-
-          this.readedInterval = setInterval($.proxy(function () {
-            this.trackArticleReaded();
-            this.stopArticleReadedInterval();
-          }, this), this.articleReadedDelay);
-
-        }, this)
-      });
+        this.articleReadedDelay,
+      );
     },
-    renderParagraphSocials: function () {
-      if (typeof twttr != 'undefined') {
-        twttr.widgets.load(
-          this.$el[0]
-        );
-      }
-
-      if (typeof PinUtils != 'undefined') {
-        PinUtils.build(this.$el[0]);
-      }
-
-      if (typeof instgrm != 'undefined') {
-        instgrm.Embeds.process();
-      }
-
-      if (typeof tracdelight != "undefined") {
-        window.tracdelight.then(_.bind(function (td) {
-          $.each(this.$el.find('.td-widget'), function (pIndex, pItem) {
-            td.parse(pItem);
-          })
-        }, this)).catch(function (err) {
-          console.error("Tracdelight Error", err);
-        });
-      }
-
+    handleArticleReadedExit() {
+      this.stopArticleReadedInterval();
     },
-    stopArticleReadedInterval: function () {
+    stopArticleReadedInterval() {
       clearInterval(this.readedInterval);
       this.readedInterval = 0;
     },
-    trackArticleReaded: function () {
-      this.articleReadedTrigger.destroy();
+    trackArticleReaded() {
+      this.articleReadedInview.destroy();
 
-      if (typeof TrackingManager != 'undefined') {
-        TrackingManager.trackEvent({
-          category: 'mkt-userInteraction',
-          action: 'readArticle',
-          label: this.articleSEOTitle,
-          eventNonInteraction: false
-        }, TrackingManager.getAdvTrackingByElement(this.$el));
+      if (typeof TrackingManager !== 'undefined') {
+        TrackingManager.trackEvent(
+          {
+            category: 'mkt-userInteraction',
+            action: 'readArticle',
+            label: this.articleSEOTitle,
+            eventNonInteraction: false,
+          },
+          TrackingManager.getAdvTrackingByElement(this.$el),
+        );
       }
-    }
+    },
+    trackArticleScrolled() {
+      this.articleScrolledInview.destroy();
+
+      if (typeof TrackingManager !== 'undefined') {
+        TrackingManager.trackEvent(
+          {
+            category: 'mkt-userInteraction',
+            action: 'scrolledArticle',
+            label: this.articleSEOTitle,
+            eventNonInteraction: false,
+          },
+          TrackingManager.getAdvTrackingByElement(this.$el),
+        );
+      }
+    },
+    renderParagraphSocials() {
+      if (typeof twttr !== 'undefined') {
+        twttr.widgets.load(this.$el[0]);
+      }
+
+      if (typeof PinUtils !== 'undefined') {
+        PinUtils.build(this.$el[0]);
+      }
+
+      if (typeof instgrm !== 'undefined') {
+        instgrm.Embeds.process();
+      }
+
+      if (typeof tracdelight !== 'undefined') {
+        window.tracdelight
+          .then(
+            _.bind(function (td) {
+              $.each(this.$el.find('.td-widget'), (pIndex, pItem) => {
+                td.parse(pItem);
+              });
+            }, this),
+          )
+          .catch((err) => {
+            console.error('Tracdelight Error', err);
+          });
+      }
+    },
   });
 
   window.ArticleView = window.ArticleView || BurdaInfinite.views.ArticleView;
-
-})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
+}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));
