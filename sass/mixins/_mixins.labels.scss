@@ -25,6 +25,23 @@
   color: $color;
 }
 
+@mixin label--affiliate() {
+  @include text-helper($label--affiliate-font-id);
+  color: $label--affiliate-color;
+
+  @media (max-width: $screen-xxs-max) {
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--desktop);
+  }
+}
+
 @mixin label--copyright($sizes: ($label--copyright-size--mobile, $label--copyright-size--tablet, $label--copyright-size--desktop), $font: $label--copyright-font-id, $color: $label--copyright-color) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
