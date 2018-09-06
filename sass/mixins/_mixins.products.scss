@@ -360,6 +360,18 @@
   background-color: $ecommerce-slider__background-color;
   position: relative;
 
+  .affiliatelinks {
+    @include text-helper($label--advertorial-font-id, getFontSize(10px));
+    color: $label--advertorial-color;
+    text-transform: $label--advertorial-text-transform;
+    text-align: right;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: 0.7px;
+    color: #aaa;
+    margin: 8px 0;
+  }
+
   &.no-bg-image {
   }
 
