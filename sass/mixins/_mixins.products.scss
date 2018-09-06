@@ -360,6 +360,12 @@
   background-color: $ecommerce-slider__background-color;
   position: relative;
 
+  @media screen and (max-width: $screen-sm-max) {
+    .ecommerce-slider__title {
+      font-size: $ecommerce-slider__title-size-tablet--full;
+    }
+  }
+
   .affiliatelinks {
     @include text-helper($label--advertorial-font-id, getFontSize(10px));
     color: $label--advertorial-color;
