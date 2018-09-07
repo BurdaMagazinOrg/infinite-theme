@@ -367,14 +367,12 @@
   }
 
   .affiliatelinks {
-    @include text-helper($label--advertorial-font-id, getFontSize(10px));
-    color: $label--advertorial-color;
-    text-transform: $label--advertorial-text-transform;
+    color: $label--affiliate-color;
+    text-transform: $label--affiliate-text-transform;
     text-align: right;
-    font-size: 10px;
+    font-size: $label--affiliate-size--desktop;
     line-height: 1.4;
     letter-spacing: 0.7px;
-    color: #aaa;
     margin: 8px 0;
   }
 
