@@ -43,6 +43,9 @@
 
 {% block content_block %}
     {% if content | render %}
+      <div class="affiliatelinks">
+        <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
+      </div>
         {% if content.field_title|render %}
             <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
         {% endif %}

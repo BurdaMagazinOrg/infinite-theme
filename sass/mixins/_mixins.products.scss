@@ -367,13 +367,7 @@
   }
 
   .affiliatelinks {
-    color: $label--affiliate-color;
-    text-transform: $label--affiliate-text-transform;
-    text-align: right;
-    font-size: $label--affiliate-size--desktop;
-    line-height: 1.4;
-    letter-spacing: 0.7px;
-    margin: 8px 0;
+    @include label--affiliate();
   }
 
   &.no-bg-image {
