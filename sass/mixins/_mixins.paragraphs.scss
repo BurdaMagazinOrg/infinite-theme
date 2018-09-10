@@ -470,7 +470,7 @@
 
 @mixin item-paragraph--single-product() {
   .affiliatelinks {
-    @include label--affiliatelink();
+    @include label--affiliate();
   }
 
   &.item-paragraph .item-title {
@@ -497,7 +497,7 @@
   @include products--horizontal-block();
 
   .affiliatelinks {
-    @include label--affiliatelink();
+    @include label--affiliate();
   }
 
   &.item-paragraph--full {
