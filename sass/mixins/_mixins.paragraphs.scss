@@ -469,6 +469,9 @@
 }
 
 @mixin item-paragraph--single-product() {
+  .affiliatelinks {
+    @include label--affiliatelink();
+  }
 
   &.item-paragraph .item-title {
     text-align: center;
@@ -492,6 +495,10 @@
 
 @mixin item-paragraph--tracdelight() {
   @include products--horizontal-block();
+
+  .affiliatelinks {
+    @include label--affiliatelink();
+  }
 
   &.item-paragraph--full {
     @extend %gap--v-region;
