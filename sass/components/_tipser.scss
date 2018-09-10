@@ -150,9 +150,12 @@
 
   .tipser-buy-button-small {
     @include product__item-text-shop--default();
-    @extend .text-shop--tipser;
+    @include button--white;
+    @include button--icon('\e911', 'right');
+
     background: transparent !important; // needed to overwrite tipser styles
     &:hover {
+      @include button--hover;
       opacity: 1;
     }
   }
