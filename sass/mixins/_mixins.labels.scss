@@ -28,7 +28,7 @@
 @mixin label--affiliate() {
   @include text-helper($label--affiliate-font-id, $label--affiliate-size--desktop);
   color: $label--affiliate-color;
-  text-transform: $label--advertorial-text-transform;
+  text-transform: $label--affiliate-text-transform;
   text-align: right;
   line-height: 1.4;
   letter-spacing: 0.7px;
