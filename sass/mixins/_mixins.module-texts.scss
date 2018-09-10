@@ -355,11 +355,41 @@
 }
 
 @mixin product__item-text-shop--default() {
-  @extend %button;
-  @extend %button--sm;
-  @extend %button--lined-colored-default;
+  @include button;
+  @include button--md;
+  background-color: $ecommerce-slider__button-background-color;
+  color: $ecommerce-slider__button-color;
+  border-color: $ecommerce-slider__button-border-color;
   display: inline-block;
+
+  &:hover {
+    @include button--hover;
+  }
+
+  &:active {
+    @include button--hover;
+  }
+
+  &:disabled, &.disabled {
+    @include button--disabled;
+  }
+
+  &.text-shop--tipser {
+    @include button--white;
+    @include button--icon('\e911', 'right');
+
+    &:hover {
+      @include button--hover;
+    }
+  }
 }
+
+// @mixin product__item-text-shop--default() {
+//   @extend %button;
+//   @extend %button--sm;
+//   @extend %button--lined-colored-default;
+//   display: inline-block;
+// }
 
 @mixin product__item-text-shop--hover() {
   @extend %button--lined-colored-hover;

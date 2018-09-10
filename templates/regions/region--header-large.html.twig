@@ -1,5 +1,11 @@
 <div id="header-home" class="region-full-content">
   <div class="container-content region-fixed-content">
     {{ content }}
+
+    <div id="user-navigation--header">
+      {% if include_tipser_icon %}
+          <div class="tipser-icon-container"></div>
+      {% endif %}
+    </div>
   </div>
 </div>

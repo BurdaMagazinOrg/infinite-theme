@@ -1,0 +1,91 @@
+#user-navigation--header {
+  @include flexbox();
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+
+  [data-tipser-icon] {
+    padding-top: 3px;
+  }
+
+  .user-navigation__item {
+    @include flex-item();
+    display: block;
+    position: relative;
+    margin: $user-navigation__item-margin-mobile--header;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  svg {
+    height: $user-navigation__item-height-mobile--header;
+    width: $user-navigation__item-width-mobile--header;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .user-navigation__item {
+      margin: $user-navigation__item-margin-desktop--header;
+    }
+
+    svg {
+      height: $user-navigation__item-height-desktop--header;
+      width: $user-navigation__item-width-desktop--header;
+    }
+  }
+}
+
+#user-navigation--main-navigation {
+  @include transition-property(opacity, visibility);
+  @include transition-duration(0);
+  @include transition-timing-function($transition-easing);
+  @include transition-delay(0s);
+  @include fade-out();
+  @include flexbox();
+  @include align-items();
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 20%, white 100%);
+  padding-left: 20px;
+  position: absolute;
+  right: $user-navigation__pos-right-mobile--main-navigation;
+  top: 0;
+  height: 100%;
+
+  .user-navigation__item {
+    @include flex-item();
+    display: block;
+    position: relative;
+    margin: $user-navigation__item-margin-mobile--main-navigation;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  svg {
+    height: $user-navigation__item-height-mobile--main-navigation;
+    width: $user-navigation__item-width-mobile--main-navigation;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    right: $user-navigation__pos-right-desktop--main-navigation;
+
+    .user-navigation__item {
+      margin: $user-navigation__item-margin-desktop--main-navigation;
+    }
+
+    svg {
+      height: $user-navigation__item-height-desktop--main-navigation;
+      width: $user-navigation__item-width-desktop--main-navigation;
+    }
+  }
+}
+
+//TODO remove this after wishlist cleanup
+#menu-main-navigation.stuck #user-navigation--main-navigation {
+  @include fade-in();
+  @include transition-delay(0.1s);
+  @include transition-duration($transition-duration);
+}
+

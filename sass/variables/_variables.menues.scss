@@ -106,3 +106,14 @@ $user-navigation__item-height-mobile--main-navigation: $user-navigation__item-wi
 
 $user-navigation__item-width-desktop--main-navigation: 32px !default;
 $user-navigation__item-height-desktop--main-navigation: $user-navigation__item-width-desktop--main-navigation !default;
+
+/** Tipser **/
+$menu--main-navigation__item-shopit-icon: "\e920" !default;
+$menu--main-navigation__item-shopit-font-size: 20px !default;
+$menu--main-navigation__item-shopit-line-height: $grid-unit-2 + $grid-unit-half !default;
+$menu--main-navigation__item-shopit-background: $color-dark-1 !default;
+$menu--main-navigation__item-shopit-background-hover: $color-dark-3 !default;
+$menu--main-navigation__item-shopit-padding: 5px 12px 7px 12px !default;
+$menu--main-navigation__item-shopit-position: relative !default;
+$menu--main-navigation__item-shopit-bottom: -3px !default;
+$menu--main-navigation__item-shopit-color: $color-white !default;

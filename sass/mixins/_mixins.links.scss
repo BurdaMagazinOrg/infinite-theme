@@ -1,0 +1,20 @@
+@mixin link--shopit($style: 'black') {
+  @if($style == 'black') {
+    background: $menu--main-navigation__item-shopit-background;
+  }
+  font-size: 0;
+  padding: $menu--main-navigation__item-shopit-padding;
+  position: $menu--main-navigation__item-shopit-position;
+  bottom: $menu--main-navigation__item-shopit-bottom;
+
+  &:before {
+    @include text-helper($font-icons);
+    @if($style == 'black') {
+      color: $menu--main-navigation__item-shopit-color;
+    }
+    content: $menu--main-navigation__item-shopit-icon;
+    display: block;
+    font-size: $menu--main-navigation__item-shopit-font-size;
+    line-height: $menu--main-navigation__item-shopit-line-height;
+  }
+}
