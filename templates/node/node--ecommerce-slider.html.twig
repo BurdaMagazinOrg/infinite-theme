@@ -21,9 +21,11 @@
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
 <div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
-    <div class="affiliatelinks">
-     <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
-    </div>
+    {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+      <div class="affiliatelinks">
+        <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
+      </div>
+    {% endif %}
     <div class="ecommerce-slider__content-wrapper">
 
         <div class="swiper-button swiper-button-prev"></div>
