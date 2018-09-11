@@ -27,11 +27,7 @@
                 {% endif %}
                 <span class="text-price--current">{{ content.product_price }} {{ formatted_currency }}</span>
             </div>
-        {% if 'tipser' == provider %}
-            <div class="text-shop">Kaufen</div>
-        {% else %}
-            <div class="text-shop">Zum Shop</div>
-        {% endif %}
+        {% include '@infinite/product/advertising-product-button.html.twig' %}
     {% endif %}
     </div>
 {% endblock %}

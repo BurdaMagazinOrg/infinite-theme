@@ -355,19 +355,17 @@
 }
 
 @mixin product__item-text-shop--default() {
-  @include button;
-  @include button--md;
-  background-color: $ecommerce-slider__button-background-color;
-  color: $ecommerce-slider__button-color;
-  border-color: $ecommerce-slider__button-border-color;
+  @extend %button;
+  @extend %button--sm;
+  @extend %button--lined-colored-default;
   display: inline-block;
 
   &:hover {
-    @include button--hover;
+    @include product__item-text-shop--hover;
   }
 
   &:active {
-    @include button--hover;
+    @include product__item-text-shop--hover;
   }
 
   &:disabled, &.disabled {
