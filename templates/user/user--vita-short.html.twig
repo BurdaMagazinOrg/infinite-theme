@@ -1,15 +1,13 @@
-{% if user.status %}
-    <div class="item-author item-author--vita-short" data-internal-url="{{ url('entity.user.canonical', {'user': user.id}) }}">
-        {% if content.user_picture | render is not empty %}
-            <div class="img-container item-author__profile-image item-author__profile-image--vita-short">
-                {{ content.user_picture }}
-            </div>
-        {% endif %}
-
-        <div class="item-author__caption item-author__caption--vita-short">
-            <div class="item-author__name item-author__name--vita-short"><span>{{ content.field_full_name }}</span></div>
-            <div class="item-author__job item-author__job--vita-short">{{ content.field_job_title }}</div>
-            <div class="item-author__short-info item-author__short-info--vita-short">{{ content.field_teaser_text }}</div>
-        </div>
+<div class="item-author item-author--vita-short" data-internal-url="{{ url('entity.user.canonical', {'user': user.id}) }}">
+  {% if content.user_picture | render is not empty %}
+    <div class="img-container item-author__profile-image item-author__profile-image--vita-short">
+      {{ content.user_picture }}
     </div>
-{% endif %}
+    {% endif %}
+
+    <div class="item-author__caption item-author__caption--vita-short">
+      <div class="item-author__name item-author__name--vita-short"><span>{{ content.field_full_name }}</span></div>
+      <div class="item-author__job item-author__job--vita-short">{{ content.field_job_title }}</div>
+      <div class="item-author__short-info item-author__short-info--vita-short">{{ content.field_teaser_text }}</div>
+    </div>
+</div>
