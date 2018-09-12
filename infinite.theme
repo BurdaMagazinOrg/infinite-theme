@@ -280,6 +280,13 @@ function infinite_preprocess_paragraph(&$variables) {
     $media = $variables['elements']['field_media']['0']['#media'];
     $variables['media_bundle'] = $media->bundle();
   }
+
+  if ('spotlight' === $variables['paragraph']->bundle()) {
+    $entity = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    if ($entity instanceof \Drupal\taxonomy\Entity\Term) {
+      $variables = infinite_inject_pinterest_image($variables, $entity);
+    }
+  }
 }
 
 function infinite_preprocess_field(&$variables) {
@@ -321,20 +328,8 @@ function infinite_preprocess_container(&$variables) {
     }
   }
   if (isset($entity)) {
-    // use dedicated pinterest image for sharing
-    $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
-      $entity,
-      'field_pinterest_image'
-    );
-    // as fallback, if no dedicated pinterest image is set
-    // use a 2:3 format of share image
-    if (empty($variables['pinterest_share_img_url'])) {
-      $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
-        $entity,
-        'field_teaser_media',
-        'pinterest_fallback_teaser_image'
-      );
-    }
+    $variables = infinite_inject_pinterest_image($variables, $entity);
+
     // use seo description for pinterest share description
     if (method_exists($entity, 'bundle') && method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
       switch ($entity->bundle()) {
@@ -354,4 +349,30 @@ function infinite_preprocess_container(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Use dedicated pinterest image for sharing.
+ *
+ * @param $variables
+ * @param $entity
+ * @return mixed
+ */
+function infinite_inject_pinterest_image($variables, $entity)
+{
+  $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
+    $entity,
+    'field_pinterest_image'
+  );
+  // as fallback, if no dedicated pinterest image is set
+  // use a 2:3 format of share image
+  if (empty($variables['pinterest_share_img_url'])) {
+    $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
+      $entity,
+      'field_teaser_media',
+      'pinterest_fallback_teaser_image'
+    );
+  }
+
+  return $variables;
 }
