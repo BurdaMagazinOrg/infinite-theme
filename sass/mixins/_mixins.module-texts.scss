@@ -374,10 +374,10 @@
 
   &.text-shop--tipser {
     @include button--white;
-    @include button--icon('\e911', 'right');
+    @include button--icon($tipser__buy-icon, 'right');
 
     &:hover {
-      @include button--hover;
+      @include button--lined-colored-hover;
     }
   }
 }
