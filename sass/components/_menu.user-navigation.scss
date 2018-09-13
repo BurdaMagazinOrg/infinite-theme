@@ -1,8 +1,8 @@
 #user-navigation--header {
   @include flexbox();
   position: absolute;
-  right: 0;
-  top: 0;
+  right: $user-navigation__pos-right-mobile--header;
+  top: $user-navigation__pos-top-mobile--header;
   height: 100%;
 
   [data-tipser-icon] {
@@ -26,6 +26,9 @@
   }
 
   @media (min-width: $screen-sm-min) {
+    right: $user-navigation__pos-right-desktop--header;
+    top: $user-navigation__pos-top-desktop--header;
+
     .user-navigation__item {
       margin: $user-navigation__item-margin-desktop--header;
     }
