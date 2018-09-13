@@ -52,7 +52,7 @@
             <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
         {% endif %}
         <div class="container-content">
-            {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode') }}
+            {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode', 'field_suppress_affiliate_link') }}
         </div>
 
         {% if content.field_text | render is not empty %}
