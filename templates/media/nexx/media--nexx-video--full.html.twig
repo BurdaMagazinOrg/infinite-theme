@@ -7,6 +7,11 @@
  * - name: Name of the media.
  * - content: Media content.
  *
+ * Extra variables:
+ * - mid: ID of the media.
+ * - channel_tid: TID from channel field of media.
+ *
+ * @see infinite_preprocess_media()
  * @see template_preprocess_media()
  *
  * @ingroup themeable
@@ -28,9 +33,8 @@
     'item-content--article',
 ] %}
 
-{% set attributes = attributes.setAttribute('data-view-type', 'articleView') %}
-{% set attributes = attributes.setAttribute('data-mid', nid) %}
-{% set attributes = attributes.setAttribute('data-uuid', uuid) %}
+{% set attributes = attributes.setAttribute('data-view-type', 'videoView') %}
+{% set attributes = attributes.setAttribute('data-mid', mid) %}
 
 <div{{ wrapper_attributes.addClass(wrapper_classes) }} >
     <article {{ attributes.addClass(classes) }}>
@@ -71,26 +75,23 @@
                                             <div class="text-description">{{ content.field_description }}</div>
                                         {% endif %}
                                     </div>
+
+                                    {{ content.field_tags }}
+
                                 </div>
 
                             </div>
                             <div class="item-content__row-col col--right">
-                                {% if parent.field_sidebar_blocks is not empty %}
-                                    <div class="item-sticky">
-                                    {% block content_sidebar %}
-                                        {{ parent.field_sidebar_blocks }}
-                                        </div>
-                                    {% endblock %}
-                                {% endif %}
+                                <div class="item-sticky">
+
+                                    {{ drupal_view('videos_related', 'embed_related', channel_tid, mid) }}
+
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {{ content.field_tags }}
-
                 </div>
             </div>
-
         </div>
     </article>
 </div>
