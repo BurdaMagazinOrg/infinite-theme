@@ -1,0 +1,15 @@
+{% if content %}
+    <div class="item-media item-media--nexx-video">
+        <div class="embed-responsive embed-responsive-16by9 video-container" itemscope="" itemtype="http://schema.org/videoObject">
+            {{ content|without('field_copyright', 'field_description')}}
+        </div>
+        <div class="caption">
+            {% if content.field_copyright|render  %}
+                <div class="text-copyright">{{ content.field_copyright }}</div>
+            {% endif %}
+            {% if content.field_description|render %}
+                <div class="text-description">{{ content.field_description }}</div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

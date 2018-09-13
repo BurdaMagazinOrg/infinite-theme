@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a media entity.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{# Add wrapper classes #}
+{% set wrapper_classes = [
+    'region-full-content',
+    'region-infinite-block',
+    'infinite-item',
+] %}
+
+{# Add data attributes #}
+{% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
+
+{% set classes = [
+    'region-full-content',
+    'item-content',
+    'item-content--article',
+] %}
+
+{% set attributes = attributes.setAttribute('data-view-type', 'articleView') %}
+{% set attributes = attributes.setAttribute('data-mid', nid) %}
+{% set attributes = attributes.setAttribute('data-uuid', uuid) %}
+
+<div{{ wrapper_attributes.addClass(wrapper_classes) }} >
+    <article {{ attributes.addClass(classes) }}>
+
+        <div class="item-content__header">
+            <h1 class="title--article">{{ name }}</h1>
+        </div>
+
+        <div class="item-content__content">
+
+            <div class="item-content__block item-group--outer-wrapper">
+                <div class="item-group--outer">
+                    <aside class="socials socials-bar socials-vertical-bar">
+                        {% embed '@infinite/embeds/social_icons.html.twig' with {
+                            'url': 'TODO: add sharing URL',
+                            'label': name,
+                            'twitter_share_via': 'TODO: add twitter shared via',
+                            'email_share_text': 'TODO: add email share text',
+                            'email_subject': 'TODO: add email subject',
+                            'whatsapp_share_text': 'TODO: add whatsapp share text',
+                        } %}
+                        {% endembed %}
+                    </aside>
+
+                    <div class="item-content__block item-group--inner">
+                        <div class="item-content__row--sidebar">
+                            <div class="item-content__row-col col--left">
+
+                                <div class="item-media item-media--nexx-video">
+                                    <div class="embed-responsive embed-responsive-16by9 video-container" itemscope="" itemtype="http://schema.org/videoObject">
+                                        {{ content|without('field_copyright', 'field_description', 'field_tags') }}
+                                    </div>
+                                    <div class="caption">
+                                        {% if content.field_copyright|render  %}
+                                            <div class="text-copyright">{{ content.field_copyright }}</div>
+                                        {% endif %}
+                                        {% if content.field_description|render %}
+                                            <div class="text-description">{{ content.field_description }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="item-content__row-col col--right">
+                                {% if parent.field_sidebar_blocks is not empty %}
+                                    <div class="item-sticky">
+                                    {% block content_sidebar %}
+                                        {{ parent.field_sidebar_blocks }}
+                                        </div>
+                                    {% endblock %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ content.field_tags }}
+
+                </div>
+            </div>
+
+        </div>
+    </article>
+</div>
