@@ -21,17 +21,17 @@
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
 <div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
-    {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
-      <div class="affiliatelinks">
-        <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
-      </div>
-    {% endif %}
     <div class="ecommerce-slider__content-wrapper">
 
         <div class="swiper-button swiper-button-prev"></div>
 
         <div class="ecommerce-slider__content">
             <h3 class="ecommerce-slider__title">{{ label }}</h3>
+          {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+            <div class="affiliatelinks">
+              <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
+            </div>
+          {% endif %}
             {% if content.field_campaign|render %}
                 <span class="ecommerce-slider__campaign">
                     {{ content.field_campaign }}
