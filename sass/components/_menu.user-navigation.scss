@@ -45,7 +45,7 @@
   @include transition-duration(0);
   @include transition-timing-function($transition-easing);
   @include transition-delay(0s);
-  @include fade-out();
+  // @include fade-out();
   @include flexbox();
   @include align-items();
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 20%, white 100%);
@@ -85,10 +85,4 @@
   }
 }
 
-//TODO remove this after wishlist cleanup
-#menu-main-navigation.stuck #user-navigation--main-navigation {
-  @include fade-in();
-  @include transition-delay(0.1s);
-  @include transition-duration($transition-duration);
-}
 
