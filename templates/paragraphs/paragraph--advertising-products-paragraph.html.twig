@@ -49,9 +49,9 @@
         {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
             <div class="affiliatelinks">
               {% if content.field_e_view_mode[0]['#markup'] != 'single_product' %}
-                <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
+                <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
               {% else %}
-                <a href="/affiliatelinks" target="_self">Affiliatelink</a>
+                <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelink</a>
               {% endif %}
             </div>
         {% endif %}
