@@ -4,14 +4,28 @@ $padding: floor($grid-gutter-width / 2) !default;
 
 $sticky-padding: 10px !default;
 
-$gap-size-xxs: 8px !default;
-$gap-size-xs: 16px !default;
-$gap-size-sm: 24px !default;
-$gap-size-md: 28px !default;
-$gap-size-lg: 31px !default;
-$gap-size-xl: 36px !default;
-$gap-size-xxl: 48px !default;
-$gap-size-xxxl: 61px !default;
+$grid-unit-half: 4px !default;
+$grid-unit-1: 8px !default;
+$grid-unit-2: 16px !default;
+$grid-unit-3: 24px !default;
+$grid-unit-4: 32px !default;
+$grid-unit-5: 40px !default;
+$grid-unit-6: 48px !default;
+$grid-unit-7: 56px !default;
+$grid-unit-8: 64px !default;
+$grid-unit-9: 72px !default;
+$grid-unit-10: 80px !default;
+$grid-unit-11: 88px !default;
+
+$gap-size-xxs: $grid-unit-1 !default;
+$gap-size-xs: $grid-unit-2 !default;
+$gap-size-sm: $grid-unit-3 !default;
+$gap-size-md: $grid-unit-4 !default;
+$gap-size-lg: $grid-unit-5 !default;
+$gap-size-xl: $grid-unit-6 !default;
+$gap-size-xxl: $grid-unit-7 !default;
+$gap-size-xxxl: $grid-unit-8 !default;
+
 
 /**
 ** Lists Gaps

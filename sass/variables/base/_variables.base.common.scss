@@ -41,6 +41,14 @@ $menu-home-animated-logo: true !default;
 $transition-duration: 0.35s !default;
 $transition-easing: ease !default;
 
+$z-layers: (
+  'shopit-badge': 1,
+  'shopit-badge-magazine-products': 100,
+  'toolbar-administration': 999999999,
+  'toolbar-administration__toolbar-bar': 999999998,
+  'tipser-overlay': 999999999,
+);
+
 /**
 ** is amp?
 **/
