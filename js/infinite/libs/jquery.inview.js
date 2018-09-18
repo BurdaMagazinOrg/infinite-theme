@@ -78,8 +78,8 @@
       var viewportSize = viewportSize || getViewportSize(),
         viewportOffset = viewportOffset || getViewportOffset(),
         elementSize = {
-          height: $element[0].offsetHeight,
-          width: $element[0].offsetWidth
+          height: Math.round($element.outerHeight()),
+          width: Math.round($element.outerWidth()),
         },
         elementOffset = $element.offset(),
         isForward = viewportOffset.top > oldViewportOffset.top,
