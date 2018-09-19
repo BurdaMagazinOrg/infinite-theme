@@ -9,7 +9,23 @@
   position: relative;
   padding: 0;
   cursor: pointer;
-  //z-index: 10;
+
+  &:after {
+    @include button--icon-style($tipser__buy-icon);
+  }
+
+  #user-navigation--main-navigation & {
+    &:after {
+      font-size: $tipser__buy-icon-size--main-navigation;
+    }
+  }
+  
+  #user-navigation--header & {
+    &:after {
+      font-size: $tipser__buy-icon-size--header;
+    }
+  }
+
 }
 
 .tipser__cart-size {
@@ -40,7 +56,9 @@
   right: -4px;
 }
 
-#page-wrapper:not([style*="display: none"]) ~ .tipser-overlay .tipser-modal-iframe {
+#page-wrapper:not([style*="display: none"])
+  ~ .tipser-overlay
+  .tipser-modal-iframe {
   top: $gap-size-xxs;
   right: $gap-size-xxs;
   bottom: $gap-size-xxs;
@@ -50,7 +68,7 @@
 .tipser-overlay.tipser-overlay {
   // increase specificity
   position: fixed;
-  z-index: getZIndex('tipser-overlay');
+  z-index: getZIndex("tipser-overlay");
   overflow: initial;
 }
 
@@ -96,7 +114,7 @@
   .tipser-buy-button-small {
     @include product__item-text-shop--default();
     @include button--white;
-    @include button--icon($tipser__buy-icon, 'right');
+    @include button--icon($tipser__buy-icon, "right");
 
     background: transparent !important; // needed to overwrite tipser styles
     &:hover {
@@ -106,7 +124,10 @@
   }
 
   .tipser-tile-prod-brand {
-    @include text-helper($product__item-text-brand-font-id, $product__item-text-brand-size);
+    @include text-helper(
+      $product__item-text-brand-font-id,
+      $product__item-text-brand-size
+    );
     letter-spacing: $product__item-text-brand-letter-spacing;
     text-overflow: ellipsis;
     white-space: nowrap;
