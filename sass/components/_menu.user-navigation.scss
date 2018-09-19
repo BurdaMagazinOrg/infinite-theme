@@ -48,7 +48,7 @@
   // @include fade-out();
   @include flexbox();
   @include align-items();
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 20%, white 100%);
+  // background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 20%, white 100%);
   padding-left: 20px;
   position: absolute;
   right: $user-navigation__pos-right-mobile--main-navigation;
