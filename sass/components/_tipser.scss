@@ -10,18 +10,18 @@
   padding: 0;
   cursor: pointer;
 
-  &:after {
+  &:before {
     @include button--icon-style($tipser__buy-icon);
   }
 
   #user-navigation--main-navigation & {
-    &:after {
+    &:before {
       font-size: $tipser__buy-icon-size--main-navigation;
     }
   }
   
   #user-navigation--header & {
-    &:after {
+    &:before {
       font-size: $tipser__buy-icon-size--header;
     }
   }
