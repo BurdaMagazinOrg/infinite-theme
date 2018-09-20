@@ -1,0 +1,151 @@
+// hide tipser shopping cart icon until we repositioned it in tipser.js
+.tipser__icon--empty {
+  .tipser__cart-size {
+    display: none;
+  }
+}
+
+.tipser__button {
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  //z-index: 10;
+}
+
+.tipser__cart-size {
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background-color: $color-brand;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+
+  @media (min-width: $screen-sm-min) {
+    bottom: 6px;
+    right: 0px;
+  }
+}
+
+#user-navigation--main-navigation .tipser__cart-size {
+  bottom: 0;
+  right: -4px;
+}
+
+#page-wrapper:not([style*="display: none"]) ~ .tipser-overlay .tipser-modal-iframe {
+  top: $gap-size-xxs;
+  right: $gap-size-xxs;
+  bottom: $gap-size-xxs;
+  left: $gap-size-xxs;
+}
+
+.tipser-overlay.tipser-overlay {
+  // increase specificity
+  position: fixed;
+  z-index: getZIndex('tipser-overlay');
+  overflow: initial;
+}
+
+/**
+ * Overwrite tipser default styles
+ */
+#tipser_shop {
+  font-family: $tipser-font-id;
+  @media all and (min-width: 767px) {
+    display: flex;
+  }
+
+  .tipser-product-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tipser-product-tile {
+    float: none;
+
+    .tipser-tile-img-container {
+      //height: auto !important; // needed to overwrite tipser styles
+      text-align: center;
+      position: relative;
+
+      > picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .tipser-tile-img {
+        margin: 0 !important; // needed to overwrite tipser styles
+        position: static;
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .tipser-buy-button-small {
+    @include product__item-text-shop--default();
+    @include button--white;
+    @include button--icon($tipser__buy-icon, 'right');
+
+    background: transparent !important; // needed to overwrite tipser styles
+    &:hover {
+      @include button--hover;
+      opacity: 1;
+    }
+  }
+
+  .tipser-tile-prod-brand {
+    @include text-helper($product__item-text-brand-font-id, $product__item-text-brand-size);
+    letter-spacing: $product__item-text-brand-letter-spacing;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $product__item-text-brand-color;
+    text-transform: none;
+  }
+
+  .tipser-tile-prod-name {
+    color: $product__item-text-headline-color;
+  }
+
+  .tipser-tile-price {
+    color: $product__item-text-price-color;
+  }
+  .tipser-label-price-new {
+    color: $product__item-text-price-color;
+  }
+  .tipser-label-price-old {
+    color: $product__item-text-price-strikethrough-color;
+  }
+  .tipser-label-price-save {
+    color: $product__item-text-price-color;
+  }
+
+  .tipser-buy-button-small.tipser-primary-fill:hover {
+    background: $color-button-hover !important;
+  }
+
+  .tipser-shop-menu-mobile {
+    background: transparent !important;
+    border: 1px solid $color-gray-2;
+    color: $color-dark-1 !important;
+
+    select {
+      color: inherit !important;
+    }
+  }
+}
+
+#tipser-shop-footer {
+  display: none;
+}

@@ -414,3 +414,64 @@
 @mixin button--plain-gray-pressed() {
   @include button--plain-gray($button__color--plain-gray-pressed);
 }
+
+
+/** InStyle relaunch stuff **/
+@mixin button--dark() {
+  background-color: $color-button-1;
+  color: $color-white;
+  border-color: $color-button-1;
+}
+@mixin button--white() {
+  background-color: $color-button-2;
+  color: $color-dark-1;
+  border-color: $color-button-1;
+}
+@mixin button--gray() {
+  background-color: $color-button-3;
+  color: $color-dark-1;
+  border-color: $color-gray-3;
+}
+@mixin button--hover() {
+  background-color: $color-button-hover;
+  color: $color-white;
+  border-color: $color-button-hover;
+}
+@mixin button--disabled() {
+  background-color: $color-button-disabled;
+  color: $color-gray-3;
+  border-color:  $color-button-disabled;
+  border: none;
+  pointer-events: none;
+}
+
+@mixin button--icon-style($iconfont) {
+  font-family: $font-icons;
+  font-weight: normal;
+  letter-spacing: normal;
+  content: $iconfont;
+  font-size: 16px;
+  line-height: initial;
+  position: relative;
+}
+
+@mixin button--icon($iconfont:'', $iconposition:'left') {
+  @if $iconfont == '' {
+    @error 'You have to define an icon-font code e.g. e911 for the shopping bag';
+  } @else {
+    @if $iconposition == 'left' {
+      &:before {
+        @include button--icon-style($iconfont);
+        margin-right: $grid-unit-1;
+        top: 2px;
+      }
+    }
+    @if $iconposition == 'right' {
+      &:after {
+        @include button--icon-style($iconfont);
+        margin-left: $grid-unit-1;
+        top: 1px;
+      }
+    }
+  }
+}

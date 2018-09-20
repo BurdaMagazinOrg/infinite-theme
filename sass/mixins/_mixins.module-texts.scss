@@ -359,7 +359,35 @@
   @extend %button--sm;
   @extend %button--lined-colored-default;
   display: inline-block;
+
+  &:hover {
+    @include product__item-text-shop--hover;
+  }
+
+  &:active {
+    @include product__item-text-shop--hover;
+  }
+
+  &:disabled, &.disabled {
+    @include button--disabled;
+  }
+
+  &.text-shop--tipser {
+    @include button--white;
+    @include button--icon($tipser__buy-icon, 'right');
+
+    &:hover {
+      @include button--lined-colored-hover;
+    }
+  }
 }
+
+// @mixin product__item-text-shop--default() {
+//   @extend %button;
+//   @extend %button--sm;
+//   @extend %button--lined-colored-default;
+//   display: inline-block;
+// }
 
 @mixin product__item-text-shop--hover() {
   @extend %button--lined-colored-hover;
