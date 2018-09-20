@@ -27,6 +27,11 @@
 
         <div class="ecommerce-slider__content">
             <h3 class="ecommerce-slider__title">{{ label }}</h3>
+            {% if content.field_campaign|render %}
+                <span class="ecommerce-slider__campaign">
+                    {{ content.field_campaign }}
+                </span>
+            {% endif %}
             {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
                 <div class="affiliatelinks">
                   {% if content.field_e_view_mode[0]['#markup'] != 'single_product' %}
@@ -36,12 +41,6 @@
                   {% endif %}
                 </div>
             {% endif %}
-            {% if content.field_campaign|render %}
-                <span class="ecommerce-slider__campaign">
-                    {{ content.field_campaign }}
-                </span>
-            {% endif %}
-
             <div class="swiper-container">
                 <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
                     {{ content.field_advertising_products }}
