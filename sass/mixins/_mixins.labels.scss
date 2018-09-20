@@ -32,7 +32,7 @@
   text-align: right;
   line-height: 1.4;
   letter-spacing: 0.7px;
-  margin: 10px $label--affiliate-margin-right 10px 0;
+  margin: 10px $label--affiliate-margin-right 34px 0;
 
   @media (max-width: $screen-xxs-max) {
     @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--mobile);
