@@ -386,7 +386,7 @@ function infinite_inject_pinterest_image($variables, $entity)
  * @return mixed
  */
 function _infinite_get_icon($node, $variables) {
-  $variables['shopping_icon'] = FALSE;
+  $variables['teaser_icon'] = FALSE;
   if (!empty($paragraphs = $node->field_paragraphs->referencedEntities())) {
     foreach ($paragraphs as $paragraph) {
       switch ($paragraph->bundle()) {
@@ -394,11 +394,11 @@ function _infinite_get_icon($node, $variables) {
         case 'advertising_products_embed':
         case 'ecommerce_slider_paragraph':
           // shopping overrides everything else
-          $variables['shopping_icon'] = 'shop-it';
+          $variables['teaser_icon'] = 'shop-it';
           break 2;
         case 'image':
         case 'gallery':
-          $variables['shopping_icon']['image'] = 'image';
+          $variables['teaser_icon']['image'] = 'image';
           break;
         case 'media':
           if (!empty($medias = $paragraph->field_media->referencedEntities())) {
@@ -406,30 +406,29 @@ function _infinite_get_icon($node, $variables) {
               switch ($media->bundle()) {
                 case 'video':
                 case 'nexx_video':
-                  $variables['shopping_icon']['video'] = 'video';
+                  $variables['teaser_icon']['video'] = 'video';
                   break;
                 case 'image':
-                  $variables['shopping_icon']['image'] = 'image';
+                  $variables['teaser_icon']['image'] = 'image';
                   break;
               }
             }
           }
           break;
         case 'video':
-          $variables['shopping_icon']['video'] = 'video';
+          $variables['teaser_icon']['video'] = 'video';
           break;
       }
     }
-    if (is_array($variables['shopping_icon'])) {
-      if (isset($variables['shopping_icon']['video'])) {
-        $variables['shopping_icon'] = 'video';
+    if (is_array($variables['teaser_icon'])) {
+      if (isset($variables['teaser_icon']['video'])) {
+        $variables['teaser_icon'] = 'video';
       }
-      else if (isset($variables['shopping_icon']['image'])) {
-          $variables['shopping_icon'] = 'image';
+      else if (isset($variables['teaser_icon']['image'])) {
+          $variables['teaser_icon'] = 'image';
       }
     }
   }
-  dump($variables['shopping_icon']);
 
   return $variables;
 }
