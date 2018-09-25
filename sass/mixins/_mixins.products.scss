@@ -499,9 +499,10 @@
    * customisable styles
    */
   .text-shop {
-    color: $ecommerce-slider__button-color;
-    background-color: $ecommerce-slider__button-background-color;
-    border-color: 1px solid $ecommerce-slider__button-border-color;
+    @include product__item-text-shop--default();
+    // color: $ecommerce-slider__button-color;
+    // background-color: $ecommerce-slider__button-background-color;
+    // border-color: 1px solid $ecommerce-slider__button-border-color;
   }
 
   .swiper-button {

@@ -1,0 +1,12 @@
+/// Return z-index from map
+///
+/// @access public
+/// @param {Object} $map [$z-layers] - name of z-index layers map
+/// @param {String} $key
+@function getZIndex($key, $map: $z-layers) {
+  @if not map-has-key($map, $key) {
+    @warn "No z-index-layer found for `#{$key}` in $z-layers map. Property omitted.";
+  }
+
+  @return map-get($z-layers, $key);
+}
