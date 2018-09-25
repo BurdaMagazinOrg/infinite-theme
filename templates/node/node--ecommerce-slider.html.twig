@@ -32,11 +32,9 @@
                     {{ content.field_campaign }}
                 </span>
             {% endif %}
-            {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+            {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' and content.field_e_view_mode[0]['#markup'] != 'single_product' %}
                 <div class="affiliatelinks">
-                  {% if content.field_e_view_mode[0]['#markup'] != 'single_product' %}
                     <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
-                  {% endif %}
                 </div>
             {% endif %}
             <div class="swiper-container">
