@@ -156,6 +156,7 @@ function infinite_preprocess_node(&$variables) {
     if ($variables['view_mode'] === 'full' || $variables['view_mode'] === 'lazyloading') {
       $variables['wrapper_attributes'] = new Attribute();
     }
+    $variables = _infinite_get_icon($node, $variables);
   }
 
   if($bundle == 'ecommerce_slider') {
@@ -231,7 +232,7 @@ function infinite_preprocess_advertising_product(&$variables) {
 
   // price
   $price = $product->product_price->value;
- 
+
   // provider
   $provider = explode("_", $product->product_provider->value)[0];
   $data_attributes->setAttribute('data-provider', $provider);
@@ -373,6 +374,62 @@ function infinite_inject_pinterest_image($variables, $entity)
       'pinterest_fallback_teaser_image'
     );
   }
+
+  return $variables;
+}
+
+/**
+ * Check which icon to display.
+ *
+ * @param $node
+ * @param $variables
+ * @return mixed
+ */
+function _infinite_get_icon($node, $variables) {
+  $variables['shopping_icon'] = FALSE;
+  if (!empty($paragraphs = $node->field_paragraphs->referencedEntities())) {
+    foreach ($paragraphs as $paragraph) {
+      switch ($paragraph->bundle()) {
+        case 'advertising_products_paragraph':
+        case 'advertising_products_embed':
+        case 'ecommerce_slider_paragraph':
+          // shopping overrides everything else
+          $variables['shopping_icon'] = 'shop-it';
+          break 2;
+        case 'image':
+        case 'gallery':
+          $variables['shopping_icon']['image'] = 'image';
+          break;
+        case 'media':
+          if (!empty($medias = $paragraph->field_media->referencedEntities())) {
+            foreach ($medias as $media) {
+              switch ($media->bundle()) {
+                case 'video':
+                case 'nexx_video':
+                  $variables['shopping_icon']['video'] = 'video';
+                  break;
+                case 'image':
+                  $variables['shopping_icon']['image'] = 'image';
+                  break;
+              }
+            }
+          }
+          break;
+        case 'video':
+          $variables['shopping_icon']['video'] = 'video';
+          break;
+      }
+    }
+    if (is_array($variables['shopping_icon'])) {
+      if (isset($variables['shopping_icon']['video'])) {
+        $variables['shopping_icon'] = 'video';
+      }
+      else if (isset($variables['shopping_icon']['image'])) {
+          $variables['shopping_icon'] = 'image';
+      }
+    }
+  }
+  dump($variables['shopping_icon']);
 
   return $variables;
 }
