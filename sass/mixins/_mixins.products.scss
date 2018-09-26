@@ -128,20 +128,23 @@
   }
 }
 
-@mixin product__percentage-saving--default() {
+@mixin product__percentage-saving--default($use-position: true) {
   @include text-helper(
     $product__percentage-saving-font-id--default,
     $product__percentage-saving-size--default
   );
-  position: absolute;
-  bottom: $product__percentage-saving-bottom--default;
-  right: $product__percentage-saving-right--default;
   color: $product__percentage-saving-color--default;
   background-color: $product__percentage-saving-bg-color--default;
   border: $product__percentage-saving-border--default;
   padding: $product__percentage-saving-padding--default;
   border-radius: $product__percentage-saving-border-radius--default;
   letter-spacing: $product__percentage-saving-letter-spacing--default;
+  
+  @if($use-position == true) {
+    position: absolute;
+    bottom: $product__percentage-saving-bottom--default;
+    right: $product__percentage-saving-right--default;
+  }
 }
 
 @mixin product__item--ecommerce-slider {

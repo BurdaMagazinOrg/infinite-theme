@@ -83,18 +83,20 @@
       <div{{ content_attributes.addClass(['coupon__column--left']) }}>
         <div class="coupon__deal-info">
           <h2 class="coupon__title">{{ content.field_name }}</h2>
-          <div class="coupon__description">{{ content.label }}</div>
-          <div class="coupon__date">{{ content.field_valid_from_to }}</div>
-          <div class="coupon__availability">{{ content.field_coupon_availability }}</div>
-          <div class="coupon__discount">{{ content.field_coupon_discount }}</div>
-          <div class="coupon__code">{{ content.field_coupon_code }}</div>
+          <div class="coupon__description">{{ label }}</div>
+          <div class="coupon__date">Von {{ content.field_valid_from_to }}</div>
+          <div class="coupon__availability">{{ content.field_coupon_availability.0['#markup'] | trim }}<span>-Deal</span></div>
+          <div class="coupon__discount-row">
+            <span class="coupon__discount">{{ content.field_coupon_discount }}</span>
+            <span class="coupon__code">CODE:{{ content.field_coupon_code }}</span>
+          </div>
           <a class="coupon__button" href="{{content.field_url.0['#url']}}" target="_blank">{{ content.field_url.0['#title'] }}</a>
         </div>
         <span class="tr-px">{{ content.field_tracking_pixel }}</span>
       </div>
 
       <div class="coupon__column--right">
-        <span>Top-Produkte</span>
+        <span class="coupon__products-title">Top-Produkte</span>
         <div class="coupon__products">
             {{ content.field_advertising_products }}
         </div>
