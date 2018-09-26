@@ -352,6 +352,19 @@ function infinite_preprocess_container(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_responsive_image().
+ */
+function infinite_preprocess_responsive_image(&$variables) {
+  $variables['noscript_img_element'] = FALSE;
+  if (isset($variables['img_element'])) {
+    $variables['noscript_img_element'] = $variables['img_element'];
+    unset($variables['noscript_img_element']['#attached'], $variables['noscript_img_element']['drupalSettings'], $variables['noscript_img_element']['#attributes']['class']);
+    $variables['noscript_img_element']['#uri'] = $variables['noscript_img_element']['#attributes']['data-src'];
+    unset($variables['noscript_img_element']['#attributes']['data-src']);
+  }
+}
+
+/**
  * Use dedicated pinterest image for sharing.
  *
  * @param $variables
