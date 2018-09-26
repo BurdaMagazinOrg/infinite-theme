@@ -231,7 +231,7 @@ function infinite_preprocess_advertising_product(&$variables) {
 
   // price
   $price = $product->product_price->value;
- 
+
   // provider
   $provider = explode("_", $product->product_provider->value)[0];
   $data_attributes->setAttribute('data-provider', $provider);
@@ -357,10 +357,17 @@ function infinite_preprocess_container(&$variables) {
 function infinite_preprocess_responsive_image(&$variables) {
   $variables['noscript_img_element'] = FALSE;
   if (isset($variables['img_element'])) {
+    // make a copy
     $variables['noscript_img_element'] = $variables['img_element'];
-    unset($variables['noscript_img_element']['#attached'], $variables['noscript_img_element']['drupalSettings'], $variables['noscript_img_element']['#attributes']['class']);
-    $variables['noscript_img_element']['#uri'] = $variables['noscript_img_element']['#attributes']['data-src'];
-    unset($variables['noscript_img_element']['#attributes']['data-src']);
+    // throw away stuff we don't need.
+    unset(
+      $variables['noscript_img_element']['#attached'],
+      $variables['noscript_img_element']['drupalSettings'],
+      $variables['noscript_img_element']['#attributes']['class'],
+      $variables['noscript_img_element']['#attributes']['data-src']
+    );
+    // set the uri to the first element of sources, it is the largest image.
+    $variables['noscript_img_element']['#uri'] = $variables['sources'][0]['data-srcset']->value();
   }
 }
 
