@@ -1,0 +1,83 @@
+.page-coupons {
+  .item-content--coupon {
+    @include gap--v-region();
+    border-top: $coupon__row-border;
+
+    &:first-child {
+      border: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.item-content--coupon {
+  .coupon__title {
+    $coupon__title-font-id: $font-headline-id;
+    $coupon__title-size-mobile: 20px;
+    $coupon__title-size-tablet: 24px;
+    $coupon__title-size-desktop: 24px;
+    $coupon__title-letter-spacing: 0;
+
+    @include text-helper($coupon__title-font-id, $coupon__title-size-mobile);
+    letter-spacing: $coupon__title-letter-spacing;
+    
+    @media (min-width: $screen-sm-min and (max-width: $screen-sm-max)) {
+      @include text-helper-size(
+        $coupon__title-font-id,
+        $coupon__title-size-tablet
+      );
+    }
+    @media (min-width: $screen-md-min) {
+      @include text-helper-size(
+        $coupon__title-font-id,
+        $coupon__title-size-desktop
+      );
+    }
+  }
+
+  .coupon__row {
+    @include flexbox();
+  }
+
+  .coupon__column--left {
+    @media (min-width: $screen-sm-min) {
+      @include flex-item(1);
+      padding-right: $grid-unit-6;
+    }
+  }
+
+  .coupon__column--right {
+    @media (min-width: $screen-sm-min) {
+      @include flex-item(3);
+    }
+  }
+
+  .coupon__products {
+    @include flexbox();
+  }
+
+  .product__percentage-saving {
+    @include product__percentage-saving--single-product();
+    right: $grid-unit-half;
+  }
+
+  .item-ecommerce {
+    @include product__item--default();
+    width: calc(25% - #{$grid-unit-3});
+
+    .img-container {
+      img {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: $screen-sm-min) {
+      margin-left: $grid-unit-3;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% block content_header_block %}
+    <div class="item-content__header">
+        <div class="ratio-wrapper">
+            <div class="caption">
+                <h1 class="title--page">Coupon</h1>
+            </div>
+        </div>
+        {% if header %}
+            <header>
+                {{ header }}
+            </header>
+        {% endif %}
+    </div>
+{% endblock %}
+<div class="coupon__node-items region-full-content">
+  <div class="region-fixed-content">
+    {% for row in rows %}
+        {{ row.content }}
+    {% endfor %}
+  </div>
+</div>
