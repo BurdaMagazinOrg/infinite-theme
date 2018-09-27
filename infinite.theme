@@ -356,7 +356,7 @@ function infinite_preprocess_container(&$variables) {
  */
 function infinite_preprocess_responsive_image(&$variables) {
   $variables['noscript_img_element'] = FALSE;
-  if (isset($variables['img_element'])) {
+  if (isset($variables['img_element']) && isset($variables['sources'][0]['data-srcset'])) {
     // make a copy
     $variables['noscript_img_element'] = $variables['img_element'];
     // throw away stuff we don't need.
