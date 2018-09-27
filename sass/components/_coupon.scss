@@ -26,7 +26,7 @@
     letter-spacing: $coupon__title-letter-spacing;
     margin-bottom: $grid-unit-3;
 
-    @media (min-width: $screen-sm-min and (max-width: $screen-sm-max)) {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       @include text-helper-size(
         $coupon__title-font-id,
         $coupon__title-size-tablet
@@ -48,7 +48,7 @@
     letter-spacing: $coupon__description-letter-spacing;
     margin-bottom: $grid-unit-2;
 
-    @media (min-width: $screen-sm-min and (max-width: $screen-sm-max)) {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       @include text-helper-size(
         $coupon__description-font-id,
         $coupon__description-size-tablet
@@ -68,7 +68,7 @@
     @include text-helper($coupon__date-font-id, $coupon__date-size-desktop);
     letter-spacing: $coupon__date-letter-spacing;
 
-    @media (min-width: $screen-sm-min and (max-width: $screen-sm-max)) {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       @include text-helper-size(
         $coupon__date-font-id,
         $coupon__date-size-tablet
@@ -109,7 +109,7 @@
     padding: $coupon__code-padding;
     letter-spacing: $coupon__code-letter-spacing;
 
-    @media (min-width: $screen-sm-min and (max-width: $screen-sm-max)) {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       @include text-helper-size(
         $coupon__code-font-id,
         $coupon__code-size-tablet
@@ -156,7 +156,7 @@
     margin-bottom: $grid-unit-2;
     display: block;
 
-    @media (min-width: $screen-sm-min and (max-width: $screen-sm-max)) {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
       @include text-helper-size(
         $coupon__products_title-font-id,
         $coupon__products_title-size-tablet
