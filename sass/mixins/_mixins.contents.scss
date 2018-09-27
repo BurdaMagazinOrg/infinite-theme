@@ -200,10 +200,6 @@
     @include gap--v-region();
   }
 
-  .item-group--outer {
-    padding-left: 0;
-  }
-
   .item-author__article-title {
     @extend %region--fixed-content;
     @extend %title--content-block;
