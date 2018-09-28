@@ -25,6 +25,29 @@
   color: $color;
 }
 
+@mixin label--affiliate() {
+  @include text-helper($label--affiliate-font-id);
+  color: $label--affiliate-color;
+  text-transform: $label--affiliate-text-transform;
+  text-align: right;
+  line-height: 1.4;
+  letter-spacing: 0.7px;
+  padding: 10px $label--affiliate-padding-right 34px 0;
+  background-color: $label--affiliate-background-color;
+
+  @media (max-width: $screen-xxs-max) {
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--mobile);
+  }
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--tablet);
+  }
+
+  @media (min-width: $screen-md-min) {
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--desktop);
+  }
+}
+
 @mixin label--copyright($sizes: ($label--copyright-size--mobile, $label--copyright-size--tablet, $label--copyright-size--desktop), $font: $label--copyright-font-id, $color: $label--copyright-color) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);

@@ -27,3 +27,13 @@ $label--copyright-text-transform: uppercase !default;
 $label--copyright-size--mobile: 12px !default;
 $label--copyright-size--tablet: 14px !default;
 $label--copyright-size--desktop: 14px !default;
+
+/** label-affiliate **/
+$label--affiliate-font-id: $label--copyright-font-id;
+$label--affiliate-color: $label--copyright-color !default;
+$label--affiliate-text-transform: $label--copyright-text-transform !default;
+$label--affiliate-size--mobile: 10px !default;
+$label--affiliate-size--tablet: 10px !default;
+$label--affiliate-size--desktop: 10px !default;
+$label--affiliate-padding-right: 10px !default;
+$label--affiliate-background-color: #fff !default;

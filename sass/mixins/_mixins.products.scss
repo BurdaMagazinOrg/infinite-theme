@@ -360,6 +360,16 @@
   background-color: $ecommerce-slider__background-color;
   position: relative;
 
+  @media screen and (max-width: $screen-sm-max) {
+    .ecommerce-slider__title {
+      font-size: $ecommerce-slider__title-size-tablet--full;
+    }
+  }
+
+  .affiliatelinks {
+    @include label--affiliate();
+  }
+
   &.no-bg-image {
   }
 
@@ -370,6 +380,7 @@
       left: 0;
       right: 0;
       bottom: 0;
+      margin-top: $padding;
     }
 
     .ecommerce-slider__content {
@@ -474,6 +485,7 @@
     &:hover,
     &:focus {
       outline: none;
+      background-color: $ecommerce-slider__arrows-background-color-hover;
       color: $ecommerce-slider__arrows-color-hover;
       box-shadow: $ecommerce-slider__arrows-box-shadow-hover;
     }
@@ -499,10 +511,9 @@
    * customisable styles
    */
   .text-shop {
-    @include product__item-text-shop--default();
-    // color: $ecommerce-slider__button-color;
-    // background-color: $ecommerce-slider__button-background-color;
-    // border-color: 1px solid $ecommerce-slider__button-border-color;
+    color: $ecommerce-slider__button-color;
+    background-color: $ecommerce-slider__button-background-color;
+    border: 1px solid $ecommerce-slider__button-border-color;
   }
 
   .swiper-button {

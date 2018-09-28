@@ -10,6 +10,12 @@
       $(document)
         .off('click.redirect', '[' + urlDataAttribute + ']')
         .on('click.redirect', '[' + urlDataAttribute + ']', function(e) {
+          // If an actual link is clicked inside of the container
+          // we want this to still work
+          if (e.target.tagName.toUpperCase() === 'A') {
+            return;
+          }
+
           let currentTarget = e.currentTarget;
           let redirectUrl = currentTarget.getAttribute(urlDataAttribute);
           let target = openInNewWindow

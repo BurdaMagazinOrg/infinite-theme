@@ -46,8 +46,13 @@
         {% if content.field_title|render %}
             <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
         {% endif %}
+        {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' and content.field_e_view_mode[0]['#markup'] != 'single_product' %}
+            <div class="affiliatelinks">
+                <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+            </div>
+        {% endif %}
         <div class="container-content">
-            {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode') }}
+            {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode', 'field_suppress_affiliate_link') }}
         </div>
 
         {% if content.field_text | render is not empty %}
