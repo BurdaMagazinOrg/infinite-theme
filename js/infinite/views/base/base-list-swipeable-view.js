@@ -52,7 +52,8 @@
         enableMobileMode: function () {
             if (Blazy == undefined) return;
 
-            this.swiperApi.on('onSlideChangeStart', function (pSwiperApi) {
+            this.swiperApi.on('slideChange', function () {
+                var pSwiperApi = this;
                 var tmpIndex = Math.min(pSwiperApi.activeIndex + 1, pSwiperApi.slides.length - 1),
                     $tmpSlide = $(pSwiperApi.slides[tmpIndex]).find('.b-lazy'),
                     $tmpSlideContainer = $(pSwiperApi.slides[tmpIndex]).find('.media--loading'),
@@ -71,7 +72,7 @@
         disableMobileMode: function () {
             if (Blazy == undefined) return;
 
-            this.swiperApi.off('slideChangeStart');
+            this.swiperApi.off('slideChange');
         },
         removeSwiper: function () {
             this.swiperApi.destroy(true, true);
