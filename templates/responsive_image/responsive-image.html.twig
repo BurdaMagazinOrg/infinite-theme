@@ -36,5 +36,10 @@
         {% endif %}
         {# The controlling image, with the fallback image in srcset. #}
         {{ img_element }}
+	{% if noscript_img_element != false %}
+	    <noscript>
+	      {{ noscript_img_element }}
+	    </noscript>
+        {% endif %}
     </picture>
 {% endif %}
