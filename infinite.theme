@@ -393,6 +393,7 @@ function _infinite_get_icon($node, $variables) {
         case 'advertising_products_paragraph':
         case 'advertising_products_embed':
         case 'ecommerce_slider_paragraph':
+        case 'ecommerce_look':
           // shopping overrides everything else
           $variables['teaser_icon'] = 'shop-it';
           break 2;
