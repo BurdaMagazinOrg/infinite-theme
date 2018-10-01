@@ -21,7 +21,6 @@
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
 <div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
-
     <div class="ecommerce-slider__content-wrapper">
 
         <div class="swiper-button swiper-button-prev"></div>
@@ -33,7 +32,11 @@
                     {{ content.field_campaign }}
                 </span>
             {% endif %}
-
+            {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' and content.field_e_view_mode[0]['#markup'] != 'single_product' %}
+                <div class="affiliatelinks">
+                    <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+                </div>
+            {% endif %}
             <div class="swiper-container">
                 <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
                     {{ content.field_advertising_products }}
