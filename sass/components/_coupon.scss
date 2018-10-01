@@ -3,6 +3,10 @@
     @extend %region--full-content;
     @extend %margin--v-xxl;
   }
+
+  .coupon__description {
+    @include copytext--text-block();
+  }
   
   .item-content--coupon {
     @include gap--v-region();

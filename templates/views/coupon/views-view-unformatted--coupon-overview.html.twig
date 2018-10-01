@@ -17,21 +17,6 @@
  * @ingroup themeable
  */
 #}
-
-{% block content_header_block %}
-    <div class="item-content__header">
-        <div class="ratio-wrapper">
-            <div class="caption">
-                <h1 class="title--page">Coupon</h1>
-            </div>
-        </div>
-        {% if header %}
-            <header>
-                {{ header }}
-            </header>
-        {% endif %}
-    </div>
-{% endblock %}
 <div class="item-content__content coupon__node-items region-full-content">
   <div class="region-fixed-content">
     {% for row in rows %}
