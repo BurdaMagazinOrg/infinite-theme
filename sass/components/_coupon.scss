@@ -1,4 +1,5 @@
-.page-coupons, .page-shopping-deals {
+.page-coupons,
+.page-shopping-deals {
   .item-content__content {
     @extend %region--full-content;
     @extend %margin--v-xxl;
@@ -7,7 +8,7 @@
   .coupon__description {
     @include copytext--text-block();
   }
-  
+
   .item-content--coupon {
     @include gap--v-region();
     border-top: $coupon__row-border;
@@ -137,13 +138,13 @@
     @include button();
     @include button--lg();
     @include button--white();
-    @include icon($container: "&:after");
-    @include icon-arrow-large-right($container: "&:after");
     @include flexbox($inline: true);
     @include align-items();
+    @include icon($container: "&:after");
     white-space: nowrap;
 
     &:after {
+      content: $icon__arrow-large-right;
       font-size: 18px;
       margin-left: $grid-unit-1;
     }

@@ -192,7 +192,7 @@
 
 @mixin icon-arrow-large-right($hover: true, $container: '&:before') {
   #{$container} {
-    content: $icon__arrow-large-right;
+    content: "\e903";
   }
 
   @if ($hover) {
