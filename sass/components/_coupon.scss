@@ -134,7 +134,6 @@
   }
 
   .coupon__button {
-    @include clearfix();
     @include button();
     @include button--lg();
     @include button--white();
