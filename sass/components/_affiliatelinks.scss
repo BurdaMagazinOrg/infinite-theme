@@ -1,3 +1,13 @@
-.affiliatelinks--hide .affiliatelinks {
-  display: none;
+.affiliatelinks--hide {
+  .affiliatelinks:not(.affiliatelinks--magazine-products) {
+    display: none;
+  }
+
+  .affiliatelinks--magazine-products {
+    @include label--affiliate();
+
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
