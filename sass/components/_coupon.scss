@@ -181,6 +181,10 @@
       $coupon__tnc-size
     );
     margin-top: $grid-unit-3;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   /**
