@@ -91,7 +91,7 @@
               <span class="coupon__discount">{{ content.field_coupon_discount }}</span>
             {% endif %}
             {% if content.field_coupon_code | render is not empty %}
-              <span class="coupon__code">CODE:{{ content.field_coupon_code }}</span>
+              <span class="coupon__code">CODE: {{ content.field_coupon_code }}</span>
             {% endif %}
           </div>
           <a class="coupon__button" href="{{ content.field_url.0['#url'] }}" target="_blank">{{ content.field_url.0['#title'] }}</a>

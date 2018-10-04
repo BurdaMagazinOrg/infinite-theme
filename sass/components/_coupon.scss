@@ -222,7 +222,7 @@
   .item-ecommerce {
     @include product__item--default(false);
     @media (max-width: $screen-sm-max) {
-      width: calc(50% - #{$grid-unit-3});
+      width: calc(50% - #{$grid-unit-1});
 
       &:nth-child(2) {
         margin-left: $grid-unit-2;
@@ -230,8 +230,8 @@
     }
 
     @media (min-width: $screen-md-min) {
-      width: calc(25% - #{$grid-unit-3});
-      margin-left: $grid-unit-3;
+      width: calc(25% - #{$grid-unit-2});
+      margin-left: $grid-unit-2;
 
       &:first-child {
         margin-left: 0;
