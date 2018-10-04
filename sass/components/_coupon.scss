@@ -208,7 +208,7 @@
   }
 
   .item-ecommerce {
-    @include product__item--default();
+    @include product__item--default(false);
     @media (max-width: $screen-sm-max) {
       width: calc(50% - #{$grid-unit-3});
 
