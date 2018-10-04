@@ -87,10 +87,10 @@
           <div class="coupon__date">Von {{ content.field_valid_from_to }}</div>
           <div class="coupon__availability">{{ content.field_coupon_availability.0['#markup'] | trim }}<span>-Deal</span></div>
           <div class="coupon__discount-row">
-            {% if content.field_coupon_discount %}
+            {% if content.field_coupon_discount | render is not empty %}
               <span class="coupon__discount">{{ content.field_coupon_discount }}</span>
             {% endif %}
-            {% if content.field_coupon_code %}
+            {% if content.field_coupon_code | render is not empty %}
               <span class="coupon__code">CODE:{{ content.field_coupon_code }}</span>
             {% endif %}
           </div>
