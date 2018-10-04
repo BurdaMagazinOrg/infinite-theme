@@ -175,6 +175,14 @@
     }
   }
 
+  .coupon__tnc {
+    @include text-helper(
+      $coupon__tnc-font-id,
+      $coupon__tnc-size
+    );
+    margin-top: $grid-unit-3;
+  }
+
   /**
   ** PRODUCT INFO TEXT STYLING END 
   **/
