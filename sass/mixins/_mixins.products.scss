@@ -527,6 +527,13 @@
 
   .ecommerce-slider__title {
     color: $ecommerce-slider__title-color;
+    margin: $ecommerce-slider__title-margin-mobile;
+    @media (min-width: $screen-tablet) {
+      margin: $ecommerce-slider__title-margin-tablet;
+    }
+    @media (min-width: $screen-desktop) {
+      margin: $ecommerce-slider__title-margin-desktop;
+    }
   }
 
 }
