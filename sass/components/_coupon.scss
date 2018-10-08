@@ -2,7 +2,7 @@
 .page-shopping-deals {
   .item-content__content {
     @extend %region--full-content;
-    @extend %margin--v-xxl;
+    @extend %margin--v-xl;
   }
 
   .coupon__description {
@@ -176,10 +176,7 @@
   }
 
   .coupon__tnc {
-    @include text-helper(
-      $coupon__tnc-font-id,
-      $coupon__tnc-size
-    );
+    @include text-helper($coupon__tnc-font-id, $coupon__tnc-size);
     margin-top: $grid-unit-3;
 
     a {
@@ -248,5 +245,161 @@
   .product__percentage-saving {
     @include product__percentage-saving--single-product();
     right: $grid-unit-half;
+  }
+}
+
+#coupon__filter {
+  .region-fixed-content {
+    padding-bottom: $grid-unit-5;
+    position: relative;
+  }
+
+  .views-exposed-form {
+    @include text-helper($coupon__filter-font, $coupon__filter-size);
+    @include flexbox();
+    text-transform: $coupon__filter-text-transform;
+
+    & > .form-composite {
+      @include flex-item();
+      margin-left: $grid-unit-3;
+      position: relative;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:after {
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+        width: 100%;
+        @include gradient-vertical(
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1),
+          0,
+          50%
+        );
+      }
+    }
+
+    legend {
+      margin-bottom: $grid-unit-2;
+      border-bottom: $coupon__filter-hline;
+    }
+
+    .fieldset-legend {
+      font-size: $coupon__filter-size;
+      margin-bottom: $grid-unit-half;
+      display: inline-block;
+    }
+
+    label {
+      margin-left: $grid-unit-half;
+      margin-bottom: $grid-unit-1;
+      font-weight: normal;
+    }
+  }
+
+  .fieldset-wrapper {
+    height: 195px;
+    overflow: auto;
+    padding-bottom: 30px;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 5px;
+      background-color: $color-gray-5;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: $black;
+      // box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+      height: 80px;
+      z-index: 10;
+      position: relative;
+    }
+  }
+
+  .form-submit {
+    @include button();
+    @include button--sm();
+    @include button--white();
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .form-item-sort-bef-combine {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    label {
+      text-transform: none;
+    }
+  }
+  
+  select {
+    @include text-helper($coupon__filter-font, $coupon__filter-size);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: $coupon__filter-hline;
+    border-radius: 0;
+    height: 30px;
+    background: none;
+    margin-left: $grid-unit-2;
+    min-width: 264px;
+  }
+
+  .form-checkbox {
+    position: absolute; // take it out of document flow
+    opacity: 0; // hide it
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    // Box.
+    & + label:before {
+      content: "";
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: $grid-unit-2 - 2px;
+      height: $grid-unit-2 - 2px;
+      background: $color-white;
+      border: 1px solid $black;
+    }
+
+    // Box hover
+    &:hover + label:before {
+      background: $color-gray-5;
+    }
+
+    // Checkmark. Could be replaced with an image
+    &:checked + label:after {
+      $check-color: $gray-dark;
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 6px;
+      background: $check-color;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 $check-color, 4px 0 0 $check-color,
+        4px -2px 0 $check-color, 4px -4px 0 $check-color,
+        4px -6px 0 $check-color, 4px -8px 0 $check-color;
+      transform: rotate(45deg);
+    }
   }
 }

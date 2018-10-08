@@ -7,7 +7,12 @@
         </div>
     </div>
 {% endblock %}
-{{ exposed }}
+
+<div id="coupon__filter" class="item-content__content region-full-content coupon__filter">
+    <div class="region-fixed-content">
+        {{ exposed }}
+    </div>
+</div>
 
 
 {{ rows }}
@@ -16,7 +21,7 @@
 
 {% block footer_block %}
     {% if footer %}
-        <div class="item-content__content coupon__description region-full-content">
+        <div class="item-content__content region-full-content coupon__description">
             <div class="region-fixed-content">
                 {{ footer }}
             </div>
