@@ -11,3 +11,9 @@
     right: 0;
   }
 }
+
+.item-paragraph--ecommerce-look {
+  .affiliatelinks {
+    @include label--affiliate();
+  }
+}
