@@ -1,5 +1,4 @@
-.page-coupons,
-.page-shopping-deals {
+.coupon__overview {
   .item-content__content {
     @extend %region--full-content;
     @extend %margin--v-xl;
@@ -17,10 +16,6 @@
       border: none;
       margin-top: 0;
       padding-top: 0;
-
-      // .coupon__button {
-      //   @include button--dark();
-      // }
     }
   }
 }
