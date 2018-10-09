@@ -421,10 +421,10 @@
 
   .ecommerce-slider__bg {
     overflow: hidden;
-    height: 642px;
+    height: 760px;
 
     img {
-      height: 642px;
+      height: 100%;
       width: 100%;
       object-fit: cover;
       object-position: top;
@@ -563,11 +563,7 @@
   }
 
   .ecommerce-slider__bg {
-    height: 549px;
-
-    img {
-      height: 549px;
-    }
+    height: 775px;
   }
 
   .item-product-slider {
