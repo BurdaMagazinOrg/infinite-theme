@@ -250,22 +250,28 @@
 
 #coupon__filter {
   .region-fixed-content {
-    padding-bottom: $grid-unit-5;
+    padding-bottom: $grid-unit-7;
     position: relative;
   }
 
   .views-exposed-form {
     @include text-helper($coupon__filter-font, $coupon__filter-size);
-    @include flexbox();
     text-transform: $coupon__filter-text-transform;
 
+    @media (min-width: $screen-sm-min) {
+      @include flexbox();
+    }
+
     & > .form-composite {
-      @include flex-item();
-      margin-left: $grid-unit-3;
       position: relative;
 
-      &:first-child {
-        margin-left: 0;
+      @media (min-width: $screen-sm-min) {
+        @include flex-item();
+        margin-left: $grid-unit-3;
+
+        &:first-child {
+          margin-left: 0;
+        }
       }
 
       &:after {
@@ -296,14 +302,17 @@
     }
 
     label {
-      margin-left: $grid-unit-half;
       margin-bottom: $grid-unit-1;
       font-weight: normal;
+
+      // @media (min-width: $screen-sm-min) {
+      //   margin-left: $grid-unit-half;
+      // }
     }
   }
 
   .fieldset-wrapper {
-    height: 195px;
+    max-height: 195px;
     overflow: auto;
     padding-bottom: 30px;
 
@@ -333,18 +342,41 @@
     left: 0;
   }
 
+  //dropdown container
   .form-item-sort-bef-combine {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    @include icon($container: "&:after");
+    position: relative;
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
 
     label {
       text-transform: none;
+
+      @media (max-width: $screen-xs-max) {
+        text-align: right;
+        display: block;
+        // margin-bottom: 0;
+      }
+    }
+
+    &:after {
+      @include rotate(90deg);
+      content: $icon__arrow-large-right;
+      font-size: 16px;
+      position: absolute;
+      right: 0;
+      bottom: 7px;
+      pointer-events: none;
     }
   }
-  
+
   select {
     @include text-helper($coupon__filter-font, $coupon__filter-size);
+    text-transform: $coupon__filter-text-transform;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
@@ -355,8 +387,14 @@
     border-radius: 0;
     height: 30px;
     background: none;
-    margin-left: $grid-unit-2;
-    min-width: 264px;
+    cursor: pointer;
+    width: 100%;
+
+    @media (min-width: $screen-sm-min) {
+      width: auto;
+      min-width: 264px;
+      margin-left: $grid-unit-2;
+    }
   }
 
   .form-checkbox {
