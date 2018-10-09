@@ -87,7 +87,8 @@
             </div>
         {% endblock %}
     </div>
-    {% if anchor_links %}
+
+    {% if anchor_links['#links'] is not empty %}
         {% block anchor_block %}
             {{ attach_library('infinite/infinite.views.anchor-navigation-view') }}
 
