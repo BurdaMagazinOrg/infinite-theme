@@ -1,15 +1,18 @@
 .affiliatelinks--hide {
-  .affiliatelinks:not(.affiliatelinks--magazine-products) {
+  .affiliatelinks:not(.affiliatelinks--magazine-products):not(.affiliatelinks--shopping-products) {
     display: none;
   }
 
-  .affiliatelinks--magazine-products {
-    @include label--affiliate();
+}
 
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
+.affiliatelinks--magazine-products,
+.affiliatelinks--shopping-products {
+  @include label--affiliate();
+}
+.affiliatelinks--magazine-products{
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .item-paragraph--ecommerce-look {
