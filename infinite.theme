@@ -390,6 +390,7 @@ function _infinite_get_icon($node, $variables) {
   if (!empty($paragraphs = $node->field_paragraphs->referencedEntities())) {
     foreach ($paragraphs as $paragraph) {
       switch ($paragraph->bundle()) {
+        case 'productdb_product':
         case 'advertising_products_paragraph':
         case 'advertising_products_embed':
         case 'ecommerce_slider_paragraph':
