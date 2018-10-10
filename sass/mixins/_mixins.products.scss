@@ -359,12 +359,16 @@
 @mixin ecommerce-slider() {
   background-color: $ecommerce-slider__background-color;
   position: relative;
-
-  @media screen and (max-width: $screen-sm-max) {
-    .ecommerce-slider__title {
+  .ecommerce-slider__title {
+    font-size: $ecommerce-slider__title-size-desktop--full;
+    @media (max-width: $screen-tablet) {
       font-size: $ecommerce-slider__title-size-tablet--full;
     }
+    @media (max-width: $screen-phone) {
+      font-size: $ecommerce-slider__title-size-mobile--full;
+    }
   }
+
 
   .affiliatelinks {
     @include label--affiliate();
