@@ -22,6 +22,11 @@ swiper:
   js:
     /libraries/swiper/dist/js/swiper.min.js: { }
 
+coupons:
+  version: 1.0
+  js:
+    js/behaviors/drupal.behaviors.coupons.js: {}
+
 blazy:
   header: false
   remote: https://github.com/dinbror/blazy

@@ -1,24 +1,5 @@
-.coupon__overview {
-  .item-content__content {
-    @extend %region--full-content;
-    @extend %margin--v-xl;
-  }
-
-  .coupon__description {
-    @include copytext--text-block();
-  }
-
-  .item-content--coupon {
-    @include gap--v-region();
-    border-top: $coupon__row-border;
-
-    &:first-child {
-      border: none;
-      margin-top: 0;
-      padding-top: 0;
-    }
-  }
-}
+@import "coupon.overview";
+@import "coupon.filter";
 
 .item-content--coupon {
   .coupon__title {
@@ -174,8 +155,26 @@
     @include text-helper($coupon__tnc-font-id, $coupon__tnc-size);
     margin-top: $grid-unit-3;
 
+    &.expand {
+      .coupon__tnc-details {
+        max-height: 1500px;
+      }
+    }
+
+    .coupon__tnc-label {
+      text-decoration: underline;
+      margin-bottom: $grid-unit-half;
+      cursor: pointer;
+    }
+
     a {
       text-decoration: underline;
+    }
+
+    .coupon__tnc-details {
+      @include transition-default();
+      max-height: 0;
+      overflow: hidden;
     }
   }
 
@@ -240,200 +239,5 @@
   .product__percentage-saving {
     @include product__percentage-saving--single-product();
     right: $grid-unit-half;
-  }
-}
-
-#coupon__filter {
-  .region-fixed-content {
-    padding-bottom: $grid-unit-7;
-    position: relative;
-  }
-
-  .views-exposed-form {
-    @include text-helper($coupon__filter-font, $coupon__filter-size);
-    text-transform: $coupon__filter-text-transform;
-
-    @media (min-width: $screen-sm-min) {
-      @include flexbox();
-    }
-
-    & > .form-composite {
-      position: relative;
-
-      @media (min-width: $screen-sm-min) {
-        @include flex-item();
-        margin-left: $grid-unit-3;
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-
-      &:after {
-        content: " ";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 30px;
-        width: 100%;
-        pointer-events: none;
-        @include gradient-vertical(
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 1),
-          0,
-          50%
-        );
-      }
-    }
-
-    legend {
-      margin-bottom: $grid-unit-2;
-      border-bottom: $coupon__filter-hline;
-    }
-
-    .fieldset-legend {
-      font-size: $coupon__filter-size;
-      margin-bottom: $grid-unit-half;
-      display: inline-block;
-    }
-
-    label {
-      margin-bottom: $grid-unit-1;
-      font-weight: normal;
-
-      // @media (min-width: $screen-sm-min) {
-      //   margin-left: $grid-unit-half;
-      // }
-    }
-  }
-
-  .fieldset-wrapper {
-    max-height: 195px;
-    overflow: auto;
-    padding-bottom: 30px;
-
-    &::-webkit-scrollbar {
-      -webkit-appearance: none;
-      width: 5px;
-      background-color: $color-gray-5;
-      border-radius: 3px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: $black;
-      // box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-      height: 80px;
-      z-index: 10;
-      position: relative;
-    }
-  }
-
-  .form-submit {
-    @include button();
-    @include button--sm();
-    @include button--white();
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  //dropdown container
-  .form-item-sort-bef-combine {
-    @include icon($container: "&:after");
-    position: relative;
-
-    @media (min-width: $screen-sm-min) {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-    }
-
-    label {
-      text-transform: none;
-
-      @media (max-width: $screen-xs-max) {
-        text-align: right;
-        display: block;
-        // margin-bottom: 0;
-      }
-    }
-
-    &:after {
-      @include rotate(90deg);
-      content: $icon__arrow-large-right;
-      font-size: 16px;
-      position: absolute;
-      right: 0;
-      bottom: 7px;
-      pointer-events: none;
-    }
-  }
-
-  select {
-    @include text-helper($coupon__filter-font, $coupon__filter-size);
-    text-transform: $coupon__filter-text-transform;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    border-bottom: $coupon__filter-hline;
-    border-radius: 0;
-    height: 30px;
-    background: none;
-    cursor: pointer;
-    width: 100%;
-
-    @media (min-width: $screen-sm-min) {
-      width: auto;
-      min-width: 264px;
-      margin-left: $grid-unit-2;
-    }
-  }
-
-  .form-checkbox {
-    position: absolute; // take it out of document flow
-    opacity: 0; // hide it
-
-    & + label {
-      position: relative;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    // Box.
-    & + label:before {
-      content: "";
-      margin-right: 10px;
-      display: inline-block;
-      vertical-align: text-top;
-      width: $grid-unit-2 - 2px;
-      height: $grid-unit-2 - 2px;
-      background: $color-white;
-      border: 1px solid $black;
-    }
-
-    // Box hover
-    &:hover + label:before {
-      background: $color-gray-5;
-    }
-
-    // Checkmark. Could be replaced with an image
-    &:checked + label:after {
-      $check-color: $gray-dark;
-      content: "";
-      position: absolute;
-      left: 3px;
-      top: 6px;
-      background: $check-color;
-      width: 2px;
-      height: 2px;
-      box-shadow: 2px 0 0 $check-color, 4px 0 0 $check-color,
-        4px -2px 0 $check-color, 4px -4px 0 $check-color,
-        4px -6px 0 $check-color, 4px -8px 0 $check-color;
-      transform: rotate(45deg);
-    }
   }
 }
