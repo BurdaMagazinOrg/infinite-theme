@@ -359,6 +359,20 @@
 @mixin ecommerce-slider() {
   background-color: $ecommerce-slider__background-color;
   position: relative;
+  .ecommerce-slider__title {
+    font-size: $ecommerce-slider__title-size-desktop--full;
+    @media (max-width: $screen-tablet) {
+      font-size: $ecommerce-slider__title-size-tablet--full;
+    }
+    @media (max-width: $screen-phone) {
+      font-size: $ecommerce-slider__title-size-mobile--full;
+    }
+  }
+
+
+  .affiliatelinks {
+    @include label--affiliate();
+  }
 
   &.no-bg-image {
   }
@@ -370,6 +384,7 @@
       left: 0;
       right: 0;
       bottom: 0;
+      margin-top: $padding;
     }
 
     .ecommerce-slider__content {
@@ -410,10 +425,10 @@
 
   .ecommerce-slider__bg {
     overflow: hidden;
-    height: 642px;
+    height: 760px;
 
     img {
-      height: 642px;
+      height: 100%;
       width: 100%;
       object-fit: cover;
       object-position: top;
@@ -474,6 +489,7 @@
     &:hover,
     &:focus {
       outline: none;
+      background-color: $ecommerce-slider__arrows-background-color-hover;
       color: $ecommerce-slider__arrows-color-hover;
       box-shadow: $ecommerce-slider__arrows-box-shadow-hover;
     }
@@ -499,10 +515,9 @@
    * customisable styles
    */
   .text-shop {
-    @include product__item-text-shop--default();
-    // color: $ecommerce-slider__button-color;
-    // background-color: $ecommerce-slider__button-background-color;
-    // border-color: 1px solid $ecommerce-slider__button-border-color;
+    color: $ecommerce-slider__button-color;
+    background-color: $ecommerce-slider__button-background-color;
+    border: 1px solid $ecommerce-slider__button-border-color;
   }
 
   .swiper-button {
@@ -516,6 +531,13 @@
 
   .ecommerce-slider__title {
     color: $ecommerce-slider__title-color;
+    margin: $ecommerce-slider__title-margin-mobile;
+    @media (min-width: $screen-tablet) {
+      margin: $ecommerce-slider__title-margin-tablet;
+    }
+    @media (min-width: $screen-desktop) {
+      margin: $ecommerce-slider__title-margin-desktop;
+    }
   }
 
 }
@@ -545,11 +567,7 @@
   }
 
   .ecommerce-slider__bg {
-    height: 549px;
-
-    img {
-      height: 549px;
-    }
+    height: 775px;
   }
 
   .item-product-slider {

@@ -14,31 +14,49 @@
 
   @media (max-width: $screen-xs-max) {
     .seo-linker__item-title {
-      @include text-helper-size($seo-linker__item-title-font-id, $seo-linker__item-title-size-mobile);
+      @include text-helper-size(
+        $seo-linker__item-title-font-id,
+        $seo-linker__item-title-size-mobile
+      );
     }
 
     .seo-linker__link-list--image {
-      @include text-helper-size($seo-linker__link-list-font-id, $seo-linker__link-list-size-mobile);
+      @include text-helper-size(
+        $seo-linker__link-list-font-id,
+        $seo-linker__link-list-size-mobile
+      );
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .seo-linker__item-title {
-      @include text-helper-size($seo-linker__item-title-font-id, $seo-linker__item-title-size-tablet);
+      @include text-helper-size(
+        $seo-linker__item-title-font-id,
+        $seo-linker__item-title-size-tablet
+      );
     }
 
     .seo-linker__link-list--image {
-      @include text-helper-size($seo-linker__link-list-font-id, $seo-linker__link-list-size-tablet);
+      @include text-helper-size(
+        $seo-linker__link-list-font-id,
+        $seo-linker__link-list-size-tablet
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
     .seo-linker__item-title {
-      @include text-helper-size($seo-linker__item-title-font-id, $seo-linker__item-title-size-desktop);
+      @include text-helper-size(
+        $seo-linker__item-title-font-id,
+        $seo-linker__item-title-size-desktop
+      );
     }
 
     .seo-linker__link-list--image {
-      @include text-helper-size($seo-linker__link-list-font-id, $seo-linker__link-list-size-desktop);
+      @include text-helper-size(
+        $seo-linker__link-list-font-id,
+        $seo-linker__link-list-size-desktop
+      );
     }
   }
 }
@@ -50,18 +68,27 @@
 @mixin teaser__text--default() {
   .teaser__overhead {
     @include text-helper($teaser__overhead-font-id--default);
-    @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-mobile--default);
+    @include text-helper-size(
+      $teaser__overhead-font-id--default,
+      $teaser__overhead-size-mobile--default
+    );
     text-transform: uppercase;
     color: $teaser__overhead-color--default;
     letter-spacing: $teaser__overhead-letter-spacing--default;
 
     @if ($is-mobile == false) {
       @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-        @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-tablet--default);
+        @include text-helper-size(
+          $teaser__overhead-font-id--default,
+          $teaser__overhead-size-tablet--default
+        );
       }
 
       @media (min-width: $screen-md-min) {
-        @include text-helper-size($teaser__overhead-font-id--default, $teaser__overhead-size-desktop--default);
+        @include text-helper-size(
+          $teaser__overhead-font-id--default,
+          $teaser__overhead-size-desktop--default
+        );
       }
     }
   }
@@ -71,7 +98,25 @@
   }
 }
 
-@mixin teaser-presenter-text($overhead-sizes: ($teaser__overhead-size--full-content-mobile, $teaser__overhead-size--full-content-tablet, $teaser__overhead-size--full-content-desktop), $overhead-font: $teaser__overhead-font-id--full-content, $title-sizes: ($teaser__title-size--full-content-mobile, $teaser__title-size--full-content-tablet, $teaser__title-size--full-content-desktop), $title-font: $teaser__title-font-id--full-content, $title-line-heights: ($teaser__title-line-height--full-content-mobile, $teaser__title-line-height--full-content-tablet, $teaser__title-line-height--full-content-desktop)) {
+@mixin teaser-presenter-text(
+  $overhead-sizes: (
+    $teaser__overhead-size--full-content-mobile,
+    $teaser__overhead-size--full-content-tablet,
+    $teaser__overhead-size--full-content-desktop
+  ),
+  $overhead-font: $teaser__overhead-font-id--full-content,
+  $title-sizes: (
+    $teaser__title-size--full-content-mobile,
+    $teaser__title-size--full-content-tablet,
+    $teaser__title-size--full-content-desktop
+  ),
+  $title-font: $teaser__title-font-id--full-content,
+  $title-line-heights: (
+    $teaser__title-line-height--full-content-mobile,
+    $teaser__title-line-height--full-content-tablet,
+    $teaser__title-line-height--full-content-desktop
+  )
+) {
   $overhead-size-mobile: nth($overhead-sizes, 1);
   $overhead-size-tablet: nth($overhead-sizes, 2);
   $overhead-size-desktop: nth($overhead-sizes, 3);
@@ -100,7 +145,11 @@
     }
 
     .teaser__title {
-      @include text-helper-size($title-font, $title-size-mobile, $title-lh-mobile);
+      @include text-helper-size(
+        $title-font,
+        $title-size-mobile,
+        $title-lh-mobile
+      );
     }
   }
 
@@ -110,7 +159,11 @@
     }
 
     .teaser__title {
-      @include text-helper-size($title-font, $title-size-tablet, $title-lh-tablet);
+      @include text-helper-size(
+        $title-font,
+        $title-size-tablet,
+        $title-lh-tablet
+      );
     }
   }
 
@@ -123,12 +176,22 @@
     }
 
     .teaser__title {
-      @include text-helper-size($title-font, $title-size-desktop, $title-lh-desktop);
+      @include text-helper-size(
+        $title-font,
+        $title-size-desktop,
+        $title-lh-desktop
+      );
     }
   }
 }
 
-@mixin teaser-feed-large-text($sizes: ($feed-teaser-headline-size-mobile, $feed-teaser-headline-size-tablet, $feed-teaser-headline-size-desktop)) {
+@mixin teaser-feed-large-text(
+  $sizes: (
+    $feed-teaser-headline-size-mobile,
+    $feed-teaser-headline-size-tablet,
+    $feed-teaser-headline-size-desktop
+  )
+) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
@@ -157,7 +220,14 @@
   }
 }
 
-@mixin teaser-list__text--middle($sizes: ($teaser-list__headline-size-mobile--teaser-middle, $teaser-list__headline-size-tablet--teaser-middle, $teaser-list__headline-size-desktop--teaser-middle), $font: $teaser-list__headline-font-id--teaser-middle) {
+@mixin teaser-list__text--middle(
+  $sizes: (
+    $teaser-list__headline-size-mobile--teaser-middle,
+    $teaser-list__headline-size-tablet--teaser-middle,
+    $teaser-list__headline-size-desktop--teaser-middle
+  ),
+  $font: $teaser-list__headline-font-id--teaser-middle
+) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
@@ -185,7 +255,14 @@
   }
 }
 
-@mixin teaser-list__text--horoscope-middle($sizes: ($teaser-list__headline-size-mobile--teaser-horoscope-middle, $teaser-list__headline-size-tablet--teaser-horoscope-middle, $teaser-list__headline-size-desktop--teaser-horoscope-middle), $font: $teaser-list__headline-font-id--teaser-horoscope-middle) {
+@mixin teaser-list__text--horoscope-middle(
+  $sizes: (
+    $teaser-list__headline-size-mobile--teaser-horoscope-middle,
+    $teaser-list__headline-size-tablet--teaser-horoscope-middle,
+    $teaser-list__headline-size-desktop--teaser-horoscope-middle
+  ),
+  $font: $teaser-list__headline-font-id--teaser-horoscope-middle
+) {
   $size-mobile: nth($sizes, 1);
   $size-tablet: nth($sizes, 2);
   $size-desktop: nth($sizes, 3);
@@ -213,12 +290,18 @@
   }
 }
 
-@mixin teaser-list__text--horoscope-50($sizes: ($teaser-list__headline-size-mobile--teaser-horoscope-middle, $teaser-list__headline-size-tablet--teaser-horoscope-middle, $teaser-list__headline-size-desktop--teaser-horoscope-middle), $font: $teaser-list__headline-font-id--teaser-horoscope-middle) {
+@mixin teaser-list__text--horoscope-50(
+  $sizes: (
+    $teaser-list__headline-size-mobile--teaser-horoscope-middle,
+    $teaser-list__headline-size-tablet--teaser-horoscope-middle,
+    $teaser-list__headline-size-desktop--teaser-horoscope-middle
+  ),
+  $font: $teaser-list__headline-font-id--teaser-horoscope-middle
+) {
   @include teaser-list__text--horoscope-middle($sizes, $font);
 }
 
 @mixin teaser-list-h-text() {
-
   &:hover {
     color: $teaser__title-hover-color--list-horizontal;
 
@@ -234,19 +317,28 @@
 
   @media (max-width: $screen-xs-max) {
     .teaser__title {
-      @include text-helper-size($teaser__title-font-id--list-horizontal, $teaser__title-size--list-horizontal-mobile);
+      @include text-helper-size(
+        $teaser__title-font-id--list-horizontal,
+        $teaser__title-size--list-horizontal-mobile
+      );
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .teaser__title {
-      @include text-helper-size($teaser__title-font-id--list-horizontal, $teaser__title-size--list-horizontal-tablet);
+      @include text-helper-size(
+        $teaser__title-font-id--list-horizontal,
+        $teaser__title-size--list-horizontal-tablet
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
     .teaser__title {
-      @include text-helper-size($teaser__title-font-id--list-horizontal, $teaser__title-size--list-horizontal-desktop);
+      @include text-helper-size(
+        $teaser__title-font-id--list-horizontal,
+        $teaser__title-size--list-horizontal-desktop
+      );
     }
   }
 }
@@ -262,19 +354,28 @@
 
   @media (max-width: $screen-xs-max) {
     .teaser__title {
-      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-mobile);
+      @include text-helper-size(
+        $teaser-square-xs-font-id,
+        $teaser-square-xs-headline-size-mobile
+      );
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .teaser__title {
-      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-tablet);
+      @include text-helper-size(
+        $teaser-square-xs-font-id,
+        $teaser-square-xs-headline-size-tablet
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
     .teaser__title {
-      @include text-helper-size($teaser-square-xs-font-id, $teaser-square-xs-headline-size-desktop);
+      @include text-helper-size(
+        $teaser-square-xs-font-id,
+        $teaser-square-xs-headline-size-desktop
+      );
     }
   }
 }
@@ -285,7 +386,10 @@
 
 @mixin socials-labeled-horizontal-bar-text() {
   .item-social span {
-    @include text-helper($socials-labeled-horizontal-bar-label-font-id, $socials-labeled-horizontal-bar-label-size);
+    @include text-helper(
+      $socials-labeled-horizontal-bar-label-font-id,
+      $socials-labeled-horizontal-bar-label-size
+    );
     line-height: $socials-labeled-horizontal-bar-label-size + 1px;
     text-transform: uppercase;
   }
@@ -297,7 +401,6 @@
 
 //todo only text
 @mixin product__item-text() {
-
   &:hover:not(.item-product--sold-out) {
     .text-shop {
       @extend %product__item-text-shop--hover;
@@ -306,7 +409,10 @@
 
   &.item-product--strikethrough {
     .text-price--current {
-      @include text-helper-size($product__item-text-price-font-id--strikethrough, $product__item-text-price-size--strikethrough);
+      @include text-helper-size(
+        $product__item-text-price-font-id--strikethrough,
+        $product__item-text-price-size--strikethrough
+      );
       color: $product__item-text-price-color--strikethrough;
     }
   }
@@ -318,12 +424,19 @@
   }
 
   .text-headline {
-    @include text-helper($product__item-text-headline-font-id, $product__item-text-headline-size, $product__item-text-headline-line-height);
+    @include text-helper(
+      $product__item-text-headline-font-id,
+      $product__item-text-headline-size,
+      $product__item-text-headline-line-height
+    );
     color: $product__item-text-headline-color;
   }
 
   .text-brand {
-    @include text-helper($product__item-text-brand-font-id, $product__item-text-brand-size);
+    @include text-helper(
+      $product__item-text-brand-font-id,
+      $product__item-text-brand-size
+    );
     text-transform: uppercase;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -331,21 +444,36 @@
   }
 
   .text-price--strikethrough {
-    @include text-helper($product__item-text-price-strikethrough-font-id, $product__item-text-price-strikethrough-size);
+    @include text-helper(
+      $product__item-text-price-strikethrough-font-id,
+      $product__item-text-price-strikethrough-size
+    );
     color: $product__item-text-price-strikethrough-color;
     text-decoration: line-through;
-    background-image: -webkit-linear-gradient($product__item-text-price-strikethrough-filter);
-    background-image: -o-linear-gradient($product__item-text-price-strikethrough-filter);
-    background-image: linear-gradient($product__item-text-price-strikethrough-filter);
+    background-image: -webkit-linear-gradient(
+      $product__item-text-price-strikethrough-filter
+    );
+    background-image: -o-linear-gradient(
+      $product__item-text-price-strikethrough-filter
+    );
+    background-image: linear-gradient(
+      $product__item-text-price-strikethrough-filter
+    );
   }
 
   .text-price--current {
-    @include text-helper($product__item-text-price-font-id, $product__item-text-price-size);
+    @include text-helper(
+      $product__item-text-price-font-id,
+      $product__item-text-price-size
+    );
     color: $product__item-text-price-color;
   }
 
   .text-shipping {
-    @include text-helper($product__item-text-shipping-font-id, $product__item-text-shipping-size);
+    @include text-helper(
+      $product__item-text-shipping-font-id,
+      $product__item-text-shipping-size
+    );
     color: $product__item-text-shipping-color;
   }
 
@@ -358,7 +486,8 @@
   @extend %button;
   @extend %button--sm;
   @extend %button--lined-colored-default;
-  display: inline-block;
+  @extend %flexbox-inline;
+  @extend %align-items-center;
 
   &:hover {
     @include product__item-text-shop--hover;
@@ -368,13 +497,18 @@
     @include product__item-text-shop--hover;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @include button--disabled;
   }
 
   &.text-shop--tipser {
     @include button--white;
-    @include button--icon($tipser__buy-icon, 'right');
+    @include button--icon($tipser__buy-icon, "right");
+
+    &:after {
+      top: 0;
+    }
 
     &:hover {
       @include button--lined-colored-hover;
@@ -394,7 +528,6 @@
 }
 
 @mixin product__item-text--ecommerce-slider() {
-
   &:hover:not(.item-product--sold-out) {
     .text-shop {
       //@include button--lined-colored($button__border-color--lined-colored-hover !important, $color: $button__color--lined-colored-hover !important);
@@ -404,27 +537,38 @@
 
   &.item-product--strikethrough {
     .text-price--current {
-      @include text-helper-size($ecommerce-slider__item-text-price-font-id--strikethrough, $ecommerce-slider__item-text-price-size--strikethrough);
+      @include text-helper-size(
+        $ecommerce-slider__item-text-price-font-id--strikethrough,
+        $ecommerce-slider__item-text-price-size--strikethrough
+      );
       color: $ecommerce-slider__item-text-price-color--strikethrough;
     }
-
   }
 
   &.item-product--sold-out {
     .text-shop {
-      @include button--bg-colored($button__bg-color--bg-colored-disabled !important, $color: $button__color--bg-colored-disabled !important);
+      @include button--bg-colored(
+        $button__bg-color--bg-colored-disabled !important,
+        $color: $button__color--bg-colored-disabled !important
+      );
       border: none !important;
       pointer-events: none;
     }
   }
 
   .text-headline {
-    @include text-helper($ecommerce-slider__item-text-headline-font-id, $ecommerce-slider__item-text-headline-size);
+    @include text-helper(
+      $ecommerce-slider__item-text-headline-font-id,
+      $ecommerce-slider__item-text-headline-size
+    );
     color: $ecommerce-slider__item-text-headline-color;
   }
 
   .text-brand {
-    @include text-helper($ecommerce-slider__item-text-brand-font-id, $ecommerce-slider__item-text-brand-size);
+    @include text-helper(
+      $ecommerce-slider__item-text-brand-font-id,
+      $ecommerce-slider__item-text-brand-size
+    );
     text-transform: uppercase;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -432,21 +576,36 @@
   }
 
   .text-price--current {
-    @include text-helper($ecommerce-slider__item-text-price-font-id, $ecommerce-slider__item-text-price-size);
+    @include text-helper(
+      $ecommerce-slider__item-text-price-font-id,
+      $ecommerce-slider__item-text-price-size
+    );
     color: $ecommerce-slider__item-text-price-color;
   }
 
   .text-price--strikethrough {
-    @include text-helper($ecommerce-slider__item-text-price-strikethrough-font-id, $ecommerce-slider__item-text-price-strikethrough-size);
+    @include text-helper(
+      $ecommerce-slider__item-text-price-strikethrough-font-id,
+      $ecommerce-slider__item-text-price-strikethrough-size
+    );
     color: $ecommerce-slider__item-text-price-strikethrough-color;
     text-decoration: line-through;
-    background-image: -webkit-linear-gradient($ecommerce-slider__item-text-price-strikethrough-filter);
-    background-image: -o-linear-gradient($ecommerce-slider__item-text-price-strikethrough-filter);
-    background-image: linear-gradient($ecommerce-slider__item-text-price-strikethrough-filter);
+    background-image: -webkit-linear-gradient(
+      $ecommerce-slider__item-text-price-strikethrough-filter
+    );
+    background-image: -o-linear-gradient(
+      $ecommerce-slider__item-text-price-strikethrough-filter
+    );
+    background-image: linear-gradient(
+      $ecommerce-slider__item-text-price-strikethrough-filter
+    );
   }
 
   .text-shipping {
-    @include text-helper($ecommerce-slider__item-text-shipping-font-id, $ecommerce-slider__item-text-shipping-size);
+    @include text-helper(
+      $ecommerce-slider__item-text-shipping-font-id,
+      $ecommerce-slider__item-text-shipping-size
+    );
     color: $ecommerce-slider__item-text-shipping-color;
   }
 
@@ -481,23 +640,31 @@
     .text-shop {
       @extend %button--bg-colored-disabled;
     }
-
   }
 
   &.item-product--strikethrough {
     .text-price--current {
-      @include text-helper-size($product__item-text-price-font-id--single-product-strikethrough, $product__item-text-price-size--single-product-strikethrough);
+      @include text-helper-size(
+        $product__item-text-price-font-id--single-product-strikethrough,
+        $product__item-text-price-size--single-product-strikethrough
+      );
       color: $product__item-text-price-color--single-product-strikethrough;
     }
   }
 
   .text-headline {
-    @include text-helper($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-mobile--single-product);
+    @include text-helper(
+      $product__item-text-headline-font-id--single-product,
+      $product__item-text-headline-size-mobile--single-product
+    );
     color: $product__item-text-headline-color--single-product;
   }
 
   .text-brand {
-    @include text-helper($product__item-text-brand-font-id--single-product, $product__item-text-brand-size--single-product);
+    @include text-helper(
+      $product__item-text-brand-font-id--single-product,
+      $product__item-text-brand-size--single-product
+    );
     letter-spacing: $product__item-text-brand-letter-spacing--single-product;
     text-transform: uppercase;
     text-overflow: ellipsis;
@@ -507,13 +674,19 @@
   }
 
   .text-price--current {
-    @include text-helper($product__item-text-price-font-id--single-product, $product__item-text-price-size--single-product);
+    @include text-helper(
+      $product__item-text-price-font-id--single-product,
+      $product__item-text-price-size--single-product
+    );
     color: $product__item-text-price-color--single-product;
     letter-spacing: 1px;
   }
 
   .text-price--strikethrough {
-    @include text-helper($product__item-text-price-strikethrough-font-id--single-product, $product__item-text-price-strikethrough-size--single-product);
+    @include text-helper(
+      $product__item-text-price-strikethrough-font-id--single-product,
+      $product__item-text-price-strikethrough-size--single-product
+    );
     color: $product__item-text-price-strikethrough-color--single-product;
     text-decoration: line-through;
     letter-spacing: 1px;
@@ -524,13 +697,17 @@
   }
 
   @media (min-width: $screen-md-min) {
-    &:before, &:after {
+    &:before,
+    &:after {
       font-size: $product__shop-icon-size--single-product;
       right: $product__shop-icon-pos-right--single-product;
     }
 
     .text-headline {
-      @include text-helper-size($product__item-text-headline-font-id--single-product, $product__item-text-headline-size-desktop--single-product);
+      @include text-helper-size(
+        $product__item-text-headline-font-id--single-product,
+        $product__item-text-headline-size-desktop--single-product
+      );
     }
   }
 }
@@ -548,7 +725,10 @@
 **/
 
 @mixin list__links--module-text() {
-  @include text-helper($list__links--module-font-id, $list__links--module-font-size);
+  @include text-helper(
+    $list__links--module-font-id,
+    $list__links--module-font-size
+  );
 }
 
 @mixin list__glossary-text() {
@@ -565,7 +745,10 @@
   }
 
   .subtitle {
-    @include text-helper($spotlight__subtitle-font-id, $spotlight__subtitle-size);
+    @include text-helper(
+      $spotlight__subtitle-font-id,
+      $spotlight__subtitle-size
+    );
     text-transform: uppercase;
     text-shadow: $spotlight__caption-text-shadow;
   }
@@ -578,32 +761,50 @@
 
 @mixin item-content--spotlight-small-text() {
   .title {
-    @include text-helper-size($spotlight__title-font-id, $spotlight__title-size-mobile);
+    @include text-helper-size(
+      $spotlight__title-font-id,
+      $spotlight__title-size-mobile
+    );
   }
 
   .copytext {
-    @include text-helper-size($spotlight__copytext-font-id, $spotlight__copytext-size-mobile);
+    @include text-helper-size(
+      $spotlight__copytext-font-id,
+      $spotlight__copytext-size-mobile
+    );
   }
 }
 
 @mixin item-content--spotlight-middle-text() {
   .title {
-    @include text-helper-size($spotlight__title-font-id, $spotlight__title-size-tablet);
+    @include text-helper-size(
+      $spotlight__title-font-id,
+      $spotlight__title-size-tablet
+    );
   }
 
   .copytext {
-    @include text-helper-size($spotlight__copytext-font-id, $spotlight__copytext-size-tablet);
+    @include text-helper-size(
+      $spotlight__copytext-font-id,
+      $spotlight__copytext-size-tablet
+    );
   }
 }
 
 @mixin item-content--spotlight-full-text() {
   .title {
-    @include text-helper-size($spotlight__title-font-id, $spotlight__title-size-desktop);
+    @include text-helper-size(
+      $spotlight__title-font-id,
+      $spotlight__title-size-desktop
+    );
     letter-spacing: 1.1;
   }
 
   .copytext {
-    @include text-helper-size($spotlight__copytext-font-id, $spotlight__copytext-size-desktop);
+    @include text-helper-size(
+      $spotlight__copytext-font-id,
+      $spotlight__copytext-size-desktop
+    );
   }
 }
 
@@ -613,31 +814,43 @@
 
 @mixin menu--main-navigation-text() {
   .menu-item {
-    @include text-helper($menu--main-navigation-font-id, $menu--main-navigation-size, 1);
+    @include text-helper(
+      $menu--main-navigation-font-id,
+      $menu--main-navigation-size,
+      1
+    );
     text-transform: uppercase;
     //line-height: 1;
   }
 }
 
 @mixin menu--main-navigation__flyout-text() {
-  @include text-helper($menu--main-navigation__flyout-font-id, $menu--main-navigation__flyout-size);
+  @include text-helper(
+    $menu--main-navigation__flyout-font-id,
+    $menu--main-navigation__flyout-size
+  );
 }
 
 @mixin menu--submenu-navigation-text() {
   .label-menu {
-    @include text-helper($menu--submenu-navigation-font-id, $menu--submenu-navigation-size);
+    @include text-helper(
+      $menu--submenu-navigation-font-id,
+      $menu--submenu-navigation-size
+    );
     text-transform: uppercase;
   }
 
   .menu-item {
-    @include text-helper($menu--submenu-navigation-font-id, $menu--submenu-navigation-size);
+    @include text-helper(
+      $menu--submenu-navigation-font-id,
+      $menu--submenu-navigation-size
+    );
     color: $menu--submenu-navigation-color;
     text-transform: uppercase;
   }
 }
 
 @mixin item-paragraph--profile-text() {
-
   .title {
     @extend %text-label;
     @include text-label-size($profile__title-size);
@@ -674,19 +887,28 @@
 
   @media (max-width: $screen-xxs-max) {
     .text-headline {
-      @include text-helper-size($title--media-header-font-id, $title--media-header-mobile);
+      @include text-helper-size(
+        $title--media-header-font-id,
+        $title--media-header-mobile
+      );
     }
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
     .text-headline {
-      @include text-helper-size($title--media-header-font-id, $title--media-header-tablet);
+      @include text-helper-size(
+        $title--media-header-font-id,
+        $title--media-header-tablet
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-headline {
-      @include text-helper-size($title--media-header-font-id, $title--media-header-desktop);
+      @include text-helper-size(
+        $title--media-header-font-id,
+        $title--media-header-desktop
+      );
       letter-spacing: $title--media-header-letter-spacing;
     }
   }
@@ -732,19 +954,28 @@
 
   @media (max-width: $screen-xs-max) {
     .text-item-count {
-      @include text-helper-size($gallery__count-font-id, $gallery__count-size-mobile);
+      @include text-helper-size(
+        $gallery__count-font-id,
+        $gallery__count-size-mobile
+      );
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .text-item-count {
-      @include text-helper-size($gallery__count-font-id, $gallery__count-size-tablet);
+      @include text-helper-size(
+        $gallery__count-font-id,
+        $gallery__count-size-tablet
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
     .text-item-count {
-      @include text-helper-size($gallery__count-font-id, $gallery__count-size-desktop);
+      @include text-helper-size(
+        $gallery__count-font-id,
+        $gallery__count-size-desktop
+      );
     }
   }
 }
@@ -761,50 +992,81 @@
   }
 
   .item-media__btn-download--file {
-    @include btn--large(($media__btn-download-size-mobile--file, $media__btn-download-size-tablet--file, $media__btn-download-size-desktop--file), $media__btn-download-font-id--file);
+    @include btn--large(
+      (
+        $media__btn-download-size-mobile--file,
+        $media__btn-download-size-tablet--file,
+        $media__btn-download-size-desktop--file
+      ),
+      $media__btn-download-font-id--file
+    );
   }
 
   @media (max-width: $screen-xs-max) {
     .item-media__title--file {
-      @include text-helper-size($media__title-font-id--file, $media__title-size-mobile--file);
+      @include text-helper-size(
+        $media__title-font-id--file,
+        $media__title-size-mobile--file
+      );
     }
 
     .item-media__description--file {
-      @include text-helper-size($media__description-font-id--file, $media__description-size-mobile--file);
+      @include text-helper-size(
+        $media__description-font-id--file,
+        $media__description-size-mobile--file
+      );
     }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     .item-media__title--file {
-      @include text-helper-size($media__title-font-id--file, $media__title-size-tablet--file);
+      @include text-helper-size(
+        $media__title-font-id--file,
+        $media__title-size-tablet--file
+      );
     }
 
     .item-media__description--file {
-      @include text-helper-size($media__description-font-id--file, $media__description-size-tablet--file);
+      @include text-helper-size(
+        $media__description-font-id--file,
+        $media__description-size-tablet--file
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
     .item-media__title--file {
-      @include text-helper-size($media__title-font-id--file, $media__title-size-desktop--file);
+      @include text-helper-size(
+        $media__title-font-id--file,
+        $media__title-size-desktop--file
+      );
     }
 
     .item-media__description--file {
-      @include text-helper-size($media__description-font-id--file, $media__description-size-desktop--file);
+      @include text-helper-size(
+        $media__description-font-id--file,
+        $media__description-size-desktop--file
+      );
     }
   }
 }
 
 @mixin item-content__text--horoscopes() {
   .item-horoscope__viversum-sponsored {
-    @include text-helper($horoscope__sponsored-font-id, $horoscope__sponsored-size);
+    @include text-helper(
+      $horoscope__sponsored-font-id,
+      $horoscope__sponsored-size
+    );
     color: $horoscope__sponsored-color;
   }
 }
 
 @mixin item-content__text--node-horoscope() {
   .item-horoscope__viversum-sponsored {
-    @include text-helper($horoscope__sponsored-font-id, $horoscope__sponsored-size);
+    @include text-helper(
+      $horoscope__sponsored-font-id,
+      $horoscope__sponsored-size
+    );
     color: $horoscope__sponsored-color;
   }
 }
@@ -818,7 +1080,10 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    @include text-helper-size($anchor-nav__item-font-id, $anchor-nav__item-size-mobile);
+    @include text-helper-size(
+      $anchor-nav__item-font-id,
+      $anchor-nav__item-size-mobile
+    );
     color: $anchor-nav__item-mobile-color;
   }
 
@@ -827,10 +1092,16 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($anchor-nav__item-font-id, $anchor-nav__item-size-tablet);
+    @include text-helper-size(
+      $anchor-nav__item-font-id,
+      $anchor-nav__item-size-tablet
+    );
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($anchor-nav__item-font-id, $anchor-nav__item-size-desktop);
+    @include text-helper-size(
+      $anchor-nav__item-font-id,
+      $anchor-nav__item-size-desktop
+    );
   }
 }
