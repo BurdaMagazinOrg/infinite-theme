@@ -1,3 +1,20 @@
+%collapse-icon {
+  @include icon($container: "&:after");
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    @include transition-default();
+    @include rotate(90deg);
+    content: $icon__arrow-large-right;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    bottom: 7px;
+    pointer-events: none;
+  }
+}
+
 @import "coupon.overview";
 @import "coupon.filter";
 
@@ -239,5 +256,58 @@
   .product__percentage-saving {
     @include product__percentage-saving--single-product();
     right: $grid-unit-half;
+  }
+
+  .coupon__products-extended-wrapper {
+    text-align: center;
+    width: 100%;
+    
+    @media (min-width: $screen-md-min) {
+      @include vendor("flex-basis", 50%);
+      margin-left: $grid-unit-2;
+    }
+
+    &.expand {
+      .coupon__products-show-more {
+        &:after {
+          @include rotate(270deg);
+        }
+      }
+
+      .coupon__products-extended {
+        max-height: 500px;
+      }
+    }
+
+    .item-ecommerce {
+      width: calc(50% - #{$grid-unit-2});
+    }
+  }
+
+  .coupon__products-extended {
+    @include transition-default($duration: 0.5s);
+    @include flexbox();
+
+    @media (max-width: $screen-sm-max) {
+      max-height: 0;
+      overflow: hidden;
+      text-align: left;
+    }
+  }
+
+  .coupon__products-show-more {
+    @extend %collapse-icon;
+    @include text-helper($coupon__filter-font, $coupon__filter-size);
+    text-transform: $coupon__filter-text-transform;
+    cursor: pointer;
+    margin-top: $grid-unit-1;
+    margin-bottom: $grid-unit-1;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    display: inline-block;
+
+    @media (min-width: $screen-md-min) {
+      display: none;
+    }
   }
 }
