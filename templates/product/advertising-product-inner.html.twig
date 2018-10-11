@@ -3,11 +3,11 @@
 {% set product_price_set =  product_price != AMAZON_EMPTY_PRICE and product_price is not empty %}
 
 {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
-    <div class="affiliatelinks">
-      {% if content.product_name['#view_mode'] == 'single_product' %}
-          <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelink</a>
-      {% endif %}
-    </div>
+    {% if content.product_name['#view_mode'] == 'single_product' %}
+      <div class="affiliatelinks">
+            <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelink</a>
+      </div>
+    {% endif %}
 {% endif %}
 
 {% block product__img_container_block %}
