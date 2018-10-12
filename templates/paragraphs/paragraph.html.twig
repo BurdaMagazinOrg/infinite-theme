@@ -54,6 +54,6 @@ view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
 
 <div{{ attributes.addClass(classes) }}>
     {% block content_block %}
-        {{ content }}
+        {{ content|without('field_suppress_affiliate_link') }}
     {% endblock %}
 </div>
