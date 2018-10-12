@@ -36,6 +36,9 @@
  * @ingroup themeable
  */
 #}
+{% set inheritClasses = [
+  content.field_suppress_affiliate_link[0]['#markup'] == '1' ?'affiliatelinks--hide'
+] %}
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
