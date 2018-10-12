@@ -53,6 +53,6 @@
         <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
       </div>
     {% endif %}
-    {{ content }}
+    {{ content|without('field_suppress_affiliate_link') }}
   {% endblock %}
 </div>
