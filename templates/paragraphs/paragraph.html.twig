@@ -4,6 +4,8 @@
  * Default theme implementation to display a paragraph.
  *
  * Available variables:
+ * - inheritClasses: used for inheriting classes form another template
+     that extends paragraph.html.twig
  * - paragraph: Full paragraph entity.
  *   - id: The paragraph ID.
  *   - bundle: The type of the paragraph, for example, "image" or "text".
@@ -36,12 +38,14 @@
  * @ingroup themeable
  */
 #}
+
+{% set classes = inheritClasses ? inheritClasses : [] %}
 {%
-set classes = [
+set classes = classes|merge([
 'item-paragraph',
 view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
 'item-paragraph--' ~ paragraph.bundle|clean_class,
-]
+])
 %}
 
 {% if paragraph.field_anchor is not empty %}
