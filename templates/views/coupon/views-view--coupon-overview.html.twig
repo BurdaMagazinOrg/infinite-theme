@@ -14,6 +14,16 @@
     <div id="coupon__filter" class="item-content__content region-full-content coupon__filter">
         <div class="region-fixed-content">
             {{ exposed }}
+
+            <script>
+                let fieldsets = document.querySelectorAll("#coupon__filter fieldset");
+                fieldsets.forEach(fieldset => {
+                   let filterChecked = fieldset.querySelectorAll("input:checked");
+                   if(filterChecked.length > 0) {
+                       fieldset.classList.add('expand', 'open');
+                   }
+                });
+            </script>
         </div>
     </div>
 
