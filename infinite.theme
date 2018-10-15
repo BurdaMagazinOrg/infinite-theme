@@ -418,7 +418,6 @@ function _infinite_get_icon($node, $variables) {
           // shopping overrides everything else
           $variables['teaser_icon'] = 'shop-it';
           break 2;
-        case 'image':
         case 'gallery':
           $variables['teaser_icon']['image'] = 'image';
           break;
