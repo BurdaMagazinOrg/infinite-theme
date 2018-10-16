@@ -4,8 +4,6 @@
  * Default theme implementation to display a paragraph.
  *
  * Available variables:
- * - inheritClasses: used for inheriting classes form another template
-     that extends paragraph.html.twig
  * - paragraph: Full paragraph entity.
  *   - id: The paragraph ID.
  *   - bundle: The type of the paragraph, for example, "image" or "text".
@@ -38,22 +36,23 @@
  * @ingroup themeable
  */
 #}
-
-{% set classes = inheritClasses ? inheritClasses : [] %}
-{%
-set classes = classes|merge([
-'item-paragraph',
-view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
-'item-paragraph--' ~ paragraph.bundle|clean_class,
-])
-%}
+{% set classes = [
+  'item-paragraph',
+  view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
+  'item-paragraph--' ~ paragraph.bundle|clean_class,
+] %}
 
 {% if paragraph.field_anchor is not empty %}
-    {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value | clean_id) %}
+  {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value | clean_id) %}
 {% endif %}
 
 <div{{ attributes.addClass(classes) }}>
-    {% block content_block %}
-        {{ content|without('field_suppress_affiliate_link') }}
-    {% endblock %}
+  {% block content_block %}
+    {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+      <div class="affiliatelinks">
+        <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+      </div>
+    {% endif %}
+    {{ content|without('field_suppress_affiliate_link') }}
+  {% endblock %}
 </div>
