@@ -1,0 +1,229 @@
+#coupon__filter {
+  .region-fixed-content {
+    padding-bottom: $grid-unit-8 + $grid-unit-3;
+    position: relative;
+  }
+
+  .views-exposed-form {
+    @include text-helper($coupon__filter-font, $coupon__filter-size);
+    text-transform: $coupon__filter-text-transform;
+
+    @media (min-width: $screen-sm-min) {
+      @include flexbox();
+    }
+
+    fieldset {
+      position: relative;
+
+      &:after {
+        // @include transition-default(height);
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+        width: 100%;
+        pointer-events: none;
+        @include gradient-vertical(
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1),
+          0,
+          50%
+        );
+      }
+
+      &:not(.expand) {
+        &:after {
+          height: 0;
+        }
+
+        legend:after {
+          @include rotate(90deg);
+        }
+
+        .fieldset-wrapper {
+          max-height: 0px;
+          padding-bottom: 0;
+          overflow: hidden;
+        }
+      }
+
+      legend {
+        @extend %collapse-icon;
+
+        &:after {
+          @include rotate(270deg);
+        }
+      }
+
+      @media (min-width: $screen-sm-min) {
+        @include flex-item();
+        margin-left: $grid-unit-3;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    legend {
+      margin-bottom: $grid-unit-2;
+      border-bottom: $coupon__filter-hline;
+    }
+
+    .fieldset-legend {
+      font-size: $coupon__filter-size;
+      margin-bottom: $grid-unit-half;
+      display: inline-block;
+    }
+
+    label {
+      margin-bottom: $grid-unit-1;
+      font-weight: normal;
+    }
+  }
+
+  //scrollbar fix
+  .open .fieldset-wrapper {
+    overflow: auto;
+  }
+
+  .fieldset-wrapper {
+    @include transition-default($duration: 0.5s);
+    overflow: hidden;
+    max-height: 195px;
+    padding-bottom: 30px;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 5px;
+      background-color: $color-gray-5;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: $black;
+      height: 80px;
+      z-index: 10;
+      position: relative;
+    }
+  }
+
+  .container__actions-wrapper {
+    @media (max-width: $screen-xs-max) {
+      margin-top: $grid-unit-2;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      bottom: $grid-unit-7;
+      left: 0;
+    }
+  }
+
+  .form-submit {
+    @include button();
+    @include button--sm();
+    @include button--white();
+    cursor: pointer;
+
+    & + .form-submit {
+      margin-left: $grid-unit-1;
+    }
+  }
+
+  //dropdown container
+  .form-item-sort-bef-combine {
+    @extend %collapse-icon;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+    }
+
+    label {
+      text-transform: none;
+
+      @media (max-width: $screen-xs-max) {
+        text-align: right;
+        display: block;
+        // margin-bottom: 0;
+      }
+    }
+  }
+
+  select {
+    @include text-helper($coupon__filter-font, $coupon__filter-size);
+    text-transform: $coupon__filter-text-transform;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: $coupon__filter-hline;
+    border-radius: 0;
+    height: 30px;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+
+    @media (min-width: $screen-sm-min) {
+      width: auto;
+      min-width: 264px;
+      margin-left: $grid-unit-2;
+    }
+  }
+
+  .form-checkbox {
+    position: absolute; // take it out of document flow
+    opacity: 0; // hide it
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    // Box.
+    & + label:before {
+      content: "";
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: $grid-unit-2 - 2px;
+      height: $grid-unit-2 - 2px;
+      background: $color-white;
+      border: 1px solid $black;
+    }
+
+    // Box hover
+    &:hover + label:before {
+      background: $color-gray-5;
+    }
+
+    // Checkmark. Could be replaced with an image
+    &:checked + label:after {
+      $check-color: $gray-dark;
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 6px;
+      background: $check-color;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 $check-color, 4px 0 0 $check-color,
+        4px -2px 0 $check-color, 4px -4px 0 $check-color,
+        4px -6px 0 $check-color, 4px -8px 0 $check-color;
+      transform: rotate(45deg);
+    }
+  }
+
+  #edit-submit-coupon-term-related,
+  #edit-submit-coupon-overview {
+    display: none;
+  }
+}

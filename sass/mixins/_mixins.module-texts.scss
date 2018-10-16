@@ -450,15 +450,10 @@
     );
     color: $product__item-text-price-strikethrough-color;
     text-decoration: line-through;
-    background-image: -webkit-linear-gradient(
-      $product__item-text-price-strikethrough-filter
-    );
-    background-image: -o-linear-gradient(
-      $product__item-text-price-strikethrough-filter
-    );
-    background-image: linear-gradient(
-      $product__item-text-price-strikethrough-filter
-    );
+    background-image: -webkit-linear-gradient($product__item-text-price-strikethrough-filter);
+    background-image: -o-linear-gradient($product__item-text-price-strikethrough-filter);
+    background-image: linear-gradient($product__item-text-price-strikethrough-filter);
+    white-space: nowrap;
   }
 
   .text-price--current {
@@ -467,6 +462,7 @@
       $product__item-text-price-size
     );
     color: $product__item-text-price-color;
+    white-space: nowrap;
   }
 
   .text-shipping {

@@ -1,0 +1,18 @@
+{%- for item in items -%}
+    
+    {# open expandable containers #}
+    {% if items | length > 2 and loop.index == 3  %}
+        <div class="coupon__products-extended-wrapper">
+            <div class="coupon__products-show-more expandable">Weitere Produkte anzeigen</div>
+            <div class="coupon__products-extended">
+    {% endif %}
+
+    {# normal product rendering #}
+    {{ item.content }}
+
+    {# close expandable containers #}
+    {% if items | length > 2 and loop.index == items | length %}
+            </div>
+        </div>
+    {% endif %}
+{%- endfor -%}

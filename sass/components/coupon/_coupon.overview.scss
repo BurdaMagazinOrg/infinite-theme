@@ -1,0 +1,21 @@
+.coupon__overview {
+  .item-content__content {
+    @extend %region--full-content;
+    @extend %margin--v-xl;
+  }
+
+  .coupon__description {
+    @include copytext--text-block();
+  }
+
+  .item-content--coupon {
+    @include gap--v-region();
+    border-top: $coupon__row-border;
+
+    &:first-child {
+      border: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+}

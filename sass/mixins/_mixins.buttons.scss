@@ -204,6 +204,7 @@
   @include transition-duration(.35s);
   @include transition-timing-function(ease);
   @include text-helper($button__font-id--default);
+  border: 1px solid transparent;
   -webkit-border-radius: $button__border-radius--default;
   -moz-border-radius: $button__border-radius--default;
   border-radius: $button__border-radius--default;

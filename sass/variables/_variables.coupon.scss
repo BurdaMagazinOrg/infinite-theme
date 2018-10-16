@@ -1,0 +1,49 @@
+$coupon__row-border: $h-line-style !default;
+
+$coupon__title-font-id: $font-headline-id !default;
+$coupon__title-size-mobile: 20px !default;
+$coupon__title-size-tablet: 24px !default;
+$coupon__title-size-desktop: 24px !default;
+$coupon__title-letter-spacing: -1px !default;
+
+$coupon__description-font-id: $font-content-bold-id !default;
+$coupon__description-size-mobile: 14px !default;
+$coupon__description-size-tablet: 14px !default;
+$coupon__description-size-desktop: 14px !default;
+$coupon__description-letter-spacing: 0 !default;
+
+$coupon__date-font-id: $font-label-id !default;
+$coupon__date-size-mobile: 14px !default;
+$coupon__date-size-tablet: 14px !default;
+$coupon__date-size-desktop: 14px !default;
+$coupon__date-letter-spacing: 0 !default;
+
+$coupon__availability-text-transform: uppercase !default;
+$coupon__availability-margin: $grid-unit-half 0 $grid-unit-3 0 !default;
+
+$coupon__discount-padding: ($grid-unit-1 - 1px) $grid-unit-2 !default;
+
+$coupon__code-padding: $grid-unit-1 $grid-unit-2 !default;
+$coupon__code-bg-color: $gray-lighter !default;
+$coupon__code-font-id: $font-label-id !default;
+$coupon__code-size-mobile: 12px !default;
+$coupon__code-size-tablet: 12px !default;
+$coupon__code-size-desktop: 12px !default;
+$coupon__code-letter-spacing: 1px !default;
+
+$coupon__products_title-font-id: $font-headline-id !default;
+$coupon__products_title-size-mobile: 12px !default;
+$coupon__products_title-size-tablet: 14px !default;
+$coupon__products_title-size-desktop: 14px !default;
+$coupon__products_title-color: $color-gray-2 !default;
+$coupon__products_title-letter-spacing: 0.04em !default;
+$coupon__products_title-text-transform: uppercase !default;
+
+$coupon__tnc-font-id: $font-label-id !default;
+$coupon__tnc-size: 12px !default;
+
+//filter
+$coupon__filter-font: $font-label-id !default;
+$coupon__filter-size: 12px !default;
+$coupon__filter-text-transform: uppercase !default;
+$coupon__filter-hline: 1px solid #ccc !default;
