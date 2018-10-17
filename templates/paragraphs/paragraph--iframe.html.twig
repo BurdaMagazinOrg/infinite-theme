@@ -37,6 +37,17 @@
  */
 #}
 
+{%
+set classes = [
+  'item-paragraph',
+  view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
+  'item-paragraph--' ~ paragraph.bundle|clean_class,
+  'item-paragraph--text',
+]
+%}
+
+{% set attributes = attributes.addClass(classes) %}
+
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
