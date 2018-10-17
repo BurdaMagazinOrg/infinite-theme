@@ -6,22 +6,22 @@
 /* global BurdaInfinite */
 /* global BaseDynamicView */
 
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.ArticleView = BaseDynamicView.extend({
     articleScrolledInview: null,
     articleReadedInview: null,
     articleReadedDelay: 0,
-    articleSEOTitle: '',
+    articleSEOTitle: "",
     initialize(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
       this.articleReadedDelay = AppConfig.articleReadedDelay || 2000;
 
       if (
-        this.infiniteBlockDataModel !== undefined
-        && this.infiniteBlockDataModel.has('title')
+        this.infiniteBlockDataModel !== undefined &&
+        this.infiniteBlockDataModel.has("title")
       ) {
-        this.articleSEOTitle = this.infiniteBlockDataModel.get('title');
+        this.articleSEOTitle = this.infiniteBlockDataModel.get("title");
       }
 
       this.initTracking();
@@ -29,20 +29,41 @@
     },
     initTracking() {
       this.articleReadedInview = this.$el
-        .find('.item-paragraph--text:last')
+        .find(".item-paragraph--text:last")
         .inview({
-          offset: 'bottom',
+          offset: "bottom",
           enter: this.handleArticleReadedEnter.bind(this),
-          exit: this.handleArticleReadedExit.bind(this),
+          exit: this.handleArticleReadedExit.bind(this)
         });
 
-      if (!this.model.get('initialDOMItem')) {
+      if (!this.model.get("initialDOMItem")) {
         this.articleScrolledInview = this.$el
-          .find('.item-paragraph--text:first')
+          .find(".item-paragraph--text:first")
           .inview({
-            offset: 'top',
-            enter: this.handleArticleScrolledEnter.bind(this),
+            offset: "top",
+            enter: this.handleArticleScrolledEnter.bind(this)
           });
+
+        this.articleScrolledInview = this.$el.find(".title--article").inview({
+          offset: "bottom",
+          enter: this.handlePageview.bind(this)
+        });
+      }
+    },
+    handlePageview() {
+      const tmpModel = this.model.get("parentModel"); // infiniteBlockViewModel
+      const $tmpElement = tmpModel.get("el");
+      const tmpHistoryURL = $tmpElement.data("history-url");
+
+      if (
+        !_.isUndefined(tmpHistoryURL) &&
+        tmpModel.get("pageviewTracked") !== true
+      ) {
+        tmpModel.set("scrollDepthTracked", true);
+        TrackingManager.trackPageView(
+          tmpHistoryURL,
+          TrackingManager.getAdvTrackingByElement($tmpElement)
+        );
       }
     },
     handleArticleScrolledEnter() {
@@ -51,13 +72,10 @@
     handleArticleReadedEnter() {
       this.stopArticleReadedInterval();
 
-      this.readedInterval = setInterval(
-        () => {
-          this.trackArticleReaded();
-          this.stopArticleReadedInterval();
-        },
-        this.articleReadedDelay,
-      );
+      this.readedInterval = setInterval(() => {
+        this.trackArticleReaded();
+        this.stopArticleReadedInterval();
+      }, this.articleReadedDelay);
     },
     handleArticleReadedExit() {
       this.stopArticleReadedInterval();
@@ -69,61 +87,59 @@
     trackArticleReaded() {
       this.articleReadedInview.destroy();
 
-      if (typeof TrackingManager !== 'undefined') {
+      if (typeof TrackingManager !== "undefined") {
         TrackingManager.trackEvent(
           {
-            category: 'mkt-userInteraction',
-            action: 'readArticle',
+            category: "mkt-userInteraction",
+            action: "readArticle",
             label: this.articleSEOTitle,
-            eventNonInteraction: false,
+            eventNonInteraction: false
           },
-          TrackingManager.getAdvTrackingByElement(this.$el),
+          TrackingManager.getAdvTrackingByElement(this.$el)
         );
       }
     },
     trackArticleScrolled() {
       this.articleScrolledInview.destroy();
 
-      if (typeof TrackingManager !== 'undefined') {
+      if (typeof TrackingManager !== "undefined") {
         TrackingManager.trackEvent(
           {
-            category: 'mkt-userInteraction',
-            action: 'scrolledArticle',
+            category: "mkt-userInteraction",
+            action: "scrolledArticle",
             label: this.articleSEOTitle,
-            eventNonInteraction: false,
+            eventNonInteraction: false
           },
-          TrackingManager.getAdvTrackingByElement(this.$el),
+          TrackingManager.getAdvTrackingByElement(this.$el)
         );
       }
     },
     renderParagraphSocials() {
-      if (typeof twttr !== 'undefined') {
+      if (typeof twttr !== "undefined") {
         twttr.widgets.load(this.$el[0]);
       }
 
-      if (typeof PinUtils !== 'undefined') {
+      if (typeof PinUtils !== "undefined") {
         PinUtils.build(this.$el[0]);
       }
 
-      if (typeof instgrm !== 'undefined') {
+      if (typeof instgrm !== "undefined") {
         instgrm.Embeds.process();
       }
 
-      if (typeof tracdelight !== 'undefined') {
+      if (typeof tracdelight !== "undefined") {
         window.tracdelight
-          .then(
-            () => {
-              $.each(this.$el.find('.td-widget'), (pIndex, pItem) => {
-                td.parse(pItem);
-              });
-            },
-          )
-          .catch((err) => {
-            console.error('Tracdelight Error', err);
+          .then(() => {
+            $.each(this.$el.find(".td-widget"), (pIndex, pItem) => {
+              window.td.parse(pItem);
+            });
+          })
+          .catch(err => {
+            console.error("Tracdelight Error", err);
           });
       }
-    },
+    }
   });
 
   window.ArticleView = window.ArticleView || BurdaInfinite.views.ArticleView;
-}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));
+})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
