@@ -1,0 +1,21 @@
+{%
+set classes = [
+  'region-full-content',
+  'item-paragraph--' ~ paragraph.bundle|clean_class,
+  'region-teaser-list',
+  'region-teaser-list-horizontal',
+  'swipeable--horizontal',
+  'region__teasers--horizontal',
+]
+%}
+
+{% set attributes = attributes.addClass(classes) %}
+{% set attributes = attributes.setAttribute('data-view-type', 'listSwipeableView') %}
+
+<div {{attributes}}>
+  <div class="container-content container-fixed-content">
+    <div class="teaser-list teaser-list-horizontal swipeable__wrapper list__images--horizontal">
+      {{ content }}
+    </div>
+  </div>
+</div>
