@@ -12,9 +12,6 @@ set classes = [
 {% set attributes = attributes.addClass(classes) %}
 {% set attributes = attributes.setAttribute('data-view-type', 'listSwipeableView') %}
 
-{# {% extends "paragraph.html.twig" %} #}
-
-{# {% block content_block %} #}
 <div {{attributes}}>
   <div class="container-content container-fixed-content">
     <div class="teaser-list teaser-list-horizontal swipeable__wrapper list__images--horizontal">
@@ -22,4 +19,3 @@ set classes = [
     </div>
   </div>
 </div>
-{# {% endblock %} #}
