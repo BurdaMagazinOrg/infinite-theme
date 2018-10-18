@@ -275,7 +275,10 @@
 
 @mixin newsletter__submit-button--horizontal() {
   @extend %align-self-center;
-  @extend %btn--large;
+  @extend %button;
+  @extend %button--lg;
+  @extend %button--dark;
+
   width: $newsletter__submit-width--horizontal;
   margin: $newsletter__submit-margin--horizontal;
   height: $newsletter__submit-height--horizontal;

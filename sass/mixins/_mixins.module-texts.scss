@@ -478,49 +478,42 @@
   }
 }
 
-@mixin product__item-text-shop--default() {
-  @extend %button;
-  @extend %button--sm;
-  @extend %button--lined-colored-default;
-  @extend %flexbox-inline;
-  @extend %align-items-center;
-
-  &:hover {
-    @include product__item-text-shop--hover;
-  }
-
-  &:active {
-    @include product__item-text-shop--hover;
-  }
-
-  &:disabled,
-  &.disabled {
-    @include button--disabled;
-  }
-
-  &.text-shop--tipser {
-    @include button--white;
-    @include button--icon($tipser__buy-icon, "right");
-
-    &:after {
-      top: 0;
-    }
-
-    &:hover {
-      @include button--lined-colored-hover;
-    }
-  }
-}
-
 // @mixin product__item-text-shop--default() {
-//   @extend %button;
-//   @extend %button--sm;
-//   @extend %button--lined-colored-default;
+//   @include button;
+//   @include button--md;
+//   background-color: $ecommerce-slider__button-background-color;
+//   color: $ecommerce-slider__button-color;
+//   border-color: $ecommerce-slider__button-border-color;
 //   display: inline-block;
+
+//   &:hover {
+//     @include button--hover;
+//   }
+
+//   &:active {
+//     @include button--hover;
+//   }
+
+//   &:disabled, &.disabled {
+//     @include button--disabled;
+//   }
+
+//   &.text-shop--tipser {
+//     @include button--white;
+//     @include button--icon('\e911', 'right');
+
+//     &:hover {
+//       @include button--hover;
+//     }
+//   }
 // }
 
+@mixin product__item-text-shop--default() {
+  @extend %product__button--default;
+}
+
 @mixin product__item-text-shop--hover() {
-  @extend %button--lined-colored-hover;
+  @extend %button--hover;
 }
 
 @mixin product__item-text--ecommerce-slider() {
@@ -619,7 +612,7 @@
 }
 
 @mixin product__item-text-shop--ecommerce-slider-hover() {
-  @include product__item-text-shop--hover();
+  @extend %button--hover;
 }
 
 @mixin product__item-text--single-product() {
@@ -713,7 +706,7 @@
 }
 
 @mixin product__item-text-shop--single-product-hover() {
-  @include product__item-text-shop--hover();
+  @extend %button--hover;
 }
 
 /**
@@ -988,14 +981,9 @@
   }
 
   .item-media__btn-download--file {
-    @include btn--large(
-      (
-        $media__btn-download-size-mobile--file,
-        $media__btn-download-size-tablet--file,
-        $media__btn-download-size-desktop--file
-      ),
-      $media__btn-download-font-id--file
-    );
+    @include button();
+    @include button--lg();
+    @include button--dark();
   }
 
   @media (max-width: $screen-xs-max) {

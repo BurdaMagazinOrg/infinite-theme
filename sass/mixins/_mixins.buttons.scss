@@ -1,184 +1,6 @@
 /**
 ** Deprecated
- */
-
-@mixin btn($bg-color: $color-highlighted, $color: $white) {
-  @include transition-property(color, background-color, border-color);
-  @include transition-duration(.35s);
-  @include transition-timing-function(ease);
-  @include text-headline();
-  @include text-headline-size($title-size-xxxs);
-
-  outline: none;
-  background-color: $bg-color;
-  border-radius: 0;
-  text-transform: uppercase;
-  color: $color;
-  border: 1px solid transparent;
-  vertical-align: middle;
-
-  &:hover {
-    color: $color;
-    background-color: $color-hover;
-    border: 1px solid $color-hover;
-  }
-
-  &:focus {
-    outline: 0 !important;
-  }
-}
-
-@mixin btn--small($sizes: ($btn__label-size-mobile--small, $btn__label-size-desktop--small, $btn__label-size-desktop--small), $font: $btn--small-font-id) {
-  $size-mobile: nth($sizes, 1);
-  $size-tablet: nth($sizes, 2);
-  $size-desktop: nth($sizes, 3);
-
-  @include text-helper($font);
-  @include transition-property(color, background-color, border-color);
-  @include transition-duration($transition-duration);
-  @include transition-timing-function($transition-easing);
-  background-color: $btn--small-bg-color;
-  color: $btn--small-color;
-  border: $btn--small-border;
-  border-radius: $btn--small-radius;
-  letter-spacing: $btn--small-letter-spacing;
-  display: inline-block;
-  text-transform: $btn--small-text-transform;
-  cursor: pointer;
-
-  &:hover {
-    @extend %btn--small--highlighted;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    @include text-helper-size($font, $size-mobile);
-    padding: $btn--small-padding-mobile;
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($font, $size-tablet);
-    padding: $btn--small-padding-tablet;
-  }
-
-  @media (min-width: $screen-md-min) {
-    @include text-helper-size($font, $size-desktop);
-    padding: $btn--small-padding-desktop;
-  }
-}
-
-@mixin btn--small--highlighted() {
-  background-color: $btn--small-highlighted-bg-color;
-  color: $btn--small-highlighted-color;
-  border: $btn--small-highlighted-border;
-}
-
-@mixin btn--small-bordered($sizes: ($btn__label-size-mobile--small-bordered, $btn__label-size-desktop--small-bordered, $btn__label-size-desktop--small-bordered), $font: $btn--small-bordered-font-id) {
-  $size-mobile: nth($sizes, 1);
-  $size-tablet: nth($sizes, 2);
-  $size-desktop: nth($sizes, 3);
-
-  @include text-helper($font);
-  @include transition-property(color, background-color, border-color);
-  @include transition-duration($transition-duration);
-  @include transition-timing-function($transition-easing);
-  @include icon-arrow-right-small(true, '&:after');
-  @extend %icon--after;
-  background-color: $btn--small-bordered-bg-color;
-  color: $btn--small-bordered-color;
-  border: $btn--small-bordered-border;
-  border-radius: $btn--small-bordered-radius;
-  letter-spacing: $btn--small-bordered-letter-spacing;
-  display: inline-block;
-  text-transform: $btn--small-bordered-text-transform;
-  cursor: pointer;
-
-  &:hover {
-    @extend %btn--small-bordered--highlighted;
-  }
-
-  &:after {
-    margin-left: 1px;
-    font-weight: bold;
-    margin-top: -2px;
-    margin-right: -7px;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    @include text-helper-size($font, $size-mobile);
-    padding: $btn--small-bordered-padding-mobile;
-
-    &:after {
-      font-size: $size-mobile + 5px;
-    }
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($font, $size-tablet);
-    padding: $btn--small-bordered-padding-tablet;
-
-    &:after {
-      font-size: $size-tablet + 5px;
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-    @include text-helper-size($font, $size-desktop);
-    padding: $btn--small-bordered-padding-desktop;
-
-    &:after {
-      font-size: $size-desktop + 5px;
-    }
-  }
-}
-
-@mixin btn--small-bordered--highlighted() {
-  background-color: $btn--small-bordered-highlighted-bg-color;
-  color: $btn--small-bordered-highlighted-color;
-  border: $btn--small-bordered-highlighted-border;
-}
-
-@mixin btn--large($sizes: ($btn__label-size-mobile--large, $btn__label-size-desktop--large, $btn__label-size-desktop--large), $font: $btn--large-font-id) {
-  $size-mobile: nth($sizes, 1);
-  $size-tablet: nth($sizes, 2);
-  $size-desktop: nth($sizes, 3);
-
-  @include text-helper($font);
-  @include transition-default();
-  background-color: $btn--large-bg-color;
-  color: $btn--large-color;
-  border: $btn--large-border;
-  border-radius: $btn--large-radius;
-  letter-spacing: $btn--large-letter-spacing;
-  display: inline-block;
-  text-transform: $btn--large-text-transform;
-  cursor: pointer;
-
-  &:hover {
-    @extend %btn--large--highlighted;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    @include text-helper-size($font, $size-mobile);
-    padding: $btn--large-padding-mobile;
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($font, $size-tablet);
-    padding: $btn--large-padding-tablet;
-  }
-
-  @media (min-width: $screen-md-min) {
-    @include text-helper-size($font, $size-desktop);
-    padding: $btn--large-padding-desktop;
-  }
-}
-
-@mixin btn--large--highlighted() {
-  background-color: $btn--large-highlighted-bg-color;
-  color: $btn--large-highlighted-color;
-  border: $btn--large-highlighted-border;
-}
-
+*/
 @mixin btn__open-tree--mobile() {
   @include icon();
   @include icon-arrow-down-small();
@@ -201,7 +23,7 @@
 
 @mixin button() {
   @include transition-property(color, background-color, border-color);
-  @include transition-duration(.35s);
+  @include transition-duration(0.35s);
   @include transition-timing-function(ease);
   @include text-helper($button__font-id--default);
   border: 1px solid transparent;
@@ -220,19 +42,43 @@
 }
 
 @mixin button--sm() {
-  @include button--size($button__font-id--default, $button__label-size--sm-default, $button__height--sm-default, $button__line-height--sm-default, $button__padding--sm-default);
+  @include button--size(
+    $button__font-id--default,
+    $button__label-size--sm-default,
+    $button__height--sm-default,
+    $button__line-height--sm-default,
+    $button__padding--sm-default
+  );
 }
 
 @mixin button--md() {
-  @include button--size($button__font-id--default, $button__label-size--md-default, $button__height--md-default, $button__line-height--md-default, $button__padding--md-default);
+  @include button--size(
+    $button__font-id--default,
+    $button__label-size--md-default,
+    $button__height--md-default,
+    $button__line-height--md-default,
+    $button__padding--md-default
+  );
 }
 
 @mixin button--lg() {
-  @include button--size($button__font-id--default, $button__label-size--lg-default, $button__height--lg-default, $button__line-height--lg-default, $button__padding--lg-default);
+  @include button--size(
+    $button__font-id--default,
+    $button__label-size--lg-default,
+    $button__height--lg-default,
+    $button__line-height--lg-default,
+    $button__padding--lg-default
+  );
 }
 
 @mixin button--xl() {
-  @include button--size($button__font-id--default, $button__label-size--xl-default, $button__height--xl-default, $button__line-height--xl-default, $button__padding--xl-default);
+  @include button--size(
+    $button__font-id--default,
+    $button__label-size--xl-default,
+    $button__height--xl-default,
+    $button__line-height--xl-default,
+    $button__padding--xl-default
+  );
 }
 
 @mixin button--responsive-lg() {
@@ -250,7 +96,6 @@
 }
 
 @mixin button--responsive-md() {
-
   @media (max-width: $screen-xs-max) {
     @include button--sm();
   }
@@ -307,25 +152,40 @@
 ** BG Colored
  */
 
-@mixin button--bg-colored($bg-color: $button__bg-color--bg-colored-default, $color: $button__color--bg-colored-default) {
+@mixin button--bg-colored(
+  $bg-color: $button__bg-color--bg-colored-default,
+  $color: $button__color--bg-colored-default
+) {
   background-color: $bg-color;
   color: $color;
 }
 
 @mixin button--bg-colored-default() {
-  @include button--bg-colored($button__bg-color--bg-colored-default, $button__color--bg-colored-default);
+  @include button--bg-colored(
+    $button__bg-color--bg-colored-default,
+    $button__color--bg-colored-default
+  );
 }
 
 @mixin button--bg-colored-hover() {
-  @include button--bg-colored($button__bg-color--bg-colored-hover, $button__color--bg-colored-hover);
+  @include button--bg-colored(
+    $button__bg-color--bg-colored-hover,
+    $button__color--bg-colored-hover
+  );
 }
 
 @mixin button--bg-colored-pressed() {
-  @include button--bg-colored($button__bg-color--bg-colored-pressed, $button__color--bg-colored-pressed);
+  @include button--bg-colored(
+    $button__bg-color--bg-colored-pressed,
+    $button__color--bg-colored-pressed
+  );
 }
 
 @mixin button--bg-colored-disabled() {
-  @include button--bg-colored($button__bg-color--bg-colored-disabled, $button__color--bg-colored-disabled);
+  @include button--bg-colored(
+    $button__bg-color--bg-colored-disabled,
+    $button__color--bg-colored-disabled
+  );
   border: none;
   pointer-events: none;
 }
@@ -333,33 +193,51 @@
 /**
 ** BG Lined
  */
-@mixin button--lined-colored($border-color: $button__border-color--lined-colored-default, $color: $button__color--lined-colored-default) {
+@mixin button--lined-colored(
+  $border-color: $button__border-color--lined-colored-default,
+  $color: $button__color--lined-colored-default
+) {
   border: 1px solid $border-color;
   color: $color;
 }
 
 @mixin button--lined-colored-default() {
-  @include button--lined-colored($button__border-color--lined-colored-default, $button__color--lined-colored-default);
+  @include button--lined-colored(
+    $button__border-color--lined-colored-default,
+    $button__color--lined-colored-default
+  );
 }
 
 @mixin button--lined-colored-hover() {
-  @include button--lined-colored($button__border-color--lined-colored-hover, $button__color--lined-colored-hover);
+  @include button--lined-colored(
+    $button__border-color--lined-colored-hover,
+    $button__color--lined-colored-hover
+  );
 }
 
 @mixin button--lined-colored-pressed() {
-  @include button--lined-colored($button__border-color--lined-colored-pressed, $button__color--lined-colored-pressed);
+  @include button--lined-colored(
+    $button__border-color--lined-colored-pressed,
+    $button__color--lined-colored-pressed
+  );
 }
 
 /**
 ** BG Lined Gray
  */
-@mixin button--lined-gray($border-color: $button__border-color--lined-gray-default, $color: $button__color--lined-gray-default) {
+@mixin button--lined-gray(
+  $border-color: $button__border-color--lined-gray-default,
+  $color: $button__color--lined-gray-default
+) {
   border: 1px solid $border-color;
   color: $color;
 }
 
 @mixin button--lined-gray-default() {
-  @include button--lined-gray($button__border-color--lined-gray-default, $button__color--lined-gray-default);
+  @include button--lined-gray(
+    $button__border-color--lined-gray-default,
+    $button__color--lined-gray-default
+  );
 }
 
 @mixin button--lined-light() {
@@ -367,11 +245,17 @@
 }
 
 @mixin button--lined-gray-hover() {
-  @include button--lined-gray($button__border-color--lined-gray-hover, $button__color--lined-gray-hover);
+  @include button--lined-gray(
+    $button__border-color--lined-gray-hover,
+    $button__color--lined-gray-hover
+  );
 }
 
 @mixin button--lined-gray-pressed() {
-  @include button--lined-gray($button__border-color--lined-gray-pressed, $button__color--lined-gray-pressed);
+  @include button--lined-gray(
+    $button__border-color--lined-gray-pressed,
+    $button__color--lined-gray-pressed
+  );
 }
 
 /**
@@ -416,7 +300,6 @@
   @include button--plain-gray($button__color--plain-gray-pressed);
 }
 
-
 /** InStyle relaunch stuff **/
 @mixin button--dark() {
   background-color: $color-button-1;
@@ -441,9 +324,47 @@
 @mixin button--disabled() {
   background-color: $color-button-disabled;
   color: $color-gray-3;
-  border-color:  $color-button-disabled;
+  border-color: $color-button-disabled;
   border: none;
   pointer-events: none;
+}
+
+@mixin product__button--default() {
+  @extend %button;
+  @extend %button--md;
+  @extend %button--gray;
+  @extend %flexbox-inline;
+  @extend %align-items-center;
+
+  &:hover {
+    @extend %product__button--hover;
+  }
+
+  &:active {
+    @extend %product__button--hover;
+  }
+
+  &:disabled,
+  &.disabled {
+    @extend %button--disabled;
+  }
+
+  &.text-shop--tipser {
+    @extend %button--white;
+    @include button--icon($tipser__buy-icon, "right");
+
+    &:after {
+      top: 0;
+    }
+
+    &:hover {
+      @extend %product__button--hover;
+    }
+  }
+}
+
+@mixin product__button--hover() {
+  @include button--hover();
 }
 
 @mixin button--icon-style($iconfont) {
@@ -456,18 +377,18 @@
   position: relative;
 }
 
-@mixin button--icon($iconfont:'', $iconposition:'left') {
-  @if $iconfont == '' {
+@mixin button--icon($iconfont: "", $iconposition: "left") {
+  @if $iconfont == "" {
     @error 'You have to define an icon-font code e.g. e911 for the shopping bag';
   } @else {
-    @if $iconposition == 'left' {
+    @if $iconposition == "left" {
       &:before {
         @include button--icon-style($iconfont);
         margin-right: $grid-unit-1;
         top: 2px;
       }
     }
-    @if $iconposition == 'right' {
+    @if $iconposition == "right" {
       &:after {
         @include button--icon-style($iconfont);
         margin-left: $grid-unit-1;
