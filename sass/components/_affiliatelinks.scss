@@ -20,3 +20,12 @@
     @include label--affiliate();
   }
 }
+
+.item-paragraph--ecommerce-slider-paragraph {
+  .ecommerce-slider {
+    .affiliatelinks {
+      padding-right: $gap-size-xxl;
+      padding-bottom: $gap-size-xxs;
+    }
+  }
+}
