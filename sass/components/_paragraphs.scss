@@ -109,6 +109,17 @@
 
 .item-paragraph--advertising-products-embed {
   @extend %item-paragraph--tracdelight;
+  $navigationHeight: 56px;
+  .container-content {
+    @media (max-width: $screen-xs-max) {
+      @include clearfix;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      @include make-row();
+    }
+  }
+  @include shopit-badge('sticky', $navigationHeight + 10);
 }
 
 .item-paragraph--single-product {
