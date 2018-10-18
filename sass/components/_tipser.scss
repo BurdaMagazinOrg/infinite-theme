@@ -89,26 +89,26 @@
   .tipser-product-tile {
     float: none;
 
-    .tipser-tile-img-container {
-      //height: auto !important; // needed to overwrite tipser styles
-      text-align: center;
-      position: relative;
-
-      > picture {
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .tipser-tile-img {
-        margin: 0 !important; // needed to overwrite tipser styles
-        position: static;
-        max-width: 100%;
-        max-height: 100%;
-        width: 100%;
-        height: auto;
-      }
-    }
+    //.tipser-tile-img-container {
+    //  //height: auto !important; // needed to overwrite tipser styles
+    //  text-align: center;
+    //  position: relative;
+    //
+    //  > picture {
+    //    position: absolute;
+    //    top: 0;
+    //    left: 0;
+    //  }
+    //
+    //  .tipser-tile-img {
+    //    margin: 0 !important; // needed to overwrite tipser styles
+    //    position: static;
+    //    max-width: 100%;
+    //    max-height: 100%;
+    //    width: 100%;
+    //    height: auto;
+    //  }
+    //}
   }
 
   .tipser-buy-button-small {
