@@ -4,6 +4,12 @@
     @include product__item--default();
     @include product__item--horizontal-block();
   }
+  .teaser-wrapper {
+    > .item-product {
+      width: 100%;
+      float: none;
+    }
+  }
 } 
 
 .item-product--single {
