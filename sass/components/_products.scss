@@ -1,6 +1,6 @@
 .item-paragraph--advertising-products-paragraph.item-paragraph--default,
 .item-paragraph--advertising-products-embed {
-  .item-product {
+  .item-product, .teaser-wrapper {
     @include product__item--default();
     @include product__item--horizontal-block();
   }
