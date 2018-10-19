@@ -429,9 +429,6 @@ function _infinite_get_icon($node, $variables) {
                 case 'nexx_video':
                   $variables['teaser_icon']['video'] = 'video';
                   break;
-                case 'image':
-                  $variables['teaser_icon']['image'] = 'image';
-                  break;
               }
             }
           }
