@@ -119,7 +119,6 @@
       @include make-row();
     }
   }
-  @include shopit-badge('sticky', $navigationHeight + 10);
 }
 
 .item-paragraph--single-product {
