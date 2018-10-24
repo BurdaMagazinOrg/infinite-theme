@@ -72,9 +72,9 @@
         /**
          * track pageView
          */
-        if (!_.isUndefined(tmpHistoryURL) && pModel.get('scrollDepthTracked') != true && pModel.get('initialDOMItem') != true) {
-          TrackingManager.trackPageView(tmpHistoryURL, TrackingManager.getAdvTrackingByElement($tmpElement));
-        }
+        // if (!_.isUndefined(tmpHistoryURL) && pModel.get('scrollDepthTracked') != true && pModel.get('initialDOMItem') != true) {
+        //   TrackingManager.trackPageView(tmpHistoryURL, TrackingManager.getAdvTrackingByElement($tmpElement));
+        // }
 
         if (pModel.get('scrollDepthTracked') != true) {
           tmpIndex = ($('.region-infinite-block').not('.region-infinite-block[data-no-track="true"]').index($tmpElement) + 1).toString();
