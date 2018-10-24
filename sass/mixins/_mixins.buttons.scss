@@ -345,7 +345,8 @@
   }
 
   &:disabled,
-  &.disabled {
+  &.disabled,
+  &.text-sold-out {
     @extend %button--disabled;
   }
 
