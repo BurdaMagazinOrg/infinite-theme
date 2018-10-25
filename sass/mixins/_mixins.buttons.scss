@@ -350,7 +350,7 @@
     @extend %button--disabled;
   }
 
-  &.text-shop--tipser {
+  &.text-shop--tipser, &.btn-text-shop--tipser{
     @extend %button--white;
     @include button--icon($tipser__buy-icon, "right");
 
