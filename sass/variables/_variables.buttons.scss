@@ -7,22 +7,22 @@ $button__letter-spacing--default: 1px !default;
 $button__text-transform--default: uppercase !default;
 $button__white-space--default: nowrap !default;
 
-$button__label-size--sm-default: $font-size-tiny !default;
+$button__label-size--sm-default: getFontSize(11px) !default;
 $button__height--sm-default: 24px !default;
 $button__line-height--sm-default: $button__height--sm-default !default;
 $button__padding--sm-default: 0px 8px !default;
 
-$button__label-size--md-default: $font-size-small !default;
+$button__label-size--md-default: getFontSize(12px) !default;
 $button__height--md-default: 32px !default;
 $button__line-height--md-default: $button__height--md-default !default;
 $button__padding--md-default: 0px 16px !default;
 
-$button__label-size--lg-default: $font-size-medium !default;
+$button__label-size--lg-default: getFontSize(12px) !default;
 $button__height--lg-default: 40px !default;
 $button__line-height--lg-default: $button__height--lg-default !default;
 $button__padding--lg-default: 0px 16px !default;
 
-$button__label-size--xl-default: $font-size-large !default;
+$button__label-size--xl-default: getFontSize(12px)!default;
 $button__height--xl-default: 48px !default;
 $button__line-height--xl-default: $button__height--xl-default !default;
 $button__padding--xl-default: 0px 16px !default;

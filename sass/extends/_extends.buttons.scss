@@ -1,42 +1,10 @@
 /**
-** Deprecated
+** New Styleguide
  */
-
-%btn {
-  @include btn();
-}
 
 %btn__open-tree--mobile {
   @include btn__open-tree--mobile();
 }
-
-%btn--small {
-  @include btn--small();
-}
-
-%btn--small--highlighted {
-  @include btn--small--highlighted();
-}
-
-%btn--small-bordered {
-  @include btn--small-bordered();
-}
-
-%btn--small-bordered--highlighted {
-  @include btn--small-bordered--highlighted();
-}
-
-%btn--large {
-  @include btn--large();
-}
-
-%btn--large--highlighted {
-  @include btn--large--highlighted();
-}
-
-/**
-** New Styleguide
- */
 
 %button {
   @include button();
@@ -93,7 +61,8 @@
     @extend %button--bg-colored-pressed;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @extend %button--bg-colored-disabled;
   }
 }
@@ -124,7 +93,8 @@
     @extend %button--lined-colored-pressed;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @extend %button--bg-colored-disabled;
   }
 }
@@ -151,7 +121,8 @@
     @extend %button--lined-gray-hover;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @extend %button--bg-colored-disabled;
   }
 }
@@ -167,7 +138,8 @@
     @extend %button--lined-gray-pressed;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @extend %button--bg-colored-disabled;
   }
 }
@@ -194,7 +166,8 @@
     @extend %button--plain-colored-pressed;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @extend %button--bg-colored-disabled;
   }
 }
@@ -221,7 +194,8 @@
     @extend %button--plain-gray-pressed;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     @extend %button--bg-colored-disabled;
   }
 }
@@ -232,4 +206,32 @@
 
 %button--plain-gray-pressed {
   @include button--plain-gray-pressed();
+}
+
+%button--hover {
+  @include button--hover();
+}
+
+%button--disabled {
+  @include button--disabled();
+}
+
+%button--white {
+  @include button--white();
+}
+
+%button--dark {
+  @include button--dark();
+}
+
+%button--gray {
+  @include button--gray();
+}
+
+%product__button--default {
+  @include product__button--default();
+}
+
+%product__button--hover {
+  @include product__button--hover();
 }

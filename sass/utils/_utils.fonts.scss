@@ -1,0 +1,111 @@
+////
+/// @group fonts
+////
+
+/// Deep get values from map
+///
+/// @access public
+/// @param {Object} $map
+/// @param {String} keys
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+   /*   @warn $key;
+      @debug 'No key' $key;*/
+    }
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+/// Return font size from map
+///
+/// @access public
+/// @param {Object} $map [$fontDimensions] - name of font map
+/// @param {String} $key
+@function getFontSize($key, $map: $fontDimensions) {
+  @return map-deep-get($map, $key, 'font-size');
+}
+
+/// Return line height from map
+///
+/// @access public
+/// @param {Object} $map [$fontDimensions] - name of font map
+/// @param {String} $key
+@function getLineHeight($key, $map: $fontDimensions) {
+  @return map-deep-get($map, $key, 'line-height');
+}
+
+/// Return letter spacing from map
+///
+/// @access public
+/// @param {Object} $map [$fontDimensions] - name of font map
+/// @param {String} $key
+@function getLetterSpacing($key, $map: $fontSets) {
+  @return map-deep-get($map, $key, 'letter-spacing');
+}
+
+/// Return letter spacing from map
+///
+/// @access public
+/// @param {Object} $map [$fontDimensions] - name of font map
+/// @param {String} $key
+@function getFontFamily($key, $map: $fontSets) {
+  @return map-deep-get($map, $key, 'font-family');
+}
+
+/// Return letter spacing from map
+///
+/// @access public
+/// @param {Object} $map [$fontDimensions] - name of font map
+/// @param {String} $key
+@function getFontWeight($key, $map: $fontSets) {
+  @return map-deep-get($map, $key, 'font-weight');
+}
+
+/// Return font-size and line-height from map
+///
+/// @access public
+/// @param {String} $key
+/// @param {String} $fontSize [false] - if set, overwrites font size
+/// @param {String} $lineHeight [false] - if set, overwrites line height
+/// @param {Object} $map [$fontDimensions] - name of font map
+@mixin getFontSizeAndLineHeight(
+  $key,
+  $fontSize: false,
+  $lineHeight: false,
+  $map: $fontDimensions
+) {
+  font-size: if(
+      $fontSize,
+      $fontSize,
+      getFontSize($key, $map)
+  );
+  line-height: if(
+      $lineHeight,
+      $lineHeight,
+      getLineHeight($key, $map)
+  );
+}
+
+
+/// Return font-size and line-height from map
+///
+/// @access public
+/// @param {String} $key
+/// @param {String} $fontSize [false] - if set, overwrites font size
+/// @param {String} $lineHeight [false] - if set, overwrites line height
+/// @param {Object} $map [$fontSet] - name of font map
+@mixin getFontSet(
+  $key,
+  $letterSpacing: false,
+  $map: $fontSets
+) {
+  font-family: getFontFamily($key, $map);
+  font-weight: getFontWeight($key, $map);
+  letter-spacing: if(
+      $letterSpacing,
+      $letterSpacing,
+      getLetterSpacing($key, $map)
+  );
+}

@@ -14,18 +14,6 @@ button {
   }
 }
 
-.btn {
-  @extend %btn;
-}
-
-.btn--small {
-  @extend %btn--small;
-}
-
-.btn--large {
-  @extend %btn--large;
-}
-
 /**
 ** New Button Stuff
 +*/
@@ -93,4 +81,15 @@ button {
  */
 .button--plain-gray-default {
   @extend %button--plain-gray-default;
+}
+
+
+
+/**
+** Deprecated
+**/
+.btn, .btn--small, .btn--large {
+  @extend %button;
+  @extend %button--md;
+  @extend %button--dark;
 }
