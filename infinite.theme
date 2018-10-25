@@ -221,7 +221,7 @@ function infinite_preprocess_advertising_product(&$variables) {
       $term = Drupal::request()->attributes->get('taxonomy_term');
       $sub_id = 'term-' . $term->id();
     }
-    $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
+    $tracking_url .= '&subid=' . $product->product_id->value;
   }
 
   $data_attributes->setAttribute('data-external-url', $tracking_url);
