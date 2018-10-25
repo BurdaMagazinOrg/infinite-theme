@@ -26,25 +26,26 @@
 }
 
 @mixin label--affiliate() {
+  $lineHeight: 14px;
   @include text-helper($label--affiliate-font-id);
   color: $label--affiliate-color;
   text-transform: $label--affiliate-text-transform;
   text-align: right;
-  line-height: 14px;
+  line-height: $lineHeight;
   letter-spacing: 0.7px;
   padding: 0 $label--affiliate-padding-right 34px 0;
   background-color: $label--affiliate-background-color;
 
   @media (max-width: $screen-xxs-max) {
-    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--mobile);
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--mobile, $lineHeight);
   }
 
   @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
-    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--tablet);
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--tablet, $lineHeight);
   }
 
   @media (min-width: $screen-md-min) {
-    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--desktop);
+    @include text-helper-size($label--affiliate-font-id, $label--affiliate-size--desktop, $lineHeight);
   }
 }
 
