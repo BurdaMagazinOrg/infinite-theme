@@ -267,6 +267,8 @@
 @mixin product__item--horizontal-block {
   @include make-sm-column($grid-columns/3);
 
+  margin-top: $gap-size-xxl;
+
   .product__percentage-saving {
     @include product__percentage-saving--horizontal-block();
   }
