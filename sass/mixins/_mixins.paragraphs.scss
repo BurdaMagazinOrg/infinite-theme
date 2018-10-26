@@ -473,6 +473,10 @@
     @include label--affiliate();
   }
 
+  .img-container > * {
+    margin-top: $gap-size-xxl
+  }
+
   &.item-paragraph .item-title {
     text-align: center;
   }
