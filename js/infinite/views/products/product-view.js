@@ -98,11 +98,11 @@
         }
 
         // TODO check this
-        if (
-          this.model.get("componentType") == ProductView.COMPONENT_TYPE_SLIDER
-        ) {
-          this.model.set("containerType", ProductView.COMPONENT_TYPE_SLIDER);
-        }
+        // if (
+        //   this.model.get("componentType") == ProductView.COMPONENT_TYPE_SLIDER
+        // ) {
+        //   this.model.set("componentType", ProductView.COMPONENT_TYPE_SLIDER);
+        // }
 
         // fallback - provider is empty for generic products
         if (this.model.get("provider") == "") {
@@ -113,11 +113,13 @@
         if (this.model.get("productId") == "undefined") {
           this.model.set("productId", ProductView.PROVIDER_GENERIC);
         }
+
+        console.log("PRODUCT VIEW", this.model, this.infiniteBlockDataModel);
       },
       initCustomTracking() {
         let externalTrackingURL = this.model.get("url");
         let slicedString = "";
-        let containerType = "";
+        let componentType = "";
         const positionOfLinkParam = externalTrackingURL.indexOf("&link");
         const hasLinkParam = positionOfLinkParam > -1;
         let productTitle = "";
@@ -130,10 +132,10 @@
           return;
 
         if (
-          this.model.has("containerType") &&
-          this.model.get("containerType") !== ""
+          this.model.has("componentType") &&
+          this.model.get("componentType") !== ""
         ) {
-          containerType = this.model.get("containerType").toLowerCase();
+          componentType = this.model.get("componentType").toLowerCase();
         }
 
         switch (this.model.get("provider")) {
@@ -143,8 +145,8 @@
                 "entityID"
               )}-${this.model.get("productId")}`;
 
-              if (containerType !== "") {
-                slicedString = `${slicedString}-${containerType}`;
+              if (componentType !== "") {
+                slicedString = `${slicedString}-${componentType}`;
               }
 
               externalTrackingURL = BaseUtils.replaceUrlParam(
@@ -160,11 +162,11 @@
             if (externalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
               slicedString = AppConfig.amazonURLTrId.split("-");
               if (slicedString.length > 1) {
-                slicedString = `${slicedString[0]}-${containerType}-${
+                slicedString = `${slicedString[0]}-${componentType}-${
                   slicedString[1]
                 }`;
               } else {
-                slicedString = `${AppConfig.amazonURLTrId}-${containerType}`;
+                slicedString = `${AppConfig.amazonURLTrId}-${componentType}`;
               }
 
               externalTrackingURL = externalTrackingURL.replace(
@@ -192,7 +194,7 @@
                   "entityType"
                 )}-${this.model.get(
                   "entityID"
-                )}-${productTitleProcessed}-${containerType}`;
+                )}-${productTitleProcessed}-${componentType}`;
               }
 
               externalTrackingURL =
@@ -219,7 +221,7 @@
           brand: this.model.get("brand"),
           provider: this.model.get("provider"),
           productCategory: this.model.get("productCategory"),
-          containerType: this.model.get("containerType") || "",
+          componentType: this.model.get("componentType") || "",
           soldOut: this.model.get("soldOut")
         };
 
@@ -261,7 +263,10 @@
       onProductClickHandler(pEvent) {
         this.initCustomTracking();
         this.trackProductClick();
-        console.log(">> click on product", this.model.get("tracking-url"));
+
+        if (this.model.has("tracking-url")) {
+          console.log(">> click on product", this.model.get("tracking-url"));
+        }
       },
       onEnterHandler(pDirection) {
         // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
