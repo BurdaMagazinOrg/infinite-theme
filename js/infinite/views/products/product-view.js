@@ -97,13 +97,6 @@
           }
         }
 
-        // TODO check this
-        // if (
-        //   this.model.get("componentType") == ProductView.COMPONENT_TYPE_SLIDER
-        // ) {
-        //   this.model.set("componentType", ProductView.COMPONENT_TYPE_SLIDER);
-        // }
-
         // fallback - provider is empty for generic products
         if (this.model.get("provider") == "") {
           this.model.set("provider", ProductView.PROVIDER_GENERIC);
@@ -113,8 +106,6 @@
         if (this.model.get("productId") == "undefined") {
           this.model.set("productId", ProductView.PROVIDER_GENERIC);
         }
-
-        console.log("PRODUCT VIEW", this.model, this.infiniteBlockDataModel);
       },
       initCustomTracking() {
         let externalTrackingURL = this.model.get("url");
