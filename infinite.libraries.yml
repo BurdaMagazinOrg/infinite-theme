@@ -30,7 +30,7 @@ intersectionobserver:
     url: 'https://github.com/w3c/IntersectionObserver/blob/master/LICENSE.md'
     gpl-compatible: true
   js:
-    /libraries/intersectionobserver/intersection-observer.js: { }
+    /themes/contrib/infinite/js/infinite/libs/intersection-observer.js: { }
 
 coupons:
   version: 1.0
