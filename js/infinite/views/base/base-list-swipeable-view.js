@@ -30,7 +30,6 @@
         });
       }
 
-      console.log("SETTINGS", this.settings);
       this.createView();
 
       if (this.deviceModel != undefined && this.deviceModel.get("isActive")) {
