@@ -507,8 +507,10 @@
 
   .affiliatelinks {
     @include label--affiliate();
-    position: absolute;
-    right: 0;
+    @media (min-width: $screen-sm) {
+      position: absolute;
+      right: 0;
+    }
   }
 
   &.item-paragraph--full {
