@@ -378,6 +378,7 @@
 
   .affiliatelinks {
     @include label--affiliate();
+    background-color: $white;
   }
 
   &.no-bg-image {
