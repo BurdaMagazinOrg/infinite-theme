@@ -37,45 +37,46 @@
  */
 #}
 {% if showAffiliateLinksLabel is not defined %}
-  {% if 'single_product' == content.field_e_view_mode[0]['#markup'] %}
-    {% set showAffiliateLinksLabel = false %}
-  {% else %}
-    {% set showAffiliateLinksLabel = content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
-  {% endif %}
+    {% if 'single_product' == content.field_e_view_mode[0]['#markup'] %}
+        {% set showAffiliateLinksLabel = false %}
+    {% else %}
+        {% set showAffiliateLinksLabel = content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+    {% endif %}
 {% endif %}
 {% if showAffiliateLinkLabel is not defined %}
-  {% if 'single_product' == content.field_e_view_mode[0]['#markup'] %}
-    {% set showAffiliateLinkLabel = content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
-  {% endif %}
+    {% if 'single_product' == content.field_e_view_mode[0]['#markup'] %}
+        {% set showAffiliateLinkLabel = content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+    {% endif %}
 {% endif %}
 
 {% set attributes = attributes.addClass('item-paragraph--' ~ content.field_e_view_mode | render | striptags | trim | replace('_', '-')) %}
 {% set containerAttributes = create_attribute({'class': ['container-content']}) %}
 {% if false == showAffiliateLinkLabel %}
-  {% set containerAttributes = containerAttributes.addClass('affiliatelinks--hide') %}
+    {% set containerAttributes = containerAttributes.addClass('affiliatelinks--hide') %}
 {% endif %}
 
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
     {% if content | render %}
-        {% if content.field_title|render %}
-            <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
-        {% endif %}
-        {% if showAffiliateLinksLabel %}
-           <div class="affiliatelinks">
-              <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
-           </div>
-        {% endif %}
-        <div {{ containerAttributes }}>
-            {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode', 'field_suppress_affiliate_link') }}
-        </div>
-
-        {% if content.field_text | render is not empty %}
-            <div class="products__info-box--grid">
-                {{ content.field_text }}
+        <div class="container-wrapper">
+            {% if content.field_title|render %}
+                <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
+            {% endif %}
+            {% if showAffiliateLinksLabel %}
+                <div class="affiliatelinks">
+                    <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+                </div>
+            {% endif %}
+            <div {{ containerAttributes }}>
+                {{ content|without('field_title', 'field_e_view_mode', 'field_text', 'field_p_view_mode', 'field_view_mode', 'field_suppress_affiliate_link') }}
             </div>
-        {% endif %}
 
+            {% if content.field_text | render is not empty %}
+                <div class="products__info-box--grid">
+                    {{ content.field_text }}
+                </div>
+            {% endif %}
     {% endif %}
+    </div>
 {% endblock %}
