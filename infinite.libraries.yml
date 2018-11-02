@@ -22,6 +22,16 @@ swiper:
   js:
     /libraries/swiper/dist/js/swiper.min.js: { }
 
+intersectionobserver:
+  remote: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+  version: 1.0
+  license:
+    name: 'W3C Software and Document License'
+    url: 'https://github.com/w3c/IntersectionObserver/blob/master/LICENSE.md'
+    gpl-compatible: true
+  js:
+    /themes/contrib/infinite/js/infinite/libs/intersection-observer.js: { }
+
 coupons:
   version: 1.0
   js:
