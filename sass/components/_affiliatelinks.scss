@@ -2,14 +2,13 @@
   .affiliatelinks:not(.affiliatelinks--magazine-products):not(.affiliatelinks--shopping-products) {
     display: none;
   }
-
 }
 
 .affiliatelinks--magazine-products,
 .affiliatelinks--shopping-products {
   @include label--affiliate();
 }
-.affiliatelinks--magazine-products{
+.affiliatelinks--magazine-products {
   position: absolute;
   top: 0;
   right: 0;
@@ -21,12 +20,11 @@
   }
 }
 
-.item-paragraph--ecommerce-slider-paragraph {
-  .ecommerce-slider {
-    .affiliatelinks {
-      padding-right: 20px;
-      padding-bottom: $gap-size-xxs;
-      padding-top: $gap-size-xs;
-    }
+.item-paragraph--ecommerce-slider-paragraph .ecommerce-slider,
+.region-ecommerceslider {
+  .affiliatelinks {
+    padding-right: 20px;
+    padding-bottom: $gap-size-xxs;
+    padding-top: $gap-size-xs;
   }
 }
