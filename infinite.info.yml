@@ -9,6 +9,7 @@ libraries:
   - infinite/infinite.header
   - infinite/blockadblock
   - infinite/swiper
+  - infinite/intersectionobserver
   - infinite/infinite.libs
   - infinite/infinite.init
   - infinite/infinite.manager.tracking-manager
