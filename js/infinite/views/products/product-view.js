@@ -125,6 +125,9 @@
         let externalTrackingURL = this.model.get("url");
         let slicedString = "";
         let componentType = "";
+        let entityType = "";
+        let entityID = "";
+        let productId = "";
         const positionOfLinkParam = externalTrackingURL.indexOf("&link");
         const hasLinkParam = positionOfLinkParam > -1;
         let productTitle = "";
@@ -143,15 +146,38 @@
           componentType = this.model.get("componentType").toLowerCase();
         }
 
+        if (
+          this.model.has("entityType") &&
+          this.model.get("entityType") !== ""
+        ) {
+          entityType = this.model.get("entityType");
+        }
+
+        if (this.model.has("entityID") && this.model.get("entityID") !== "") {
+          entityID = this.model.get("entityID");
+        }
+
+        if (this.model.has("productId") && this.model.get("productId") !== "") {
+          productId = this.model.get("productId");
+        }
+
         switch (this.model.get("provider")) {
           case ProductView.PROVIDER_TRACDELIGHT:
             if (hasSubid) {
-              slicedString = `${this.model.get("entityType")}-${this.model.get(
-                "entityID"
-              )}-${this.model.get("productId")}`;
+              if (entityType !== "") {
+                slicedString += `${entityType}`;
+              }
+
+              if (entityID !== "") {
+                slicedString += `-${entityID}`;
+              }
+
+              if (productId !== "") {
+                slicedString += `-${productId}`;
+              }
 
               if (componentType !== "") {
-                slicedString = `${slicedString}-${componentType}`;
+                slicedString += `-${componentType}`;
               }
 
               externalTrackingURL = BaseUtils.replaceUrlParam(
@@ -195,11 +221,23 @@
                   .toLowerCase()
                   .slice(0, Math.min(10, productTitle.length));
 
-                slicedString = `&subid=${+this.model.get(
-                  "entityType"
-                )}-${this.model.get(
-                  "entityID"
-                )}-${productTitleProcessed}-${componentType}`;
+                slicedString += "&subid=";
+
+                if (entityType !== "") {
+                  slicedString += `${entityType}`;
+                }
+
+                if (entityID !== "") {
+                  slicedString += `-${entityID}`;
+                }
+
+                if (productTitleProcessed !== "") {
+                  slicedString += `-${productTitleProcessed}`;
+                }
+
+                if (componentType !== "") {
+                  slicedString += `-${componentType}`;
+                }
               }
 
               externalTrackingURL =
