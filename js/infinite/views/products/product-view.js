@@ -120,8 +120,6 @@
         if (this.model.get("productId") == "undefined") {
           this.model.set("productId", ProductView.PROVIDER_GENERIC);
         }
-
-        console.log(">>> MODEL", this.model);
       },
       initCustomTracking() {
         let externalTrackingURL = this.model.get("url");
