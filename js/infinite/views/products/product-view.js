@@ -92,6 +92,20 @@
             this.infiniteBlockDataModel.get("entityName")
           );
 
+          // no datalayer is available so we have to grap our information from 'data-tr-container-type'
+          if (
+            (!this.model.has("entityType") &&
+              this.infiniteBlockDataModel.has("trackingContainerType")) ||
+            (this.model.has("entityType") &&
+              this.model.get("entityType") === "" &&
+              this.infiniteBlockDataModel.has("trackingContainerType"))
+          ) {
+            this.model.set(
+              "entityType",
+              this.infiniteBlockDataModel.get("trackingContainerType")
+            );
+          }
+
           if (this.infiniteBlockDataModel.getElement().length > 0) {
             this.setProductIndex(); // set on this position to override the function
           }
@@ -106,6 +120,8 @@
         if (this.model.get("productId") == "undefined") {
           this.model.set("productId", ProductView.PROVIDER_GENERIC);
         }
+
+        console.log(">>> MODEL", this.model);
       },
       initCustomTracking() {
         let externalTrackingURL = this.model.get("url");
