@@ -4,6 +4,14 @@
 'contextual-region',
 ] %}
 
+{% if (teaser_icon) and (teaser_icon == 'video') %}
+    {% set smart_teaser_class = 'teaser-smart-video' %}
+    {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
+{% endif %}
+{% if (teaser_icon) and (teaser_icon == 'image') %}
+    {% set smart_teaser_class = 'teaser-smart-image' %}
+    {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
+{% endif %}
 {% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
     {% set smart_teaser_class = content.field_smart_teaser_class|render %}
     {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
