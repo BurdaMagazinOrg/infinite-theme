@@ -450,3 +450,28 @@ function _infinite_get_icon($node, $variables) {
 
   return $variables;
 }
+
+
+function infinite_preprocess_user(&$variables)  {
+  $hasSpotlightContent = false;
+  /** @var \Drupal\user\Entity\User $user */
+  $user = $variables['elements']['#user'];
+  /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $fieldParagraphs */
+  $fieldParagraphs = $user->getFields(true)['field_paragraphs'];
+  $paragraphsIterator = $fieldParagraphs->getIterator();
+  while($paragraphsIterator->valid()) {
+    /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $currentParagraph */
+    $currentParagraph = $paragraphsIterator->current();
+    /** @var \Drupal\paragraphs\Entity\Paragraph $paragraphEntity */
+    $paragraphEntity = $currentParagraph->get('entity')->getTarget()->getValue();
+    $type = $paragraphEntity->bundle();
+    if($type === 'spotlight') {
+      $hasSpotlightContent = true;
+      break;
+    }
+    $paragraphsIterator->next();
+  }
+
+  $variables['has_spotlight_content'] = $hasSpotlightContent;
+
+}
