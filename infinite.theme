@@ -410,6 +410,9 @@ function _infinite_get_icon($node, $variables) {
   if (!empty($paragraphs = $node->field_paragraphs->referencedEntities())) {
     foreach ($paragraphs as $paragraph) {
       switch ($paragraph->bundle()) {
+        /*
+          This was moved to instyle_infinite.theme as the other sites do not have the shop-it badge and it overwrites the other ones.
+
         case 'productdb_product':
         case 'advertising_products_paragraph':
         case 'advertising_products_embed':
@@ -418,6 +421,7 @@ function _infinite_get_icon($node, $variables) {
           // shopping overrides everything else
           $variables['teaser_icon'] = 'shop-it';
           break 2;
+        */
         case 'gallery':
           $variables['teaser_icon']['image'] = 'image';
           break;
