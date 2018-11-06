@@ -1,14 +1,27 @@
-.region-newsletter {
-  @include newsletter--horizontal();
+.page-newsletter {
+  @include newsletter__page();
 }
+
+.newsletter {
+
+}
+
 
 /**
-* Lading Page
+* Deprecated
 **/
-.region-newsletter-page {
-  @include newsletter--page();
-}
+// .region-newsletter {
+//   @include newsletter--horizontal();
+// }
 
-.newsletter-modal {
-  @include newsletter--modal();
-}
+// /**
+// * Lading Page
+// **/
+// .region-newsletter-page {
+//   @include newsletter--page();
+// }
+
+// .newsletter-modal {
+//   @include newsletter--modal();
+// }
+

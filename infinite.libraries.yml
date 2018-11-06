@@ -37,6 +37,11 @@ coupons:
   js:
     js/behaviors/drupal.behaviors.coupons.js: {}
 
+newsletter:
+  version: 1
+  js:
+    js/behaviors/drupal.behaviors.newsletter.js: {}
+
 blazy:
   header: false
   remote: https://github.com/dinbror/blazy
@@ -291,10 +296,10 @@ infinite.views.spinner:
   js:
     js/infinite/views/components/spinner-cube-view.js: {}
 
-infinite.views.newsletter.hmnewsletter-view:
-  version: 1
-  js:
-    js/infinite/views/newsletter/hmnewsletter-view.js: {}
+# infinite.views.newsletter.hmnewsletter-view:
+#   version: 1
+#   js:
+#     js/infinite/views/newsletter/hmnewsletter-view.js: {}
 
 infinite.views.newsletter.newsletter-modal-view:
   version: 1

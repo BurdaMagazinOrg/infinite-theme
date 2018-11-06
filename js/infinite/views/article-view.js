@@ -18,7 +18,7 @@
       this.articleReadedDelay = AppConfig.articleReadedDelay || 2000;
 
       if (
-        this.infiniteBlockDataModel !== undefined &&
+        this.infiniteBlockDataModel !== null &&
         this.infiniteBlockDataModel.has("title")
       ) {
         this.articleSEOTitle = this.infiniteBlockDataModel.get("title");
