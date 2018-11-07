@@ -5,16 +5,16 @@
     padding-bottom: 0;
   }
 
-.newsletter__close {
-  @include icon();
-  @include icon-close();
-  display: block;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: $grid-unit-2;
-  right: $grid-unit-2;
-}
+  .newsletter__close {
+    @include icon();
+    @include icon-close();
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: $grid-unit-2;
+    right: $grid-unit-2;
+  }
 
   .newsletter {
     min-height: calc(100% - #{$navigation-height});
@@ -108,8 +108,19 @@
     }
   }
 
+  &.optin .newsletter__optin-wrapper {
+    opacity: 1;
+    visibility: visible;
+    max-height: 1000px;
+  }
+
   .newsletter__optin-wrapper {
+    @include transition();
     @include flexbox();
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
     max-width: 430px;
     width: 100%;
     text-align: left;

@@ -37,6 +37,7 @@
         if (this.useOptin) this.initOptinComponents();
       },
       initOptinComponents() {
+        this.el.classList.add('optin');
         this.optinCheckbox = this.el.querySelector(".newsletter__checkbox");
         this.optinText = this.el.querySelector(".newsletter__optin-text");
         this.optinBody = this.el.querySelector(".newsletter__optin-body");

@@ -9,6 +9,7 @@ $newsletter__title-size-tablet--default: getFontSize(20px) !default;
 $newsletter__title-size-desktop--default: getFontSize(20px) !default;
 
 $newsletter__input-font-id: $font-content-id !default;
+$newsletter__input-text-size: getFontSize(16px) !default;
 
 $newsletter__optin-font-id: $font-label-id !default;
 $newsletter__optin-size: getFontSize(11px) !default;
