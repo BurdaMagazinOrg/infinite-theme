@@ -112,8 +112,10 @@
             {% endif %}
 
             <form class="newsletter__input-wrapper">
-                <input class="newsletter__input input-lg input-email" type="email" name="email"
-                    required placeholder="Deine E-Mail-Adresse">
+                {% block newsletter_inputfield_block %}
+                    <input class="newsletter__input input-lg input-email" type="email" name="email"
+                        required placeholder="Deine E-Mail-Adresse">
+                {% endblock %}
                 <button type="submit" class="newsletter__button">Ok</button>
             </form>
 
@@ -128,8 +130,10 @@
     </section>
     <section class="newsletter__section newsletter__section--success hide--opacity">
         <div class="newsletter__section-content">
-            <div class="newsletter__success-title">ANMELDEN ZUM INSTYLE-NEWSLETTER</div>
-            <p class="newsletter__success-text">Willkommen bei InStyle!<br />Danke für deine Anmeldung für unseren Newsletter. Wir schicken dir in Kürze eine Bestätigungs-E-Mail zu. Bitte klicke auf den Aktivierungslink in dieser Mail, dann liefern wir dir alles rund um Fashion, Beauty und Lifestyle direkt ins Postfach. Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
+            {% block newsletter_success_text_block %}
+                <div class="newsletter__success-title">ANMELDEN ZUM INSTYLE-NEWSLETTER</div>
+                <p class="newsletter__success-text">Danke für deine Anmeldung für unseren Newsletter. Wir schicken dir in Kürze eine Bestätigungs-E-Mail zu. Bitte klicke auf den Aktivierungslink in dieser Mail, dann liefern wir dir alles rund um Fashion, Beauty und Lifestyle direkt ins Postfach.<br />Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
+            {% endblock %}
         </div>
     </section>
     <section class="newsletter__section newsletter__section--terms hide--opacity">
