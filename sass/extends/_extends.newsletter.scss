@@ -5,3 +5,7 @@
 // %newsletter__groups--large {
 //   @include newsletter__groups--large();
 // }
+
+%newsletter__page {
+  @include newsletter__page();
+}

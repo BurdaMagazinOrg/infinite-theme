@@ -75,13 +75,15 @@
 'no-v-padding',
 ] %}
 
-{% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
 {% set attributes = attributes.setAttribute('data-nid', nid) %}
 {% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 {% set attributes = attributes.setAttribute('data-tr-container-type', 'newsletter') %}
-{% set attributes = attributes.setAttribute('data-client-id', content.field_nl_client_id | render | raw | trim) %}
-{% set attributes = attributes.setAttribute('data-group-id', content.field_nl_group_id | render | raw | trim) %}
-{% set attributes = attributes.setAttribute('data-use-optin', content.field_display_optin.0['#markup'] | render) %}
+
+{% block newsletter_attriutes_block %}
+    {% set attributes = attributes.setAttribute('data-client-id', content.field_nl_client_id | render | raw | trim) %}
+    {% set attributes = attributes.setAttribute('data-group-id', content.field_nl_group_id | render | raw | trim) %}
+    {% set attributes = attributes.setAttribute('data-use-optin', content.field_display_optin.0['#markup'] | render) %}
+{% endblock %}
 
 {# Add data attribute data-no-track only for view mode full #}
 {% if view_mode == 'full' %}
@@ -105,34 +107,42 @@
                 </div>
             {% endif %}
 
-            {% if content.field_text | render is not empty %}
-                <div class="newsletter__title">
-                    {{content.field_text}}
-                </div>
-            {% endif %}
+            {% block newsletter_title_block %}
+                {% if content.field_text | render is not empty %}
+                    <div class="newsletter__title">
+                        {{content.field_text}}
+                    </div>
+                {% endif %}
+            {% endblock %}
 
-            <form class="newsletter__input-wrapper">
+
+            <form>
+                {% block newsletter_groups_block %}{% endblock %}
+                <div class="newsletter__input-wrapper">
                 {% block newsletter_inputfield_block %}
                     <input class="newsletter__input input-lg input-email" type="email" name="email"
                         required placeholder="Deine E-Mail-Adresse">
                 {% endblock %}
                 <button type="submit" class="newsletter__button">Ok</button>
+                </div>
             </form>
 
-            {% if content.field_display_optin.0['#markup'] | render == '1' %}
-                <div class="newsletter__optin-wrapper">
-                    <input class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
-                    <label class="newsletter__optin-text" for="optin"></label>
-                </div>
-            {% endif %}
+            {% block newsletter_optin_block %}
+                {% if content.field_display_optin.0['#markup'] | render == '1' %}
+                    <div class="newsletter__optin-wrapper">
+                        <input class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
+                        <label class="newsletter__optin-text" for="optin"></label>
+                    </div>
+                {% endif %}
+            {% endblock %}
             <div class="newsletter__alerts"></div>
         </div>
     </section>
     <section class="newsletter__section newsletter__section--success hide--opacity">
         <div class="newsletter__section-content">
             {% block newsletter_success_text_block %}
-                <div class="newsletter__success-title">ANMELDEN ZUM INSTYLE-NEWSLETTER</div>
-                <p class="newsletter__success-text">Danke für deine Anmeldung für unseren Newsletter. Wir schicken dir in Kürze eine Bestätigungs-E-Mail zu. Bitte klicke auf den Aktivierungslink in dieser Mail, dann liefern wir dir alles rund um Fashion, Beauty und Lifestyle direkt ins Postfach.<br />Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
+                <div class="newsletter__success-title">Danke für deine Anmeldung für unseren Newsletter</div>
+                <p class="newsletter__success-text">Wir schicken dir in Kürze eine Bestätigungs-E-Mail zu. Bitte klicke auf den Aktivierungslink in dieser Mail, dann liefern wir dir alles rund um Fashion, Beauty und Lifestyle direkt ins Postfach.<br />Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
             {% endblock %}
         </div>
     </section>

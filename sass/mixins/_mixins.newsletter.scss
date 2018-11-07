@@ -27,6 +27,14 @@
       opacity: 0;
     }
 
+    &.state_success,
+    &.state_terms {
+      .newsletter__section--start {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
     &.state_success {
       .newsletter__section--success {
         visibility: visible;
@@ -88,6 +96,7 @@
 
   .newsletter__input-wrapper {
     @include flexbox();
+    @include justify-content();
 
     input {
       @include text-helper(
@@ -224,12 +233,16 @@
     overflow: scroll;
   }
 
+  .newsletter__section-content {
+    padding: $grid-unit-5 $grid-unit-3 $grid-unit-3 $grid-unit-3;
+  }
+
   .newsletter__optin-body {
     @include text-helper(
       $newsletter__optin-body-font-id,
       $newsletter__optin-body-size
     );
-    color: $text-color;
+    color: $newsletter__optin-body-color;
     text-align: left;
     line-height: getLineHeight($newsletter__optin-body-size);
 

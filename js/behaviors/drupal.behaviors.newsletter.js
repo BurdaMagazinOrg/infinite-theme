@@ -7,6 +7,7 @@
       optinCheckbox: null,
       alertsContainer: null,
       form: null,
+      groups: null,
       emailInput: null,
       permissions: null,
       useOptin: false,
@@ -27,6 +28,7 @@
       ready() {
         this.form = this.el.querySelector("form");
         this.form.addEventListener("submit", this.submitHandler.bind(this));
+        this.groups = this.el.querySelector(".newsletter__groups-form");
         this.emailInput = this.form.querySelector(".newsletter__input");
         this.alertsContainer = this.el.querySelector(".newsletter__alerts");
         this.settings = Object.assign({}, drupalSettings.hm_newsletter || {}, {
@@ -37,7 +39,7 @@
         if (this.useOptin) this.initOptinComponents();
       },
       initOptinComponents() {
-        this.el.classList.add('optin');
+        this.el.classList.add("optin");
         this.optinCheckbox = this.el.querySelector(".newsletter__checkbox");
         this.optinText = this.el.querySelector(".newsletter__optin-text");
         this.optinBody = this.el.querySelector(".newsletter__optin-body");
@@ -74,7 +76,8 @@
           user: { email: this.emailInput.value }
         };
 
-        this.collectData(tmpData);
+        this.removeAllErrorClasses();
+        if (!this.collectData(tmpData)) return false;
         this.send(tmpData);
       },
       collectData(data) {
@@ -98,6 +101,27 @@
           }
         });
 
+        if (this.groups) {
+          const groups = this.el.querySelectorAll('[name="groups[]"]');
+          let checkboxes = this.groups.querySelectorAll('[type="checkbox"]');
+          data.groups = [];
+          groups.forEach(element => {
+            if (element.checked) {
+              data.groups.push(element.value);
+            }
+          });
+
+          if (!data.groups.length) {
+            checkboxes = Array.from(checkboxes);
+            checkboxes.forEach(element => this.setErrorClass(element));
+            this.addAlert(
+              "Checkbox",
+              "Eines der Newsletter-Felder ist erforderlich."
+            );
+            return false;
+          }
+        }
+
         return true;
       },
       send(data) {
@@ -119,6 +143,14 @@
       },
       setErrorClass(element) {
         element.classList.add("has-error");
+      },
+      removeErrorClass(element) {
+        element.classList.remove("has-error");
+      },
+      removeAllErrorClasses() {
+        Array.from(this.el.querySelectorAll(".has-error")).forEach(element =>
+          this.removeErrorClass(element)
+        );
       },
       addAlert(pField, pMessage) {
         const alert = `<div class="alert alert-danger" role="alert">${pMessage}</div>`;
