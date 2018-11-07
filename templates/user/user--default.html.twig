@@ -32,9 +32,9 @@
             <div class="item-author__profile-image">
                 {{ content.user_picture }}
             </div>
-            {% if content.has_header_block and not has_spotlight_content %}
+            {% if content.has_header_block and not has_spotlight_paragraph %}
                 <h2 class="item-author__name">{{ content.field_full_name }}</h2>
-            {% elseif not has_spotlight_content %}
+            {% elseif not has_spotlight_paragraph %}
                 <h1 class="item-author__name">{{ content.field_full_name }}</h1>
             {% endif %}
             <div class="item-author__job">

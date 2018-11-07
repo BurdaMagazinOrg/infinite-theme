@@ -2,10 +2,10 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
+use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\infinite_media\MediaHelper;
 use Drupal\user\Entity\User;
 use Psy\Util\Json;
-
 
 function infinite_preprocess(&$variables) {
   $variables['environment'] = ['systemType' =>  isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
@@ -458,30 +458,35 @@ function _infinite_get_icon($node, $variables) {
  *
  * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function infinite_preprocess_user(&$variables)  {
+function infinite_preprocess_user(&$variables)
+{
   try {
-    $variables['has_spotlight_content'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight' ? true : false;
-  }catch (InvalidArgumentException $ex) {
-    $variables['has_spotlight_content'] = false;
+    $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight' ? true : false;
+  } catch (InvalidArgumentException $ex) {
+    $variables['has_spotlight_paragraph'] = false;
+  } catch (MissingDataException $ex) {
+    $variables['has_spotlight_paragraph'] = false;
   }
 }
 
 /**
  * Get the paragraph bundle
  *
- * @param \Drupal\user\Entity\User $user
- * @param int|0 $paragraphPosition
+ * @param User $user
+ * @param int $paragraphPosition
  *
  * @return string
  *
+ * @throws InvalidArgumentException
  * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition = 0): string {
+function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition = 0): string
+{
   /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $fieldParagraphs */
   $fieldParagraphs = $user->getFields(true)['field_paragraphs'];
   /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $currentParagraph */
   $currentParagraph = $fieldParagraphs->get($paragraphPosition);
-  if (null === $currentParagraph)  {
+  if (null === $currentParagraph) {
     throw new InvalidArgumentException("Paragraph at position '$paragraphPosition' is not present");
   }
   return $currentParagraph->get('entity')->getTarget()->getValue()->bundle();
