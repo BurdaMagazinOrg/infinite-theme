@@ -189,11 +189,6 @@ infinite.views.base.base-sidebar-view:
     js/infinite/models/base/base-sidebar-model.js: {}
 
 
-infinite.views.base.base-newsletter-view:
-  version: 1
-  js:
-    js/infinite/views/base/base-newsletter-view.js: { }
-
 infinite.views.base.base-list-swipeable-view:
   version: 1
   js:
@@ -300,11 +295,6 @@ infinite.views.spinner:
 #   version: 1
 #   js:
 #     js/infinite/views/newsletter/hmnewsletter-view.js: {}
-
-infinite.views.newsletter.newsletter-modal-view:
-  version: 1
-  js:
-    js/infinite/views/newsletter/newsletter-modal-view.js: {}
 
 infinite.views.ecommerce-slider-view:
   version: 1
