@@ -1,0 +1,62 @@
+{{ attach_library('infinite/sidebar-navigation') }}
+
+<div class="item-content__block item-group--outer-wrapper">
+    <div class="item-group--outer">
+        {# item-group__row #}
+        {# <div class="item-group__col item-group__col--left"> #}
+            <div class="sidebar-navigation">
+                <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open" class="btn__open-tree">
+                    <span>Alle</span>
+                </div>
+                <ul class="links">
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#steckbrief">Steckbrief</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#galerie">Galerie</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#karriere">Karriere</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#look">Look</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#lena-und-die-liebe">Lena und die Liebe</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#charity">Charity</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#fun-facts">Fun Facts</a>
+                    </li>
+                    <li>
+                        <span class="progress"></span>
+                        <a href="#shop-the-look">Shop the Look</a>
+                    </li>
+                </ul>
+            </div>
+        {# </div>
+        <div class="item-group__col item-group__col--right"> #}
+            {{ children }}
+
+            {% block content_tags %}
+                {{ parent.field_tags }}
+            {% endblock %}
+
+            <div class="region-fixed-content socials socials-bar socials-horizontal-bar item-content__block">
+                {% block socials_horizontal_bar %}
+                    {% embed '@infinite/embeds/social_icons.html.twig' with parent %}
+                    {% endembed %}
+                {% endblock %}
+            </div>
+        {# </div> #}
+    </div>
+</div>

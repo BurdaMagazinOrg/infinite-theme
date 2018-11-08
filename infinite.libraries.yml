@@ -37,6 +37,11 @@ coupons:
   js:
     js/behaviors/drupal.behaviors.coupons.js: {}
 
+sidebar-navigation:
+  version: 1.0
+  js:
+    js/behaviors/drupal.behaviors.sidebar-navigation.js: {}
+
 blazy:
   header: false
   remote: https://github.com/dinbror/blazy
