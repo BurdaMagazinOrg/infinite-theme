@@ -461,7 +461,7 @@ function _infinite_get_icon($node, $variables) {
 function infinite_preprocess_user(&$variables)
 {
   try {
-    $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight' ? true : false;
+    $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight';
   } catch (InvalidArgumentException $ex) {
     $variables['has_spotlight_paragraph'] = false;
   } catch (MissingDataException $ex) {
