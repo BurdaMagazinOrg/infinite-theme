@@ -182,6 +182,12 @@
     padding: $grid-unit-3;
   }
 
+  .newsletter__logo img {
+    max-width: 400px;
+    max-height: 70px;
+    width: 100%;
+  }
+
   .newsletter__logo,
   .newsletter__title,
   .newsletter__input-wrapper {
