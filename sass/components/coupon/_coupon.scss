@@ -321,3 +321,75 @@
     }
   }
 }
+
+.item-paragraph--content-reference {
+  .coupon {
+    position: relative;
+    margin-bottom: 35px;
+  }
+  .item-content--coupon {
+    text-align: center;
+    &--content_reference_minimal {
+      .coupon__title {
+        font-family: "noto_serifregular";
+        margin-bottom: 0;
+        display: inline-block;
+        padding: 8px 24px 0;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: normal;
+        background-color: #ebebeb;
+      }
+      .coupon__brand {
+        padding: 24px;
+        background-color: #ebebeb;
+      }
+      .coupon__brand--name {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        padding: 24px 0;
+        background-color: #fff;
+      }
+      .coupon__discount {
+        position: absolute;
+        bottom: -35px;
+        top: initial;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        background: #000;
+        color: #fff;
+        &--value {
+          font-size: 32px;
+        }
+      }
+      .coupon__code--wrapper {
+        text-align: center;
+      }
+      .coupon__code {
+        font-family: "noto_serifregular";
+        margin: 16px 0;
+        width: 100%;
+        text-align: center;
+        color: #d0021b;
+        background-color: #fff;
+        line-height: 16px;
+        font-size: 16px;
+        font-weight: bold;
+        &--label {
+          color: #000;
+          font-weight: normal;
+        }
+      }
+      .coupon__button:after {
+        display: none;
+      }
+    }
+  }
+}

@@ -76,10 +76,34 @@
 {% set classes = [
 'item-content',
 'item-content--coupon',
-] %}  
-{{ dump(view_mode) }}
-<article{{ attributes.addClass(classes) }}>
-    <div class="coupon__row">
+'item-content--coupon--' ~ view_mode,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+    <div class="coupon">
+        <h3 class="coupon__title">{{ label }}</h3>
+        <div class="coupon__brand">
+            <div class="coupon__brand--name">{{ content.field_name }}</div>
+        </div>
+        {% if content.field_coupon_discount | render is not empty %}
+            <div class="coupon__discount">
+                <span class="coupon__discount--value">
+                    {{ content.field_coupon_discount }}
+                </span>
+                Rabatt
+            </div>
+        {% endif %}
+    </div>
+    <div class="coupon__code--wrapper">
+      {% if content.field_coupon_code | render is not empty %}
+          <div class="coupon__code">
+            <span class="coupon__code--label">Gutscheincode:</span>
+              {{ content.field_coupon_code }}</div>
+      {% endif %}
+      <a href="#" class="coupon__button">Jetzt Shoppen</a>
+    </div>
+
+    {# <div class="coupon__row">
       <div{{ content_attributes.addClass(['coupon__column--left']) }}>
         <div class="coupon__deal-info">
           <h2 class="coupon__title">{{ content.field_name }}</h2>
@@ -106,7 +130,6 @@
         </div>
         <span class="tr-px">{{ content.field_tracking_pixel }}</span>
       </div>
-
       <div class="coupon__column--right">
         <div class="coupon__products-header">
           <span class="coupon__products-title">Top-Produkte</span>
@@ -116,6 +139,6 @@
             {{ content.field_advertising_products }}
         </div>
       </div>
-    </div>
+    </div> #}
 
-</article>
+</div>
