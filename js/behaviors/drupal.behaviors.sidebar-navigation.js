@@ -18,13 +18,13 @@
 
       Array.from(this.scrollTargets).forEach(element => {
         observer = new IntersectionObserver(
-          this.contentHeightChanged.bind(this),
+          this.intersectionHandler.bind(this),
           this.observerOptions
         );
         observer.observe(element);
       });
     },
-    contentHeightChanged(entries, observer) {
+    intersectionHandler(entries, observer) {
       let currentId = "";
       let selectedElement = null;
 
@@ -40,7 +40,6 @@
     },
     removeHighlighting() {
       const elements = this.el.querySelectorAll(".is-active") || [];
-      console.log(">>> elements", elements);
       Array.from(elements).forEach(element => {
         element.classList.remove("is-active");
       });

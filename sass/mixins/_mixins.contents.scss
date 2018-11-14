@@ -85,20 +85,6 @@
       padding-right: 0;
     }
 
-    // .item-group__row {
-    //   @include flexbox();
-    // }
-
-    // .item-group__col {
-    //   @include flex-item();
-    //   max-width: 100%;
-    // }
-
-    // .item-group__col--right {
-    //   width: 100%;
-    //   overflow: hidden;
-    // }
-
     & > .item-paragraph--small,
     & > .item-paragraph--middle {
       @include region--fixed-content();
@@ -206,9 +192,6 @@
       display: none;
     }
   }
-
-  //@media (min-width: $screen-md-min) {
-  //}
 }
 
 @mixin item-content--user() {
@@ -494,13 +477,6 @@
     .socials-vertical-bar {
       display: none;
     }
-  }
-
-  @media (min-width: $screen-sm-min) {
-    // .item-group__col--left {
-    //   width: $sidebar-navigation__width + $grid-unit-3;
-    //   max-width: $sidebar-navigation__width + $grid-unit-3;
-    // }
   }
 }
 
