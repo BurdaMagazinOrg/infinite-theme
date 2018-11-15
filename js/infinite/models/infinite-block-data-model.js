@@ -24,6 +24,7 @@
         {
           page: {
             category: "",
+            subCategory: "",
             entityID: "",
             entityType: "",
             contentType: "",
@@ -38,7 +39,10 @@
         tmpPath = $pElement.data("path") || $pElement.data("history-url"),
         tmpTitle = $pElement.data("title") || $pElement.data("history-title"),
         tmpCategory = $pElement.data("category") || drupalInfo.page.category,
-        tmpSubCategory = $pElement.data("sub-category"),
+        tmpSubCategory =
+          $pElement.data("sub-category") ||
+          drupalInfo.page.subCategory ||
+          drupalInfo.page.category,
         tmpContentType =
           $pElement.data("content-type") || drupalInfo.page.contentType,
         tmpContentSubType =

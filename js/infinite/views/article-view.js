@@ -8,6 +8,7 @@
 
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.ArticleView = BaseDynamicView.extend({
+    infiniteBlockDataModel: null,
     articleScrolledInview: null,
     articlePageviewInview: null,
     articleReadInview: null,
@@ -23,6 +24,10 @@
         this.infiniteBlockDataModel.has("title")
       ) {
         this.articleSEOTitle = this.infiniteBlockDataModel.get("title");
+      }
+
+      if (this.model.has("infiniteBlockDataModel")) {
+        this.infiniteBlockDataModel = this.model.get("infiniteBlockDataModel");
       }
 
       this.initTracking();
@@ -51,33 +56,9 @@
         });
       }
     },
-    handlePageview() {
-      const tmpModel = this.model.get("parentModel"); // infiniteBlockViewModel
-      const $tmpElement = tmpModel.get("el");
-      const tmpHistoryURL = $tmpElement.data("history-url");
-
-      this.articlePageviewInview.destroy();
-
-      if (
-        !_.isUndefined(tmpHistoryURL) &&
-        tmpModel.get("pageviewTracked") !== true
-      ) {
-        tmpModel.set("scrollDepthTracked", true);
-        TrackingManager.trackPageView(
-          tmpHistoryURL,
-          TrackingManager.getAdvTrackingByElement($tmpElement)
-        );
-      }
-    },
-    extendPersona() {
-      if (typeof Persona !== "undefined") {
-        console.log("THIS MODEL", this.model);
-        // Persona.writePersonaCollection();
-      }
-    },
     handleArticleScrolledEnter() {
-      this.trackArticleScrolled();
       this.extendPersona();
+      this.trackArticleScrolled();
     },
     handleArticleReadEnter() {
       this.stopArticleReadInterval();
@@ -122,6 +103,32 @@
           },
           TrackingManager.getAdvTrackingByElement(this.$el)
         );
+      }
+    },
+    handlePageview() {
+      const tmpModel = this.model.get("parentModel"); // infiniteBlockViewModel
+      const $tmpElement = tmpModel.get("el");
+      const tmpHistoryURL = $tmpElement.data("history-url");
+
+      this.articlePageviewInview.destroy();
+
+      if (
+        !_.isUndefined(tmpHistoryURL) &&
+        tmpModel.get("pageviewTracked") !== true
+      ) {
+        tmpModel.set("pageviewTracked", true);
+        TrackingManager.trackPageView(
+          tmpHistoryURL,
+          TrackingManager.getAdvTrackingByElement($tmpElement)
+        );
+      }
+    },
+    extendPersona() {
+      const persona = {};
+      if (this.infiniteBlockDataModel && typeof Persona !== "undefined") {
+        persona.channel = this.infiniteBlockDataModel.get("category");
+        persona.subChannel = this.infiniteBlockDataModel.get("subCategory");
+        Persona.extendPersona(persona);
       }
     },
     renderParagraphSocials() {

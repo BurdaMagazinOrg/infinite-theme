@@ -59,13 +59,26 @@ window.Persona = (function Persona() {
 
   const getPersonaCollection = () =>
     JSON.parse(window.localStorage.getItem("personaCollection"));
+
   const getDefaultCollection = () => {
     const obj = {};
     channelTypes.forEach(data => {
       obj[data] = {};
     });
-
     return obj;
+  };
+
+  const getDefaultPersona = () => {
+    const obj = {};
+    channelTypes.forEach(data => {
+      obj[data] = "";
+    });
+    return obj;
+  };
+
+  const extendPersona = personaInfos => {
+    writePersonaCollection(personaInfos);
+    window.dataLayer.push({ event: "executePersona", persona: getPersona() });
   };
 
   const init = () => {
@@ -73,14 +86,15 @@ window.Persona = (function Persona() {
     personaCollection = getPersonaCollection() || getDefaultCollection();
 
     if (personaInfos) {
-      writePersonaCollection(personaInfos);
-      window.dataLayer.push({ event: "executePersona", persona: getPersona() });
+      extendPersona(personaInfos);
     }
   };
 
   init();
-  that.writePersonaCollection = writePersonaCollection;
+  that.extendPersona = extendPersona;
   that.getPersonaCollection = getPersonaCollection;
+  that.getDefaultCollection = getDefaultCollection;
+  that.getDefaultPersona = getDefaultPersona;
   that.getPersona = getPersona;
   return that;
 })();
