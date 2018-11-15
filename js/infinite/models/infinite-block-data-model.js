@@ -1,62 +1,80 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.InfiniteBlockDataModel = Backbone.Model.extend({
     $el: [],
-    defaults: function () {
+    defaults() {
       return {
-        nid: '',
-        uuid: '',
-        path: '',
-        title: '',
-        category: '',
-        subCategory: '',
-        contentType: '',
-        contentSubType: '',
-        noTrack: ''
-      }
+        nid: "",
+        uuid: "",
+        path: "",
+        title: "",
+        category: "",
+        subCategory: "",
+        contentType: "",
+        contentSubType: "",
+        noTrack: ""
+      };
     },
-    initialize: function (pAttributes, pOptions) {
+    initialize(pAttributes, pOptions) {
       this.$el = pAttributes.$el || pAttributes.el;
       this.parseElement(this.$el);
     },
-    parseElement: function ($pElement) {
-      var tmpNid = $pElement.data('nid'),
-        tmpUuid = $pElement.data('uuid'),
-        tmpPath = $pElement.data('path') || $pElement.data('history-url'),
-        tmpTitle = $pElement.data('title') || $pElement.data('history-title'),
-        tmpCategory = $pElement.data('category'),
-        tmpSubCategory = $pElement.data('sub-category'),
-        tmpContentType = $pElement.data('content-type'),
-        tmpContentSubType = $pElement.data('content-sub-type'),
-        // tmpClasses = [],
-        tmpTrackingContainerType = $pElement.data('tr-container-type'),
-        tmpNoTrack = $pElement.data('no-track');
+    parseElement($pElement) {
+      const tmpUuid = $pElement.data("uuid");
+      const drupalInfo = Object.assign(
+        {
+          page: {
+            category: "",
+            entityID: "",
+            entityType: "",
+            contentType: "",
+            entityName: "",
+            contentSubType: []
+          }
+        },
+        TrackingManager.getAdvTrackingByUuid(tmpUuid)
+      );
+
+      let tmpNid = $pElement.data("nid"),
+        tmpPath = $pElement.data("path") || $pElement.data("history-url"),
+        tmpTitle = $pElement.data("title") || $pElement.data("history-title"),
+        tmpCategory = $pElement.data("category") || drupalInfo.page.category,
+        tmpSubCategory = $pElement.data("sub-category"),
+        tmpContentType =
+          $pElement.data("content-type") || drupalInfo.page.contentType,
+        tmpContentSubType =
+          $pElement.data("content-sub-type") || drupalInfo.page.contentSubType,
+        tmpEntityID = drupalInfo.page.entityID,
+        entityType = drupalInfo.page.entityType,
+        entityName = drupalInfo.page.entityName,
+        tmpTrackingContainerType = $pElement.data("tr-container-type"),
+        tmpNoTrack = $pElement.data("no-track");
 
       // if ($pElement.find('.item-content').addBack().prop("css")) {
       //   tmpClasses = $pElement.find('.item-content').addBack().attr('class').split(' ') || [];
       // }
 
       this.set({
-        'nid': tmpNid,
-        'uuid': tmpUuid,
-        'path': tmpPath,
-        'title': tmpTitle,
-        'category': tmpCategory,
-        'subCategory': tmpSubCategory,
-        'contentType': tmpContentType,
-        'contentSubType': tmpContentSubType,
+        nid: tmpNid,
+        uuid: tmpUuid,
+        path: tmpPath,
+        title: tmpTitle,
+        category: tmpCategory,
+        subCategory: tmpSubCategory,
+        contentType: tmpContentType,
+        contentSubType: tmpContentSubType,
+        entityID: tmpEntityID,
+        entityType,
         // 'cssClass': tmpClasses,
-        'trackingContainerType': tmpTrackingContainerType,
-        'noTrack': tmpNoTrack
+        trackingContainerType: tmpTrackingContainerType,
+        noTrack: tmpNoTrack
       });
     },
-    getElement: function () {
-      return this.get('$el') || [];
+    getElement() {
+      return this.get("$el") || [];
     }
   });
 
-  window.InfiniteBlockDataModel = window.InfiniteBlockDataModel || BurdaInfinite.models.InfiniteBlockDataModel;
-
+  window.InfiniteBlockDataModel =
+    window.InfiniteBlockDataModel ||
+    BurdaInfinite.models.InfiniteBlockDataModel;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
