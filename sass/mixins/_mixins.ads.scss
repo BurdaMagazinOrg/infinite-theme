@@ -17,15 +17,17 @@
     .logo, .brand {
       vertical-align: top;
       display: inline-block;
-      height: 20px;
+      height: $native-logo--height;
     }
 
     .separator {
-      margin: 0 1px 0 3px;
+      margin: 0 3px;
       font-family: $font-content-bold;
       vertical-align: middle;
       display: inline-block;
       padding: $native-teaser__separator-padding--advertorial;
+      line-height: $native-logo--height;
+      font-size: $native-logo--font-size;
     }
 
     img, svg {
