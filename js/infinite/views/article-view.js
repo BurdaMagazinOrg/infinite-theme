@@ -9,13 +9,14 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.ArticleView = BaseDynamicView.extend({
     articleScrolledInview: null,
-    articleReadedInview: null,
-    articleReadedDelay: 0,
+    articlePageviewInview: null,
+    articleReadInview: null,
+    articleReadDelay: 0,
     articleSEOTitle: "",
     initialize(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
-      this.articleReadedDelay = AppConfig.articleReadedDelay || 2000;
+      this.articleReadDelay = AppConfig.articleReadDelay || 2000;
 
       if (
         this.infiniteBlockDataModel !== undefined &&
@@ -28,12 +29,12 @@
       this.renderParagraphSocials();
     },
     initTracking() {
-      this.articleReadedInview = this.$el
+      this.articleReadInview = this.$el
         .find(".item-paragraph--text:last")
         .inview({
           offset: "bottom",
-          enter: this.handleArticleReadedEnter.bind(this),
-          exit: this.handleArticleReadedExit.bind(this)
+          enter: this.handleArticleReadEnter.bind(this),
+          exit: this.handleArticleReadExit.bind(this)
         });
 
       if (!this.model.get("initialDOMItem")) {
@@ -44,7 +45,7 @@
             enter: this.handleArticleScrolledEnter.bind(this)
           });
 
-        this.articleScrolledInview = this.$el.find(".title--article").inview({
+        this.articlePageviewInview = this.$el.find(".title--article").inview({
           offset: "bottom",
           enter: this.handlePageview.bind(this)
         });
@@ -54,6 +55,8 @@
       const tmpModel = this.model.get("parentModel"); // infiniteBlockViewModel
       const $tmpElement = tmpModel.get("el");
       const tmpHistoryURL = $tmpElement.data("history-url");
+
+      this.articlePageviewInview.destroy();
 
       if (
         !_.isUndefined(tmpHistoryURL) &&
@@ -66,26 +69,33 @@
         );
       }
     },
+    extendPersona() {
+      if (typeof Persona !== "undefined") {
+        console.log("THIS MODEL", this.model);
+        // Persona.writePersonaCollection();
+      }
+    },
     handleArticleScrolledEnter() {
       this.trackArticleScrolled();
+      this.extendPersona();
     },
-    handleArticleReadedEnter() {
-      this.stopArticleReadedInterval();
+    handleArticleReadEnter() {
+      this.stopArticleReadInterval();
 
-      this.readedInterval = setInterval(() => {
-        this.trackArticleReaded();
-        this.stopArticleReadedInterval();
-      }, this.articleReadedDelay);
+      this.readInterval = setInterval(() => {
+        this.trackArticleRead();
+        this.stopArticleReadInterval();
+      }, this.articleReadDelay);
     },
-    handleArticleReadedExit() {
-      this.stopArticleReadedInterval();
+    handleArticleReadExit() {
+      this.stopArticleReadInterval();
     },
-    stopArticleReadedInterval() {
-      clearInterval(this.readedInterval);
-      this.readedInterval = 0;
+    stopArticleReadInterval() {
+      clearInterval(this.readInterval);
+      this.readInterval = 0;
     },
-    trackArticleReaded() {
-      this.articleReadedInview.destroy();
+    trackArticleRead() {
+      this.articleReadInview.destroy();
 
       if (typeof TrackingManager !== "undefined") {
         TrackingManager.trackEvent(

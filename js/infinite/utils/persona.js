@@ -79,6 +79,7 @@ window.Persona = (function Persona() {
   };
 
   init();
+  that.writePersonaCollection = writePersonaCollection;
   that.getPersonaCollection = getPersonaCollection;
   that.getPersona = getPersona;
   return that;
