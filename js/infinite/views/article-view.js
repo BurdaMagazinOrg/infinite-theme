@@ -62,7 +62,7 @@
         !_.isUndefined(tmpHistoryURL) &&
         tmpModel.get("pageviewTracked") !== true
       ) {
-        tmpModel.set("scrollDepthTracked", true);
+        tmpModel.set("pageviewTracked", true);
         TrackingManager.trackPageView(
           tmpHistoryURL,
           TrackingManager.getAdvTrackingByElement($tmpElement)
