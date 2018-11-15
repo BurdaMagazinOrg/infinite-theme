@@ -9,6 +9,7 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.ArticleView = BaseDynamicView.extend({
     articleScrolledInview: null,
+    articlePageviewInview: null,
     articleReadedInview: null,
     articleReadedDelay: 0,
     articleSEOTitle: "",
@@ -44,7 +45,7 @@
             enter: this.handleArticleScrolledEnter.bind(this)
           });
 
-        this.articleScrolledInview = this.$el.find(".title--article").inview({
+        this.articlePageviewInview = this.$el.find(".title--article").inview({
           offset: "bottom",
           enter: this.handlePageview.bind(this)
         });
@@ -54,6 +55,8 @@
       const tmpModel = this.model.get("parentModel"); // infiniteBlockViewModel
       const $tmpElement = tmpModel.get("el");
       const tmpHistoryURL = $tmpElement.data("history-url");
+
+      this.articlePageviewInview.destroy();
 
       if (
         !_.isUndefined(tmpHistoryURL) &&
