@@ -18,6 +18,9 @@
       vertical-align: top;
       display: inline-block;
       height: $native-logo--height;
+      @media (max-width: $screen-xs-max) {
+        height: $native-logo--height--mobile;
+      }
     }
 
     .separator {
@@ -27,6 +30,9 @@
       display: inline-block;
       padding: $native-teaser__separator-padding--advertorial;
       line-height: $native-logo--height;
+      @media (max-width: $screen-xs-max) {
+        line-height: $native-logo--height--mobile;
+      }
       font-size: $native-logo--font-size;
     }
 

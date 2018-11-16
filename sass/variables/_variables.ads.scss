@@ -1,2 +1,3 @@
-$native-logo--height: 20px;
-$native-logo--font-size: 16px;
+$native-logo--height: 20px !default;
+$native-logo--font-size: 16px !default;
+$native-logo--height: $native-logo-height !default;
