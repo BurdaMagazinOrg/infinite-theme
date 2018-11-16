@@ -30,10 +30,11 @@
       display: inline-block;
       padding: $native-teaser__separator-padding--advertorial;
       line-height: $native-logo--height;
+      font-size: $native-logo--font-size;
       @media (max-width: $screen-xs-max) {
         line-height: $native-logo--height--mobile;
+        font-size: $native-logo--font-size--mobile;
       }
-      font-size: $native-logo--font-size;
     }
 
     img, svg {
