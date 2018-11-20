@@ -1,0 +1,61 @@
+{% set classes = [
+'item-content',
+'item-content--coupon',
+'item-content--coupon--content_reference',
+'item-content--coupon--' ~ view_mode,
+] %}
+
+{{ attach_library('infinite/coupons') }}
+
+<div{{ attributes.addClass(classes) }}>
+    <div class="coupon">
+        <h3 class="coupon__title">{{ label }}</h3>
+        <div class="coupon__brand">
+            {% block coupon_brand %}
+                <div class="coupon__brand--logo">{{ content.field_logo }}</div>
+            {% endblock %}
+        </div>
+        {% if content.field_coupon_discount | render is not empty %}
+            <div class="coupon__discount">
+                <span class="coupon__discount--value">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 71.591 71.591">
+                        <defs></defs>
+                        <g id="Gruppe_30" data-name="Gruppe 30" transform="translate(-1053 -2558)">
+                            <path id="Pfad_14" data-name="Pfad 14" d="M35.867,0l2.869,3.443L42.18.574l2.3,3.874L48.492,2.3l1.435,4.3,4.3-1.578.717,4.591L59.4,8.9v4.448l4.448.143-.861,4.448,4.448,1L65.708,23.1l4.3,1.722-2.439,3.874,3.73,2.3-3.013,3.443,3.3,3.013L68,40.171,70.73,43.9,66.713,45.91l2.152,4.017-4.448,1.291,1.291,4.448-4.448.43.43,4.591L57.244,60.4l-.287,4.448-4.448-1-1.148,4.3L47.2,66.282l-1.865,4.161-3.73-2.582-2.582,3.73-3.156-3.156-3.3,3.156-2.582-3.73-3.73,2.582L24.39,66.282l-4.161,1.865-1.148-4.3-4.3,1L14.49,60.4,9.9,60.687l.43-4.591-4.448-.43,1.291-4.448-4.3-1.291L4.878,45.91.861,43.9l2.726-3.73L0,37.445l3.3-3.013L.287,30.989l3.874-2.3L1.722,24.82,5.882,23.1,4.3,18.938l4.3-1-.861-4.448,4.591-.143L12.195,8.9l4.448.717L17.5,5.021,21.664,6.6l1.578-4.3,3.874,2.152,2.3-3.874,3.443,2.869Z" transform="translate(1053 2558)"/>
+                            <text id="Jetzt" class="cls-1" style="fill: #fff; font-weight: 700;font-size: 10px; font-family: PTSans-NarrowBold, PT Sans Narrow; letter-spacing: 0.025em;" transform="translate(1086.232 2612.71)">
+                                <tspan x="-12.365" y="0">Rabatt</tspan>
+                            </text>
+                            <text id="_20" data-name="20" class="cls-2" style="fill: #fff; font-weight: 700;font-size: 32px; font-family: NotoSerif-Bold, Noto Serif;" transform="translate(1089.283 2598.393)">
+                                {% spaceless %}
+                                  <tspan x="-24.231" y="0">
+                                    {{ content.field_coupon_discount }}
+                                  </tspan>
+                                {% endspaceless %}
+                                <tspan style="font-size: 14px;" class="cls-3" y="0">%</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+        {% endif %}
+        {% if content.field_tnc | render is not empty %}
+            <div class="coupon__tnc">
+                <div class="coupon__tnc-label expandable">Teilnahmebedingungen</div>
+                  <div class="coupon__tnc-details">
+                      {{ content.field_tnc }}
+                  </div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="coupon__code--wrapper">
+        {% if content.field_coupon_code | render is not empty %}
+            <div class="coupon__code">
+                <span class="coupon__code--label">Gutscheincode:</span>
+                {{ content.field_coupon_code }}
+            </div>
+        {% endif %}
+        {{ content.target_url }}
+        <a href="#" class="coupon__button">Jetzt Shoppen</a>
+    </div>
+    {% block maximal_block %}{% endblock %}
+</div>

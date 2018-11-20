@@ -321,3 +321,105 @@
     }
   }
 }
+
+.item-paragraph--content-reference {
+  .coupon {
+    position: relative;
+  }
+  .coupon__advertising-products {
+    .item-product {
+    }
+  }
+  .item-content--coupon {
+    text-align: center;
+    &--content_reference {
+      .coupon__title {
+        font-family: "noto_serifregular";
+        margin-bottom: 0;
+        display: inline-block;
+        padding: 8px 24px 0;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: normal;
+        background-color: #ebebeb;
+      }
+      .coupon__brand {
+        padding: 24px;
+        background-color: #ebebeb;
+      }
+      .coupon__brand--logo {
+        text-align: center;
+        padding: 24px;
+        background-color: #fff;
+        img {
+          max-width: 100%;
+          width: auto;
+          height: auto;
+        }
+      }
+      .coupon__discount {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 75px;
+        pointer-events: none;
+        background-color: transparent;
+        border: none;
+        top: initial;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        transform:  translateY(-55%);
+        &--value {
+          font-size: 32px;
+        }
+      }
+      .coupon__tnc {
+        margin: 6px 0;
+        text-align: right;
+        color: #828282;
+        font-size: 12px;
+        &-details {
+          margin-top: 16px;
+        }
+      }
+      .coupon__code--wrapper {
+        text-align: center;
+      }
+      .coupon__code {
+        font-family: "noto_serifregular";
+        margin: 16px 0;
+        width: 100%;
+        text-align: center;
+        color: #d0021b;
+        background-color: #fff;
+        line-height: 16px;
+        font-size: 16px;
+        font-weight: bold;
+        &--label {
+          color: #000;
+          font-weight: normal;
+        }
+      }
+      .coupon__button:after {
+        display: none;
+      }
+    }
+    &--content_reference_normal {
+      .coupon {
+        height: 0;
+        overflow: hidden;
+        padding-bottom: 45%;
+        &__brand {
+          img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    } 
+  }
+}
