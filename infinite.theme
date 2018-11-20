@@ -4,6 +4,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\infinite_media\MediaHelper;
+use Drupal\taxonomy\TermInterface;
 use Drupal\views\Views;
 use Psy\Util\Json;
 
@@ -330,7 +331,6 @@ function infinite_preprocess_container(&$variables) {
   }
   if (isset($entity)) {
     $variables = infinite_inject_pinterest_image($variables, $entity);
-
     // use seo description for pinterest share description
     if (method_exists($entity, 'bundle') && method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
       switch ($entity->bundle()) {
@@ -347,6 +347,20 @@ function infinite_preprocess_container(&$variables) {
             $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
           }
           break;
+      }
+    }
+    // Set progress navigation.
+    if ($entity instanceof TermInterface) {
+      $variables['progress_navigation'] = [];
+      foreach ($variables['element']['#children'][0]['#children'] as $index => $child) {
+        if (isset($child['#paragraph'])
+          && !$child['#paragraph']->get('field_progress_navigation')->isEmpty()
+          && !$child['#paragraph']->get('field_anchor')->isEmpty()) {
+          array_push($variables['progress_navigation'], [
+            'text' => $child['#paragraph']->get('field_progress_navigation')->value,
+            'anchor' => $child['#paragraph']->get('field_anchor')->value,
+          ]);
+        }
       }
     }
   }
