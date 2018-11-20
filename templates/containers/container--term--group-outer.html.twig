@@ -13,8 +13,8 @@
                   {% for navigation in progress_navigation %}
                     <li>
                         <span class="progress"></span>
-                        <a href="#{{ navigation['anchor'] }}">{{ navigation['text'] }}</a>
-                        <span class="mobile-hidden-label">{{ navigation['text'] }}/span>
+                        <a href="#{{ navigation }}">{{ navigation }}</a>
+                        <span class="mobile-hidden-label">{{ navigation }}/span>
                     </li>
                   {% endfor %}
                 </ul>

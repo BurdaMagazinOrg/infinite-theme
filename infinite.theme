@@ -355,11 +355,11 @@ function infinite_preprocess_container(&$variables) {
       foreach ($variables['element']['#children'][0]['#children'] as $index => $child) {
         if (isset($child['#paragraph'])
           && !$child['#paragraph']->get('field_progress_navigation')->isEmpty()
-          && !$child['#paragraph']->get('field_anchor')->isEmpty()) {
-          array_push($variables['progress_navigation'], [
-            'text' => $child['#paragraph']->get('field_progress_navigation')->value,
-            'anchor' => $child['#paragraph']->get('field_anchor')->value,
-          ]);
+        ) {
+          array_push(
+            $variables['progress_navigation'],
+            $child['#paragraph']->get('field_progress_navigation')->value
+          );
         }
       }
     }
