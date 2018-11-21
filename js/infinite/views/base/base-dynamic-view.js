@@ -1,18 +1,17 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+  
 
   BurdaInfinite.views.base.BaseDynamicView = BaseInviewView.extend({
-    type: 'baseDynamicView',
+    type: "baseDynamicView",
     initialCall: false,
     initialDOMItem: true,
     infiniteBlockDataModel: null,
-    initialize: function (pOptions) {
+    initialize (pOptions) {
       BaseInviewView.prototype.initialize.call(this, pOptions);
 
       this.parseInfiniteView(this.$el, {initialCall: this.initialCall});
     },
-    parseInfiniteView: function (pContainer, pSettings) {
+    parseInfiniteView (pContainer, pSettings) {
       if (pSettings.initialDOMItem === false) this.initialDOMItem = false;
 
       var tmpSettings = _.extend({
@@ -45,13 +44,17 @@
         this.createDynamicItem(tmpSettings);
       }
     },
-    createDynamicItem: function (pSettings) {
+    createDynamicItem (pSettings) {
       var $tmpItem = pSettings.el,
         tmpViewType = $tmpItem.data('view-type'),
         tmpModel = new BaseDynamicViewModel();
 
       if (tmpViewType == "infiniteBlockView" && $tmpItem.data('uuid') || tmpViewType == "infiniteBlockView" && $tmpItem.data('tr-container-type')) {
         this.infiniteBlockDataModel = new InfiniteBlockDataModel({$el: $tmpItem});
+      }
+      
+      if (this.infiniteBlockDataModel !== undefined) {
+        tmpModel.set({'infiniteBlockDataModel': this.infiniteBlockDataModel}, true);
       }
 
       pSettings.modelList.add(tmpModel);
@@ -70,11 +73,11 @@
 
       $tmpItem.data('infiniteModel', tmpModel);
     },
-    destroy: function () {
+    destroy () {
       BaseView.prototype.destroy.call(this);
     }
   });
 
-  window.BaseDynamicView = window.BaseDynamicView || BurdaInfinite.views.base.BaseDynamicView;
-
+  window.BaseDynamicView =
+    window.BaseDynamicView || BurdaInfinite.views.base.BaseDynamicView;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

@@ -1,11 +1,10 @@
+.newsletter {
+	@include newsletter--default();
+}
+
 .page-newsletter {
   @include newsletter__page();
 }
-
-.newsletter {
-
-}
-
 
 /**
 * Deprecated
@@ -24,4 +23,3 @@
 // .newsletter-modal {
 //   @include newsletter--modal();
 // }
-
