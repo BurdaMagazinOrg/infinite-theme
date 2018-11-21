@@ -10,8 +10,28 @@
     },
     initialize(options) {
       this.context = options.context || document;
+      this.navigationLinks = this.el.querySelectorAll(".links a");
       this.scrollTargets = this.context.querySelectorAll(".item-paragraph[id]");
+      this.initScrollToBehavior();
       this.collectScrollTargets();
+    },
+    initScrollToBehavior() {
+      Array.from(this.navigationLinks).forEach(element => {
+        let liEl = element.parentElement;
+        liEl.addEventListener("click", e => {
+          e.preventDefault();
+          let name = element.getAttribute("id");
+          let paragraph = this.context.querySelector(
+            `.item-paragraph[name="${name}"]`
+          );
+          var rect = paragraph.getBoundingClientRect();
+
+          window.scrollTo({
+            top: Math.max(0, rect.top + window.scrollY - 66),
+            behavior: "smooth"
+          });
+        });
+      });
     },
     collectScrollTargets() {
       let observer = null;
