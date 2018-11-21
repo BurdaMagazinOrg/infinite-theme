@@ -74,9 +74,10 @@
 #}
 
 {% extends "node--coupon--content-reference.html.twig" %}
-
-{% block coupon_brand %}
-    <div class="coupon__aspect-ratio">
-        {{ content.field_teaser_media }}
+{% block maximal_block %}
+  <div class="coupon__advertising-products">
+    <div class="container-content">
+      {{ content.field_advertising_products	}}
     </div>
+  </div>
 {% endblock %}
