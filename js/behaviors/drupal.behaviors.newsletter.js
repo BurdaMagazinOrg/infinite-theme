@@ -171,7 +171,6 @@
       },
       writeAPI() {
         if (typeof window.thsixtyQ === "undefined") {
-          window.thsixtyQ = window.thsixtyQ || [];
           window.thsixtyQ.push([
             "init",
             { config: { env: this.settings.env } }
