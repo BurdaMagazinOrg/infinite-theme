@@ -83,8 +83,28 @@
 
 {% block advertising_products %}
     <div class="coupon__advertising-products">
+        <div class="coupon__advertising-products--title__wrapper">
+            <div class="coupon__advertising-products--title strike-through-title__wrapper">
+                <span>Bestseller</span>
+            </div>
+        </div>
         <div class="container-content">
             {{ content.field_advertising_products    }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block validity %}
+    <div class="coupon__validity--wrapper">
+        <div class="coupon__validity strike-through-title__wrapper">
+            <span class="coupon__deal-type">
+                {{ content.field_coupon_availability }}
+                deal!
+            </span>
+            <span>
+                Laufzeit
+                {{ content.field_valid_from_to }}
+            </span>
         </div>
     </div>
 {% endblock %}

@@ -393,7 +393,16 @@
 
       .coupon__code--wrapper {
         text-align: center;
-        margin: 16px 0;
+        margin: 0;
+        @media (min-width: $screen-lg-min) {
+          display: flex;
+          padding: 24px 0;
+          .coupon__code {
+            text-align: left;
+            padding: 0;
+            line-height: 40px;
+          }
+        }
       }
 
       .coupon__code {
@@ -413,6 +422,14 @@
 
       .coupon__button:after {
         display: none;
+      }
+
+      .coupon__validity--wrapper {
+        @include strike-through-title();
+      }
+
+      .coupon__deal-type {
+        text-transform: uppercase;
       }
     }
 
@@ -439,6 +456,9 @@
     &--content_reference_extended,
     &--content_reference_maximal {
       .coupon__advertising-products {
+        &--title__wrapper {
+          @include strike-through-title();
+        }
         .item-product {
           @include product__item--default();
           @include product__item--horizontal-block();
