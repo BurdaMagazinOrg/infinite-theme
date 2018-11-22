@@ -27,9 +27,9 @@
                             </text>
                             <text id="_20" data-name="20" class="cls-2" style="fill: #fff; font-weight: 700;font-size: 32px; font-family: NotoSerif-Bold, Noto Serif;" transform="translate(1089.283 2598.393)">
                                 {% spaceless %}
-                                  <tspan x="-24.231" y="0">
-                                    {{ content.field_coupon_discount }}
-                                  </tspan>
+                                    <tspan x="-24.231" y="0">
+                                        {{ content.field_coupon_discount }}
+                                    </tspan>
                                 {% endspaceless %}
                                 <tspan style="font-size: 14px;" class="cls-3" y="0">%</tspan>
                             </text>
@@ -41,9 +41,9 @@
         {% if content.field_tnc | render is not empty %}
             <div class="coupon__tnc">
                 <div class="coupon__tnc-label expandable">Teilnahmebedingungen</div>
-                  <div class="coupon__tnc-details">
-                      {{ content.field_tnc }}
-                  </div>
+                <div class="coupon__tnc-details">
+                    {{ content.field_tnc }}
+                </div>
             </div>
         {% endif %}
     </div>
@@ -57,5 +57,5 @@
         {{ content.target_url }}
         <a href="#" class="coupon__button">Jetzt Shoppen</a>
     </div>
-    {% block maximal_block %}{% endblock %}
+    {% block advertising_products %}{% endblock %}
 </div>

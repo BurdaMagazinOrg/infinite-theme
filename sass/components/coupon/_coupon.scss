@@ -325,10 +325,7 @@
 .item-paragraph--content-reference {
   .coupon {
     position: relative;
-  }
-  .coupon__advertising-products {
-    .item-product {
-    }
+    margin-bottom: 9px;
   }
 
   .item-content--coupon {
@@ -382,7 +379,7 @@
       }
 
       .coupon__tnc {
-        margin: 6px 0;
+        margin: 6px 0 0;
         text-align: right;
         color: #828282;
         font-size: 12px;
@@ -391,17 +388,16 @@
           letter-spacing: normal;
         }
         &-details {
-          margin-top: 16px;
         }
       }
 
       .coupon__code--wrapper {
         text-align: center;
+        margin: 16px 0;
       }
 
       .coupon__code {
         font-family: "noto_serifregular";
-        margin: 16px 0;
         width: 100%;
         text-align: center;
         color: #d0021b;
@@ -420,7 +416,8 @@
       }
     }
 
-    &--content_reference_normal {
+    &--content_reference_normal,
+    &--content_reference_maximal {
       .coupon {
         &__aspect-ratio {
           position: relative;
@@ -434,6 +431,22 @@
             left: 0;
             top: 0;
             object-fit: cover;
+          }
+        }
+      }
+    }
+
+    &--content_reference_extended,
+    &--content_reference_maximal {
+      .coupon__advertising-products {
+        .item-product {
+          @include product__item--default();
+          @include product__item--horizontal-block();
+        }
+        .teaser-wrapper {
+          > .item-product {
+            width: 100%;
+            float: none;
           }
         }
       }
