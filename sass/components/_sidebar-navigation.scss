@@ -117,6 +117,7 @@
 	}
 
 	@media (min-width: $screen-sm-min) {
+		top: $navigation-height + 10px;
 		padding-bottom: $sidebar-navigation__padding-bottom;
 		float: left;
 		margin-right: $grid-unit-3;

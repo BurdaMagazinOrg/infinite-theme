@@ -11,20 +11,22 @@
     initialize(options) {
       this.context = options.context || document;
       this.navigationLinks = this.el.querySelectorAll(".links a");
-      this.scrollTargets = this.context.querySelectorAll(".item-paragraph[id]");
+      this.scrollTargets = this.context.querySelectorAll(
+        ".item-paragraph[name]"
+      );
       this.initScrollToBehavior();
       this.collectScrollTargets();
     },
     initScrollToBehavior() {
       Array.from(this.navigationLinks).forEach(element => {
-        let liEl = element.parentElement;
+        const liEl = element.parentElement;
         liEl.addEventListener("click", e => {
           e.preventDefault();
-          let name = element.getAttribute("id");
-          let paragraph = this.context.querySelector(
+          const name = element.getAttribute("id");
+          const paragraph = this.context.querySelector(
             `.item-paragraph[name="${name}"]`
           );
-          var rect = paragraph.getBoundingClientRect();
+          const rect = paragraph.getBoundingClientRect();
 
           window.scrollTo({
             top: Math.max(0, rect.top + window.scrollY - 66),
@@ -45,14 +47,14 @@
       });
     },
     intersectionHandler(entries, observer) {
-      let currentId = "";
+      let name = "";
       let selectedElement = null;
 
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.removeHighlighting();
-          currentId = entry.target.getAttribute("id");
-          selectedElement = this.el.querySelector(`[href="#${currentId}"]`);
+          name = entry.target.getAttribute("name");
+          selectedElement = this.el.querySelector(`[id="${name}"]`);
           if (selectedElement)
             selectedElement.parentElement.classList.add("is-active");
         }
