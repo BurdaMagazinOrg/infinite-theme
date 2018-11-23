@@ -7,7 +7,7 @@
     @include transition-default();
     @include rotate(90deg);
     content: $icon__arrow-large-right;
-    font-size: 16px;
+    font-size: $grid-unit-2;
     position: absolute;
     right: 0;
     bottom: 7px;
@@ -323,22 +323,122 @@
 }
 
 .item-paragraph--content-reference {
-  .coupon {
-    position: relative;
-    margin-bottom: 9px;
-  }
-
   .item-content--coupon {
     text-align: center;
 
     &--content_reference {
-      .coupon__brand--logo__wrapper {
-        @include strike-through-title();
-        margin: 10px 0 36px;
-        @media (min-width: $screen-lg-min) {
-          margin: 20px 0 60px;
+      .coupon {
+        position: relative;
+        margin-bottom: $grid-unit-1;
+        &__brand--logo__wrapper {
+          @include strike-through-title();
+          margin: 10px 0 (20 + $grid-unit-2);
+          @media (min-width: $screen-lg-min) {
+            margin: (10px + $grid-unit-1) 0 (20px + $grid-unit-5);
+          }
         }
-        .coupon__logo {
+        &__title {
+          font-family: $font-content;
+          margin-bottom: 0;
+          display: inline-block;
+          padding: $grid-unit-1 $grid-unit-3 0;
+          font-size: $grid-unit-2;
+          font-weight: bold;
+          letter-spacing: normal;
+          background-color: #ebebeb;
+        }
+
+        &__brand {
+          padding: $grid-unit-3;
+          background-color: #ebebeb;
+        }
+
+        &__discount {
+          position: absolute;
+          top: initial;
+          left: 0;
+          width: 100%;
+          height: 75px;
+          transform: translateY(-55%);
+          font-size: $grid-unit-3;
+          background-color: transparent;
+          border: none;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          pointer-events: none;
+          &--value {
+            font-size: $grid-unit-4;
+          }
+        }
+
+        &__tnc {
+          margin: 6px 0 0;
+          text-align: right;
+          color: #828282;
+          font-size: 12px;
+          &-label {
+            text-decoration: none;
+            letter-spacing: normal;
+          }
+          &-details {
+            margin: 0;
+          }
+          &.expand {
+            .coupon__tnc-details {
+              margin: $grid-unit-2 0;
+            }
+          }
+        }
+        &__code--wrapper {
+          text-align: center;
+          margin: $grid-unit-1 0;
+          @media (min-width: $screen-lg-min) {
+            display: flex;
+            padding: $grid-unit-3 0;
+            .coupon__code {
+              text-align: left;
+              padding: 0;
+              line-height: $grid-unit-5;
+            }
+          }
+        }
+        &__code {
+          font-family: $font-content;
+          width: 100%;
+          text-align: center;
+          color: #d0021b;
+          background-color: #fff;
+          line-height: $grid-unit-2;
+          font-size: $grid-unit-2;
+          font-weight: bold;
+          &--label {
+            color: #000;
+            font-weight: normal;
+          }
+        }
+
+        &__button:after {
+          display: none;
+        }
+
+        &__validity--wrapper {
+          @include strike-through-title();
+        }
+
+        &__validity {
+          font-family: $font-label;
+        }
+
+        &__deal-type {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &--content_reference_normal {
+      .coupon {
+        &__logo {
           width: 197px;
           img {
             max-width: 100%;
@@ -347,108 +447,22 @@
           }
         }
       }
-      .coupon__title {
-        font-family: "noto_serifregular";
-        margin-bottom: 0;
-        display: inline-block;
-        padding: 8px 24px 0;
-        font-size: 16px;
-        font-weight: bold;
-        letter-spacing: normal;
-        background-color: #ebebeb;
-      }
+    }
 
-      .coupon__brand {
-        padding: 24px;
-        background-color: #ebebeb;
-      }
+    &--content_reference_minimal,
+    &--content_reference_extended {
+      .coupon {
+        &__brand--logo {
+          text-align: center;
+          padding: $grid-unit-3;
+          background-color: #fff;
 
-      .coupon__brand--logo {
-        text-align: center;
-        padding: 24px;
-        background-color: #fff;
-
-        img {
-          max-width: 100%;
-          width: auto;
-          height: auto;
-        }
-      }
-
-      .coupon__discount {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 75px;
-        pointer-events: none;
-        background-color: transparent;
-        border: none;
-        top: initial;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        transform: translateY(-55%);
-        &--value {
-          font-size: 32px;
-        }
-      }
-
-      .coupon__tnc {
-        margin: 6px 0 0;
-        text-align: right;
-        color: #828282;
-        font-size: 12px;
-        &-label {
-          text-decoration: none;
-          letter-spacing: normal;
-        }
-        &-details {
-        }
-      }
-
-      .coupon__code--wrapper {
-        text-align: center;
-        margin: 0;
-        @media (min-width: $screen-lg-min) {
-          display: flex;
-          padding: 24px 0;
-          .coupon__code {
-            text-align: left;
-            padding: 0;
-            line-height: 40px;
+          img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
           }
         }
-      }
-
-      .coupon__code {
-        font-family: "noto_serifregular";
-        width: 100%;
-        text-align: center;
-        color: #d0021b;
-        background-color: #fff;
-        line-height: 16px;
-        font-size: 16px;
-        font-weight: bold;
-        &--label {
-          color: #000;
-          font-weight: normal;
-        }
-      }
-
-      .coupon__button:after {
-        display: none;
-      }
-
-      .coupon__validity--wrapper {
-        @include strike-through-title();
-      }
-
-      .coupon__validity {
-        font-family: $font-label;
-      }
-
-      .coupon__deal-type {
-        text-transform: uppercase;
       }
     }
 
@@ -477,6 +491,10 @@
       .coupon__advertising-products {
         &--title__wrapper {
           @include strike-through-title();
+          margin: 10px 0 (20 + $grid-unit-2);
+          @media (min-width: $screen-lg-min) {
+            margin: (10px + $grid-unit-1) 0 (20px + $grid-unit-5);
+          }
         }
         .item-product {
           @include product__item--default();
@@ -486,6 +504,21 @@
           > .item-product {
             width: 100%;
             float: none;
+          }
+        }
+        .coupon__products-show-more {
+          margin-bottom: $grid-unit-4;
+        }
+        .coupon__products-extended {
+          flex-wrap: wrap;
+          .item-product {
+            flex-basis: 100%;
+            @media (min-width: $screen-lg-min) {
+              &:first-child {
+                display: block;
+              }
+              display: none;
+            }
           }
         }
       }
