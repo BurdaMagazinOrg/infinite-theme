@@ -75,8 +75,18 @@
 
 {% extends "node--coupon--content-reference.html.twig" %}
 
-{% block coupon_brand %}
-    <div class="coupon__aspect-ratio">
-        {{ content.field_teaser_media }}
+{% block coupon_logo %}
+    <div class="coupon__brand--logo__wrapper">
+        <div class="strike-through-title__wrapper">
+            <div class="coupon__logo">{{ content.field_logo }}</div>
+        </div>
     </div>
+{% endblock %}
+
+{% block coupon_teaser %}
+    {% if content.field_teaser_media | render %}
+        <div class="coupon__aspect-ratio">
+            {{ content.field_teaser_media }}
+        </div>
+    {% endif %}
 {% endblock %}

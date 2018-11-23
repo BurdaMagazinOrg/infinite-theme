@@ -9,9 +9,10 @@
 
 <div{{ attributes.addClass(classes) }}>
     <div class="coupon">
+        {% block coupon_logo %}{% endblock %}
         <h3 class="coupon__title">{{ label }}</h3>
         <div class="coupon__brand">
-            {% block coupon_brand %}
+            {% block coupon_teaser %}
                 <div class="coupon__brand--logo">{{ content.field_logo }}</div>
             {% endblock %}
         </div>
