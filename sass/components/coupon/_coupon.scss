@@ -428,6 +428,10 @@
         @include strike-through-title();
       }
 
+      .coupon__validity {
+        font-family: $font-label;
+      }
+
       .coupon__deal-type {
         text-transform: uppercase;
       }
