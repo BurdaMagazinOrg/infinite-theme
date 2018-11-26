@@ -7,12 +7,8 @@
 
 {{ attach_library('infinite/coupons') }}
 
-<pre>
-{{ dump(content.field_valid_from_to) }}
-</pre>
-
 <div{{ attributes.addclass(classes) }}>
-    <div class="coupon">
+    <div class="coupon" data-expires="{{ end_date }}">
         {% block coupon_logo %}{% endblock %}
         <h3 class="coupon__title">{{ label }}</h3>
         <div class="coupon__brand">
@@ -61,5 +57,16 @@
         </div>
         {% block advertising_products %}{% endblock %}
         {% block validity %}{% endblock %}
+    </div>
+    <div class="coupon__expired">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 110.406 110.406">
+            <g id="Gruppe_31" data-name="Gruppe 31" transform="translate(-429.879 -2729.312) rotate(13)">
+                <path id="Pfad_14" data-name="Pfad 14" d="M46.121,0l3.69,4.428L54.238.738,57.19,5.719l5.166-2.767L64.2,8.486l5.535-2.029.922,5.9,5.719-.922v5.719l5.719.184L80.988,23.06l5.719,1.291L84.494,29.7l5.535,2.214L86.892,36.9l4.8,2.952-3.874,4.428,4.243,3.874-4.612,3.505,3.505,4.8-5.166,2.583L88.552,64.2l-5.719,1.66,1.66,5.719-5.719.553.553,5.9-5.719-.369-.369,5.719L67.521,82.1,66.045,87.63l-5.35-2.4-2.4,5.35-4.8-3.321-3.321,4.8L46.121,88l-4.243,4.059-3.321-4.8-4.8,3.321-2.4-5.35-5.35,2.4L24.536,82.1,19,83.387l-.369-5.719-5.9.369.553-5.9L7.564,71.58l1.66-5.719L3.69,64.2l2.583-5.166L1.107,56.452l3.505-4.8L0,48.15l4.243-3.874L.369,39.848,5.35,36.9,2.214,31.916,7.564,29.7l-2.029-5.35,5.535-1.291L9.962,17.341l5.9-.184-.184-5.719,5.719.922,1.107-5.9,5.35,2.029,2.029-5.535,4.981,2.767L37.819.738l4.428,3.69Z" transform="translate(1053 2558)"/>
+                <text id="Jetzt" style="fill: #fff;font-size: 14px;font-family: PTSans-NarrowBold, PT Sans Narrow;font-weight: 700;letter-spacing: 0.03em;" transform="translate(1098.317 2601.201)">
+                    <tspan x="-18.97" y="0">LEIDER</tspan>
+                    <tspan x="-27.377" y="15">VERPASST</tspan>
+                </text>
+            </g>
+        </svg>
     </div>
 </div>

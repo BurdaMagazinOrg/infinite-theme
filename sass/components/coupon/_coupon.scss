@@ -325,11 +325,23 @@
 .item-paragraph--content-reference {
   .item-content--coupon {
     text-align: center;
+    position: relative;
 
     &--content_reference {
       .coupon {
         position: relative;
         margin-bottom: $grid-unit-1;
+        transition: opacity 0.3s;
+        + .coupon__expired {
+          display: none;
+        }
+        &.expired {
+          opacity: 0.3;
+          pointer-events: none;
+          + .coupon__expired {
+            display: block;
+          }
+        }
         &__brand--logo__wrapper {
           @include strike-through-title();
           margin: 10px 0 (20 + $grid-unit-2);
@@ -432,6 +444,13 @@
 
         &__deal-type {
           text-transform: uppercase;
+        }
+        &__expired {
+          position: absolute;
+          top: 0;
+          right: 0;
+          transform: translateY(-35%);
+          width: 150px;
         }
       }
     }
