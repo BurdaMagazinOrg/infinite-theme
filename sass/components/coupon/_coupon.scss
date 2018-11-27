@@ -363,6 +363,9 @@
         &__brand {
           padding: $grid-unit-3;
           background-color: #ebebeb;
+          @media (min-width: $screen-lg-min) {
+            padding: $grid-unit-5 $grid-unit-4 $grid-unit-7;
+          }
         }
 
         &__discount {
