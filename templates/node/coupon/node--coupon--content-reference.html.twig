@@ -70,4 +70,9 @@
             </g>
         </svg>
     </div>
+    {% if content.field_tracking_pixel | render is not empty %}
+        <div class="coupon__tracking-pixel">
+            {{ content.field_tracking_pixel }}
+        </div>
+    {% endif %}
 </div>

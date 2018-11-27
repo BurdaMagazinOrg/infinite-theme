@@ -456,6 +456,12 @@
           transform: translateY(-35%);
           width: 150px;
         }
+        &__tracking-pixel {
+          display: none;
+          opacity: 0;
+          height: 0;
+          pointer-events: none;
+        }
       }
     }
 
