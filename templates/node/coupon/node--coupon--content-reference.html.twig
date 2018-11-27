@@ -52,8 +52,9 @@
                     {{ content.field_coupon_code }}
                 </div>
             {% endif %}
-            {{ content.target_url }}
-            <a href="#" class="coupon__button">Jetzt Shoppen</a>
+            <div class="coupon__button">
+                {{ content.field_url }}
+            </div>
         </div>
         {% block advertising_products %}{% endblock %}
         {% block validity %}{% endblock %}
