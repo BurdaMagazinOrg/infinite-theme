@@ -1,7 +1,8 @@
 .sidebar-navigation {
 	position: sticky;
 	left: 0;
-	top: $navigation-height;
+  top: $navigation-height;
+  background-color: $color-white;
 
 	li,
 	.btn__open-tree,
