@@ -121,6 +121,7 @@
 		padding-bottom: $sidebar-navigation__padding-bottom;
 		float: left;
 		margin-right: $grid-unit-3;
+    width: $sidebar-navigation__width;
 
 		.btn__open-tree {
 			display: none;

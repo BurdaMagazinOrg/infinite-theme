@@ -457,13 +457,19 @@
 
 @mixin item-content--taxonomy() {
   .item-content__header {
-    //@extend %content__header-center;
-    //@extend %region--full-content;
     @extend %gap__container--h-negative;
+  }
+
+  .item-paragraph--advertising-products-paragraph .shopit-badge {
+    display: none;
   }
 
   .item-content__content {
     @extend %region--full-content;
+  }
+
+  .usage__progress-navigation {
+    padding-left: 0;
   }
 
   .item-content__header + .item-content__content {
@@ -476,6 +482,18 @@
   @media (max-width: $screen-xs-max) {
     .socials-vertical-bar {
       display: none;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .item-group__col--left {
+      width: $sidebar-navigation__width + $grid-unit-3;
+      max-width: $sidebar-navigation__width + $grid-unit-3;
+    }
+
+    .socials-vertical-bar {
+      width: $socials-vertical-bar-size-desktop;
+      float: left;
     }
   }
 }

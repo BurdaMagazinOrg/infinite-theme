@@ -1,7 +1,10 @@
 {{ attach_library('infinite/sidebar-navigation') }}
-
+{% set group_outer_class = '' %}
+{% if progress_navigation.0 | render is not empty %}
+  {% set group_outer_class = 'usage__progress-navigation' %}
+{% endif %}
 <div class="item-content__block item-group--outer-wrapper">
-    <div class="item-group--outer">
+    <div class="item-group--outer {{group_outer_class}}">
         {% if progress_navigation.0 | render is not empty %} 
             <div class="sidebar-navigation">
                 <div data-btn-action="class-extend" data-btn-action-value="btn__open-tree--is-open" class="btn__open-tree">
