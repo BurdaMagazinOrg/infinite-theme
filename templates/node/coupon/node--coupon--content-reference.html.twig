@@ -13,7 +13,9 @@
         <h3 class="coupon__title">{{ label }}</h3>
         <div class="coupon__brand">
             {% block coupon_teaser %}
-                <div class="coupon__brand--logo">{{ content.field_logo }}</div>
+                {% if content.field_logo | render is not empty %}
+                    <div class="coupon__brand--logo">{{ content.field_logo }}</div>
+                {% endif %}
             {% endblock %}
         </div>
         {% if content.field_coupon_discount | render is not empty %}
@@ -27,9 +29,7 @@
                                 <tspan x="-12.365" y="0">Rabatt</tspan>
                             </text>
                             <text id="_20" data-name="20" class="cls-2" style="fill: #fff; font-weight: 700;font-size: 32px; font-family: NotoSerif-Bold, Noto Serif;" transform="translate(1089.283 2598.393)">
-                                {% spaceless %}
-                                    <tspan x="-24.231" y="0">{{ content.field_coupon_discount  | render | trim }}</tspan>
-                                {% endspaceless %}
+                                <tspan x="-24.231" y="0">{{ content.field_coupon_discount  | render | trim }}</tspan>
                                 <tspan style="font-size: 14px;" class="cls-3" y="0">%</tspan>
                             </text>
                         </g>

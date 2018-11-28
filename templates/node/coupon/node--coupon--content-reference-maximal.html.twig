@@ -76,22 +76,26 @@
 {% extends "node--coupon--content-reference.html.twig" %}
 
 {% block coupon_teaser %}
-    <div class="coupon__aspect-ratio">
-        {{ content.field_teaser_media }}
-    </div>
+    {% if content.field_teaser_media | render is not empty %}
+        <div class="coupon__aspect-ratio">
+            {{ content.field_teaser_media }}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block advertising_products %}
-    <div class="coupon__advertising-products">
-        <div class="coupon__advertising-products--title__wrapper">
-            <div class="coupon__advertising-products--title strike-through-title__wrapper">
-                <span>Bestseller</span>
+    {% if content.field_advertising_products | render is not empty %}
+        <div class="coupon__advertising-products">
+            <div class="coupon__advertising-products--title__wrapper">
+                <div class="coupon__advertising-products--title strike-through-title__wrapper">
+                    <span>Bestseller</span>
+                </div>
+            </div>
+            <div class="container-content">
+                {{ content.field_advertising_products    }}
             </div>
         </div>
-        <div class="container-content">
-            {{ content.field_advertising_products    }}
-        </div>
-    </div>
+    {% endif %}
 {% endblock %}
 
 {% block validity %}
