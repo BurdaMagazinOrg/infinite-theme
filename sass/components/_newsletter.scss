@@ -1,14 +1,25 @@
-.region-newsletter {
-  @include newsletter--horizontal();
+.newsletter {
+	@include newsletter--default();
+}
+
+.page-newsletter {
+  @include newsletter__page();
 }
 
 /**
-* Lading Page
+* Deprecated
 **/
-.region-newsletter-page {
-  @include newsletter--page();
-}
+// .region-newsletter {
+//   @include newsletter--horizontal();
+// }
 
-.newsletter-modal {
-  @include newsletter--modal();
-}
+// /**
+// * Lading Page
+// **/
+// .region-newsletter-page {
+//   @include newsletter--page();
+// }
+
+// .newsletter-modal {
+//   @include newsletter--modal();
+// }

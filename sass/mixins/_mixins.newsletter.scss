@@ -1,626 +1,272 @@
-@mixin newsletter--horizontal() {
-  overflow: hidden;
-  text-align: center;
-  color: $newsletter__color--horizontal;
-  position: relative;
-  padding-left: 0;
-  padding-right: 0;
+@mixin newsletter--default() {
+	background-color: $newsletter__bg-color;
+	position: relative;
 
-  &.state-privacy {
-    .container-content-item {
-      @extend %fade-out;
-    }
+	.newsletter__close {
+		@include icon();
+		@include icon-close();
+		display: block;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: $grid-unit-2;
+		right: $grid-unit-2;
+	}
 
-    .container-privacy {
-      @extend %fade-in;
-      overflow-y: scroll;
-      
-      .content-wrapper {
-        position: relative
-      }
-    }
+	.hide--opacity {
+		visibility: hidden;
+		opacity: 0;
+	}
 
-  }
+	&.state_success,
+	&.state_terms {
+		.newsletter__section--start {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
 
-  &.state-success {
-    .container-content-item {
-      @extend %fade-out;
-    }
+	&.state_success {
+		.newsletter__section--success {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
 
-    .container-success {
-      @extend %fade-in;
-      overflow-y: scroll;
-    }
-  }
+	&.state_terms {
+		.newsletter__section--terms {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
 
-  .container-content {
-    position: relative;
-    background-image: url($newsletter__bg-image--horizontal-mobile);
-    background-repeat: no-repeat;
-    background-position: center 0;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-
-    &:before {
-      content: " ";
-      background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-
-    @media (min-width: $screen-sm-min) {
-      background-image: url($newsletter__bg-image--horizontal-tablet);
-    }
-
-    @media (min-width: $screen-lg-min) {
-      background-image: url($newsletter__bg-image--horizontal-desktop);
-    }
-  }
-
-  .container-content-item--centered {
-    @extend %flexbox;
-    @extend %align-items-center;
-    @extend %justify-content-center;
-  }
-
-  .container-content-item {
-    @extend %transition-fade;
-    @extend %fade-out;
+	.newsletter__section:not(:first-child) {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $newsletter__content-item-bg-color;
-  }
-
-  .container-privacy, .container-success {
-    @extend %text-content-html;
-    color: $text-color;
-    font-size: $font-size-small;
-    line-height: 1.5;
-  }
-
-  .container-success {
-    p {
-      margin-top: $gap-size-xxs;
-    }
-  }
-
-  .container-privacy {
-    text-align: left;
-    padding: $grid-gutter-width;
-
-    p {
-      margin-top: $gap-size-xs;
-    }
-
-    strong {
-      @extend %text-headline;
-      @include text-headline-size($title-size-xxs);
-      margin-top: 15px;
-      margin-bottom: 7px;
-      display: block;
-    }
-
-    .container-content-dynamic {
-      p:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-
-  .container-form {
-    @extend %fade-in;
-    background-color: $newsletter__contianer-form-bg;
-
-    .text-description {
-      margin-bottom: $gap-section;
-    }
-
-    .form-group--email {
-      @extend %justify-content-center;
-    }
-
-    .input-email {
-      @include text-helper($newsletter__input-font-id--horizontal, $newsletter__input-font-size--horizontal);
-      width: $newsletter__input-width--horizontal;
-      height: $newsletter__input-height--horizontal;
-      padding: $newsletter__input-padding--horizontal;
-      margin: $newsletter__input-margin--horizontal;
-    }
-
-    button {
-      @include newsletter__submit-button--horizontal;
-    }
-  }
-
-  .checkbox {
-    @include text-helper($newsletter__checkbox-label-font-id--horizontal);
-  }
-
-  .icon-close {
-    position: absolute;
-    font-size: $icon-size-medium;
-    color: $text-color;
-    top: $padding;
-    right: $gap-size-xxs;
-    z-index: 2;
-  }
-
-  .form-group--agreements .checkbox {
-    text-align: center;
-    margin-top: $gap-size-md;
-
-    label {
-      text-align: left;
-    }
-
-    p {
-      line-height: inherit;
-      strong {
-        font-family: inherit;
-      }
-    }
-  }
-
-  .container-alerts {
-    @include newsletter__alert();
-  }
-
-  .newsletter__title {
-    @include text-helper($newsletter__title-font-id--horizontal);
-    text-transform: $newsletter__title-text-transform--horizontal;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    height: $newsletter--horizontal--height-mobile;
-
-    .newsletter__title {
-      @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--mobile);
-      margin-bottom: $newsletter__title-gap-bottom-mobile--horizontal;
-    }
-
-    .container-form {
-      .input-email {
-        width: 100%;
-        //padding-right: $padding-large-horizontal;
-        //height: 48px;
-      }
-
-      button {
-        width: 100%;
-        margin-top: $padding;
-        margin-left: 0;
-        padding: 13px $padding-large-horizontal;
-      }
-    }
-
-    .container-content-item {
-      padding: $newsletter--horizontal--padding-mobile;
-    }
-
-    .form-group--email {
-      @include flexbox(column);
-
-      .checkbox {
-        margin-top: $gap-size-xs;
-
-        label {
-          max-width: $newsletter__checkbox-label--horizontal-width-mobile;
-        }
-      }
-    }
-
-    .checkbox {
-      @include text-helper-size($newsletter__checkbox-label-font-id--horizontal, $newsletter__checkbox-label--horizontal-mobile, 1.1);
-    }
-  }
-
-  @media (min-width: $screen-sm-min) {
-    .form-group--email {
-      @include flexbox();
-    }
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    height: $newsletter--horizontal--height-tablet;
-    margin-top: $gap-size-xs;
-
-    .newsletter__title {
-      @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--tablet);
-      margin-bottom: $newsletter__title-gap-bottom-tablet--horizontal;
-    }
-
-    .container-content-item {
-      padding: $newsletter--horizontal--padding-tablet;
-    }
-
-    .checkbox {
-      @include text-helper-size($newsletter__checkbox-label-font-id--horizontal, $newsletter__checkbox-label--horizontal-tablet, 1.1);
-
-      label {
-        max-width: $newsletter__checkbox-label--horizontal-width-tablet;
-      }
-    }
-  }
-
-  @media (min-width: $screen-md-min) {
-    height: $newsletter--horizontal--height-desktop;
-
-    .newsletter__title {
-      @include text-helper-size($newsletter__title-font-id--horizontal, $newsletter--horizontal--title-size--desktop);
-      margin-bottom: $newsletter__title-gap-bottom-desktop--horizontal;
-    }
-
-    .container-content-item {
-      padding: $newsletter--horizontal--padding-desktop;
-    }
-
-    .checkbox {
-      @include text-helper-size($newsletter__checkbox-label-font-id--horizontal, $newsletter__checkbox-label--horizontal-desktop, 1.1);
-
-      label {
-        max-width: $newsletter__checkbox-label--horizontal-width-desktop;
-      }
-    }
-  }
-
-  @content;
-}
-
-@mixin newsletter__submit-button--horizontal() {
-  @extend %align-self-center;
-  @extend %button;
-  @extend %button--lg;
-  @extend %button--dark;
-
-  width: $newsletter__submit-width--horizontal;
-  margin: $newsletter__submit-margin--horizontal;
-  height: $newsletter__submit-height--horizontal;
-  cursor: pointer;
-  line-height: 1;
-}
-
-@mixin newsletter--page() {
-
-  @media (max-height: ($newsletter__max-height-mobile--page - 1px)) {
-    @include margin--v-region((-$gap-v-region-mobile, -$gap-v-region-tablet, -$gap-v-region-desktop));
-    height: $newsletter__max-height-mobile--page;
-
-  }
-
-  @media (min-height: $newsletter__max-height-mobile--page) {
-    position: fixed;
-    top: $menu--main-navigation-min-height;
-    bottom: 0;
     width: 100%;
-    height: auto !important;
+    height: 100%;
+	}
+
+	.newsletter__section {
+		@include transition(all 0.35s ease);
+		@include flexbox();
+		@include justify-content();
+		background-color: $newsletter__bg-color;
+	}
+
+	.newsletter__section:not(.newsletter__section--terms) {
+		@include align-items();
+
+		.newsletter__section-content {
+			@include align-items();
+		}
+	}
+
+	.newsletter__section-content {
+		@include flexbox($orientation: "vertical");
+		max-width: $newsletter__section-max-width;
+		text-align: $newsletter__section-text-align;
+		overflow: auto;
+	}
+
+	.newsletter__section--success .newsletter__section-content {
+		padding-bottom: $grid-unit-10;
+	}
+
+	@include newsletter__start--default();
+	@include newsletter__success--default();
+	@include newsletter__terms--default();
+}
+
+@mixin newsletter__start--default($use-media-query: true) {
+	.newsletter__title {
+		@include text-helper(
+			$newsletter__title-font-id,
+			$newsletter__title-size-mobile--default
+		);
+	}
+
+	.newsletter__input-wrapper {
+		@include flexbox();
+		@include justify-content();
+
+		input {
+			@include text-helper(
+				$newsletter__input-font-id,
+				$newsletter__input-text-size
+			);
+			color: $text-color;
+			height: $grid-unit-4;
+			vertical-align: top;
+			margin-right: -4px;
+			min-width: 214px;
+		}
+	}
+
+	.newsletter__input {
+		&.has-error {
+			border: 1px solid $newsletter__alert-bg-color;
+		}
+	}
+
+	&.optin .newsletter__optin-wrapper {
+		opacity: 1;
+		visibility: visible;
+		max-height: 1000px;
+	}
+
+	.newsletter__optin-wrapper {
+		@include transition();
+		@include flexbox();
+		opacity: 0;
+		visibility: hidden;
+		max-height: 0;
+		overflow: hidden;
+		max-width: 430px;
+		width: 100%;
+		text-align: left;
+
+		input {
+			vertical-align: top;
+			margin: 0 $grid-unit-2 0 0;
+		}
+	}
+
+	.newsletter__optin-text {
+		@include text-helper($newsletter__optin-font-id, $newsletter__optin-size);
+		color: $newsletter__optin-color;
+
+		a {
+			text-decoration: underline;
+		}
+	}
+
+	.newsletter__button {
+		@extend %button;
+		@extend %button--md;
+		@extend %button--dark;
+		padding-left: $grid-unit-3;
+		padding-right: $grid-unit-3;
+		display: block;
+		cursor: pointer;
+	}
+
+	.newsletter__alerts {
+		@include text-helper($newsletter__optin-font-id, $newsletter__optin-size);
+		margin-top: $grid-unit-3;
+
+		.alert {
+			@include transition(opacity 1s ease);
+			background-color: $newsletter__alert-bg-color;
+			color: $newsletter__alert-color;
+			border-radius: 5px;
+			padding: 5px 15px;
+			opacity: 1;
+
+			&.remove {
+				opacity: 0;
+			}
+		}
+	}
+
+	//gaps
+	.newsletter__section-content {
+		padding: $grid-unit-3;
+	}
+
+	.newsletter__logo,
+	.newsletter__title,
+	.newsletter__input-wrapper {
+		margin-bottom: $grid-unit-3;
+	}
+
+	.newsletter__image {
+		margin-bottom: $grid-unit-2;
+	}
+
+	@if ($use-media-query == true) {
+		@media (min-width: $screen-sm-min) {
+			.newsletter__section-content {
+				padding: $grid-unit-4;
+			}
+
+			.newsletter__logo,
+			.newsletter__title {
+				margin-bottom: $grid-unit-4;
+			}
+
+			.newsletter__image,
+			.newsletter__input-wrapper {
+				margin-bottom: $grid-unit-3;
+			}
+		}
+	}
+}
+@mixin newsletter__page() {
+	$navigation-height: 56px;
+
+	#main {
+		padding-bottom: 0;
+	}
+
+	.newsletter {
+		min-height: calc(100% - #{$navigation-height});
+		height: calc(100vh - #{$navigation-height});
   }
-
-  .newsletter__groups--large {
-    @include newsletter__groups--large();
-  }
-
-  .container-content {
-    @extend %gap__container--h-padding;
-    background-position: top center;
-  }
-
-  @media (max-width: $screen-xs-max) {
-
-    .container-content {
-      background-image: url($newsletter__bg-image--page-xs);
-    }
-
-    .container-privacy {
-      display: block;
-    }
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
-    .container-content {
-      background-image: url($newsletter__bg-image--page-sm);
-    }
-
-    .container-privacy {
-      display: block;
-    }
-  }
-
-  @media (min-width: $screen-lg-min) {
-    .container-content {
-      background-image: url($newsletter__bg-image--page-lg);
-    }
-
-    .container-privacy, .container-success {
-      background-color: transparent;
-      overflow-y: hidden;
-      color: $text-color;
-
-      .content-wrapper {
-        background-color: $newsletter-page__content-wrapper-bg-color;
-        position: relative;
-        width: $screen-sm-min;
-        height: 400px;
-        overflow-y: scroll;
-        padding: 20px;
-      }
-    }
-  }
-
-  .container-success {
-    .content-wrapper {
-      height: auto;
-    }
-  }
-
-  @media (min-width: $screen-xl-min) {
-    .container-content {
-      background-image: url($newsletter__bg-image--page-xl);
-    }
+  
+  .newsletter__section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
-@mixin newsletter--modal() {
-  //display: block;
-  z-index: $newsletter__z-index--modal;
+@mixin newsletter__success--default {
+	.newsletter__success-title {
+		@include text-helper(
+			$newsletter__success-title-font-id,
+			$newsletter__success-title-size-mobile--default
+		);
+		margin-bottom: $grid-unit-3;
+	}
 
-  .newsletter-modal__modal-content {
-    @include flexbox();
-    @include align-items();
-    @include justify-content();
-    background-color: transparent;
-    padding: 20px;
-  }
-
-  .newsletter-modal__wrapper {
-    @include flex-item();
-    margin: 0 auto;
-    max-width: 1000px;
-    position: relative;
-  }
-
-  .region-newsletter-modal {
-    margin: 0;
-    height: auto;
-    background-color: $white;
-    padding: 40px 20px;
-  }
-
-  .container-content {
-    background: none;
-
-    &:before {
-      content: none;
-    }
-  }
-
-  .container-content-item {
-    background-color: transparent;
-    color: $text-color;
-  }
-
-  .newsletter-modal__row {
-    //@include make-row(0);
-    @include flexbox();
-  }
-
-  .newsletter-modal__col--left {
-    @include flex-item();
-    //@include make-column($newsletter__col-left-columns--modal, 0);
-    position: relative;
-  }
-
-  .newsletter-modal__col--right {
-    @include flex-item();
-    //@include make-column($newsletter__col-right-columns--modal, 0);
-    text-align: center;
-
-    .logo {
-      display: inline-block;
-      max-width: $newsletter__logo-max-width--modal;
-      margin: $newsletter__logo-margin--modal;
-    }
-  }
-
-  .container-form {
-    position: relative;
-  }
-
-  .form-group--email {
-    .input-email {
-      border: 1px solid $gray-light;
-      height: $newsletter__input-height--horizontal;
-    }
-  }
-
-  @media (max-width: $screen-sm-max) {
-    .newsletter-modal__col--left {
-      display: none;
-    }
-
-    .container-form {
-      .form-group--email {
-        .input-email {
-          width: 100%;
-          //padding-right: $padding-large-horizontal;
-        }
-
-        button {
-          width: 100%;
-          margin-left: 0;
-          padding: 13px $padding-large-horizontal 10px;
-        }
-      }
-    }
-
-  }
-
-
-  @media (min-width: $screen-md-min) {
-    .newsletter-modal__col--left {
-      background-image: url($newsletter__bg-image--modal);
-      background-repeat: no-repeat;
-      background-position: center 0;
-      background-size: cover;
-    }
-
-    .newsletter__title {
-      margin-bottom: 28px;
-    }
-
-    .container-form {
-      .form-group--email {
-        padding-right: 125px;
-        position: relative;
-
-        .input-email {
-          width: 100%;
-        }
-
-        button {
-          position: absolute;
-          right: 0;
-          top: 0;
-          margin: 0;
-        }
-      }
-    }
-  }
+	.newsletter__success-text {
+		@include text-helper(
+			$newsletter__success-text-font-id,
+			$newsletter__success-text-size-mobile--default
+		);
+	}
 }
 
-@mixin newsletter__groups() {
-  max-width: 1000px;
-  margin: $newsletter__groups-margin;
-  background-color: $newsletter__groups-bg-color;
-  border-radius: $newsletter__groups-border-radius;
+@mixin newsletter__terms--default {
+	.newsletter__section--terms & {
+		overflow: scroll;
+	}
 
-  .newsletter__groups-title {
-    @include text-helper($newsletter__groups-title-font-id);
-    color: $newsletter__groups-title-color;
-    margin: $newsletter__groups-title-margin;
-  }
+	.newsletter__section-content {
+		padding: $grid-unit-5 $grid-unit-3 $grid-unit-3 $grid-unit-3;
+	}
 
-  .newsletter__groups-form-row {
-  }
+	.newsletter__optin-body {
+		@include text-helper(
+			$newsletter__optin-body-font-id,
+			$newsletter__optin-body-size
+		);
+		color: $newsletter__optin-body-color;
+		text-align: left;
+		line-height: getLineHeight($newsletter__optin-body-size);
 
-  .newsletter__groups-form-col {
+		a {
+			text-decoration: underline;
+		}
 
-  }
-
-  .checkbox {
-    text-align: left;
-
-    input {
-      margin-top: 2px;
-    }
-
-    label {
-      @include text-helper($newsletter__groups-checkbox-label-font-id);
-      color: $newsletter__groups-checkbox-label-color;
-
-      span {
-        display: block;
-      }
-    }
-
-    p {
-      @include text-helper($newsletter__groups-checkbox-copy-font-id, $newsletter__groups-checkbox-copy-size);
-      color: $newsletter__groups-checkbox-copy-color;
-      padding-left: 20px;
-      margin: $newsletter__groups-checkbox-copy-label-margin;
-    }
-  }
-
-  @media (max-width: $screen-xs-max) {
-    padding: $newsletter__groups-padding-mobile;
-
-    .newsletter__groups-title {
-      @include text-helper-size($newsletter__groups-title-font-id, $newsletter__groups-title-size-mobile);
-    }
-
-    .newsletter__groups-form-row {
-      label {
-        @include text-helper-size($newsletter__groups-checkbox-label-font-id, $newsletter__groups-checkbox-label-size-mobile);
-      }
-    }
-
-    .checkbox {
-
-      p {
-        display: none;
-      }
-    }
-  }
-
-  @media (min-width: $screen-sm-min) {
-    padding: $newsletter__groups-padding-desktop;
-
-    .newsletter__groups-form-row {
-      @include make-row();
-    }
-
-    .newsletter__groups-form-col {
-      @include make-column($grid-columns / 2);
-      padding-left: $gap-size-md;
-      padding-right: $gap-size-md;
-      border-left: solid 1px $white;
-
-      &:first-child {
-        border-left: 0;
-        padding-left: 0;
-      }
-
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-  }
-
-  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
-    .newsletter__groups-title {
-      @include text-helper-size($newsletter__groups-title-font-id, $newsletter__groups-title-size-tablet);
-    }
-
-    .checkbox {
-      label {
-        @include text-helper-size($newsletter__groups-checkbox-label-font-id, $newsletter__groups-checkbox-label-size-tablet);
-      }
-    }
-  }
-
-  @media (min-width: $screen-lg-min) {
-    .newsletter__groups-title {
-      @include text-helper-size($newsletter__groups-title-font-id, $newsletter__groups-title-size-desktop);
-    }
-
-    .checkbox {
-      label {
-        @include text-helper-size($newsletter__groups-checkbox-label-font-id, $newsletter__groups-checkbox-label-size-desktop);
-      }
-    }
-  }
-}
-
-@mixin newsletter__groups--large() {
-  @include newsletter__groups();
-}
-
-@mixin newsletter__alert() {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  .alert {
-    background-color: $newsletter__alerts-bg;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 0 0 2px 0;
-  }
+		p,
+		ul,
+		ol {
+			margin-bottom: $grid-unit-2;
+		}
+	}
 }

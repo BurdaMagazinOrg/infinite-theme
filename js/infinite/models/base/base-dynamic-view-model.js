@@ -65,14 +65,8 @@
         case "listSwipeableView":
           tmpView = new BaseListSwipeableView(tmpSettings);
           break;
-        case "newsletterView":
-          tmpView = new BaseNewsletterView(tmpSettings);
-          break;
         case "hmNewsletterView":
           tmpView = new HmNewsletterView(tmpSettings);
-          break;
-        case "newsletterModalView":
-          tmpView = new NewsletterModalView(tmpSettings);
           break;
         case "productView":
           tmpView = new ProductView(tmpSettings);
