@@ -4,17 +4,12 @@
  * Default theme implementation to display a node.
  *
  * Available variables:
- * - node: The node entity with limited access to object properties and methods.
- *   Only method names starting with "get", "has", or "is" and a few common
- *   methods such as "id", "label", and "bundle" are available. For example:
- *   - node.getCreatedTime() will return the node creation timestamp.
- *   - node.hasField('field_example') returns TRUE if the node bundle includes
- *     field_example. (This does not indicate the presence of a value in this
- *     field.)
- *   - node.isPublished() will return whether the node is published or not.
- *   Calling other methods, such as node.delete(), will result in an exception.
- *   See \Drupal\node\Entity\Node for a full list of public properties and
- *   methods for the node object.
+ * - node: Full node entity.
+ *   - id: The node ID.
+ *   - bundle: The type of the node, for example, "page" or "article".
+ *   - authorid: The user ID of the node author.
+ *   - createdtime: Time the node was published formatted in Unix timestamp.
+ *   - changedtime: Time the node was changed formatted in Unix timestamp.
  * - label: The title of the node.
  * - content: All node items. Use {{ content }} to print them all,
  *   or print a subset such as {{ content.field_example }}. Use
@@ -72,94 +67,89 @@
  * @ingroup themeable
  */
 #}
-
-{% set classes = [
-'region-full-content',
-'region-newsletter',
-'region-newsletter--horizontal',
-'no-horizontal-padding',
-'hidden',
+{# Add wrapper classes #}
+{% set wrapper_classes = [
+    'region-full-content',
+    'region-infinite-block',
+    'newsletter',
+    'no-v-padding',
 ] %}
 
-{% set use_ajax_permissions = use_ajax_permissions | default('true') %}
-{% set external_permission_url = external_permission_url | default('/newsletter-datenschutzeinwilligung') %}
+{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-uuid', uuid) %}
+{% set attributes = attributes.setAttribute('data-tr-container-type', 'newsletter') %}
 
-{% block attach_library_block %}{% endblock %}
+{% block newsletter_attriutes_block %}
+    {% set attributes = attributes.setAttribute('data-client-id', content.field_nl_client_id | render | raw | trim) %}
+    {% set attributes = attributes.setAttribute('data-group-id', content.field_nl_group_id | render | raw | trim) %}
+    {% set attributes = attributes.setAttribute('data-use-optin', content.field_display_optin.0['#markup'] | render) %}
+{% endblock %}
 
-<div {{ attributes.addClass(classes) }}
-        data-view-type="newsletterView"
-        data-newsletter-group-id="{{ content.field_nl_group_id }}"
-        data-use-ajax-permissions="{{ use_ajax_permissions }}"
-        >
-    <div class="container-content">
+{# Add data attribute data-no-track only for view mode full #}
+{% if view_mode == 'full' %}
+    {% set attributes = attributes.setAttribute('data-no-track', 'true') %}
+{% endif %}
 
-        {% block container_form %}
-            <form class="container-form container-content-item container-content-item--centered" novalidate>
-                <div class="content-wrapper">
+{{ attach_library('infinite/newsletter') }}
 
-                    {% block logo_block %}{% endblock %}
+<div{{ attributes.addClass(wrapper_classes) }}>
+    <section class="newsletter__section newsletter__section--start">
+        <div class="newsletter__section-content">
+            {% if content.field_logo | render is not empty %}
+                <div class="newsletter__logo">
+                    {{content.field_logo | render}}
+                </div>
+            {% endif %}
 
-                    {% block container_form__headline %}
-                        <div class="newsletter__title">{{ label }}</div>
-                    {% endblock %}
+            {% if content.field_background_media | render is not empty %}
+                <div class="newsletter__image">
+                    {{content.field_background_media}}
+                </div>
+            {% endif %}
 
-                    {% block container_form__description %}
-                        <p class="text-description">{{ content.field_text | plain_text | trim }}</p>
-                    {% endblock %}
+            {% block newsletter_title_block %}
+                {% if content.field_text | render is not empty %}
+                    <div class="newsletter__title">
+                        {{content.field_text}}
+                    </div>
+                {% endif %}
+            {% endblock %}
 
-                    {% block groups_block %}{% endblock %}
 
-                    {% block container_form__form_groups %}
-                        <div class="form-group form-group--email">
-                            {% block container_form__input_email %}
-                                <input class="input-lg input-email" type="email" name="email" required
-                                       placeholder="Deine E-Mail-Adresse">
-                            {% endblock %}
-                            {% block container_form__submit_email %}
-                            <button type="submit" class="btn--large">Anmelden</button>
-                            {% endblock %}
-                        </div>
-
-                        <div class="form-group form-group--agreements">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="agreements[]" value="datenschutzeinwilligung">
-                                    <span class="privacy-text">
-                                        Ich willige widerruflich ein, dass bestimmte Unternehmen von Hubert Burda Media
-                                        Daten
-                                        über mich und meine Verträge, Gewinnspiele, Newsletter, Internetnutzung sowie von
-                                        mir gemachte Angaben erheben,
-                                        zusammenführen, speichern und für individuelle Informationsangebote und Werbezwecke
-                                        nutzen. Alle Details
-
-                                        {% if use_ajax_permissions == 'true' %}
-                                            <a href="#" class="privacy-link">hier</a>.
-                                        {% else %}
-                                            <a href="{{ external_permission_url }}" target="_blank" rel="nofollow"
-                                            class="privacy-link">hier</a>.
-                                        {% endif %}
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    {% endblock %}
-
-                    {% block container_form__alerts %}
-                        <div class="container-alerts"></div>
-                    {% endblock %}
+            <form>
+                {% block newsletter_groups_block %}{% endblock %}
+                <div class="newsletter__input-wrapper">
+                {% block newsletter_inputfield_block %}
+                    <input class="newsletter__input input-lg input-email" type="email" name="email"
+                        required placeholder="Deine E-Mail-Adresse">
+                {% endblock %}
+                <button type="submit" class="newsletter__button">Ok</button>
                 </div>
             </form>
-        {% endblock %}
 
-        {% block container_privacy %}
-            <div class="container-privacy container-content-item">
-                <span class="icon icon-close"></span>
-
-                <div class="container-content-dynamic">
-
-                </div>
-            </div>
-        {% endblock %}
-    </div>
+            {% block newsletter_optin_block %}
+                {% if content.field_display_optin.0['#markup'] | render == '1' %}
+                    <div class="newsletter__optin-wrapper">
+                        <input class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
+                        <label class="newsletter__optin-text" for="optin"></label>
+                    </div>
+                {% endif %}
+            {% endblock %}
+            <div class="newsletter__alerts"></div>
+        </div>
+    </section>
+    <section class="newsletter__section newsletter__section--success hide--opacity">
+        <div class="newsletter__section-content">
+            {% block newsletter_success_text_block %}
+                <div class="newsletter__success-title">Danke für deine Anmeldung für unseren Newsletter</div>
+                <p class="newsletter__success-text">Wir schicken dir in Kürze eine Bestätigungs-E-Mail zu. Bitte klicke auf den Aktivierungslink in dieser Mail, dann liefern wir dir alles rund um Fashion, Beauty und Lifestyle direkt ins Postfach.<br />Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
+            {% endblock %}
+        </div>
+    </section>
+    <section class="newsletter__section newsletter__section--terms hide--opacity">
+        <div class="newsletter__section-content">
+            <span class="newsletter__close"></span>
+            <p class="newsletter__optin-body"></p>
+        </div>
+    </section>
 </div>
-

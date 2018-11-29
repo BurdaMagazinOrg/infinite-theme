@@ -29,7 +29,7 @@ libraries:
   - infinite/infinite.views.base.base-dynamic-view
   - infinite/infinite.views.base.base-feed-view
   - infinite/infinite.views.base.base-sidebar-view
-  - infinite/infinite.views.base.base-newsletter-view
+
   - infinite/infinite.views.base.base-list-swipeable-view
 
   - infinite/infinite.views.main-view
@@ -45,8 +45,7 @@ libraries:
   - infinite/infinite.views.marketing-view
   - infinite/infinite.views.spinner
   - infinite/infinite.views.teaser-feed-view
-  - infinite/infinite.views.newsletter.hmnewsletter-view
-  - infinite/infinite.views.newsletter.newsletter-modal-view
+  # - infinite/infinite.views.newsletter.hmnewsletter-view
   - infinite/drupal.behaviors.redirect-on-click
 
 regions:

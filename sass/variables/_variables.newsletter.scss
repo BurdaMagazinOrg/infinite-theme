@@ -1,88 +1,34 @@
-/**
-** Newsletter
-**/
-$newsletter__title-font-id--horizontal: $font-headline-id !default;
-$newsletter__title-text-transform--horizontal: none !default;
-$newsletter__color--horizontal: $white !default;
-$newsletter--horizontal--title-size--mobile: $title-size-md !default;
-$newsletter--horizontal--title-size--tablet: $title-size-lg !default;
-$newsletter--horizontal--title-size--desktop: $title-size-lg !default;
-
-$newsletter__title-gap-bottom-mobile--horizontal: $title--horizontal-block-gap-bottom-mobile !default;
-$newsletter__title-gap-bottom-tablet--horizontal: $title--horizontal-block-gap-bottom-tablet !default;
-$newsletter__title-gap-bottom-desktop--horizontal: $title--horizontal-block-gap-bottom-desktop !default;
-
-$newsletter__input-font-id--horizontal: $font-content-id !default;
-$newsletter__input-font-size--horizontal: $font-size-base !default;
-$newsletter__input-width--horizontal: 455px !default;
-$newsletter__input-height--horizontal: 48px !default;
-$newsletter__input-padding--horizontal: 0 135px 0 $padding-base-horizontal !default;
-$newsletter__input-margin--horizontal: 0 !default;
-
-$newsletter__submit-width--horizontal: 125px !default;
-$newsletter__submit-margin--horizontal: 0 0 0 -130px !default;
-$newsletter__submit-height--horizontal: $input-height-large - 8px !default;
-
-$newsletter--horizontal--padding-mobile: $gap-size-sm $gap-size-sm !default;
-$newsletter--horizontal--padding-tablet: $gap-size-sm $gap-size-sm !default;
-$newsletter--horizontal--padding-desktop: $gap-size-sm $gap-size-sm !default;
-
-$newsletter--horizontal--height-mobile: 440px !default;
-$newsletter--horizontal--height-tablet: 387px !default;
-$newsletter--horizontal--height-desktop: 387px !default;
-
-$newsletter__bg-image--horizontal-mobile: "../images/static/block-newsletter-sm.jpg" !default;
-$newsletter__bg-image--horizontal-tablet: "../images/static/block-newsletter-md.jpg" !default;
-$newsletter__bg-image--horizontal-desktop: "../images/static/block-newsletter-xl.jpg" !default;
-
-$newsletter__max-height-mobile--page: 500px !default;
-$newsletter__bg-image--page-xs: "../images/static/newsletter_landingpage_xs.jpg" !default;
-$newsletter__bg-image--page-sm: "../images/static/newsletter_landingpage_sm.jpg" !default;
-$newsletter__bg-image--page-lg: "../images/static/newsletter_landingpage_lg.jpg" !default;
-$newsletter__bg-image--page-xl: "../images/static/newsletter_landingpage_xl.jpg" !default;
-
-$newsletter__checkbox-label-font-id--horizontal: $font-content-id !default;
-$newsletter__checkbox-label--horizontal-mobile: 11px !default;
-$newsletter__checkbox-label--horizontal-tablet: 11px !default;
-$newsletter__checkbox-label--horizontal-desktop: 11px !default;
-
-$newsletter__checkbox-label--horizontal-width-mobile: none !default;
-$newsletter__checkbox-label--horizontal-width-tablet: 440px !default;
-$newsletter__checkbox-label--horizontal-width-desktop: 440px !default;
-
-//groups
-$newsletter__groups-border-radius: 0 !default;
-$newsletter__groups-bg-color: rgba($white, 0.9) !default;
-$newsletter__groups-margin: 0px 0 30px 0 !default;
-$newsletter__groups-padding-mobile: 10px !default;
-$newsletter__groups-padding-desktop: 15px 50px !default;
-$newsletter__groups-title-font-id: $font-headline-id !default;
-$newsletter__groups-title-size-mobile: $title-size-xxxs !default;
-$newsletter__groups-title-size-tablet: $title-size-sm !default;
-$newsletter__groups-title-size-desktop: $title-size-sm !default;
-$newsletter__groups-title-color: $gray-base !default;
-$newsletter__groups-title-margin: 0 0 15px 0 !default;
-
-$newsletter__groups-checkbox-label-font-id: $font-headline-id !default;
-$newsletter__groups-checkbox-label-color: $text-color !default;
-$newsletter__groups-checkbox-label-size-mobile: $title-size-xxxs !default;
-$newsletter__groups-checkbox-label-size-tablet: $title-size-xxs !default;
-$newsletter__groups-checkbox-label-size-desktop: $title-size-xxs !default;
-$newsletter__groups-checkbox-copy-font-id: $font-content !default;
-$newsletter__groups-checkbox-copy-color: $gray-base !default;
-$newsletter__groups-checkbox-copy-size: $font-size-base !default;
-$newsletter__groups-checkbox-copy-label-margin: 30px 0 0 0 !default;
-
-$newsletter__alerts-bg: rgba($brand-danger, 0.95) !default;
-
-//modal
-$newsletter__logo-max-width--modal: 200px !default;
-$newsletter__bg-image--modal: "../images/static/nl-modal-xl.jpg" !default;
-$newsletter__col-left-columns--modal: ($grid-columns / 2) !default;
-$newsletter__col-right-columns--modal: ($grid-columns / 2) !default;
-$newsletter__logo-margin--modal: 0 0 40px 0 !default;
 $newsletter__z-index--modal: 999999 !default;
 
-$newsletter__contianer-form-bg: transparent !default;
-$newsletter__content-item-bg-color: $bg-color-gray-light !default;
-$newsletter-page__content-wrapper-bg-color: rgba($white, 0.8) !default;
+$newsletter__section-max-width: 600px !default;
+$newsletter__section-text-align:center !default;
+$newsletter__bg-color: $color-brand !default;
+$newsletter__title-font-id: $font-headline-id !default;
+$newsletter__title-size-mobile--default: getFontSize(18px) !default;
+$newsletter__title-size-tablet--default: getFontSize(20px) !default;
+$newsletter__title-size-desktop--default: getFontSize(20px) !default;
+
+$newsletter__input-font-id: $font-content-id !default;
+$newsletter__input-text-size: getFontSize(16px) !default;
+
+$newsletter__optin-font-id: $font-label-id !default;
+$newsletter__optin-size: getFontSize(11px) !default;
+$newsletter__optin-color: $color-gray-1 !default;
+
+$newsletter__alert-font-id: $font-label-id !default;
+$newsletter__alert-size: getFontSize(12px) !default;
+$newsletter__alert-color: $color-white !default;
+$newsletter__alert-bg-color: #e22521 !default;
+
+//success
+$newsletter__success-title-font-id: $font-headline-id !default;
+$newsletter__success-title-size-mobile--default: getFontSize(18px) !default;
+$newsletter__success-title-size-desktop--default: getFontSize(20px) !default;
+
+$newsletter__success-text-font-id: $font-content-id !default;
+$newsletter__success-text-size-mobile--default: getFontSize(16px);
+$newsletter__success-text-size-desktop--default: getFontSize(16px);
+
+$newsletter__optin-body-font-id: $font-label-id !default;
+$newsletter__optin-body-size: getFontSize(14px) !default;
+$newsletter__optin-body-color: $text-color !default;
