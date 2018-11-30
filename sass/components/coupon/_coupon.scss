@@ -256,6 +256,10 @@
       }
     }
 
+    &:nth-child(n + 3) {
+      display: none;
+    }
+
     .img-container {
       img {
         width: 100%;
@@ -528,6 +532,11 @@
         .item-product {
           @include product__item--default();
           @include product__item--horizontal-block();
+          margin-left: 0;
+          margin-left: 0;
+          &:nth-child(n + 3) {
+            display: block;
+          }
         }
         .teaser-wrapper {
           > .item-product {
@@ -539,6 +548,7 @@
           margin-bottom: $grid-unit-4;
         }
         .coupon__products-extended {
+          display: none;
           flex-wrap: wrap;
           .item-product {
             flex-basis: 100%;
