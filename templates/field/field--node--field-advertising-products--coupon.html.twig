@@ -1,8 +1,6 @@
 {% set length = items | length %}
 
-Length =
-{{length}}
-{% for item in items | slice(0, 2) %}
+{% for item in items %}
     {{ item.content }}
 {% endfor %}
 
