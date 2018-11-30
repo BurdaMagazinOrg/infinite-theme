@@ -533,7 +533,7 @@
           @include product__item--default();
           @include product__item--horizontal-block();
           margin-left: 0;
-          margin-left: 0;
+          margin-right: 0;
           &:nth-child(n + 3) {
             display: block;
           }
