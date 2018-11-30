@@ -1,0 +1,19 @@
+{% set length = items | length %}
+
+Length =
+{{length}}
+{% for item in items | slice(0, 2) %}
+    {{ item.content }}
+{% endfor %}
+
+{# open expandable containers #}
+{% if length > 2 %}
+    <div class="coupon__products-extended-wrapper">
+        <div class="coupon__products-show-more expandable">Weitere Produkte anzeigen</div>
+        <div class="coupon__products-extended">
+            {% for item in items | slice(2) %}
+                {{ item.content }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

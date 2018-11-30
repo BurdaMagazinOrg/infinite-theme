@@ -3,6 +3,7 @@
     attach(context) {
       this.expandableFilter(context);
       this.expandableItems(context);
+      this.prepareDOM(context);
       this.handleExpired();
     },
     expandableFilter(context) {
@@ -39,6 +40,9 @@
           expandContainer.classList.toggle("expand");
         });
       });
+    },
+    prepareDOM(context) {
+      console.log("debug: preparing dom");
     },
     isExpired(coupon) {
       const expires = parseInt(coupon.dataset.expires);
