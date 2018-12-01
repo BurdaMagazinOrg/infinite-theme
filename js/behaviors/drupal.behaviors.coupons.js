@@ -41,6 +41,7 @@
       });
     },
     isExpired(coupon) {
+      if (!coupon.dataset.expires) return false;
       const expires = parseInt(coupon.dataset.expires);
       return expires < new Date().getTime() / 1000;
     },
