@@ -235,6 +235,11 @@
   .coupon__products {
     @include flexbox();
     @include flex-wrap();
+    > .item-product {
+      &:nth-child(n + 3) {
+        display: none;
+      }
+    }
   }
 
   .item-ecommerce {
@@ -254,10 +259,6 @@
       &:first-child {
         margin-left: 0;
       }
-    }
-
-    &:nth-child(n + 3) {
-      display: none;
     }
 
     .img-container {
