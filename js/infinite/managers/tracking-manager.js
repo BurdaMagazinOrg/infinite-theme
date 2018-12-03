@@ -474,7 +474,7 @@
       /**
        * get advanced drupalSettings.datalayer informations
        */
-      if (drupalSettings.datalayer != undefined) {
+      if (typeof drupalSettings.datalayer != "undefined") {
         $tmpUuidElement = $($pElement).closest('[data-uuid]').addBack();
         tmpUuid = $tmpUuidElement.data('uuid');
 
@@ -493,7 +493,7 @@
         tmpUuid = pUuid,
         $tmpUuidElement = [];
 
-      if (drupalSettings.datalayer[tmpUuid]) {
+      if (typeof drupalSettings.datalayer != "undefined" && drupalSettings.datalayer[tmpUuid]) {
         tmpAdvObject = drupalSettings.datalayer[tmpUuid];
       }
       /** use active infiniteBlockModel when the parent has no uuid (example: menu open / close in infinite-scrolling) * */
@@ -501,7 +501,7 @@
         $tmpUuidElement = TrackingManager.activeInfiniteBlockModel.get('el');
         tmpUuid = $tmpUuidElement.data('uuid');
 
-        if (drupalSettings.datalayer[tmpUuid]) {
+        if (typeof drupalSettings.datalayer != "undefined" && drupalSettings.datalayer[tmpUuid]) {
           tmpAdvObject = drupalSettings.datalayer[tmpUuid];
         }
         else {

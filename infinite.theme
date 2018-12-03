@@ -2,15 +2,17 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
-use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\infinite_media\MediaHelper;
 use Drupal\taxonomy\TermInterface;
 use Drupal\views\Views;
+use Drupal\user\Entity\User;
 use Psy\Util\Json;
 
 function infinite_preprocess(&$variables) {
   $variables['environment'] = ['systemType' =>  isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
 }
+
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
   /* @var $paragraph \Drupal\paragraphs\Entity\Paragraph */
@@ -79,6 +81,11 @@ function infinite_preprocess_region(&$variables) {
 }
 
 function infinite_preprocess_html(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+  $path_alias = ltrim($path_alias, '/');
+  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);  
+
   if (\Drupal::moduleHandler()->moduleExists('metatag')) {
     /**
      * TODO: Does metatag module provide some simpler api call to get metatags?
@@ -222,7 +229,7 @@ function infinite_preprocess_advertising_product(&$variables) {
       $term = Drupal::request()->attributes->get('taxonomy_term');
       $sub_id = 'term-' . $term->id();
     }
-    $tracking_url .= '&subid=' . $sub_id . '-' . $product->product_id->value;
+    $tracking_url .= '&subid=' . $product->product_id->value;
   }
 
   $data_attributes->setAttribute('data-external-url', $tracking_url);
@@ -474,4 +481,45 @@ function _infinite_get_icon($node, $variables) {
   }
 
   return $variables;
+}
+
+/**
+ * Set infinite preprocess variables for User
+ *
+ * @param $variables
+ *
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function infinite_preprocess_user(&$variables)
+{
+  try {
+    $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight';
+  } catch (InvalidArgumentException $ex) {
+    $variables['has_spotlight_paragraph'] = false;
+  } catch (MissingDataException $ex) {
+    $variables['has_spotlight_paragraph'] = false;
+  }
+}
+
+/**
+ * Get the paragraph bundle
+ *
+ * @param User $user
+ * @param int $paragraphPosition
+ *
+ * @return string
+ *
+ * @throws InvalidArgumentException
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition = 0): string
+{
+  /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $fieldParagraphs */
+  $fieldParagraphs = $user->getFields(true)['field_paragraphs'];
+  /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $currentParagraph */
+  $currentParagraph = $fieldParagraphs->get($paragraphPosition);
+  if (null === $currentParagraph) {
+    throw new InvalidArgumentException("Paragraph at position '$paragraphPosition' is not present");
+  }
+  return $currentParagraph->get('entity')->getTarget()->getValue()->bundle();
 }

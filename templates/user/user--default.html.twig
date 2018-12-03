@@ -27,23 +27,22 @@
     {% block content_header_block %}{% endblock %}
 
     <div{{ attributes.addClass(wrapper_classes) }} >
-
+      {% if not has_spotlight_paragraph %}
         <div class="item-author--detail-large">
-            <div class="item-author__profile-image">
-                {{ content.user_picture }}
-            </div>
-            {% if content.has_header_block %}
-                <h2 class="item-author__name">{{ content.field_full_name }}</h2>
-            {% else %}
-                <h1 class="item-author__name">{{ content.field_full_name }}</h1>
-            {% endif %}
-            <div class="item-author__job">
-                {{ content.field_job_title }}
-            </div>
-            <div class="item-author__short-info">
-                {{ content.field_profile_text }}
-            </div>
-
+                <div class="item-author__profile-image">
+                  {{ content.user_picture }}
+                </div>
+                {% if content.has_header_block %}
+                  <h2 class="item-author__name">{{ content.field_full_name }}</h2>
+                {% else %}
+                  <h1 class="item-author__name">{{ content.field_full_name }}</h1>
+                {% endif %}
+                <div class="item-author__job">
+                  {{ content.field_job_title }}
+                </div>
+                <div class="item-author__short-info">
+                  {{ content.field_profile_text }}
+                </div>
             {% block user_author_socials %}
                 <div class="item-author__socials">
 
@@ -121,7 +120,7 @@
                 </div>
             {% endblock %}
         </div>
-
+      {% endif %}
         {% block content_block %}
             {{ content.field_paragraphs }}
         {% endblock %}
