@@ -128,7 +128,7 @@
 		text-align: left;
 
 		input {
-			vertical-align: top;
+			align-self: flex-start;
 			margin: 0 $grid-unit-2 0 0;
 			flex: none;
 		}
