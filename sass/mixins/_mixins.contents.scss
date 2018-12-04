@@ -83,12 +83,24 @@
     .item-group--outer {
       @include region--fixed-content();
       padding-right: 0;
+      
+      &.usage__progress-navigation {
+        padding-left: $sidebar-navigation__width + $grid-unit-3;
+  
+        .item-paragraph--seo-links {
+          margin-left: 0;
+        }
+      }
     }
-
+    
     & > .item-paragraph--small,
     & > .item-paragraph--middle {
       @include region--fixed-content();
       padding-left: $article-socials-column-width;
+    }
+    
+    .sidebar-navigation {
+      margin-left: -($sidebar-navigation__width + $grid-unit-3);
     }
   }
 
@@ -175,12 +187,14 @@
     top: $stickyOffset + $sticky-padding;
 
     .toolbar-fixed & {
-      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--closed;
+      $stickyOffset: $menu--main-navigation-min-height +
+        $toolbar-administration__height--closed;
       top: $stickyOffset + $sticky-padding;
     }
 
     .toolbar-tray-open & {
-      $stickyOffset: $menu--main-navigation-min-height + $toolbar-administration__height--open;
+      $stickyOffset: $menu--main-navigation-min-height +
+        $toolbar-administration__height--open;
       top: $stickyOffset + $sticky-padding;
     }
   }
@@ -190,9 +204,6 @@
       display: none;
     }
   }
-
-  //@media (min-width: $screen-md-min) {
-  //}
 }
 
 @mixin item-content--user() {
@@ -458,9 +469,11 @@
 
 @mixin item-content--taxonomy() {
   .item-content__header {
-    //@extend %content__header-center;
-    //@extend %region--full-content;
     @extend %gap__container--h-negative;
+  }
+
+  .item-paragraph--advertising-products-paragraph .shopit-badge {
+    display: none;
   }
 
   .item-content__content {
@@ -473,10 +486,22 @@
       border-top: $h-line-style;
     }
   }
-
+  
   @media (max-width: $screen-xs-max) {
     .socials-vertical-bar {
       display: none;
+    }
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    .item-group__col--left {
+      width: $sidebar-navigation__width + $grid-unit-3;
+      max-width: $sidebar-navigation__width + $grid-unit-3;
+    }
+
+    .socials-vertical-bar {
+      width: $socials-vertical-bar-size-desktop;
+      float: left;
     }
   }
 }

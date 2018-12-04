@@ -1,0 +1,12 @@
+$sidebar-navigation__width: 155px !default;
+$sidebar-navigation__padding-bottom: $socials-size-l + 10px !default;
+$sidebar-navigation__font-id: $font-navigation-id !default;
+$sidebar-navigation__size: getFontSize(11px) !default;
+$sidebar-navigation__text-transform: uppercase !default;
+$sidebar-navigation__text-color: $text-color !default;
+$sidebar-navigation__li-margin: 0 !default;
+$sidebar-navigation__li-padding: $grid-unit-1 !default;
+$sidebar-navigation__li-active-color: $color-white !default;
+$sidebar-navigation__li-active-bg: rgba(34, 34, 34, 0.75) !default;
+$sidebar-navigation__li-progress-bg: rgba(34, 34, 34, 0.75) !default;
+$sidebar-navigation__li-active-bg--mobile: rgba(34, 34, 34, 1) !default;
