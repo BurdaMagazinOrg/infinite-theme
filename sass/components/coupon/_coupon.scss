@@ -343,6 +343,7 @@
         &.expired {
           opacity: 0.3;
           pointer-events: none;
+          margin-top: $grid-unit-5;
           + .coupon__expired {
             display: block;
           }
@@ -491,7 +492,8 @@
           padding: $grid-unit-3;
           background-color: #fff;
 
-          img {
+          img,
+          svg {
             max-width: 100%;
             width: auto;
             height: auto;
