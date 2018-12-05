@@ -37,14 +37,14 @@
                 </span>
             </div>
         {% endif %}
-        {% if content.field_tnc | render is not empty %}
-            <div class="coupon__tnc">
+        <div class="coupon__tnc">
+            {% if content.field_tnc | render is not empty %}
                 <div class="coupon__tnc-label expandable">Teilnahmebedingungen</div>
                 <div class="coupon__tnc-details">
                     {{ content.field_tnc }}
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
         <div class="coupon__code--wrapper">
             {% if content.field_coupon_code | render is not empty %}
                 <div class="coupon__code">
