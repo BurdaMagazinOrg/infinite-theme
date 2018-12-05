@@ -1,4 +1,3 @@
-
 .item-paragraph--small {
   @extend %item-paragraph--small;
 }
@@ -53,7 +52,6 @@
 
 .item-paragraph--content-teaser {
   @extend %item-paragraph--content-teaser;
-
 }
 
 .item-paragraph--term-teaser {
@@ -64,7 +62,9 @@
   @extend %item-paragraph--recent-content;
 }
 
-.item-paragraph--content-teaser, .item-paragraph--term-teaser, .item-paragraph--recent-content {
+.item-paragraph--content-teaser,
+.item-paragraph--term-teaser,
+.item-paragraph--recent-content {
   @media (min-width: $screen-sm-min) {
     .teaser__img-container {
       padding-bottom: $teaser__img-ratio-desktop--teaser-small;
@@ -127,4 +127,8 @@
 
 .item-paragraph--ecommerce-slider-paragraph {
   @extend %item-paragraph--ecommerce-slider;
+}
+
+.item-paragraph--view {
+  @extend %item-paragraph--view;
 }
