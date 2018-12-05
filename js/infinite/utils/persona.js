@@ -19,7 +19,7 @@ window.Persona = (function Persona() {
   };
 
   const getHighestValueByKey = key => {
-    Object.keys(personaCollection[key]).reduce(
+    return Object.keys(personaCollection[key]).reduce(
       (a, b) => (personaCollection[key][a] > personaCollection[key][b] ? a : b),
       0
     );

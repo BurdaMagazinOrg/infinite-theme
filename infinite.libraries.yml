@@ -37,10 +37,17 @@ coupons:
   js:
     js/behaviors/drupal.behaviors.coupons.js: {}
 
+
+sidebar-navigation:
+  version: 1.0
+  js:
+    js/behaviors/drupal.behaviors.sidebar-navigation.js: {}
+
 newsletter:
   version: 1
   js:
     js/behaviors/drupal.behaviors.newsletter.js: {}
+
 
 blazy:
   header: false

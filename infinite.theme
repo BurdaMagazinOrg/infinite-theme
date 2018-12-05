@@ -4,12 +4,15 @@ use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\infinite_media\MediaHelper;
+use Drupal\taxonomy\TermInterface;
+use Drupal\views\Views;
 use Drupal\user\Entity\User;
 use Psy\Util\Json;
 
 function infinite_preprocess(&$variables) {
   $variables['environment'] = ['systemType' =>  isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
 }
+
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
   /* @var $paragraph \Drupal\paragraphs\Entity\Paragraph */
@@ -78,6 +81,11 @@ function infinite_preprocess_region(&$variables) {
 }
 
 function infinite_preprocess_html(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+  $path_alias = ltrim($path_alias, '/');
+  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);  
+
   if (\Drupal::moduleHandler()->moduleExists('metatag')) {
     /**
      * TODO: Does metatag module provide some simpler api call to get metatags?
@@ -330,7 +338,6 @@ function infinite_preprocess_container(&$variables) {
   }
   if (isset($entity)) {
     $variables = infinite_inject_pinterest_image($variables, $entity);
-
     // use seo description for pinterest share description
     if (method_exists($entity, 'bundle') && method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
       switch ($entity->bundle()) {
@@ -347,6 +354,31 @@ function infinite_preprocess_container(&$variables) {
             $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
           }
           break;
+      }
+    }
+    // Set progress navigation.
+    if ($entity instanceof TermInterface) {
+      $variables['progress_navigation'] = [];
+      if (!$entity->field_paragraphs->isEmpty()) {
+        foreach ($entity->field_paragraphs->referencedEntities() as $index => $paragraph) {
+          if (!$paragraph->getFields()['field_progress_navigation']->isEmpty()) {
+            array_push(
+              $variables['progress_navigation'],
+              $paragraph->getFields()['field_progress_navigation']->value
+            );
+          }
+        }
+      } else {
+        foreach ($variables['element']['#children'][0]['#children'] as $index => $child) {
+          if (isset($child['#paragraph'])
+            && !$child['#paragraph']->get('field_progress_navigation')->isEmpty()
+          ) {
+            array_push(
+              $variables['progress_navigation'],
+              $child['#paragraph']->get('field_progress_navigation')->value
+            );
+          }
+        }
       }
     }
   }

@@ -52,8 +52,12 @@ view_mode ? 'item-paragraph--' ~ view_mode|clean_class,
     {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value | clean_id) %}
 {% endif %}
 
+{% if paragraph.field_progress_navigation is not empty %}
+    {% set attributes = attributes.setAttribute('name', paragraph.field_progress_navigation.value | clean_id) %}
+{% endif %}
+
 <div{{ attributes.addClass(classes) }}>
     {% block content_block %}
-        {{ content|without('field_suppress_affiliate_link') }}
+        {{ content|without('field_suppress_affiliate_link', 'field_progress_navigation') }}
     {% endblock %}
 </div>
