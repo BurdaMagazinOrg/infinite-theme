@@ -1,27 +1,23 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.products.ProductLookView = ProductView.extend({
-    initialize: function (pOptions) {
+    initialize(pOptions) {
       ProductView.prototype.initialize.call(this, pOptions);
     },
-    delegateInview: function () {
-
-    },
-    createModel: function () {
+    delegateInview() {},
+    createModel() {
       ProductView.prototype.createModel.call(this);
 
       this.model.set('componentType', 'look');
       this.model.set('variantType', 'look');
     },
-    collectTrackingData: function (){
+    collectTrackingData() {
       ProductView.prototype.collectTrackingData.call(this);
-        this.model.get('enhancedEcommerce').productExtraInformation =  this.$el.parent().data('product-variant');
-
-    }
+      this.model.get(
+        'enhancedEcommerce'
+      ).productExtraInformation = this.$el.parent().data('product-variant');
+    },
   });
 
-  window.ProductLookView = window.ProductLookView || BurdaInfinite.views.products.ProductLookView;
-
+  window.ProductLookView =
+    window.ProductLookView || BurdaInfinite.views.products.ProductLookView;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

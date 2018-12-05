@@ -21,14 +21,19 @@ function ABTest(feature) {
   this.setABGroup = () => (Math.random() <= 0.5 ? 'a' : 'b');
 
   this.getABGroup = () => {
-    const result = this.assignedGroups.find(obj => obj.feature === this.abTest.feature, this);
+    const result = this.assignedGroups.find(
+      obj => obj.feature === this.abTest.feature,
+      this
+    );
     return !!result && result.group;
   };
 
   this.applyUrlOverrideParams = () => {
     if (this.getUrlOverrideParam()) {
       const override = this.getUrlOverrideParam();
-      this.assignedGroups = this.assignedGroups.filter(item => item.feature !== override.feature);
+      this.assignedGroups = this.assignedGroups.filter(
+        item => item.feature !== override.feature
+      );
       this.assignedGroups.push(override);
       this.writeToLocalStorage();
     }
@@ -48,10 +53,14 @@ function ABTest(feature) {
   };
 
   this.getAllTests = () => JSON.parse(window.localStorage.getItem('abTests'));
-  this.getTestObject = () => this.assignedGroups.find(item => item.feature === this.abTest.feature);
+  this.getTestObject = () =>
+    this.assignedGroups.find(item => item.feature === this.abTest.feature);
 
   this.showUserContent = () => {
-    const abTest = Object.assign({ featureActive: true, abTestActive: true }, this.getTestObject());
+    const abTest = Object.assign(
+      { featureActive: true, abTestActive: true },
+      this.getTestObject()
+    );
     const abTestAllows = !abTest.abTestActive || this.abTest.group === 'a';
     return abTest.featureActive && abTestAllows;
   };

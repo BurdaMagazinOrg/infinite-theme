@@ -1,18 +1,19 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.SpinnerCubeView = Backbone.View.extend({
-
     height: 0,
     hidden: false,
     $template: {},
     preRenderCallback: {},
-    template: _.template('<div class="spinner-container">'
-      + '<div class="spinner spinner-cube">'
-      + '<div class="spinner-cube-item-1 spinner-cube-item"></div>'
-      + '<div class="spinner-cube-item-2 spinner-cube-item"></div>'
-      + '<div class="spinner-cube-item-4 spinner-cube-item"></div>'
-      + '<div class="spinner-cube-item-3 spinner-cube-item"></div>'
-      + '</div>'
-      + '</div>'),
+    template: _.template(
+      '<div class="spinner-container">' +
+        '<div class="spinner spinner-cube">' +
+        '<div class="spinner-cube-item-1 spinner-cube-item"></div>' +
+        '<div class="spinner-cube-item-2 spinner-cube-item"></div>' +
+        '<div class="spinner-cube-item-4 spinner-cube-item"></div>' +
+        '<div class="spinner-cube-item-3 spinner-cube-item"></div>' +
+        '</div>' +
+        '</div>'
+    ),
 
     initialize(pSettings) {
       _.extend(this, pSettings);
@@ -23,8 +24,7 @@
     render() {
       if (typeof this.preRenderCallback === 'function') {
         this.$template = this.preRenderCallback($(this.template()));
-      }
-      else {
+      } else {
         this.$template = $(this.template()).appendTo(this.$el);
       }
 
@@ -62,5 +62,6 @@
     },
   });
 
-  window.SpinnerCubeView = window.SpinnerCubeView || BurdaInfinite.views.SpinnerCubeView;
-}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));
+  window.SpinnerCubeView =
+    window.SpinnerCubeView || BurdaInfinite.views.SpinnerCubeView;
+})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

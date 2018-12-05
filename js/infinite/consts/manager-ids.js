@@ -1,4 +1,4 @@
-var ManagerIds = {
-  trackingManager: "trackingManager",
-  scrollManager: "scrollManager"
-}
+const ManagerIds = {
+  trackingManager: 'trackingManager',
+  scrollManager: 'scrollManager',
+};

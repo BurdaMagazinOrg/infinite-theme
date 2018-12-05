@@ -1,6 +1,4 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-  
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.MainView = Backbone.View.extend({
     menuSidebarModel: {},
     modalSearchModel: {},
@@ -17,8 +15,10 @@
     initialize(pOptions) {
       _.extend(this, pOptions);
 
-      if (_.isFunction(history.pushState)) Backbone.history.start({ pushState: true });
-      AppConfig.initialLocation = Backbone.history.location.pathname + Backbone.history.location.search;
+      if (_.isFunction(history.pushState))
+        Backbone.history.start({ pushState: true });
+      AppConfig.initialLocation =
+        Backbone.history.location.pathname + Backbone.history.location.search;
       // TFM.Debug.start();
 
       this.initBeforeUnloadBehavior();
@@ -39,11 +39,20 @@
       /**
        * adjust sidebar if toolbar activated / displayed
        */
-      setTimeout(_(function () {
-        if (typeof Drupal.toolbar !== 'undefined' && typeof Drupal.toolbar.models.toolbarModel !== 'undefined') {
-          Backbone.listenTo(Drupal.toolbar.models.toolbarModel, 'change:offsets', _(this.onToolbarHandler).bind(this));
-        }
-      }).bind(this));
+      setTimeout(
+        _(function() {
+          if (
+            typeof Drupal.toolbar !== 'undefined' &&
+            typeof Drupal.toolbar.models.toolbarModel !== 'undefined'
+          ) {
+            Backbone.listenTo(
+              Drupal.toolbar.models.toolbarModel,
+              'change:offsets',
+              _(this.onToolbarHandler).bind(this)
+            );
+          }
+        }).bind(this)
+      );
     },
     initBeforeUnloadBehavior() {
       /**
@@ -52,14 +61,14 @@
 
       if ($('body').hasClass('page-article')) {
         window.allowBeforeUnload = true;
-        window.onbeforeunload = function (pEvent) {
+        window.onbeforeunload = function(pEvent) {
           if (!window.allowBeforeUnload) return;
 
           Waypoint.disableAll();
 
           $('body').css({
-            top: `${$(window).scrollTop() * -1  }px`,
-            left: `${$(window).scrollLeft() * -1  }px`,
+            top: `${$(window).scrollTop() * -1}px`,
+            left: `${$(window).scrollLeft() * -1}px`,
           });
           window.scrollTo(0, 0);
         };
@@ -70,7 +79,10 @@
       this.infiniteViewsModel = new BaseCollectionModel();
       this.modalSearchModel = new ModalSearchModel();
       this.pageOffsetsModel = new PageOffsetsModel();
-      this.deviceModel = new DeviceModel({}, _.extend(JSON.parse(this.$el.find('[data-breakpoint-settings]').text())));
+      this.deviceModel = new DeviceModel(
+        {},
+        _.extend(JSON.parse(this.$el.find('[data-breakpoint-settings]').text()))
+      );
 
       /**
        * Backbone Manager - push Models
@@ -129,7 +141,6 @@
       this.infiniteView.delegateElements();
       /** * */
 
-
       /**
        * MainMenuView
        */
@@ -146,7 +157,6 @@
         el: $('#menu-sidebar', this.$el),
         model: this.menuSidebarModel,
       });
-
 
       /**
        * ModalSearchView
@@ -168,9 +178,13 @@
     },
     onToolbarHandler(pModel, pAttr) {
       // pModel.set('orientation', 'horizontal');
-      this.pageOffsetsModel.add({ id: 'offsetToolbar', offsets: pAttr, pageRelevant: true });
+      this.pageOffsetsModel.add({
+        id: 'offsetToolbar',
+        offsets: pAttr,
+        pageRelevant: true,
+      });
     },
   });
 
   window.MainView = window.MainView || BurdaInfinite.views.MainView;
-}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));
+})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

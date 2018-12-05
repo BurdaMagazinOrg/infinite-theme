@@ -5,14 +5,14 @@
     scrollTargets: null,
     observerOptions: {
       root: null,
-      rootMargin: "56px",
-      threshold: [0]
+      rootMargin: '56px',
+      threshold: [0],
     },
     initialize(options) {
       this.context = options.context || document;
-      this.navigationLinks = this.el.querySelectorAll(".links a");
+      this.navigationLinks = this.el.querySelectorAll('.links a');
       this.scrollTargets = this.context.querySelectorAll(
-        ".item-paragraph[name]"
+        '.item-paragraph[name]'
       );
       this.initScrollToBehavior();
       this.collectScrollTargets();
@@ -20,9 +20,9 @@
     initScrollToBehavior() {
       Array.from(this.navigationLinks).forEach(element => {
         const liEl = element.parentElement;
-        liEl.addEventListener("click", e => {
+        liEl.addEventListener('click', e => {
           e.preventDefault();
-          const name = element.getAttribute("id");
+          const name = element.getAttribute('id');
           const paragraph = this.context.querySelector(
             `.item-paragraph[name="${name}"]`
           );
@@ -30,7 +30,7 @@
 
           window.scrollTo({
             top: Math.max(0, rect.top + window.scrollY - 66),
-            behavior: "smooth"
+            behavior: 'smooth',
           });
         });
       });
@@ -47,33 +47,33 @@
       });
     },
     intersectionHandler(entries, observer) {
-      let name = "";
+      let name = '';
       let selectedElement = null;
 
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.removeHighlighting();
-          name = entry.target.getAttribute("name");
+          name = entry.target.getAttribute('name');
           selectedElement = this.el.querySelector(`[id="${name}"]`);
           if (selectedElement)
-            selectedElement.parentElement.classList.add("is-active");
+            selectedElement.parentElement.classList.add('is-active');
         }
       });
     },
     removeHighlighting() {
-      const elements = this.el.querySelectorAll(".is-active") || [];
+      const elements = this.el.querySelectorAll('.is-active') || [];
       Array.from(elements).forEach(element => {
-        element.classList.remove("is-active");
+        element.classList.remove('is-active');
       });
-    }
+    },
   });
 
   Drupal.behaviors.sidebarNavigation = {
     attach(context) {
-      const elements = context.querySelectorAll(".sidebar-navigation");
+      const elements = context.querySelectorAll('.sidebar-navigation');
       Array.from(elements).forEach(el => {
         new SidebarNavigationBackboneView({ el, context });
       });
-    }
+    },
   };
 })(Drupal, drupalSettings, Backbone);

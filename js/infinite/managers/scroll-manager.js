@@ -1,56 +1,71 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+  BurdaInfinite.managers.ScrollManager = Backbone.View.extend(
+    {
+      infiniteViewsModel: {},
+      scrollTopAdSettings: 0,
+      scrollTop: 0,
+      initialize(pOptions) {
+        _.extend(this, pOptions);
 
-    "use strict";
+        if (!Backbone.History.started && _.isFunction(history.pushState))
+          Backbone.history.start({ pushState: true });
 
-    BurdaInfinite.managers.ScrollManager = Backbone.View.extend({
-        infiniteViewsModel: {},
-        scrollTopAdSettings: 0,
-        scrollTop: 0,
-        initialize: function (pOptions) {
-            _.extend(this, pOptions);
+        this.scrollTopAdSettings = $(window).scrollTop();
+        this.scrollTop = $(window).scrollTop();
+        this.listenTo(
+          this.infiniteViewsModel,
+          'change:inview',
+          this.onInviewChangeHandler,
+          this
+        );
+      },
+      onInviewChangeHandler(pModel) {
+        if (pModel.get('type') != 'infiniteBlockView') return;
+        this.urlChangeHandler(pModel);
+      },
+      urlChangeHandler(pModel) {
+        if (
+          this.scrollTop == $(window).scrollTop() ||
+          !pModel.get('el').data('history-url')
+        )
+          return;
 
-            if (!Backbone.History.started && _.isFunction(history.pushState)) Backbone.history.start({pushState: true});
+        const $tmpElement = pModel.get('el');
 
-            this.scrollTopAdSettings = $(window).scrollTop();
-            this.scrollTop = $(window).scrollTop();
-            this.listenTo(this.infiniteViewsModel, 'change:inview', this.onInviewChangeHandler, this);
-        },
-        onInviewChangeHandler: function (pModel) {
-            if (pModel.get('type') != 'infiniteBlockView') return;
-            this.urlChangeHandler(pModel);
-        },
-        urlChangeHandler: function (pModel) {
-            if (this.scrollTop == $(window).scrollTop() || !pModel.get('el').data('history-url')) return;
+        const tmpInviewModel = pModel.get('inview');
 
-            var $tmpElement = pModel.get('el'),
-                tmpInviewModel = pModel.get('inview'),
-                tmpHistoryURL = $tmpElement.data('history-url'),
-                tmpDocumentTitle = '';
+        const tmpHistoryURL = $tmpElement.data('history-url');
 
-            if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
+        let tmpDocumentTitle = '';
 
-                if (!_.isUndefined(tmpHistoryURL) && !_.isEmpty(tmpHistoryURL)) {
-                    ScrollManager.pushHistory(tmpHistoryURL, {replace: true});
-                    tmpDocumentTitle = $tmpElement.data('history-title');
+        if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
+          if (!_.isUndefined(tmpHistoryURL) && !_.isEmpty(tmpHistoryURL)) {
+            ScrollManager.pushHistory(tmpHistoryURL, { replace: true });
+            tmpDocumentTitle = $tmpElement.data('history-title');
 
-                    if (!_.isUndefined(tmpDocumentTitle) && !_.isEmpty(tmpDocumentTitle)) {
-                        document.title = decodeURIComponent(tmpDocumentTitle);
-                    }
-                }
+            if (
+              !_.isUndefined(tmpDocumentTitle) &&
+              !_.isEmpty(tmpDocumentTitle)
+            ) {
+              document.title = decodeURIComponent(tmpDocumentTitle);
             }
-
-            this.scrollTop = $(window).scrollTop();
+          }
         }
-    }, {
-        pushHistory: function (pURL, pSettings) {
-            //console.log(">>> pushHistory", pURL);
-            var pushStateSupported = _.isFunction(history.pushState);
-            if (pushStateSupported) {
-                Backbone.history.navigate(pURL, pSettings);
-            }
+
+        this.scrollTop = $(window).scrollTop();
+      },
+    },
+    {
+      pushHistory(pURL, pSettings) {
+        // console.log(">>> pushHistory", pURL);
+        const pushStateSupported = _.isFunction(history.pushState);
+        if (pushStateSupported) {
+          Backbone.history.navigate(pURL, pSettings);
         }
-    });
+      },
+    }
+  );
 
-    window.ScrollManager = window.ScrollManager || BurdaInfinite.managers.ScrollManager;
-
+  window.ScrollManager =
+    window.ScrollManager || BurdaInfinite.managers.ScrollManager;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
