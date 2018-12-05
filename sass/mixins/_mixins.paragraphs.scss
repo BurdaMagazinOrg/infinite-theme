@@ -36,7 +36,6 @@
   @extend %item-paragraph--media;
 
   &.item-paragraph--full {
-
     .item-media--image-landscape {
       .img-container__wrapper {
         @extend %gap__container--h-negative;
@@ -106,14 +105,14 @@
           padding-bottom: $media__img-ratio-small--portrait--desktop;
         }
 
-        & > *, picture {
+        & > *,
+        picture {
           width: 100%;
           height: 100%;
           position: absolute;
           left: 0;
           top: 0;
         }
-
       }
     }
   }
@@ -146,11 +145,9 @@
         padding-bottom: $gallery-ratio-full--landscape;
       }
     }
-
   }
 
   &.item-paragraph--middle {
-
     .item-media--image-portrait {
       .img-container {
         padding-bottom: $gallery-ratio-middle;
@@ -167,7 +164,6 @@
   &.item-paragraph--small {
     .item-media--image-portrait {
       .img-container {
-
         @media (max-width: $screen-xs-max) {
           padding-bottom: $gallery-ratio-small--portrait--mobile;
         }
@@ -179,7 +175,6 @@
         @media (min-width: $screen-md-min) {
           padding-bottom: $gallery-ratio-small--portrait--desktop;
         }
-
       }
     }
 
@@ -216,7 +211,8 @@
     @extend %button--responsive-md;
   }
 
-  & > iframe, .instagram-media {
+  & > iframe,
+  .instagram-media {
     //margin-top: $gap-section !important;
     //TODO check if important is necessary - when it is we have to override it in the amp themes
     margin-top: $gap-section;
@@ -261,7 +257,6 @@
   }
 
   &.item-paragraph--middle {
-
     @media (max-width: $screen-xs-max) {
       @include _spotlight--small();
     }
@@ -351,7 +346,8 @@
     position: relative;
   }
 
-  .spotlight__title, .spotlight__subtitle {
+  .spotlight__title,
+  .spotlight__subtitle {
     margin-bottom: $gap-size-xs;
   }
 
@@ -419,7 +415,8 @@
     }
   }
 
-  .spotlight__title, .spotlight__subtitle {
+  .spotlight__title,
+  .spotlight__subtitle {
     margin-bottom: $gap-size-sm;
   }
 
@@ -463,7 +460,8 @@
 }
 
 @mixin item-paragraph--twitter() {
-  & > iframe, .twitter-tweet {
+  & > iframe,
+  .twitter-tweet {
     @include center-block();
   }
 }
@@ -474,7 +472,7 @@
   }
 
   .img-container > * {
-    margin-top: $gap-size-xxl
+    margin-top: $gap-size-xxl;
   }
 
   &.item-paragraph .item-title {
@@ -525,7 +523,8 @@
     }
   }
 
-  &.item-paragraph--small, &.item-paragraph--middle {
+  &.item-paragraph--small,
+  &.item-paragraph--middle {
     .item-title {
       @extend %title--content-block;
     }
@@ -541,8 +540,8 @@
 }
 
 @mixin item-paragraph--content-teaser() {
-
-  &.item-paragraph--small, &.item-paragraph--middle {
+  &.item-paragraph--small,
+  &.item-paragraph--middle {
     .text-title {
       @extend %title--content-block;
     }
@@ -562,7 +561,8 @@
   }
 
   .item-marketing-native {
-    .logo, .brand {
+    .logo,
+    .brand {
       height: 13px;
     }
   }
@@ -580,19 +580,25 @@
   @media (min-width: $screen-sm-min) {
     &.item-paragraph--full {
       .teaser {
-        @include list__content-teaser__item--horizontal($list__content-teaser--horizontal-count--full);
+        @include list__content-teaser__item--horizontal(
+          $list__content-teaser--horizontal-count--full
+        );
       }
     }
 
     &.item-paragraph--middle {
       .teaser {
-        @include list__content-teaser__item--horizontal($list__content-teaser--horizontal-count--middle);
+        @include list__content-teaser__item--horizontal(
+          $list__content-teaser--horizontal-count--middle
+        );
       }
     }
 
     &.item-paragraph--small {
       .teaser {
-        @include list__content-teaser__item--horizontal($list__content-teaser--horizontal-count--small);
+        @include list__content-teaser__item--horizontal(
+          $list__content-teaser--horizontal-count--small
+        );
       }
     }
   }
@@ -629,7 +635,11 @@
     display: inline-block;
   }
 
-  table, tbody, th, td, tr {
+  table,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
     text-align: center;
   }
@@ -697,7 +707,8 @@
   .col--left {
     padding-left: $article-socials-column-width;
 
-    .img-container, .caption {
+    .img-container,
+    .caption {
       max-width: 387px;
       width: 100%;
     }
@@ -739,15 +750,21 @@
 
   &.item-paragraph--small {
     .swipeable__wrapper {
-      @include list__images--horizontal(($gap-size-xs, $gap-size-xs, $gap-size-xs));
+      @include list__images--horizontal(
+        ($gap-size-xs, $gap-size-xs, $gap-size-xs)
+      );
     }
 
     .seo-linker__item--image {
-      @include list__images--horizontal__item(($gap-size-xs, $gap-size-xs, $gap-size-xs), 3);
+      @include list__images--horizontal__item(
+        ($gap-size-xs, $gap-size-xs, $gap-size-xs),
+        3
+      );
     }
   }
 
-  &.item-paragraph--middle, &.item-paragraph--full {
+  &.item-paragraph--middle,
+  &.item-paragraph--full {
     .seo-linker__item--image {
       @extend %list__images--horizontal__item;
     }
@@ -817,7 +834,11 @@
   @extend %copytext--text-block;
   position: relative;
 
-  h2, h3, h4, h5, h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     padding-right: $rating__pos-right + $padding;
   }
 
@@ -831,7 +852,8 @@
   text-align: $quote__text-align--article;
   position: relative;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     @extend %center-block;
     content: " ";
     max-width: $quote__border-max-width--article;
@@ -839,7 +861,8 @@
     display: block;
   }
 
-  .item-quote__text:before, .item-quote__text:after {
+  .item-quote__text:before,
+  .item-quote__text:after {
     @include text-helper($quote__quote-font-id--article);
     color: $quote__quote-color--article;
     font-style: $quote__title-font-style--article;
@@ -882,17 +905,30 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    .item-quote__text:before, .item-quote__text:after {
-      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-mobile--article, $quote__quote-line-height--article);
+    .item-quote__text:before,
+    .item-quote__text:after {
+      @include text-helper-size(
+        $quote__quote-font-id--article,
+        $quote__quote-size-mobile--article,
+        $quote__quote-line-height--article
+      );
     }
 
     //called title
     .item-quote__text {
-      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-mobile, $quote__title-line-height--article);
+      @include text-helper-size(
+        $quote__title-font-id--article,
+        $quote__title-size--article-mobile,
+        $quote__title-line-height--article
+      );
     }
 
     footer {
-      @include text-helper-size($quote__author-font-id--article, $quote__author-size--article-mobile, $quote__author-line-height--article);
+      @include text-helper-size(
+        $quote__author-font-id--article,
+        $quote__author-size--article-mobile,
+        $quote__author-line-height--article
+      );
     }
   }
 
@@ -903,30 +939,56 @@
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    .item-quote__text:before, .item-quote__text:after {
-      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-tablet--article, $quote__quote-line-height--article);
+    .item-quote__text:before,
+    .item-quote__text:after {
+      @include text-helper-size(
+        $quote__quote-font-id--article,
+        $quote__quote-size-tablet--article,
+        $quote__quote-line-height--article
+      );
     }
 
     .item-quote__text {
-      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-tablet, $quote__title-line-height--article);
+      @include text-helper-size(
+        $quote__title-font-id--article,
+        $quote__title-size--article-tablet,
+        $quote__title-line-height--article
+      );
     }
 
     footer {
-      @include text-helper-size($quote__author-font-id--article, $quote__author-size--article-tablet, $quote__author-line-height--article);
+      @include text-helper-size(
+        $quote__author-font-id--article,
+        $quote__author-size--article-tablet,
+        $quote__author-line-height--article
+      );
     }
   }
 
   @media (min-width: $screen-md-min) {
-    .item-quote__text:before, .item-quote__text:after {
-      @include text-helper-size($quote__quote-font-id--article, $quote__quote-size-desktop--article, $quote__quote-line-height--article);
+    .item-quote__text:before,
+    .item-quote__text:after {
+      @include text-helper-size(
+        $quote__quote-font-id--article,
+        $quote__quote-size-desktop--article,
+        $quote__quote-line-height--article
+      );
     }
 
     .item-quote__text {
-      @include text-helper-size($quote__title-font-id--article, $quote__title-size--article-desktop, $quote__title-line-height--article);
+      @include text-helper-size(
+        $quote__title-font-id--article,
+        $quote__title-size--article-desktop,
+        $quote__title-line-height--article
+      );
     }
 
     footer {
-      @include text-helper-size($quote__author-font-id--article, $quote__author-size--article-desktop, $quote__author-line-height--article);
+      @include text-helper-size(
+        $quote__author-font-id--article,
+        $quote__author-size--article-desktop,
+        $quote__author-line-height--article
+      );
     }
   }
 }
@@ -962,7 +1024,6 @@
   }
 
   &.item-paragraph--small .ecommerce-slider {
-
     @media (max-width: $screen-xxs-max) {
       @include ecommerce-slider--small();
     }
@@ -971,5 +1032,8 @@
       @include ecommerce-slider--middle();
     }
   }
+}
 
+@mixin item-paragraph--view() {
+  @extend %item-paragraph--text;
 }

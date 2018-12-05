@@ -226,4 +226,7 @@
   #edit-submit-coupon-overview {
     display: none;
   }
+  & + .coupon__filter--empty {
+    margin-top: $grid-unit-2;
+  }
 }

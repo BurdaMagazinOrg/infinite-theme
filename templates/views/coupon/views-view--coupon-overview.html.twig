@@ -18,18 +18,20 @@
             <script>
                 let fieldsets = document.querySelectorAll("#coupon__filter fieldset");
                 fieldsets.forEach(fieldset => {
-                   let filterChecked = fieldset.querySelectorAll("input:checked");
-                   if(filterChecked.length > 0) {
-                       fieldset.classList.add('expand', 'open');
-                   }
+                    let filterChecked = fieldset.querySelectorAll("input:checked");
+                    if (filterChecked.length > 0) {
+                        fieldset.classList.add('expand', 'open');
+                    }
                 });
             </script>
         </div>
     </div>
 
-
     {{ rows }}
-    {{ empty }}
+    {% if empty %}
+        <div class="coupon__filter--empty region-fixed-content">{{ empty }}</div>
+    {% endif %}
+
     {{ pager }}
 
     {% block footer_block %}
