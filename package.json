@@ -1,0 +1,36 @@
+{
+  "name": "freundin-web",
+  "version": "1.0.0",
+  "description": "This project template should provide a kickstart for managing your site dependencies with [Composer](https://getcomposer.org/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BurdaMagazinOrg/freundin-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BurdaMagazinOrg/freundin-web/issues"
+  },
+  "homepage": "https://github.com/BurdaMagazinOrg/freundin-web#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-compat": "^2.6.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.15.3"
+  },
+  "browserlist": [
+    "last 5 versions",
+    "IE 9"
+  ]
+}
