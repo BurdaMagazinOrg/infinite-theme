@@ -1,6 +1,6 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.PageOffsetsModel = Backbone.Model.extend({
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       /**
        * Collection in Collection is not possible >:/
        * We need the 'items' property here
@@ -55,7 +55,7 @@
         this
       );
     },
-    onCalculatePageHandler(pModel) {
+    onCalculatePageHandler: function(pModel) {
       if (pModel.id == 'offsetPage') return;
 
       const tmpPageModel = this.getModel('offsetPage');
@@ -96,27 +96,27 @@
 
       tmpPageModel.set('offsets', tmpPageOffsets);
     },
-    add(pModel, pOptions) {
+    add: function(pModel, pOptions) {
       const tmpOptions = _.extend(pOptions || {}, { merge: true });
 
       const tmpModel = this.getItems().add(pModel, tmpOptions);
 
       tmpModel.set('active', true);
     },
-    deactivate(pModel, pOptions) {
+    deactivate: function(pModel, pOptions) {
       if (!pModel || this.getItems().get(pModel.id) === undefined) return;
 
       this.getModel(pModel.id).set('active', false);
     },
-    remove(pModel, pOptions) {
+    remove: function(pModel, pOptions) {
       const tmpOptions = _.extend(pOptions || {}, { merge: true });
       this.deactivate(pModel, pOptions);
       this.getItems().remove(pModel, tmpOptions);
     },
-    getPageRelevantItems() {
+    getPageRelevantItems: function() {
       const tmpItems = [];
 
-      _.find(this.getItems().models, pModel => {
+      _.find(this.getItems().models, function(pModel) {
         if (
           pModel.attributes.pageRelevant === true &&
           pModel.attributes.active === true
@@ -127,10 +127,10 @@
 
       return tmpItems;
     },
-    getItems() {
+    getItems: function() {
       return this.get('items');
     },
-    getModel(pModelId) {
+    getModel: function(pModelId) {
       return this.getItems().get(pModelId);
     },
   });

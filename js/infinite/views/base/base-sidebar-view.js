@@ -7,21 +7,21 @@
         this.clickHandler(pEvent, 'close');
       },
     },
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       _.extend(this, pOptions || {});
       this.listenTo(this.model, 'change:is_open', this.stateChangedHandler);
     },
-    clickHandler(pEvent, pType) {
+    clickHandler: function(pEvent, pType) {
       switch (pType) {
         case 'close':
           this.open(false);
           break;
       }
     },
-    stateChangedHandler(pModel) {
+    stateChangedHandler: function(pModel) {
       this.open(pModel.get('is_open'));
     },
-    open(pBool) {
+    open: function(pBool) {
       this.model.set('is_open', pBool);
       $('body').toggleClass(this.classStateOpen, pBool);
       this.$el.toggleClass(this.classElementOpen, pBool);

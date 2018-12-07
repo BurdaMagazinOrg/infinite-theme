@@ -12,7 +12,7 @@
     modalSearchView: {},
 
     events: {},
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       _.extend(this, pOptions);
 
       if (_.isFunction(history.pushState))
@@ -54,7 +54,7 @@
         }).bind(this)
       );
     },
-    initBeforeUnloadBehavior() {
+    initBeforeUnloadBehavior: function() {
       /**
        * fix the page reload problems
        */
@@ -67,14 +67,14 @@
           Waypoint.disableAll();
 
           $('body').css({
-            top: `${$(window).scrollTop() * -1}px`,
-            left: `${$(window).scrollLeft() * -1}px`,
+            top: '' + $(window).scrollTop() * -1 + 'px',
+            left: '' + $(window).scrollLeft() * -1 + 'px',
           });
           window.scrollTo(0, 0);
         };
       }
     },
-    createModels() {
+    createModels: function() {
       this.menuSidebarModel = new BaseSidebarModel();
       this.infiniteViewsModel = new BaseCollectionModel();
       this.modalSearchModel = new ModalSearchModel();
@@ -93,7 +93,7 @@
       BM.reuseModel(ModelIds.pageOffsetsModel, this.pageOffsetsModel);
       BM.reuseModel(ModelIds.deviceModel, this.deviceModel);
     },
-    createManagers() {
+    createManagers: function() {
       new MarketingManager({
         infiniteViewsModel: this.infiniteViewsModel,
       });
@@ -125,7 +125,7 @@
         }),
       });
     },
-    createViews() {
+    createViews: function() {
       /**
        * InfiniteView - parse and create views by data-view-type
        * IMPORTANT - Needed for the initial parsing
@@ -176,7 +176,7 @@
       BM.reuseView(ViewIds.infiniteView, this.infiniteView);
       BM.reuseView(ViewIds.modalSearchView, this.modalSearchView);
     },
-    onToolbarHandler(pModel, pAttr) {
+    onToolbarHandler: function(pModel, pAttr) {
       // pModel.set('orientation', 'horizontal');
       this.pageOffsetsModel.add({
         id: 'offsetToolbar',

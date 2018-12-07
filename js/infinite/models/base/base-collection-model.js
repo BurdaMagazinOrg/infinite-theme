@@ -1,6 +1,6 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.base.BaseCollectionModel = BaseModel.extend({
-    initialize(pAttributes, pOptions) {
+    initialize: function(pAttributes, pOptions) {
       BaseModel.prototype.initialize.call(this, pAttributes, pOptions);
 
       /**
@@ -18,7 +18,7 @@
         this
       );
     },
-    add(pItems, pOptions) {
+    add: function(pItems, pOptions) {
       // check if multi items -> array
       if (typeof pItems.setParentModel !== 'undefined') {
         pItems.setParentModel(this);
@@ -26,28 +26,28 @@
 
       this.getItems().add(pItems, pOptions);
     },
-    getModel(pId) {
+    getModel: function(pId) {
       return this.getItems().get(pId);
     },
-    getItems() {
+    getItems: function() {
       return this.get('items');
     },
-    hasItems() {
+    hasItems: function() {
       return this.has('items') && this.getItems().length > 0;
     },
-    at(pIndex) {
+    at: function(pIndex) {
       return this.getItems().at(pIndex);
     },
-    findByViewType(pViewType) {
+    findByViewType: function(pViewType) {
       return this.getItems().where({ type: pViewType });
     },
-    reset(pDestroyItems) {
+    reset: function(pDestroyItems) {
       const tmpDestroyItems = pDestroyItems || false;
 
       if (tmpDestroyItems) this.destroyItems();
       this.getItems().reset();
     },
-    destroyItems(pItems) {
+    destroyItems: function(pItems) {
       const tmpItems = pItems || this.getItems();
 
       _.each(
@@ -63,7 +63,7 @@
         }, this)
       );
     },
-    refreshAll(pItems) {
+    refreshAll: function(pItems) {
       const tmpItems = pItems || this.getItems();
 
       _.each(
@@ -79,12 +79,12 @@
         }, this)
       );
     },
-    refresh(pModel) {
+    refresh: function(pModel) {
       const tmpModel = pModel || this;
 
       BaseModel.prototype.refresh.call(tmpModel);
     },
-    inviewEnable(pState, pCollection) {
+    inviewEnable: function(pState, pCollection) {
       const tmpCollection = pCollection || this.getItems();
 
       _.each(

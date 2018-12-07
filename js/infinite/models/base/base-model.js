@@ -5,29 +5,29 @@
       initialDOMItem: true,
       type: 'root',
     },
-    initialize(pModel, pOptions) {
+    initialize: function(pModel, pOptions) {
       _.extend(this, pOptions);
     },
-    create(pData) {
+    create: function(pData) {
       this.set(pData);
     },
-    inviewEnable(pState) {
+    inviewEnable: function(pState) {
       this.set('inviewEnabled', pState);
     },
-    hasItems() {
+    hasItems: function() {
       return false;
     },
-    refresh() {
+    refresh: function() {
       this.trigger('refresh', this);
     },
-    setParentModel(pModel) {
+    setParentModel: function(pModel) {
       this.set('parentModel', pModel, { silent: true });
     },
-    setElement($pElement) {
+    setElement: function($pElement) {
       this.set('el', $pElement, { silent: true });
       this.trigger('elementChanged', this.get('el'));
     },
-    getParentModel() {
+    getParentModel: function() {
       return this.get('parentModel');
     },
   });

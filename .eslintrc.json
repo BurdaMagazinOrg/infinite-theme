@@ -1,17 +1,23 @@
 {
-  "extends": ["airbnb-es5", "prettier"],
-  "plugins": ["prettier", "eslint-plugin-compat"],
+  "extends": ["plugin:es/no-2015", "drupal", "airbnb-es5", "prettier"],
+  "plugins": ["es", "compat", "prettier"],
   "root": true,
   "env": {
     "browser": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
   "rules": {
+    "compat/compat": "error",
     "prettier/prettier": [
       "error",
       {
         "singleQuote": true,
         "trailingComma": "es5"
       }
-    ]
+    ],
+    "func-names": 0,
+    "no-param-reassign": 0
   }
 }

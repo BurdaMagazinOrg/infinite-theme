@@ -6,23 +6,23 @@
     ajaxModel: null,
     url: AppConfig.searchApiUrl,
     isUserSearching: false,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseCollectionModel.prototype.initialize.call(this, pOptions);
     },
-    fetch(pString, pOptions) {
+    fetch: function(pString, pOptions) {
       // _.extend(pOptions, {reset: true, traditional: true});
       // return Backbone.Model.prototype.fetch.apply(this, arguments);
 
       if (this.ajaxModel != null) this.ajaxModel.destroy();
       this.ajaxModel = new AjaxModel({
-        url: `${this.url}?fulltext=${pString}`,
+        url: '' + this.url + '?fulltext=' + pString,
         callback: _.bind(this.parse, this),
       });
 
       this.trigger('request', this);
       this.ajaxModel.execute();
     },
-    parse(pAjaxContent) {
+    parse: function(pAjaxContent) {
       const $tmpItem = $(pAjaxContent)
         .find('.infinite-item')
         .addBack()
@@ -31,7 +31,7 @@
 
       this.trigger('sync', this);
     },
-    toggleOpenState() {
+    toggleOpenState: function() {
       this.set('is_open', !this.get('is_open'));
     },
   });

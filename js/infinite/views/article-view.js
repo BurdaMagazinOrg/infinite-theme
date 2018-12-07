@@ -14,7 +14,7 @@
     articleReadInview: null,
     articleReadDelay: 0,
     articleSEOTitle: '',
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
       this.articleReadDelay = AppConfig.articleReadDelay || 2000;
@@ -33,7 +33,7 @@
       this.initTracking();
       this.renderParagraphSocials();
     },
-    initTracking() {
+    initTracking: function() {
       this.articleReadInview = this.$el
         .find('.item-paragraph--text:last')
         .inview({
@@ -56,26 +56,29 @@
         });
       }
     },
-    handleArticleScrolledEnter() {
+    handleArticleScrolledEnter: function() {
       this.extendPersona();
       this.trackArticleScrolled();
     },
-    handleArticleReadEnter() {
+    handleArticleReadEnter: function() {
       this.stopArticleReadInterval();
 
-      this.readInterval = setInterval(() => {
-        this.trackArticleRead();
-        this.stopArticleReadInterval();
-      }, this.articleReadDelay);
+      this.readInterval = setInterval(
+        function() {
+          this.trackArticleRead();
+          this.stopArticleReadInterval();
+        }.bind(this),
+        this.articleReadDelay
+      );
     },
-    handleArticleReadExit() {
+    handleArticleReadExit: function() {
       this.stopArticleReadInterval();
     },
-    stopArticleReadInterval() {
+    stopArticleReadInterval: function() {
       clearInterval(this.readInterval);
       this.readInterval = 0;
     },
-    trackArticleRead() {
+    trackArticleRead: function() {
       this.articleReadInview.destroy();
 
       if (typeof TrackingManager !== 'undefined') {
@@ -90,7 +93,7 @@
         );
       }
     },
-    trackArticleScrolled() {
+    trackArticleScrolled: function() {
       this.articleScrolledInview.destroy();
 
       if (typeof TrackingManager !== 'undefined') {
@@ -105,7 +108,7 @@
         );
       }
     },
-    handlePageview() {
+    handlePageview: function() {
       const tmpModel = this.model.get('parentModel'); // infiniteBlockViewModel
       const $tmpElement = tmpModel.get('el');
       const tmpHistoryURL = $tmpElement.data('history-url');
@@ -123,7 +126,7 @@
         );
       }
     },
-    extendPersona() {
+    extendPersona: function() {
       const persona = {};
       if (this.infiniteBlockDataModel && typeof Persona !== 'undefined') {
         persona.channel = this.infiniteBlockDataModel.get('category');
@@ -131,7 +134,7 @@
         Persona.extendPersona(persona);
       }
     },
-    renderParagraphSocials() {
+    renderParagraphSocials: function() {
       if (typeof twttr !== 'undefined') {
         twttr.widgets.load(this.$el[0]);
       }
@@ -146,12 +149,14 @@
 
       if (typeof tracdelight !== 'undefined') {
         window.tracdelight
-          .then(() => {
-            $.each(this.$el.find('.td-widget'), (pIndex, pItem) => {
-              window.td.parse(pItem);
-            });
-          })
-          .catch(err => {
+          .then(
+            function() {
+              $.each(this.$el.find('.td-widget'), function(pIndex, pItem) {
+                window.td.parse(pItem);
+              });
+            }.bind(this)
+          )
+          .catch(function(err) {
             console.error('Tracdelight Error', err);
           });
       }

@@ -4,7 +4,7 @@
     pageOffsetsModel: null,
     offsetsPageModel: null,
     offsetTop: 0,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       this.$links = this.$el.find('li a');
       this.$links.click($.proxy(this.onClickHandler, this));
 
@@ -23,7 +23,7 @@
 
       if (
         window.location.hash &&
-        this.$el.find(`a[href="${window.location.hash}"]`).length > 0
+        this.$el.find('a[href="' + window.location.hash + '"]').length > 0
       ) {
         setTimeout(
           $.proxy(function() {
@@ -33,7 +33,7 @@
         );
       }
     },
-    scrollToElement(pElementId) {
+    scrollToElement: function(pElementId) {
       $('html, body').animate(
         {
           scrollTop: Math.round(
@@ -48,13 +48,13 @@
 
       return false;
     },
-    onClickHandler(pEvent) {
+    onClickHandler: function(pEvent) {
       const tmpItemId = $(pEvent.currentTarget).attr('href');
       this.scrollToElement(tmpItemId);
 
       return false;
     },
-    onOffsetHandler(pModel) {
+    onOffsetHandler: function(pModel) {
       this.offsetTop = pModel.get('offsets').top;
     },
   });

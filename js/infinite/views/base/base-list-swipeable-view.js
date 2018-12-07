@@ -13,7 +13,7 @@
       slideClass: 'swipeable__item',
       grabCursor: true,
     },
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
       // init slide navi
@@ -42,10 +42,10 @@
         );
       }
     },
-    createView() {
+    createView: function() {
       this.$swiperContainer = this.$el.find('.container-content');
     },
-    updateViews() {
+    updateViews: function() {
       this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
 
@@ -55,7 +55,7 @@
         this.disableMobileMode();
       }
     },
-    enableMobileMode() {
+    enableMobileMode: function() {
       if (Blazy == undefined) return;
 
       this.swiperApi.on('slideChange', function() {
@@ -83,16 +83,16 @@
         }
       });
     },
-    disableMobileMode() {
+    disableMobileMode: function() {
       if (Blazy == undefined) return;
 
       this.swiperApi.off('slideChange');
     },
-    removeSwiper() {
+    removeSwiper: function() {
       this.swiperApi.destroy(true, true);
       this.$swiperContainer.removeData('swiperApi');
     },
-    onDeviceBreakpointHandler(pModel) {
+    onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
 
       if (pModel.id == 'smartphone' && this.isMobileMode == false) {

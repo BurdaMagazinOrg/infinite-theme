@@ -4,12 +4,12 @@
     initialCall: false,
     initialDOMItem: true,
     infiniteBlockDataModel: null,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseInviewView.prototype.initialize.call(this, pOptions);
 
       this.parseInfiniteView(this.$el, { initialCall: this.initialCall });
     },
-    parseInfiniteView(pContainer, pSettings) {
+    parseInfiniteView: function(pContainer, pSettings) {
       if (pSettings.initialDOMItem === false) this.initialDOMItem = false;
 
       const tmpSettings = _.extend(
@@ -56,7 +56,7 @@
         this.createDynamicItem(tmpSettings);
       }
     },
-    createDynamicItem(pSettings) {
+    createDynamicItem: function(pSettings) {
       const $tmpItem = pSettings.el;
 
       const tmpViewType = $tmpItem.data('view-type');
@@ -99,7 +99,7 @@
 
       $tmpItem.data('infiniteModel', tmpModel);
     },
-    destroy() {
+    destroy: function() {
       BaseView.prototype.destroy.call(this);
     },
   });

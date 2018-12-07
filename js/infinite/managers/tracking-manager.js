@@ -8,7 +8,7 @@
       gtmIndexPosEvent: '',
       activeInfiniteBlockModel: null,
       lastViewState: '',
-      initialize(pOptions) {
+      initialize: function(pOptions) {
         _.extend(this, pOptions);
 
         if (
@@ -32,9 +32,9 @@
         this.listenTo(
           this.infiniteViewsModel,
           'change:inview',
-          model => {
+          function(model) {
             _.delay(this.inviewChangeHandler, 10, model);
-          },
+          }.bind(this),
           this
         );
         this.initBaseElements();
@@ -74,21 +74,21 @@
           this
         );
       },
-      onAdBlockDetected() {
+      onAdBlockDetected: function() {
         TrackingManager.trackEvent({
           category: 'marketingBlocker',
           action: 'active',
           eventNonInteraction: true,
         });
       },
-      onAdBlockNotDetected() {
+      onAdBlockNotDetected: function() {
         TrackingManager.trackEvent({
           category: 'marketingBlocker',
           action: 'inactive',
           eventNonInteraction: true,
         });
       },
-      inviewChangeHandler(pModel) {
+      inviewChangeHandler: function(pModel) {
         /**
          * use only infiniteBlockView for tracking and complex inview logic
          */
@@ -132,7 +132,7 @@
             ).toString();
             tmpTrackingObject.event = tmpTrackingObject.category =
               'scroll_depth';
-            tmpTrackingObject.depth = `index_${tmpIndex}`;
+            tmpTrackingObject.depth = 'index_' + tmpIndex;
             tmpTrackingObject.location = TrackingManager.getLocationType(
               this.initialLocation
             );
@@ -148,7 +148,7 @@
 
         this.lastViewState = tmpInviewModel.state;
       },
-      initBaseElements() {
+      initBaseElements: function() {
         $('#menu-open-btn', this.$el).click(function() {
           TrackingManager.trackEvent(
             {
@@ -258,7 +258,7 @@
           );
         });
       },
-      parseTrackingElements($pContainer) {
+      parseTrackingElements: function($pContainer) {
         let tmpSelector = '';
 
         let $tmpItems = [];
@@ -283,7 +283,7 @@
               category: 'mkt-userInteraction',
               action: 'outbrainClick',
               label: tmpMagazineName,
-              index: `index_${tmpIndex}`,
+              index: 'index_' + tmpIndex,
               eventNonInteraction: false,
             };
 
@@ -374,7 +374,7 @@
             .unbind('click', this.onTeaserCategoryClickHandler)
             .bind('click', $.proxy(this.onTeaserCategoryClickHandler, this));
       },
-      onFeedTeaserClickHandler(pEvent) {
+      onFeedTeaserClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget).closest('.teaser');
 
         let tmpIndex;
@@ -400,13 +400,13 @@
           event: this.gtmIndexEvent,
           category: 'teaser',
           action: 'feed_teaser',
-          index: `index_${tmpIndex}`,
+          index: 'index_' + tmpIndex,
           eventNonInteraction: false,
         };
 
         TrackingManager.trackEvent(tmpTrackingObject);
       },
-      onTeaserCategoryClickHandler(pEvent) {
+      onTeaserCategoryClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget);
 
         const tmpText = $tmpItem.text();
@@ -419,7 +419,7 @@
           eventNonInteraction: false,
         });
       },
-      onPresenterFullClickHandler(pEvent) {
+      onPresenterFullClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget);
 
         const tmpIndex = $('.region-presenter').index($tmpItem) + 1;
@@ -428,7 +428,7 @@
           event: this.gtmIndexEvent,
           category: 'teaser',
           action: 'presenter_full',
-          index: `index_${tmpIndex}`,
+          index: 'index_' + tmpIndex,
           eventNonInteraction: false,
         };
 
@@ -437,7 +437,7 @@
           TrackingManager.getAdvTrackingByElement($tmpItem)
         );
       },
-      onPresenterHalfClickHandler(pEvent) {
+      onPresenterHalfClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget).parent(
           '.teaser-landscape-medium'
         );
@@ -449,7 +449,7 @@
           event: this.gtmIndexEvent,
           category: 'teaser',
           action: 'presenter_half',
-          index: `index_${tmpIndex}`,
+          index: 'index_' + tmpIndex,
           eventNonInteraction: false,
         };
 
@@ -458,7 +458,7 @@
           TrackingManager.getAdvTrackingByElement($tmpItem)
         );
       },
-      onTeaserHorizontalClickHandler(pEvent) {
+      onTeaserHorizontalClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget);
 
         const tmpIndex =
@@ -472,8 +472,8 @@
           event: this.gtmIndexPosEvent,
           category: 'teaser',
           action: 'presenter_multi',
-          index: `index_${tmpIndex}`,
-          pos: `pos_${tmpItemIndex}`,
+          index: 'index_' + tmpIndex,
+          pos: 'pos_' + tmpItemIndex,
           eventNonInteraction: false,
         };
 
@@ -482,7 +482,7 @@
           TrackingManager.getAdvTrackingByElement($tmpItem)
         );
       },
-      onSocialsClickHandler(pEvent) {
+      onSocialsClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget);
 
         const tmpTrackingObject = { category: 'social_media_buttons' };
@@ -502,7 +502,7 @@
           TrackingManager.getAdvTrackingByElement($tmpItem)
         );
       },
-      onAuthorClickHandler(pEvent) {
+      onAuthorClickHandler: function(pEvent) {
         const $tmpItem = $(pEvent.currentTarget);
 
         const tmpTrackingObject = { category: 'author' };
@@ -518,7 +518,7 @@
       },
     },
     {
-      trackEvent(pTrackingObject, pAdvObject) {
+      trackEvent: function(pTrackingObject, pAdvObject) {
         let tmpTrackingObject = pTrackingObject;
 
         const tmpAdvObject =
@@ -552,7 +552,7 @@
           console.log('No Google Tag Manager available');
         }
       },
-      trackPageView(pPath, pAdvObject) {
+      trackPageView: function(pPath, pAdvObject) {
         const tmpPath = pPath.replace(/([^:]\/)\/+/g, '$1');
 
         const tmpAdvObject =
@@ -578,13 +578,13 @@
           console.log('No Google Tag Manager available');
         }
       },
-      trackIVW(iamDataObject) {
+      trackIVW: function(iamDataObject) {
         if (window.iam_data == undefined) return;
 
         iamDataObject = iamDataObject || window.iam_data;
         iom.c(iamDataObject, 1);
       },
-      trackEcommerce(pData, pType, pAdvObject) {
+      trackEcommerce: function(pData, pType, pAdvObject) {
         let tmpTrackingObject = {};
 
         switch (pType) {
@@ -622,10 +622,10 @@
           console.log('No Google Tag Manager available');
         }
       },
-      getCurrentPath() {
+      getCurrentPath: function() {
         return Backbone.history.location.pathname;
       },
-      getItemType($pItem) {
+      getItemType: function($pItem) {
         let tmpAction = '';
 
         if ($pItem.parents('[data-view-type]').length > 0) {
@@ -656,7 +656,7 @@
 
         return tmpAction;
       },
-      getAdvTrackingByElement($pElement) {
+      getAdvTrackingByElement: function($pElement) {
         let tmpAdvObject;
 
         let $tmpUuidElement = [];
@@ -683,7 +683,7 @@
         });
         return tmpAdvObject;
       },
-      getAdvTrackingByUuid(pUuid) {
+      getAdvTrackingByUuid: function(pUuid) {
         let tmpAdvObject;
 
         let tmpUuid = pUuid;
@@ -718,7 +718,7 @@
 
         return tmpAdvObject;
       },
-      getAdvTrackingByIndex(pIndex) {
+      getAdvTrackingByIndex: function(pIndex) {
         let tmpAdvObject;
 
         if (
@@ -730,7 +730,7 @@
 
         return tmpAdvObject;
       },
-      getLocationType(pDefault) {
+      getLocationType: function(pDefault) {
         let tmpLocation = pDefault;
 
         if ($('#modal-search').hasClass('is_search_enabled')) {

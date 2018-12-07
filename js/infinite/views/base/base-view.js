@@ -3,7 +3,7 @@
     enabled: true,
     deviceModel: null,
     infiniteBlockDataModel: new Backbone.Model(),
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       _.extend(this, pOptions || {});
 
       this.listenTo(this.model, 'refresh', this.onRefreshHandler, this);
@@ -14,30 +14,30 @@
         this
       );
     },
-    delegateElements($pElement) {
+    delegateElements: function($pElement) {
       const $tmpElement = $pElement || this.$el;
 
       if (typeof BaseUtils !== 'undefined') {
         BurdaInfinite.utils.BaseUtils.delegateElements($tmpElement);
       }
     },
-    enableView() {
+    enableView: function() {
       this.enabled = true;
     },
-    onElementChangedHandler(pModel) {
+    onElementChangedHandler: function(pModel) {
       this.$el = $(this.model.get('el')); // jQueryObject needed
       this.refresh();
     },
-    onRefreshHandler(pEvent) {
+    onRefreshHandler: function(pEvent) {
       this.refresh();
     },
-    refresh() {
+    refresh: function() {
       this.delegateElements();
     },
-    disableView() {
+    disableView: function() {
       this.enabled = false;
     },
-    destroy() {
+    destroy: function() {
       BaseInviewView.prototype.destroy.call(this);
     },
   });

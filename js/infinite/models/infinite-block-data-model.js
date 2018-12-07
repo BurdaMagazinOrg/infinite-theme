@@ -1,7 +1,7 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.InfiniteBlockDataModel = Backbone.Model.extend({
     $el: [],
-    defaults() {
+    defaults: function() {
       return {
         nid: '',
         uuid: '',
@@ -14,11 +14,11 @@
         noTrack: '',
       };
     },
-    initialize(pAttributes, pOptions) {
+    initialize: function(pAttributes, pOptions) {
       this.$el = pAttributes.$el || pAttributes.el;
       this.parseElement(this.$el);
     },
-    parseElement($pElement) {
+    parseElement: function($pElement) {
       const tmpUuid = $pElement.data('uuid');
       const drupalInfo = Object.assign(
         {
@@ -80,13 +80,13 @@
         contentType: tmpContentType,
         contentSubType: tmpContentSubType,
         entityID: tmpEntityID,
-        entityType,
+        entityType: entityType,
         // 'cssClass': tmpClasses,
         trackingContainerType: tmpTrackingContainerType,
         noTrack: tmpNoTrack,
       });
     },
-    getElement() {
+    getElement: function() {
       return this.get('$el') || [];
     },
   });

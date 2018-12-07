@@ -3,13 +3,13 @@
     mediaId: null,
     slick: null,
     $slickElement: [],
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
       this.mediaId = this.$el.data('media-id').toString();
       this.createView();
     },
-    createView() {
+    createView: function() {
       this.$slickElement = this.$el.find('.slick');
       this.$slickElement.on('init', _.bind(this.initSlick, this));
       this.$slickElement.on(
@@ -17,7 +17,7 @@
         _.bind(this.onBeforeChangeHandler, this)
       );
     },
-    initSlick(pEvent, pSlick, pCurrentSlide, pNextSlide) {
+    initSlick: function(pEvent, pSlick, pCurrentSlide, pNextSlide) {
       this.slick = pSlick;
 
       this.$el.find('.swiper-button-prev').on(
@@ -34,7 +34,7 @@
         }, this)
       );
     },
-    onBeforeChangeHandler(pEvent, pSlick, pCurrentSlide, pNextSlide) {
+    onBeforeChangeHandler: function(pEvent, pSlick, pCurrentSlide, pNextSlide) {
       const tmpPath =
         this.infiniteBlockDataModel != null &&
         this.infiniteBlockDataModel.has('path') &&

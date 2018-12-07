@@ -1,6 +1,6 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.InfiniteBlockView = BaseDynamicView.extend({
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
     },
   });

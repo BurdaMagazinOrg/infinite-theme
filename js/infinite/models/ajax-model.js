@@ -11,7 +11,7 @@
     },
     ajax: null,
     settings: null,
-    initialize(pSettings) {
+    initialize: function(pSettings) {
       this.settings = _.extend(this.defaults, pSettings);
       this.ajax = Drupal.ajax(this.settings);
 
@@ -41,7 +41,7 @@
         Drupal.ajax.instances[this.instanceIndex] = null;
       };
     },
-    execute() {
+    execute: function() {
       this.ajax.execute();
     },
   });

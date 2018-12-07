@@ -4,7 +4,7 @@
       infiniteViewsModel: {},
       scrollTopAdSettings: 0,
       scrollTop: 0,
-      initialize(pOptions) {
+      initialize: function(pOptions) {
         _.extend(this, pOptions);
 
         if (!Backbone.History.started && _.isFunction(history.pushState))
@@ -19,11 +19,11 @@
           this
         );
       },
-      onInviewChangeHandler(pModel) {
+      onInviewChangeHandler: function(pModel) {
         if (pModel.get('type') != 'infiniteBlockView') return;
         this.urlChangeHandler(pModel);
       },
-      urlChangeHandler(pModel) {
+      urlChangeHandler: function(pModel) {
         if (
           this.scrollTop == $(window).scrollTop() ||
           !pModel.get('el').data('history-url')
@@ -56,7 +56,7 @@
       },
     },
     {
-      pushHistory(pURL, pSettings) {
+      pushHistory: function(pURL, pSettings) {
         // console.log(">>> pushHistory", pURL);
         const pushStateSupported = _.isFunction(history.pushState);
         if (pushStateSupported) {

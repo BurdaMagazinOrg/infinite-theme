@@ -12,14 +12,14 @@
         loadOnTransitionStart: true,
       },
     },
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
       this.createView();
       this.updateView();
       this.delegateInview();
       this.duplicateElementClick();
     },
-    createView() {
+    createView: function() {
       this.$swiperContainer = this.$el.find('.swiper-container');
 
       _.extend(this.settings, {
@@ -34,14 +34,14 @@
         _.extend(this.settings, $dataSlider);
       }
     },
-    updateView() {
+    updateView: function() {
       this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
       this.swiperApi
         .off('slideChangeTransitionEnd')
         .on('slideChangeTransitionEnd', this.onSliderChangeHandler.bind(this));
     },
-    trackVisibleProductImpressions() {
+    trackVisibleProductImpressions: function() {
       let tmpView;
 
       let tmpExternalURL = '';
@@ -59,7 +59,7 @@
           if ($tmpElement.hasClass('swiper-slide-duplicate')) {
             tmpExternalURL = $tmpElement.data('external-url');
             $tmpElement = this.$el
-              .find(`[data-external-url='${tmpExternalURL}']`)
+              .find("[data-external-url='" + tmpExternalURL + "']")
               .not('.swiper-slide-duplicate');
           }
 
@@ -79,7 +79,7 @@
         }, this)
       );
     },
-    duplicateElementClick() {
+    duplicateElementClick: function() {
       let $tmpElement = [];
 
       let tmpExternalURL = '';
@@ -100,7 +100,7 @@
                  * search original element
                  */
                 $tmpElement = this.$el
-                  .find(`[data-external-url='${tmpExternalURL}']`)
+                  .find("[data-external-url='" + tmpExternalURL + "']")
                   .not('.swiper-slide-duplicate');
 
                 /**
@@ -115,10 +115,10 @@
         }, this)
       );
     },
-    onSliderChangeHandler(pSwiperApi) {
+    onSliderChangeHandler: function(pSwiperApi) {
       this.trackVisibleProductImpressions();
     },
-    onEnterHandler(pDirection) {
+    onEnterHandler: function(pDirection) {
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackVisibleProductImpressions();
     },

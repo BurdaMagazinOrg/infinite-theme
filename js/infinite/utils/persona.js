@@ -3,7 +3,7 @@ window.Persona = (function Persona() {
   const channelTypes = ['channel', 'subChannel'];
   let personaCollection;
 
-  const getPersonaInfos = () => {
+  const getPersonaInfos = function() {
     const channel = window.document.head.querySelector(
       "[property='article:section']"
     );
@@ -18,31 +18,31 @@ window.Persona = (function Persona() {
     return !!persona.channel && !!persona.subChannel ? persona : false;
   };
 
-  const getHighestValueByKey = key =>
-    Object.keys(personaCollection[key]).reduce(
-      (a, b) => (personaCollection[key][a] > personaCollection[key][b] ? a : b),
-      0
-    );
+  const getHighestValueByKey = function(key) {
+    return Object.keys(personaCollection[key]).reduce(function(a, b) {
+      return personaCollection[key][a] > personaCollection[key][b] ? a : b;
+    }, 0);
+  };
 
-  const getPersona = () => {
+  const getPersona = function() {
     const persona = {};
-    channelTypes.forEach(type => {
+    channelTypes.forEach(function(type) {
       persona[type] = getHighestValueByKey(type);
     });
 
     return !!persona && persona;
   };
 
-  const incrementChannel = (persona, channel) => {
-    Object.keys(persona).forEach(key => {
+  const incrementChannel = function(persona, channel) {
+    Object.keys(persona).forEach(function(key) {
       if (key === channel) {
         persona[key] += 1;
       }
     });
   };
 
-  const writePersonaCollection = persona => {
-    channelTypes.forEach(type => {
+  const writePersonaCollection = function(persona) {
+    channelTypes.forEach(function(type) {
       const channel = persona[type]; // channelName - Beauty as example
       const channelCollection = personaCollection[type]; // channel or subChannel;
       if (!channelCollection.hasOwnProperty(channel))
@@ -56,31 +56,32 @@ window.Persona = (function Persona() {
     );
   };
 
-  const getPersonaCollection = () =>
-    JSON.parse(window.localStorage.getItem('personaCollection'));
+  const getPersonaCollection = function() {
+    return JSON.parse(window.localStorage.getItem('personaCollection'));
+  };
 
-  const getDefaultCollection = () => {
+  const getDefaultCollection = function() {
     const obj = {};
-    channelTypes.forEach(data => {
+    channelTypes.forEach(function(data) {
       obj[data] = {};
     });
     return obj;
   };
 
-  const getDefaultPersona = () => {
+  const getDefaultPersona = function() {
     const obj = {};
-    channelTypes.forEach(data => {
+    channelTypes.forEach(function(data) {
       obj[data] = '';
     });
     return obj;
   };
 
-  const extendPersona = personaInfos => {
+  const extendPersona = function(personaInfos) {
     writePersonaCollection(personaInfos);
     window.dataLayer.push({ event: 'executePersona', persona: getPersona() });
   };
 
-  const init = () => {
+  const init = function() {
     const personaInfos = getPersonaInfos();
     personaCollection = getPersonaCollection() || getDefaultCollection();
 

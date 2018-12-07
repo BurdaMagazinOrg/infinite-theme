@@ -1,10 +1,10 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.base.BaseInviewView = BaseView.extend({
     inview: null,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
     },
-    delegateInview() {
+    delegateInview: function() {
       // this.model.set('inview', 'init');
       // console.log(">>> delegateInview");
 
@@ -14,17 +14,17 @@
         element: this.$el,
         exited: _.bind(function(direction) {
           // console.log('Exited triggered with direction ' + direction)
-          this.model.set('inview', { state: 'exited', direction });
+          this.model.set('inview', { state: 'exited', direction: direction });
           this.onExitedHandler(direction);
         }, this),
         exit: _.bind(function(direction) {
           // console.log('Exit triggered with direction ' + direction)
-          this.model.set('inview', { state: 'exit', direction });
+          this.model.set('inview', { state: 'exit', direction: direction });
           this.onExitHandler(direction);
         }, this),
         entered: _.bind(function(direction) {
           // console.log('Entered triggered with direction ' + direction)
-          this.model.set('inview', { state: 'entered', direction });
+          this.model.set('inview', { state: 'entered', direction: direction });
           this.onEnteredHandler(direction);
         }, this),
         enter: _.bind(function(direction) {
@@ -34,7 +34,7 @@
               // console.log('Enter triggered with direction ' + direction)
               this.model.set('inview', {
                 state: 'enter',
-                direction,
+                direction: direction,
               });
               this.onEnterHandler(direction);
             }, this),
@@ -43,15 +43,15 @@
         }, this),
       });
     },
-    onExitedHandler(pDirection) {
+    onExitedHandler: function(pDirection) {
       this.model.inviewEnable(false);
     },
-    onExitHandler(pDirection) {},
-    onEnteredHandler(pDirection) {},
-    onEnterHandler(pDirection) {
+    onExitHandler: function(pDirection) {},
+    onEnteredHandler: function(pDirection) {},
+    onEnterHandler: function(pDirection) {
       this.model.inviewEnable(true);
     },
-    destroy() {
+    destroy: function() {
       if (this.inview != null) this.inview.destroy();
     },
   });

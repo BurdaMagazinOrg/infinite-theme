@@ -13,7 +13,7 @@
     $feed: {},
     $searchInputField: {},
     isSearchEnabled: false,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
       this.delegateEvents();
@@ -43,11 +43,11 @@
         this
       );
     },
-    createView() {
+    createView: function() {
       this.$feed = $('#feed-modal-search', this.$el);
       this.$searchInputField = this.$el.find('#modal-search-input');
     },
-    onOffsetHandler() {
+    onOffsetHandler: function() {
       if (this.offsetMenuMainModel.get('active') === true) {
         this.$el.css(
           'padding-top',
@@ -57,11 +57,11 @@
         this.$el.css('padding-top', '');
       }
     },
-    clearFeed() {
+    clearFeed: function() {
       this.model.reset();
       this.feedModel.reset(true);
     },
-    renderFeed(pModel) {
+    renderFeed: function(pModel) {
       const $tmpElement = this.model.at(0).get('el');
       $tmpElement.fadeTo(0, 0);
       $tmpElement
@@ -75,7 +75,7 @@
       this.activateScrollBehavior();
       Drupal.behaviors.burdaInfinite.initBlazyOnContainer('#modal-search');
     },
-    onInputChangeHandler(pEvent) {
+    onInputChangeHandler: function(pEvent) {
       const tmpStringLength = this.$searchInputField.val().length;
 
       const tmpMinCharLength = parseInt(
@@ -101,14 +101,14 @@
         tmpStringLength > 0 && tmpStringLength < tmpMinCharLength
       );
     },
-    onStateHandler(pModel, pIsOpen) {
+    onStateHandler: function(pModel, pIsOpen) {
       if (pIsOpen) {
         this.onOpenHandler();
       } else {
         this.onCloseHandler();
       }
     },
-    onOpenHandler() {
+    onOpenHandler: function() {
       this.enableBindings();
       this.$el.show().addClass('in');
       jQuery('body').addClass('modal-open');
@@ -120,7 +120,7 @@
       );
       this.model.set({ isUserSearching: true });
     },
-    onCloseHandler() {
+    onCloseHandler: function() {
       this.disableBindings();
       this.activateScrollBehavior();
       this.$el.hide().removeClass('in');
@@ -134,7 +134,7 @@
         350
       );
     },
-    onKeyHandler(pEvent) {
+    onKeyHandler: function(pEvent) {
       switch (pEvent.which) {
         case 27:
           this.close();
@@ -144,7 +144,7 @@
           break;
       }
     },
-    onUserIsSearching() {
+    onUserIsSearching: function() {
       const isUserSearching = this.model.get('isUserSearching');
       const className = 'is-user-searching';
 
@@ -154,21 +154,21 @@
         this.$el.removeClass(className);
       }
     },
-    activateScrollBehavior() {
+    activateScrollBehavior: function() {
       this.deactivateScrollBehavior();
       $('#search-open-btn').on('click', $.proxy(this.scrollToInput, this));
     },
-    deactivateScrollBehavior() {
+    deactivateScrollBehavior: function() {
       $('#search-open-btn').on('off', this.scrollToInput, this);
     },
-    enableBindings() {
+    enableBindings: function() {
       this.disableBindings();
       $(window).on('keyup', $.proxy(this.onKeyHandler, this));
     },
-    disableBindings() {
+    disableBindings: function() {
       $(window).off('keyup', this.onKeyHandler, this);
     },
-    search(pVal) {
+    search: function(pVal) {
       const tmpSearchString = pVal || this.$searchInputField.val();
 
       if (this.preloader != undefined) this.preloader.destroy();
@@ -178,7 +178,7 @@
       this.model.fetch(tmpSearchString);
       this.model.set({ isUserSearching: false });
     },
-    scrollToInput() {
+    scrollToInput: function() {
       this.$el.animate(
         { scrollTop: this.$searchInputField.offset().top },
         {
@@ -189,12 +189,12 @@
         }
       );
     },
-    clear() {
+    clear: function() {
       this.clearFeed();
       this.$searchInputField.val('');
       this.onInputChangeHandler();
     },
-    close() {
+    close: function() {
       this.model.set('is_open', false);
     },
   });

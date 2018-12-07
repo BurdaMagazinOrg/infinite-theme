@@ -15,7 +15,7 @@
       enabled: null,
       fbaIsFilled: false,
       targeting: null,
-      initialize(pOptions) {
+      initialize: function(pOptions) {
         BaseView.prototype.initialize.call(this, pOptions);
 
         this.$adSlotContainer = this.$el.find('.item-marketing');
@@ -37,7 +37,7 @@
           this
         );
       },
-      updateView() {
+      updateView: function() {
         this.removeFixHeight();
 
         if (this.adRenderModel.visibility == 'visible') {
@@ -46,7 +46,7 @@
           this.hide();
         }
       },
-      checkContainerType() {
+      checkContainerType: function() {
         // TODO: this doesn't return the data, just the element containing it.
         // This also means, that the second to last condition will always fail
         this.adEntityType = this.$el.find('[data-atf-format]');
@@ -70,7 +70,7 @@
           this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
         }
       },
-      updateEnableView() {
+      updateEnableView: function() {
         /**
          * No atf_ad_rendered fired / only enabled
          */
@@ -86,19 +86,19 @@
           this.freeze();
         }
       },
-      enableView() {
+      enableView: function() {
         if (this.enabled) return;
 
         this.enabled = true;
         this.updateEnableView();
       },
-      disableView() {
+      disableView: function() {
         if (!this.enabled) return;
 
         this.enabled = false;
         this.updateEnableView();
       },
-      onEnabledHandler(pModel) {
+      onEnabledHandler: function(pModel) {
         if (pModel != this.model) return; // event bubbling
 
         if (pModel.get('inviewEnabled') == true) {
@@ -107,13 +107,13 @@
           this.disableView();
         }
       },
-      checkHeight() {
+      checkHeight: function() {
         if (this.height != this.$adSlotContainer.height()) {
           this.height = this.$adSlotContainer.height();
           this.model.set('contentHeight', this.height);
         }
       },
-      onDeviceBreakpointHandler(pModel) {
+      onDeviceBreakpointHandler: function(pModel) {
         this.breakpointDeviceModel = pModel;
         this.currentBreakpoint = this.breakpointDeviceModel.id;
 
@@ -121,7 +121,7 @@
 
         this.hide();
       },
-      isAllowedToWrite() {
+      isAllowedToWrite: function() {
         if (
           this.adType == MarketingView.AD_TYPE_FBSA ||
           this.adType == MarketingView.AD_TYPE_INREAD
@@ -131,7 +131,7 @@
 
         return this.enabled;
       },
-      isActive() {
+      isActive: function() {
         if (
           this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR &&
           this.currentBreakpoint != 'desktop'
@@ -141,23 +141,23 @@
 
         return this.enabled;
       },
-      show() {
+      show: function() {
         this.$el.removeClass('ad-inactive').addClass('ad-active');
         this.checkHeight();
         this.visible = true;
       },
-      hide() {
+      hide: function() {
         this.$el.removeClass('ad-active ad-fba').addClass('ad-inactive');
         this.adType = '';
         this.clear();
         this.removeFixHeight();
         this.visible = false;
       },
-      freeze() {
+      freeze: function() {
         this.setFixHeight(this.getAdEntityContainer().height());
         this.clear();
       },
-      clear() {
+      clear: function() {
         if (this.adType == MarketingView.AD_TYPE_FBSA && this.fbaIsFilled) {
           window.ftNuke();
           this.fbaIsFilled = false;
@@ -165,10 +165,10 @@
           this.getAdTechAd().empty();
         }
       },
-      setFixHeight(pHeight) {
+      setFixHeight: function(pHeight) {
         this.getAdEntityContainer().css('height', pHeight);
       },
-      removeFixHeight() {
+      removeFixHeight: function() {
         if (
           this.getAdEntityContainer().prop('style') &&
           this.getAdEntityContainer().prop('style').height !== ''
@@ -176,33 +176,33 @@
           this.getAdEntityContainer().css('height', 'auto');
         }
       },
-      getAdEntityContainer() {
+      getAdEntityContainer: function() {
         if (this.$adEntityContainer.length <= 0) {
           this.$adEntityContainer = this.$el.find('.ad-entity-container');
         }
 
         return this.$adEntityContainer;
       },
-      getAdTechAd() {
+      getAdTechAd: function() {
         if (this.$adTechAd.length <= 0) {
           this.$adTechAd = this.$el.find('.adtech-factory-ad');
         }
 
         return this.$adTechAd;
       },
-      getTargeting() {
+      getTargeting: function() {
         const tmpTargeting =
           this.getAdEntityContainer().attr('data-ad-entity-targeting') || {};
         return JSON.parse(tmpTargeting);
       },
-      getAdContainerType() {
+      getAdContainerType: function() {
         return this.adContainerType;
       },
-      setRenderedAdType(pAdType, pElement) {
+      setRenderedAdType: function(pAdType, pElement) {
         this.adType = pAdType;
 
         if (pAdType == MarketingView.AD_TYPE_FBSA) {
-          this.$el.addClass(`ad-${MarketingView.AD_TYPE_FBSA}`);
+          this.$el.addClass('ad-' + MarketingView.AD_TYPE_FBSA);
           this.fbaIsFilled = true;
 
           if (pElement != undefined) {
@@ -217,7 +217,7 @@
 
         console.log('setRenderedAdType', this.adType);
       },
-      setRenderModel(pAdModel) {
+      setRenderModel: function(pAdModel) {
         this.adRenderModel = pAdModel;
         this.updateView();
       },

@@ -3,24 +3,24 @@
     $hotspots: [],
     blazy: null,
     trackedProducts: [],
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
       this.createView();
       this.init();
     },
-    createView() {
+    createView: function() {
       this.$hotspots = this.$el.find('.imagepin');
 
       if (typeof Blazy !== 'undefined') {
         this.blazy = new Blazy();
       }
     },
-    init() {
+    init: function() {
       const that = this;
 
       $.each(this.$hotspots, function() {
-        $(this).on('overlay:show', (evt, currentPin) => {
+        $(this).on('overlay:show', function(evt, currentPin) {
           const imagePinId = currentPin.data('imagepin-key');
           const imagePinData = currentPin
             .find('.item-ecommerce')
@@ -44,7 +44,7 @@
           if (that.blazy != null) {
             const $pinImages = currentPin.find('img');
 
-            $.each($pinImages, (index, imageItem) => {
+            $.each($pinImages, function(index, imageItem) {
               that.blazy.load(imageItem);
             });
           }

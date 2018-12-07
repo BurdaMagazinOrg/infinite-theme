@@ -8,7 +8,7 @@
     lastScrollTopPos: -1,
     lastEnabledState: [],
     firstRun: true,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       _.extend(this, pOptions);
 
       if (ModelIds != undefined && BM != undefined) {
@@ -35,7 +35,7 @@
         );
       }
     },
-    updateView($pContext) {
+    updateView: function($pContext) {
       let tmpView;
 
       let $tmpElement;
@@ -86,7 +86,7 @@
         this.writeMarketing(tmpLoadArguments);
       }
     },
-    writeMarketing(pLoadArguments) {
+    writeMarketing: function(pLoadArguments) {
       if (typeof atf_lib !== 'undefined') {
         window.atf_lib.load_tag(pLoadArguments);
         console.log(
@@ -101,7 +101,7 @@
         _.delay(_.bind(this.writeMarketing, this), 100, pLoadArguments);
       }
     },
-    inviewChangeHandler(pModel) {
+    inviewChangeHandler: function(pModel) {
       if (this.lastEnabledState == pModel.get('inview').state) return;
       // || this.lastScrollTopPos == $(window).scrollTop()
 
@@ -122,7 +122,7 @@
       this.lastEnabledState = pModel.get('inview').state;
       this.lastScrollTopPos = $(window).scrollTop();
     },
-    onDeviceBreakpointHandler(pModel) {
+    onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
       _.delay(
         _.bind(function() {
@@ -131,7 +131,7 @@
         1
       );
     },
-    onAtfBeforeLoadHandler(pEvent, pElements) {
+    onAtfBeforeLoadHandler: function(pEvent, pElements) {
       this.beforeAtfLoad(pElements);
     },
   });
@@ -141,12 +141,12 @@
 
   window.addEventListener(
     'atf_no_ad_rendered',
-    event => {
-      const $tmpAdContainer = jQuery(`#${event.element_id}`).closest(
+    function(event) {
+      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
         '.marketing-view'
       );
 
-      const tmpModel = { visibility: 'hidden', event };
+      const tmpModel = { visibility: 'hidden', event: event };
 
       let tmpView;
 
@@ -154,7 +154,7 @@
         tmpView = $tmpAdContainer.data('infiniteModel').get('view');
         tmpView.setRenderModel(tmpModel);
         console.log(
-          `No ad rendered for ${event.element_id}`,
+          'No ad rendered for ' + event.element_id,
           tmpView.adRenderModel.visibility,
           tmpView.$el
         );
@@ -165,16 +165,16 @@
 
   window.addEventListener(
     'atf_ad_rendered',
-    event => {
-      const $tmpAdContainer = jQuery(`#${event.element_id}`).closest(
+    function(event) {
+      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
         '.marketing-view'
       );
 
-      const tmpModel = { visibility: 'visible', event };
+      const tmpModel = { visibility: 'visible', event: event };
 
       let tmpView;
 
-      console.log(`Ad rendered for ${event.element_id}`);
+      console.log('Ad rendered for ' + event.element_id);
 
       if ($tmpAdContainer.data('infiniteModel') != undefined) {
         tmpView = $tmpAdContainer.data('infiniteModel').get('view');

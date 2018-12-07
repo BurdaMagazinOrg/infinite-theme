@@ -3,7 +3,7 @@
     advancedTrackingData: null,
     $containerElement: [],
     inview: null,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
       this.delegateInview();
@@ -39,7 +39,7 @@
 
       this.collectTrackingData();
     },
-    delegateInview() {
+    delegateInview: function() {
       if (this.inview != null) this.inview.destroy();
 
       this.inview = this.$el.find('.teaser__img-container').inview({
@@ -48,16 +48,16 @@
         exit: _.bind(this.onInviewExitHandler, this),
       });
     },
-    onInviewEnterHandler(pDirection) {
+    onInviewEnterHandler: function(pDirection) {
       this.onEnterHandler(pDirection);
     },
-    onInviewExitHandler(pDirection) {},
-    addListener() {
+    onInviewExitHandler: function(pDirection) {},
+    addListener: function() {
       this.$el
         .unbind('click.teaser_feed')
         .bind('click.teaser_feed', $.proxy(this.onTeaserClickHandler, this));
     },
-    createModel() {
+    createModel: function() {
       // var tmpURL = this.$el.data('external-url') || this.$el.data('internal-url'),
       //    $tmpURLElement = [];
       //
@@ -73,7 +73,7 @@
       );
       // this.model.set('url', tmpURL);
     },
-    extendDataLayerInfo() {
+    extendDataLayerInfo: function() {
       if (this.advancedTrackingData.hasOwnProperty('page')) {
         this.model.set('entityType', this.advancedTrackingData.page.entityType);
         this.model.set(
@@ -84,7 +84,7 @@
         this.model.set('entityName', this.advancedTrackingData.page.name);
       }
     },
-    collectTrackingData() {
+    collectTrackingData: function() {
       const tmpData = {
         category: 'teaser-feed-ctr',
         label: this.model.get('title'),
@@ -104,7 +104,7 @@
     //        this.model.set('productIndex', tmpTeaserIndex);
     //    }
     // },
-    trackImpression() {
+    trackImpression: function() {
       if (this.model.get('disabled') == true) return;
 
       this.model.set('trackImpression', true);
@@ -121,7 +121,7 @@
         );
       }
     },
-    trackTeaserClick() {
+    trackTeaserClick: function() {
       if (typeof TrackingManager !== 'undefined') {
         this.model.get('teaserTracking').action = 'click';
         this.model.get('teaserTracking').eventNonInteraction = false;
@@ -131,17 +131,17 @@
         );
       }
     },
-    refresh() {
+    refresh: function() {
       BaseView.prototype.refresh.call(this);
       this.addListener();
       this.createModel();
       this.collectTrackingData();
       this.delegateInview();
     },
-    onTeaserClickHandler(pEvent) {
+    onTeaserClickHandler: function(pEvent) {
       this.trackTeaserClick();
     },
-    onEnterHandler(pDirection) {
+    onEnterHandler: function(pDirection) {
       // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackImpression();
       this.inview.destroy();

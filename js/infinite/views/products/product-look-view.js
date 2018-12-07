@@ -1,16 +1,16 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.products.ProductLookView = ProductView.extend({
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       ProductView.prototype.initialize.call(this, pOptions);
     },
-    delegateInview() {},
-    createModel() {
+    delegateInview: function() {},
+    createModel: function() {
       ProductView.prototype.createModel.call(this);
 
       this.model.set('componentType', 'look');
       this.model.set('variantType', 'look');
     },
-    collectTrackingData() {
+    collectTrackingData: function() {
       ProductView.prototype.collectTrackingData.call(this);
       this.model.get(
         'enhancedEcommerce'

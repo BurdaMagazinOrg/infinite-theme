@@ -1,11 +1,11 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.utils.BaseUtils = {
-    attach() {},
-    delegateElements($pContainer) {
+    attach: function() {},
+    delegateElements: function($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateSocials($pContainer);
     },
-    updateSocials($pContainer) {
+    updateSocials: function($pContainer) {
       let tmpDeviceModel;
 
       if (typeof BM !== 'undefined')
@@ -24,7 +24,7 @@
         .unbind('click.socialsPinterest')
         .bind(
           'click.socialsPinterest',
-          $.proxy(pEvent => {
+          $.proxy(function(pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
 
             const tmpURL = $tmpItem.data('url');
@@ -43,13 +43,11 @@
                 description: tmpDescription,
               });
             } else {
-              tmpPinterestDefaultURL += `?url=${encodeURIComponent(tmpURL)}`;
-              tmpPinterestDefaultURL += `&media=${encodeURIComponent(
-                tmpMedia
-              )}`;
-              tmpPinterestDefaultURL += `&description=${encodeURIComponent(
-                tmpDescription
-              )}`;
+              tmpPinterestDefaultURL += '?url=' + encodeURIComponent(tmpURL);
+              tmpPinterestDefaultURL +=
+                '&media=' + encodeURIComponent(tmpMedia);
+              tmpPinterestDefaultURL +=
+                '&description=' + encodeURIComponent(tmpDescription);
 
               BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
               window.open(tmpPinterestDefaultURL, '_blank');
@@ -64,7 +62,7 @@
         .unbind('click.socialsFacebook')
         .bind(
           'click.socialsFacebook',
-          $.proxy(pEvent => {
+          $.proxy(function(pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
 
             const tmpURL = $tmpItem.data('url');
@@ -124,7 +122,7 @@
         .unbind('click.socialsEmail')
         .bind(
           'click.socialsEmail',
-          $.proxy(pEvent => {
+          $.proxy(function(pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
 
             const tmpURL = $tmpItem.data('url');
@@ -143,7 +141,17 @@
 
             const tmpSpacer = encodeURIComponent('\r\n\r\n');
 
-            const tmpEmailURL = `mailto:?subject=${tmpEmailSubject} ${tmpDescription}&body=${tmpEmailShareText}${tmpSpacer}${tmpDescription}${tmpSpacer}${tmpURL}`;
+            const tmpEmailURL =
+              'mailto:?subject=' +
+              tmpEmailSubject +
+              ' ' +
+              tmpDescription +
+              '&body=' +
+              tmpEmailShareText +
+              tmpSpacer +
+              tmpDescription +
+              tmpSpacer +
+              tmpURL;
 
             BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
             window.open(tmpEmailURL, '_top');
@@ -151,7 +159,7 @@
           }, this)
         );
     },
-    updateBtnActions($pContainer) {
+    updateBtnActions: function($pContainer) {
       $pContainer
         .find('[data-btn-action]')
         .unbind('click.btnAction')
@@ -177,28 +185,33 @@
           }
         });
     },
-    disableBeforeUnloadHandler() {
+    disableBeforeUnloadHandler: function() {
       window.allowBeforeUnload = false;
-      _.delay(() => {
+      _.delay(function() {
         window.allowBeforeUnload = true;
       }, 100);
     },
-    replaceUrlParam(url, paramName, paramValue) {
+    replaceUrlParam: function(url, paramName, paramValue) {
       if (paramValue == null) paramValue = '';
-      const pattern = new RegExp(`\\b(${paramName}=).*?(&|$)`);
+      const pattern = new RegExp('\\b(' + paramName + '=).*?(&|$)');
       if (url.search(pattern) >= 0) {
-        return url.replace(pattern, `$1${paramValue}$2`);
+        return url.replace(pattern, '$1' + paramValue + '$2');
       }
-      return `${url +
+      return (
+        '' +
+        url +
         (url.indexOf('?') > 0 ? '&' : '?') +
-        paramName}=${paramValue}`;
+        paramName +
+        '=' +
+        paramValue
+      );
     },
   };
 
   $('body')
     .once('BaseUtils')
-    .each(() => {
-      $(window).on('base-utils:update', (pEvent, $pContainer) => {
+    .each(function() {
+      $(window).on('base-utils:update', function(pEvent, $pContainer) {
         BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
       });
     });

@@ -1,6 +1,6 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.newsletter.HmNewsletterView = BaseView.extend({
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       Drupal.behaviors.hmNewsletter.attach(pOptions.el.context);
 
       pOptions.el.on('newsletter:success', function(event) {

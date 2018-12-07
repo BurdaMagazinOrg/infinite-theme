@@ -1,17 +1,17 @@
 (function($, Drupal, drupalSettings, Backbone) {
   Drupal.behaviors.coupons = {
-    attach(context) {
+    attach: function(context) {
       this.expandableFilter(context);
       this.expandableItems(context);
     },
-    expandableFilter(context) {
+    expandableFilter: function(context) {
       let timeout;
       const filterHeaders = context.querySelectorAll(
         '#coupon__filter fieldset'
       );
 
-      filterHeaders.forEach(filter => {
-        filter.querySelector('legend').addEventListener('click', e => {
+      filterHeaders.forEach(function(filter) {
+        filter.querySelector('legend').addEventListener('click', function(e) {
           const expandContainer = e.currentTarget.parentNode;
           expandContainer.classList.toggle('expand');
 
@@ -21,7 +21,7 @@
            * */
           clearTimeout(timeout);
           if (expandContainer.classList.contains('expand')) {
-            timeout = setTimeout(() => {
+            timeout = setTimeout(function() {
               expandContainer.classList.add('open');
             }, 300);
           } else {
@@ -30,10 +30,10 @@
         });
       });
     },
-    expandableItems(context) {
+    expandableItems: function(context) {
       const expandableItems = context.querySelectorAll('.expandable');
-      expandableItems.forEach(expandable => {
-        expandable.addEventListener('click', e => {
+      expandableItems.forEach(function(expandable) {
+        expandable.addEventListener('click', function(e) {
           const expandContainer = e.currentTarget.parentNode;
           expandContainer.classList.toggle('expand');
         });

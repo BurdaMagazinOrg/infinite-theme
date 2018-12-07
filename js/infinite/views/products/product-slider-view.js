@@ -2,7 +2,7 @@
   BurdaInfinite.views.products.ProductSliderView = ProductView.extend({
     ecommerceSliderModel: new Backbone.Model(),
     $ecommerceSlider: [],
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       if (
         this.model.has('parentModel') &&
         this.model.get('parentModel').get('type') == 'ecommerceSlider'
@@ -13,10 +13,10 @@
 
       ProductView.prototype.initialize.call(this, pOptions);
     },
-    delegateInview() {
+    delegateInview: function() {
       // override inview method
     },
-    collectTrackingData() {
+    collectTrackingData: function() {
       ProductView.prototype.collectTrackingData.call(this);
 
       if (this.ecommerceSliderModel.get('el').data('nid')) {
@@ -28,7 +28,7 @@
           .toString();
       }
     },
-    setProductIndex() {
+    setProductIndex: function() {
       if (this.$ecommerceSlider.length > 0) {
         const tmpProductIndex = this.$ecommerceSlider
           .find('.item-ecommerce')

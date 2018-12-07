@@ -3,8 +3,8 @@
     defaults: {
       is_open: false,
     },
-    initialize(pOptions) {},
-    toggleOpenState() {
+    initialize: function(pOptions) {},
+    toggleOpenState: function() {
       this.set('is_open', !this.get('is_open'));
     },
   });

@@ -5,7 +5,7 @@
       infiniteBlockDataModel: null,
       $containerElement: [],
       inview: null,
-      initialize(pOptions) {
+      initialize: function(pOptions) {
         BaseView.prototype.initialize.call(this, pOptions);
 
         this.delegateInview();
@@ -14,7 +14,7 @@
 
         this.collectTrackingData();
       },
-      delegateInview() {
+      delegateInview: function() {
         if (this.inview != null) this.inview.destroy();
 
         this.inview = this.$el.find('.img-container').inview({
@@ -23,11 +23,11 @@
           exit: _.bind(this.onInviewExitHandler, this),
         });
       },
-      onInviewEnterHandler(pDirection) {
+      onInviewEnterHandler: function(pDirection) {
         this.onEnterHandler(pDirection);
       },
-      onInviewExitHandler(pDirection) {},
-      addListener() {
+      onInviewExitHandler: function(pDirection) {},
+      addListener: function() {
         this.$el
           .unbind('click.enhanced_ecommerce')
           .bind(
@@ -36,16 +36,16 @@
           );
         // $(window).scroll(_.bind(this.checkPos, this));
       },
-      createModel() {
+      createModel: function() {
         let tmpComponentType = '';
 
         this.model.set('provider', this.$el.data('provider'));
-        this.model.set('price', `${this.$el.data('price')}`);
+        this.model.set('price', '' + this.$el.data('price'));
         this.model.set('currency', this.$el.data('currency'));
         this.model.set('category', this.$el.data('category'));
         this.model.set('title', this.$el.data('title'));
         this.model.set('shop', this.$el.data('shop'));
-        this.model.set('productId', `${this.$el.data('product-id')}`);
+        this.model.set('productId', '' + this.$el.data('product-id'));
         this.model.set('brand', this.$el.data('brand'));
         this.model.set('viewType', this.$el.data('view-type'));
         this.model.set('productCategory', this.$el.data('product-category'));
@@ -121,7 +121,7 @@
           this.model.set('productId', ProductView.PROVIDER_GENERIC);
         }
       },
-      initCustomTracking() {
+      initCustomTracking: function() {
         let externalTrackingURL = this.model.get('url');
         let slicedString = '';
         let componentType = '';
@@ -165,19 +165,19 @@
           case ProductView.PROVIDER_TRACDELIGHT:
             if (hasSubid) {
               if (entityType !== '') {
-                slicedString += `${entityType}`;
+                slicedString += '' + entityType;
               }
 
               if (entityID !== '') {
-                slicedString += `-${entityID}`;
+                slicedString += '-' + entityID;
               }
 
               if (productId !== '') {
-                slicedString += `-${productId}`;
+                slicedString += '-' + productId;
               }
 
               if (componentType !== '') {
-                slicedString += `-${componentType}`;
+                slicedString += '-' + componentType;
               }
 
               externalTrackingURL = BaseUtils.replaceUrlParam(
@@ -193,11 +193,16 @@
             if (externalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
               slicedString = AppConfig.amazonURLTrId.split('-');
               if (slicedString.length > 1) {
-                slicedString = `${slicedString[0]}-${componentType}-${
-                  slicedString[1]
-                }`;
+                slicedString =
+                  '' +
+                  slicedString[0] +
+                  '-' +
+                  componentType +
+                  '-' +
+                  slicedString[1];
               } else {
-                slicedString = `${AppConfig.amazonURLTrId}-${componentType}`;
+                slicedString =
+                  '' + AppConfig.amazonURLTrId + '-' + componentType;
               }
 
               externalTrackingURL = externalTrackingURL.replace(
@@ -224,19 +229,19 @@
                 slicedString += '&subid=';
 
                 if (entityType !== '') {
-                  slicedString += `${entityType}`;
+                  slicedString += '' + entityType;
                 }
 
                 if (entityID !== '') {
-                  slicedString += `-${entityID}`;
+                  slicedString += '-' + entityID;
                 }
 
                 if (productTitleProcessed !== '') {
-                  slicedString += `-${productTitleProcessed}`;
+                  slicedString += '-' + productTitleProcessed;
                 }
 
                 if (componentType !== '') {
-                  slicedString += `-${componentType}`;
+                  slicedString += '-' + componentType;
                 }
               }
 
@@ -254,7 +259,7 @@
           this.$el.attr('data-external-url', externalTrackingURL);
         }
       },
-      collectTrackingData() {
+      collectTrackingData: function() {
         const tmpEnhancedEcommerceData = {
           list: this.model.get('componentType'),
           category: this.model.get('shop'),
@@ -274,7 +279,7 @@
 
         this.model.set('enhancedEcommerce', tmpEnhancedEcommerceData);
       },
-      setProductIndex() {
+      setProductIndex: function() {
         this.$containerElement = this.infiniteBlockDataModel.getElement();
         if (this.$containerElement.length > 0) {
           const tmpProductIndex = this.$containerElement
@@ -284,7 +289,7 @@
           this.model.set('productIndex', tmpProductIndex);
         }
       },
-      trackImpression() {
+      trackImpression: function() {
         this.model.set('trackImpression', true);
         if (typeof TrackingManager !== 'undefined') {
           TrackingManager.trackEcommerce(
@@ -294,7 +299,7 @@
           );
         }
       },
-      trackProductClick() {
+      trackProductClick: function() {
         if (typeof TrackingManager !== 'undefined') {
           TrackingManager.trackEcommerce(
             this.model.get('enhancedEcommerce'),
@@ -303,7 +308,7 @@
           );
         }
       },
-      onProductClickHandler(pEvent) {
+      onProductClickHandler: function(pEvent) {
         this.initCustomTracking();
         this.trackProductClick();
 
@@ -311,7 +316,7 @@
           console.log('>> click on product', this.model.get('tracking-url'));
         }
       },
-      onEnterHandler(pDirection) {
+      onEnterHandler: function(pDirection) {
         // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
         this.trackImpression();
         this.inview.destroy();

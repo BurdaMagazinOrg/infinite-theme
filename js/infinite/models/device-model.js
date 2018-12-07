@@ -21,7 +21,7 @@
     deviceKeys: [],
     lastBreakpoint: {},
     lastDeviceBreakpoint: {},
-    initialize(pAttributes, pOptions) {
+    initialize: function(pAttributes, pOptions) {
       Backbone.Model.prototype.initialize.call(this, pAttributes, pOptions);
 
       this.breakpoints = pOptions.Breakpoints;
@@ -61,7 +61,7 @@
       this.set('isActive', this.getBreakpoints().length > 0);
       // console.log('deviceModelInfo', JSON.parse(this.getReferrerLS()), this);
     },
-    createBreakpoints() {
+    createBreakpoints: function() {
       let tmpModelItem = {};
 
       let tmpMinVal = 0;
@@ -90,7 +90,7 @@
         }, this)
       );
     },
-    createDeviceBreakpoints() {
+    createDeviceBreakpoints: function() {
       let tmpModelItem = {};
 
       let tmpKey = '';
@@ -128,7 +128,7 @@
         }, this)
       );
     },
-    checkActiveBreakpoint() {
+    checkActiveBreakpoint: function() {
       const tmpSize = { width: $(window).width(), height: $(window).height() };
 
       let tmpKey = '';
@@ -144,7 +144,7 @@
        */
       _.each(
         this.getBreakpoints().models,
-        _.bind(pItem => {
+        _.bind(function(pItem) {
           if (pItem.has('active'))
             pItem.set({ active: false }, { silent: true });
         }, this)
@@ -169,7 +169,7 @@
         }, this)
       );
     },
-    checkActiveDevice() {
+    checkActiveDevice: function() {
       const tmpSize = { width: $(window).width(), height: $(window).height() };
 
       const tmpValues = _.clone(this.deviceBreakpointValues).reverse();
@@ -185,7 +185,7 @@
        */
       _.each(
         this.getDeviceBreakpoints().models,
-        _.bind(pItem => {
+        _.bind(function(pItem) {
           if (pItem.has('active'))
             pItem.set({ active: false }, { silent: true });
         }, this)
@@ -214,7 +214,7 @@
         }, this)
       );
     },
-    writeReferrerLS() {
+    writeReferrerLS: function() {
       const tmpParams = this.getURLParams();
 
       const tmpReferrerLS = $.extend(this.getLS(this.getReferrerLSName()), {});
@@ -246,37 +246,37 @@
 
       this.setLSValue(this.getReferrerLSName(), JSON.stringify(tmpReferrerLS));
     },
-    parseUrl(pUrl) {
+    parseUrl: function(pUrl) {
       const a = document.createElement('a');
       a.href = pUrl;
       return a;
     },
-    setLSValue(pCookieName, pValue, pOptions) {
+    setLSValue: function(pCookieName, pValue, pOptions) {
       const tmpOptions = _.extend({ path: '/' }, pOptions);
       window.localStorage.setItem(pCookieName, pValue, tmpOptions);
     },
-    getLS(pCookieName) {
+    getLS: function(pCookieName) {
       return window.localStorage.getItem(pCookieName);
     },
-    getReferrerLSName() {
+    getReferrerLSName: function() {
       return this.get('cookieReferrerName');
     },
-    getReferrerLS() {
+    getReferrerLS: function() {
       return window.localStorage.getItem(this.getReferrerLSName());
     },
-    getURLParams(pParam) {
+    getURLParams: function(pParam) {
       return _.object(
         _.compact(
-          _.map(location.search.slice(1).split('&'), item => {
+          _.map(location.search.slice(1).split('&'), function(item) {
             if (item) return item.split('=');
           })
         )
       );
     },
-    getBreakpoints() {
+    getBreakpoints: function() {
       return this.get('breakpoints');
     },
-    getDeviceBreakpoints() {
+    getDeviceBreakpoints: function() {
       return this.get('deviceBreakpoints');
     },
   });

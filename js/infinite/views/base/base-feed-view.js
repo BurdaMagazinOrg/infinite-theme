@@ -9,7 +9,7 @@
     atBottomOfPage: false,
     fallbackNaviHeight: 56,
     naviHeight: 0,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
 
       this.naviHeight =
@@ -24,7 +24,7 @@
       this.listenTo(this.model, 'change:is_disabled', this.onDisableHandler);
       this.listenTo(this.model, 'reset', this.onResetHandler, this);
     },
-    rebuildFeed() {
+    rebuildFeed: function() {
       if (this.infinite !== null) this.infinite.destroy();
 
       this.infinite = new Waypoint.Infinite({
@@ -33,12 +33,12 @@
         executeCallback: _.bind(this.executeCallback, this),
         preAppendCallback: _.bind(this.preAppendCallback, this),
         appendCallback: _.bind(this.appendCallback, this),
-        offset() {
+        offset: function() {
           return this.context.innerHeight() * 2 - this.adapter.outerHeight();
         },
       });
     },
-    executeCallback() {
+    executeCallback: function() {
       this.lastInfiniteItem =
         this.$el.find('.infinite-item:last').length > 0
           ? this.$el.find('.infinite-item:last')
@@ -46,7 +46,7 @@
       if (this.preloader != null) this.preloader.hide(true, true);
       this.preloader = new SpinnerCubeView({ el: this.lastInfiniteItem });
     },
-    preAppendCallback(pItem) {
+    preAppendCallback: function(pItem) {
       // scroll to new appended article if someone scroll to the bottom and saw the preloader
       const atBottomOfPageCheck =
         window.scrollY + window.innerHeight === document.body.clientHeight;
@@ -54,7 +54,7 @@
         this.atBottomOfPage = true;
       }
     },
-    appendCallback($appendedElement) {
+    appendCallback: function($appendedElement) {
       const appendedElement = $appendedElement[0];
 
       if (this.preloader != null) {
@@ -79,7 +79,7 @@
         initialDOMItem: false,
       });
     },
-    onDisableHandler(pDisabled) {
+    onDisableHandler: function(pDisabled) {
       if (this.infinite == null || this.infinite.waypoint == undefined) return;
 
       if (pDisabled) {
@@ -88,10 +88,10 @@
         this.infinite.waypoint.enable();
       }
     },
-    onResetHandler() {
+    onResetHandler: function() {
       this.clear();
     },
-    appendElement(pElement) {
+    appendElement: function(pElement) {
       this.$feedItemsContainer.append(pElement).fadeIn();
 
       if (this.infinite == null) {
@@ -100,16 +100,16 @@
         this.refreshFeed();
       }
     },
-    refreshFeed() {
+    refreshFeed: function() {
       this.infinite.refresh();
     },
-    clear() {
+    clear: function() {
       this.$feedItemsContainer.empty();
       if (this.infinite != null) {
         this.infinite.destroy();
       }
     },
-    destroy() {
+    destroy: function() {
       this.infinite.destroy();
       BaseDynamicView.prototype.destroy.call(this);
     },

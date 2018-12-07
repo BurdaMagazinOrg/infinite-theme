@@ -1,15 +1,15 @@
 (function($, Drupal, drupalSettings, Backbone, window) {
   Drupal.behaviors.redirectOnClick = {
-    attach() {
+    attach: function() {
       this.onClickRedirectTo('data-internal-url', false);
       this.onClickRedirectTo('data-external-url', true);
     },
-    onClickRedirectTo(urlDataAttribute, openInNewWindow) {
+    onClickRedirectTo: function(urlDataAttribute, openInNewWindow) {
       // Drupal context is not used
       // to make sure that events are always captured
       $(document)
-        .off('click.redirect', `[${urlDataAttribute}]`)
-        .on('click.redirect', `[${urlDataAttribute}]`, e => {
+        .off('click.redirect', '[' + urlDataAttribute + ']')
+        .on('click.redirect', '[' + urlDataAttribute + ']', function(e) {
           // If an actual link is clicked inside of the container
           // we want this to still work
           if (e.target.tagName.toUpperCase() === 'A') {

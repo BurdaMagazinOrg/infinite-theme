@@ -16,7 +16,7 @@
     deviceModel: null,
     breakpointDeviceModel: null,
     isMobileMode: false,
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       _.defaults(this, pOptions || {});
 
       this.pageOffsetsModel = BM.reuseModel(ModelIds.pageOffsetsModel);
@@ -74,10 +74,10 @@
         this
       );
     },
-    createViews() {
+    createViews: function() {
       this.$subMenu = $('#menu-submenu-navigation');
     },
-    createByContext(pSettings) {
+    createByContext: function(pSettings) {
       const tmpSettings = _.extend(
         {
           context: $(window)[0],
@@ -96,7 +96,7 @@
 
       this.sticky = new Waypoint.Sticky(tmpSettings);
     },
-    onStickyHandler() {
+    onStickyHandler: function() {
       if (this.$el.hasClass('stuck')) {
         this.$el.css('top', this.offsetTop);
         this.activateOffset();
@@ -105,12 +105,12 @@
         this.deactivateOffset();
       }
     },
-    onToolbarHandler(pModel) {
+    onToolbarHandler: function(pModel) {
       this.offsetTop = pModel.get('offsets').top;
       this.sticky.waypoint.context.refresh();
       this.onStickyHandler();
     },
-    onModalSearchHandler(pModel, pType) {
+    onModalSearchHandler: function(pModel, pType) {
       const tmpIsOpen = pModel.get('is_open');
 
       const tmpSettings = {};
@@ -134,7 +134,7 @@
         this.createByContext(tmpSettings);
       }
     },
-    clickHandler(pEvent, pType) {
+    clickHandler: function(pEvent, pType) {
       if (pType == 'toggle-sidebar') {
         this.menuSidebarModel.toggleOpenState();
       } else if ('search-open') {
@@ -143,17 +143,17 @@
         }
       }
     },
-    clearStickiness() {
+    clearStickiness: function() {
       this.sticky.destroy();
       this.onStickyHandler();
     },
-    activateOffset() {
+    activateOffset: function() {
       this.pageOffsetsModel.add(this.getOffsetManagerModel());
     },
-    deactivateOffset() {
+    deactivateOffset: function() {
       this.pageOffsetsModel.deactivate(this.getOffsetManagerModel());
     },
-    getOffsetManagerModel() {
+    getOffsetManagerModel: function() {
       const tmpPosition = this.$el.position();
 
       const tmpElementHeight = this.$el.outerHeight(true);
@@ -171,7 +171,7 @@
         },
       };
     },
-    bindMobileListener() {
+    bindMobileListener: function() {
       const $tmpActiveItem = this.$subMenu.find('.is-active');
 
       $tmpActiveItem.off('click').on(
@@ -184,12 +184,12 @@
         }, this)
       );
     },
-    unbindMobileListener() {
+    unbindMobileListener: function() {
       const $tmpActiveItem = this.$subMenu.find('.is-active');
       this.$subMenu.removeClass('is-open');
       $tmpActiveItem.off('click');
     },
-    onDeviceBreakpointHandler(pModel) {
+    onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
 
       if (pModel.id == 'smartphone' && this.isMobileMode == false) {

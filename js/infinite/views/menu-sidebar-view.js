@@ -1,7 +1,7 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.MenuSidebarView = BaseSidebar.extend({
     pageOffsetsModel: {},
-    initialize(pOptions) {
+    initialize: function(pOptions) {
       BaseSidebar.prototype.initialize.call(this, pOptions);
 
       this.pageOffsetsModel = BM.reuseModel(ModelIds.pageOffsetsModel);
@@ -13,10 +13,10 @@
       );
       this.listenTo(this.model, 'change:is_open', this.onStateHandler, this);
     },
-    adjustPlacement(pModel) {
+    adjustPlacement: function(pModel) {
       this.$el.css('padding-top', pModel.get('offsets').top);
     },
-    onStateHandler() {
+    onStateHandler: function() {
       const tmpIsOpen = this.model.get('is_open');
 
       const $tmpBody = $('body');
@@ -28,8 +28,8 @@
         Waypoint.disableAll();
         $tmpBody
           .css({
-            top: `${$(window).scrollTop() * -1}px`,
-            left: `${$(window).scrollLeft() * -1}px`,
+            top: '' + $(window).scrollTop() * -1 + 'px',
+            left: '' + $(window).scrollLeft() * -1 + 'px',
           })
           .addClass('no-scroll');
       } else {

@@ -15,13 +15,13 @@
         '</div>'
     ),
 
-    initialize(pSettings) {
+    initialize: function(pSettings) {
       _.extend(this, pSettings);
 
       this.render();
       if (!this.hidden) this.show();
     },
-    render() {
+    render: function() {
       if (typeof this.preRenderCallback === 'function') {
         this.$template = this.preRenderCallback($(this.template()));
       } else {
@@ -33,7 +33,7 @@
       // this.$template.css('opacity', 0);
       return this;
     },
-    show(pAnimated) {
+    show: function(pAnimated) {
       this.$template.addClass('in');
       // var tmpDuration = pAnimated == false ? 0 : 350;
       // this.$template.stop().animate({opacity: 1, height: this.height}, {
@@ -41,7 +41,7 @@
       //    easing: 'swing'
       // });
     },
-    hide(pAnimated, pRemove) {
+    hide: function(pAnimated, pRemove) {
       this.$template.removeClass('in');
 
       // var tmpDuration = pAnimated == false ? 0 : 350,
@@ -56,7 +56,7 @@
       //    }, this)
       // });
     },
-    destroy() {
+    destroy: function() {
       console.log('REMOVE');
       this.$template.remove();
     },

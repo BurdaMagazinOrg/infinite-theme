@@ -5,14 +5,14 @@
       infiniteBlock: false,
       initialDOMItem: true,
     },
-    initialize(pModel, pOptions) {
+    initialize: function(pModel, pOptions) {
       BaseCollectionModel.prototype.initialize.call(this, pModel, pOptions);
 
       if (!_.isUndefined(pModel)) {
         this.createDynamicItem(pModel);
       }
     },
-    createDynamicItem(pSettings, pOptions) {
+    createDynamicItem: function(pSettings, pOptions) {
       let tmpView = {};
 
       const $tmpElement = pSettings.el;

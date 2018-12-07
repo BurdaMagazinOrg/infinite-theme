@@ -13,12 +13,12 @@
   };
 
   Drupal.behaviors.burdaInfinite = {
-    attach(context) {
+    attach: function(context) {
       const $context = $(context);
 
       $('body')
         .once(ViewIds.mainView)
-        .each(() => {
+        .each(function() {
           const mainView = new MainView({ el: $context, id: ViewIds.mainView });
           BM.reuseView(ViewIds.mainView, mainView);
         });
@@ -26,13 +26,13 @@
       this.initBlazyOnContainer('#modal-search');
     },
 
-    initBlazyOnContainer(containerSelector) {
+    initBlazyOnContainer: function(containerSelector) {
       if (document.querySelector(containerSelector) === null) {
         return;
       }
       new Blazy({
         container: containerSelector,
-        success(element) {
+        success: function(element) {
           jQuery(element)
             .parents('.media--loading')
             .removeClass('media--loading');
@@ -41,14 +41,14 @@
     },
   };
 
-  window.addEventListener('acquiaLiftDecision', e => {
+  window.addEventListener('acquiaLiftDecision', function(e) {
     console.log(
       '%cacquiaLift | decision',
       'color: blue; font-weight: bold;',
       e.detail.decision_slot_id
     );
     jQuery(document).trigger('base-utils:update-links', [
-      jQuery(`[data-lift-slot="${e.detail.decision_slot_id}"]`).find(
+      jQuery('[data-lift-slot="' + e.detail.decision_slot_id + '"]').find(
         '.promotion'
       ),
     ]);
