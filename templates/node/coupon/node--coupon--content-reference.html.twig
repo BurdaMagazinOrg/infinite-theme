@@ -8,6 +8,9 @@
 {{ attach_library('infinite/coupons') }}
 
 <div{{ attributes.addclass(classes) }}>
+    <a href="/affiliatelinks" rel="nofollow">
+        <div class="affiliatelinks">Affiliatelink</div>
+    </a>
     <div class="coupon" data-expires="{{ end_date }}">
         {% block coupon_logo %}{% endblock %}
         <h3 class="coupon__title">{{ label }}</h3>

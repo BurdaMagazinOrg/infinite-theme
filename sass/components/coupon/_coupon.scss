@@ -332,6 +332,11 @@
     text-align: center;
     position: relative;
 
+    .affiliatelinks {
+      @include label--affiliate();
+      padding: 0;
+    }
+
     &--content_reference {
       .coupon {
         position: relative;
@@ -343,7 +348,6 @@
         &.expired {
           opacity: 0.3;
           pointer-events: none;
-          margin-top: $grid-unit-5;
           + .coupon__expired {
             display: block;
           }
