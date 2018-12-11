@@ -1,5 +1,5 @@
 @function icon($character) {
-  @return unquote("\"")+unquote(str-insert($character,"\\", 1))+unquote("\"");
+  @return unquote('"') + unquote(str-insert($character, "\\", 1)) + unquote('"');
 }
 
 @import "bootstrap/mixins";
@@ -45,6 +45,7 @@
 @import "mixins/mixins.ads";
 @import "mixins/mixins.promotions";
 @import "mixins/mixins.links";
+@import "mixins/mixins.coupons";
 
 @import "mixins/pages/mixins.page-archive";
 @import "mixins/pages/mixins.page-vocabulary";

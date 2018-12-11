@@ -1,0 +1,81 @@
+{% set classes = [
+  'item-content',
+  'item-content--coupon',
+  'item-content--coupon--content_reference',
+  'item-content--coupon--' ~ view_mode,
+] %}
+
+{{ attach_library('infinite/coupons') }}
+
+<div{{ attributes.addclass(classes) }}>
+    <a href="/affiliatelinks" class="coupon__affiliatelink" rel="nofollow">
+        <div class="affiliatelinks">Affiliatelink</div>
+    </a>
+    <div class="coupon" data-expires="{{ end_date }}">
+        {% block coupon_logo %}{% endblock %}
+        <h3 class="coupon__title">{{ label }}</h3>
+        <div class="coupon__brand">
+            {% block coupon_teaser %}
+                {% if content.field_logo | render is not empty %}
+                    <div class="coupon__brand--logo">{{ content.field_logo }}</div>
+                {% endif %}
+            {% endblock %}
+        </div>
+        {% if content.field_coupon_discount | render is not empty %}
+            <div class="coupon__discount">
+                <span class="coupon__discount--value">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 71.591 71.591">
+                        <defs></defs>
+                        <g id="Gruppe_30" data-name="Gruppe 30" transform="translate(-1053 -2558)">
+                            <path id="Pfad_14" data-name="Pfad 14" d="M35.867,0l2.869,3.443L42.18.574l2.3,3.874L48.492,2.3l1.435,4.3,4.3-1.578.717,4.591L59.4,8.9v4.448l4.448.143-.861,4.448,4.448,1L65.708,23.1l4.3,1.722-2.439,3.874,3.73,2.3-3.013,3.443,3.3,3.013L68,40.171,70.73,43.9,66.713,45.91l2.152,4.017-4.448,1.291,1.291,4.448-4.448.43.43,4.591L57.244,60.4l-.287,4.448-4.448-1-1.148,4.3L47.2,66.282l-1.865,4.161-3.73-2.582-2.582,3.73-3.156-3.156-3.3,3.156-2.582-3.73-3.73,2.582L24.39,66.282l-4.161,1.865-1.148-4.3-4.3,1L14.49,60.4,9.9,60.687l.43-4.591-4.448-.43,1.291-4.448-4.3-1.291L4.878,45.91.861,43.9l2.726-3.73L0,37.445l3.3-3.013L.287,30.989l3.874-2.3L1.722,24.82,5.882,23.1,4.3,18.938l4.3-1-.861-4.448,4.591-.143L12.195,8.9l4.448.717L17.5,5.021,21.664,6.6l1.578-4.3,3.874,2.152,2.3-3.874,3.443,2.869Z" transform="translate(1053 2558)"/>
+                            <text id="Jetzt" class="cls-1" style="fill: #fff; font-weight: 700;font-size: 12px; font-family: PTSans-NarrowBold, PT Sans Narrow; letter-spacing: 0.025em;" transform="translate(1086.232 2612.71)">
+                                <tspan x="-12.365" y="0">Rabatt</tspan>
+                            </text>
+                            <text id="_20" data-name="20" class="cls-2" style="fill: #fff; font-weight: 700;font-size: 32px; font-family: NotoSerif-Bold, Noto Serif;" transform="translate(1089.283 2598.393)">
+                                <tspan x="-24.231" y="0">{{ content.field_coupon_discount  | render | trim }}</tspan>
+                                <tspan style="font-size: 14px;" class="cls-3" y="0">%</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+        {% endif %}
+        <div class="coupon__tnc">
+            {% if content.field_tnc | render is not empty %}
+                <div class="coupon__tnc-label expandable">Teilnahmebedingungen</div>
+                <div class="coupon__tnc-details">
+                    {{ content.field_tnc }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="coupon__code--wrapper">
+            {% if content.field_coupon_code | render is not empty %}
+                <div class="coupon__code">
+                    <span class="coupon__code--label">Gutscheincode:</span>
+                    {{ content.field_coupon_code }}
+                </div>
+            {% endif %}
+            <div class="coupon__button">
+                {{ content.field_url }}
+            </div>
+        </div>
+        {% block advertising_products %}{% endblock %}
+        {% block validity %}{% endblock %}
+    </div>
+    <div class="coupon__expired">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 110.406 110.406">
+            <g id="Gruppe_31" data-name="Gruppe 31" transform="translate(-429.879 -2729.312) rotate(13)">
+                <path id="Pfad_14" data-name="Pfad 14" d="M46.121,0l3.69,4.428L54.238.738,57.19,5.719l5.166-2.767L64.2,8.486l5.535-2.029.922,5.9,5.719-.922v5.719l5.719.184L80.988,23.06l5.719,1.291L84.494,29.7l5.535,2.214L86.892,36.9l4.8,2.952-3.874,4.428,4.243,3.874-4.612,3.505,3.505,4.8-5.166,2.583L88.552,64.2l-5.719,1.66,1.66,5.719-5.719.553.553,5.9-5.719-.369-.369,5.719L67.521,82.1,66.045,87.63l-5.35-2.4-2.4,5.35-4.8-3.321-3.321,4.8L46.121,88l-4.243,4.059-3.321-4.8-4.8,3.321-2.4-5.35-5.35,2.4L24.536,82.1,19,83.387l-.369-5.719-5.9.369.553-5.9L7.564,71.58l1.66-5.719L3.69,64.2l2.583-5.166L1.107,56.452l3.505-4.8L0,48.15l4.243-3.874L.369,39.848,5.35,36.9,2.214,31.916,7.564,29.7l-2.029-5.35,5.535-1.291L9.962,17.341l5.9-.184-.184-5.719,5.719.922,1.107-5.9,5.35,2.029,2.029-5.535,4.981,2.767L37.819.738l4.428,3.69Z" transform="translate(1053 2558)"/>
+                <text id="Jetzt" style="fill: #fff;font-size: 14px;font-family: PTSans-NarrowBold, PT Sans Narrow;font-weight: 700;letter-spacing: 0.03em;" transform="translate(1098.317 2601.201)">
+                    <tspan x="-18.97" y="0">LEIDER</tspan>
+                    <tspan x="-27.377" y="15">VERPASST</tspan>
+                </text>
+            </g>
+        </svg>
+    </div>
+    {% if content.field_tracking_pixel | render is not empty %}
+        <div class="coupon__tracking-pixel">
+            {{ content.field_tracking_pixel }}
+        </div>
+    {% endif %}
+</div>

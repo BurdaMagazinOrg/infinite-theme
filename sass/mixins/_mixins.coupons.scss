@@ -1,0 +1,24 @@
+@mixin strike-through-title() {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  clear: both;
+  .strike-through-title__wrapper {
+    background: #fff;
+    display: inline-block;
+    transform: translateY(50%);
+    padding: 0 10px;
+    line-height: 1;
+    font-weight: bold;
+    span {
+      display: block;
+      line-height: 1.3;
+      @media (min-width: $screen-lg-min) {
+        display: initial;
+        font-size: 24px;
+      }
+    }
+  }
+}
