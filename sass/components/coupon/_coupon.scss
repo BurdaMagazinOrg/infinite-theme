@@ -332,11 +332,6 @@
     text-align: center;
     position: relative;
 
-    .affiliatelinks {
-      @include label--affiliate();
-      padding: 0;
-    }
-
     &--content_reference {
       .coupon {
         position: relative;
@@ -352,6 +347,14 @@
             display: block;
           }
         }
+
+        &__affiliatelink {
+          .affiliatelinks {
+            @include label--affiliate();
+            padding: 0;
+          }
+        }
+
         &__brand--logo__wrapper {
           @include strike-through-title();
           margin: 10px 0 (20 + $grid-unit-2);
