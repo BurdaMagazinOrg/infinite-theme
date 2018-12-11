@@ -482,6 +482,15 @@
     &--content_reference_normal {
       .coupon {
         &__logo {
+          svg {
+            max-width: 100%;
+            max-height: 80px;
+            @media (min-width: $screen-lg-min) {
+              max-height: 115px;
+            }
+          }
+        }
+        &__logo {
           width: 197px;
           img {
             max-width: 100%;
