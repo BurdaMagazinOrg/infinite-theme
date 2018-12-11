@@ -1,12 +1,12 @@
 {# Add wrapper classes #}
 {% set wrapper_classes = [
-'teaser',
-'contextual-region',
+  'teaser',
+  'contextual-region',
 ] %}
 
 {% if content.field_smart_teaser_class is defined and content.field_smart_teaser_class is not empty %}
-    {% set smart_teaser_class = content.field_smart_teaser_class|render %}
-    {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
+    {% set smart_teaser_class = content.field_smart_teaser_class | render %}
+    {% set wrapper_classes = wrapper_classes | merge([smart_teaser_class]) %}
 {% endif %}
 
 {% if dataViewType is not defined %}
@@ -39,14 +39,13 @@
             {% endblock %}
 
             {% block sponsored %}
-                {% embed '@infinite/node/twig-block-sponsored.html.twig' %}
-                {% endembed %}
+                {% embed '@infinite/node/twig-block-sponsored.html.twig' %}{% endembed %}
             {% endblock %}
 
             {% block teaser_text_headline %}
-                <h2 class="teaser__title text-headline">
+                <h3 class="teaser__title text-headline">
                     <a href="{{ url }}" target="_self" rel="bookmark">{{ label }}</a>
-                </h2>
+                </h3>
             {% endblock %}
 
             {% block teaser_text %}{% endblock %}
@@ -59,8 +58,13 @@
                     {% block teaser_content %}{% endblock %}
                     <div class="socials socials-bar">
                         {% block teaser_social_bar %}
-                            {% embed '@infinite/embeds/social_icons.html.twig' with {'facebook_share_button': '', 'whatsapp_share_button': '', 'pinterest_share_button': '', 'twitter_share_button': '', 'email_share_button': ''} %}
-                            {% endembed %}
+                            {% embed '@infinite/embeds/social_icons.html.twig' with {
+                                'facebook_share_button' : '',
+                                'whatsapp_share_button' : '',
+                                'pinterest_share_button' : '',
+                                'twitter_share_button' : '',
+                                'email_share_button' : ''
+                            } %}{% endembed %}
                         {% endblock %}
                     </div>
                 </header>
