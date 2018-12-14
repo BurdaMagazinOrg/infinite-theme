@@ -337,15 +337,8 @@
         position: relative;
         margin-bottom: $grid-unit-1;
         transition: opacity 0.3s;
-        + .coupon__expired {
+        &__expired {
           display: none;
-        }
-        &.expired {
-          opacity: 0.3;
-          pointer-events: none;
-          + .coupon__expired {
-            display: block;
-          }
         }
 
         &__affiliatelink {
@@ -475,6 +468,18 @@
           opacity: 0;
           height: 0;
           pointer-events: none;
+        }
+      }
+      &.expired {
+        .coupon {
+          opacity: 0.3;
+          pointer-events: none;
+          &__expired {
+            display: block;
+          }
+          &__affiliatelink {
+            display: none;
+          }
         }
       }
     }

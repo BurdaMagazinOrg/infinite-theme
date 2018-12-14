@@ -48,7 +48,7 @@
     handleExpired() {
       document.querySelectorAll(".coupon[data-expires]").forEach(coupon => {
         if (this.isExpired(coupon)) {
-          coupon.classList.add("expired");
+          coupon.parentElement.classList.add("expired");
         }
       });
     }
