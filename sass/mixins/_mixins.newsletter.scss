@@ -1,4 +1,5 @@
 @mixin newsletter--default() {
+  position: relative;
   background-color: $newsletter__bg-color;
 
   .newsletter__close {
