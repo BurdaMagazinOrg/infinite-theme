@@ -1,4 +1,5 @@
 @mixin newsletter--default() {
+  position: relative;
   background-color: $newsletter__bg-color;
 
   .newsletter__close {
@@ -191,6 +192,12 @@
   .newsletter__title,
   .newsletter__input-wrapper {
     margin-bottom: $grid-unit-3;
+  }
+
+  .newsletter__logo {
+    > img {
+      width: 224px;
+    }
   }
 
   .newsletter__image {
