@@ -1,18 +1,17 @@
 <?php
 
-use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\infinite_media\MediaHelper;
 use Drupal\taxonomy\TermInterface;
-use Drupal\views\Views;
 use Drupal\user\Entity\User;
+use Drupal\views\Views;
 use Psy\Util\Json;
 
 function infinite_preprocess(&$variables) {
-  $variables['environment'] = ['systemType' =>  isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
+  $variables['environment'] = ['systemType' => isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
 }
-
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
   /* @var $paragraph \Drupal\paragraphs\Entity\Paragraph */
@@ -24,7 +23,7 @@ function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $
     /* @var $media \Drupal\media_entity\Entity\Media */
     $media = $variables['elements']['field_media']['0']['#media'];
     $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $media->getEntityTypeId() . '_' . $media->bundle();
-    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $media->getEntityTypeId() . '_' . $media->bundle() . '__default';  // TODO: Fix static view mode.
+    $suggestions[] = $hook . '__' . $paragraph->bundle() . '__' . $media->getEntityTypeId() . '_' . $media->bundle() . '__default'; // TODO: Fix static view mode.
   }
 
   /* @var $parent \Drupal\Core\Entity\EntityInterface */
@@ -66,7 +65,7 @@ function infinite_preprocess_block__outbrain(&$variables) {
   /* @var Drupal\block\Entity\Block $block */
   $block = Block::load('advertisingslot_fba_article');
   if (is_object($block)) {
-    $advertisingslot_fba_article =  \Drupal::entityManager()
+    $advertisingslot_fba_article = \Drupal::entityManager()
       ->getViewBuilder('block')
       ->view($block, 'default');
 
@@ -76,15 +75,15 @@ function infinite_preprocess_block__outbrain(&$variables) {
 }
 
 function infinite_preprocess_region(&$variables) {
-  $variables ['front_page'] = \Drupal::url('<front>');
-  $variables ['logo'] = theme_get_setting('logo.url');
+  $variables['front_page'] = \Drupal::url('<front>');
+  $variables['logo'] = theme_get_setting('logo.url');
 }
 
 function infinite_preprocess_html(&$variables) {
   $current_path = \Drupal::service('path.current')->getPath();
   $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
   $path_alias = ltrim($path_alias, '/');
-  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);  
+  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);
 
   if (\Drupal::moduleHandler()->moduleExists('metatag')) {
     /**
@@ -167,13 +166,12 @@ function infinite_preprocess_node(&$variables) {
     $variables = _infinite_get_icon($node, $variables);
   }
 
-  if($bundle == 'ecommerce_slider') {
+  if ($bundle == 'ecommerce_slider') {
     $data_slider = [];
     $start_position = $node->get('field_slider_start_position')->value;
-    if(is_numeric($start_position)) {
+    if (is_numeric($start_position)) {
       $data_slider['initialSlide'] = $node->get('field_slider_start_position')->value - 1;
-    }
-    else {
+    } else {
       $data_slider['initialSlide'] = 0;
     }
     $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
@@ -191,10 +189,9 @@ function infinite_preprocess_views_view(&$variables) {
 
   // Render title for all other views, because we aren't using pagetitle block.
   // todo: check how to add pagetitle block as default?
-  if(isset($variables['title']) && is_array($variables['title'])){
+  if (isset($variables['title']) && is_array($variables['title'])) {
     $variables['title']['#markup'] = $view->getTitle();
-  }
-  else {
+  } else {
     $variables['title'] = $view->getTitle();
   }
 }
@@ -258,12 +255,12 @@ function infinite_preprocess_advertising_product(&$variables) {
     $variables['sold_out'] = TRUE;
   }
 
-  if(!isset($variables['sold_out']) || !$variables['sold_out']) {
-    if($price < $original_price){
+  if (!isset($variables['sold_out']) || !$variables['sold_out']) {
+    if ($price < $original_price) {
       $variables['show_strikethrough_price'] = TRUE;
       $variables['percentage_saving'] = floor(($price - $original_price) / $original_price * 100);
     }
-      if ('tipser' === $provider) {
+    if ('tipser' === $provider) {
       // hack so we can track product category even though it uses another field
       // for the category than e.g. Amazon products
       $tipserFieldCategory = $product->get('field_category');
@@ -300,7 +297,7 @@ function infinite_preprocess_paragraph(&$variables) {
 
 function infinite_preprocess_field(&$variables) {
   // INREL-2807 Set all links in promotion to nofollow
-  if($variables['element']['#field_name'] === 'field_url' && $variables['element']['#bundle'] === 'promotion') {
+  if ($variables['element']['#field_name'] === 'field_url' && $variables['element']['#bundle'] === 'promotion') {
     /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $item */
     foreach ($variables['items'] as &$item) {
       $item['content']['#options']['attributes']['rel'] = 'nofollow';
@@ -318,21 +315,19 @@ function infinite_preprocess_field(&$variables) {
 
 function infinite_page_attachments_alter(array &$attachments) {
 //  foreach($attachments['#attached']['html_head'] as $key => $attachment) {
-//    if(isset($attachment[1]) && $attachment[1] == 'breakpoint_settings_loader') {
-//      unset($attachments['#attached']['html_head'][$key]);
-//    }
-//  }
+  //    if(isset($attachment[1]) && $attachment[1] == 'breakpoint_settings_loader') {
+  //      unset($attachments['#attached']['html_head'][$key]);
+  //    }
+  //  }
 }
 
 function infinite_preprocess_container(&$variables) {
   if (isset($variables['element']['#parent'])) {
     if (isset($variables['element']['#parent']['#node'])) {
       $entity = $variables['element']['#parent']['#node'];
-    }
-    elseif (isset($variables['element']['#parent']['#taxonomy_term'])) {
+    } elseif (isset($variables['element']['#parent']['#taxonomy_term'])) {
       $entity = $variables['element']['#parent']['#taxonomy_term'];
-    }
-    elseif (isset($variables['element']['#parent']['#user'])) {
+    } elseif (isset($variables['element']['#parent']['#user'])) {
       $entity = $variables['element']['#parent']['#user'];
     }
   }
@@ -341,19 +336,19 @@ function infinite_preprocess_container(&$variables) {
     // use seo description for pinterest share description
     if (method_exists($entity, 'bundle') && method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
       switch ($entity->bundle()) {
-        // field_teaser_text is misused as seo description on these content types
-        // this should be fixed in https://jira.burda.com/browse/INREL-4095
-        case 'article':
-        case 'magazine_products':
-          if ($entity->hasField('field_teaser_text')) {
-            $variables['pinterest_share_description'] = $entity->get('field_teaser_text')->value;
-          }
-          break;
-        default:
-          if ($entity->hasField('field_seo_description')) {
-            $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
-          }
-          break;
+      // field_teaser_text is misused as seo description on these content types
+      // this should be fixed in https://jira.burda.com/browse/INREL-4095
+      case 'article':
+      case 'magazine_products':
+        if ($entity->hasField('field_teaser_text')) {
+          $variables['pinterest_share_description'] = $entity->get('field_teaser_text')->value;
+        }
+        break;
+      default:
+        if ($entity->hasField('field_seo_description')) {
+          $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
+        }
+        break;
       }
     }
     // Set progress navigation.
@@ -362,7 +357,7 @@ function infinite_preprocess_container(&$variables) {
       if (!$entity->field_paragraphs->isEmpty()) {
         foreach ($entity->field_paragraphs->referencedEntities() as $index => $paragraph) {
           if (isset($paragraph->getFields()['field_progress_navigation']) &&
-              !$paragraph->getFields()['field_progress_navigation']->isEmpty()) {
+            !$paragraph->getFields()['field_progress_navigation']->isEmpty()) {
             array_push(
               $variables['progress_navigation'],
               $paragraph->getFields()['field_progress_navigation']->value
@@ -412,8 +407,7 @@ function infinite_preprocess_responsive_image(&$variables) {
  * @param $entity
  * @return mixed
  */
-function infinite_inject_pinterest_image($variables, $entity)
-{
+function infinite_inject_pinterest_image($variables, $entity) {
   $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
     $entity,
     'field_pinterest_image'
@@ -443,40 +437,39 @@ function _infinite_get_icon($node, $variables) {
   if (!empty($paragraphs = $node->field_paragraphs->referencedEntities())) {
     foreach ($paragraphs as $paragraph) {
       switch ($paragraph->bundle()) {
-        case 'productdb_product':
-        case 'advertising_products_paragraph':
-        case 'advertising_products_embed':
-        case 'ecommerce_slider_paragraph':
-        case 'ecommerce_look':
-          // shopping overrides everything else
-          $variables['teaser_icon'] = 'shop-it';
-          break 2;
-        case 'gallery':
-          $variables['teaser_icon']['image'] = 'image';
-          break;
-        case 'media':
-          if (!empty($medias = $paragraph->field_media->referencedEntities())) {
-            foreach ($medias as $media) {
-              switch ($media->bundle()) {
-                case 'video':
-                case 'nexx_video':
-                  $variables['teaser_icon']['video'] = 'video';
-                  break;
-              }
+      case 'productdb_product':
+      case 'advertising_products_paragraph':
+      case 'advertising_products_embed':
+      case 'ecommerce_slider_paragraph':
+      case 'ecommerce_look':
+        // shopping overrides everything else
+        $variables['teaser_icon'] = 'shop-it';
+        break 2;
+      case 'gallery':
+        $variables['teaser_icon']['image'] = 'image';
+        break;
+      case 'media':
+        if (!empty($medias = $paragraph->field_media->referencedEntities())) {
+          foreach ($medias as $media) {
+            switch ($media->bundle()) {
+            case 'video':
+            case 'nexx_video':
+              $variables['teaser_icon']['video'] = 'video';
+              break;
             }
           }
-          break;
-        case 'video':
-          $variables['teaser_icon']['video'] = 'video';
-          break;
+        }
+        break;
+      case 'video':
+        $variables['teaser_icon']['video'] = 'video';
+        break;
       }
     }
     if (is_array($variables['teaser_icon'])) {
       if (isset($variables['teaser_icon']['video'])) {
         $variables['teaser_icon'] = 'video';
-      }
-      else if (isset($variables['teaser_icon']['image'])) {
-          $variables['teaser_icon'] = 'image';
+      } else if (isset($variables['teaser_icon']['image'])) {
+        $variables['teaser_icon'] = 'image';
       }
     }
   }
@@ -491,8 +484,7 @@ function _infinite_get_icon($node, $variables) {
  *
  * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function infinite_preprocess_user(&$variables)
-{
+function infinite_preprocess_user(&$variables) {
   try {
     $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight';
   } catch (InvalidArgumentException $ex) {
@@ -513,8 +505,7 @@ function infinite_preprocess_user(&$variables)
  * @throws InvalidArgumentException
  * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition = 0): string
-{
+function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition = 0): string {
   /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $fieldParagraphs */
   $fieldParagraphs = $user->getFields(true)['field_paragraphs'];
   /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $currentParagraph */

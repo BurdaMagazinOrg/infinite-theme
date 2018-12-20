@@ -48,6 +48,10 @@ newsletter:
   js:
     js/behaviors/drupal.behaviors.newsletter.js: {}
 
+shopit:
+  version: 1
+  js:
+    js/shopit.js: {}
 
 blazy:
   header: false
