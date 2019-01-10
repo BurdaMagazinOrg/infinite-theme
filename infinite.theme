@@ -361,7 +361,8 @@ function infinite_preprocess_container(&$variables) {
       $variables['progress_navigation'] = [];
       if (!$entity->field_paragraphs->isEmpty()) {
         foreach ($entity->field_paragraphs->referencedEntities() as $index => $paragraph) {
-          if (!$paragraph->getFields()['field_progress_navigation']->isEmpty()) {
+          if (isset($paragraph->getFields()['field_progress_navigation']) &&
+              !$paragraph->getFields()['field_progress_navigation']->isEmpty()) {
             array_push(
               $variables['progress_navigation'],
               $paragraph->getFields()['field_progress_navigation']->value

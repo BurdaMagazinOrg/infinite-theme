@@ -1,265 +1,283 @@
 @mixin newsletter--default() {
-	background-color: $newsletter__bg-color;
-	position: relative;
+  position: relative;
+  background-color: $newsletter__bg-color;
 
-	.newsletter__close {
-		@include icon();
-		@include icon-close();
-		display: block;
-		width: 30px;
-		height: 30px;
-		position: absolute;
-		top: $grid-unit-2;
-		right: $grid-unit-2;
-	}
+  .newsletter__close {
+    @include icon();
+    @include icon-close();
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: $grid-unit-2;
+    right: $grid-unit-2;
+  }
 
-	.hide--opacity {
-		visibility: hidden;
-		opacity: 0;
-	}
+  .hide--opacity {
+    visibility: hidden;
+    opacity: 0;
+  }
 
-	&.state_success,
-	&.state_terms {
-		.newsletter__section--start {
-			visibility: hidden;
-			opacity: 0;
-		}
-	}
+  &.state_success,
+  &.state_terms {
+    .newsletter__section--start {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
 
-	&.state_success {
-		.newsletter__section--success {
-			visibility: visible;
-			opacity: 1;
-		}
-	}
+  &.state_success {
+    .newsletter__section--success {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 
-	&.state_terms {
-		.newsletter__section--terms {
-			visibility: visible;
-			opacity: 1;
-		}
-	}
+  &.state_terms {
+    .newsletter__section--terms {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 
-	.newsletter__section:not(:first-child) {
+  .newsletter__section:not(:first-child) {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-	}
+  }
 
-	.newsletter__section {
-		@include transition(all 0.35s ease);
-		@include flexbox();
-		@include justify-content();
-		background-color: $newsletter__bg-color;
-	}
+  .newsletter__section {
+    @include transition(all 0.35s ease);
+    @include flexbox();
+    @include justify-content();
+    background-color: $newsletter__bg-color;
+    body.newsletter & {
+      &--start {
+        position: absolute;
+        top: 0;
+        right: 50%;
+        left: 50%;
+        bottom: 0;
+        width: 100vw;
+        margin-left: -50vw;
+        margin-right: -50vw;
+      }
+    }
+  }
 
-	.newsletter__section:not(.newsletter__section--terms) {
-		@include align-items();
+  .newsletter__section:not(.newsletter__section--terms) {
+    @include align-items();
 
-		.newsletter__section-content {
-			@include align-items();
-		}
-	}
+    .newsletter__section-content {
+      @include align-items();
+    }
+  }
 
-	.newsletter__section-content {
-		@include flexbox($orientation: "vertical");
-		max-width: $newsletter__section-max-width;
-		text-align: $newsletter__section-text-align;
-		overflow: auto;
-	}
+  .newsletter__section-content {
+    @include flexbox($orientation: "vertical");
+    max-width: $newsletter__section-max-width;
+    text-align: $newsletter__section-text-align;
+    overflow: auto;
+  }
 
-	.newsletter__section--success .newsletter__section-content {
-		padding-bottom: $grid-unit-10;
-	}
+  .newsletter__section--success .newsletter__section-content {
+    padding-bottom: $grid-unit-10;
+  }
 
-	@include newsletter__start--default();
-	@include newsletter__success--default();
-	@include newsletter__terms--default();
+  @include newsletter__start--default();
+  @include newsletter__success--default();
+  @include newsletter__terms--default();
 }
 
 @mixin newsletter__start--default($use-media-query: true) {
-	.newsletter__title {
-		@include text-helper(
-			$newsletter__title-font-id,
-			$newsletter__title-size-mobile--default
-		);
-	}
+  .newsletter__title {
+    @include text-helper(
+      $newsletter__title-font-id,
+      $newsletter__title-size-mobile--default
+    );
+  }
 
-	.newsletter__input-wrapper {
-		@include flexbox();
-		@include justify-content();
+  .newsletter__input-wrapper {
+    @include flexbox();
+    @include justify-content();
 
-		input {
-			@include text-helper(
-				$newsletter__input-font-id,
-				$newsletter__input-text-size
-			);
-			color: $text-color;
-			height: $grid-unit-4;
-			vertical-align: top;
-			margin-right: -4px;
-			min-width: 214px;
-		}
-	}
+    input {
+      @include text-helper(
+        $newsletter__input-font-id,
+        $newsletter__input-text-size
+      );
+      color: $text-color;
+      height: $grid-unit-4;
+      vertical-align: top;
+      margin-right: -4px;
+      min-width: 214px;
+    }
+  }
 
-	.newsletter__input {
-		&.has-error {
-			border: 1px solid $newsletter__alert-bg-color;
-		}
-	}
+  .newsletter__input {
+    &.has-error {
+      border: 1px solid $newsletter__alert-bg-color;
+    }
+  }
 
-	&.optin .newsletter__optin-wrapper {
-		opacity: 1;
-		visibility: visible;
-		max-height: 1000px;
-	}
+  &.optin .newsletter__optin-wrapper {
+    opacity: 1;
+    visibility: visible;
+    max-height: 1000px;
+  }
 
-	.newsletter__optin-wrapper {
-		@include transition();
-		@include flexbox();
-		opacity: 0;
-		visibility: hidden;
-		max-height: 0;
-		overflow: hidden;
-		max-width: 430px;
-		width: 100%;
-		text-align: left;
+  .newsletter__optin-wrapper {
+    @include transition();
+    @include flexbox();
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    max-width: 430px;
+    width: 100%;
+    text-align: left;
 
-		input {
-			align-self: flex-start;
-			margin: 0 $grid-unit-2 0 0;
-			flex: none;
-		}
-	}
+    input {
+      align-self: flex-start;
+      margin: 0 $grid-unit-2 0 0;
+      flex: none;
+    }
+  }
 
-	.newsletter__optin-text {
-		@include text-helper($newsletter__optin-font-id, $newsletter__optin-size);
-		color: $newsletter__optin-color;
+  .newsletter__optin-text {
+    @include text-helper($newsletter__optin-font-id, $newsletter__optin-size);
+    color: $newsletter__optin-color;
 
-		a {
-			text-decoration: underline;
-		}
-	}
+    a {
+      text-decoration: underline;
+    }
+  }
 
-	.newsletter__button {
-		@extend %button;
-		@extend %button--md;
-		@extend %button--dark;
-		padding-left: $grid-unit-3;
-		padding-right: $grid-unit-3;
-		display: block;
-		cursor: pointer;
-	}
+  .newsletter__button {
+    @extend %button;
+    @extend %button--md;
+    @extend %button--dark;
+    padding-left: $grid-unit-3;
+    padding-right: $grid-unit-3;
+    display: block;
+    cursor: pointer;
+  }
 
-	.newsletter__alerts {
-		@include text-helper($newsletter__optin-font-id, $newsletter__optin-size);
-		margin-top: $grid-unit-3;
+  .newsletter__alerts {
+    @include text-helper($newsletter__optin-font-id, $newsletter__optin-size);
+    margin-top: $grid-unit-3;
 
-		.alert {
-			@include transition(opacity 1s ease);
-			background-color: $newsletter__alert-bg-color;
-			color: $newsletter__alert-color;
-			border-radius: 5px;
-			padding: 5px 15px;
-			opacity: 1;
+    .alert {
+      @include transition(opacity 1s ease);
+      background-color: $newsletter__alert-bg-color;
+      color: $newsletter__alert-color;
+      border-radius: 5px;
+      padding: 5px 15px;
+      opacity: 1;
 
-			&.remove {
-				opacity: 0;
-			}
-		}
-	}
+      &.remove {
+        opacity: 0;
+      }
+    }
+  }
 
-	//gaps
-	.newsletter__section-content {
-		padding: $grid-unit-3;
-	}
+  //gaps
+  .newsletter__section-content {
+    padding: $grid-unit-3;
+  }
 
-	.newsletter__logo,
-	.newsletter__title,
-	.newsletter__input-wrapper {
-		margin-bottom: $grid-unit-3;
-	}
+  .newsletter__logo,
+  .newsletter__title,
+  .newsletter__input-wrapper {
+    margin-bottom: $grid-unit-3;
+  }
 
-	.newsletter__image {
-		margin-bottom: $grid-unit-2;
-	}
+  .newsletter__logo {
+    > img {
+      width: 224px;
+    }
+  }
 
-	@if ($use-media-query == true) {
-		@media (min-width: $screen-sm-min) {
-			.newsletter__section-content {
-				padding: $grid-unit-4;
-			}
+  .newsletter__image {
+    margin-bottom: $grid-unit-2;
+  }
 
-			.newsletter__logo,
-			.newsletter__title {
-				margin-bottom: $grid-unit-4;
-			}
+  @if ($use-media-query == true) {
+    @media (min-width: $screen-sm-min) {
+      .newsletter__section-content {
+        padding: $grid-unit-4;
+      }
 
-			.newsletter__image,
-			.newsletter__input-wrapper {
-				margin-bottom: $grid-unit-3;
-			}
-		}
-	}
+      .newsletter__logo,
+      .newsletter__title {
+        margin-bottom: $grid-unit-4;
+      }
+
+      .newsletter__image,
+      .newsletter__input-wrapper {
+        margin-bottom: $grid-unit-3;
+      }
+    }
+  }
 }
 @mixin newsletter__page() {
-	$navigation-height: 56px;
+  $navigation-height: 56px;
 
-	#main {
-		padding-bottom: 0;
-	}
+  #main {
+    padding-bottom: 0;
+  }
 
-	.newsletter {
-		min-height: calc(100% - #{$navigation-height});
-		height: calc(100vh - #{$navigation-height});
+  .newsletter {
+    min-height: calc(100% - #{$navigation-height});
+    height: calc(100vh - #{$navigation-height});
   }
 }
 
 @mixin newsletter__success--default {
-	.newsletter__success-title {
-		@include text-helper(
-			$newsletter__success-title-font-id,
-			$newsletter__success-title-size-mobile--default
-		);
-		margin-bottom: $grid-unit-3;
-	}
+  .newsletter__success-title {
+    @include text-helper(
+      $newsletter__success-title-font-id,
+      $newsletter__success-title-size-mobile--default
+    );
+    margin-bottom: $grid-unit-3;
+  }
 
-	.newsletter__success-text {
-		@include text-helper(
-			$newsletter__success-text-font-id,
-			$newsletter__success-text-size-mobile--default
-		);
-	}
+  .newsletter__success-text {
+    @include text-helper(
+      $newsletter__success-text-font-id,
+      $newsletter__success-text-size-mobile--default
+    );
+  }
 }
 
 @mixin newsletter__terms--default {
-	.newsletter__section--terms & {
-		overflow: scroll;
-	}
+  .newsletter__section--terms & {
+    overflow: scroll;
+  }
 
-	.newsletter__section-content {
-		padding: $grid-unit-5 $grid-unit-3 $grid-unit-3 $grid-unit-3;
-	}
+  .newsletter__section-content {
+    padding: $grid-unit-5 $grid-unit-3 $grid-unit-3 $grid-unit-3;
+  }
 
-	.newsletter__optin-body {
-		@include text-helper(
-			$newsletter__optin-body-font-id,
-			$newsletter__optin-body-size
-		);
-		color: $newsletter__optin-body-color;
-		text-align: left;
-		line-height: getLineHeight($newsletter__optin-body-size);
+  .newsletter__optin-body {
+    @include text-helper(
+      $newsletter__optin-body-font-id,
+      $newsletter__optin-body-size
+    );
+    color: $newsletter__optin-body-color;
+    text-align: left;
+    line-height: getLineHeight($newsletter__optin-body-size);
 
-		a {
-			text-decoration: underline;
-		}
+    a {
+      text-decoration: underline;
+    }
 
-		p,
-		ul,
-		ol {
-			margin-bottom: $grid-unit-2;
-		}
-	}
+    p,
+    ul,
+    ol {
+      margin-bottom: $grid-unit-2;
+    }
+  }
 }
