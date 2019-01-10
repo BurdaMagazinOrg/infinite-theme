@@ -279,9 +279,9 @@
 
   Drupal.behaviors.newsletter = {
     settings: {},
-    attach(context) {
+    attach: function(context) {
       const newsletterElements = context.querySelectorAll(
-        ".newsletter:not(body)"
+        '.newsletter:not(body)'
       );
 
       if (!newsletterElements) return; // libraries / dynamic JS append will also call the attach function

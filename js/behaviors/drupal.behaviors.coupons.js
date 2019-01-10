@@ -40,17 +40,19 @@
         });
       });
     },
-    isExpired(coupon) {
+    isExpired: function(coupon) {
       if (!coupon.dataset.expires) return false;
       const expires = parseInt(coupon.dataset.expires);
       return expires < new Date().getTime() / 1000;
     },
-    handleExpired() {
-      document.querySelectorAll(".coupon[data-expires]").forEach(coupon => {
-        if (this.isExpired(coupon)) {
-          coupon.parentElement.classList.add("expired");
-        }
-      });
-    }
+    handleExpired: function() {
+      document.querySelectorAll('.coupon[data-expires]').forEach(
+        function(coupon) {
+          if (this.isExpired(coupon)) {
+            coupon.parentElement.classList.add('expired');
+          }
+        }.bind(this)
+      );
+    },
   };
 })(jQuery, Drupal, drupalSettings, Backbone);
