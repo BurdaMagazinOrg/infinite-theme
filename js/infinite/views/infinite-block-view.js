@@ -1,13 +1,10 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.InfiniteBlockView = BaseDynamicView.extend({
-    initialize: function (pOptions) {
+    initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
-    }
+    },
   });
 
-  window.InfiniteBlockView = window.InfiniteBlockView || BurdaInfinite.views.InfiniteBlockView;
-
+  window.InfiniteBlockView =
+    window.InfiniteBlockView || BurdaInfinite.views.InfiniteBlockView;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

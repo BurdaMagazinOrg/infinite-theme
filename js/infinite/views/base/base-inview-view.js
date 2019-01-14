@@ -1,60 +1,61 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.base.BaseInviewView = BaseView.extend({
     inview: null,
-    initialize: function (pOptions) {
+    initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
     },
-    delegateInview: function () {
-      //this.model.set('inview', 'init');
+    delegateInview: function() {
+      // this.model.set('inview', 'init');
       // console.log(">>> delegateInview");
 
       if (this.inview != null) this.inview.destroy();
 
       this.inview = new Waypoint.Inview({
         element: this.$el,
-        exited: _.bind(function (direction) {
-          //console.log('Exited triggered with direction ' + direction)
-          this.model.set('inview', {state: 'exited', direction: direction});
+        exited: _.bind(function(direction) {
+          // console.log('Exited triggered with direction ' + direction)
+          this.model.set('inview', { state: 'exited', direction: direction });
           this.onExitedHandler(direction);
         }, this),
-        exit: _.bind(function (direction) {
-          //console.log('Exit triggered with direction ' + direction)
-          this.model.set('inview', {state: 'exit', direction: direction});
+        exit: _.bind(function(direction) {
+          // console.log('Exit triggered with direction ' + direction)
+          this.model.set('inview', { state: 'exit', direction: direction });
           this.onExitHandler(direction);
         }, this),
-        entered: _.bind(function (direction) {
-          //console.log('Entered triggered with direction ' + direction)
-          this.model.set('inview', {state: 'entered', direction: direction});
+        entered: _.bind(function(direction) {
+          // console.log('Entered triggered with direction ' + direction)
+          this.model.set('inview', { state: 'entered', direction: direction });
           this.onEnteredHandler(direction);
         }, this),
-        enter: _.bind(function (direction) {
+        enter: _.bind(function(direction) {
           // this.$el.addClass('in');
-          _.delay(_.bind(function () {
-            //console.log('Enter triggered with direction ' + direction)
-            this.model.set('inview', {state: 'enter', direction: direction});
-            this.onEnterHandler(direction);
-          }, this), 10);
-        }, this)
+          _.delay(
+            _.bind(function() {
+              // console.log('Enter triggered with direction ' + direction)
+              this.model.set('inview', {
+                state: 'enter',
+                direction: direction,
+              });
+              this.onEnterHandler(direction);
+            }, this),
+            10
+          );
+        }, this),
       });
     },
-    onExitedHandler: function (pDirection) {
+    onExitedHandler: function(pDirection) {
       this.model.inviewEnable(false);
     },
-    onExitHandler: function (pDirection) {
-    },
-    onEnteredHandler: function (pDirection) {
-    },
-    onEnterHandler: function (pDirection) {
+    onExitHandler: function(pDirection) {},
+    onEnteredHandler: function(pDirection) {},
+    onEnterHandler: function(pDirection) {
       this.model.inviewEnable(true);
     },
-    destroy: function () {
+    destroy: function() {
       if (this.inview != null) this.inview.destroy();
-    }
+    },
   });
 
-  window.BaseInviewView = window.BaseInviewView || BurdaInfinite.views.base.BaseInviewView;
-
+  window.BaseInviewView =
+    window.BaseInviewView || BurdaInfinite.views.base.BaseInviewView;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
