@@ -1,0 +1,43 @@
+{{ title_prefix }}
+{% if title %}
+    {{ title }}
+{% endif %}
+{{ title_suffix }}
+
+{% if attachment_before and view.getCurrentPage == 0 %}
+    {{ attachment_before }}
+{% endif %}
+{% if header %}
+    {{ header }}
+{% endif %}
+{% if exposed %}
+    {{ exposed }}
+{% endif %}
+
+{% if rows %}
+    <div class="region-full-content region-teaser-list">
+        <div class="container-fixed-content">
+            <div class="item-content__row--sidebar">
+                <div class="item-content__row-col col--left teaser-list-large">
+                    {{ rows }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% elseif empty %}
+    {{ empty }}
+{% endif %}
+
+{% if pager %}
+    {{ pager }}
+{% endif %}
+
+{% if attachment_after %}
+    {{ attachment_after }}
+{% endif %}
+{% if more %}
+    {{ more }}
+{% endif %}
+{% if footer %}
+    {{ footer }}
+{% endif %}
