@@ -1,10 +1,6 @@
 (function(Drupal, drupalSettings, Backbone) {
   const SidebarNavigationBackboneView = Backbone.View.extend({
     context: null,
-    lastScroll: 0,
-    isScrollDirectionDown: false,
-    lastIntersectionRatio: 0,
-    intersectionArray: [],
     observer: null,
     observerInactive: false,
     scrollTargets: null,
@@ -22,7 +18,6 @@
       );
       this.initScrollToBehavior();
       this.collectScrollTargets();
-      this.addListener();
     },
     initScrollToBehavior() {
       Array.from(this.navigationLinks).forEach(element => {
@@ -32,13 +27,6 @@
           this.handleNavigationClick(e, element)
         );
       });
-    },
-    addListener() {
-      window.addEventListener("scroll", this.handleScroll.bind(this));
-    },
-    handleScroll(e) {
-      this.isScrollDirectionDown = this.lastScroll < window.scrollY;
-      this.lastScroll = window.scrollY;
     },
     handleNavigationClick(e, element) {
       e.preventDefault();
@@ -76,32 +64,8 @@
     },
     intersectionHandler(entries, observer) {
       entries.forEach(entry => {
-        console.log(
-          "intersectionHandler",
-          entry.target.getAttribute("name"),
-          entry,
-          this.observerOptions.threshold,
-          this.intersectionArray.map(e => e.getAttribute("name"))
-        );
-
-        if (!entry.isIntersecting) {
-          if (this.intersectionArray.length > 0) {
-            if (this.isScrollDirectionDown) {
-              this.intersectionArray.shift();
-              this.highlightByScrollTarget(this.intersectionArray[0]);
-            } else {
-              this.intersectionArray.pop();
-            }
-          }
-        }
-
         if (entry.isIntersecting) {
-          this.intersectionArray.push(entry.target);
-          const element = this.isScrollDirectionDown
-            ? this.intersectionArray[0]
-            : entry.target;
-
-          this.highlightByScrollTarget(element);
+          this.highlightByScrollTarget(entry.target);
         }
       });
     },
