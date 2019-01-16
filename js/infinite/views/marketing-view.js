@@ -40,11 +40,9 @@
       },
       trackAd() {
         TrackingManager.trackEvent({
+          event: "adImpression",
           category: "marketing",
-          action: "DOM",
-          label: this.el
-            .find(".ad-entity-container")
-            .data("ad-entity-targeting")
+          action: "DOM"
         });
       },
       updateView() {
