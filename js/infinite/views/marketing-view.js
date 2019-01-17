@@ -20,7 +20,6 @@
 
         this.$adSlotContainer = this.$el.find(".item-marketing");
         this.checkContainerType();
-        this.trackAd();
         this.breakpointDeviceModel = this.deviceModel
           .getDeviceBreakpoints()
           .findWhere({ active: true });
@@ -37,12 +36,21 @@
           this.onEnabledHandler,
           this
         );
+
+        if(this.currentBreakpoint === "desktop" || this.adContainerType !== MarketingView.CONTAINER_TYPE_SIDEBAR) {
+          this.trackAd();
+        } 
       },
       trackAd() {
+        const entityTargeting = this.el
+        .find(".ad-entity-container")
+        .data("ad-entity-targeting");
+
         TrackingManager.trackEvent({
           event: "adImpression",
           category: "marketing",
-          action: "DOM"
+          action: "DOM",
+          label: entityTargeting.contentwidth
         });
       },
       updateView() {
@@ -61,22 +69,7 @@
 
         if (this.$el.hasClass("container-sidebar-content")) {
           this.adContainerType = MarketingView.CONTAINER_TYPE_SIDEBAR;
-        } else if (
-          this.$el.hasClass("region-full-content") &&
-          this.adEntityType == MarketingView.AD_ENTITY_TYPE_LEADERBOARD
-        ) {
-          this.adContainerType = MarketingView.CONTAINER_TYPE_LEADERBOARD;
-        } else if (
-          this.$el.hasClass("region-full-content") &&
-          this.adEntityType == MarketingView.AD_ENTITY_TYPE_SPECIAL
-        ) {
-          this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
-        } else if (
-          this.$el.hasClass("ad-content") &&
-          this.adEntityType == MarketingView.AD_ENTITY_TYPE_SPECIAL
-        ) {
-          this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
-        }
+        } 
       },
       updateEnableView() {
         /**
