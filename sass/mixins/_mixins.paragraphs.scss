@@ -250,6 +250,19 @@
     @extend %item-anchor-navigation--full;
   }
 
+  @media (max-width: $screen-xs-max) {
+    .spotlight__wrapper {
+      padding-top: 48px;
+    }
+
+    .spotlight__anchor-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
   /** Layouts **/
 
   &.item-paragraph--small {
