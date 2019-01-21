@@ -35,7 +35,7 @@
         `.item-paragraph[name="${name}"]`
       );
       const rect = paragraph.getBoundingClientRect();
-      const diff = window.screen.width >= 756 ? 66 : 300;
+      const diff = window.screen.width >= 756 ? 66 : 340;
       const yPos = rect.top + window.scrollY - diff;
 
       if (this.el.classList.contains("btn__open-tree--is-open")) {
