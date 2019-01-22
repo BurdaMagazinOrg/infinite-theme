@@ -36,7 +36,7 @@
       );
       // const rect = paragraph.getBoundingClientRect();
       const rect = jQuery(paragraph).offset();
-      const diff = window.screen.width >= 756 ? 66 : 270;
+      const diff = window.innerWidth >= 756 ? 66 : 270;
       const yPos = rect.top - diff;
 
       if (this.el.classList.contains("btn__open-tree--is-open")) {
