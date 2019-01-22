@@ -35,7 +35,7 @@
         `.item-paragraph[name="${name}"]`
       );
       const rect = jQuery(paragraph).offset();
-      const diff = window.innerWidth >= 756 ? 66 : 350;
+      const diff = window.innerWidth >= 756 ? 66 : 370;
       const yPos = rect.top - diff;
 
       if (this.el.classList.contains("btn__open-tree--is-open")) {
