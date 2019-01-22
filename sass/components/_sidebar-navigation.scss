@@ -6,6 +6,10 @@
   background-color: $color-white;
   transform: translateZ(0);
 
+a:hover {
+  color: inherit;
+}
+
 	li,
 	.btn__open-tree,
 	.mobile-hidden-label {

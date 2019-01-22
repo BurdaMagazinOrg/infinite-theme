@@ -25,6 +25,7 @@
       }
     },
     scrollToElement (pElementId) {
+      console.log("SCROLL", $(pElementId).offset().top - this.offsetTop - AppConfig.padding);
       $("html, body").animate({scrollTop: Math.round($(pElementId).offset().top - this.offsetTop - AppConfig.padding)}, {
         duration: 1000,
         easing: 'swing'

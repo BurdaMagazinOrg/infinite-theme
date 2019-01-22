@@ -1,14 +1,14 @@
 (function(Drupal, drupalSettings, Backbone) {
   const SidebarNavigationBackboneView = Backbone.View.extend({
     context: null,
+    isIntersectingArray: [],
     observer: null,
     observerInactive: false,
     scrollTargets: null,
     observerOptions: {
       root: null,
-      rootMargin: "-56px",
+      rootMargin: "-50%",
       threshold: [0]
-      // threshold: [0, 0.25, 0.5, 0.75, 1]
     },
     initialize(options) {
       this.context = options.context || document;
@@ -34,9 +34,10 @@
       const paragraph = this.context.querySelector(
         `.item-paragraph[name="${name}"]`
       );
-      const rect = paragraph.getBoundingClientRect();
-      const diff = window.screen.width >= 756 ? 66 : 370;
-      const yPos = rect.top + window.scrollY - diff;
+      // const rect = paragraph.getBoundingClientRect();
+      const rect = jQuery(paragraph).offset();
+      const diff = window.screen.width >= 756 ? 66 : 270;
+      const yPos = rect.top - diff;
 
       if (this.el.classList.contains("btn__open-tree--is-open")) {
         this.el.classList.remove("btn__open-tree--is-open");
@@ -64,18 +65,32 @@
     },
     intersectionHandler(entries, observer) {
       entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          const index = this.isIntersectingArray.findIndex(arrayEntry => arrayEntry.target === entry.target);
+          index > -1 &&  this.isIntersectingArray.splice(index, 1);
+          this.highlightByScrollTarget();
+        }
+
         if (entry.isIntersecting) {
-          this.highlightByScrollTarget(entry.target);
+          this.isIntersectingArray.push(entry);
+          this.highlightByScrollTarget();
         }
       });
     },
-    highlightByScrollTarget(el) {
+    getCurrentIntersectingElement() {
+      const intersectionRatio = Math.min(...this.isIntersectingArray.map(entry => entry.intersectionRatio));
+      const entry = this.isIntersectingArray.filter(entry => entry.intersectionRatio === intersectionRatio);
+      return entry.length > 0 && entry[0].target;
+    },
+    highlightByScrollTarget() {
       if (this.observerInactive) return;
-
-      const name = el.getAttribute("name");
-      const selectedElement = this.el.querySelector(`[id="${name}"]`);
-      if (selectedElement) {
-        this.highlight(selectedElement);
+      const element = this.getCurrentIntersectingElement();
+      if(!!element) {
+        const name = element.getAttribute("name");
+        const selectedElement = this.el.querySelector(`[id="${name}"]`);
+        if (selectedElement) {
+          this.highlight(selectedElement);
+        }
       }
     },
     highlight(el) {
