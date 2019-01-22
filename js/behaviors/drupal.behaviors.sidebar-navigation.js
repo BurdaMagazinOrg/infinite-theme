@@ -34,10 +34,8 @@
       const paragraph = this.context.querySelector(
         `.item-paragraph[name="${name}"]`
       );
-      // const rect = paragraph.getBoundingClientRect();
       const rect = jQuery(paragraph).offset();
-      const diff = window.innerWidth >= 756 ? 66 : 270;
-      console.log("DIFF", diff, window.innerWidth, "v=1.0");
+      const diff = window.innerWidth >= 756 ? 66 : 350;
       const yPos = rect.top - diff;
 
       if (this.el.classList.contains("btn__open-tree--is-open")) {
