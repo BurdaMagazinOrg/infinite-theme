@@ -45,13 +45,18 @@
         const entityTargeting = this.el
         .find(".ad-entity-container")
         .data("ad-entity-targeting");
-
-        TrackingManager.trackEvent({
+        
+        let trackingObject = {
           event: "adImpression",
           category: "marketing",
-          action: "DOM",
-          label: entityTargeting.contentwidth
-        });
+          action: "DOM"
+        };
+
+        if(!!entityTargeting && entityTargeting.hasOwnProperty("contentwidth")) {
+          trackingObject.label = entityTargeting.contentwidth;
+        }
+
+        TrackingManager.trackEvent(trackingObject);
       },
       updateView() {
         this.removeFixHeight();
