@@ -1,11 +1,13 @@
 (function(Drupal, drupalSettings, Backbone) {
   const SidebarNavigationBackboneView = Backbone.View.extend({
     context: null,
+    isIntersectingArray: [],
     observer: null,
+    observerInactive: false,
     scrollTargets: null,
     observerOptions: {
       root: null,
-      rootMargin: "56px",
+      rootMargin: "-50%",
       threshold: [0]
     },
     initialize(options) {
@@ -20,45 +22,79 @@
     initScrollToBehavior() {
       Array.from(this.navigationLinks).forEach(element => {
         const liEl = element.parentElement;
-        liEl.addEventListener("click", e => {
-          e.preventDefault();
-          const name = element.getAttribute("id");
-          const paragraph = this.context.querySelector(
-            `.item-paragraph[name="${name}"]`
-          );
-          const rect = paragraph.getBoundingClientRect();
 
-          window.scrollTo({
-            top: Math.max(0, rect.top + window.scrollY - 66),
-            behavior: "smooth"
-          });
-        });
+        liEl.addEventListener("click", e =>
+          this.handleNavigationClick(e, element)
+        );
       });
+    },
+    handleNavigationClick(e, element) {
+      e.preventDefault();
+      const name = element.getAttribute("id");
+      const paragraph = this.context.querySelector(
+        `.item-paragraph[name="${name}"]`
+      );
+      const rect = jQuery(paragraph).offset();
+      const diff = window.innerWidth >= 756 ? 66 : 365;
+      const yPos = rect.top - diff;
+
+      if (this.el.classList.contains("btn__open-tree--is-open")) {
+        this.el.classList.remove("btn__open-tree--is-open");
+      }
+
+      // window.scrollTo({top: yPos, behavior: "smooth"});
+      // crossbrowser behavior
+      this.highlight(element);
+      this.observerInactive = true;
+      jQuery("html, body").animate(
+        { scrollTop: Math.max(0, yPos) },
+        800,
+        () => {
+          this.observerInactive = false;
+        }
+      );
     },
     collectScrollTargets() {
-      let observer = null;
+      const observer = new IntersectionObserver(
+        this.intersectionHandler.bind(this),
+        this.observerOptions
+      );
 
-      Array.from(this.scrollTargets).forEach(element => {
-        observer = new IntersectionObserver(
-          this.intersectionHandler.bind(this),
-          this.observerOptions
-        );
-        observer.observe(element);
-      });
+      Array.from(this.scrollTargets).forEach(el => observer.observe(el));
     },
     intersectionHandler(entries, observer) {
-      let name = "";
-      let selectedElement = null;
-
       entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          const index = this.isIntersectingArray.findIndex(arrayEntry => arrayEntry.target === entry.target);
+          index > -1 &&  this.isIntersectingArray.splice(index, 1);
+          this.highlightByScrollTarget();
+        }
+
         if (entry.isIntersecting) {
-          this.removeHighlighting();
-          name = entry.target.getAttribute("name");
-          selectedElement = this.el.querySelector(`[id="${name}"]`);
-          if (selectedElement)
-            selectedElement.parentElement.classList.add("is-active");
+          this.isIntersectingArray.push(entry);
+          this.highlightByScrollTarget();
         }
       });
+    },
+    getCurrentIntersectingElement() {
+      const intersectionRatio = Math.min(...this.isIntersectingArray.map(entry => entry.intersectionRatio));
+      const entry = this.isIntersectingArray.filter(entry => entry.intersectionRatio === intersectionRatio);
+      return entry.length > 0 && entry[0].target;
+    },
+    highlightByScrollTarget() {
+      if (this.observerInactive) return;
+      const element = this.getCurrentIntersectingElement();
+      if(!!element) {
+        const name = element.getAttribute("name");
+        const selectedElement = this.el.querySelector(`[id="${name}"]`);
+        if (selectedElement) {
+          this.highlight(selectedElement);
+        }
+      }
+    },
+    highlight(el) {
+      this.removeHighlighting();
+      el.parentElement.classList.add("is-active");
     },
     removeHighlighting() {
       const elements = this.el.querySelectorAll(".is-active") || [];
