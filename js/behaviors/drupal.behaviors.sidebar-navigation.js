@@ -30,12 +30,12 @@
       });
     },
     bindListener() {
-      this.observerInactive = true;
-      this.el.querySelector('.btn__open-tree').addEventListener("click" ,this.handleMobileMenuClick.bind(this));
-      setTimeout(() => {this.observerInactive = false;}, 10);
+      this.el.querySelector('.btn__open-tree').addEventListener("click", this.handleMobileMenuClick.bind(this));
     },
     handleMobileMenuClick(e) {
+      this.observerInactive = true;
       this.el.classList.toggle('btn__open-tree--is-open');
+      setTimeout(() => {this.observerInactive = false;}, 1000);
     },
     handleNavigationClick(e, element) {
       e.preventDefault();
