@@ -18,6 +18,7 @@
       );
       this.initScrollToBehavior();
       this.collectScrollTargets();
+      this.bindListener();
     },
     initScrollToBehavior() {
       Array.from(this.navigationLinks).forEach(element => {
@@ -27,6 +28,14 @@
           this.handleNavigationClick(e, element)
         );
       });
+    },
+    bindListener() {
+      this.observerInactive = true;
+      this.el.querySelector('.btn__open-tree').addEventListener("click" ,this.handleMobileMenuClick.bind(this));
+      setTimeout(() => {this.observerInactive = false;}, 10);
+    },
+    handleMobileMenuClick(e) {
+      this.el.classList.toggle('btn__open-tree--is-open');
     },
     handleNavigationClick(e, element) {
       e.preventDefault();
