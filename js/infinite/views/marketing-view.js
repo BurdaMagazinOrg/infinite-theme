@@ -1,10 +1,10 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.MarketingView = BaseView.extend(
     {
-      adType: '',
-      adEntityType: '',
-      adContainerType: '',
-      currentBreakpoint: '',
+      adType: "",
+      adEntityType: "",
+      adContainerType: "",
+      currentBreakpoint: "",
       adRenderModel: null,
       breakpointDeviceModel: {},
       $adSlotContainer: [],
@@ -15,10 +15,10 @@
       enabled: null,
       fbaIsFilled: false,
       targeting: null,
-      initialize: function(pOptions) {
+      initialize(pOptions) {
         BaseView.prototype.initialize.call(this, pOptions);
 
-        this.$adSlotContainer = this.$el.find('.item-marketing');
+        this.$adSlotContainer = this.$el.find(".item-marketing");
         this.checkContainerType();
         this.breakpointDeviceModel = this.deviceModel
           .getDeviceBreakpoints()
@@ -26,57 +26,63 @@
         this.currentBreakpoint = this.breakpointDeviceModel.id;
         this.listenTo(
           this.deviceModel.getDeviceBreakpoints(),
-          'change:active',
+          "change:active",
           this.onDeviceBreakpointHandler,
           this
         );
         this.listenTo(
           this.model,
-          'change:inviewEnabled',
+          "change:inviewEnabled",
           this.onEnabledHandler,
           this
         );
+
+        if(this.currentBreakpoint === "desktop" || this.adContainerType !== MarketingView.CONTAINER_TYPE_SIDEBAR) {
+          this.trackAd();
+        } 
       },
-      updateView: function() {
+      trackAd() {
+        const entityTargeting = this.el
+        .find(".ad-entity-container")
+        .data("ad-entity-targeting");
+        
+        let trackingObject = {
+          event: "adImpression",
+          category: "marketing",
+          action: "DOM"
+        };
+
+        if(!!entityTargeting && entityTargeting.hasOwnProperty("contentwidth")) {
+          trackingObject.label = entityTargeting.contentwidth;
+        }
+
+        TrackingManager.trackEvent(trackingObject);
+      },
+      updateView() {
         this.removeFixHeight();
 
-        if (this.adRenderModel.visibility == 'visible') {
+        if (this.adRenderModel.visibility == "visible") {
           this.show();
         } else {
           this.hide();
         }
       },
-      checkContainerType: function() {
+      checkContainerType() {
         // TODO: this doesn't return the data, just the element containing it.
         // This also means, that the second to last condition will always fail
-        this.adEntityType = this.$el.find('[data-atf-format]');
+        this.adEntityType = this.$el.find("[data-atf-format]");
 
-        if (this.$el.hasClass('container-sidebar-content')) {
+        if (this.$el.hasClass("container-sidebar-content")) {
           this.adContainerType = MarketingView.CONTAINER_TYPE_SIDEBAR;
-        } else if (
-          this.$el.hasClass('region-full-content') &&
-          this.adEntityType == MarketingView.AD_ENTITY_TYPE_LEADERBOARD
-        ) {
-          this.adContainerType = MarketingView.CONTAINER_TYPE_LEADERBOARD;
-        } else if (
-          this.$el.hasClass('region-full-content') &&
-          this.adEntityType == MarketingView.AD_ENTITY_TYPE_SPECIAL
-        ) {
-          this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
-        } else if (
-          this.$el.hasClass('ad-content') &&
-          this.adEntityType == MarketingView.AD_ENTITY_TYPE_SPECIAL
-        ) {
-          this.adContainerType = MarketingView.CONTAINER_TYPE_SPECIAL;
-        }
+        } 
       },
-      updateEnableView: function() {
+      updateEnableView() {
         /**
          * No atf_ad_rendered fired / only enabled
          */
         if (this.adRenderModel == null) return;
 
-        if (this.adRenderModel.visibility == 'visible' && this.enabled) {
+        if (this.adRenderModel.visibility == "visible" && this.enabled) {
           this.show();
         } else if (
           this.adType != MarketingView.AD_TYPE_FBSA &&
@@ -86,34 +92,34 @@
           this.freeze();
         }
       },
-      enableView: function() {
+      enableView() {
         if (this.enabled) return;
 
         this.enabled = true;
         this.updateEnableView();
       },
-      disableView: function() {
+      disableView() {
         if (!this.enabled) return;
 
         this.enabled = false;
         this.updateEnableView();
       },
-      onEnabledHandler: function(pModel) {
+      onEnabledHandler(pModel) {
         if (pModel != this.model) return; // event bubbling
 
-        if (pModel.get('inviewEnabled') == true) {
+        if (pModel.get("inviewEnabled") == true) {
           this.enableView();
         } else {
           this.disableView();
         }
       },
-      checkHeight: function() {
+      checkHeight() {
         if (this.height != this.$adSlotContainer.height()) {
           this.height = this.$adSlotContainer.height();
-          this.model.set('contentHeight', this.height);
+          this.model.set("contentHeight", this.height);
         }
       },
-      onDeviceBreakpointHandler: function(pModel) {
+      onDeviceBreakpointHandler(pModel) {
         this.breakpointDeviceModel = pModel;
         this.currentBreakpoint = this.breakpointDeviceModel.id;
 
@@ -121,7 +127,7 @@
 
         this.hide();
       },
-      isAllowedToWrite: function() {
+      isAllowedToWrite() {
         if (
           this.adType == MarketingView.AD_TYPE_FBSA ||
           this.adType == MarketingView.AD_TYPE_INREAD
@@ -131,33 +137,33 @@
 
         return this.enabled;
       },
-      isActive: function() {
+      isActive() {
         if (
           this.adContainerType == MarketingView.CONTAINER_TYPE_SIDEBAR &&
-          this.currentBreakpoint != 'desktop'
+          this.currentBreakpoint != "desktop"
         ) {
           return false;
         }
 
         return this.enabled;
       },
-      show: function() {
-        this.$el.removeClass('ad-inactive').addClass('ad-active');
+      show() {
+        this.$el.removeClass("ad-inactive").addClass("ad-active");
         this.checkHeight();
         this.visible = true;
       },
-      hide: function() {
-        this.$el.removeClass('ad-active ad-fba').addClass('ad-inactive');
-        this.adType = '';
+      hide() {
+        this.$el.removeClass("ad-active ad-fba").addClass("ad-inactive");
+        this.adType = "";
         this.clear();
         this.removeFixHeight();
         this.visible = false;
       },
-      freeze: function() {
+      freeze() {
         this.setFixHeight(this.getAdEntityContainer().height());
         this.clear();
       },
-      clear: function() {
+      clear() {
         if (this.adType == MarketingView.AD_TYPE_FBSA && this.fbaIsFilled) {
           window.ftNuke();
           this.fbaIsFilled = false;
@@ -165,49 +171,49 @@
           this.getAdTechAd().empty();
         }
       },
-      setFixHeight: function(pHeight) {
-        this.getAdEntityContainer().css('height', pHeight);
+      setFixHeight(pHeight) {
+        this.getAdEntityContainer().css("height", pHeight);
       },
-      removeFixHeight: function() {
+      removeFixHeight() {
         if (
-          this.getAdEntityContainer().prop('style') &&
-          this.getAdEntityContainer().prop('style').height !== ''
+          this.getAdEntityContainer().prop("style") &&
+          this.getAdEntityContainer().prop("style").height !== ""
         ) {
-          this.getAdEntityContainer().css('height', 'auto');
+          this.getAdEntityContainer().css("height", "auto");
         }
       },
-      getAdEntityContainer: function() {
+      getAdEntityContainer() {
         if (this.$adEntityContainer.length <= 0) {
-          this.$adEntityContainer = this.$el.find('.ad-entity-container');
+          this.$adEntityContainer = this.$el.find(".ad-entity-container");
         }
 
         return this.$adEntityContainer;
       },
-      getAdTechAd: function() {
+      getAdTechAd() {
         if (this.$adTechAd.length <= 0) {
-          this.$adTechAd = this.$el.find('.adtech-factory-ad');
+          this.$adTechAd = this.$el.find(".adtech-factory-ad");
         }
 
         return this.$adTechAd;
       },
-      getTargeting: function() {
+      getTargeting() {
         const tmpTargeting =
-          this.getAdEntityContainer().attr('data-ad-entity-targeting') || {};
+          this.getAdEntityContainer().attr("data-ad-entity-targeting") || {};
         return JSON.parse(tmpTargeting);
       },
-      getAdContainerType: function() {
+      getAdContainerType() {
         return this.adContainerType;
       },
-      setRenderedAdType: function(pAdType, pElement) {
+      setRenderedAdType(pAdType, pElement) {
         this.adType = pAdType;
 
         if (pAdType == MarketingView.AD_TYPE_FBSA) {
-          this.$el.addClass('ad-' + MarketingView.AD_TYPE_FBSA);
+          this.$el.addClass(`ad-${MarketingView.AD_TYPE_FBSA}`);
           this.fbaIsFilled = true;
 
           if (pElement != undefined) {
             pElement.contentWindow.addEventListener(
-              'DOMContentLoaded',
+              "DOMContentLoaded",
               _.bind(function(pTest) {
                 this.checkHeight();
               }, this)
@@ -215,21 +221,21 @@
           }
         }
 
-        console.log('setRenderedAdType', this.adType);
+        console.log("setRenderedAdType", this.adType);
       },
-      setRenderModel: function(pAdModel) {
+      setRenderModel(pAdModel) {
         this.adRenderModel = pAdModel;
         this.updateView();
-      },
+      }
     },
     {
-      CONTAINER_TYPE_SIDEBAR: 'CONTAINER_TYPE_SIDEBAR',
-      CONTAINER_TYPE_SPECIAL: 'CONTAINER_TYPE_SPECIAL',
-      CONTAINER_TYPE_LEADERBOARD: 'CONTAINER_TYPE_LEADERBOARD',
-      AD_ENTITY_TYPE_LEADERBOARD: 'AD_ENTITY_TYPE_LEADERBOARD',
-      AD_ENTITY_TYPE_SPECIAL: 'AD_ENTITY_TYPE_SPECIAL',
-      AD_TYPE_FBSA: 'fba',
-      AD_TYPE_INREAD: 'inread',
+      CONTAINER_TYPE_SIDEBAR: "CONTAINER_TYPE_SIDEBAR",
+      CONTAINER_TYPE_SPECIAL: "CONTAINER_TYPE_SPECIAL",
+      CONTAINER_TYPE_LEADERBOARD: "CONTAINER_TYPE_LEADERBOARD",
+      AD_ENTITY_TYPE_LEADERBOARD: "AD_ENTITY_TYPE_LEADERBOARD",
+      AD_ENTITY_TYPE_SPECIAL: "AD_ENTITY_TYPE_SPECIAL",
+      AD_TYPE_FBSA: "fba",
+      AD_TYPE_INREAD: "inread"
     }
   );
 
