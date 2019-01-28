@@ -89,7 +89,7 @@ a:hover {
 		@include btn__open-tree--mobile();
 		margin-left: -$container-h-gap--mobile;
 		margin-right: -$container-h-gap--mobile;
-		z-index: 3;
+		z-index: 99999;
 		background-color: $sidebar-navigation__li-active-bg--mobile;
 
 		&:before {
