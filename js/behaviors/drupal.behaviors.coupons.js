@@ -1,56 +1,58 @@
 (function($, Drupal, drupalSettings, Backbone) {
   Drupal.behaviors.coupons = {
-    attach(context) {
+    attach: function(context) {
       this.expandableFilter(context);
       this.expandableItems(context);
       this.handleExpired();
     },
-    expandableFilter(context) {
+    expandableFilter: function(context) {
       let timeout;
       const filterHeaders = context.querySelectorAll(
-        "#coupon__filter fieldset"
+        '#coupon__filter fieldset'
       );
 
-      filterHeaders.forEach(filter => {
-        filter.querySelector("legend").addEventListener("click", e => {
+      filterHeaders.forEach(function(filter) {
+        filter.querySelector('legend').addEventListener('click', function(e) {
           const expandContainer = e.currentTarget.parentNode;
-          expandContainer.classList.toggle("expand");
+          expandContainer.classList.toggle('expand');
 
           /*
            *  hide / show scrollbar when collapsing / expanding
            * without this fix you see the scrollbars flashing
            * */
           clearTimeout(timeout);
-          if (expandContainer.classList.contains("expand")) {
-            timeout = setTimeout(() => {
-              expandContainer.classList.add("open");
+          if (expandContainer.classList.contains('expand')) {
+            timeout = setTimeout(function() {
+              expandContainer.classList.add('open');
             }, 300);
           } else {
-            expandContainer.classList.remove("open");
+            expandContainer.classList.remove('open');
           }
         });
       });
     },
-    expandableItems(context) {
-      const expandableItems = context.querySelectorAll(".expandable");
-      expandableItems.forEach(expandable => {
-        expandable.addEventListener("click", e => {
+    expandableItems: function(context) {
+      const expandableItems = context.querySelectorAll('.expandable');
+      expandableItems.forEach(function(expandable) {
+        expandable.addEventListener('click', function(e) {
           const expandContainer = e.currentTarget.parentNode;
-          expandContainer.classList.toggle("expand");
+          expandContainer.classList.toggle('expand');
         });
       });
     },
-    isExpired(coupon) {
+    isExpired: function(coupon) {
       if (!coupon.dataset.expires) return false;
       const expires = parseInt(coupon.dataset.expires);
       return expires < new Date().getTime() / 1000;
     },
-    handleExpired() {
-      document.querySelectorAll(".coupon[data-expires]").forEach(coupon => {
-        if (this.isExpired(coupon)) {
-          coupon.parentElement.classList.add("expired");
-        }
-      });
-    }
+    handleExpired: function() {
+      document.querySelectorAll('.coupon[data-expires]').forEach(
+        function(coupon) {
+          if (this.isExpired(coupon)) {
+            coupon.parentElement.classList.add('expired');
+          }
+        }.bind(this)
+      );
+    },
   };
 })(jQuery, Drupal, drupalSettings, Backbone);
