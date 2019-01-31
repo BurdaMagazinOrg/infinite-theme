@@ -73,6 +73,12 @@
     min-height: 160px;
 
     &.usage__progress-navigation {
+      @media (max-width: $screen-xs-max) {
+        .sidebar-navigation {
+          margin-top: -$margin-v-item-content__item-mobile;
+        }
+      }
+      
       .shopit-badge {
         display: none;
       }
