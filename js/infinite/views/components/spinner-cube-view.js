@@ -1,30 +1,30 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.SpinnerCubeView = Backbone.View.extend({
-
     height: 0,
     hidden: false,
     $template: {},
     preRenderCallback: {},
-    template: _.template('<div class="spinner-container">'
-      + '<div class="spinner spinner-cube">'
-      + '<div class="spinner-cube-item-1 spinner-cube-item"></div>'
-      + '<div class="spinner-cube-item-2 spinner-cube-item"></div>'
-      + '<div class="spinner-cube-item-4 spinner-cube-item"></div>'
-      + '<div class="spinner-cube-item-3 spinner-cube-item"></div>'
-      + '</div>'
-      + '</div>'),
+    template: _.template(
+      '<div class="spinner-container">' +
+        '<div class="spinner spinner-cube">' +
+        '<div class="spinner-cube-item-1 spinner-cube-item"></div>' +
+        '<div class="spinner-cube-item-2 spinner-cube-item"></div>' +
+        '<div class="spinner-cube-item-4 spinner-cube-item"></div>' +
+        '<div class="spinner-cube-item-3 spinner-cube-item"></div>' +
+        '</div>' +
+        '</div>'
+    ),
 
-    initialize(pSettings) {
+    initialize: function(pSettings) {
       _.extend(this, pSettings);
 
       this.render();
       if (!this.hidden) this.show();
     },
-    render() {
+    render: function() {
       if (typeof this.preRenderCallback === 'function') {
         this.$template = this.preRenderCallback($(this.template()));
-      }
-      else {
+      } else {
         this.$template = $(this.template()).appendTo(this.$el);
       }
 
@@ -33,7 +33,7 @@
       // this.$template.css('opacity', 0);
       return this;
     },
-    show(pAnimated) {
+    show: function(pAnimated) {
       this.$template.addClass('in');
       // var tmpDuration = pAnimated == false ? 0 : 350;
       // this.$template.stop().animate({opacity: 1, height: this.height}, {
@@ -41,7 +41,7 @@
       //    easing: 'swing'
       // });
     },
-    hide(pAnimated, pRemove) {
+    hide: function(pAnimated, pRemove) {
       this.$template.removeClass('in');
 
       // var tmpDuration = pAnimated == false ? 0 : 350,
@@ -56,11 +56,12 @@
       //    }, this)
       // });
     },
-    destroy() {
+    destroy: function() {
       console.log('REMOVE');
       this.$template.remove();
     },
   });
 
-  window.SpinnerCubeView = window.SpinnerCubeView || BurdaInfinite.views.SpinnerCubeView;
-}(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite));
+  window.SpinnerCubeView =
+    window.SpinnerCubeView || BurdaInfinite.views.SpinnerCubeView;
+})(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

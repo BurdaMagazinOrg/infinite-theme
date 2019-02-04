@@ -6,7 +6,7 @@ BM.views = BM.views || {};
 BM.models = BM.models || {};
 
 // Close existing view
-BM.closeView = function (name) {
+BM.closeView = function(name) {
   if (typeof BM.views[name] !== 'undefined') {
     // Cleanup view
     // Remove all of the view's delegated events
@@ -25,7 +25,7 @@ BM.closeView = function (name) {
 // BM.createView always cleans up existing view before
 // creating a new one.
 // callback function always return a new view instance
-BM.createView = function (name, pComponent) {
+BM.createView = function(name, pComponent) {
   BM.closeView(name);
   BM.views[name] = pComponent;
   return BM.views[name];
@@ -34,7 +34,7 @@ BM.createView = function (name, pComponent) {
 // BM.reuseView always returns existing view. Otherwise it
 // execute callback function to return new view
 // callback function always return a new view instance
-BM.reuseView = function (name, pComponent) {
+BM.reuseView = function(name, pComponent) {
   if (typeof BM.views[name] !== 'undefined') {
     return BM.views[name];
   }
@@ -47,9 +47,8 @@ BM.reuseView = function (name, pComponent) {
  * MODELS
  */
 
-BM.clearModel = function (name) {
+BM.clearModel = function(name) {
   if (typeof BM.models[name] !== 'undefined') {
-
     // Cleanup model
     BM.models[name].clear();
 
@@ -66,7 +65,7 @@ BM.clearModel = function (name) {
  * @returns {BackboneModel}
  */
 
-BM.createModel = function (name, pModel) {
+BM.createModel = function(name, pModel) {
   BM.clearModel(name);
   BM.models[name] = pModel;
   return BM.models[name];
@@ -79,7 +78,7 @@ BM.createModel = function (name, pModel) {
  * @returns {BackboneModel}
  */
 
-BM.reuseModel = function (name, pModel) {
+BM.reuseModel = function(name, pModel) {
   if (typeof BM.models[name] !== 'undefined') {
     return BM.models[name];
   }
