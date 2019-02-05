@@ -176,6 +176,7 @@
     @include label--affiliate();
     @include flex-item();
     padding: 0;
+    background-image: none;
   }
 
   .coupon__tnc {
