@@ -249,8 +249,7 @@
 
               externalTrackingURL =
                 externalTrackingURL.substr(0, positionOfLinkParam) +
-                slicedString +
-                externalTrackingURL.substr(positionOfLinkParam);
+                slicedString;
             }
 
             break;
