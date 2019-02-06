@@ -8,10 +8,10 @@
       initialize: function(pOptions) {
         BaseView.prototype.initialize.call(this, pOptions);
 
+        
         this.delegateInview();
         this.addListener();
         this.createModel();
-
         this.collectTrackingData();
       },
       delegateInview: function() {
@@ -213,6 +213,8 @@
 
             break;
           case ProductView.PROVIDER_GENERIC:
+            if(this.model.get("contentType") !== "magazine_products") return;
+
             if (isTracdelightURL && hasLinkParam) {
               slicedString = externalTrackingURL.substring(
                 positionOfLinkParam,
