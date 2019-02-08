@@ -16,12 +16,12 @@
             return;
           }
 
-          let currentTarget = e.currentTarget;
-          let redirectUrl = currentTarget.getAttribute(urlDataAttribute);
-          let target = openInNewWindow
+          const currentTarget = e.currentTarget;
+          const redirectUrl = currentTarget.getAttribute(urlDataAttribute);
+          const target = openInNewWindow
             ? currentTarget.getAttribute('data-target') || '_blank'
             : currentTarget.getAttribute('data-target');
-          let hasTarget = !!target;
+          const hasTarget = !!target;
 
           if (hasTarget) {
             window.open(redirectUrl, target);
@@ -29,6 +29,6 @@
             location.href = redirectUrl;
           }
         });
-    }
+    },
   };
 })(jQuery, Drupal, drupalSettings, Backbone, window);

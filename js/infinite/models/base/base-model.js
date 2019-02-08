@@ -1,40 +1,36 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
     defaults: {
       inviewEnabled: true,
       initialDOMItem: true,
-      type: "root"
+      type: 'root',
     },
-    initialize: function (pModel, pOptions) {
+    initialize: function(pModel, pOptions) {
       _.extend(this, pOptions);
     },
-    create: function (pData) {
+    create: function(pData) {
       this.set(pData);
     },
-    inviewEnable: function (pState) {
+    inviewEnable: function(pState) {
       this.set('inviewEnabled', pState);
     },
-    hasItems: function () {
+    hasItems: function() {
       return false;
     },
-    refresh: function () {
+    refresh: function() {
       this.trigger('refresh', this);
     },
-    setParentModel: function (pModel) {
-      this.set('parentModel', pModel, {silent: true});
+    setParentModel: function(pModel) {
+      this.set('parentModel', pModel, { silent: true });
     },
-    setElement: function ($pElement) {
-      this.set('el', $pElement, {silent: true});
+    setElement: function($pElement) {
+      this.set('el', $pElement, { silent: true });
       this.trigger('elementChanged', this.get('el'));
     },
-    getParentModel: function () {
+    getParentModel: function() {
       return this.get('parentModel');
-    }
+    },
   });
 
   window.BaseModel = window.BaseModel || BurdaInfinite.models.base.BaseModel;
-
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

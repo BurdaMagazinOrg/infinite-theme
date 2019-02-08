@@ -1,4 +1,4 @@
-/.idea/
+.idea
 **/.sass-cache
 **/.sass-cache/*
 /docroot
@@ -45,3 +45,4 @@ drupal/sites/simpletest
 
 
 legacy_files
+**/node_modules

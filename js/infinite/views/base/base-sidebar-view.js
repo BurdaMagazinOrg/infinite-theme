@@ -1,36 +1,33 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
-
-  "use strict";
-
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.base.BaseSidebar = Backbone.View.extend({
-    classStateOpen: "sidebar-open",
-    classElementOpen: "open",
+    classStateOpen: 'sidebar-open',
+    classElementOpen: 'open',
     events: {
-      "click .icon-close": function (pEvent) {
+      'click .icon-close': function(pEvent) {
         this.clickHandler(pEvent, 'close');
-      }
+      },
     },
-    initialize: function (pOptions) {
+    initialize: function(pOptions) {
       _.extend(this, pOptions || {});
-      this.listenTo(this.model, "change:is_open", this.stateChangedHandler);
+      this.listenTo(this.model, 'change:is_open', this.stateChangedHandler);
     },
-    clickHandler: function (pEvent, pType) {
+    clickHandler: function(pEvent, pType) {
       switch (pType) {
         case 'close':
           this.open(false);
           break;
       }
     },
-    stateChangedHandler: function (pModel) {
+    stateChangedHandler: function(pModel) {
       this.open(pModel.get('is_open'));
     },
-    open: function (pBool) {
+    open: function(pBool) {
       this.model.set('is_open', pBool);
       $('body').toggleClass(this.classStateOpen, pBool);
       this.$el.toggleClass(this.classElementOpen, pBool);
-    }
+    },
   });
 
-  window.BaseSidebar = window.BaseSidebar || BurdaInfinite.views.base.BaseSidebar;
-
+  window.BaseSidebar =
+    window.BaseSidebar || BurdaInfinite.views.base.BaseSidebar;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

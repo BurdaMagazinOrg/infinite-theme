@@ -1,9 +1,14 @@
 .sidebar-navigation {
-	position: sticky;
+  position: sticky;
+  position: -webkit-sticky;
 	left: 0;
   top: $navigation-height;
   background-color: $color-white;
   transform: translateZ(0);
+
+a:hover {
+  color: inherit;
+}
 
 	li,
 	.btn__open-tree,
@@ -28,11 +33,13 @@
 		@include transition-property(background-color, color);
 		@include transition-duration($transition-duration);
 		@include transition-timing-function($transition-easing);
-		@media (max-width: $screen-xs-max) {
+    cursor: pointer;
+    
+    @media (max-width: $screen-xs-max) {
 			@include transition-duration(0);
 			@include transition-property(none);
 			background-color: transparent;
-			position: static;
+      position: static;
 		}
 
 		&.is-active {
@@ -82,7 +89,7 @@
 		@include btn__open-tree--mobile();
 		margin-left: -$container-h-gap--mobile;
 		margin-right: -$container-h-gap--mobile;
-		z-index: 3;
+		z-index: 99999;
 		background-color: $sidebar-navigation__li-active-bg--mobile;
 
 		&:before {
