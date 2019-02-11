@@ -31,23 +31,17 @@
           return;
 
         const $tmpElement = pModel.get('el');
-
         const tmpInviewModel = pModel.get('inview');
-
         const tmpHistoryURL = $tmpElement.data('history-url');
-
         let tmpDocumentTitle = '';
 
         if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
-          if (!_.isUndefined(tmpHistoryURL) && !_.isEmpty(tmpHistoryURL)) {
+          if (!!tmpHistoryURL && tmpHistoryURL !== "") {
             ScrollManager.pushHistory(tmpHistoryURL, { replace: true });
             tmpDocumentTitle = $tmpElement.data('history-title');
 
-            if (
-              !_.isUndefined(tmpDocumentTitle) &&
-              !_.isEmpty(tmpDocumentTitle)
-            ) {
-              document.title = decodeURIComponent(tmpDocumentTitle);
+            if (!!tmpDocumentTitle && tmpDocumentTitle !== "") {
+              document.title = decodeURI(encodeURI(tmpDocumentTitle));
             }
           }
         }
