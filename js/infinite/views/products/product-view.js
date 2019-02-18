@@ -7,11 +7,10 @@
       inview: null,
       initialize: function(pOptions) {
         BaseView.prototype.initialize.call(this, pOptions);
-
+        
         this.delegateInview();
         this.addListener();
         this.createModel();
-
         this.collectTrackingData();
       },
       delegateInview: function() {
@@ -136,55 +135,21 @@
         const isDrupalEntityOrNode = this.model.has('entityType');
         const hasSubid = externalTrackingURL.indexOf('subid=') > -1;
 
-        if (externalTrackingURL === '' || externalTrackingURL === undefined)
-          return;
-
-        if (
-          this.model.has('componentType') &&
-          this.model.get('componentType') !== ''
-        ) {
-          componentType = this.model.get('componentType').toLowerCase();
-        }
-
-        if (
-          this.model.has('entityType') &&
-          this.model.get('entityType') !== ''
-        ) {
-          entityType = this.model.get('entityType');
-        }
-
-        if (this.model.has('entityID') && this.model.get('entityID') !== '') {
-          entityID = this.model.get('entityID');
-        }
-
-        if (this.model.has('productId') && this.model.get('productId') !== '') {
-          productId = this.model.get('productId');
-        }
+        if (externalTrackingURL === '' || externalTrackingURL === undefined) return;
+        if (this.model.has('componentType')) componentType = this.model.get('componentType').toLowerCase();
+        if (this.model.has('entityType')) entityType = this.model.get('entityType');
+        if (this.model.has('entityID')) entityID = this.model.get('entityID');
+        if (this.model.has('productId')) productId = this.model.get('productId');
 
         switch (this.model.get('provider')) {
           case ProductView.PROVIDER_TRACDELIGHT:
             if (hasSubid) {
-              if (entityType !== '') {
-                slicedString += '' + entityType;
-              }
+              if (entityType !== '') slicedString += '' + entityType;
+              if (entityID !== '')  slicedString += '-' + entityID;
+              if (productId !== '') slicedString += '-' + productId;
+              if (componentType !== '') slicedString += '-' + componentType;
 
-              if (entityID !== '') {
-                slicedString += '-' + entityID;
-              }
-
-              if (productId !== '') {
-                slicedString += '-' + productId;
-              }
-
-              if (componentType !== '') {
-                slicedString += '-' + componentType;
-              }
-
-              externalTrackingURL = BaseUtils.replaceUrlParam(
-                externalTrackingURL,
-                'subid',
-                slicedString
-              );
+              externalTrackingURL = BaseUtils.replaceUrlParam(externalTrackingURL, 'subid', slicedString);
             }
 
             break;
@@ -193,33 +158,17 @@
             if (externalTrackingURL.indexOf(AppConfig.amazonURLTrId) > -1) {
               slicedString = AppConfig.amazonURLTrId.split('-');
               if (slicedString.length > 1) {
-                slicedString =
-                  '' +
-                  slicedString[0] +
-                  '-' +
-                  componentType +
-                  '-' +
-                  slicedString[1];
+                slicedString = slicedString[0] + '-' + componentType + '-' + slicedString[1];
               } else {
-                slicedString =
-                  '' + AppConfig.amazonURLTrId + '-' + componentType;
+                slicedString = AppConfig.amazonURLTrId + '-' + componentType;
               }
 
-              externalTrackingURL = externalTrackingURL.replace(
-                AppConfig.amazonURLTrId,
-                slicedString
-              );
+              externalTrackingURL = externalTrackingURL.replace(AppConfig.amazonURLTrId, slicedString);
             }
 
             break;
           case ProductView.PROVIDER_GENERIC:
-            if (isTracdelightURL && hasLinkParam) {
-              slicedString = externalTrackingURL.substring(
-                positionOfLinkParam,
-                externalTrackingURL.length
-              );
-
-              if (isDrupalEntityOrNode) {
+            if (isTracdelightURL && hasLinkParam && isDrupalEntityOrNode) {              
                 productTitle = this.model.get('title');
                 productTitleProcessed = productTitle
                   .replace(/[\/. ,:-]+/g, '_')
@@ -228,27 +177,12 @@
 
                 slicedString += '&subid=';
 
-                if (entityType !== '') {
-                  slicedString += '' + entityType;
-                }
-
-                if (entityID !== '') {
-                  slicedString += '-' + entityID;
-                }
-
-                if (productTitleProcessed !== '') {
-                  slicedString += '-' + productTitleProcessed;
-                }
-
-                if (componentType !== '') {
-                  slicedString += '-' + componentType;
-                }
-              }
-
-              externalTrackingURL =
-                externalTrackingURL.substr(0, positionOfLinkParam) +
-                slicedString +
-                externalTrackingURL.substr(positionOfLinkParam);
+                if (entityType !== '') slicedString += '' + entityType;
+                if (entityID !== '') slicedString += '-' + entityID;
+                if (productTitleProcessed !== '') slicedString += '-' + productTitleProcessed;
+                if (componentType !== '') slicedString += '-' + componentType;
+                
+                externalTrackingURL = externalTrackingURL.replace("&link", `${slicedString}&link`);
             }
 
             break;
