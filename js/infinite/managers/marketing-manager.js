@@ -37,21 +37,13 @@
     },
     updateView: function($pContext) {
       let tmpView;
-
       let $tmpElement;
-
       let tmpArgument;
-
       const tmpLoadArguments = [];
-
       let tmpTargeting = {};
-
       let tmpIndex = 0;
-
       const $tmpAllAds = $('.marketing-view');
-
       const $tmpContext = $pContext || document;
-
       this.currentBreakpoint = this.breakpointDeviceModel.id;
 
       $('.marketing-view', $tmpContext).each(
@@ -62,7 +54,8 @@
             tmpView = $tmpElement.data('infiniteModel').get('view');
 
             // && tmpView.isTypeAllowedToWrite()
-            if (tmpView.isActive() && tmpView.isAllowedToWrite()) {
+            console.log("MARKETING", tmpView.getTargeting());
+            if (tmpView.isActive() && tmpView.isAllowedToWrite() && !!tmpView.getTargeting()) {
               tmpIndex = $tmpAllAds.index($tmpElement);
               tmpView.getAdTechAd().attr('data-slot-number', tmpIndex);
 

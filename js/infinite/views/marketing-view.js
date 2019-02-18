@@ -203,8 +203,11 @@
         return this.$adTechAd;
       },
       getTargeting: function() {
-        const tmpTargeting =
-          this.getAdEntityContainer().attr('data-ad-entity-targeting') || {};
+        let tmpTargeting = null;
+        const $adEntityContainer = this.getAdEntityContainer();
+        if ($adEntityContainer.length > 0) {
+          tmpTargeting = $adEntityContainer.attr('data-ad-entity-targeting') || null;
+        }
         return JSON.parse(tmpTargeting);
       },
       getAdContainerType: function() {
