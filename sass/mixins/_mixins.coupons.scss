@@ -1,3 +1,196 @@
+@mixin coupon--content-reference() {
+  .coupon {
+    position: relative;
+    margin-bottom: $grid-unit-1;
+    transition: opacity 0.3s;
+    svg,
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    &__expired {
+      display: none;
+    }
+
+    &__affiliatelink {
+      .affiliatelinks {
+        @include label--affiliate();
+        padding: 0;
+      }
+    }
+
+    &__brand--logo__wrapper {
+      @include strike-through-title();
+      margin: 10px 0 (20 + $grid-unit-2);
+      @media (min-width: $screen-lg-min) {
+        margin: (10px + $grid-unit-1) 0 (20px + $grid-unit-5);
+      }
+    }
+    &__title {
+      font-family: $font-content;
+      margin-bottom: 0;
+      display: inline-block;
+      padding: $grid-unit-1 $grid-unit-3 0;
+      font-size: $grid-unit-2;
+      font-weight: bold;
+      letter-spacing: normal;
+      background-color: #ebebeb;
+    }
+
+    &__brand {
+      padding: $grid-unit-3;
+      background-color: #ebebeb;
+      @media (min-width: $screen-lg-min) {
+        padding: $grid-unit-5 $grid-unit-4 $grid-unit-7;
+      }
+    }
+
+    &__aspect-ratio {
+      position: relative;
+      @include aspect-ratio(584, 262.8);
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+      }
+    }
+
+    &__discount {
+      position: absolute;
+      top: initial;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      transform: translateY(-55%);
+      font-size: $grid-unit-3;
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      pointer-events: none;
+      &--value {
+        font-size: $grid-unit-4;
+      }
+    }
+
+    &__tnc {
+      margin: 6px 0 0;
+      text-align: right;
+      color: #828282;
+      font-size: 12px;
+      min-height: calc(12px * 1.3);
+      &-label {
+        text-decoration: none;
+        letter-spacing: normal;
+      }
+      &-details {
+        margin: 0;
+        text-align: justify;
+      }
+      &.expand {
+        .coupon__tnc-details {
+          margin: $grid-unit-2 0;
+        }
+      }
+    }
+    &__code--wrapper {
+      text-align: center;
+      margin: $grid-unit-1 0;
+      @media (min-width: $screen-lg-min) {
+        display: flex;
+        padding: $grid-unit-3 0;
+        .coupon__code {
+          text-align: left;
+          padding: 0;
+          line-height: $grid-unit-5;
+        }
+      }
+    }
+    &__code {
+      font-family: $font-content;
+      width: 100%;
+      text-align: center;
+      color: #d0021b;
+      background-color: #fff;
+      line-height: $grid-unit-2;
+      font-size: $grid-unit-2;
+      font-weight: bold;
+      &--label {
+        color: #000;
+        font-weight: normal;
+      }
+    }
+
+    &__button:after {
+      display: none;
+    }
+
+    &__validity--wrapper {
+      @include strike-through-title();
+    }
+
+    &__validity {
+      font-family: $font-label;
+    }
+
+    &__deal-type {
+      text-transform: uppercase;
+    }
+    &__expired {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateY(-35%);
+      width: 150px;
+    }
+    &__tracking-pixel {
+      display: none;
+      opacity: 0;
+      height: 0;
+      pointer-events: none;
+    }
+  }
+  &.expired {
+    .coupon {
+      opacity: 0.3;
+      pointer-events: none;
+      &__expired {
+        display: block;
+      }
+      &__affiliatelink {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin coupon--content-reference--normal() {
+  @include coupon--content-reference();
+  .coupon {
+    &__logo {
+      svg {
+        max-width: 100%;
+        max-height: 80px;
+        @media (min-width: $screen-lg-min) {
+          max-height: 115px;
+        }
+      }
+    }
+    &__logo {
+      width: 197px;
+      img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}
+
 @mixin strike-through-title() {
   width: 100%;
   text-align: center;
@@ -20,5 +213,21 @@
         font-size: 24px;
       }
     }
+  }
+}
+
+@mixin coupon-button() {
+  @include button();
+  @include button--lg();
+  @include button--white();
+  @include flexbox($inline: true);
+  @include align-items();
+  @include icon($container: "&:after");
+  white-space: nowrap;
+
+  &:after {
+    content: $icon__arrow-large-right;
+    font-size: 18px;
+    margin-left: $grid-unit-1;
   }
 }
