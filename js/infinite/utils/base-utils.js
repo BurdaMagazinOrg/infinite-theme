@@ -1,11 +1,11 @@
-(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.utils.BaseUtils = {
-    attach: function() {},
-    delegateElements: function($pContainer) {
+    attach: function () {},
+    delegateElements: function ($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateSocials($pContainer);
     },
-    updateSocials: function($pContainer) {
+    updateSocials: function ($pContainer) {
       let tmpDeviceModel;
 
       if (typeof BM !== 'undefined')
@@ -24,7 +24,7 @@
         .unbind('click.socialsPinterest')
         .bind(
           'click.socialsPinterest',
-          $.proxy(function(pEvent) {
+          $.proxy(function (pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
 
             const tmpURL = $tmpItem.data('url');
@@ -62,7 +62,7 @@
         .unbind('click.socialsFacebook')
         .bind(
           'click.socialsFacebook',
-          $.proxy(function(pEvent) {
+          $.proxy(function (pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
 
             const tmpURL = $tmpItem.data('url');
@@ -122,7 +122,7 @@
         .unbind('click.socialsEmail')
         .bind(
           'click.socialsEmail',
-          $.proxy(function(pEvent) {
+          $.proxy(function (pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
 
             const tmpURL = $tmpItem.data('url');
@@ -159,11 +159,11 @@
           }, this)
         );
     },
-    updateBtnActions: function($pContainer) {
+    updateBtnActions: function ($pContainer) {
       $pContainer
         .find('[data-btn-action]')
         .unbind('click.btnAction')
-        .bind('click.btnAction', function(pEvent) {
+        .bind('click.btnAction', function (pEvent) {
           const tmpAction = $(this).data('btn-action');
 
           const tmpValue = $(this).data('btn-action-value');
@@ -185,33 +185,33 @@
           }
         });
     },
-    disableBeforeUnloadHandler: function() {
+    disableBeforeUnloadHandler: function () {
       window.allowBeforeUnload = false;
-      _.delay(function() {
+      _.delay(function () {
         window.allowBeforeUnload = true;
       }, 100);
     },
-    replaceUrlParam: function(url, paramName, paramValue) {
-      if (paramValue == null) paramValue = '';
-      const pattern = new RegExp('\\b(' + paramName + '=).*?(&|$)');
-      if (url.search(pattern) >= 0) {
-        return url.replace(pattern, '$1' + paramValue + '$2');
+    extendUrlParam: function (url, paramName, paramValue) {
+      var url = new URL(url);
+      var searchParams = url.searchParams;
+      if (!!searchParams.has(paramName)) {
+        var currentValue = searchParams.get(paramName);
+        searchParams.set(paramName, `${currentValue}-${paramValue}`);
       }
-      return (
-        '' +
-        url +
-        (url.indexOf('?') > 0 ? '&' : '?') +
-        paramName +
-        '=' +
-        paramValue
-      );
+      return url.toString();
+    },
+    replaceUrlParam: function (url, paramName, paramValue) {
+      var url = new URL(url);
+      var searchParams = url.searchParams;
+      !!searchParams.has(paramName) && searchParams.set(paramName, paramValue);
+      return url.toString();
     },
   };
 
   $('body')
     .once('BaseUtils')
-    .each(function() {
-      $(window).on('base-utils:update', function(pEvent, $pContainer) {
+    .each(function () {
+      $(window).on('base-utils:update', function (pEvent, $pContainer) {
         BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
       });
     });
