@@ -149,7 +149,7 @@
               if (productId !== '') slicedString += '-' + productId;
               if (componentType !== '') slicedString += '-' + componentType;
 
-              externalTrackingURL = BaseUtils.replaceUrlParam(externalTrackingURL, 'subid', slicedString);
+              externalTrackingURL = BaseUtils.extendUrlParam(externalTrackingURL, 'subid', slicedString);
             }
 
             break;
@@ -182,7 +182,11 @@
                 if (productTitleProcessed !== '') slicedString += '-' + productTitleProcessed;
                 if (componentType !== '') slicedString += '-' + componentType;
                 
-                externalTrackingURL = externalTrackingURL.replace("&link", `${slicedString}&link`);
+                if(externalTrackingURL.indexOf("subid") > -1) {
+                  externalTrackingURL = BaseUtils.extendUrlParam(externalTrackingURL, 'link', `${slicedString}&link`);
+                } else {
+                  externalTrackingURL = externalTrackingURL.replace("&link", `${slicedString}&link`);
+                }
             }
 
             break;
