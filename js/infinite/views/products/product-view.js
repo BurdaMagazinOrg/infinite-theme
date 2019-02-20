@@ -230,7 +230,6 @@
     onProductClickHandler: function (pEvent) {
       this.initCustomTracking();
       this.trackProductClick();
-      console.log('>> click on product', this.$el.attr('data-external-url'));
     },
     onEnterHandler: function (pDirection) {
       // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
