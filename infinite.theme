@@ -7,6 +7,7 @@ use Drupal\infinite_media\MediaHelper;
 use Drupal\taxonomy\TermInterface;
 use Drupal\views\Views;
 use Drupal\user\Entity\User;
+use Drupal\media_entity\MediaInterface;
 use Psy\Util\Json;
 
 function infinite_preprocess(&$variables) {
@@ -72,6 +73,29 @@ function infinite_preprocess_block__outbrain(&$variables) {
 
     $variables['elements']['content']['advertisingslot_fba_article'] = $advertisingslot_fba_article;
     $variables['content']['advertisingslot_fba_article'] = $advertisingslot_fba_article;
+  }
+}
+
+/**
+ * Implements template_preprocess_media().
+ *
+ * Provide extra variables for media full view mode of nexx videos.
+ *
+ * TODO: Refactor when update to core media.
+ */
+function infinite_preprocess_media(array &$variables) {
+
+  /* @var $media MediaInterface */
+  if ($variables['elements']['#view_mode'] == 'full' && $media = $variables['elements']['#media']) {
+
+    if ($media->bundle() == 'nexx_video') {
+      $variables['mid'] = $media->id();
+      $variables['channel_tid'] = 'all';
+
+      if (!$media->get('field_channel')->isEmpty()) {
+        $variables['channel_tid'] = (int) $media->get('field_channel')->target_id;
+      }
+    }
   }
 }
 
