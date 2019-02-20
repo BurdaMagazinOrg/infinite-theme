@@ -174,8 +174,7 @@
           break;
       }
 
-      if (externalTrackingURL != this.model.get('url')) {
-        this.model.set('tracking-url', externalTrackingURL);
+      if (externalTrackingURL != this.$el.attr('data-external-url')) {
         this.$el.attr('data-external-url', externalTrackingURL);
       }
     },
@@ -231,10 +230,7 @@
     onProductClickHandler: function (pEvent) {
       this.initCustomTracking();
       this.trackProductClick();
-
-      if (this.model.has('tracking-url')) {
-        console.log('>> click on product', this.model.get('tracking-url'));
-      }
+      console.log('>> click on product', this.$el.attr('data-external-url'));
     },
     onEnterHandler: function (pDirection) {
       // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);

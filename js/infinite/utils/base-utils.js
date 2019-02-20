@@ -192,6 +192,8 @@
       }, 100);
     },
     extendUrlParam: function (url, paramName, paramValue) {
+      if(url.indexOf(paramValue) >= 0) return;
+
       var url = new URL(url);
       var searchParams = url.searchParams;
       if (!!searchParams.has(paramName)) {
