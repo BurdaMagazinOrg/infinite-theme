@@ -80,7 +80,7 @@
 
   @media (min-width: $screen-sm-min) {
     float: left;
-    width: percentage(($grid-columns / $item-count) / $grid-columns);
+    width: floor(percentage(($grid-columns / $item-count) / $grid-columns));
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
