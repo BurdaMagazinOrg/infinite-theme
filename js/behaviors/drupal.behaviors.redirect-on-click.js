@@ -23,7 +23,7 @@
             : currentTarget.getAttribute('data-target');
           const hasTarget = !!target;
 
-          if(/^https?:\/\/(?www\.)?tipser\.com/test(redirectUrl)) return;
+          if(/^https?:\/\/(?:www\.)?tipser\.com/.test(redirectUrl)) return;
 
           if (hasTarget) {
             window.open(redirectUrl, target);
