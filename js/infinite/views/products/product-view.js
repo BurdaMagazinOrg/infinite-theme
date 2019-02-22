@@ -174,7 +174,8 @@
           break;
       }
 
-      if (externalTrackingURL != this.$el.attr('data-external-url')) {
+      if (externalTrackingURL != this.model.get('url')) {
+        this.model.set('tracking-url', externalTrackingURL);
         this.$el.attr('data-external-url', externalTrackingURL);
       }
     },
