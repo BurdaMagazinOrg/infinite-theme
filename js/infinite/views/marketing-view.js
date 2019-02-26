@@ -44,7 +44,7 @@
     onInviewEnterHandler: function () {
       clearTimeout(this.trackingInterval);
       this.trackingTimeout = setTimeout(() => {
-        this.trackAd('ViewportDelivered');
+        this.trackAd('viewportDelivered');
       });
     },
     onInviewExitHandler: function () {
