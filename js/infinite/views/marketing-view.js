@@ -34,7 +34,7 @@
       }
     },
     delegateInview: function () {
-      if (this.inview != null) this.inview.destroy();
+      if (this.inview !== null) this.inview.destroy();
 
       this.inview = this.$el.inview({
         enter: this.onInviewEnterHandler.bind(this),
