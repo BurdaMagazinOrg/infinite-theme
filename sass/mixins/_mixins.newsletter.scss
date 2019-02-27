@@ -202,6 +202,12 @@
 
   .newsletter__image {
     margin-bottom: $grid-unit-2;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+    }
   }
 
   @if ($use-media-query == true) {
@@ -217,7 +223,7 @@
 
       .newsletter__image,
       .newsletter__input-wrapper {
-        margin-bottom: $grid-unit-3;
+        margin-bottom: $grid-unit-4;
       }
     }
   }
