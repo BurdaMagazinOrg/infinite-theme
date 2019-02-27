@@ -42,13 +42,13 @@
       });
     },
     onInviewEnterHandler: function () {
-      clearTimeout(this.trackingInterval);
+      clearTimeout(this.trackingTimeout);
       this.trackingTimeout = setTimeout(() => {
         this.trackAd('viewportDelivered');
       });
     },
     onInviewExitHandler: function () {
-      clearTimeout(this.trackingInterval);
+      clearTimeout(this.trackingTimeout);
     },
     trackAd: function (action) {
       const entityTargeting = this.el.find('.ad-entity-container').data('ad-entity-targeting');
