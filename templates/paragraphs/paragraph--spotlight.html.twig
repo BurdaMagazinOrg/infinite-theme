@@ -36,9 +36,14 @@
  * @ingroup themeable
  */
 #}
+
 {% set classes = [
     'item-paragraph--' ~ (paragraph.bundle ~ '-' ~ text_position )|clean_class,
 ] %}
+
+{% if anchor_links['#links'] is not empty or lexicon_links is not empty %}
+  {% set classes = classes|merge(['has-anchor-nav']) %}
+{% endif %}
 
 {% if (content.field_bg_overlay_disabled | plain_text | trim ) %}
     {% set classes = classes|merge(['bg-overlay-disabled']) %}
