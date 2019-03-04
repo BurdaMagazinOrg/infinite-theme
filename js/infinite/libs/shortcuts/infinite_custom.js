@@ -117,7 +117,7 @@
     }
 
     //$items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
-    $items.appendTo(this.$container.find('.container-feed-items'));
+    $items.appendTo(this.$container.find('.container-feed-items')[0]);
     this.$container.removeClass(this.options.loadingClass);
 
     if (!$newMore.length) {
