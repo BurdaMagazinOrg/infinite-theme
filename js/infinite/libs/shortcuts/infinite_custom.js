@@ -29,7 +29,6 @@
       }
     }
 
-
     this.$container = $(this.container);
     this.reInit();
   }
@@ -99,44 +98,12 @@
       tmpAjaxModel.execute();
 
     }, this);
-  }
+  };
 
   Infinite.prototype.appendInfiniteItemView = function ($pContent) {
-    var $items = $pContent;
-    this.$container.hide().append($items).fadeIn(1000);
-    this.$container.removeClass(this.options.loadingClass);
-    var $newMore = $items.find(this.options.more);
-    this.options.preAppendCallback($items);
-    //
-    // $items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
-    // $items.appendTo(this.$container.find('.container-feed-items'));
-    // this.$container.removeClass(this.options.loadingClass);
-    //
-    if (!$newMore.length) {
-      $newMore = $items.filter(this.options.more);
-    }
-
-    if (TrackingManager != undefined) {
-      TrackingManager.trackEvent({
-        category: 'lazy-loading',
-        action: this.$more.attr('href'),
-        eventNonInteraction: true
-      });
-    }
-
-    if ($newMore.length) {
-      this.$more.remove();
-      this.$container.append($newMore);
-      this.$more = $newMore;
-      this.waypoint = new Waypoint(this.options);
-    }
-    else {
-      this.$more.remove();
-    }
-
-    this.options.appendCallback($items);
-    Drupal.attachBehaviors($items[0]);
-  }
+    this.options.items = '[data-view-type="infiniteBlockView"]';
+    this.appendInfiniteItem($pContent);
+  };
 
   Infinite.prototype.appendInfiniteItem = function ($pContent) {
     var $data = $pContent;
