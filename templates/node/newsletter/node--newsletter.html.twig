@@ -130,8 +130,9 @@
             {% block newsletter_optin_block %}
                 {% if content.field_display_optin.0['#markup'] | render == '1' %}
                     <div class="newsletter__optin-wrapper">
-                        <input class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
-                        <label class="newsletter__optin-text" for="optin"></label>
+                        <input id="checkbox--privacy-policy" class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
+                        <label class="newsletter__optin-text" for="checkbox--privacy-policy">
+                        </label>
                     </div>
                 {% endif %}
             {% endblock %}
