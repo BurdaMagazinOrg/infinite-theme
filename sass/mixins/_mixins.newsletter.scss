@@ -59,8 +59,8 @@
         top: 0;
         right: 50%;
         left: 50%;
-        bottom: 0;
         width: 100vw;
+        min-height: calc(100vh - 56px);
         margin-left: -50vw;
         margin-right: -50vw;
       }
