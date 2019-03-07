@@ -13,26 +13,11 @@
 
       if (ModelIds != undefined && BM != undefined) {
         this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
-        this.breakpointDeviceModel = this.deviceModel
-          .getDeviceBreakpoints()
-          .findWhere({ active: true });
+        this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({ active: true });
         this.currentBreakpoint = this.breakpointDeviceModel.id;
-        this.listenTo(
-          this.deviceModel.getDeviceBreakpoints(),
-          'change:active',
-          this.onDeviceBreakpointHandler,
-          this
-        );
-        this.listenTo(
-          this.infiniteViewsModel,
-          'change:inview',
-          this.inviewChangeHandler,
-          this
-        );
-        $(window).on(
-          'atf:BeforeLoad',
-          _.bind(this.onAtfBeforeLoadHandler, this)
-        );
+        this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
+        this.listenTo(this.infiniteViewsModel, 'change:inview', this.inviewChangeHandler, this);
+        $(window).on('atf:BeforeLoad', _.bind(this.onAtfBeforeLoadHandler, this));
       }
     },
     updateView: function($pContext) {
@@ -46,16 +31,16 @@
       const $tmpContext = $pContext || document;
       this.currentBreakpoint = this.breakpointDeviceModel.id;
 
-      $('.marketing-view', $tmpContext).each(
+      $('.marketing-view:not(.initialized)', $tmpContext).each(
         _.bind(function(pIndex, pItem) {
           $tmpElement = $(pItem);
 
           if ($tmpElement.data('infiniteModel') != undefined) {
             tmpView = $tmpElement.data('infiniteModel').get('view');
 
-            // && tmpView.isTypeAllowedToWrite()
-            console.log("MARKETING", tmpView.getTargeting());
             if (tmpView.isActive() && tmpView.isAllowedToWrite() && !!tmpView.getTargeting()) {
+              console.log("WRITE", pItem);
+              $tmpElement.addClass('initialized');
               tmpIndex = $tmpAllAds.index($tmpElement);
               tmpView.getAdTechAd().attr('data-slot-number', tmpIndex);
 
@@ -82,26 +67,15 @@
     writeMarketing: function(pLoadArguments) {
       if (typeof atf_lib !== 'undefined') {
         window.atf_lib.load_tag(pLoadArguments);
-        console.log(
-          '%c marketing | write ',
-          'background-color: black; color: yellow; font-weight: bold;',
-          pLoadArguments,
-          'window.atf_lib',
-          typeof window.atf_lib
-        );
       } else {
-        console.log('>>> atf_lib is not defined > try again');
         _.delay(_.bind(this.writeMarketing, this), 100, pLoadArguments);
       }
     },
     inviewChangeHandler: function(pModel) {
       if (this.lastEnabledState == pModel.get('inview').state) return;
-      // || this.lastScrollTopPos == $(window).scrollTop()
 
       const $tmpElement = pModel.get('el');
-
       const tmpInviewModel = pModel.get('inview');
-
       if (tmpInviewModel.state == 'enter') {
         _.delay(
           _.bind(function() {
@@ -109,7 +83,6 @@
           }, this),
           1
         );
-        // console.log("MarketingManager INVIEW CHANGED", tmpInviewModel.state);
       }
 
       this.lastEnabledState = pModel.get('inview').state;
@@ -135,22 +108,13 @@
   window.addEventListener(
     'atf_no_ad_rendered',
     function(event) {
-      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
-        '.marketing-view'
-      );
-
+      const $tmpAdContainer = jQuery('#' + event.element_id).closest('.marketing-view');
       const tmpModel = { visibility: 'hidden', event: event };
-
       let tmpView;
 
       if ($tmpAdContainer.data('infiniteModel') != undefined) {
         tmpView = $tmpAdContainer.data('infiniteModel').get('view');
         tmpView.setRenderModel(tmpModel);
-        console.log(
-          'No ad rendered for ' + event.element_id,
-          tmpView.adRenderModel.visibility,
-          tmpView.$el
-        );
       }
     },
     false
@@ -159,16 +123,9 @@
   window.addEventListener(
     'atf_ad_rendered',
     function(event) {
-      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
-        '.marketing-view'
-      );
-
+      const $tmpAdContainer = jQuery('#' + event.element_id).closest('.marketing-view');
       const tmpModel = { visibility: 'visible', event: event };
-
       let tmpView;
-
-      console.log('Ad rendered for ' + event.element_id);
-
       if ($tmpAdContainer.data('infiniteModel') != undefined) {
         tmpView = $tmpAdContainer.data('infiniteModel').get('view');
         tmpView.setRenderModel(tmpModel);
@@ -179,14 +136,11 @@
 
   window.atf_ad = function(pElement, pType) {
     const $tmpAdContainer = $(pElement).closest('.marketing-view');
-
     let tmpView;
-
     if ($tmpAdContainer.data('infiniteModel') != undefined) {
       tmpView = $tmpAdContainer.data('infiniteModel').get('view');
       tmpView.setRenderedAdType(pType, pElement);
     }
-    console.log('atf_fba', $tmpAdContainer, pType);
   };
 
   window.MarketingManager =
