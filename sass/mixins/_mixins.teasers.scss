@@ -772,6 +772,7 @@
       color: $teaser__color--smart; //$white
       text-shadow: $teaser__text-shadow--smart; //0 1px 0 rgba($gray-darker, 0.2)
       text-align: center;
+      pointer-events: none;
     }
   }
 
