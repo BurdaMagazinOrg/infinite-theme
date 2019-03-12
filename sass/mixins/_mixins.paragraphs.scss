@@ -251,7 +251,7 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    .spotlight__wrapper {
+    &.has-anchor-nav .spotlight__wrapper {
       padding-top: 48px;
     }
 

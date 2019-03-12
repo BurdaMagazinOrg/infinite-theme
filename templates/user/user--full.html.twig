@@ -32,10 +32,12 @@
             <div class="item-author__profile-image">
                 {{ content.user_picture }}
             </div>
-            {% if content.has_header_block %}
-                <h2 class="item-author__name">{{ content.field_full_name }}</h2>
-            {% else %}
-                <h1 class="item-author__name">{{ content.field_full_name }}</h1>
+            {% if not user_title_hidden %}
+              {% if content.has_header_block %}
+                  <h2 class="item-author__name">{{ content.field_full_name }}</h2>
+              {% else %}
+                  <h1 class="item-author__name">{{ content.field_full_name }}</h1>
+              {% endif %}
             {% endif %}
             <div class="item-author__job">
                 {{ content.field_job_title }}
