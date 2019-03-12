@@ -121,7 +121,7 @@
                 <div class="newsletter__input-wrapper">
                 {% block newsletter_inputfield_block %}
                     <input class="newsletter__input input-lg input-email" type="email" name="email"
-                        required placeholder="Deine E-Mail-Adresse">
+                        required placeholder="DEINE E-MAIL-ADRESSE">
                 {% endblock %}
                 <button type="submit" class="newsletter__button">Ok</button>
                 </div>
@@ -130,8 +130,9 @@
             {% block newsletter_optin_block %}
                 {% if content.field_display_optin.0['#markup'] | render == '1' %}
                     <div class="newsletter__optin-wrapper">
-                        <input class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
-                        <label class="newsletter__optin-text" for="optin"></label>
+                        <input id="checkbox--privacy-policy" class="newsletter__checkbox" type="checkbox" name="agreements[]" value="datenschutzeinwilligung" />
+                        <label class="newsletter__optin-text" for="checkbox--privacy-policy">
+                        </label>
                     </div>
                 {% endif %}
             {% endblock %}
@@ -141,8 +142,8 @@
     <section class="newsletter__section newsletter__section--success hide--opacity">
         <div class="newsletter__section-content">
             {% block newsletter_success_text_block %}
-                <div class="newsletter__success-title">Danke für deine Anmeldung für unseren Newsletter</div>
-                <p class="newsletter__success-text">Wir schicken dir in Kürze eine Bestätigungs-E-Mail zu. Bitte klicke auf den Aktivierungslink in dieser Mail, dann liefern wir dir alles rund um Fashion, Beauty und Lifestyle direkt ins Postfach.<br />Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
+                <div class="newsletter__success-title">Bitte bestätige deine E-Mail-Adresse!</div>
+                <p class="newsletter__success-text">Du bist nur noch einen Klick von den aktuellsten Trends entfernt: Wir haben dir soeben eine Bestätigungs-E-Mail geschickt. Bitte klicke auf den Aktivierungslink in dieser Mail und schon erhältst du alle Beauty-, Fashion- und Lifestyle-News direkt aus der InStyle-Redaktion!<br /><br />Keine Mail von uns bekommen? Bitte sieh in deinem Spam-Ordner nach.</p>
             {% endblock %}
         </div>
     </section>

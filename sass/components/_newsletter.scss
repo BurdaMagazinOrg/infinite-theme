@@ -5,21 +5,3 @@
 .page-newsletter {
   @include newsletter__page();
 }
-
-/**
-* Deprecated
-**/
-// .region-newsletter {
-//   @include newsletter--horizontal();
-// }
-
-// /**
-// * Lading Page
-// **/
-// .region-newsletter-page {
-//   @include newsletter--page();
-// }
-
-// .newsletter-modal {
-//   @include newsletter--modal();
-// }

@@ -59,8 +59,8 @@
         top: 0;
         right: 50%;
         left: 50%;
-        bottom: 0;
         width: 100vw;
+        min-height: calc(100vh - 56px);
         margin-left: -50vw;
         margin-right: -50vw;
       }
@@ -202,6 +202,12 @@
 
   .newsletter__image {
     margin-bottom: $grid-unit-2;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 500px;
+    }
   }
 
   @if ($use-media-query == true) {
@@ -217,7 +223,7 @@
 
       .newsletter__image,
       .newsletter__input-wrapper {
-        margin-bottom: $grid-unit-3;
+        margin-bottom: $grid-unit-4;
       }
     }
   }
