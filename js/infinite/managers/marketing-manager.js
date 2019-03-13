@@ -54,7 +54,6 @@
             tmpView = $tmpElement.data('infiniteModel').get('view');
 
             // && tmpView.isTypeAllowedToWrite()
-            console.log("MARKETING", tmpView.getTargeting());
             if (tmpView.isActive() && tmpView.isAllowedToWrite() && !!tmpView.getTargeting()) {
               tmpIndex = $tmpAllAds.index($tmpElement);
               tmpView.getAdTechAd().attr('data-slot-number', tmpIndex);
