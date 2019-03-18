@@ -77,9 +77,10 @@
             typeof drupalSettings.datalayer[articleUuid].page.channelId !== 'undefined'
           ) {
             const channelId = drupalSettings.datalayer[articleUuid].page.channelId;
+            const pageId =  drupalSettings.datalayer[articleUuid].page.entityID;
 
             this.options.lazyloadPage++;
-            tmpURL = '/lazyloading/view/' + channelId + '/' + this.options.lazyloadPage;
+            tmpURL = '/lazyloading/view/' + pageId + '/' + channelId + '/' + this.options.lazyloadPage;
             callback = this.appendInfiniteItemView;
           }
         }
