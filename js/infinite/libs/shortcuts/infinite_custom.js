@@ -29,7 +29,6 @@
       }
     }
 
-
     this.$container = $(this.container);
     this.reInit();
   }
@@ -66,6 +65,26 @@
         tmpURL = this.odoscopeArticleModel.getNextURL() || tmpURL;
       }
 
+      let callback = this.appendInfiniteItem;
+      const article = document.querySelector('.item-content--article');
+      if (article) {
+        const articleUuid = article.getAttribute('data-uuid');
+        if (articleUuid) {
+          if (
+            typeof drupalSettings.datalayer !== 'undefined' &&
+            drupalSettings.datalayer[articleUuid] &&
+            typeof drupalSettings.datalayer[articleUuid].page !== 'undefined' &&
+            typeof drupalSettings.datalayer[articleUuid].page.channelId !== 'undefined'
+          ) {
+            const channelId = drupalSettings.datalayer[articleUuid].page.channelId;
+
+            this.options.lazyloadPage++;
+            tmpURL = '/lazyloading/view/' + channelId + '/' + this.options.lazyloadPage;
+            callback = this.appendInfiniteItemView;
+          }
+        }
+      }
+
       this.options.executeCallback();
       this.destroy();
       this.$container.addClass(this.options.loadingClass);
@@ -73,13 +92,18 @@
       var tmpAjaxModel = new AjaxModel({
         url: tmpURL,
         element: $tmpMoreLink[0],
-        callback: _.bind(this.appendInfiniteItem, this)
+        callback: _.bind(callback, this)
       });
 
       tmpAjaxModel.execute();
 
     }, this);
-  }
+  };
+
+  Infinite.prototype.appendInfiniteItemView = function ($pContent) {
+    this.options.items = '[data-view-type="infiniteBlockView"]';
+    this.appendInfiniteItem($pContent);
+  };
 
   Infinite.prototype.appendInfiniteItem = function ($pContent) {
     var $data = $pContent;
@@ -93,7 +117,7 @@
     }
 
     //$items.appendTo(this.$container.find('.container-feed-items')).hide().fadeIn(1000);
-    $items.appendTo(this.$container.find('.container-feed-items'));
+    $items.appendTo(this.$container.find('.container-feed-items')[0]);
     this.$container.removeClass(this.options.loadingClass);
 
     if (!$newMore.length) {
@@ -144,7 +168,8 @@
     offset: 'bottom-in-view',
     loadingClass: 'infinite-loading',
     onBeforePageLoad: $.noop,
-    onAfterPageLoad: $.noop
+    onAfterPageLoad: $.noop,
+    lazyloadPage: -1
   }
 
   Waypoint.Infinite = Infinite;
