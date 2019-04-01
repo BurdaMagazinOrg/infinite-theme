@@ -16,12 +16,14 @@
     enabled: null,
     fbaIsFilled: false,
     targeting: null,
+    // mutationObserverConfig: { childList: true },
     initialize: function (pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
       this.$adSlotContainer = this.$el.find('.item-marketing');
       this.checkContainerType();
       this.delegateInview();
+      // this.initMutationObserver();
       this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({
         active: true
       });
@@ -50,6 +52,20 @@
     onInviewExitHandler: function () {
       clearTimeout(this.trackingTimeout);
     },
+    onEnabledHandler: function (pModel) {
+      if (pModel !== this.model) return; // event bubbling
+      this.enabled = !!pModel.get('inviewEnabled');
+    },
+    // initMutationObserver() {
+    //   var observer = new ResizeObserver((mutations) => {
+    //     mutations.forEach((mutation) => {
+    //       //tracking pixel
+    //       if(mutation.contentRect.height > 1 && this.adType !== MarketingView.AD_TYPE_FBSA) this.setFixHeight(mutation.contentRect.height);
+    //     });    
+    //   });
+
+    //   observer.observe(this.getAdTechAd()[0], this.mutationObserverConfig);
+    // },
     trackAd: function (action) {
       const entityTargeting = this.el.find('.ad-entity-container').data('ad-entity-targeting');
 
@@ -66,8 +82,6 @@
       TrackingManager.trackEvent(trackingObject);
     },
     updateView: function () {
-      this.removeFixHeight();
-
       if (this.adRenderModel.visibility == 'visible') {
         this.show();
       } else {
@@ -81,66 +95,11 @@
         this.adContainerType = MarketingView.CONTAINER_TYPE_SIDEBAR;
       }
     },
-    updateEnableView: function () {
-      /**
-       * No atf_ad_rendered fired / only enabled
-       */
-      if (this.adRenderModel == null) return;
-
-      if (this.adRenderModel.visibility == 'visible' && this.enabled) {
-        this.show();
-      } else if (
-        this.adType != MarketingView.AD_TYPE_FBSA &&
-        this.adType != MarketingView.AD_TYPE_INREAD &&
-        this.adContainerType != MarketingView.CONTAINER_TYPE_SIDEBAR
-      ) {
-        this.freeze();
-      }
-    },
-    enableView: function () {
-      if (this.enabled) return;
-
-      this.enabled = true;
-      this.updateEnableView();
-    },
-    disableView: function () {
-      if (!this.enabled) return;
-
-      this.enabled = false;
-      this.updateEnableView();
-    },
-    onEnabledHandler: function (pModel) {
-      if (pModel != this.model) return; // event bubbling
-
-      if (pModel.get('inviewEnabled') == true) {
-        this.enableView();
-      } else {
-        this.disableView();
-      }
-    },
-    checkHeight: function () {
-      if (this.height != this.$adSlotContainer.height()) {
-        this.height = this.$adSlotContainer.height();
-        this.model.set('contentHeight', this.height);
-      }
-    },
     onDeviceBreakpointHandler: function (pModel) {
       this.breakpointDeviceModel = pModel;
       this.currentBreakpoint = this.breakpointDeviceModel.id;
 
-      if (!this.isAllowedToWrite()) return;
-
       this.hide();
-    },
-    isAllowedToWrite: function () {
-      if (
-        this.adType == MarketingView.AD_TYPE_FBSA ||
-        this.adType == MarketingView.AD_TYPE_INREAD
-      ) {
-        return false;
-      }
-
-      return this.enabled;
     },
     isActive: function () {
       if (
@@ -154,59 +113,39 @@
     },
     show: function () {
       this.$el.removeClass('ad-inactive').addClass('ad-active');
-      this.checkHeight();
+      this.removeFixHeight();
       this.visible = true;
     },
     hide: function () {
       this.$el.removeClass('ad-active ad-fba').addClass('ad-inactive');
-      this.adType = '';
-      this.clear();
       this.removeFixHeight();
+      this.adType = '';
       this.visible = false;
     },
     freeze: function () {
-      this.setFixHeight(this.getAdEntityContainer().height());
-      this.clear();
-    },
-    clear: function () {
-      if (this.adType == MarketingView.AD_TYPE_FBSA && this.fbaIsFilled) {
-        window.ftNuke();
-        this.fbaIsFilled = false;
-      } else if (this.getAdTechAd().length > 0) {
-        this.getAdTechAd().empty();
-      }
+      const height = this.getAdEntityContainer().height();
+      if (this.visible && height !== 0 && this.adType !== MarketingView.AD_TYPE_FBSA) {
+        this.setFixHeight(height);
+      };
     },
     setFixHeight: function (pHeight) {
       this.getAdEntityContainer().css('height', pHeight);
     },
     removeFixHeight: function () {
-      if (
-        this.getAdEntityContainer().prop('style') &&
-        this.getAdEntityContainer().prop('style').height !== ''
-      ) {
-        this.getAdEntityContainer().css('height', 'auto');
-      }
+      this.getAdEntityContainer().css('height', '');
     },
     getAdEntityContainer: function () {
-      if (this.$adEntityContainer.length <= 0) {
-        this.$adEntityContainer = this.$el.find('.ad-entity-container');
-      }
-
+      if (this.$adEntityContainer.length <= 0) this.$adEntityContainer = this.$el.find('.ad-entity-container');
       return this.$adEntityContainer;
     },
     getAdTechAd: function () {
-      if (this.$adTechAd.length <= 0) {
-        this.$adTechAd = this.$el.find('.adtech-factory-ad');
-      }
-
+      if (this.$adTechAd.length <= 0) this.$adTechAd = this.$el.find('.adtech-factory-ad');
       return this.$adTechAd;
     },
     getTargeting: function () {
       let tmpTargeting = null;
       const $adEntityContainer = this.getAdEntityContainer();
-      if ($adEntityContainer.length > 0) {
-        tmpTargeting = $adEntityContainer.attr('data-ad-entity-targeting') || null;
-      }
+      if ($adEntityContainer.length > 0) tmpTargeting = $adEntityContainer.attr('data-ad-entity-targeting') || null;
       return JSON.parse(tmpTargeting);
     },
     getAdContainerType: function () {
@@ -243,6 +182,5 @@
     AD_TYPE_INREAD: 'inread',
   });
 
-  window.MarketingView =
-    window.MarketingView || BurdaInfinite.views.MarketingView;
+  window.MarketingView = window.MarketingView || BurdaInfinite.views.MarketingView;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);
