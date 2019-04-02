@@ -38,7 +38,7 @@
           if ($tmpElement.data('infiniteModel') != undefined) {
             tmpView = $tmpElement.data('infiniteModel').get('view');
             
-            if (tmpView.isActive() && !!tmpView.getTargeting()) {
+            if (tmpView.isActive() && tmpView.allowToBuild() && !!tmpView.getTargeting()) {
               tmpIndex = $tmpAllAds.index($tmpElement);
               tmpView.getAdTechAd().attr('data-slot-number', tmpIndex);
 

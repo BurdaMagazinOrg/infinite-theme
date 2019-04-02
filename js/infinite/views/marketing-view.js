@@ -16,14 +16,12 @@
     enabled: null,
     fbaIsFilled: false,
     targeting: null,
-    // mutationObserverConfig: { childList: true },
     initialize: function (pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
 
       this.$adSlotContainer = this.$el.find('.item-marketing');
       this.checkContainerType();
       this.delegateInview();
-      // this.initMutationObserver();
       this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({
         active: true
       });
@@ -56,16 +54,6 @@
       if (pModel !== this.model) return; // event bubbling
       this.enabled = !!pModel.get('inviewEnabled');
     },
-    // initMutationObserver() {
-    //   var observer = new ResizeObserver((mutations) => {
-    //     mutations.forEach((mutation) => {
-    //       //tracking pixel
-    //       if(mutation.contentRect.height > 1 && this.adType !== MarketingView.AD_TYPE_FBSA) this.setFixHeight(mutation.contentRect.height);
-    //     });    
-    //   });
-
-    //   observer.observe(this.getAdTechAd()[0], this.mutationObserverConfig);
-    // },
     trackAd: function (action) {
       const entityTargeting = this.el.find('.ad-entity-container').data('ad-entity-targeting');
 
@@ -93,6 +81,8 @@
 
       if (this.$el.hasClass('container-sidebar-content')) {
         this.adContainerType = MarketingView.CONTAINER_TYPE_SIDEBAR;
+      } else if (this.$el.hasClass('region-full-content')) {
+        this.adContainerType = MarketingView.CONTAINER_TYPE_LEADERBOARD;
       }
     },
     onDeviceBreakpointHandler: function (pModel) {
@@ -124,9 +114,13 @@
     },
     freeze: function () {
       const height = this.getAdEntityContainer().height();
-      if (this.visible && height !== 0 && this.adType !== MarketingView.AD_TYPE_FBSA) {
+      if (this.visible && height !== 0 && this.adType !== MarketingView.CONTAINER_TYPE_SIDEBAR) {
         this.setFixHeight(height);
       };
+    },
+    allowToBuild: function () {
+      if (this.adType === MarketingView.AD_TYPE_FBSA) return false;
+      return true;
     },
     setFixHeight: function (pHeight) {
       this.getAdEntityContainer().css('height', pHeight);

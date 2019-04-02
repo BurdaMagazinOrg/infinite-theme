@@ -174,3 +174,33 @@
     @extend %gap--v-region;
   }
 }
+
+.region-full-content {
+  &.ad-active {
+    .item-marketing {
+      position: relative;
+      min-height: 90px;
+    }
+
+    .item-marketing__fallback {
+      background-image: url("../images/static/instyle_box.jpeg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      min-height: 90px;
+      max-width: 970px;
+      margin: 0 auto;
+    }
+
+    .ad-entity-container>* {
+      background-color: $bg-color-gray-light;
+      z-index: 2;
+      position: relative;
+    }
+  }
+}
