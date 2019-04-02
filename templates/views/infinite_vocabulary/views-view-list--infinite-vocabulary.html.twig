@@ -22,7 +22,7 @@
   <div{{ attributes }}>
 {% endif %}
   {% if title %}
-    <h2>{{ title }}</h2>
+    <h2><span id="{{ title|clean_id }}">{{ title }}</span></h2>
   {% endif %}
 
   <{{ list.type }}{{ list.attributes }}>

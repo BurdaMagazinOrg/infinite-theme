@@ -20,9 +20,11 @@
  * @ingroup themeable
  */
 #}
-<ul class="list__glossary">
+{{ attach_library('infinite/infinite.views.anchor-navigation-view') }}
+
+<ul class="list__glossary" data-view-type="anchorNavigationView">
   {% for row in rows %}
-    <li><a href="{{ row.url }}"{{ row.attributes.addClass(row.active ? 'is-active')|without('href') }}>{{ row.link }}</a>
+    <li><a href="#{{ row.link|clean_id }}">{{ row.link }}</a>
       {% if options.count %}
         ({{ row.count }})
       {% endif %}
