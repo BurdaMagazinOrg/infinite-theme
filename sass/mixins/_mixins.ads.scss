@@ -13,12 +13,12 @@
     .native_campaign {
       @include flexbox();
       @include align-items($native-teaser__advertorial-align-items);
-      @include justify-content();
+      @include justify-content($native-teaser__justify-content);
     }
 
     .teaser & {
       .native_campaign {
-        @include justify-content($native-teaser__teaser-justify-content);
+        @include justify-content($native-teaser__justify-content--teaser);
       }
     }
 
@@ -37,7 +37,6 @@
     .separator, .marketing-label  {
       font-family: $font-content-bold;
       padding: $native-teaser__separator-padding--advertorial;
-      line-height: $native-logo--height;
       font-size: $native-logo--font-size;
       @media (max-width: $screen-xs-max) {
         line-height: $native-logo--height--mobile;
@@ -47,6 +46,7 @@
 
     .separator {
       color: $native-teaser__seperator--color;
+      margin: $native-teaser__separator-margin--advertorial;
     }
 
     .marketing-label {
