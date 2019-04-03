@@ -16,6 +16,12 @@
       @include justify-content();
     }
 
+    .teaser & {
+      .native_campaign {
+        @include justify-content($native-teaser__teaser-justify-content);
+      }
+    }
+
     .logo, .brand {
       height: $native-logo--height;
       @media (max-width: $screen-xs-max) {
