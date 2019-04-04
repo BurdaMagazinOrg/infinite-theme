@@ -1,3 +1,7 @@
+.affiliatelinks {
+  z-index: 1;
+}
+
 .affiliatelinks--hide {
   .affiliatelinks:not(.affiliatelinks--magazine-products):not(.affiliatelinks--shopping-products) {
     display: none;
