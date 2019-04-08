@@ -29,11 +29,6 @@
       }
     }
 
-    //temp fix for deployment
-    .brand:after {
-      content: none;
-    }
-
     .separator, .marketing-label  {
       font-family: $font-content-bold;
       padding: $native-teaser__separator-padding--advertorial;
