@@ -547,7 +547,6 @@
           }
 
           window.dataLayer.push(tmpTrackingObject);
-          console.log('>> trackEvent >>', tmpTrackingObject);
         } else {
           console.log('No Google Tag Manager available');
         }
@@ -573,7 +572,6 @@
 
           // tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
           window.dataLayer.push(tmpTrackingObject);
-          console.log('>> trackPageView >>', document.title, tmpPath);
         } else {
           console.log('No Google Tag Manager available');
         }
@@ -616,7 +614,6 @@
           }
 
           tmpTrackingObject = _.extend(tmpTrackingObject, pAdvObject);
-          console.log('>> trackEcommerce >>', tmpTrackingObject);
           window.dataLayer.push(tmpTrackingObject);
         } else {
           console.log('No Google Tag Manager available');
