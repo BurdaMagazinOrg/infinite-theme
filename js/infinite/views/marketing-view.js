@@ -88,7 +88,6 @@
     onDeviceBreakpointHandler: function (pModel) {
       this.breakpointDeviceModel = pModel;
       this.currentBreakpoint = this.breakpointDeviceModel.id;
-
       this.hide();
     },
     isActive: function () {

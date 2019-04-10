@@ -107,26 +107,6 @@
     },
   });
 
-  // window.addEventListener(
-  //   'atf_no_ad_rendered',
-  //   function(event) {
-  //     const $tmpAdContainer = jQuery('#' + event.element_id).closest('.marketing-view');
-  //     const tmpModel = { visibility: 'hidden', event: event };
-  //     let tmpView;
-
-  //     if ($tmpAdContainer.data('infiniteModel') != undefined) {
-  //       tmpView = $tmpAdContainer.data('infiniteModel').get('view');
-  //       tmpView.setRenderModel(tmpModel);
-  //       console.log(
-  //         'No ad rendered for ' + event.element_id,
-  //         tmpView.adRenderModel.visibility,
-  //         tmpView.$el
-  //       );
-  //     }
-  //   },
-  //   false
-  // );
-
   window.addEventListener(
     'atf_ad_rendered',
     function(event) {
@@ -146,7 +126,6 @@
 
   window.atf_ad = function(pElement, pType) {
     const $tmpAdContainer = $(pElement).closest('.marketing-view');
-
     let tmpView;
 
     if ($tmpAdContainer.data('infiniteModel') != undefined) {
