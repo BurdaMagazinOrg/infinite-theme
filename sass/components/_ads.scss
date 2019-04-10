@@ -195,12 +195,18 @@
       min-height: 90px;
       max-width: 970px;
       margin: 0 auto;
+
+      @media (max-width: $screen-xs-max) {
+        min-height: 50px;
+      }
     }
 
-    .ad-entity-container>* {
-      background-color: $bg-color-gray-light;
-      z-index: 2;
-      position: relative;
+    .ad-entity-container {
+      &>* {
+        background-color: $bg-color-gray-light;
+        z-index: 2;
+        position: relative;
+      }
     }
   }
 }
