@@ -76,7 +76,7 @@
             {{ attachment_after }}
         {% endif %}
 
-        {% if view.getCurrentPage == 0 %}
+        {% if view.getCurrentPage == 0 and (view.hide_feed_container is not defined or false == view.hide_feed_container) %}
         <div id="feed" class="region-full-content region-feed"
                 {% if use_view_type is not defined or use_view_type != false %}
                     data-view-type="feedView"
