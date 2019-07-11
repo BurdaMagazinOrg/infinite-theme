@@ -3,7 +3,7 @@
     defaults: {
       el: [],
       infiniteBlock: false,
-      initialDOMItem: true,
+      initialDOMItem: true
     },
     initialize: function(pModel, pOptions) {
       BaseCollectionModel.prototype.initialize.call(this, pModel, pOptions);
@@ -25,7 +25,7 @@
           context:
             $tmpElement.closest('[data-view-context]').length > 0
               ? $tmpElement.closest('[data-view-context]')
-              : $(window),
+              : $(window)
         },
         pSettings,
         pOptions
@@ -72,6 +72,9 @@
         case 'productView':
           tmpView = new ProductView(tmpSettings);
           break;
+        case 'productsView':
+          tmpView = new ProductsView(tmpSettings);
+          break;
         case 'productSliderView':
           tmpView = new ProductSliderView(tmpSettings);
           break;
@@ -93,7 +96,7 @@
       }
 
       this.set('view', tmpView);
-    },
+    }
   });
 
   window.BaseDynamicViewModel =

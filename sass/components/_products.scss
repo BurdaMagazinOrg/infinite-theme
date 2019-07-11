@@ -1,6 +1,7 @@
 .item-paragraph--advertising-products-paragraph.item-paragraph--default,
 .item-paragraph--advertising-products-embed {
-  .item-product, .teaser-wrapper {
+  .item-product,
+  .teaser-wrapper {
     @include product__item--default();
     @include product__item--horizontal-block();
   }
@@ -10,9 +11,19 @@
       float: none;
     }
   }
-} 
+}
 
 .item-product--single {
   @include product__item-text--single-product();
   @include product__item--single-product();
+}
+
+@media (min-width: $screen-md-min) {
+  .item-paragraph--products {
+    &.item-paragraph--default {
+      .item-product .img-container {
+        padding-bottom: 108%;
+      }
+    }
+  }
 }

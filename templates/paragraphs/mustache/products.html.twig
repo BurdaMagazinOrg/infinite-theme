@@ -1,0 +1,38 @@
+<div class="container-content template">
+  [[#docs]]
+    [[#_source]]
+      <a class="item-product"
+          data-vars-product-name="[[ title ]]"
+          data-vars-product-shop="[[ shop_name ]]"
+          data-vars-product-price="[[ price ]]"
+          data-vars-product-currency="[[ original_currency_code ]]"
+          data-vars-product-uuid="[[ uuid ]]"
+          data-vars-product-id="[[ provider_identifier ]]"
+          data-vars-product-category="[[ category ]]"
+          data-vars-product-sold-out="0"
+          data-vars-product-provider="[[ provider ]]"
+          data-vars-product-view-mode="desktop"
+          data-vars-product-position="undefined"
+          href="[[ shop_url ]]&amp;subid=[[provider_identifier]]"
+          target="_blank">
+        <div class="img-container">
+          <div class="media media--blazy media--image">
+              <img class="b-lazy media__image media__element" data-src="[[ image_style_product_300x324 ]]" alt="[[title]]" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image">
+            </div>
+        </div>
+        <div class="caption">
+            <div class="text-brand">[[ brand ]]</div>
+            <div class="text-headline">[[ title ]]</div>
+            <div class="text-price">
+              [[#original_price]]
+                  <span class="text-price--strikethrough">[[ original_price ]] [[ original_currency_code ]]</span>
+              [[/original_price]]
+                <span class="text-price--current">[[ price ]] [[ original_currency_code ]]</span>
+            </div>
+            <div class="text-shop">Zum Shop</div>
+        </div>
+      </a>
+    [[/_source]]
+  [[/docs]]
+</div>
+  

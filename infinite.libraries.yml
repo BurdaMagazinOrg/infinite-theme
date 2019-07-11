@@ -22,6 +22,17 @@ swiper:
   js:
     /libraries/swiper/dist/js/swiper.min.js: { }
 
+mustache:
+  remote: https://github.com/janl/mustache.js
+  version: 4.3.3
+  license:
+    name: MIT
+    gpl-compatible: true
+  js:
+    /libraries/mustache/mustache.min.js: { }
+
+
+
 intersectionobserver:
   remote: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
   version: 1.0
@@ -253,6 +264,11 @@ infinite.views.product-view:
   version: 1
   js:
     js/infinite/views/products/product-view.js: {}
+
+infinite.views.products-view:
+  version: 1
+  js:
+    js/infinite/views/products/products-view.js: {}
 
 infinite.views.product-slider-view:
   version: 1
