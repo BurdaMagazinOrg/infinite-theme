@@ -43,9 +43,8 @@
 {% set attributes = attributes.addClass('item-paragraph--advertising-products-paragraph') %}
 {% set attributes = attributes.addClass('item-paragraph--small') %}
 
-{# {% set view_mode = content.field_e_view_mode | render | striptags | trim | replace('_', '-') %} #}
-{# {% set attributes = attributes.addClass('item-paragraph--' ~ view_mode) %} #}
-{% set attributes = attributes.addClass('item-paragraph--default') %}
+{% set view_mode = content.field_e_view_mode | render | striptags | trim | replace('_', '-') %}
+{% set attributes = attributes.addClass('item-paragraph--' ~ view_mode) %}
 {% set attributes = attributes.setAttribute('data-api-url', content.field_products['#markup']) %}
 {% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}
 
@@ -61,12 +60,6 @@
 
   {% if content.field_title|render %}
     <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
-  {% endif %}
-  
-  {% if showAffiliateLinkLabel %}
-    <div class="affiliatelinks">
-        <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
-    </div>
   {% endif %}
 
   {% include "@infinite/paragraphs/mustache/products.html.twig" %}

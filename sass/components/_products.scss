@@ -18,12 +18,20 @@
   @include product__item--single-product();
 }
 
-@media (min-width: $screen-md-min) {
-  .item-paragraph--products {
+.item-paragraph--products {
+  @media (min-width: $screen-md-min) {
     &.item-paragraph--default {
       .item-product .img-container {
         padding-bottom: 108%;
       }
+    }
+  }
+
+  .item-product--single {
+    display: block;
+
+    .media--image {
+      padding-bottom: 108%;
     }
   }
 }

@@ -37,8 +37,10 @@
     prepareJsonData: function(jsonData) {
       var data = Object.assign({}, jsonData);
       data.docs.forEach(element => {
-        if (element._source.original_price === element._source.price) {
-          element._source.original_price = false;
+        var elementData = element._source;
+        element.image_style = elementData.image_style_product_300x324;
+        if (this.el[0].classList.contains('item-paragraph--single-product')) {
+          element.image_style = elementData.image_style_product_600x648;
         }
       });
       return data;
