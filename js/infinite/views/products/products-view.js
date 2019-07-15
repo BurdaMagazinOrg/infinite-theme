@@ -33,6 +33,8 @@
         rendered = Mustache.render(template, { docs: jsonData.docs });
         templateContainer.innerHTML = rendered;
       }
+
+      !!Drupal && Drupal.attachBehaviors(templateContainer);
     },
     prepareJsonData: function(jsonData) {
       var data = Object.assign({}, jsonData);

@@ -106,7 +106,7 @@
   }
 }
 
-@mixin button--responsive-icon-pseudo-sm($container: "&:before") {
+@mixin button--responsive-icon-pseudo-sm($container: '&:before') {
   #{$container} {
     margin-top: -1px;
   }
@@ -126,7 +126,7 @@
   //}
 }
 
-@mixin button--responsive-icon-pseudo-md($container: "&:before") {
+@mixin button--responsive-icon-pseudo-md($container: '&:before') {
   @media (max-width: $screen-xs-max) {
     #{$container} {
       margin-top: -2px;
@@ -330,6 +330,19 @@
   pointer-events: none;
 }
 
+@mixin button--tipser() {
+  @extend %button--white;
+  @include button--icon($tipser__buy-icon, 'right');
+
+  &:after {
+    top: 0;
+  }
+
+  &:hover {
+    @extend %product__button--hover;
+  }
+}
+
 @mixin product__button--default() {
   @extend %button;
   @extend %button--md;
@@ -351,17 +364,9 @@
     @extend %button--disabled;
   }
 
-  &.text-shop--tipser, &.btn-text-shop--tipser{
-    @extend %button--white;
-    @include button--icon($tipser__buy-icon, "right");
-
-    &:after {
-      top: 0;
-    }
-
-    &:hover {
-      @extend %product__button--hover;
-    }
+  &.text-shop--tipser,
+  &.btn-text-shop--tipser {
+    @include button--tipser();
   }
 }
 
@@ -379,18 +384,18 @@
   position: relative;
 }
 
-@mixin button--icon($iconfont: "", $iconposition: "left") {
-  @if $iconfont == "" {
+@mixin button--icon($iconfont: '', $iconposition: 'left') {
+  @if $iconfont == '' {
     @error 'You have to define an icon-font code e.g. e911 for the shopping bag';
   } @else {
-    @if $iconposition == "left" {
+    @if $iconposition == 'left' {
       &:before {
         @include button--icon-style($iconfont);
         margin-right: $grid-unit-1;
         top: 2px;
       }
     }
-    @if $iconposition == "right" {
+    @if $iconposition == 'right' {
       &:after {
         @include button--icon-style($iconfont);
         margin-left: $grid-unit-1;

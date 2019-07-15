@@ -13,6 +13,12 @@
   }
 }
 
+[data-provider='tipser'] {
+  .caption .text-shop {
+    @include button--tipser();
+  }
+}
+
 .item-product--single {
   @include product__item-text--single-product();
   @include product__item--single-product();
