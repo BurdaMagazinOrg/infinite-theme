@@ -13,7 +13,7 @@
   }
 }
 
-[data-provider='tipser'] {
+#content [data-provider='tipser']:not([data-sold-out='1']) {
   .caption .text-shop {
     @include button--tipser();
   }
