@@ -12,12 +12,11 @@
       !!this.apiURL && this.fetchProductsData();
     },
     fetchProductsData: function() {
-      var that = this;
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE)
-          that.handleProductsData(xhr.responseText);
-      };
+          this.handleProductsData(xhr.responseText);
+      }.bind(this);
       xhr.open('GET', this.apiURL, true);
       xhr.send(null);
     },
