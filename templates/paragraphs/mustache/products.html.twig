@@ -64,7 +64,14 @@
                     <span class="text-price--current">[[ price ]] [[ original_currency_code ]]</span>
                 </div>
                 <div class="text-shop">
-                  [[#stock_availability]]Zum Shop[[/stock_availability]]
+                  [[#stock_availability]]
+                    [[#amp_shopping_link]]
+                      Kaufen
+                    [[/amp_shopping_link]]
+                    [[^amp_shopping_link]]
+                      Zum Shop
+                    [[/amp_shopping_link]]
+                  [[/stock_availability]]
                   [[^stock_availability]]Ausverkauft[[/stock_availability]]
                 </div>
             </div>
