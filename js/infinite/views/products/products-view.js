@@ -37,16 +37,19 @@
     },
     prepareJsonData: function(jsonData) {
       var data = Object.assign({}, jsonData);
-      data.docs.forEach(element => {
-        var elementData = element._source;
+      !!data.docs &&
+        data.docs.forEach(element => {
+          var elementData = element._source;
 
-        if (elementData) {
-          element.image_style = elementData.image_style_product_300x324;
-          if (this.el[0].classList.contains('item-paragraph--single-product')) {
-            element.image_style = elementData.image_style_product_600x648;
+          if (elementData) {
+            element.image_style = elementData.image_style_product_300x324;
+            if (
+              this.el[0].classList.contains('item-paragraph--single-product')
+            ) {
+              element.image_style = elementData.image_style_product_600x648;
+            }
           }
-        }
-      });
+        });
       return data;
     }
   });
