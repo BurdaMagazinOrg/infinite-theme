@@ -42,7 +42,6 @@
       this.rendered();
     },
     rendered: function() {
-      let swiperApi;
       let sliderView;
 
       if (this.isInSlider) {
