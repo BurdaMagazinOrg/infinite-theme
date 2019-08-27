@@ -34,7 +34,25 @@
         {% endif %}
       {% endblock %}
 
-      <div class="item-product item-ecommerce [[#is_slider_product]]item-product-slider swiper-slide[[/is_slider_product]] [[^stock_availability]]item-product--sold-out[[/stock_availability]] item-product--{{view_mode | default('default')}}"
+
+      {% set product_attributes = create_attribute() %}
+      {% set classes = [
+        "item-product",
+        "item-ecommerce",
+        "item-product--" ~ view_mode | default('default'),
+        "[[#is_slider_product]]item-product-slider swiper-slide[[/is_slider_product]]",
+        "[[^stock_availability]]item-product--sold-out[[/stock_availability]]",
+      ] %}
+      
+      {% set media_attributes = create_attribute() %}
+      {% set media_classes = [
+        "media__image",
+        "media__element",
+        "[[^is_slider_product]]b-lazy[[/is_slider_product]]",
+        "[[#is_slider_product]]swiper-lazy[[/is_slider_product]]",
+      ] %}
+
+      <div {{ product_attributes.addClass(classes) }}
           data-title="[[ title ]]"
           data-shop="[[ brand ]]"
           data-brand="[[ brand ]]"
@@ -51,7 +69,7 @@
           data-external-url="[[ shop_url ]]&amp;subid=[[provider_identifier]]">
         <div class="img-container">
           <div class="media media--blazy media--image">
-              <img class="media__image media__element [[^is_slider_product]]b-lazy[[/is_slider_product]] [[#is_slider_product]]swiper-lazy[[/is_slider_product]]" data-src="[[ image_style ]]" alt="[[title]]" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image">
+              <img {{ media_attributes.addClass(media_classes) }} data-src="[[ image_style ]]" alt="[[title]]" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image">
             </div>
         </div>
         <div class="caption">
