@@ -26,20 +26,19 @@
     },
     createView: function() {
       this.$swiperContainer = this.$el.find('.swiper-container');
-
-      console.log('HJSKAHSKA', this.$el.find('.swiper-button-next')[0]);
-
-      _.extend(this.settings, {
-        navigation: {
-          nextEl: this.$el.find('.swiper-button-next')[0],
-          prevEl: this.$el.find('.swiper-button-prev')[0]
-        }
-      });
+      this.$el.find('.swiper-button-prev').click(this.slidePrev.bind(this));
+      this.$el.find('.swiper-button-next').click(this.slideNext.bind(this));
 
       if (this.$el.attr('data-slider') !== 'undefined') {
         const $dataSlider = JSON.parse(this.$el.attr('data-slider'));
         _.extend(this.settings, $dataSlider);
       }
+    },
+    slidePrev: function() {
+      !!this.swiperApi && this.swiperApi.slidePrev();
+    },
+    slideNext: function() {
+      !!this.swiperApi && this.swiperApi.slideNext();
     },
     updateView: function() {
       if (!!this.swiperApi) this.swiperApi.destroy();
