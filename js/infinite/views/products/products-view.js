@@ -23,6 +23,7 @@
     handleProductsData: function(data) {
       var jsonData = JSON.parse(data);
       var templateContainer = this.el[0].querySelector('.template');
+      var products;
       if (!!jsonData && !!templateContainer) {
         var template = templateContainer.innerHTML;
         var rendered = '';
@@ -33,6 +34,18 @@
         templateContainer.innerHTML = rendered;
       }
 
+      products = templateContainer.querySelectorAll('.item-ecommerce');
+      Array.from(products).forEach(product => {
+        var model = new Backbone.Model();
+        var infModel = this.model.get('infiniteBlockDataModel');
+        !!infModel && model.set('infiniteBlockDataModel', infModel);
+
+        //TODO check implementation with ecommerce slider
+        var productView = new ProductView({
+          el: jQuery(product),
+          model: model
+        });
+      });
       !!Drupal && Drupal.attachBehaviors(templateContainer);
     },
     prepareJsonData: function(jsonData) {
