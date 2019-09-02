@@ -9,43 +9,50 @@
       watchSlidesVisibility: true,
       preloadImages: false,
       lazy: {
-        loadOnTransitionStart: true,
-      },
+        loadOnTransitionStart: true
+      }
     },
+    reInit: null,
     initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
       this.createView();
       this.updateView();
       this.delegateInview();
       this.duplicateElementClick();
+
+      this.reInit = function() {
+        this.updateView();
+      };
     },
     createView: function() {
       this.$swiperContainer = this.$el.find('.swiper-container');
-
-      _.extend(this.settings, {
-        navigation: {
-          nextEl: this.$el.find('.swiper-button-next')[0],
-          prevEl: this.$el.find('.swiper-button-prev')[0],
-        },
-      });
+      this.$el.find('.swiper-button-prev').click(this.slidePrev.bind(this));
+      this.$el.find('.swiper-button-next').click(this.slideNext.bind(this));
 
       if (this.$el.attr('data-slider') !== 'undefined') {
         const $dataSlider = JSON.parse(this.$el.attr('data-slider'));
         _.extend(this.settings, $dataSlider);
       }
     },
+    slidePrev: function() {
+      !!this.swiperApi && this.swiperApi.slidePrev();
+    },
+    slideNext: function() {
+      !!this.swiperApi && this.swiperApi.slideNext();
+    },
     updateView: function() {
+      if (!!this.swiperApi) this.swiperApi.destroy();
+
       this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
+      this.model.set('swiperApi', this.swiperApi);
       this.swiperApi
         .off('slideChangeTransitionEnd')
         .on('slideChangeTransitionEnd', this.onSliderChangeHandler.bind(this));
     },
     trackVisibleProductImpressions: function() {
       let tmpView;
-
       let tmpExternalURL = '';
-
       let $tmpElement = [];
 
       // .not('.swiper-slide-duplicate')
@@ -81,9 +88,7 @@
     },
     duplicateElementClick: function() {
       let $tmpElement = [];
-
       let tmpExternalURL = '';
-
       let tmpView;
 
       this.$el.find('.swiper-slide-duplicate').each(
@@ -121,7 +126,7 @@
     onEnterHandler: function(pDirection) {
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackVisibleProductImpressions();
-    },
+    }
   });
 
   window.EcommerceSliderView =

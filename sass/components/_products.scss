@@ -41,3 +41,15 @@
     }
   }
 }
+
+[data-view-type='productsView'] {
+  &.rendered .template {
+    @include opacity(1);
+    visibility: visible;
+  }
+
+  .template {
+    @include opacity(0);
+    visibility: hidden;
+  }
+}
