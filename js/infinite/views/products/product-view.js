@@ -12,9 +12,6 @@
         this.addListener();
         this.createModel();
         this.collectTrackingData();
-
-        //remove this after debugging
-        this.initCustomTracking();
       },
       delegateInview: function() {
         if (this.inview != null) this.inview.destroy();
@@ -257,8 +254,7 @@
         }
       },
       onProductClickHandler: function(pEvent) {
-        //set this after debugging
-        // this.initCustomTracking();
+        this.initCustomTracking();
         this.trackProductClick();
       },
       onEnterHandler: function(pDirection) {
