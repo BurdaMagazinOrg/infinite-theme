@@ -10,7 +10,7 @@
     {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
 {% endif %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-nid', node.id()) %}
 <a href="{{ url }}" target="_self" rel="bookmark">
     <article{{ attributes.addClass(wrapper_classes) }}>
         {% block teaser_img_container_wrapper %}

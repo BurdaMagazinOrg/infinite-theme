@@ -48,14 +48,14 @@
             {% block user_author_socials %}
                 <div class="item-author__socials">
 
-                    {% if content.group_social_media_links is defined or content.group_social_media_misc is defined %}
+                    {% if user.group_social_media_links is defined or user.group_social_media_misc is defined %}
                         {% block user_author_socials_title %}
                             <div class="item-author__socials-title">Folgen Sie <span>{{ content.field_full_name }}</span></div>
                         {% endblock %}
-                        {% if content.group_social_media_links is defined %}
+                        {% if user.group_social_media_links is defined %}
                             <div class="item-author__socials-icons socials socials-bar">
                                 <span>
-                                    {% if content.group_social_media_links.field_social_instagram | render is not empty %}
+                                    {% if not user.group_social_media_links.field_social_instagram.isEmpty() %}
                                         <a class="item-social icon-instagram"
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_instagram }}"
@@ -63,7 +63,7 @@
                                            data-description="{{ content.field_full_name }}" data-social-type="instagram">
                                         </a>
                                     {% endif %}
-                                    {% if content.group_social_media_links.field_social_facebook | render is not empty %}
+                                    {% if not user.group_social_media_links.field_social_facebook.isEmpty() %}
                                         <a class="item-social icon-facebook"
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_facebook }}"
@@ -71,7 +71,7 @@
                                            data-description="{{ content.field_full_name }}" data-social-type="facebook">
                                         </a>
                                     {% endif %}
-                                    {% if content.group_social_media_links.field_social_pinterest | render is not empty %}
+                                    {% if not user.group_social_media_links.field_social_pinterest.isEmpty() %}
                                         <a class="item-social icon-pinterest"
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_pinterest }}"
@@ -79,7 +79,7 @@
                                            data-description="{{ content.field_full_name }}" data-social-type="pinterest">
                                         </a>
                                     {% endif %}
-                                    {% if content.group_social_media_links.field_social_twitter | render is not empty %}
+                                    {% if not user.group_social_media_links.field_social_twitter.isEmpty() %}
                                         <a class="item-social icon-twitter"
                                            rel="nofollow"
                                            href="{{ content.group_social_media_links.field_social_twitter }}"
@@ -87,7 +87,7 @@
                                            data-description="{{ content.field_full_name }}" data-social-type="twitter">
                                         </a>
                                     {% endif %}
-                                    {% if content.group_social_media_links.field_social_email | render is not empty %}
+                                    {% if not user.group_social_media_links.field_social_email.isEmpty() %}
                                         <a class="item-social icon-email"
                                            rel="nofollow"
                                            href="mailto:{{ content.group_social_media_links.field_social_email }}"
@@ -98,9 +98,9 @@
                             </div>
                         {% endif %}
 
-                        {% if content.group_social_media_misc is defined %}
+                        {% if not user.group_social_media_misc is defined %}
                             <div class="item-author__socials-misc">
-                                {% if content.group_social_media_misc.field_social_snapchat | render is not empty %}
+                                {% if not user.group_social_media_misc.field_social_snapchat.isEmpty() %}
                                     <div class="item-author__socials-misc-item item-author__snapchat">
                                         <span>Snapchat:</span> <a
                                                 href="https://www.snapchat.com/add/{{ content.group_social_media_misc.field_social_snapchat }}"
@@ -108,7 +108,7 @@
                                                 rel="nofollow">@{{ content.group_social_media_misc.field_social_snapchat }}</a>
                                     </div>
                                 {% endif %}
-                                {% if content.group_social_media_misc.field_social_blog | render is not empty %}
+                                {% if not user.group_social_media_misc.field_social_blog.isEmpty() %}
                                     <div class="item-author__socials-misc-item item-author__blog"><span>Webseite:</span>
                                         <a
                                                 href="{{ content.group_social_media_misc.field_social_blog }}"

@@ -34,7 +34,7 @@
 
 <div {{ attributes.addClass(classes) }}>
     {% block content_header_block %}
-        {% if content.field_header_blocks | render is not empty %}
+        {% if not term.field_header_blocks.isEmpty() %}
             {{ content.field_header_blocks }}
         {% endif %}
 
@@ -53,7 +53,7 @@
         {% endif %}
     {% endblock %}
 
-    {% if content|render %}
+    {% if not term.field_paragraphs.isEmpty() %}
         <div class="item-content__content">
             {{ content.field_paragraphs }}
         </div>

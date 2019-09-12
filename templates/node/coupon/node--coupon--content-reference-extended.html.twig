@@ -76,7 +76,7 @@
 {% extends "node--coupon--content-reference-maximal.html.twig" %}
 
 {% block coupon_teaser %}
-    {% if content.field_logo | render is not empty %}
+    {% if not node.field_logoisEmpty() %}
         <div class="coupon__brand--logo">{{ content.field_logo }}</div>
     {% endif %}
 {% endblock %}

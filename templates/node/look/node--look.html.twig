@@ -2,7 +2,7 @@
 'look',
 ] %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-nid', node.id()) %}
 {% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 {% set attributes = attributes.setAttribute('data-tr-container-type', 'look') %}
 {% set attributes = attributes.setAttribute('data-view-type', 'lookView') %}

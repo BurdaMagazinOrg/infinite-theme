@@ -77,7 +77,7 @@
 {% set attributes = attributes.setAttribute('data-view-type', 'articleView') %}
 {% set attributes = attributes.setAttribute('data-history-url', path) %}
 {% set attributes = attributes.setAttribute('data-history-title', node_seo_title) %}
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-nid', node.id()) %}
 {% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 
 <article {{ attributes.addClass(classes) }}>

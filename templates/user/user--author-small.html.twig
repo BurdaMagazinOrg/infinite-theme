@@ -1,6 +1,6 @@
 {% if user.status %}
     <div class="item-author item-author--teaser-small" data-internal-url="{{ url('entity.user.canonical', {'user': user.id}) }}">
-        {% if content.user_picture | render is not empty %}
+        {% if not user.user_picture.isEmpty() %}
             <div class="img-container item-author__profile-image">
                 {{ content.user_picture }}
             </div>

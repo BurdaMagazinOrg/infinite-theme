@@ -71,7 +71,7 @@
 'contextual-region',
 ] %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid).setAttribute('data-internal-url', url).removeAttribute(remove_attributes) %}
+{% set attributes = attributes.setAttribute('data-nid', node.id()).setAttribute('data-internal-url', url).removeAttribute(remove_attributes) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>
     <div class="teaser__img-container-wrapper">

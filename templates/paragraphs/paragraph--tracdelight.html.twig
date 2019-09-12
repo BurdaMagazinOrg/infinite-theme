@@ -41,7 +41,7 @@
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
-    {% if content | render %}
+    {% if content %}
         {% if content.field_title|render %}
             <h3 class="text-headline item-title">{{ content.field_title  | plain_text }}</h3>
         {% endif %}

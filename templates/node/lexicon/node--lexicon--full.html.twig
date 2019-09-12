@@ -78,7 +78,7 @@
 {% set wrapper_attributes = wrapper_attributes is empty ? create_attribute() : wrapper_attributes %}
 
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
-{% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', nid) %}
+{% set wrapper_attributes = wrapper_attributes.setAttribute('data-nid', node.id()) %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-uuid', uuid) %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-url', path) %}
 {% set wrapper_attributes = wrapper_attributes.setAttribute('data-history-title', node_seo_title) %}
@@ -96,7 +96,7 @@
         {{ content.field_header_blocks }}
     {% endblock %}
 
-    {% if content.field_paragraphs | render is not empty %}
+    {% if not node.field_paragraphs.isEmpty() %}
         {% block article_node_content %}
             {% embed 'node--article.html.twig' %}
             {% endembed %}
@@ -107,10 +107,10 @@
 </div>
 
 {% block article_footer_feed_block %}
-    {% if content.field_footer_blocks | render is not empty %}
+    {% if not node.field_footer_blocks.isEmpty() %}
         <div id="feed" class="region-full-content region-feed" data-view-type="feedView">
             {% block article_footer_blocks_full %}
-                {% if view_mode == 'full' and content.field_footer_blocks | render %}
+                {% if view_mode == 'full' and not node.field_footer_blocks.isEmpty() %}
                     {{ content.field_footer_blocks }}
                     {{ drupal_view('lexicon_related_content', 'embed_1') }}
                     <div class="region-full-content container-content-dynamic container-feed-items"></div>

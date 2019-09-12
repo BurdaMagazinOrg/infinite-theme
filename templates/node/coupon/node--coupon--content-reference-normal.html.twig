@@ -76,7 +76,7 @@
 {% extends "node--coupon--content-reference.html.twig" %}
 
 {% block coupon_logo %}
-    {% if content.field_logo | render is not empty %}
+    {% if not node.field_logo.isEmpty() %}
         <div class="coupon__brand--logo__wrapper">
             <div class="strike-through-title__wrapper">
                 <div class="coupon__logo">{{ content.field_logo }}</div>
@@ -86,7 +86,7 @@
 {% endblock %}
 
 {% block coupon_teaser %}
-    {% if content.field_teaser_media | render is not empty %}
+    {% if not node.field_teaser_media.isEmpty() %}
         <div class="coupon__aspect-ratio">
             {{ content.field_teaser_media }}
         </div>

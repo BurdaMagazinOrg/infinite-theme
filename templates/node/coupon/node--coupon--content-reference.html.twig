@@ -16,12 +16,12 @@
         <h3 class="coupon__title">{{ label }}</h3>
         <div class="coupon__brand">
             {% block coupon_teaser %}
-                {% if content.field_logo | render is not empty %}
+                {% if not node.field_logo.isEmpty() %}
                     <div class="coupon__brand--logo">{{ content.field_logo }}</div>
                 {% endif %}
             {% endblock %}
         </div>
-        {% if content.field_coupon_discount | render is not empty %}
+        {% if not node.field_coupon_discount.isEmpty() %}
             <div class="coupon__discount">
                 <span class="coupon__discount--value">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 71.591 71.591">
@@ -41,7 +41,7 @@
             </div>
         {% endif %}
         <div class="coupon__tnc">
-            {% if content.field_tnc | render is not empty %}
+            {% if not node.field_tnc.isEmpty() %}
                 <div class="coupon__tnc-label expandable">Teilnahmebedingungen</div>
                 <div class="coupon__tnc-details">
                     {{ content.field_tnc }}
@@ -49,7 +49,7 @@
             {% endif %}
         </div>
         <div class="coupon__code--wrapper">
-            {% if content.field_coupon_code | render is not empty %}
+            {% if not node.field_coupon_code.isEmpty() %}
                 <div class="coupon__code">
                     <span class="coupon__code--label">Gutscheincode:</span>
                     {{ content.field_coupon_code }}
@@ -130,7 +130,7 @@
             </g>
         </svg>
     </div>
-    {% if content.field_tracking_pixel | render is not empty %}
+    {% if not node.field_tracking_pixel.isEmpty() %}
         <div class="coupon__tracking-pixel">
             {{ content.field_tracking_pixel }}
         </div>

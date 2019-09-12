@@ -13,7 +13,7 @@
 #}
 <header role="banner">
   {% if logo %}
-    <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home">
+    <a href="{{ url('<front>') }}" title="{{ 'Home'|t }}" rel="home">
       <img src="{{ logo }}" alt="{{ 'Home'|t }}"/>
     </a>
   {% endif %}
@@ -21,7 +21,7 @@
   {% if site_name or site_slogan %}
     {% if site_name %}
       <h1>
-        <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
+        <a href="{{ url('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
       </h1>
     {% endif %}
 

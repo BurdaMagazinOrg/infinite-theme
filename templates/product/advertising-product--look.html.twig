@@ -31,7 +31,7 @@
     {% set attributes = attributes.addClass('item-product--sold-out') %}
 {% endif %}
 
-{% if content.field_product_category_txt | render is not empty %}
+{% if not advertising_product.field_product_category_txt.isEmpty() %}
     {% set data_attributes = data_attributes.setAttribute('data-product-category', content.field_product_category_txt | render | striptags | trim) %}
 {% endif %}
 

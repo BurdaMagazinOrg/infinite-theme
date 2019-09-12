@@ -2,7 +2,7 @@
     <figure data-feedback="fb:likes,fb:comments">
         {{ content.field_image }}
         <figcaption>
-            {% if content.field_description | render %}
+            {% if not media.field_description.isEmpty() %}
                 <h1>{{ content.field_description | basic_format }}</h1>
             {% endif %}
             {% if content.field_copyright | plain_text or content.field_source | plain_text %}

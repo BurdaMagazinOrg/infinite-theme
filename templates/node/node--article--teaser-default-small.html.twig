@@ -7,7 +7,7 @@
     {% set wrapper_classes = wrapper_classes|merge([smart_teaser_class]) %}
 {% endif %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-nid', node.id()) %}
 {% set attributes = attributes.setAttribute('data-internal-url', url) %}
 
 <article{{ attributes.addClass(wrapper_classes) }}>

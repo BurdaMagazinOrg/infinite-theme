@@ -74,7 +74,7 @@
     'newsletter',
 ] %}
 
-{% set attributes = attributes.setAttribute('data-nid', nid) %}
+{% set attributes = attributes.setAttribute('data-nid', node.id()) %}
 {% set attributes = attributes.setAttribute('data-uuid', uuid) %}
 {% set attributes = attributes.setAttribute('data-tr-container-type', 'newsletter') %}
 
@@ -94,22 +94,22 @@
 <div{{ attributes.addClass(wrapper_classes) }}>
     <section class="newsletter__section newsletter__section--start">
         <div class="newsletter__section-content">
-            {% if content.field_logo | render is not empty %}
+            {% if not node.field_logo.isEmpty() %}
                 <div class="newsletter__logo">
-                    {{content.field_logo | render}}
+                    {{ content.field_logo | render }}
                 </div>
             {% endif %}
 
-            {% if content.field_background_media | render is not empty %}
+            {% if not node.field_background_media.isEmpty() %}
                 <div class="newsletter__image">
-                    {{content.field_background_media}}
+                    {{ content.field_background_media }}
                 </div>
             {% endif %}
 
             {% block newsletter_title_block %}
-                {% if content.field_text | render is not empty %}
+                {% if not node.field_text.isEmpty() %}
                     <div class="newsletter__title">
-                        {{content.field_text}}
+                        {{ content.field_text }}
                     </div>
                 {% endif %}
             {% endblock %}

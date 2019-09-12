@@ -1,6 +1,6 @@
 {% block content_block %}
-    {% if content|render %}
-        {% if content.field_title|plain_text %}
+    {% if content %}
+        {% if not paragraph.field_title.isEmpty() %}
             <h2>{{ content.field_title|plain_text }}</h2>
         {% endif %}
         {{ content|without('field_title') }}

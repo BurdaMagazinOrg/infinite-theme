@@ -25,7 +25,7 @@
       <div class="icon icon-close"></div>
 
       {% block logo_block %}
-        <a class="logo item-sidebar" href="{{ front_page }}" title="{{ 'Home'|t }}">
+        <a class="logo item-sidebar" href="{{ url('<front>') }}" title="{{ 'Home'|t }}">
           {% embed '@infinite_blocks/logo.html.twig' %}{% endembed %}
         </a>
       {% endblock %}

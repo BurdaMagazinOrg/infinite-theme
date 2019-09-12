@@ -4,11 +4,11 @@
 'ecommerce-slider',
 ] %}
 
-{% set ecommerceSliderClass = 'ecommerce-slider-' ~ nid %}
-{% set hasBgImage = content.field_background_media | render is not empty %}
+{% set ecommerceSliderClass = 'ecommerce-slider-' ~ node.id() %}
+{% set hasBgImage = node.field_background_media.isEmpty() %}
 {% set attributes = hasBgImage == true ? attributes.addClass('bg-image') : attributes.addClass('no-bg-image') %}
 
-{% if content.field_css_styles|render is not empty %}
+{% if not node.field_css_styles.isEmpty() %}
     {% block ecommerce_style_block %}
         <style>
             {{ content.field_css_styles|render|striptags }}
@@ -27,7 +27,7 @@
 
         <div class="ecommerce-slider__content">
             <h3 class="ecommerce-slider__title">{{ label }}</h3>
-            {% if content.field_campaign|render %}
+            {% if not node.field_campaign.isEmpty() %}
                 <span class="ecommerce-slider__campaign">
                     {{ content.field_campaign }}
                 </span>

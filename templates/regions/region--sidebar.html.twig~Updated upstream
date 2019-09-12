@@ -24,7 +24,7 @@
     <div{{ attributes.addClass(classes) }}>
       <div id="icon-close" class="icon icon-close"></div>
 
-      <a class="logo item-sidebar" href="{{ front_page }}" title="{{ 'Home'|t }}">
+      <a class="logo item-sidebar" href="{{ url('<front>') }}" title="{{ 'Home'|t }}">
         <img src="{{ logo }}" alt="{{ 'Home'|t }}"/>
       </a>
 

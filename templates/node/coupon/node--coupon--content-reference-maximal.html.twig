@@ -76,7 +76,7 @@
 {% extends "node--coupon--content-reference.html.twig" %}
 
 {% block coupon_teaser %}
-    {% if content.field_teaser_media | render is not empty %}
+    {% if not node.field_teaser_media.isEmpty() %}
         <div class="coupon__aspect-ratio">
             {{ content.field_teaser_media }}
         </div>
@@ -84,7 +84,7 @@
 {% endblock %}
 
 {% block advertising_products %}
-    {% if content.field_advertising_products | render is not empty %}
+    {% if not node.field_advertising_products.isEmpty() %}
         <div class="coupon__advertising-products">
             <div class="coupon__advertising-products--title__wrapper">
                 <div class="coupon__advertising-products--title strike-through-title__wrapper">

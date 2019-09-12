@@ -37,9 +37,9 @@
  */
 #}
 {% block content_block %}
-    {% if content | render %}
-        {% if content.field_title|render %}
-            <h2>{{ content.field_title  | plain_text }}</h2>
+    {% if content %}
+        {% if not paragraph.field_title.isEmpty() %}
+            <h2>{{ content.field_title | plain_text }}</h2>
         {% endif %}
         <figure class="op-slideshow">
             {{ content|without('field_title') }}

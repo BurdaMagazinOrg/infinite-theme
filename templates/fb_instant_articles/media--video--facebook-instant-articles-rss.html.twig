@@ -2,11 +2,11 @@
     <figure class="op-interactive">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ content.field_video_id }}"></iframe>
         <figcaption>
-            {% if content.field_copyright|render  %}
+            {% if not media.field_copyright.isEmpty()  %}
                 &copy;
                 <span class="text-copyright">{{ content.field_copyright }}</span>
             {% endif %}
-            {% if content.field_description|render %}
+            {% if not media.field_description.isEmpty() %}
                 {{ content.field_description | basic_format}}
             {% endif %}
         </figcaption>
