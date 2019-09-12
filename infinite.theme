@@ -1,18 +1,18 @@
 <?php
 
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Template\Attribute;
-use Drupal\block\Entity\Block;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\infinite_media\MediaHelper;
-use Drupal\taxonomy\TermInterface;
-use Drupal\views\Views;
-use Drupal\user\Entity\User;
 use Drupal\media_entity\MediaInterface;
+use Drupal\taxonomy\TermInterface;
+use Drupal\user\Entity\User;
 use Psy\Util\Json;
 
-function infinite_preprocess(&$variables) {
-  $variables['environment'] = ['systemType' =>  isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
-}
+//function infinite_preprocess(&$variables) {
+//  $variables['environment'] = ['systemType' =>  isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local'];
+//}
 
 
 function infinite_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
@@ -54,26 +54,11 @@ function infinite_theme_suggestions_user_alter(array &$suggestions, array $varia
 }
 
 function infinite_preprocess_page(&$variables) {
-  $variables['theme_infinite_path'] = '/' . drupal_get_path('theme', 'infinite');
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
 
-function infinite_preprocess_block(&$variables) {
-  $variables['front_page'] = \Drupal::url('<front>');
+function infinite_preprocess_block__system_menu_block(&$variables) {
   $variables['logo'] = theme_get_setting('logo.url');
-}
-
-function infinite_preprocess_block__outbrain(&$variables) {
-  /* @var Drupal\block\Entity\Block $block */
-  $block = Block::load('advertisingslot_fba_article');
-  if (is_object($block)) {
-    $advertisingslot_fba_article =  \Drupal::entityManager()
-      ->getViewBuilder('block')
-      ->view($block, 'default');
-
-    $variables['elements']['content']['advertisingslot_fba_article'] = $advertisingslot_fba_article;
-    $variables['content']['advertisingslot_fba_article'] = $advertisingslot_fba_article;
-  }
 }
 
 /**
@@ -83,32 +68,26 @@ function infinite_preprocess_block__outbrain(&$variables) {
  *
  * TODO: Refactor when update to core media.
  */
-function infinite_preprocess_media(array &$variables) {
-
+function infinite_preprocess_media__nexx_video(array &$variables) {
   /* @var $media MediaInterface */
   if ($variables['elements']['#view_mode'] == 'full' && $media = $variables['elements']['#media']) {
-
-    if ($media->bundle() == 'nexx_video') {
-      $variables['mid'] = $media->id();
-      $variables['channel_tid'] = 'all';
-
-      if (!$media->get('field_channel')->isEmpty()) {
-        $variables['channel_tid'] = (int) $media->get('field_channel')->target_id;
-      }
+    $variables['mid'] = $media->id();
+    $variables['channel_tid'] = 'all';
+    if (!$media->get('field_channel')->isEmpty()) {
+      $variables['channel_tid'] = (int) $media->get('field_channel')->target_id;
     }
   }
 }
 
-function infinite_preprocess_region(&$variables) {
-  $variables ['front_page'] = \Drupal::url('<front>');
-  $variables ['logo'] = theme_get_setting('logo.url');
-}
+//function infinite_preprocess_region(&$variables) {
+//  $variables ['logo'] = theme_get_setting('logo.url');
+//}
 
 function infinite_preprocess_html(&$variables) {
   $current_path = \Drupal::service('path.current')->getPath();
   $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
   $path_alias = ltrim($path_alias, '/');
-  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);  
+  $variables['attributes']['class'][] = Html::cleanCssIdentifier($path_alias);
 
   if (\Drupal::moduleHandler()->moduleExists('metatag')) {
     /**
@@ -136,7 +115,6 @@ function infinite_preprocess_html(&$variables) {
 function infinite_preprocess_node(&$variables) {
   /* @var Drupal\node\Entity\Node $node */
   $node = $variables['node'];
-  $variables['nid'] = $node->id();
 
   // Override TWIG url with absolute alias URL.
   // Variable 'path' is used for lazy loading history API.
@@ -154,8 +132,7 @@ function infinite_preprocess_node(&$variables) {
   $variables['email_share_text'] = theme_get_setting('email_share_text');
   $variables['email_subject'] = theme_get_setting('email_subject');
 
-  $bundle = $node->bundle();
-  if ($bundle == 'article' || $bundle == 'page') {
+  if (in_array($node->bundle(), ['article', 'page'])) {
     // todo: switch later to publish date.
     $variables['datetime'] = \Drupal::service('date.formatter')
       ->format($node->created->value, 'html_datetime');
@@ -174,34 +151,42 @@ function infinite_preprocess_node(&$variables) {
       $variables['show_contextual_links'] = TRUE;
     }
   }
+}
 
-  if ($bundle == 'article') {
-    $field_seo_title = !empty($node->field_seo_title->getValue()[0]) ? $node->field_seo_title->getValue()[0]['value'] : '';
-    // Replace double quotes.
-    // @toDo check, where we have this case!
-    $variables['node_seo_title'] = str_replace('"', '', $field_seo_title);
-    // Clean up classes array - all classes will be added in
-    $variables['attributes']['class'] = array();
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function infinite_preprocess_node__article(&$variables) {
+  $node = $variables['node'];
+  $field_seo_title = !empty($node->field_seo_title->getValue()[0]) ? $node->field_seo_title->getValue()[0]['value'] : '';
+  // Replace double quotes.
+  // @toDo check, where we have this case!
+  $variables['node_seo_title'] = str_replace('"', '', $field_seo_title);
+  // Clean up classes array - all classes will be added in
+  $variables['attributes']['class'] = [];
 
-    // Instantiate 'wrapper_attributes' attribute object to avoid collisions
-    // with actual node attributes.
-    if ($variables['view_mode'] === 'full' || $variables['view_mode'] === 'lazyloading') {
-      $variables['wrapper_attributes'] = new Attribute();
-    }
+  // Instantiate 'wrapper_attributes' attribute object to avoid collisions
+  // with actual node attributes.
+  if ($variables['view_mode'] === 'full' || $variables['view_mode'] === 'lazyloading') {
+    $variables['wrapper_attributes'] = new Attribute();
+  }
+  else {
     $variables = _infinite_get_icon($node, $variables);
   }
+}
 
-  if($bundle == 'ecommerce_slider') {
-    $data_slider = [];
-    $start_position = $node->get('field_slider_start_position')->value;
-    if(is_numeric($start_position)) {
-      $data_slider['initialSlide'] = $node->get('field_slider_start_position')->value - 1;
-    }
-    else {
-      $data_slider['initialSlide'] = 0;
-    }
-    $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
+/**
+ * Implements hook_preprocess_node() for ecommerce_slider nodes.
+ */
+function infinite_preprocess_node__ecommerce_slider(&$variables) {
+  $node = $variables['node'];
+  $data_slider = [];
+  $data_slider['initialSlide'] = 0;
+  $start_position = $node->get('field_slider_start_position')->value;
+  if (is_numeric($start_position)) {
+    $data_slider['initialSlide'] = $node->get('field_slider_start_position')->value - 1;
   }
+  $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
 }
 
 /**
@@ -224,7 +209,7 @@ function infinite_preprocess_views_view(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_product().
+ * Implements hook_preprocess_advertising_product().
  */
 function infinite_preprocess_advertising_product(&$variables) {
   /** @var \Drupal\advertising_products\Entity\AdvertisingProduct $product */
@@ -306,80 +291,87 @@ function infinite_preprocess_advertising_product(&$variables) {
 }
 
 /**
- * Implements template_preprocess_paragraph().
+ * Implements template_preprocess_paragraph() for media paragraph.
  */
-function infinite_preprocess_paragraph(&$variables) {
+function infinite_preprocess_paragraph__media(&$variables) {
   if (!empty($variables['elements']['field_media']['0']['#media'])) {
     $media = $variables['elements']['field_media']['0']['#media'];
     $variables['media_bundle'] = $media->bundle();
   }
+}
 
-  if ('spotlight' === $variables['paragraph']->bundle()) {
-    $entity = \Drupal::routeMatch()->getParameter('taxonomy_term');
-    if ($entity instanceof \Drupal\taxonomy\Entity\Term) {
-      $variables = infinite_inject_pinterest_image($variables, $entity);
-    }
+/**
+ * Implements template_preprocess_paragraph() for spotlight paragraph.
+ */
+function infinite_preprocess_paragraph__spotlight(&$variables) {
+  $entity = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($entity instanceof TermInterface) {
+    $variables['pinterest_share_img_url'] = infinite_inject_get_pinterest_image($entity);
   }
 }
 
-function infinite_preprocess_field(&$variables) {
-  // INREL-2807 Set all links in promotion to nofollow
-  if($variables['element']['#field_name'] === 'field_url' && $variables['element']['#bundle'] === 'promotion') {
-    /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $item */
+/**
+ * Implements template_preprocess_field() for field_url.
+ *
+ * @see INREL-2807 Set all links in promotion to nofollow
+ */
+function infinite_preprocess_field__field_url(&$variables) {
+  if ($variables['element']['#bundle'] === 'promotion') {
     foreach ($variables['items'] as &$item) {
       $item['content']['#options']['attributes']['rel'] = 'nofollow';
     }
   }
+}
 
-  if ($variables['element']['#field_name'] == 'field_tags') {
-    $items = &$variables['items'];
-    foreach ($items as $delta => &$item) {
-      $term = $item['content']['#options']['entity'];
-      $item['status'] = $term->get('status')->value;
-    }
+/**
+ * Implements template_preprocess_field() for field_tags.
+ */
+function infinite_preprocess_field__field_tags(&$variables) {
+  $items = &$variables['items'];
+  foreach ($items as $delta => &$item) {
+    $term = $item['content']['#options']['entity'];
+    $item['status'] = $term->get('status')->value;
   }
 }
 
-function infinite_page_attachments_alter(array &$attachments) {
-//  foreach($attachments['#attached']['html_head'] as $key => $attachment) {
-//    if(isset($attachment[1]) && $attachment[1] == 'breakpoint_settings_loader') {
-//      unset($attachments['#attached']['html_head'][$key]);
-//    }
-//  }
-}
-
+/**
+ * Implements template_preprocess_container().
+ */
 function infinite_preprocess_container(&$variables) {
-  if (isset($variables['element']['#parent'])) {
-    if (isset($variables['element']['#parent']['#node'])) {
-      $entity = $variables['element']['#parent']['#node'];
-    }
-    elseif (isset($variables['element']['#parent']['#taxonomy_term'])) {
-      $entity = $variables['element']['#parent']['#taxonomy_term'];
-    }
-    elseif (isset($variables['element']['#parent']['#user'])) {
-      $entity = $variables['element']['#parent']['#user'];
-    }
+  if (!isset($variables['element']['#parent'])) {
+    return;
   }
+
+  if (isset($variables['element']['#parent']['#node'])) {
+    $entity = $variables['element']['#parent']['#node'];
+  }
+  elseif (isset($variables['element']['#parent']['#taxonomy_term'])) {
+    $entity = $variables['element']['#parent']['#taxonomy_term'];
+  }
+  elseif (isset($variables['element']['#parent']['#user'])) {
+    $entity = $variables['element']['#parent']['#user'];
+  }
+
   if (isset($entity)) {
-    $variables = infinite_inject_pinterest_image($variables, $entity);
+    $variables['pinterest_share_img_url'] = infinite_inject_get_pinterest_image($entity);
+
     // use seo description for pinterest share description
-    if (method_exists($entity, 'bundle') && method_exists($entity, 'get') && method_exists($entity, 'hasField')) {
-      switch ($entity->bundle()) {
-        // field_teaser_text is misused as seo description on these content types
-        // this should be fixed in https://jira.burda.com/browse/INREL-4095
-        case 'article':
-        case 'magazine_products':
-          if ($entity->hasField('field_teaser_text')) {
-            $variables['pinterest_share_description'] = $entity->get('field_teaser_text')->value;
-          }
-          break;
-        default:
-          if ($entity->hasField('field_seo_description')) {
-            $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
-          }
-          break;
-      }
+    switch ($entity->bundle()) {
+      // field_teaser_text is misused as seo description on these content types
+      // this should be fixed in https://jira.burda.com/browse/INREL-4095
+      case 'article':
+      case 'magazine_products':
+        if ($entity->hasField('field_teaser_text')) {
+          $variables['pinterest_share_description'] = $entity->get('field_teaser_text')->value;
+        }
+        break;
+      default:
+        if ($entity->hasField('field_seo_description')) {
+          $variables['pinterest_share_description'] = $entity->get('field_seo_description')->value;
+        }
+        break;
     }
+
     // Set progress navigation.
     if ($entity instanceof TermInterface) {
       $variables['progress_navigation'] = [];
@@ -430,29 +422,30 @@ function infinite_preprocess_responsive_image(&$variables) {
 }
 
 /**
- * Use dedicated pinterest image for sharing.
+ * Use dedicated pinterest image for sharing or teaser media as fallback.
  *
  * @param $variables
- * @param $entity
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *
  * @return mixed
  */
-function infinite_inject_pinterest_image($variables, $entity)
-{
-  $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
-    $entity,
-    'field_pinterest_image'
-  );
-  // as fallback, if no dedicated pinterest image is set
-  // use a 2:3 format of share image
-  if (empty($variables['pinterest_share_img_url'])) {
-    $variables['pinterest_share_img_url'] = MediaHelper::getImageUrlFromMediaReference(
+function infinite_inject_get_pinterest_image(EntityInterface $entity) {
+  if ($entity->hasField('field_pinterest_image')
+    && !$entity->field_pinterest_image->isEmpty()) {
+
+    $pinterestShareImageUrl = MediaHelper::getImageUrlFromMediaReference(
+      $entity,
+      'field_pinterest_image'
+    );
+  }
+  else {
+    $pinterestShareImageUrl = MediaHelper::getImageUrlFromMediaReference(
       $entity,
       'field_teaser_media',
       'pinterest_fallback_teaser_image'
     );
   }
-
-  return $variables;
+  return $pinterestShareImageUrl;
 }
 
 /**
@@ -461,6 +454,8 @@ function infinite_inject_pinterest_image($variables, $entity)
  * @param $node
  * @param $variables
  * @return mixed
+ *
+ * TODO: Need refactoring to calculated teaser icon field during node update.
  */
 function _infinite_get_icon($node, $variables) {
   $variables['teaser_icon'] = FALSE;
@@ -504,7 +499,6 @@ function _infinite_get_icon($node, $variables) {
       }
     }
   }
-
   return $variables;
 }
 
@@ -515,14 +509,15 @@ function _infinite_get_icon($node, $variables) {
  *
  * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function infinite_preprocess_user(&$variables)
-{
-  try {
-    $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight';
-  } catch (InvalidArgumentException $ex) {
-    $variables['has_spotlight_paragraph'] = false;
-  } catch (MissingDataException $ex) {
-    $variables['has_spotlight_paragraph'] = false;
+function infinite_preprocess_user(&$variables) {
+  if ($variables['elements']['#view_mode'] === 'full') {
+    try {
+      $variables['has_spotlight_paragraph'] = infinite_get_user_paragraph_bundle($variables['elements']['#user']) === 'spotlight';
+    } catch (InvalidArgumentException $ex) {
+      $variables['has_spotlight_paragraph'] = false;
+    } catch (MissingDataException $ex) {
+      $variables['has_spotlight_paragraph'] = false;
+    }
   }
 }
 
