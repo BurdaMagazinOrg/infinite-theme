@@ -28,6 +28,9 @@
     handleProductsData: function(data) {
       var jsonData = JSON.parse(data);
       var templateContainer = this.el[0].querySelector('.template');
+      var infModel = this.model.get('infiniteBlockDataModel');
+      var products;
+
       if (!!jsonData && !!templateContainer) {
         var template = templateContainer.innerHTML;
         var rendered = '';
@@ -37,6 +40,24 @@
         rendered = Mustache.render(template, { docs: jsonData.docs });
         templateContainer.innerHTML = rendered;
       }
+
+      products = templateContainer.querySelectorAll('.item-ecommerce');
+      Array.from(products).forEach(product => {
+        var model = new Backbone.Model();
+        !!infModel && model.set('infiniteBlockDataModel', infModel);
+
+        if (product.classList.contains('item-product-slider')) {
+          var productSliderView = new ProductSliderView({
+            el: jQuery(product),
+            model: model
+          });
+        } else {
+          var productView = new ProductView({
+            el: jQuery(product),
+            model: model
+          });
+        }
+      });
 
       !!Drupal && Drupal.attachBehaviors(templateContainer);
       this.rendered();
