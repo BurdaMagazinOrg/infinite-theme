@@ -44,6 +44,21 @@
         "[[^stock_availability]]item-product--sold-out[[/stock_availability]]",
       ] %}
       
+      {% set provider_url_addition %}
+        [[#is_provider]]
+          [[#tracdelight]]
+            &subid=[[provider_identifier]]
+          [[/tracdelight]]
+        [[/is_provider]]
+      {% endset %}
+
+      {% set shop_url %}
+        [[ shop_url ]]
+        {{provider_url_addition}}
+      {% endset %}
+
+      {% set product_attributes = product_attributes.setAttribute('data-external-url', shop_url | replace({' ':'', "\n":'', "\r":''})) %}
+
       {% set media_attributes = create_attribute() %}
       {% set media_classes = [
         "media__image",
@@ -65,8 +80,7 @@
           data-stock-availability="[[stock_availability]]"
           data-provider="[[ provider ]]"
           data-view-mode="desktop"
-          data-position="undefined"
-          data-external-url="[[ shop_url ]]&amp;subid=[[provider_identifier]]">
+          data-position="undefined">
         <div class="img-container">
           <div class="media media--blazy media--image">
               <img {{ media_attributes.addClass(media_classes) }} data-src="[[ image_style ]]" alt="[[title]]" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image">
