@@ -56,6 +56,7 @@
 
 {% block content_block %}  
   {{ attach_library('infinite/mustache') }}
+  {{ attach_library('infinite/infinite.views.product-view') }}
   {{ attach_library('infinite/infinite.views.products-view') }}
 
   {% if content.field_title|render %}

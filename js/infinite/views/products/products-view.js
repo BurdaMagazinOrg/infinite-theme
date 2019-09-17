@@ -28,7 +28,6 @@
     handleProductsData: function(data) {
       var jsonData = JSON.parse(data);
       var templateContainer = this.el[0].querySelector('.template');
-      var infModel = this.model.get('infiniteBlockDataModel');
       var products;
 
       if (!!jsonData && !!templateContainer) {
@@ -43,24 +42,33 @@
 
       products = templateContainer.querySelectorAll('.item-ecommerce');
       Array.from(products).forEach(product => {
-        var model = new Backbone.Model();
-        !!infModel && model.set('infiniteBlockDataModel', infModel);
-
-        if (product.classList.contains('item-product-slider')) {
-          var productSliderView = new ProductSliderView({
-            el: jQuery(product),
-            model: model
-          });
-        } else {
-          var productView = new ProductView({
-            el: jQuery(product),
-            model: model
-          });
-        }
+        product.classList.contains('item-product-slider')
+          ? this.createProductSliderView(product)
+          : this.createProductView(product);
       });
 
       !!Drupal && Drupal.attachBehaviors(templateContainer);
       this.rendered();
+    },
+    createProductView: function(el) {
+      var model = new Backbone.Model({
+        viewType: 'productView',
+        infiniteBlockDataModel: this.model.get('infiniteBlockDataModel')
+      });
+      var params = { el: jQuery(el), model: model };
+      var productView = new ProductView(params);
+      model.set('view', productView);
+      jQuery(el).data('infiniteModel', model);
+    },
+    createProductSliderView: function(el) {
+      var model = new Backbone.Model({
+        viewType: 'productSliderView',
+        infiniteBlockDataModel: this.model.get('infiniteBlockDataModel')
+      });
+      var params = { el: jQuery(el), model: model };
+      var productSliderView = new ProductSliderView(params);
+      model.set('view', productSliderView);
+      jQuery(el).data('infiniteModel', model);
     },
     rendered: function() {
       let sliderView;

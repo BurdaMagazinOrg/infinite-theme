@@ -2,6 +2,7 @@
   BurdaInfinite.views.products.EcommerceSliderView = BaseDynamicView.extend({
     $swiperContainer: [],
     swiperApi: null,
+    mutationObserver: null,
     settings: {
       loop: true,
       slidesPerView: 'auto',
@@ -17,12 +18,31 @@
       BaseDynamicView.prototype.initialize.call(this, pOptions);
       this.createView();
       this.updateView();
-      this.delegateInview();
-      this.duplicateElementClick();
+      this.checkProducts();
 
       this.reInit = function() {
         this.updateView();
       };
+    },
+    checkProducts: function() {
+      var productAvailable = !!this.$el[0].querySelector(
+        '.item-product-slider'
+      );
+
+      if (productAvailable) {
+        this.productsAvailable();
+      } else {
+        var config = { childList: true };
+        var target = this.$el[0].querySelector('.swiper-wrapper');
+        this.mutationObserver = new MutationObserver(
+          this.mustacheRendered.bind(this)
+        );
+        this.mutationObserver.observe(target, config);
+      }
+    },
+    mustacheRendered: function() {
+      this.productsAvailable();
+      !!this.mutationObserver && this.mutationObserver.disconnect();
     },
     createView: function() {
       this.$swiperContainer = this.$el.find('.swiper-container');
@@ -49,6 +69,10 @@
       this.swiperApi
         .off('slideChangeTransitionEnd')
         .on('slideChangeTransitionEnd', this.onSliderChangeHandler.bind(this));
+    },
+    productsAvailable: function() {
+      this.delegateInview();
+      this.duplicateElementClick();
     },
     trackVisibleProductImpressions: function() {
       let tmpView;

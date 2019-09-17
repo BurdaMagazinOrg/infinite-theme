@@ -585,8 +585,6 @@
       trackEcommerce: function(pData, pType, pAdvObject) {
         let tmpTrackingObject = {};
 
-        console.log('>> trackEcommerce', pType, pData);
-
         switch (pType) {
           case 'impressions':
             tmpTrackingObject.event = 'productImpressions';
