@@ -63,7 +63,12 @@
     <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
   {% endif %}
 
-  {% include "@infinite/paragraphs/mustache/products.html.twig" %}
+  <div class="container-wrapper">
+    <div class="template container-content">
+      {# template class needed for mustache rendering #}
+      {% include "@infinite/product/mustache/products.html.twig" %}
+    </div>
+  </div>
 {% endblock %}
 
 

@@ -2,6 +2,7 @@
   BurdaInfinite.views.products.EcommerceSliderView = BaseDynamicView.extend({
     $swiperContainer: [],
     swiperApi: null,
+    mutationObserver: null,
     settings: {
       loop: true,
       slidesPerView: 'auto',
@@ -9,43 +10,73 @@
       watchSlidesVisibility: true,
       preloadImages: false,
       lazy: {
-        loadOnTransitionStart: true,
-      },
+        loadOnTransitionStart: true
+      }
     },
+    reInit: null,
     initialize: function(pOptions) {
       BaseDynamicView.prototype.initialize.call(this, pOptions);
       this.createView();
       this.updateView();
-      this.delegateInview();
-      this.duplicateElementClick();
+      this.checkProducts();
+
+      this.reInit = function() {
+        this.updateView();
+      };
+    },
+    checkProducts: function() {
+      var productAvailable = !!this.$el[0].querySelector(
+        '.item-product-slider'
+      );
+
+      if (productAvailable) {
+        this.productsAvailable();
+      } else {
+        var config = { childList: true };
+        var target = this.$el[0].querySelector('.swiper-wrapper');
+        this.mutationObserver = new MutationObserver(
+          this.mustacheRendered.bind(this)
+        );
+        this.mutationObserver.observe(target, config);
+      }
+    },
+    mustacheRendered: function() {
+      this.productsAvailable();
+      !!this.mutationObserver && this.mutationObserver.disconnect();
     },
     createView: function() {
       this.$swiperContainer = this.$el.find('.swiper-container');
-
-      _.extend(this.settings, {
-        navigation: {
-          nextEl: this.$el.find('.swiper-button-next')[0],
-          prevEl: this.$el.find('.swiper-button-prev')[0],
-        },
-      });
+      this.$el.find('.swiper-button-prev').click(this.slidePrev.bind(this));
+      this.$el.find('.swiper-button-next').click(this.slideNext.bind(this));
 
       if (this.$el.attr('data-slider') !== 'undefined') {
         const $dataSlider = JSON.parse(this.$el.attr('data-slider'));
         _.extend(this.settings, $dataSlider);
       }
     },
+    slidePrev: function() {
+      !!this.swiperApi && this.swiperApi.slidePrev();
+    },
+    slideNext: function() {
+      !!this.swiperApi && this.swiperApi.slideNext();
+    },
     updateView: function() {
+      if (!!this.swiperApi) this.swiperApi.destroy();
+
       this.swiperApi = new Swiper(this.$swiperContainer[0], this.settings);
       this.$swiperContainer.data('swiperApi', this.swiperApi);
+      this.model.set('swiperApi', this.swiperApi);
       this.swiperApi
         .off('slideChangeTransitionEnd')
         .on('slideChangeTransitionEnd', this.onSliderChangeHandler.bind(this));
     },
+    productsAvailable: function() {
+      this.delegateInview();
+      this.duplicateElementClick();
+    },
     trackVisibleProductImpressions: function() {
       let tmpView;
-
       let tmpExternalURL = '';
-
       let $tmpElement = [];
 
       // .not('.swiper-slide-duplicate')
@@ -81,9 +112,7 @@
     },
     duplicateElementClick: function() {
       let $tmpElement = [];
-
       let tmpExternalURL = '';
-
       let tmpView;
 
       this.$el.find('.swiper-slide-duplicate').each(
@@ -121,7 +150,7 @@
     onEnterHandler: function(pDirection) {
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
       this.trackVisibleProductImpressions();
-    },
+    }
   });
 
   window.EcommerceSliderView =

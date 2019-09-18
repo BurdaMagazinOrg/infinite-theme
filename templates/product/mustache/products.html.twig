@@ -1,0 +1,112 @@
+
+{% block product_outer_block %}
+  {% if view_mode == 'single-product' %}
+    {# refactor css class / use machine_name for new products css selector #}
+    {% set view_mode = 'single' %}
+  {% endif %} 
+
+  {% if showAffiliateLinkLabel and view_mode != 'single' %}
+    <div class="affiliatelinks">
+        <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+    </div>
+  {% endif %}
+
+  {% if view_mode != 'single' %}
+      <div class="shopit-badge" data-view-type="shopitStickyView">
+          <img src="/themes/custom/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
+      </div>
+  {% endif %}
+{% endblock %}
+
+[[#docs]]
+  [[#_source]]
+      {% block product_top_block %}
+        {% if showAffiliateLinkLabel and view_mode == 'single' %}
+          <div class="affiliatelinks">
+              <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+          </div>
+        {% endif %}
+        
+        {% if view_mode == 'single' %}
+          <div class="shopit-badge" data-view-type="shopitStickyView">
+              <img src="/themes/custom/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
+          </div>
+        {% endif %}
+      {% endblock %}
+
+
+      {% set product_attributes = create_attribute() %}
+      {% set classes = [
+        "item-product",
+        "item-ecommerce",
+        "item-product--" ~ view_mode | default('default'),
+        "[[#is_slider_product]]item-product-slider swiper-slide[[/is_slider_product]]",
+        "[[^stock_availability]]item-product--sold-out[[/stock_availability]]",
+      ] %}
+      
+      {% set provider_url_addition %}
+        [[#is_provider]]
+          [[#tracdelight]]
+            &subid=[[provider_identifier]]
+          [[/tracdelight]]
+        [[/is_provider]]
+      {% endset %}
+
+      {% set shop_url %}
+        [[ shop_url ]]
+        {{provider_url_addition}}
+      {% endset %}
+
+      {% set product_attributes = product_attributes.setAttribute('data-external-url', shop_url | replace({' ':'', "\n":'', "\r":''})) %}
+
+      {% set media_attributes = create_attribute() %}
+      {% set media_classes = [
+        "media__image",
+        "media__element",
+        "[[^is_slider_product]]b-lazy[[/is_slider_product]]",
+        "[[#is_slider_product]]swiper-lazy[[/is_slider_product]]",
+      ] %}
+
+      <div {{ product_attributes.addClass(classes) }}
+          data-title="[[ title ]]"
+          data-shop="[[ brand ]]"
+          data-brand="[[ brand ]]"
+          data-price="[[ price ]]"
+          data-currency="[[ original_currency_code ]]"
+          data-uuid="[[ uuid ]]"
+          data-product-id="[[ provider_identifier ]]"
+          data-category="[[ category ]]"
+          data-sold-out="[[#stock_availability]]0[[/stock_availability]][[^stock_availability]]1[[/stock_availability]]"
+          data-stock-availability="[[stock_availability]]"
+          data-provider="[[ provider ]]"
+          data-view-mode="desktop"
+          data-position="undefined">
+        <div class="img-container">
+          <div class="media media--blazy media--image">
+              <img {{ media_attributes.addClass(media_classes) }} data-src="[[ image_style ]]" alt="[[title]]" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image">
+            </div>
+        </div>
+        <div class="caption">
+            <div class="text-brand">[[ brand ]]</div>
+            <div class="text-headline">[[ title ]]</div>
+            <div class="text-price">
+              [[#display_strikethrough]]
+                  <span class="text-price--strikethrough">[[ original_price ]] [[ original_currency_code ]]</span>
+              [[/display_strikethrough]]
+                <span class="text-price--current">[[ price ]] [[ original_currency_code ]]</span>
+            </div>
+            <div class="text-shop">
+              [[#stock_availability]]
+                [[#amp_shopping_link]]
+                  Kaufen
+                [[/amp_shopping_link]]
+                [[^amp_shopping_link]]
+                  Zum Shop
+                [[/amp_shopping_link]]
+              [[/stock_availability]]
+              [[^stock_availability]]Ausverkauft[[/stock_availability]]
+            </div>
+        </div>
+      </div>
+  [[/_source]]
+[[/docs]]

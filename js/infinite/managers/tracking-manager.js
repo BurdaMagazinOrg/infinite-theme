@@ -78,14 +78,14 @@
         TrackingManager.trackEvent({
           category: 'marketingBlocker',
           action: 'active',
-          eventNonInteraction: true,
+          eventNonInteraction: true
         });
       },
       onAdBlockNotDetected: function() {
         TrackingManager.trackEvent({
           category: 'marketingBlocker',
           action: 'inactive',
-          eventNonInteraction: true,
+          eventNonInteraction: true
         });
       },
       inviewChangeHandler: function(pModel) {
@@ -155,7 +155,7 @@
               category: 'click',
               action: 'menu_sidebar',
               label: 'open',
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -167,7 +167,7 @@
               category: 'click',
               action: 'menu_sidebar',
               label: 'close',
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -182,7 +182,7 @@
               category: 'click',
               action: 'menu_sidebar',
               label: tmpText,
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -194,7 +194,7 @@
               category: 'click',
               action: 'menu_sidebar',
               label: 'logo',
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -206,7 +206,7 @@
               category: 'click',
               action: 'main_navigation',
               label: 'logo',
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -218,7 +218,7 @@
               category: 'click',
               action: 'header_home',
               label: 'logo',
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -235,7 +235,7 @@
               category: 'click',
               action: 'main_navigation',
               label: tmpText,
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -252,7 +252,7 @@
               category: 'click',
               action: 'sub_navigation',
               label: tmpText,
-              eventNonInteraction: false,
+              eventNonInteraction: false
             },
             TrackingManager.getAdvTrackingByElement($(this))
           );
@@ -284,7 +284,7 @@
               action: 'outbrainClick',
               label: tmpMagazineName,
               index: 'index_' + tmpIndex,
-              eventNonInteraction: false,
+              eventNonInteraction: false
             };
 
             TrackingManager.trackEvent(
@@ -401,7 +401,7 @@
           category: 'teaser',
           action: 'feed_teaser',
           index: 'index_' + tmpIndex,
-          eventNonInteraction: false,
+          eventNonInteraction: false
         };
 
         TrackingManager.trackEvent(tmpTrackingObject);
@@ -416,7 +416,7 @@
           action: 'teaser_category',
           label: tmpText,
           location: TrackingManager.getLocationType(),
-          eventNonInteraction: false,
+          eventNonInteraction: false
         });
       },
       onPresenterFullClickHandler: function(pEvent) {
@@ -429,7 +429,7 @@
           category: 'teaser',
           action: 'presenter_full',
           index: 'index_' + tmpIndex,
-          eventNonInteraction: false,
+          eventNonInteraction: false
         };
 
         TrackingManager.trackEvent(
@@ -450,7 +450,7 @@
           category: 'teaser',
           action: 'presenter_half',
           index: 'index_' + tmpIndex,
-          eventNonInteraction: false,
+          eventNonInteraction: false
         };
 
         TrackingManager.trackEvent(
@@ -474,7 +474,7 @@
           action: 'presenter_multi',
           index: 'index_' + tmpIndex,
           pos: 'pos_' + tmpItemIndex,
-          eventNonInteraction: false,
+          eventNonInteraction: false
         };
 
         TrackingManager.trackEvent(
@@ -515,7 +515,7 @@
           tmpTrackingObject,
           TrackingManager.getAdvTrackingByElement($tmpItem)
         );
-      },
+      }
     },
     {
       trackEvent: function(pTrackingObject, pAdvObject) {
@@ -532,7 +532,7 @@
             location: tmpCurrentPath,
             label: '',
             value: '',
-            eventNonInteraction: '',
+            eventNonInteraction: ''
           },
           tmpTrackingObject,
           tmpAdvObject
@@ -589,7 +589,7 @@
           case 'impressions':
             tmpTrackingObject.event = 'productImpressions';
             tmpTrackingObject.ecommerce = {
-              impressions: [pData],
+              impressions: [pData]
             };
             break;
           case 'productClick':
@@ -597,8 +597,8 @@
             tmpTrackingObject.ecommerce = {
               click: {
                 actionField: { list: pData.list },
-                products: [pData],
-              },
+                products: [pData]
+              }
             };
             break;
           default:
@@ -676,7 +676,7 @@
         }
 
         tmpAdvObject = _.extend(tmpAdvObject, {
-          trackingHelper: { $uuidElement: $tmpUuidElement, uuid: tmpUuid },
+          trackingHelper: { $uuidElement: $tmpUuidElement, uuid: tmpUuid }
         });
         return tmpAdvObject;
       },
@@ -739,7 +739,7 @@
         }
 
         return tmpLocation;
-      },
+      }
     }
   );
 
