@@ -40,7 +40,6 @@
 
 {% extends "paragraph.html.twig" %}
 
-{% set attributes = attributes.addClass('item-paragraph--advertising-products-paragraph') %}
 {% set attributes = attributes.addClass('item-paragraph--small') %}
 
 {% set view_mode = content.field_e_view_mode | render | striptags | trim | replace('_', '-') %}
