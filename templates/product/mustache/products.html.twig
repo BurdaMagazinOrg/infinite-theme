@@ -1,10 +1,10 @@
 
-{% block product_outer_block %}
-  {% if view_mode == 'single-product' %}
-    {# refactor css class / use machine_name for new products css selector #}
-    {% set view_mode = 'single' %}
-  {% endif %} 
+{% if view_mode == 'single-product' %}
+  {# refactor css class / use machine_name for new products css selector #}
+  {% set view_mode = 'single' %}
+{% endif %}
 
+{% block product_outer_block %}
   {% if showAffiliateLinkLabel and view_mode != 'single' %}
     <div class="affiliatelinks">
         <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
