@@ -10,6 +10,7 @@
   }
 
   .item-marketing-partnership {
+    img,
     svg {
       height: $native-logo--height;
       @media (max-width: $screen-xs-max) {
