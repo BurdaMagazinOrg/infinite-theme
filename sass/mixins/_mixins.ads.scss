@@ -32,16 +32,14 @@
       }
     }
 
-    .logo,
-    .brand {
+    .logo, .brand {
       height: $native-logo--height;
       @media (max-width: $screen-xs-max) {
         height: $native-logo--height--mobile;
       }
     }
 
-    .separator,
-    .marketing-label {
+    .separator, .marketing-label  {
       font-family: $font-content-bold;
       padding: $native-teaser__separator-padding--advertorial;
       font-size: $native-logo--font-size;
@@ -64,13 +62,12 @@
       font-size: $native-teaser__marketing-font-size;
 
       &:before {
-        content: '|';
+        content: "|";
         margin-right: $grid-unit-half;
       }
     }
 
-    img,
-    svg {
+    img, svg {
       height: 100%;
       width: auto;
       max-width: 100%;
