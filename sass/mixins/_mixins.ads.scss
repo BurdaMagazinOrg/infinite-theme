@@ -10,9 +10,11 @@
   }
 
   .item-marketing-partnership {
-    height: $native-logo--height;
-    @media (max-width: $screen-xs-max) {
-      height: $native-logo--height--mobile;
+    svg {
+      height: $native-logo--height;
+      @media (max-width: $screen-xs-max) {
+        height: $native-logo--height--mobile;
+      }
     }
   }
 
