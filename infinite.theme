@@ -201,6 +201,11 @@ function infinite_preprocess_node(&$variables) {
       $data_slider['initialSlide'] = 0;
     }
     $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
+
+    // Get the default amazon associates_id if not set.
+    if (!isset($variables['amazon_tag'])) {
+      $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
+    }
   }
 }
 
