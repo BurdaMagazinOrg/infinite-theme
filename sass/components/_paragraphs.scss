@@ -107,6 +107,10 @@
   @extend %item-paragraph--tracdelight;
 }
 
+.item-paragraph--products {
+  @extend %item-paragraph--products;
+}
+
 .item-paragraph--advertising-products-embed {
   @extend %item-paragraph--tracdelight;
   $navigationHeight: 56px;
