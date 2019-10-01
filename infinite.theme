@@ -328,7 +328,7 @@ function infinite_preprocess_paragraph(&$variables) {
 
   // Get the default amazon associates_id and overwrite it if set.
   $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
-  if ('products' === $variables['paragraph']->bundle()) {
+  if ('products' === $variables['paragraph']->bundle() || 'ecommerce_slider_paragraph' === $variables['paragraph']->bundle()) {
     $node_entity = \Drupal::routeMatch()->getParameter('node');
     if (
       $node_entity instanceof \Drupal\node\Entity\Node
