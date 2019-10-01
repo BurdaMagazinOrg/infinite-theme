@@ -400,7 +400,7 @@
 
   .spotlight__wrapper {
     &:after {
-      content: " ";
+      content: ' ';
       background: $spotlight__caption--full-bg;
       position: absolute;
       top: 0;
@@ -542,6 +542,10 @@
       @extend %title--content-block;
     }
   }
+}
+
+@mixin item-paragraph--products() {
+  @include item-paragraph--tracdelight();
 }
 
 @mixin item-paragraph--term-teaser() {
@@ -868,7 +872,7 @@
   &:before,
   &:after {
     @extend %center-block;
-    content: " ";
+    content: ' ';
     max-width: $quote__border-max-width--article;
     border-top: $quote__border-style--article;
     display: block;

@@ -54,6 +54,10 @@
   @include item-paragraph--tracdelight();
 }
 
+%item-paragraph--products {
+  @include item-paragraph--products();
+}
+
 %item-paragraph--single-product {
   @include item-paragraph--single-product();
 }
