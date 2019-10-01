@@ -320,6 +320,19 @@ function infinite_preprocess_paragraph(&$variables) {
       $variables = infinite_inject_pinterest_image($variables, $entity);
     }
   }
+
+  // Get the default amazon associates_id and overwrite it if set.
+  $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
+  if ('products' === $variables['paragraph']->bundle()) {
+    $node_entity = \Drupal::routeMatch()->getParameter('node');
+    if (
+      $node_entity instanceof \Drupal\node\Entity\Node
+      && $node_entity->hasField('field_amazon_tag')
+      && strlen($node_entity->get('field_amazon_tag')->value) > 3
+    ) {
+      $variables['amazon_tag'] = $node_entity->get('field_amazon_tag')->value;
+    }
+  }
 }
 
 function infinite_preprocess_field(&$variables) {
