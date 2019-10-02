@@ -205,6 +205,7 @@ function infinite_preprocess_node(&$variables) {
     // Get the default amazon associates_id if not set.
     if (!isset($variables['amazon_tag'])) {
       $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
+      $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
     }
   }
 }
@@ -328,6 +329,7 @@ function infinite_preprocess_paragraph(&$variables) {
 
   // Get the default amazon associates_id and overwrite it if set.
   $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
+  $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
   if ('products' === $variables['paragraph']->bundle() || 'ecommerce_slider_paragraph' === $variables['paragraph']->bundle()) {
     $node_entity = \Drupal::routeMatch()->getParameter('node');
     if (
@@ -336,6 +338,7 @@ function infinite_preprocess_paragraph(&$variables) {
       && strlen($node_entity->get('field_amazon_tag')->value) > 3
     ) {
       $variables['amazon_tag'] = $node_entity->get('field_amazon_tag')->value;
+      $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
     }
   }
 }
