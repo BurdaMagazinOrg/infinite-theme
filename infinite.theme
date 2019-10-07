@@ -335,6 +335,7 @@ function infinite_preprocess_paragraph(&$variables) {
       && $node_entity->hasField('field_amazon_tag')
       && strlen($node_entity->get('field_amazon_tag')->value) > 3
     ) {
+      $variables['#attached']['drupalSettings']['amazon']['associatesIdDefault'] = $variables['amazon_tag'];
       $variables['amazon_tag'] = $node_entity->get('field_amazon_tag')->value;
       $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
     }
