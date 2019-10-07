@@ -189,6 +189,8 @@ function infinite_preprocess_node(&$variables) {
       $variables['wrapper_attributes'] = new Attribute();
     }
     $variables = _infinite_get_icon($node, $variables);
+
+    _infinite_add_amazon_id($variables);
   }
 
   if($bundle == 'ecommerce_slider') {
@@ -202,11 +204,7 @@ function infinite_preprocess_node(&$variables) {
     }
     $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
 
-    // Get the default amazon associates_id if not set.
-    if (!isset($variables['amazon_tag'])) {
-      $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
-      $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
-    }
+    _infinite_add_amazon_id($variables);
   }
 }
 
@@ -327,9 +325,7 @@ function infinite_preprocess_paragraph(&$variables) {
     }
   }
 
-  // Get the default amazon associates_id and overwrite it if set.
-  $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
-  $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
+  // Overwrite the default amazon associates_id if set.
   if ('products' === $variables['paragraph']->bundle() || 'ecommerce_slider_paragraph' === $variables['paragraph']->bundle()) {
     $node_entity = \Drupal::routeMatch()->getParameter('node');
     if (
@@ -568,4 +564,15 @@ function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition =
     throw new InvalidArgumentException("Paragraph at position '$paragraphPosition' is not present");
   }
   return $currentParagraph->get('entity')->getTarget()->getValue()->bundle();
+}
+
+
+/**
+ * Helper function to add amazon id to variables and JS settings.
+ */
+function _infinite_add_amazon_id(&$variables) {
+  if (!isset($variables['amazon_tag'])) {
+    $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
+    $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
+  }
 }
