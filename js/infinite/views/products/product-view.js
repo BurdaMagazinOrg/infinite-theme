@@ -159,10 +159,18 @@
             }
             break;
           case ProductView.PROVIDER_AMAZON:
+            let tag = '';
+
             if (params.has('tag')) {
-              const tag = params.get('tag');
-              params.set('tag', tag.replace('-', `-${componentType}-`));
+              tag = params.get('tag');
+            } else {
+              tag =
+                !!global.drupalSettings && !!global.drupalSettings.amazon
+                  ? drupalSettings.amazon.associatesId
+                  : 'ins0c-21';
             }
+
+            params.set('tag', tag.replace('-', `-${componentType}-`));
             break;
           case ProductView.PROVIDER_GENERIC:
             if (
