@@ -159,18 +159,29 @@
             }
             break;
           case ProductView.PROVIDER_AMAZON:
-            let tag = '';
+            const tagDefault =
+              !!window.drupalSettings &&
+              !!window.drupalSettings.amazon &&
+              !!window.drupalSettings.amazon.associatesIdDefault
+                ? window.drupalSettings.amazon.associatesIdDefault
+                : 'ins0c-21';
+            const tagOverriden =
+              !!window.drupalSettings &&
+              !!window.drupalSettings.amazon &&
+              !!window.drupalSettings.amazon.associatesIdOverriden
+                ? window.drupalSettings.amazon.associatesIdOverriden
+                : null;
+            let tag = !!tagOverriden ? tagOverriden : tagDefault;
 
             if (params.has('tag')) {
               tag = params.get('tag');
-            } else {
-              tag =
-                !!global.drupalSettings && !!global.drupalSettings.amazon
-                  ? drupalSettings.amazon.associatesId
-                  : 'ins0c-21';
             }
 
-            params.set('tag', tag.replace('-', `-${componentType}-`));
+            if (!tagOverriden) {
+              tag = tag.replace('-', `-${componentType}-`);
+            }
+
+            params.set('tag', tag);
             break;
           case ProductView.PROVIDER_GENERIC:
             if (

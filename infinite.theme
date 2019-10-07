@@ -337,7 +337,7 @@ function infinite_preprocess_paragraph(&$variables) {
     ) {
       $variables['#attached']['drupalSettings']['amazon']['associatesIdDefault'] = $variables['amazon_tag'];
       $variables['amazon_tag'] = $node_entity->get('field_amazon_tag')->value;
-      $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
+      $variables['#attached']['drupalSettings']['amazon']['associatesIdOverriden'] = $variables['amazon_tag'];
     }
   }
 }
@@ -576,6 +576,6 @@ function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition =
 function _infinite_add_amazon_id(&$variables) {
   if (!isset($variables['amazon_tag'])) {
     $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
-    $variables['#attached']['drupalSettings']['amazon']['associatesId'] = $variables['amazon_tag'];
+    $variables['#attached']['drupalSettings']['amazon']['associatesIdDefault'] = $variables['amazon_tag'];
   }
 }
