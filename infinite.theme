@@ -325,6 +325,8 @@ function infinite_preprocess_paragraph(&$variables) {
     }
   }
 
+  // Initialise amazon id.
+  _infinite_add_amazon_id($variables);
   // Overwrite the default amazon associates_id if set.
   if ('products' === $variables['paragraph']->bundle() || 'ecommerce_slider_paragraph' === $variables['paragraph']->bundle()) {
     $node_entity = \Drupal::routeMatch()->getParameter('node');
