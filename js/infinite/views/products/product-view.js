@@ -164,7 +164,7 @@
               !!window.drupalSettings.amazon &&
               !!window.drupalSettings.amazon.associatesIdDefault
                 ? window.drupalSettings.amazon.associatesIdDefault
-                : 'ins0c-21';
+                : AppConfig.amazonURLTrId;
             const tagOverriden =
               !!window.drupalSettings &&
               !!window.drupalSettings.amazon &&
