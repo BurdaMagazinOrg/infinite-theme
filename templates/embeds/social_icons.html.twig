@@ -4,15 +4,16 @@
 {% set whatsapp_share_text = whatsapp_share_text|plain_text|trim %}
 {% set url = url ~ "?utm_medium=social&utm_campaign=Sharing&utm_source=" %}
 
-{{ attach_library('infinite/infinite.social-apis') }}
-
 {% block social_facebook %}
-    <div class="item-social icon-facebook" data-url="{{ url ~ "Sharing_Facebook" | e('url') }}"
-         data-description="{{ label | e('html_attr') }}" data-social-type="facebook">
-        {% if facebook_share_button %}
-            <span>{{ facebook_share_button }}</span>
-        {% endif %}
-    </div>
+    <a class="item-social icon-facebook" 
+      href="https://www.facebook.com/sharer/sharer.php?u={{ url ~ "Sharing_Facebook" | e('url') }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-social-type="facebook">
+      {% if facebook_share_button %}
+          <span>{{ facebook_share_button }}</span>
+      {% endif %}
+    </a>
 {% endblock %}
 {% block social_whatsapp %}
     <a class="item-social icon-whatsapp"
@@ -33,16 +34,6 @@
             <span>{{ pinterest_share_button }}</span>
         {% endif %}
     </div>
-{% endblock %}
-
-{% block social_twitter %}
-    <a class="item-social icon-twitter"
-       href="https://twitter.com/intent/tweet?text={{ label | e('url') ~ '&url=' ~ (url  ~ "Sharing_Twitter") | e('url') ~ '&via=' ~ twitter_share_via | e('url') }}"
-       target="_blank" data-social-type="twitter" rel="nofollow">
-        {% if twitter_share_button %}
-            <span>{{ twitter_share_button }}</span>
-        {% endif %}
-    </a>
 {% endblock %}
 
 {% block social_email %}
