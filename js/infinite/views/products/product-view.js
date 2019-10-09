@@ -159,10 +159,29 @@
             }
             break;
           case ProductView.PROVIDER_AMAZON:
+            const tagDefault =
+              !!window.drupalSettings &&
+              !!window.drupalSettings.amazon &&
+              !!window.drupalSettings.amazon.associatesIdDefault
+                ? window.drupalSettings.amazon.associatesIdDefault
+                : AppConfig.amazonURLTrId;
+            const tagOverriden =
+              !!window.drupalSettings &&
+              !!window.drupalSettings.amazon &&
+              !!window.drupalSettings.amazon.associatesIdOverriden
+                ? window.drupalSettings.amazon.associatesIdOverriden
+                : null;
+            let tag = !!tagOverriden ? tagOverriden : tagDefault;
+
             if (params.has('tag')) {
-              const tag = params.get('tag');
-              params.set('tag', tag.replace('-', `-${componentType}-`));
+              tag = params.get('tag');
             }
+
+            if (!tagOverriden) {
+              tag = tag.replace('-', `-${componentType}-`);
+            }
+
+            params.set('tag', tag);
             break;
           case ProductView.PROVIDER_GENERIC:
             if (
