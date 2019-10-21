@@ -1,7 +1,9 @@
 /** Teasers**/
 $teaser__img-ratio-mobile--presenter-multi: floor(percentage(210/375)) !default;
 $teaser__img-ratio-tablet--presenter-multi: floor(percentage(210/375)) !default;
-$teaser__img-ratio-desktop--presenter-multi: floor(percentage(210/375)) !default;
+$teaser__img-ratio-desktop--presenter-multi: floor(
+  percentage(210/375)
+) !default;
 
 /**presenter half **/
 $teaser__img-ratio-mobile--presenter-l: 56.25% !default;
@@ -22,11 +24,15 @@ $teaser__img-ratio-desktop--square: floor(percentage(360/360)) !default;
 
 $teaser__img-ratio-mobile--landscape-large: floor(percentage(456/744)) !default;
 $teaser__img-ratio-tablet--landscape-large: floor(percentage(456/744)) !default;
-$teaser__img-ratio-desktop--landscape-large: floor(percentage(550/895)) !default;
+$teaser__img-ratio-desktop--landscape-large: floor(
+  percentage(550/895)
+) !default;
 
 $teaser__img-ratio-mobile--portrait-medium: 104% !default;
 $teaser__img-ratio-tablet--portrait-medium: floor(percentage(500/360)) !default;
-$teaser__img-ratio-desktop--portrait-medium: floor(percentage(500/360)) !default;
+$teaser__img-ratio-desktop--portrait-medium: floor(
+  percentage(500/360)
+) !default;
 
 $teaser__img-ratio-mobile--portrait-small: 104% !default;
 $teaser__img-ratio-tablet--portrait-small: floor(percentage(400/288)) !default;
@@ -69,8 +75,10 @@ $seo-linker__img-ratio-tablet--grid-four: floor(percentage(210/375)) !default;
 $seo-linker__img-ratio-desktop--grid-four: floor(percentage(210/375)) !default;
 
 /** Products **/
-$products__img-ratio-mobile--grid-article: floor(percentage((210/210) / 2)) !default;
-$products__img-ratio-desktop--grid-article: floor(percentage(210/210)) !default;
+$products__img-ratio-mobile--grid-article: floor(
+  percentage((241/200) / 2)
+) !default;
+$products__img-ratio-desktop--grid-article: floor(percentage(241/200)) !default;
 
 $products__img-ratio-mobile--single-product: 120% !default;
 $products__img-ratio-desktop--single-product: 120% !default;
@@ -85,7 +93,6 @@ $spotlight__img-ratio-desktop--full: $teaser__img-ratio--full-content-desktop !d
 /** Content Teaser **/
 $teaser__img-ratio-mobile--teaser-small: 39% !default;
 $teaser__img-ratio-desktop--teaser-small: 100% !default;
-
 
 /** Profile **/
 $profile__media-ratio--small: 100% !default;
