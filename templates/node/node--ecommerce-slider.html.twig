@@ -29,12 +29,13 @@
 {% endif %}
 
 <div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
+  {% if hasBgImage %}
+    <div class="ecommerce-slider__bg">
+      {{ content.field_background_media }}
+    </div>
+  {% endif %}
   <div {{wrapper_attributes.addClass(wrapper_classes)}}>
-    {% if hasBgImage %}
-      <div class="ecommerce-slider__bg">
-        {{ content.field_background_media }}
-      </div>
-    {% endif %}
+    <div class="swiper-button swiper-button-prev"></div>
     <div class="ecommerce-slider__content">
       <h3 class="ecommerce-slider__title">{{ label }}</h3>
             {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
@@ -50,7 +51,6 @@
                 </span>
         {% endif %}
       <div class="swiper-limiter">
-        <div class="swiper-button swiper-button-prev"></div>
         <div class="swiper-container">
           <div class="ecommerce-slider__inner swiper-wrapper template" class="ecommerce-slider__color-box">
             {% if not node.field_prooducts.isEmpty() %}
@@ -66,8 +66,8 @@
             {% endif %}
           </div>
         </div>
-        <div class="swiper-button swiper-button-next"></div>
       </div>
     </div>
+    <div class="swiper-button swiper-button-next"></div>
   </div>
 </div>
