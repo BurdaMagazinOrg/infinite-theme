@@ -1,14 +1,14 @@
 {{ attach_library('infinite/infinite.views.ecommerce-slider-view') }}
 
 {% set container_classes = [
-'ecommerce-slider',
+  'ecommerce-slider',
 ] %}
 
 {% set ecommerceSliderClass = 'ecommerce-slider-' ~ nid %}
-{% set hasBgImage = content.field_background_media | render is not empty %}
+{% set hasBgImage = not node.field_background_media.isEmpty() %}
 {% set attributes = hasBgImage == true ? attributes.addClass('bg-image') : attributes.addClass('no-bg-image') %}
 
-{% if content.field_css_styles|render is not empty %}
+{% if not node.field_css_styles.isEmpty()  %}
     {% block ecommerce_style_block %}
         <style>
             {{ content.field_css_styles|render|striptags }}
@@ -20,39 +20,54 @@
 {% set attributes = attributes.setAttribute('data-nid', nid ) %}
 {% set attributes = attributes.setAttribute('data-slider', data_slider ) %}
 
+{% set wrapper_attributes = create_attribute() %}
+{% set wrapper_classes = ['ecommerce-slider__content-wrapper'] %}
+
+{% if not node.field_products.isEmpty()  %}
+  {% set wrapper_attributes = wrapper_attributes.setAttribute('data-api-url', content.field_products['#markup']) %}
+  {% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'productsView') %}
+{% endif %}
+
 <div {{ attributes.addClass(container_classes, ecommerceSliderClass) }}>
-    <div class="ecommerce-slider__content-wrapper">
-
-        <div class="swiper-button swiper-button-prev"></div>
-
-        <div class="ecommerce-slider__content">
-            <h3 class="ecommerce-slider__title">{{ label }}</h3>
-            {% if content.field_campaign|render %}
-                <span class="ecommerce-slider__campaign">
+  {% if hasBgImage %}
+    <div class="ecommerce-slider__bg">
+      {{ content.field_background_media }}
+    </div>
+  {% endif %}
+  <div {{wrapper_attributes.addClass(wrapper_classes)}}>
+    <div class="swiper-button swiper-button-prev"></div>
+    <div class="ecommerce-slider__content">
+      <h3 class="ecommerce-slider__title">{{ label }}</h3>
+            {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+                <div class="affiliatelinks">
+                  {% if content.field_e_view_mode[0]['#markup'] != 'single_product' %}
+                    <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
+                  {% endif %}
+                </div>
+            {% endif %}            
+        {% if not node.field_campaign.isEmpty() %}
+            <span class="ecommerce-slider__campaign">
                     {{ content.field_campaign }}
                 </span>
+        {% endif %}
+      <div class="swiper-limiter">
+        <div class="swiper-container">
+          <div class="ecommerce-slider__inner swiper-wrapper template" class="ecommerce-slider__color-box">
+            {% if not node.field_prooducts.isEmpty() %}
+              {{ attach_library('infinite/mustache') }}
+              {{ attach_library('infinite/infinite.views.product-slider-view') }}
+              {{ attach_library('infinite/infinite.views.products-view') }}
+              {% embed "@infinite/product/mustache/products.html.twig" %}
+                {% block product_outer_block %}{% endblock %}
+                {% block product_top_block %}{% endblock %}
+              {% endembed %}
+            {% elseif not node.field_advertising_products.isEmpty() %}
+                {{ content.field_advertising_products }}
             {% endif %}
-            {% if content.field_suppress_affiliate_link[0]['#markup'] != '1' and content.field_e_view_mode[0]['#markup'] != 'single_product' %}
-                <div class="affiliatelinks">
-                    <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
-                </div>
-            {% endif %}
-            <div class="swiper-container">
-                <div class="ecommerce-slider__inner swiper-wrapper" class="ecommerce-slider__color-box">
-                    {{ content.field_advertising_products }}
-                </div>
-            </div>
-
+          </div>
         </div>
-
-        <div class="swiper-button swiper-button-next"></div>
-
+      </div>
     </div>
-
-    {% if hasBgImage %}
-        <div class="ecommerce-slider__bg">
-            {{ content.field_background_media }}
-        </div>
-    {% endif %}
-
+    <div class="swiper-button swiper-button-next"></div>
+  </div>
 </div>
