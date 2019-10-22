@@ -5,10 +5,10 @@
 ] %}
 
 {% set ecommerceSliderClass = 'ecommerce-slider-' ~ nid %}
-{% set hasBgImage = content.field_background_media | render is not empty %}
+{% set hasBgImage = not node.field_background_media.isEmpty() %}
 {% set attributes = hasBgImage == true ? attributes.addClass('bg-image') : attributes.addClass('no-bg-image') %}
 
-{% if content.field_css_styles|render is not empty %}
+{% if not node.field_css_styles.isEmpty()  %}
     {% block ecommerce_style_block %}
         <style>
             {{ content.field_css_styles|render|striptags }}
@@ -23,7 +23,7 @@
 {% set wrapper_attributes = create_attribute() %}
 {% set wrapper_classes = ['ecommerce-slider__content-wrapper'] %}
 
-{% if content.field_products | render is not empty %}
+{% if not node.field_products.isEmpty()  %}
   {% set wrapper_attributes = wrapper_attributes.setAttribute('data-api-url', content.field_products['#markup']) %}
   {% set wrapper_attributes = wrapper_attributes.setAttribute('data-view-type', 'productsView') %}
 {% endif %}
@@ -43,8 +43,8 @@
                     <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
                   {% endif %}
                 </div>
-            {% endif %}
-        {% if content.field_campaign|render %}
+            {% endif %}            
+        {% if not node.field_campaign.isEmpty() %}
             <span class="ecommerce-slider__campaign">
                     {{ content.field_campaign }}
                 </span>
@@ -53,7 +53,7 @@
         <div class="swiper-button swiper-button-prev"></div>
         <div class="swiper-container">
           <div class="ecommerce-slider__inner swiper-wrapper template" class="ecommerce-slider__color-box">
-            {% if content.field_products | render is not empty %}
+            {% if not node.field_prooducts.isEmpty() %}
               {{ attach_library('infinite/mustache') }}
               {{ attach_library('infinite/infinite.views.product-slider-view') }}
               {{ attach_library('infinite/infinite.views.products-view') }}
@@ -61,7 +61,7 @@
                 {% block product_outer_block %}{% endblock %}
                 {% block product_top_block %}{% endblock %}
               {% endembed %}
-            {% elseif content.field_advertising_products | render is not empty %}
+            {% elseif not node.field_advertising_products.isEmpty() %}
                 {{ content.field_advertising_products }}
             {% endif %}
           </div>
