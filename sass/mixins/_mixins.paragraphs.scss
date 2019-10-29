@@ -562,6 +562,10 @@
     .text-title {
       @extend %title--content-block;
     }
+
+    .teaser {
+      @include list__content-teaser__item--horizontal();
+    }
   }
 
   .list__content-teaser--horizontal {
@@ -570,7 +574,6 @@
 
   .teaser {
     @extend %teaser--content;
-    @extend %list__content-teaser__item--horizontal;
   }
 
   .item-marketing-sponsored {
