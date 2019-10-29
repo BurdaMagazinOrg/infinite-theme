@@ -19,13 +19,12 @@
       font-size: $tipser__buy-icon-size--main-navigation;
     }
   }
-  
+
   #user-navigation--header & {
     &:before {
       font-size: $tipser__buy-icon-size--header;
     }
   }
-
 }
 
 .tipser__cart-size {
@@ -56,7 +55,7 @@
   right: -4px;
 }
 
-#page-wrapper:not([style*="display: none"])
+#page-wrapper:not([style*='display: none'])
   ~ .tipser-overlay
   .tipser-modal-iframe {
   top: $gap-size-xxs;
@@ -68,7 +67,7 @@
 .tipser-overlay.tipser-overlay {
   // increase specificity
   position: fixed;
-  z-index: getZIndex("tipser-overlay");
+  z-index: getZIndex('tipser-overlay');
   overflow: initial;
 }
 
@@ -113,14 +112,8 @@
 
   .tipser-buy-button-small {
     @include product__item-text-shop--default();
-    @include button--white;
-    @include button--icon($tipser__buy-icon, "right");
-
+    @include button--tipser();
     background: transparent !important; // needed to overwrite tipser styles
-    &:hover {
-      @include button--hover;
-      opacity: 1;
-    }
   }
 
   .tipser-tile-prod-brand {

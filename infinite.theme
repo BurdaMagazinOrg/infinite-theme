@@ -7,6 +7,7 @@ use Drupal\infinite_media\MediaHelper;
 use Drupal\taxonomy\TermInterface;
 use Drupal\views\Views;
 use Drupal\user\Entity\User;
+use Drupal\media_entity\MediaInterface;
 use Psy\Util\Json;
 
 function infinite_preprocess(&$variables) {
@@ -75,6 +76,29 @@ function infinite_preprocess_block__outbrain(&$variables) {
   }
 }
 
+/**
+ * Implements template_preprocess_media().
+ *
+ * Provide extra variables for media full view mode of nexx videos.
+ *
+ * TODO: Refactor when update to core media.
+ */
+function infinite_preprocess_media(array &$variables) {
+
+  /* @var $media MediaInterface */
+  if ($variables['elements']['#view_mode'] == 'full' && $media = $variables['elements']['#media']) {
+
+    if ($media->bundle() == 'nexx_video') {
+      $variables['mid'] = $media->id();
+      $variables['channel_tid'] = 'all';
+
+      if (!$media->get('field_channel')->isEmpty()) {
+        $variables['channel_tid'] = (int) $media->get('field_channel')->target_id;
+      }
+    }
+  }
+}
+
 function infinite_preprocess_region(&$variables) {
   $variables ['front_page'] = \Drupal::url('<front>');
   $variables ['logo'] = theme_get_setting('logo.url');
@@ -84,7 +108,7 @@ function infinite_preprocess_html(&$variables) {
   $current_path = \Drupal::service('path.current')->getPath();
   $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
   $path_alias = ltrim($path_alias, '/');
-  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);  
+  $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier($path_alias);
 
   if (\Drupal::moduleHandler()->moduleExists('metatag')) {
     /**
@@ -165,6 +189,8 @@ function infinite_preprocess_node(&$variables) {
       $variables['wrapper_attributes'] = new Attribute();
     }
     $variables = _infinite_get_icon($node, $variables);
+
+    _infinite_add_amazon_id($variables);
   }
 
   if($bundle == 'ecommerce_slider') {
@@ -177,6 +203,8 @@ function infinite_preprocess_node(&$variables) {
       $data_slider['initialSlide'] = 0;
     }
     $variables['data_slider'] = Json::encode($data_slider, JSON_NUMERIC_CHECK);
+
+    _infinite_add_amazon_id($variables);
   }
 }
 
@@ -294,6 +322,26 @@ function infinite_preprocess_paragraph(&$variables) {
     $entity = \Drupal::routeMatch()->getParameter('taxonomy_term');
     if ($entity instanceof \Drupal\taxonomy\Entity\Term) {
       $variables = infinite_inject_pinterest_image($variables, $entity);
+    }
+  }
+
+  // Initialise amazon id.
+  _infinite_add_amazon_id($variables);
+  // Overwrite the default amazon associates_id if set.
+  if ('products' === $variables['paragraph']->bundle()
+    || 'advertising_products_paragraph' === $variables['paragraph']->bundle()
+    || 'advertising_products_embed' === $variables['paragraph']->bundle()
+    || 'ecommerce_slider_paragraph' === $variables['paragraph']->bundle()) {
+
+    $node_entity = \Drupal::routeMatch()->getParameter('node');
+    if (
+      $node_entity instanceof \Drupal\node\Entity\Node
+      && $node_entity->hasField('field_amazon_tag')
+      && strlen($node_entity->get('field_amazon_tag')->value) > 3
+    ) {
+      $variables['#attached']['drupalSettings']['amazon']['associatesIdDefault'] = $variables['amazon_tag'];
+      $variables['amazon_tag'] = $node_entity->get('field_amazon_tag')->value;
+      $variables['#attached']['drupalSettings']['amazon']['associatesIdOverriden'] = $variables['amazon_tag'];
     }
   }
 }
@@ -523,4 +571,15 @@ function infinite_get_user_paragraph_bundle(User $user, int $paragraphPosition =
     throw new InvalidArgumentException("Paragraph at position '$paragraphPosition' is not present");
   }
   return $currentParagraph->get('entity')->getTarget()->getValue()->bundle();
+}
+
+
+/**
+ * Helper function to add amazon id to variables and JS settings.
+ */
+function _infinite_add_amazon_id(&$variables) {
+  if (!isset($variables['amazon_tag'])) {
+    $variables['amazon_tag'] = \Drupal::config('amazon.settings')->get('associates_id');
+    $variables['#attached']['drupalSettings']['amazon']['associatesIdDefault'] = $variables['amazon_tag'];
+  }
 }

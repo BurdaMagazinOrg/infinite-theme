@@ -10,30 +10,50 @@
   }
 
   .item-marketing-native {
-    .logo {
-      margin-bottom: 5px;
+    .native_campaign {
+      @include flexbox();
+      @include align-items($native-teaser__advertorial-align-items);
+      @include justify-content($native-teaser__justify-content);
+    }
+
+    .teaser & {
+      .native_campaign {
+        @include justify-content($native-teaser__justify-content--teaser);
+      }
     }
 
     .logo, .brand {
-      vertical-align: top;
-      display: inline-block;
       height: $native-logo--height;
       @media (max-width: $screen-xs-max) {
         height: $native-logo--height--mobile;
       }
     }
 
-    .separator {
-      margin: 0 3px;
+    .separator, .marketing-label  {
       font-family: $font-content-bold;
-      vertical-align: middle;
-      display: inline-block;
       padding: $native-teaser__separator-padding--advertorial;
-      line-height: $native-logo--height;
       font-size: $native-logo--font-size;
       @media (max-width: $screen-xs-max) {
         line-height: $native-logo--height--mobile;
         font-size: $native-logo--font-size--mobile;
+      }
+    }
+
+    .separator {
+      color: $native-teaser__seperator--color;
+      margin: $native-teaser__separator-margin--advertorial;
+    }
+
+    .marketing-label {
+      @include flexbox();
+      @include align-items($native-teaser__advertorial-align-items);
+      color: $native-teaser__marketing-label--color;
+      text-transform: $native-teaser__marketing-text-transform;
+      font-size: $native-teaser__marketing-font-size;
+
+      &:before {
+        content: "|";
+        margin-right: $grid-unit-half;
       }
     }
 

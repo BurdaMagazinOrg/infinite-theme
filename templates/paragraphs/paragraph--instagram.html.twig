@@ -40,6 +40,7 @@
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
+    {{ attach_library('infinite/instagram') }}
     {% block title %}
         {% if content.field_title %}
             {{ content.field_title }}

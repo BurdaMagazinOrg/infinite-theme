@@ -37,22 +37,37 @@
  */
 #}
 
+
 {% extends "paragraph.html.twig" %}
 
-{% block content_block %}
-    {{ attach_library('infinite/instagram') }}
-    {% block title %}
-        {% if content.field_title %}
-            {{ content.field_title }}
-        {% endif %}
-    {% endblock %}
+{% set attributes = attributes.addClass('item-paragraph--small') %}
 
-    {% if content.field_media %}
-        {{ content.field_media }}
-    {% else %}
-        <a data-pin-do="embedPin" data-pin-width="medium" href="{{ pinit_url }}"></a>
-    {% endif %}
+{% set view_mode = content.field_e_view_mode | render | striptags | trim | replace('_', '-') %}
+{% set attributes = attributes.addClass('item-paragraph--' ~ view_mode) %}
+{% set attributes = attributes.setAttribute('data-api-url', content.field_products['#markup']) %}
+{% set attributes = attributes.setAttribute('data-view-type', 'productsView') %}
 
-    {{ content.field_embed_description }}
+{# showAffiliateLinkLabel #}
+{% set showAffiliateLinkLabel = false %}
+{% if content.field_suppress_affiliate_link %}
+  {% set showAffiliateLinkLabel = content.field_suppress_affiliate_link[0]['#markup'] != '1' %}
+{% endif %}
 
+{% block content_block %}  
+  {{ attach_library('infinite/mustache') }}
+  {{ attach_library('infinite/infinite.views.product-view') }}
+  {{ attach_library('infinite/infinite.views.products-view') }}
+
+  {% if content.field_title|render %}
+    <h3 class="text-headline item-title">{{ content.field_title | plain_text }}</h3>
+  {% endif %}
+
+  <div class="container-wrapper">
+    <div class="template container-content">
+      {# template class needed for mustache rendering #}
+      {% include "@infinite/product/mustache/products.html.twig" %}
+    </div>
+  </div>
 {% endblock %}
+
+

@@ -19,19 +19,19 @@
  */
 #}
 {% if attributes -%}
-  <div{{ attributes }}>
-{% endif %}
+<div{{ attributes }}>
+  {% endif %}
   {% if title %}
-    <h2>{{ title }}</h2>
+    <h2><span id="{{ title|clean_id }}">{{ title }}</span></h2>
   {% endif %}
 
   <{{ list.type }}{{ list.attributes }}>
 
-    {% for row in rows %}
-      <li{{ row.attributes }}>{{ row.content }}</li>
-    {% endfor %}
+  {% for row in rows %}
+    <li{{ row.attributes }}>{{ row.content }}</li>
+  {% endfor %}
 
-  </{{ list.type }}>
+</{{ list.type }}>
 
 {% if attributes -%}
   </div>

@@ -1,11 +1,11 @@
-(function ($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
+(function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.utils.BaseUtils = {
-    attach: function () {},
-    delegateElements: function ($pContainer) {
+    attach: function() {},
+    delegateElements: function($pContainer) {
       BurdaInfinite.utils.BaseUtils.updateBtnActions($pContainer);
       BurdaInfinite.utils.BaseUtils.updateSocials($pContainer);
     },
-    updateSocials: function ($pContainer) {
+    updateSocials: function($pContainer) {
       let tmpDeviceModel;
 
       if (typeof BM !== 'undefined')
@@ -24,94 +24,20 @@
         .unbind('click.socialsPinterest')
         .bind(
           'click.socialsPinterest',
-          $.proxy(function (pEvent) {
+          $.proxy(function(pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
-
             const tmpURL = $tmpItem.data('url');
-
             const tmpMedia = $tmpItem.data('media-url');
-
             const tmpDescription = $tmpItem.data('description');
-
             let tmpPinterestDefaultURL =
               'https://pinterest.com/pin/create/button/';
+            tmpPinterestDefaultURL += '?url=' + encodeURIComponent(tmpURL);
+            tmpPinterestDefaultURL += '&media=' + encodeURIComponent(tmpMedia);
+            tmpPinterestDefaultURL +=
+              '&description=' + encodeURIComponent(tmpDescription);
 
-            if (typeof PinUtils !== 'undefined') {
-              PinUtils.pinOne({
-                url: tmpURL,
-                media: tmpMedia,
-                description: tmpDescription,
-              });
-            } else {
-              tmpPinterestDefaultURL += '?url=' + encodeURIComponent(tmpURL);
-              tmpPinterestDefaultURL +=
-                '&media=' + encodeURIComponent(tmpMedia);
-              tmpPinterestDefaultURL +=
-                '&description=' + encodeURIComponent(tmpDescription);
-
-              BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
-              window.open(tmpPinterestDefaultURL, '_blank');
-            }
-
-            return false;
-          }, this)
-        );
-
-      $pContainer
-        .find('.icon-facebook[data-url]')
-        .unbind('click.socialsFacebook')
-        .bind(
-          'click.socialsFacebook',
-          $.proxy(function (pEvent) {
-            const $tmpItem = $(pEvent.currentTarget);
-
-            const tmpURL = $tmpItem.data('url');
-
-            const tmpMedia = $tmpItem.data('media-url') || '';
-
-            const tmpMediaSource = $tmpItem.data('media-source') || '';
-
-            let tmpDescription = $tmpItem.data('description') || '';
-
-            const tmpFacebookURL =
-              'https://www.facebook.com/sharer/sharer.php?m2w&u=';
-
-            let $tmpItemMedia = [];
-
-            let $tmpArticleHeadline = [];
-
-            if (typeof FB !== 'undefined') {
-              /**
-               * If shareName empty check if articleHeadline available
-               */
-              $tmpItemMedia = $tmpItem.parents('.item-paragraph--media');
-              if (tmpDescription == '' && $tmpItemMedia.length > 0) {
-                $tmpArticleHeadline = $tmpItem
-                  .parents('.item-content--article')
-                  .find('h1');
-                if ($tmpArticleHeadline.length > 0) {
-                  tmpDescription = $tmpArticleHeadline.text();
-                }
-              }
-
-              const fbParams = {
-                method: 'feed',
-                caption: window.location.hostname,
-                name: tmpDescription,
-                link: tmpURL,
-              };
-
-              if (tmpMedia != '')
-                fbParams.picture = decodeURIComponent(tmpMedia);
-
-              FB.ui(fbParams);
-            } else {
-              BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
-              window.open(
-                tmpFacebookURL + encodeURIComponent(tmpURL),
-                '_blank'
-              );
-            }
+            BurdaInfinite.utils.BaseUtils.disableBeforeUnloadHandler();
+            window.open(tmpPinterestDefaultURL, '_blank');
 
             return false;
           }, this)
@@ -122,25 +48,19 @@
         .unbind('click.socialsEmail')
         .bind(
           'click.socialsEmail',
-          $.proxy(function (pEvent) {
+          $.proxy(function(pEvent) {
             const $tmpItem = $(pEvent.currentTarget);
-
             const tmpURL = $tmpItem.data('url');
-
             const tmpDescription = encodeURIComponent(
               $tmpItem.data('description')
             );
-
             const tmpEmailSubject = encodeURIComponent(
               $tmpItem.data('email-subject')
             );
-
             const tmpEmailShareText = encodeURIComponent(
               $tmpItem.data('email-share-text')
             );
-
             const tmpSpacer = encodeURIComponent('\r\n\r\n');
-
             const tmpEmailURL =
               'mailto:?subject=' +
               tmpEmailSubject +
@@ -159,11 +79,11 @@
           }, this)
         );
     },
-    updateBtnActions: function ($pContainer) {
+    updateBtnActions: function($pContainer) {
       $pContainer
         .find('[data-btn-action]')
         .unbind('click.btnAction')
-        .bind('click.btnAction', function (pEvent) {
+        .bind('click.btnAction', function(pEvent) {
           const tmpAction = $(this).data('btn-action');
 
           const tmpValue = $(this).data('btn-action-value');
@@ -185,14 +105,14 @@
           }
         });
     },
-    disableBeforeUnloadHandler: function () {
+    disableBeforeUnloadHandler: function() {
       window.allowBeforeUnload = false;
-      _.delay(function () {
+      _.delay(function() {
         window.allowBeforeUnload = true;
       }, 100);
     },
-    extendUrlParam: function (url, paramName, paramValue) {
-      if(url.indexOf(paramValue) >= 0) return;
+    extendUrlParam: function(url, paramName, paramValue) {
+      if (url.indexOf(paramValue) >= 0) return;
 
       var url = new URL(url);
       var searchParams = url.searchParams;
@@ -202,18 +122,18 @@
       }
       return url.toString();
     },
-    replaceUrlParam: function (url, paramName, paramValue) {
+    replaceUrlParam: function(url, paramName, paramValue) {
       var url = new URL(url);
       var searchParams = url.searchParams;
       !!searchParams.has(paramName) && searchParams.set(paramName, paramValue);
       return url.toString();
-    },
+    }
   };
 
   $('body')
     .once('BaseUtils')
-    .each(function () {
-      $(window).on('base-utils:update', function (pEvent, $pContainer) {
+    .each(function() {
+      $(window).on('base-utils:update', function(pEvent, $pContainer) {
         BurdaInfinite.utils.BaseUtils.delegateElements($pContainer);
       });
     });

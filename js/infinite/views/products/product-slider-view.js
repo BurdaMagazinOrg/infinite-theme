@@ -19,7 +19,10 @@
     collectTrackingData: function() {
       ProductView.prototype.collectTrackingData.call(this);
 
-      if (this.ecommerceSliderModel.get('el').data('nid')) {
+      if (
+        this.ecommerceSliderModel.has('el') &&
+        this.ecommerceSliderModel.get('el').data('nid')
+      ) {
         this.model.get(
           'enhancedEcommerce'
         ).componentId = this.ecommerceSliderModel
@@ -36,7 +39,7 @@
           .index(this.$el);
         this.model.set('productIndex', tmpProductIndex);
       }
-    },
+    }
   });
 
   window.ProductSliderView =

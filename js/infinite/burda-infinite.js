@@ -3,13 +3,18 @@
     views: {
       base: {},
       products: {},
-      newsletter: {},
+      newsletter: {}
     },
     utils: {},
     managers: {},
     models: {
-      base: {},
+      base: {}
     },
+    settings: {
+      amazon: {
+        associatesId: null
+      }
+    }
   };
 
   Drupal.behaviors.burdaInfinite = {
@@ -36,9 +41,9 @@
           jQuery(element)
             .parents('.media--loading')
             .removeClass('media--loading');
-        },
+        }
       });
-    },
+    }
   };
 
   window.addEventListener('acquiaLiftDecision', function(e) {
@@ -50,7 +55,7 @@
     jQuery(document).trigger('base-utils:update-links', [
       jQuery('[data-lift-slot="' + e.detail.decision_slot_id + '"]').find(
         '.promotion'
-      ),
+      )
     ]);
   });
 })(jQuery, Drupal, drupalSettings, Backbone, window);

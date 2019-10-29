@@ -1,8 +1,13 @@
 {% if sponsor_type == 'advertorial' %}
-    <div class="item-marketing-sponsored item-marketing-advertorial">Anzeige</div>
+  <div class="item-marketing-sponsored item-marketing-advertorial">Anzeige</div>
 {% elseif sponsor_type == 'native' %}
-    <div class="item-marketing-sponsored item-marketing-native">
-        {{ content.field_campaign }}
-        {{ content.field_sponsor_tag }}
-    </div>
+  <div class="item-marketing-sponsored item-marketing-native">
+    {{ content.field_campaign }}
+    {{ content.field_sponsor_tag }}
+  </div>
+{% elseif sponsor_type == 'partnership' and suppress_sponsored is not defined %}
+  <div class="item-marketing-sponsored item-marketing-partnership">
+    {% block sponsored_logo %}
+    {% endblock %}
+  </div>
 {% endif %}

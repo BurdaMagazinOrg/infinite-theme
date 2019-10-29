@@ -46,12 +46,6 @@
 
             {% block socials_block %}
                 <div class="socials socials-bar">
-                    <div class="item-social icon-facebook"
-                         data-url="{{ (share_url ~ "Sharing_Facebook") | e('html_attr') }}"
-                         data-media-url="{{ share_img_url | e('html_attr') }}"
-                         data-description="{{ content.field_description | plain_text | e('html_attr') }}"
-                         target="_blank" data-social-type="facebook"></div>
-
                     <div class="item-social icon-pinterest"
                          data-url="{{ (share_url ~ "Sharing_Pinterest") | e('html_attr') }}"
                          data-media-url="{{ share_img_url | e('html_attr') }}"
