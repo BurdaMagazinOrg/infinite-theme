@@ -32,8 +32,8 @@
   }
 
   $ad-width: 728px;
-  $tablet-gap: round((($screen-sm-min) - $ad-width)  / 2);
-  $tablet-ad-breakpoint-max-width: ($ad-width + ($container-h-gap--tablet*2));
+  $tablet-gap: round((($screen-sm-min) - $ad-width) / 2);
+  $tablet-ad-breakpoint-max-width: ($ad-width + ($container-h-gap--tablet * 2));
   @media (min-width: 351px) and (max-width: $tablet-ad-breakpoint-max-width) {
     padding-left: $tablet-gap;
     padding-right: $tablet-gap;
@@ -46,7 +46,7 @@
   position: relative;
 }
 
-[data-view-type="marketingView"] {
+[data-view-type='marketingView'] {
   @extend %transition-fade;
   @extend %fade-out;
 
@@ -90,7 +90,8 @@
     .ob-widget-section {
       padding: $outbrain__padding-mobile !important;
 
-      .ob-rec-text, .ob-rec-source {
+      .ob-rec-text,
+      .ob-rec-source {
         padding: $outbrain__item-padding-mobile !important;
       }
     }
@@ -153,7 +154,7 @@
 }
 
 .adtech-factory-ad {
-  line-height: 0
+  line-height: 0;
 }
 
 /**
@@ -166,7 +167,10 @@
 }
 
 .region-feed > .ad-bdsa .ad-js-active {
-  @include _margin--v(bottom, ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop));
+  @include _margin--v(
+    bottom,
+    ($gap-v-region-mobile, $gap-v-region-tablet, $gap-v-region-desktop)
+  );
 }
 
 .teaser-list-large {
@@ -183,7 +187,7 @@
     }
 
     .item-marketing__fallback {
-      background-image: url("../images/static/instyle_box.jpeg");
+      background-image: url($ads__fallback-image--full);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center center;
@@ -197,12 +201,13 @@
       margin: 0 auto;
 
       @media (max-width: $screen-xs-max) {
+        background-image: url($ads__fallback-image--mobile);
         min-height: 50px;
       }
     }
 
     .ad-entity-container {
-      &>* {
+      & > * {
         background-color: $bg-color-gray-light;
         z-index: 2;
         position: relative;

@@ -1,3 +1,6 @@
+$ads__fallback-image--mobile: '../images/static/marketing__fallback--mobile.jpeg';
+$ads__fallback-image--full: '../images/static/marketing__fallback--full.jpeg';
+
 $native-teaser__justify-content: flex-start !default;
 $native-teaser__justify-content--teaser: flex-start !default;
 
@@ -6,7 +9,7 @@ $native-teaser__separator-padding--advertorial: 0 8px !default;
 $native-teaser__advertorial-align-items: center !default;
 $native-logo--height: 20px !default;
 $native-logo--height--mobile: $native-logo--height !default;
-$native-logo--font-size: .8em !default;
+$native-logo--font-size: 0.8em !default;
 $native-logo--font-size--mobile: $native-logo--font-size !default;
 
 $native-teaser__seperator--color: $text-color !default;
