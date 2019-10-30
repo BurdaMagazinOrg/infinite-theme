@@ -546,23 +546,56 @@
   }
 }
 
-@mixin teaser--content() {
+@mixin teaser--content--hover() {
   &:hover {
     .text-headline a,
     .text-headline a:hover {
       color: $teaser--content-headline-hover-color;
     }
   }
+}
 
-  .item-paragraph--full & {
-    @media (max-width: $screen-xs-max) {
-      .img-container,
-      .teaser__img-container {
-        float: none;
-        width: 100%;
-        height: unset;
-        padding-bottom: $teaser__img-ratio-desktop--presenter-multi;
-      }
+@mixin teaser--content--2-col() {
+  display: flex;
+  width: 100%;
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .img-container,
+  .teaser__img-container {
+    flex: 0 0 $teaser--content-img-width-mobile;
+    height: $teaser--content-img-height-mobile;
+    background-color: $media__lazyloading-bg-color;
+  }
+
+  .caption,
+  .teaser__caption {
+    margin-top: 0;
+    padding-left: $padding;
+  }
+
+  .teaser__title {
+    @include text-helper-size(
+      $teaser--content-headline-font-id,
+      $teaser--content-headline-size-mobile,
+      $teaser--content-headline-line-height
+    );
+  }
+}
+
+@mixin teaser--content() {
+  @include teaser--content--hover();
+
+  @media (max-width: $screen-xs-max) {
+    .img-container,
+    .teaser__img-container {
+      float: none;
+      width: 100%;
+      height: unset;
+      padding-bottom: $teaser__img-ratio-desktop--presenter-multi;
     }
   }
 
@@ -578,42 +611,6 @@
     @include text-helper($teaser--content-headline-font-id);
     text-transform: $teaser--content-headline-text-transform;
     color: $teaser--content-headline-color;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    .item-paragraph--small &,
-    .item-paragraph--middle & {
-      @include clearfix();
-      width: 100%;
-
-      &:first-child {
-        margin-top: 0;
-        padding-top: 0;
-      }
-
-      .img-container,
-      .teaser__img-container {
-        width: $teaser--content-img-width-mobile;
-        height: $teaser--content-img-height-mobile;
-        float: left;
-        padding-right: 0;
-        background-color: $media__lazyloading-bg-color;
-      }
-
-      .caption,
-      .teaser__caption {
-        margin-top: 0;
-        padding-left: $padding;
-      }
-
-      .teaser__title {
-        @include text-helper-size(
-          $teaser--content-headline-font-id,
-          $teaser--content-headline-size-mobile,
-          $teaser--content-headline-line-height
-        );
-      }
-    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {

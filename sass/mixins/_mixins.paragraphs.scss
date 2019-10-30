@@ -565,15 +565,25 @@
 
     .teaser {
       @include list__content-teaser__item--horizontal();
+
+      @media (max-width: $screen-xs-max) {
+        @include teaser--content--2-col();
+      }
+
+      @media (min-width: $screen-sm-min) {
+        @include teaser--content();
+      }
+    }
+  }
+
+  &.item-paragraph--full {
+    .teaser {
+      @include teaser--content();
     }
   }
 
   .list__content-teaser--horizontal {
     @extend %list__content-teaser--horizontal;
-  }
-
-  .teaser {
-    @extend %teaser--content;
   }
 
   .item-marketing-sponsored {
