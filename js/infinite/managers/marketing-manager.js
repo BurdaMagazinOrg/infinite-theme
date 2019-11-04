@@ -13,11 +13,26 @@
 
       if (ModelIds != undefined && BM != undefined) {
         this.deviceModel = BM.reuseModel(ModelIds.deviceModel);
-        this.breakpointDeviceModel = this.deviceModel.getDeviceBreakpoints().findWhere({ active: true });
+        this.breakpointDeviceModel = this.deviceModel
+          .getDeviceBreakpoints()
+          .findWhere({ active: true });
         this.currentBreakpoint = this.breakpointDeviceModel.id;
-        this.listenTo(this.deviceModel.getDeviceBreakpoints(), 'change:active', this.onDeviceBreakpointHandler, this);
-        this.listenTo(this.infiniteViewsModel, 'change:inview', this.inviewChangeHandler, this);
-        $(window).on('atf:BeforeLoad', _.bind(this.onAtfBeforeLoadHandler, this));
+        this.listenTo(
+          this.deviceModel.getDeviceBreakpoints(),
+          'change:active',
+          this.onDeviceBreakpointHandler,
+          this
+        );
+        this.listenTo(
+          this.infiniteViewsModel,
+          'change:inview',
+          this.inviewChangeHandler,
+          this
+        );
+        $(window).on(
+          'atf:BeforeLoad',
+          _.bind(this.onAtfBeforeLoadHandler, this)
+        );
       }
     },
     updateView: function($pContext) {
@@ -37,8 +52,12 @@
 
           if ($tmpElement.data('infiniteModel') != undefined) {
             tmpView = $tmpElement.data('infiniteModel').get('view');
-            
-            if (tmpView.isActive() && tmpView.allowToBuild() && !!tmpView.getTargeting()) {
+
+            if (
+              tmpView.isActive() &&
+              tmpView.allowToBuild() &&
+              !!tmpView.getTargeting()
+            ) {
               tmpIndex = $tmpAllAds.index($tmpElement);
               tmpView.getAdTechAd().attr('data-slot-number', tmpIndex);
 
@@ -50,7 +69,7 @@
 
               tmpArgument = {
                 element: tmpView.getAdTechAd()[0],
-                targeting: tmpTargeting,
+                targeting: tmpTargeting
               };
               tmpLoadArguments.push(tmpArgument);
             }
@@ -64,13 +83,15 @@
       }
     },
     setAdHeight($ads) {
-      $ads.each((index, ad)=>{
+      $ads.each((index, ad) => {
         const $ad = jQuery(ad);
         if (!!jQuery($ad).data('infiniteModel')) {
-          const tmpView = jQuery($ad).data('infiniteModel').get('view');
+          const tmpView = jQuery($ad)
+            .data('infiniteModel')
+            .get('view');
           tmpView.freeze();
         }
-      })
+      });
     },
     writeMarketing: function(pLoadArguments) {
       if (typeof atf_lib !== 'undefined') {
@@ -86,9 +107,11 @@
       const tmpInviewModel = pModel.get('inview');
 
       if (tmpInviewModel.state == 'enter') {
-        _.delay(_.bind(function() {
+        _.delay(
+          function() {
             this.updateView($tmpElement);
-          }, this), 1
+          }.bind(this),
+          1
         );
       }
 
@@ -97,20 +120,24 @@
     },
     onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
-      _.delay(_.bind(function() {
+      _.delay(
+        _.bind(function() {
           this.updateView();
-        }, this), 1
+        }, this),
+        1
       );
     },
     onAtfBeforeLoadHandler: function(pEvent, pElements) {
       this.beforeAtfLoad(pElements);
-    },
+    }
   });
 
   window.addEventListener(
     'atf_ad_rendered',
     function(event) {
-      const $tmpAdContainer = jQuery('#' + event.element_id).closest('.marketing-view');
+      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
+        '.marketing-view'
+      );
       const tmpModel = { visibility: 'visible', event: event };
       let tmpView;
 
@@ -135,6 +162,6 @@
     console.log('atf_fba', $tmpAdContainer, pType);
   };
 
-  window.MarketingManager = window.MarketingManager || BurdaInfinite.managers.MarketingManager;
-
+  window.MarketingManager =
+    window.MarketingManager || BurdaInfinite.managers.MarketingManager;
 })(jQuery, Drupal, drupalSettings, Backbone, BurdaInfinite);

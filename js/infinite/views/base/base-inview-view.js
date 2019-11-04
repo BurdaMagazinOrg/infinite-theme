@@ -1,59 +1,44 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.base.BaseInviewView = BaseView.extend({
     inview: null,
+    element: null,
+    observer: null,
+    observerOptions: {
+      rootMargin: '-200px 0px 400px 0px',
+      threshold: [0, 1]
+    },
     initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
+      this.element = this.$el[0];
     },
     delegateInview: function() {
-      // this.model.set('inview', 'init');
-      // console.log(">>> delegateInview");
+      !!this.observer && this.destroy();
 
-      if (this.inview != null) this.inview.destroy();
-
-      this.inview = new Waypoint.Inview({
-        element: this.$el,
-        exited: _.bind(function(direction) {
-          // console.log('Exited triggered with direction ' + direction)
-          this.model.set('inview', { state: 'exited', direction: direction });
-          this.onExitedHandler(direction);
-        }, this),
-        exit: _.bind(function(direction) {
-          // console.log('Exit triggered with direction ' + direction)
-          this.model.set('inview', { state: 'exit', direction: direction });
-          this.onExitHandler(direction);
-        }, this),
-        entered: _.bind(function(direction) {
-          // console.log('Entered triggered with direction ' + direction)
-          this.model.set('inview', { state: 'entered', direction: direction });
-          this.onEnteredHandler(direction);
-        }, this),
-        enter: _.bind(function(direction) {
-          // this.$el.addClass('in');
-          _.delay(
-            _.bind(function() {
-              // console.log('Enter triggered with direction ' + direction)
-              this.model.set('inview', {
-                state: 'enter',
-                direction: direction,
-              });
-              this.onEnterHandler(direction);
-            }, this),
-            10
-          );
-        }, this),
-      });
+      this.observer = new IntersectionObserver(
+        this.handleIntersectionObserver.bind(this),
+        this.observerOptions
+      );
+      this.observer.observe(this.element);
     },
-    onExitedHandler: function(pDirection) {
-      this.model.inviewEnable(false);
+    handleIntersectionObserver: function(entries, observer) {
+      entries.forEach(
+        function(entry) {
+          !!entry.isIntersecting && this.onEnterHandler();
+          !entry.isIntersecting && this.onExitedHandler();
+        }.bind(this)
+      );
     },
-    onExitHandler: function(pDirection) {},
-    onEnteredHandler: function(pDirection) {},
     onEnterHandler: function(pDirection) {
+      this.model.set('inview', { state: 'enter' });
       this.model.inviewEnable(true);
     },
-    destroy: function() {
-      if (this.inview != null) this.inview.destroy();
+    onExitedHandler: function(pDirection) {
+      this.model.set('inview', { state: 'exited' });
+      this.model.inviewEnable(false);
     },
+    destroy: function() {
+      !!this.observer && this.observer.unobserve(this.element);
+    }
   });
 
   window.BaseInviewView =
