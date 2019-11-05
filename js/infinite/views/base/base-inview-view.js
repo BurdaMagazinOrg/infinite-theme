@@ -1,10 +1,14 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.base.BaseInviewView = BaseView.extend({
-    inview: null,
     element: null,
-    observer: null,
-    observerOptions: {
-      rootMargin: '-200px 0px 400px 0px',
+    inviewObserver: null,
+    inviewObserverOptions: {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: [0, 1]
+    },
+    marketingObserver: null,
+    marketingObserverOptions: {
+      rootMargin: '-100% 0px 300px 0px',
       threshold: [0, 1]
     },
     initialize: function(pOptions) {
@@ -12,32 +16,59 @@
       this.element = this.$el[0];
     },
     delegateInview: function() {
-      !!this.observer && this.destroy();
+      !!this.inviewObserver && !!this.marketingObserver && this.destroy();
 
-      this.observer = new IntersectionObserver(
-        this.handleIntersectionObserver.bind(this),
-        this.observerOptions
+      this.inviewObserver = new IntersectionObserver(
+        this.handleInviewObserver.bind(this),
+        this.inviewObserverOptions
       );
-      this.observer.observe(this.element);
+
+      this.marketingObserver = new IntersectionObserver(
+        this.handleMarketingObserver.bind(this),
+        this.marketingObserverOptions
+      );
+
+      this.inviewObserver.observe(this.element);
+      this.marketingObserver.observe(this.element);
     },
-    handleIntersectionObserver: function(entries, observer) {
+    handleInviewObserver: function(entries) {
       entries.forEach(
         function(entry) {
-          !!entry.isIntersecting && this.onEnterHandler();
-          !entry.isIntersecting && this.onExitedHandler();
+          !!entry.isIntersecting && this.onInviewEnterHandler();
+          !entry.isIntersecting && this.onInviewExitedHandler();
         }.bind(this)
       );
     },
-    onEnterHandler: function(pDirection) {
+    handleMarketingObserver: function(entries) {
+      entries.forEach(
+        function(entry) {
+          !!entry.isIntersecting && this.onMarketingEnterHandler();
+          !entry.isIntersecting && this.onMarketingExitedHandler();
+        }.bind(this)
+      );
+    },
+    onInviewEnterHandler: function() {
       this.model.set('inview', { state: 'enter' });
       this.model.inviewEnable(true);
     },
-    onExitedHandler: function(pDirection) {
+    onInviewExitedHandler: function() {
       this.model.set('inview', { state: 'exited' });
       this.model.inviewEnable(false);
     },
+    onMarketingEnterHandler: function() {
+      console.log('>>> onMarketingEnterHandler', this.element);
+      this.model.set('marketing', { state: 'enter' });
+      this.model.marketingEnable(true);
+    },
+    onMarketingExitedHandler: function() {
+      console.log('>>> onMarketingExitedHandler', this.element);
+      this.model.set('marketing', { state: 'exited' });
+      this.model.marketingEnable(false);
+    },
     destroy: function() {
-      !!this.observer && this.observer.unobserve(this.element);
+      !!this.inviewObserver && this.inviewObserver.unobserve(this.element);
+      !!this.marketingObserver &&
+        this.marketingObserver.unobserve(this.element);
     }
   });
 
