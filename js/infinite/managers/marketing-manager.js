@@ -5,7 +5,6 @@
     adsObject: {},
     breakpointDeviceModel: {},
     currentBreakpoint: {},
-    lastScrollTopPos: -1,
     lastEnabledState: [],
     firstRun: true,
     initialize: function(pOptions) {
@@ -25,13 +24,9 @@
         );
         this.listenTo(
           this.infiniteViewsModel,
-          'change:inview',
-          this.inviewChangeHandler,
+          'change:marketing',
+          this.marketingChangeHandler,
           this
-        );
-        $(window).on(
-          'atf:BeforeLoad',
-          _.bind(this.onAtfBeforeLoadHandler, this)
         );
       }
     },
@@ -101,12 +96,12 @@
         _.delay(_.bind(this.writeMarketing, this), 100, pLoadArguments);
       }
     },
-    inviewChangeHandler: function(pModel) {
-      if (this.lastEnabledState == pModel.get('inview').state) return;
+    marketingChangeHandler: function(pModel) {
+      if (this.lastEnabledState == pModel.get('marketing').state) return;
       const $tmpElement = pModel.get('el');
-      const tmpInviewModel = pModel.get('inview');
+      const tmpMarketingModel = pModel.get('marketing');
 
-      if (tmpInviewModel.state == 'enter') {
+      if (tmpMarketingModel.state == 'enter') {
         _.delay(
           function() {
             this.updateView($tmpElement);
@@ -115,8 +110,7 @@
         );
       }
 
-      this.lastEnabledState = pModel.get('inview').state;
-      this.lastScrollTopPos = $(window).scrollTop();
+      this.lastEnabledState = pModel.get('marketing').state;
     },
     onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
@@ -126,9 +120,6 @@
         }, this),
         1
       );
-    },
-    onAtfBeforeLoadHandler: function(pEvent, pElements) {
-      this.beforeAtfLoad(pElements);
     }
   });
 
