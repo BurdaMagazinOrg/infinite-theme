@@ -187,22 +187,18 @@
     }
 
     .item-marketing__fallback {
-      background-image: url($ads__fallback-image--full);
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;
       position: absolute;
       left: 0;
       right: 0;
-      top: 0;
+      top: 50%;
       bottom: 0;
-      min-height: 90px;
-      max-width: 970px;
-      margin: 0 auto;
+      height: 60px;
+      margin: -30px auto 0 auto;
+      filter: $item-marketing__fallback-filter;
 
       @media (max-width: $screen-xs-max) {
-        background-image: url($ads__fallback-image--mobile);
-        min-height: 50px;
+        min-height: 40px;
+        margin: -20px auto 0 auto;
       }
     }
 
