@@ -7,7 +7,6 @@
       gtmIndexEvent: '',
       gtmIndexPosEvent: '',
       activeInfiniteBlockModel: null,
-      lastViewState: '',
       initialize: function(pOptions) {
         _.extend(this, pOptions);
 
@@ -92,20 +91,10 @@
         /**
          * use only infiniteBlockView for tracking and complex inview logic
          */
-        if (
-          this.lastViewState == pModel.get('inview').state ||
-          pModel.get('type') != 'infiniteBlockView'
-        )
-          return;
-
+        if (pModel.get('type') != 'infiniteBlockView') return;
         const $tmpElement = pModel.get('el');
-
         const tmpInviewModel = pModel.get('inview');
-
-        const tmpHistoryURL = $tmpElement.data('history-url');
-
         const tmpTrackingObject = {};
-
         let tmpIndex = 0;
 
         if (tmpInviewModel.state == 'enter' || tmpInviewModel.state == 'exit') {
@@ -117,17 +106,10 @@
           tmpInviewModel.state == 'enter' &&
           $tmpElement.data('no-track') != true
         ) {
-          /**
-           * track pageView
-           */
-          // if (!_.isUndefined(tmpHistoryURL) && pModel.get('scrollDepthTracked') != true && pModel.get('initialDOMItem') != true) {
-          //   TrackingManager.trackPageView(tmpHistoryURL, TrackingManager.getAdvTrackingByElement($tmpElement));
-          // }
-
           if (pModel.get('scrollDepthTracked') != true) {
             tmpIndex = (
-              $('.region-infinite-block')
-                .not('.region-infinite-block[data-no-track="true"]')
+              $('[data-view-type="infiniteBlockView"]')
+                .not('[data-no-track="true"]')
                 .index($tmpElement) + 1
             ).toString();
             tmpTrackingObject.event = tmpTrackingObject.category =
@@ -145,8 +127,6 @@
             pModel.set('scrollDepthTracked', true);
           }
         }
-
-        this.lastViewState = tmpInviewModel.state;
       },
       initBaseElements: function() {
         $('#menu-open-btn', this.$el).click(function() {
