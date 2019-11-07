@@ -1,8 +1,8 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
     defaults: {
-      inviewEnabled: true,
-      marketingEnabled: true,
+      inviewEnabled: false,
+      marketingEnabled: false,
       initialDOMItem: true,
       type: 'root'
     },
