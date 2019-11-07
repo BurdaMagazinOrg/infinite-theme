@@ -5,8 +5,6 @@
     adsObject: {},
     breakpointDeviceModel: {},
     currentBreakpoint: {},
-    lastEnabledState: [],
-    firstRun: true,
     initialize: function(pOptions) {
       _.extend(this, pOptions);
 
@@ -97,10 +95,8 @@
       }
     },
     marketingChangeHandler: function(pModel) {
-      if (this.lastEnabledState == pModel.get('marketing').state) return;
       const $tmpElement = pModel.get('el');
       const tmpMarketingModel = pModel.get('marketing');
-
       if (tmpMarketingModel.state == 'enter') {
         _.delay(
           function() {
@@ -109,8 +105,6 @@
           1
         );
       }
-
-      this.lastEnabledState = pModel.get('marketing').state;
     },
     onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
