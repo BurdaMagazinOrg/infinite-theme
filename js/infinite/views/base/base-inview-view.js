@@ -34,8 +34,8 @@
     handleInviewObserver: function(entries) {
       entries.forEach(
         function(entry) {
-          !!entry.isIntersecting && this.onInviewEnterHandler();
-          !entry.isIntersecting && this.onInviewExitedHandler();
+          !!entry.isIntersecting && this.onEnterHandler();
+          !entry.isIntersecting && this.onExitedHandler();
         }.bind(this)
       );
     },
@@ -47,11 +47,11 @@
         }.bind(this)
       );
     },
-    onInviewEnterHandler: function() {
+    onEnterHandler: function() {
       this.model.set('inview', { state: 'enter' });
       this.model.inviewEnable(true);
     },
-    onInviewExitedHandler: function() {
+    onExitedHandler: function() {
       this.model.set('inview', { state: 'exited' });
       this.model.inviewEnable(false);
     },
