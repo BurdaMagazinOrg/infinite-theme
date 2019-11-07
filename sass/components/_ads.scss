@@ -192,14 +192,9 @@
       right: 0;
       top: 50%;
       bottom: 0;
-      height: 60px;
-      margin: -30px auto 0 auto;
+      height: 40px;
+      margin: -20px auto 0 auto;
       filter: $item-marketing__fallback-filter;
-
-      @media (max-width: $screen-xs-max) {
-        min-height: 40px;
-        margin: -20px auto 0 auto;
-      }
     }
 
     .ad-entity-container {
