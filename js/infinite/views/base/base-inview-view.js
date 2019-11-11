@@ -56,12 +56,10 @@
       this.model.inviewEnable(false);
     },
     onMarketingEnterHandler: function() {
-      console.log('>>> onMarketingEnterHandler', this.element);
       this.model.set('marketing', { state: 'enter' });
       this.model.marketingEnable(true);
     },
     onMarketingExitedHandler: function() {
-      console.log('>>> onMarketingExitedHandler', this.element);
       this.model.set('marketing', { state: 'exited' });
       this.model.marketingEnable(false);
     },
