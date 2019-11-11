@@ -1,59 +1,75 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.views.base.BaseInviewView = BaseView.extend({
-    inview: null,
+    element: null,
+    inviewObserver: null,
+    inviewObserverOptions: {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: [0, 1]
+    },
+    marketingObserver: null,
+    marketingObserverOptions: {
+      rootMargin: '-100% 0px 300px 0px',
+      threshold: [0, 1]
+    },
     initialize: function(pOptions) {
       BaseView.prototype.initialize.call(this, pOptions);
+      this.element = this.$el[0];
     },
     delegateInview: function() {
-      // this.model.set('inview', 'init');
-      // console.log(">>> delegateInview");
+      !!this.inviewObserver && !!this.marketingObserver && this.destroy();
 
-      if (this.inview != null) this.inview.destroy();
+      this.inviewObserver = new IntersectionObserver(
+        this.handleInviewObserver.bind(this),
+        this.inviewObserverOptions
+      );
 
-      this.inview = new Waypoint.Inview({
-        element: this.$el,
-        exited: _.bind(function(direction) {
-          // console.log('Exited triggered with direction ' + direction)
-          this.model.set('inview', { state: 'exited', direction: direction });
-          this.onExitedHandler(direction);
-        }, this),
-        exit: _.bind(function(direction) {
-          // console.log('Exit triggered with direction ' + direction)
-          this.model.set('inview', { state: 'exit', direction: direction });
-          this.onExitHandler(direction);
-        }, this),
-        entered: _.bind(function(direction) {
-          // console.log('Entered triggered with direction ' + direction)
-          this.model.set('inview', { state: 'entered', direction: direction });
-          this.onEnteredHandler(direction);
-        }, this),
-        enter: _.bind(function(direction) {
-          // this.$el.addClass('in');
-          _.delay(
-            _.bind(function() {
-              // console.log('Enter triggered with direction ' + direction)
-              this.model.set('inview', {
-                state: 'enter',
-                direction: direction,
-              });
-              this.onEnterHandler(direction);
-            }, this),
-            10
-          );
-        }, this),
-      });
+      this.marketingObserver = new IntersectionObserver(
+        this.handleMarketingObserver.bind(this),
+        this.marketingObserverOptions
+      );
+
+      this.inviewObserver.observe(this.element);
+      this.marketingObserver.observe(this.element);
     },
-    onExitedHandler: function(pDirection) {
-      this.model.inviewEnable(false);
+    handleInviewObserver: function(entries) {
+      entries.forEach(
+        function(entry) {
+          !!entry.isIntersecting && this.onEnterHandler();
+          !entry.isIntersecting && this.onExitedHandler();
+        }.bind(this)
+      );
     },
-    onExitHandler: function(pDirection) {},
-    onEnteredHandler: function(pDirection) {},
-    onEnterHandler: function(pDirection) {
+    handleMarketingObserver: function(entries) {
+      entries.forEach(
+        function(entry) {
+          !!entry.isIntersecting && this.onMarketingEnterHandler();
+          !entry.isIntersecting && this.onMarketingExitedHandler();
+        }.bind(this)
+      );
+    },
+    onEnterHandler: function() {
+      this.model.set('inview', { state: 'enter' });
       this.model.inviewEnable(true);
     },
-    destroy: function() {
-      if (this.inview != null) this.inview.destroy();
+    onExitedHandler: function() {
+      this.model.set('inview', { state: 'exited' });
+      this.model.inviewEnable(false);
     },
+    onMarketingEnterHandler: function() {
+      console.log('>>> onMarketingEnterHandler', this.element);
+      this.model.set('marketing', { state: 'enter' });
+      this.model.marketingEnable(true);
+    },
+    onMarketingExitedHandler: function() {
+      console.log('>>> onMarketingExitedHandler', this.element);
+      this.model.set('marketing', { state: 'exited' });
+      this.model.marketingEnable(false);
+    },
+    destroy: function() {
+      !!this.inviewObserver && this.inviewObserver.unobserve(this.element);
+      !!this.marketingObserver &&
+        this.marketingObserver.unobserve(this.element);
+    }
   });
 
   window.BaseInviewView =

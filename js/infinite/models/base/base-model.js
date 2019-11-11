@@ -1,9 +1,10 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.base.BaseModel = Backbone.Model.extend({
     defaults: {
-      inviewEnabled: true,
+      inviewEnabled: false,
+      marketingEnabled: false,
       initialDOMItem: true,
-      type: 'root',
+      type: 'root'
     },
     initialize: function(pModel, pOptions) {
       _.extend(this, pOptions);
@@ -13,6 +14,9 @@
     },
     inviewEnable: function(pState) {
       this.set('inviewEnabled', pState);
+    },
+    marketingEnable: function(pState) {
+      this.set('marketingEnabled', pState);
     },
     hasItems: function() {
       return false;
@@ -29,7 +33,7 @@
     },
     getParentModel: function() {
       return this.get('parentModel');
-    },
+    }
   });
 
   window.BaseModel = window.BaseModel || BurdaInfinite.models.base.BaseModel;

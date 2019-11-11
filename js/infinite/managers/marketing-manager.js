@@ -5,9 +5,6 @@
     adsObject: {},
     breakpointDeviceModel: {},
     currentBreakpoint: {},
-    lastScrollTopPos: -1,
-    lastEnabledState: [],
-    firstRun: true,
     initialize: function(pOptions) {
       _.extend(this, pOptions);
 
@@ -25,13 +22,9 @@
         );
         this.listenTo(
           this.infiniteViewsModel,
-          'change:inview',
-          this.inviewChangeHandler,
+          'change:marketing',
+          this.marketingChangeHandler,
           this
-        );
-        $(window).on(
-          'atf:BeforeLoad',
-          _.bind(this.onAtfBeforeLoadHandler, this)
         );
       }
     },
@@ -53,8 +46,11 @@
           if ($tmpElement.data('infiniteModel') != undefined) {
             tmpView = $tmpElement.data('infiniteModel').get('view');
 
-            // && tmpView.isTypeAllowedToWrite()
-            if (tmpView.isActive() && tmpView.isAllowedToWrite() && !!tmpView.getTargeting()) {
+            if (
+              tmpView.isActive() &&
+              tmpView.allowToBuild() &&
+              !!tmpView.getTargeting()
+            ) {
               tmpIndex = $tmpAllAds.index($tmpElement);
               tmpView.getAdTechAd().attr('data-slot-number', tmpIndex);
 
@@ -66,7 +62,7 @@
 
               tmpArgument = {
                 element: tmpView.getAdTechAd()[0],
-                targeting: tmpTargeting,
+                targeting: tmpTargeting
               };
               tmpLoadArguments.push(tmpArgument);
             }
@@ -75,44 +71,40 @@
       );
 
       if (tmpLoadArguments.length > 0) {
+        this.setAdHeight($tmpAllAds);
         this.writeMarketing(tmpLoadArguments);
       }
+    },
+    setAdHeight($ads) {
+      $ads.each((index, ad) => {
+        const $ad = jQuery(ad);
+        if (!!jQuery($ad).data('infiniteModel')) {
+          const tmpView = jQuery($ad)
+            .data('infiniteModel')
+            .get('view');
+          tmpView.freeze();
+        }
+      });
     },
     writeMarketing: function(pLoadArguments) {
       if (typeof atf_lib !== 'undefined') {
         window.atf_lib.load_tag(pLoadArguments);
-        console.log(
-          '%c marketing | write ',
-          'background-color: black; color: yellow; font-weight: bold;',
-          pLoadArguments,
-          'window.atf_lib',
-          typeof window.atf_lib
-        );
       } else {
         console.log('>>> atf_lib is not defined > try again');
         _.delay(_.bind(this.writeMarketing, this), 100, pLoadArguments);
       }
     },
-    inviewChangeHandler: function(pModel) {
-      if (this.lastEnabledState == pModel.get('inview').state) return;
-      // || this.lastScrollTopPos == $(window).scrollTop()
-
+    marketingChangeHandler: function(pModel) {
       const $tmpElement = pModel.get('el');
-
-      const tmpInviewModel = pModel.get('inview');
-
-      if (tmpInviewModel.state == 'enter') {
+      const tmpMarketingModel = pModel.get('marketing');
+      if (tmpMarketingModel.state == 'enter') {
         _.delay(
-          _.bind(function() {
+          function() {
             this.updateView($tmpElement);
-          }, this),
+          }.bind(this),
           1
         );
-        // console.log("MarketingManager INVIEW CHANGED", tmpInviewModel.state);
       }
-
-      this.lastEnabledState = pModel.get('inview').state;
-      this.lastScrollTopPos = $(window).scrollTop();
     },
     onDeviceBreakpointHandler: function(pModel) {
       this.breakpointDeviceModel = pModel;
@@ -122,38 +114,8 @@
         }, this),
         1
       );
-    },
-    onAtfBeforeLoadHandler: function(pEvent, pElements) {
-      this.beforeAtfLoad(pElements);
-    },
+    }
   });
-
-  window.MarketingManager =
-    window.MarketingManager || BurdaInfinite.managers.MarketingManager;
-
-  window.addEventListener(
-    'atf_no_ad_rendered',
-    function(event) {
-      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
-        '.marketing-view'
-      );
-
-      const tmpModel = { visibility: 'hidden', event: event };
-
-      let tmpView;
-
-      if ($tmpAdContainer.data('infiniteModel') != undefined) {
-        tmpView = $tmpAdContainer.data('infiniteModel').get('view');
-        tmpView.setRenderModel(tmpModel);
-        console.log(
-          'No ad rendered for ' + event.element_id,
-          tmpView.adRenderModel.visibility,
-          tmpView.$el
-        );
-      }
-    },
-    false
-  );
 
   window.addEventListener(
     'atf_ad_rendered',
@@ -161,9 +123,7 @@
       const $tmpAdContainer = jQuery('#' + event.element_id).closest(
         '.marketing-view'
       );
-
       const tmpModel = { visibility: 'visible', event: event };
-
       let tmpView;
 
       console.log('Ad rendered for ' + event.element_id);
@@ -178,7 +138,6 @@
 
   window.atf_ad = function(pElement, pType) {
     const $tmpAdContainer = $(pElement).closest('.marketing-view');
-
     let tmpView;
 
     if ($tmpAdContainer.data('infiniteModel') != undefined) {

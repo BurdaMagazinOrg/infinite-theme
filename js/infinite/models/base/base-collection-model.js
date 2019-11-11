@@ -1,5 +1,7 @@
 (function($, Drupal, drupalSettings, Backbone, BurdaInfinite) {
   BurdaInfinite.models.base.BaseCollectionModel = BaseModel.extend({
+    inviewEnabled: false,
+    marketingEnabled: false,
     initialize: function(pAttributes, pOptions) {
       BaseModel.prototype.initialize.call(this, pAttributes, pOptions);
 
@@ -43,8 +45,7 @@
     },
     reset: function(pDestroyItems) {
       const tmpDestroyItems = pDestroyItems || false;
-
-      if (tmpDestroyItems) this.destroyItems();
+      !!tmpDestroyItems && this.destroyItems();
       this.getItems().reset();
     },
     destroyItems: function(pItems) {
@@ -53,9 +54,7 @@
       _.each(
         tmpItems.models,
         _.bind(function(pModel, pIndex) {
-          if (pModel.hasItems()) {
-            this.destroyItems(pModel.get('items'));
-          }
+          !!pModel.hasItems() && this.destroyItems(pModel.get('items'));
 
           if (pModel.has('view') && _.isFunction(pModel.get('view').destroy)) {
             pModel.get('view').destroy();
@@ -81,26 +80,30 @@
     },
     refresh: function(pModel) {
       const tmpModel = pModel || this;
-
       BaseModel.prototype.refresh.call(tmpModel);
     },
     inviewEnable: function(pState, pCollection) {
       const tmpCollection = pCollection || this.getItems();
-
-      _.each(
-        tmpCollection.models,
-        function(pModel, pIndex) {
-          pModel.set('inviewEnabled', pState);
-
-          if (pModel.hasItems()) {
-            if (this && typeof this.inviewEnable === 'function') {
-              this.inviewEnable(pState, pModel.get('items'));
-            }
-          }
-        },
-        this
-      );
+      this.inviewEnabled = pState;
+      _.each(tmpCollection.models, this.setInviewEnable, this);
     },
+    setInviewEnable: function(colItemModel) {
+      colItemModel.set('inviewEnabled', this.inviewEnabled);
+      if (colItemModel.hasItems() && !!this.inviewEnable) {
+        this.inviewEnable(this.inviewEnabled, colItemModel.get('items'));
+      }
+    },
+    marketingEnable: function(pState, pCollection) {
+      const tmpCollection = pCollection || this.getItems();
+      this.marketingEnabled = pState;
+      _.each(tmpCollection.models, this.setMarketingEnable, this);
+    },
+    setMarketingEnable: function(colItemModel) {
+      colItemModel.set('marketingEnabled', this.marketingEnabled);
+      if (colItemModel.hasItems() && !!this.marketingEnable) {
+        this.marketingEnable(this.marketingEnabled, colItemModel.get('items'));
+      }
+    }
   });
 
   window.BaseCollectionModel =
