@@ -8,6 +8,12 @@
 'region-full-content',
 ] %}
 
+{% set feed_block_classes = [
+'region-infinite-block',
+'region-full-content',
+'region-feed',
+] %}
+
 {% set infinite_block_classes = [
 'region-infinite-block',
 'region-full-content',
@@ -17,11 +23,14 @@
 
 {% set attachment_before_attributes = attachment_before_attributes is empty ? create_attribute() : attachment_before_attributes %}
 {% set first_infinite_block_attributes = first_infinite_block_attributes is empty ? create_attribute() : first_infinite_block_attributes %}
+{% set feed_block_attributes = feed_block_attributes is empty ? create_attribute() : feed_block_attributes %}
 {% set infinite_block_attributes = infinite_block_attributes is empty ? create_attribute() : infinite_block_attributes %}
 
-{% set attachment_before_attributes = attachment_before_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
 {% set first_infinite_block_attributes = first_infinite_block_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
 {% set infinite_block_attributes = infinite_block_attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
+
+{% set feed_block_attributes = feed_block_attributes.setAttribute('data-tr-container-type', 'taxonomy') %}
+{% set first_infinite_block_attributes = first_infinite_block_attributes.setAttribute('data-tr-container-type', 'taxonomy') %}
 
 {% if rows %}
     {% if attachment_before and view.getCurrentPage == 0 %}
@@ -76,21 +85,21 @@
             {{ attachment_after }}
         {% endif %}
 
-        {% if view.getCurrentPage == 0 and (view.hide_feed_container is not defined or false == view.hide_feed_container) %}
-        <div id="feed" class="region-full-content region-feed"
-                {% if use_view_type is not defined or use_view_type != false %}
-                    data-view-type="feedView"
-                {% endif %}
-        >
-            <div class="region-full-content container-content-dynamic container-feed-items"></div>
-            {% endif %}
-            {% if pager %}
-                {{ pager }}
-            {% endif %}
-            {% if view.getCurrentPage == 0 %}
-        </div>
-        {% endif %}
     </div>
+    {% if view.getCurrentPage == 0 and (view.hide_feed_container is not defined or false == view.hide_feed_container) %}
+      <div id="feed" {{feed_block_attributes.addClass(feed_block_classes)}}
+              {% if use_view_type is not defined or use_view_type != false %}
+                  data-view-type="feedView"
+              {% endif %}
+      >
+          <div class="container-content-dynamic container-feed-items"></div>
+          {% endif %}
+          {% if pager %}
+              {{ pager }}
+          {% endif %}
+          {% if view.getCurrentPage == 0 %}
+      </div>
+    {% endif %}
 {% else %}
     {% if attachment_before and view.getCurrentPage == 0 %}
         {{ attachment_before }}
