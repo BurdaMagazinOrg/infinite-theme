@@ -6,7 +6,7 @@
             <meta itemprop="name" content="{{ content.name | render | striptags | trim }}" />
             {% endspaceless %}
             <meta itemprop="thumbnailURL" content="{{ content.field_preview_image | render | trim }}" />
-            <meta itemprop="uploadDate" content="{{ content.created }}" />
+            <meta itemprop="uploadDate" content="{{ content.created | trim }}" />
             {{ content|without('field_copyright', 'field_description', 'field_preview_image', 'created', 'name')}}
         </div>
         <div class="caption">
