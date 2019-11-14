@@ -2,13 +2,11 @@
     <div class="item-media item-media--nexx-video">
         <div class="embed-responsive embed-responsive-16by9 video-container" itemscope="" itemtype="http://schema.org/videoObject">
             {% spaceless %}
-            {% if content.field_description|render %}
                 <meta itemprop="description" content="{{ content.field_description | render | striptags | trim | replace({"\n":' ', "\r":' '})}}" />
-            {% endif %}
-            <meta itemprop="name" content="{{ content.name | render | striptags | trim }}" />
+                <meta itemprop="name" content="{{ content.name | render | striptags | trim }}" />
+                <meta itemprop="thumbnailURL" content="{{ content.field_preview_image | render | trim }}" />
+                <meta itemprop="uploadDate" content="{{ content.created }}" />
             {% endspaceless %}
-            <meta itemprop="thumbnailURL" content="{{ content.field_preview_image | render | trim }}" />
-            <meta itemprop="uploadDate" content="{{ content.created }}" />
             {{ content|without('field_copyright', 'field_description', 'field_preview_image', 'created', 'name')}}
         </div>
         <div class="caption">
