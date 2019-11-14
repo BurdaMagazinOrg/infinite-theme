@@ -29,7 +29,7 @@
 
     @media (min-width: $screen-sm-min) {
       &:after {
-        content: " ";
+        content: ' ';
         white-space: pre;
       }
     }
@@ -140,8 +140,8 @@
   padding: $product__percentage-saving-padding--default;
   border-radius: $product__percentage-saving-border-radius--default;
   letter-spacing: $product__percentage-saving-letter-spacing--default;
-  
-  @if($use-position == true) {
+
+  @if ($use-position == true) {
     position: absolute;
     bottom: $product__percentage-saving-bottom--default;
     right: $product__percentage-saving-right--default;
@@ -174,7 +174,7 @@
     margin-bottom: $ecommerce-slider__item-text-brand-gap-bottom;
 
     &:after {
-      content: " ";
+      content: ' ';
       white-space: pre;
     }
   }
@@ -318,7 +318,8 @@
     border-radius: $product-border-radius--single-product;
   }
 
-  .img-container, .media--blazy {
+  .img-container,
+  .media--blazy {
     position: relative;
     height: 0;
     padding-bottom: $products__img-ratio-desktop--single-product;
@@ -374,7 +375,6 @@
       font-size: $ecommerce-slider__title-size-mobile--full;
     }
   }
-
 
   .affiliatelinks {
     @include label--affiliate();
@@ -471,7 +471,7 @@
     background: $ecommerce-slider__arrows-background;
     color: $ecommerce-slider__arrows-color;
 
-    z-index: 100;
+    z-index: 1;
     position: absolute;
     display: block;
     height: $ecommerce-slider__arrowbox-width;
@@ -503,12 +503,12 @@
   }
 
   .swiper-button-prev {
-    @include icon-arrow-large-left(true, "&:after");
+    @include icon-arrow-large-left(true, '&:after');
     left: 0;
   }
 
   .swiper-button-next {
-    @include icon-arrow-large-right(true, "&:after");
+    @include icon-arrow-large-right(true, '&:after');
     right: 0;
 
     &:after,
@@ -516,7 +516,6 @@
       left: 11px;
     }
   }
-
 
   /*
    * customisable styles
@@ -528,7 +527,7 @@
   }
 
   .swiper-button {
-    color: $ecommerce-slider__swiper-button-color; 
+    color: $ecommerce-slider__swiper-button-color;
     background-color: $ecommerce-slider__swiper-button-background-color;
   }
 
@@ -546,7 +545,6 @@
       margin: $ecommerce-slider__title-margin-desktop;
     }
   }
-
 }
 
 @mixin ecommerce-slider--small() {
