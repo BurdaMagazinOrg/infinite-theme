@@ -19,7 +19,7 @@
 @import 'coupon.filter';
 
 #content .item-content--coupon.sticky .coupon__row {
-  background-color: $color-pink;
+  background-color: $coupon__top-deal--bg-color;
   padding: $grid-unit-2;
 
   @media (max-width: $screen-xs-max) {
