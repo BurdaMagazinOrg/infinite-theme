@@ -73,10 +73,13 @@
  */
 #}
 
-{% set classes = [
-'item-content',
-'item-content--coupon',
-] %}  
+{%
+  set classes = [
+    'item-content',
+    'item-content--coupon',
+    node.isSticky() ? 'sticky',
+  ]
+%}
 
 <article{{ attributes.addClass(classes) }}>
     <div class="coupon__row">
@@ -112,7 +115,7 @@
           <span class="coupon__products-title">Top-Produkte</span>
           <a class="coupon__products-affiliate-links" href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
         </div>
-        <div class="coupon__products">           
+        <div class="coupon__products">
             {{ content.field_advertising_products }}
         </div>
       </div>

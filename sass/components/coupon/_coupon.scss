@@ -1,5 +1,5 @@
 %collapse-icon {
-  @include icon($container: "&:after");
+  @include icon($container: '&:after');
   position: relative;
   cursor: pointer;
 
@@ -15,10 +15,35 @@
   }
 }
 
-@import "coupon.overview";
-@import "coupon.filter";
+@import 'coupon.overview';
+@import 'coupon.filter';
+
+#content .item-content--coupon.sticky .coupon__row {
+  background-color: $coupon__top-deal--bg-color;
+  padding: $grid-unit-2;
+
+  @media (max-width: $screen-xs-max) {
+    padding: $grid-unit-2 $grid-unit-2 $grid-unit-4 $grid-unit-2;
+  }
+
+  &:after {
+    @include text-label($label-size-small);
+    content: 'Top-Deal';
+    text-transform: uppercase;
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    padding: $grid-unit-half $grid-unit-2;
+    background-color: $white;
+  }
+}
 
 .item-content--coupon {
+  position: relative;
+
+  .coupon__products-affiliate-links {
+    text-shadow: none;
+  }
   .coupon__title {
     @include text-helper($coupon__title-font-id, $coupon__title-size-mobile);
     letter-spacing: $coupon__title-letter-spacing;
@@ -267,7 +292,7 @@
     width: 100%;
 
     @media (min-width: $screen-md-min) {
-      @include vendor("flex-basis", 50%);
+      @include vendor('flex-basis', 50%);
       margin-left: $grid-unit-2;
     }
 

@@ -3,6 +3,7 @@
   'item-content--coupon',
   'item-content--coupon--content_reference',
   'item-content--coupon--' ~ view_mode,
+  node.isSticky() ? 'sticky',
 ] %}
 
 {{ attach_library('infinite/coupons') }}
