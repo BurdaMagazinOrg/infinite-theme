@@ -55,24 +55,18 @@
   }
 }
 
-#content .item-paragraph.item-paragraph--products,
-#content .item-paragraph.item-paragraph--advertising-products-paragraph {
-  .container-content {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .shopit-badge img {
-    left: -$grid-unit-2;
-  }
-}
-
 .item-paragraph--advertising-products-paragraph,
 .item-paragraph--products {
   &.item-paragraph--full {
-    .container-content {
+    .shopit-badge img {
+      left: -$grid-unit-2;
+    }
+
+    .container-wrapper .container-content {
       display: flex;
       max-width: $content-max-width;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .item-ecommerce {
