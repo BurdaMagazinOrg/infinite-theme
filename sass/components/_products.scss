@@ -54,3 +54,24 @@
     visibility: hidden;
   }
 }
+
+.item-paragraph--advertising-products-paragraph,
+.item-paragraph--products {
+  &.item-paragraph--full {
+    .shopit-badge img {
+      left: -$grid-unit-2;
+    }
+
+    .container-wrapper .container-content {
+      display: flex;
+      max-width: $content-max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .item-ecommerce {
+      width: 25%;
+      float: none;
+    }
+  }
+}
