@@ -136,6 +136,23 @@
     false
   );
 
+  window.addEventListener(
+    'atf_no_ad_rendered',
+    function(event) {
+      let tmpView;
+      const tmpModel = { visibility: false, event: event };
+      const $tmpAdContainer = jQuery('#' + event.element_id).closest(
+        '.marketing-view'
+      );
+
+      if ($tmpAdContainer.data('infiniteModel') !== undefined) {
+        tmpView = $tmpAdContainer.data('infiniteModel').get('view');
+        tmpView.setRenderModel(tmpModel);
+      }
+    },
+    false
+  );
+
   window.atf_ad = function(pElement, pType) {
     const $tmpAdContainer = $(pElement).closest('.marketing-view');
     let tmpView;
