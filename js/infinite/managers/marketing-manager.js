@@ -140,7 +140,7 @@
     'atf_no_ad_rendered',
     function(event) {
       let tmpView;
-      const tmpModel = { visibility: '', event: event };
+      const tmpModel = { visibility: false, event: event };
       const $tmpAdContainer = jQuery('#' + event.element_id).closest(
         '.marketing-view'
       );
