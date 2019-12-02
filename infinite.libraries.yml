@@ -59,6 +59,11 @@ newsletter:
   js:
     js/behaviors/drupal.behaviors.newsletter.js: {}
 
+advertising-products:
+  version: 1
+  js:
+    js/behaviors/drupal.behaviors.advertising-products.js: {}
+
 
 blazy:
   header: false

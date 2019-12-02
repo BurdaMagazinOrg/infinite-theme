@@ -791,6 +791,20 @@
 @mixin item-content--adv-products() {
   position: relative;
 
+  .item-media--header {
+    background-color: $adv-products__header-bg-color;
+    margin-bottom: $grid-unit-4;
+  }
+
+  .text-title {
+    @include transition-fade();
+    @include fade-out();
+
+    &.rendered {
+      @include fade-in();
+    }
+  }
+
   .adv-products__back-btn {
     @include button;
     @include button--md;

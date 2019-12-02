@@ -5,10 +5,12 @@
 'item-content',
 'item-content--adv-products',
 'adv-products--overview',
+'no-v-padding',
 ] %}
 
 {% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
 {% set attributes = attributes.setAttribute('data-tr-container-type', 'cv') %}
+{{ attach_library('infinite/advertising-products') }}
 
 <div {{ attributes.addClass(classes) }}>
     {{ attachment_before }}
