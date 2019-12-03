@@ -794,6 +794,10 @@
   .item-media--header {
     background-color: $adv-products__header-bg-color;
     margin-bottom: $grid-unit-4;
+
+    .caption .text-title {
+      color: $adv-products__header-color;
+    }
   }
 
   .text-title {
