@@ -331,12 +331,6 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    .teaser__img-container {
-      img {
-        max-width: 40%;
-      }
-    }
-
     .teaser__caption {
       position: static;
     }
