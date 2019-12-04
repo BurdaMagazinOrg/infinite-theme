@@ -55,25 +55,27 @@
   }
 }
 
-.item-paragraph--advertising-products-paragraph,
-.item-paragraph--products {
-  &.item-paragraph--full {
-    .container-wrapper {
-      .shopit-badge img {
-        left: -$grid-unit-2;
+@media (min-width: $screen-md-min) {
+  .item-paragraph--advertising-products-paragraph,
+  .item-paragraph--products {
+    &.item-paragraph--full {
+      .container-wrapper {
+        .shopit-badge img {
+          left: -$grid-unit-2;
+        }
+
+        .container-content {
+          display: flex;
+          max-width: $content-max-width;
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
 
-      .container-content {
-        display: flex;
-        max-width: $content-max-width;
-        margin-left: auto;
-        margin-right: auto;
+      .item-ecommerce {
+        width: 25%;
+        float: none;
       }
-    }
-
-    .item-ecommerce {
-      width: 25%;
-      float: none;
     }
   }
 }
