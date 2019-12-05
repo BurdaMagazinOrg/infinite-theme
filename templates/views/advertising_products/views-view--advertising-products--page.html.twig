@@ -5,10 +5,12 @@
 'item-content',
 'item-content--adv-products',
 'adv-products--overview',
+'no-v-padding',
 ] %}
 
 {% set attributes = attributes.setAttribute('data-view-type', 'infiniteBlockView') %}
 {% set attributes = attributes.setAttribute('data-tr-container-type', 'cv') %}
+{{ attach_library('infinite/advertising-products') }}
 
 <div {{ attributes.addClass(classes) }}>
     {{ attachment_before }}
@@ -34,11 +36,11 @@
         {{ header }}
     {% endif %}
 
-    <div class="affiliatelinks affiliatelinks--shopping-products">
+    <div class="affiliatelinks affiliatelinks--shopping-products region-fixed-content">
         <a href="/affiliatelinks" target="_self">Affiliatelinks</a>
     </div>
     <div class="item-content__content affiliatelinks--hide">
-        <div class="adv-products__rows">
+        <div class="adv-products__rows region-fixed-content">
             {{ rows }}
         </div>
     </div>
