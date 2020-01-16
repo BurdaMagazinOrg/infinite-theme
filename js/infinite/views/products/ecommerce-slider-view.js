@@ -146,6 +146,17 @@
     },
     onSliderChangeHandler: function(pSwiperApi) {
       this.trackVisibleProductImpressions();
+
+      /**
+       * INREL-4059: With activating blazy tp lazyload non-visible eCommerce slider images (https://jira.burda.com/browse/INREL-4059)
+       * the slider does not load the next image correctly on mobile devices. As a fix we enhance the offset of load the
+       * images to 300, so the images can be loaded earlier.
+       * Side-effect: This solution affects the complete blazy behaviour after triggering an eCommerce slide
+       */
+      var eCommBlazy = new Blazy({
+        offset: 300 // Loads images 300px before they're visible
+      });
+      eCommBlazy.revalidate();
     },
     onEnterHandler: function(pDirection) {
       BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
