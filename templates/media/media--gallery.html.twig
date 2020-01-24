@@ -15,8 +15,8 @@
 
 {% set count = 1 %}
 
-{% if content.field_images['#build']['settings']['count'] is defined %}
-    {% set count = content.field_images['#build']['settings']['count'] %}
+{% if content.field_media_images['#build']['settings']['count'] is defined %}
+    {% set count = content.field_media_images['#build']['settings']['count'] %}
 {% endif %}
 
 {% if content %}
@@ -34,7 +34,7 @@
         {% block gallery_container_block %}
         <div class="gallery-container">
             <div class="gallery-wrapper">
-                {{ content.field_images }}
+                {{ content.field_media_images }}
             </div>
         </div>
         {% endblock %}
