@@ -48,3 +48,14 @@
 .item-media--file {
   @extend %item-media--file;
 }
+
+.item-media--nexx-video {
+  @media (max-width: $screen-xs-max) {
+    margin-left: -$container-h-gap--mobile;
+    margin-right: -$container-h-gap--mobile;
+
+    .caption {
+      padding-left: $container-h-gap--mobile;
+    }
+  }
+}
