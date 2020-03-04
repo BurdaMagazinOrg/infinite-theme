@@ -49,6 +49,11 @@ coupons:
     js/behaviors/drupal.behaviors.coupons.js: {}
 
 
+videos:
+  version: 1.0
+  js:
+    js/behaviors/drupal.behaviors.videos.js: {}
+
 sidebar-navigation:
   version: 1.0
   js:
