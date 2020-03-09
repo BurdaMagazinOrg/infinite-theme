@@ -1,39 +1,54 @@
 (function($, Drupal, drupalSettings, Backbone, window) {
-  const PlayerBackboneView = BaseInviewView.extend({
+  const PlayerBackboneView = Backbone.View.extend({
+    hasMutedStart: false,
+    id: null,
     inviewObserver: null,
     inviewObserverOptions: {
       rootMargin: '0px 0px 0px 0px',
-      threshold: [0, 1]
+      threshold: [1]
     },
+    videoModel: null,
     initialize: function(options) {
       BaseInviewView.prototype.initialize.call(this, options);
-      // this.videoModel.set('autoPlay', 1);
+      this.id = this.videoModel.get('containerId');
       this.delegateInview();
-      console.log('>> this.videoModel', this.videoModel);
+    },
+    delegateInview: function() {
+      this.inviewObserver = new IntersectionObserver(
+        this.handleInviewObserver.bind(this),
+        this.inviewObserverOptions
+      );
+      this.inviewObserver.observe(this.el);
+    },
+    handleInviewObserver: function(entries) {
+      entries.forEach(
+        function(entry) {
+          !!entry.isIntersecting && this.onEnterHandler();
+          !entry.isIntersecting && this.onExitedHandler();
+        }.bind(this)
+      );
     },
     play: function() {
-      // console.log('>> play');
-      this.videoModel.set('isPaused', false);
+      /**
+       * Restore the 'isPaused' ThunderNexx behavior but override the play call
+       * ThunderNexx has no 'startMuted'
+       */
+      this.videoModel.set({ isPaused: false }, { silent: true });
+      if (this.hasMutedStart) {
+        _play.control.interact.play(this.id);
+      } else {
+        _play.control.interact.startMuted(this.id);
+      }
+      this.hasMutedStart = true;
     },
     pause: function() {
-      // console.log('>> pause');
-      // this.videoModel.set('isPaused', false);
+      this.videoModel.set('isPaused', true);
     },
     onEnterHandler: function() {
-      // console.log('>> onEnterHandler');
-      if (!this.model.get('inviewEnabled')) {
-        this.videoModel.set('isVisible', true);
-        this.play();
-      }
-      BaseInviewView.prototype.onEnterHandler.call(this);
+      this.play();
     },
     onExitedHandler: function() {
-      // console.log('>> onExitedHandler');
-      if (this.model.get('inviewEnabled')) {
-        this.videoModel.set('isVisible', false);
-        this.pause();
-      }
-      BaseInviewView.prototype.onExitedHandler.call(this);
+      this.pause();
     }
   });
 
@@ -44,9 +59,8 @@
   Drupal.behaviors.videos = {
     init: function() {
       Drupal.nexxPLAY.collection.forEach(function(model, index) {
-        var $element = jQuery(`#${model.get('containerId')}`);
         new PlayerBackboneView({
-          $el: $element,
+          el: document.getElementById(model.get('containerId')),
           model: new BaseModel(),
           videoModel: model
         });

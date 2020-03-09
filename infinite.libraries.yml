@@ -53,6 +53,8 @@ videos:
   version: 1.0
   js:
     js/behaviors/drupal.behaviors.videos.js: {}
+  dependencies:
+    - nexx_integration/base
 
 sidebar-navigation:
   version: 1.0
