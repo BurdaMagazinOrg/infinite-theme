@@ -3,10 +3,6 @@
     hasMutedStart: false,
     id: null,
     inviewObserver: null,
-    inviewObserverOptions: {
-      rootMargin: '0px 0px 0px 0px',
-      threshold: [1]
-    },
     videoModel: null,
     initialize: function(options) {
       BaseInviewView.prototype.initialize.call(this, options);
@@ -15,8 +11,7 @@
     },
     delegateInview: function() {
       this.inviewObserver = new IntersectionObserver(
-        this.handleInviewObserver.bind(this),
-        this.inviewObserverOptions
+        this.handleInviewObserver.bind(this)
       );
       this.inviewObserver.observe(this.el);
     },
@@ -52,19 +47,28 @@
     }
   });
 
-  window.addEventListener('nexxplay.ready', function() {
-    Drupal.behaviors.videos.init();
-  });
-
+  /**
+   * Drupal.nexxPLAY.collection
+   * dependency:
+   * - nexx_integration/base
+   */
   Drupal.behaviors.videos = {
+    collection: null,
     init: function() {
-      Drupal.nexxPLAY.collection.forEach(function(model, index) {
-        new PlayerBackboneView({
-          el: document.getElementById(model.get('containerId')),
-          model: new BaseModel(),
-          videoModel: model
-        });
+      if (Drupal.nexxPLAY && Drupal.nexxPLAY.collection) {
+        this.collection = Drupal.nexxPLAY.collection;
+        this.collection.on('add', this.handleNexxCollectionAdd.bind(this));
+      }
+    },
+    handleNexxCollectionAdd: function(model) {
+      new PlayerBackboneView({
+        el: document.getElementById(model.get('containerId')),
+        videoModel: model
       });
     }
   };
+
+  window.addEventListener('nexxplay.ready', function() {
+    Drupal.behaviors.videos.init();
+  });
 })(jQuery, Drupal, drupalSettings, Backbone, window);
