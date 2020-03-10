@@ -57,10 +57,15 @@
     init: function() {
       if (Drupal.nexxPLAY && Drupal.nexxPLAY.collection) {
         this.collection = Drupal.nexxPLAY.collection;
-        this.collection.on('add', this.handleNexxCollectionAdd.bind(this));
+        this.collection.on('add', this.createPlayerBackboneView.bind(this));
+        this.collection.forEach(
+          function(model) {
+            this.createPlayerBackboneView(model);
+          }.bind(this)
+        );
       }
     },
-    handleNexxCollectionAdd: function(model) {
+    createPlayerBackboneView: function(model) {
       new PlayerBackboneView({
         el: document.getElementById(model.get('containerId')),
         videoModel: model
