@@ -52,45 +52,48 @@
 
 .nexx-separator {
   font-family: $font-label;
+  font-size: getFontSize(14px);
   letter-spacing: 0;
-  font-size: 13px;
   line-height: 1.4;
-  position: relative;
-  margin-top: $grid-unit-3;
   margin-bottom: $grid-unit-half;
+  margin-top: $grid-unit-3;
+  position: relative;
 
   &:before {
-    content: $nexx-separator-icon;
-    font-family: $font-icons;
-    font-size: 14px;
-    display: inline-block;
-    padding: 5px 5px 5px 0;
-    position: relative;
     background-color: white;
+    content: $nexx-separator-icon;
+    display: inline-block;
+    font-family: $font-icons;
+    font-size: getFontSize(14px);
+    padding: $grid-unit-half $grid-unit-half $grid-unit-half 0;
+    position: relative;
+    top: 2px;
     transform: rotate(45deg);
   }
 
   &:after {
-    content: ' ';
-    position: absolute;
-    left: 140px;
-    top: 15px;
-    right: 0;
     border-top: 1px solid #383838;
+    content: ' ';
+    left: 140px;
+    position: absolute;
+    right: 0;
+    top: 14px;
   }
 }
 
 .nexx-separator span {
   background-color: white;
-  padding: 5px 20px;
   display: inline-block;
+  padding: $grid-unit-half 20px;
   position: relative;
+  z-index: 2;
 }
 
 #nexx-video--article-footer-wrapper {
   .item-paragraph__title {
+    font-size: $font-size-h3;
     margin-bottom: $grid-unit-2;
-    font-size: 30px;
+    margin-top: $grid-unit-2;
   }
 }
 
