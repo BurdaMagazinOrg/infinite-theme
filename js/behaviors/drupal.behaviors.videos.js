@@ -5,7 +5,7 @@
     inviewObserver: null,
     videoModel: null,
     initialize: function(options) {
-      BaseInviewView.prototype.initialize.call(this, options);
+      Object.assign(this, options || {});
       this.id = this.videoModel.get('containerId');
       this.delegateInview();
     },
