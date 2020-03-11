@@ -307,3 +307,42 @@
   -webkit-animation: loadingSpinner 1.1s infinite linear;
   animation: loadingSpinner 1.1s infinite linear;
 }
+
+@mixin nexx-separator {
+  font-family: $nexx-separator-font;
+  font-size: getFontSize(14px);
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-bottom: $grid-unit-half;
+  margin-top: $grid-unit-3;
+  position: relative;
+
+  &:before {
+    background-color: white;
+    content: $nexx-separator-icon;
+    display: inline-block;
+    font-family: $font-icons;
+    font-size: getFontSize(14px);
+    padding: $grid-unit-half $grid-unit-half $grid-unit-half 0;
+    position: relative;
+    top: 3px;
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    border-top: $nexx-separator__border;
+    content: ' ';
+    left: 120px;
+    position: absolute;
+    right: 0;
+    top: 14px;
+  }
+
+  span {
+    background-color: $nexx-separator__label--bg;
+    display: inline-block;
+    padding: $grid-unit-half 10px;
+    position: relative;
+    z-index: 2;
+  }
+}
