@@ -36,9 +36,7 @@
       }
       this.hasMutedStart = true;
     },
-    pause: function() {
-      this.videoModel.set('isPaused', true);
-    },
+    pause: function() {},
     onEnterHandler: function() {
       this.play();
     },
