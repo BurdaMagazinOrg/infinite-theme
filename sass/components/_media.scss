@@ -1,6 +1,7 @@
-.item-paragraph--media, .item-media {
-  .video-container, .img-container {
-
+.item-paragraph--media,
+.item-media {
+  .video-container,
+  .img-container {
   }
 
   & > .caption {
@@ -47,6 +48,10 @@
 
 .item-media--file {
   @extend %item-media--file;
+}
+
+.nexx-separator {
+  @include nexx-separator();
 }
 
 .item-media--nexx-video {

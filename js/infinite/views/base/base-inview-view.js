@@ -15,6 +15,9 @@
       BaseView.prototype.initialize.call(this, pOptions);
       this.element = this.$el[0];
     },
+    /**
+     * Requires an explicit call to be activated
+     */
     delegateInview: function() {
       !!this.inviewObserver && !!this.marketingObserver && this.destroy();
 
