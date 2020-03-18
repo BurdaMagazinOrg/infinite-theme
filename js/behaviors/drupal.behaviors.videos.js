@@ -25,14 +25,18 @@
     },
     play: function() {
       if (this.hasMutedStart) {
-        this.videoModel.set({ isPaused: false });
+        this.videoModel.set({
+          isPaused: false
+        });
       } else {
         _play.control.interact.startMuted(this.id);
       }
       this.hasMutedStart = true;
     },
     pause: function() {
-      this.videoModel.set({ isPaused: true });
+      this.videoModel.set({
+        isPaused: true
+      });
     },
     enterPopout: function() {
       var isPlaying = _play.control.instanceIsPlaying(this.id);
@@ -72,6 +76,9 @@
     playerArr: [],
     overridePlayerConfig: function(config) {
       config.scrollingMode = 0;
+      config.autoPlay = 0;
+      config.autoPlayIfMutedPossible = 0;
+      config.autoPlayMutedAlways = 0;
     },
     handlePlayerAdded: function(event) {
       var player = null;
