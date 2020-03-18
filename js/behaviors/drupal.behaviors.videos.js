@@ -7,7 +7,7 @@
     initialize: function(options) {
       Object.assign(this, options || {});
       this.id = this.videoModel.get('containerId');
-      this.delegateInview();
+      this.listenTo(this.videoModel, 'change:state', this.onStateChange);
     },
     delegateInview: function() {
       this.inviewObserver = new IntersectionObserver(
@@ -24,10 +24,6 @@
       );
     },
     play: function() {
-      /**
-       * Restore the 'isPaused' ThunderNexx behavior but override the play call
-       * ThunderNexx has no 'startMuted'
-       */
       if (this.hasMutedStart) {
         this.videoModel.set({ isPaused: false });
       } else {
@@ -38,32 +34,31 @@
     pause: function() {
       this.videoModel.set({ isPaused: true });
     },
-    /**
-     * Why we use here setTimeout?
-     * nexx API: _play.control.interact.exitPopout
-     * exitPopout / enterPopout change playstate hardcoded
-     * need to override these settings
-     */
-    checkPlayState: function(isPlaying) {
-      !!isPlaying && setTimeout(this.play.bind(this));
-      !isPlaying && setTimeout(this.pause.bind(this));
-    },
     enterPopout: function() {
       var isPlaying = _play.control.instanceIsPlaying(this.id);
+      var adIsPlaying = _play.control.instanceIsPlayingAd(this.id);
       _play.control.interact.enterPopout(this.id);
-      this.checkPlayState(isPlaying);
+      !isPlaying && !adIsPlaying && setTimeout(this.pause.bind(this));
     },
     exitPopout: function() {
-      _play.control.interact.exitPopout(this.id);
+      _play.control.interact.exitPopout(this.id, true);
     },
     onEnterHandler: function() {
+      this.play();
       this.hasMutedStart && this.exitPopout();
-      setTimeout(this.play.bind(this));
       this.trigger('onEnter', this);
     },
     onExitedHandler: function() {
       this.hasMutedStart && this.enterPopout();
       this.trigger('onExit', this);
+    },
+    onStateChange: function() {
+      var state = this.videoModel.get('state');
+      switch (state) {
+        case 'playerready':
+          this.delegateInview();
+          break;
+      }
     }
   });
 
@@ -103,7 +98,10 @@
     handleOnPlayerEnter: function(playerInstance) {
       var id = playerInstance.id;
       this.playerArr.forEach(function(player) {
-        id !== player.id && player.exitPopout();
+        if (id !== player.id) {
+          player.exitPopout();
+          player.pause();
+        }
       });
     },
     createPlayerBackboneView: function(model) {
