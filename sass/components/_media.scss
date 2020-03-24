@@ -54,6 +54,7 @@
   @include nexx-separator();
 }
 
+.item-paragraph--small .item-media--nexx-video,
 .item-media--nexx-video {
   @media (max-width: $screen-xs-max) {
     margin-left: -$container-h-gap--mobile;

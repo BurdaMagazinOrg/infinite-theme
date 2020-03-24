@@ -310,11 +310,11 @@
 
 @mixin nexx-separator {
   font-family: $nexx-separator-font;
-  font-size: getFontSize(14px);
+  font-size: $nexx-separator__label--size;
+  font-weight: $nexx-separator__label--weight;
   letter-spacing: 0;
   line-height: 1.4;
-  margin-bottom: $grid-unit-half;
-  margin-top: $grid-unit-3;
+  margin: $nexx-separator__label--margin;
   position: relative;
 
   &:before {
@@ -332,7 +332,7 @@
   &:after {
     border-top: $nexx-separator__border;
     content: ' ';
-    left: 120px;
+    left: $nexx-separator__border--left;
     position: absolute;
     right: 0;
     top: 14px;
@@ -341,7 +341,7 @@
   span {
     background-color: $nexx-separator__label--bg;
     display: inline-block;
-    padding: $grid-unit-half 10px;
+    padding: $nexx-separator__label--padding;
     position: relative;
     z-index: 2;
   }
