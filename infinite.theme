@@ -282,7 +282,7 @@ function infinite_preprocess_advertising_product(&$variables) {
   // sold_out
   $sold_out = $product->product_sold_out->value;
 
-  if ($price <= 0 || $sold_out) {
+  if ($price < 0 || $sold_out) {
     $variables['sold_out'] = TRUE;
   }
 
