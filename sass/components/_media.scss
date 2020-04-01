@@ -52,6 +52,8 @@
 
 .item-media--nexx-video {
   .nxp_popout {
+    z-index: 9999999;
+
     .nexx__close-icon {
       @include icon();
       @include icon-close();
