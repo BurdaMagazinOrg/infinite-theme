@@ -55,45 +55,6 @@
   }
 }
 
-.outbrain_div_container {
-  @extend %gap__container--h-negative;
-
-  .OUTBRAIN {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    width: 100% !important;
-  }
-
-  .ob_what {
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding: $outbrain__ob_what-padding-desktop;
-  }
-
-  .ob-widget {
-    margin-bottom: $gap-v-region-desktop !important;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    .ob_what {
-      padding: $outbrain__ob_what-padding-mobile;
-    }
-
-    .ob-widget {
-      margin-bottom: $gap-v-region-mobile !important;
-    }
-
-    .ob-widget-section {
-      padding: $outbrain__padding-mobile !important;
-
-      .ob-rec-text,
-      .ob-rec-source {
-        padding: $outbrain__item-padding-mobile !important;
-      }
-    }
-  }
-}
-
 .ad-inactive {
   overflow: hidden;
   height: 0 !important;
