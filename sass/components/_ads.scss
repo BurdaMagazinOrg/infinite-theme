@@ -75,10 +75,6 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    .ob-widget-header {
-      margin-top: 0 !important;
-    }
-
     .ob_what {
       padding: $outbrain__ob_what-padding-mobile;
     }
