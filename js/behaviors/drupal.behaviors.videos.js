@@ -6,6 +6,7 @@
     id: null,
     isIntersecting: false,
     player: null,
+    playerReady: false,
     sessionStorageDefaults: {
       restrainPopout: false,
     },
@@ -29,18 +30,14 @@
     },
     play: function () {
       if (this.hasMutedStart) {
-        this.videoModel.set({
-          isPaused: false,
-        });
+        this.videoModel.set({ isPaused: false });
       } else {
+        this.videoModel.set({ isPaused: true }, { silent: true });
         _play.control.interact.startMuted(this.id);
       }
-      this.hasMutedStart = true;
     },
     pause: function () {
-      this.videoModel.set({
-        isPaused: true,
-      });
+      this.videoModel.set({ isPaused: true });
     },
     enterPopout: function () {
       var isPlaying = _play.control.instanceIsPlaying(this.id);
@@ -83,17 +80,15 @@
     handleObserverEnter: function () {
       this.play();
       this.hasMutedStart && this.hasPopout && this.exitPopout(true);
-      this.isIntersecting = true;
     },
     handleObserverExit: function () {
       var restrainPopout = this.getSessionStorageValue('restrainPopout');
       this.hasMutedStart && !restrainPopout && this.enterPopout();
       this.hasMutedStart && restrainPopout && this.pause();
-      this.isIntersecting = false;
     },
     handlePopoutClose: function (event) {
       event.stopPropagation();
-      this.exitPopout();
+      this.exitPopout(false);
 
       if (!!window.sessionStorage) {
         this.setSessionStorage({ restrainPopout: true });
@@ -106,17 +101,32 @@
         switch (event.event) {
           case 'intersection':
             percentageVisible = event.data.percentageVisible;
-            percentageVisible > 0 && !this.isIntersecting
-              ? this.handleObserverEnter()
-              : percentageVisible <= 0 &&
-                this.isIntersecting &&
+            if (percentageVisible > 0) {
+              !this.isIntersecting &&
+                this.playerReady &&
+                this.handleObserverEnter();
+              this.isIntersecting = true;
+            } else if (percentageVisible <= 0) {
+              this.isIntersecting &&
+                this.playerReady &&
                 this.handleObserverExit();
+              this.isIntersecting = false;
+            }
+            break;
+          case 'play':
+            this.hasMutedStart = true;
             break;
           case 'playeradded':
             player = _play._factory.control.players[event.playerContainer];
             this.player = player;
             this.config = player.config;
             this.playerAdded();
+            break;
+          case 'playerready':
+            this.playerReady = true;
+            this.isIntersecting &&
+              !this.hasMutedStart &&
+              this.handleObserverEnter();
             break;
         }
       } else if (event.event === 'intersection' && this.hasPopout) {
