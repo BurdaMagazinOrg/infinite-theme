@@ -1,4 +1,6 @@
 #modal-search {
+  z-index: 99999999;
+
   & > .spinner-container {
     position: absolute;
     bottom: 35%;

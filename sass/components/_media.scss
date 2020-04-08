@@ -50,6 +50,32 @@
   @extend %item-media--file;
 }
 
+.item-media--nexx-video {
+  .nxp_popout {
+    z-index: 9999999;
+
+    .nexx__close-icon {
+      @include icon();
+      @include icon-close();
+      position: absolute;
+      right: $grid-unit-1;
+      top: $grid-unit-1;
+      color: $white;
+      border-radius: 50%;
+      display: flex;
+      width: 25px;
+      height: 25px;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .nxp_notice {
+      top: 40px;
+    }
+  }
+}
+
 .nexx-separator {
   @include nexx-separator();
 }

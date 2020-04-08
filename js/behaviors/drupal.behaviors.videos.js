@@ -1,69 +1,138 @@
-(function($, Drupal, drupalSettings, Backbone, window) {
+(function ($, Drupal, drupalSettings, Backbone, window) {
   const PlayerBackboneView = Backbone.View.extend({
+    config: null,
     hasMutedStart: false,
+    hasPopout: false,
     id: null,
-    inviewObserver: null,
+    isIntersecting: false,
+    player: null,
+    playerReady: false,
+    sessionStorageDefaults: {
+      restrainPopout: false,
+    },
+    sessionStorageId: null,
     videoModel: null,
-    initialize: function(options) {
+    initialize: function (options) {
       Object.assign(this, options || {});
       this.id = this.videoModel.get('containerId');
-      this.listenTo(this.videoModel, 'change:state', this.onStateChange);
+      this.sessionStorageId = `${this.id}-ss-bs`;
+      _play.config.addPlaystateListener(this.handlePlaystate.bind(this));
     },
-    delegateInview: function() {
-      this.inviewObserver = new IntersectionObserver(
-        this.handleInviewObserver.bind(this)
-      );
-      this.inviewObserver.observe(this.el);
+    overridePlayerConfig: function (config) {
+      config.scrollingMode = 0;
+      config.autoPlay = 0;
+      config.autoPlayIfMutedPossible = 0;
+      config.autoPlayMutedAlways = 0;
     },
-    handleInviewObserver: function(entries) {
-      entries.forEach(
-        function(entry) {
-          !!entry.isIntersecting && this.onEnterHandler();
-          !entry.isIntersecting && this.onExitedHandler();
-        }.bind(this)
-      );
+    playerAdded: function () {
+      this.overridePlayerConfig(this.config);
+      this.appendPopoutCloseIcon(this.el);
     },
-    play: function() {
+    play: function () {
       if (this.hasMutedStart) {
-        this.videoModel.set({
-          isPaused: false
-        });
+        this.videoModel.set({ isPaused: false });
       } else {
+        this.videoModel.set({ isPaused: true }, { silent: true });
         _play.control.interact.startMuted(this.id);
       }
-      this.hasMutedStart = true;
     },
-    pause: function() {
-      this.videoModel.set({
-        isPaused: true
-      });
+    pause: function () {
+      this.videoModel.set({ isPaused: true });
     },
-    enterPopout: function() {
+    enterPopout: function () {
       var isPlaying = _play.control.instanceIsPlaying(this.id);
       var adIsPlaying = _play.control.instanceIsPlayingAd(this.id);
+
       _play.control.interact.enterPopout(this.id);
+      this.hasPopout = true;
+
+      //stop autoplay in popout when video was paused by user
       !isPlaying && !adIsPlaying && setTimeout(this.pause.bind(this));
     },
-    exitPopout: function() {
-      _play.control.interact.exitPopout(this.id, true);
+    exitPopout: function (continuePlay) {
+      _play.control.interact.exitPopout(this.id, continuePlay);
+      this.hasPopout = false;
     },
-    onEnterHandler: function() {
+    appendPopoutCloseIcon: function (el) {
+      var container = el.querySelector('.cl_nxp_sector');
+      var closeIcon = document.createElement('div');
+      closeIcon.classList.add('nexx__close-icon', 'nxp_bg');
+      container.appendChild(closeIcon);
+      closeIcon.addEventListener('click', this.handlePopoutClose.bind(this));
+    },
+    getSessionStorageValue: function (value) {
+      var sessionStorageObj = this.getSessionStorageObj();
+      return !!sessionStorageObj[value] ? sessionStorageObj[value] : null;
+    },
+    getSessionStorageObj: function () {
+      var sessionStorageObj = !!window.sessionStorage
+        ? JSON.parse(window.sessionStorage.getItem(this.sessionStorageId))
+        : null;
+      return Object.assign({}, this.sessionStorageDefaults, sessionStorageObj);
+    },
+    setSessionStorage: function (obj) {
+      var sessionStorageObj = Object.assign(this.getSessionStorageObj(), obj);
+      window.sessionStorage.setItem(
+        this.sessionStorageId,
+        JSON.stringify(sessionStorageObj)
+      );
+    },
+    handleObserverEnter: function () {
       this.play();
-      this.hasMutedStart && this.exitPopout();
-      this.trigger('onEnter', this);
+      this.hasMutedStart && this.hasPopout && this.exitPopout(true);
     },
-    onExitedHandler: function() {
-      this.hasMutedStart && this.enterPopout();
-      this.trigger('onExit', this);
+    handleObserverExit: function () {
+      var restrainPopout = this.getSessionStorageValue('restrainPopout');
+      this.hasMutedStart && !restrainPopout && this.enterPopout();
+      this.hasMutedStart && restrainPopout && this.pause();
     },
-    onStateChange: function() {
-      var state = this.videoModel.get('state');
-      switch (state) {
-        case 'playerready':
-          this.delegateInview();
-          break;
+    handlePopoutClose: function (event) {
+      event.stopPropagation();
+      this.exitPopout(false);
+
+      if (!!window.sessionStorage) {
+        this.setSessionStorage({ restrainPopout: true });
       }
-    }
+    },
+    handlePlaystate: function (event) {
+      var player = null;
+      var percentageVisible = null;
+      if (event.playerContainer === this.id) {
+        switch (event.event) {
+          case 'intersection':
+            percentageVisible = event.data.percentageVisible;
+            if (percentageVisible > 0) {
+              !this.isIntersecting &&
+                this.playerReady &&
+                this.handleObserverEnter();
+              this.isIntersecting = true;
+            } else if (percentageVisible <= 0) {
+              this.isIntersecting &&
+                this.playerReady &&
+                this.handleObserverExit();
+              this.isIntersecting = false;
+            }
+            break;
+          case 'play':
+            this.hasMutedStart = true;
+            break;
+          case 'playeradded':
+            player = _play._factory.control.players[event.playerContainer];
+            this.player = player;
+            this.config = player.config;
+            this.playerAdded();
+            break;
+          case 'playerready':
+            this.playerReady = true;
+            this.isIntersecting &&
+              !this.hasMutedStart &&
+              this.handleObserverEnter();
+            break;
+        }
+      } else if (event.event === 'intersection' && this.hasPopout) {
+        this.exitPopout(false);
+      }
+    },
   });
 
   /**
@@ -73,55 +142,27 @@
    */
   Drupal.behaviors.videos = {
     collection: null,
-    playerArr: [],
-    overridePlayerConfig: function(config) {
-      config.scrollingMode = 0;
-      config.autoPlay = 0;
-      config.autoPlayIfMutedPossible = 0;
-      config.autoPlayMutedAlways = 0;
-    },
-    handlePlayerAdded: function(event) {
-      var player = null;
-      switch (event.event) {
-        case 'playeradded':
-          player = _play._factory.control.players[event.playerContainer];
-          this.overridePlayerConfig(player.config);
-          break;
-      }
-    },
-    init: function() {
+    init: function () {
       if (Drupal.nexxPLAY && Drupal.nexxPLAY.collection) {
         this.collection = Drupal.nexxPLAY.collection;
         this.collection.on('add', this.createPlayerBackboneView.bind(this));
-        _play.config.addPlaystateListener(this.handlePlayerAdded.bind(this));
 
         this.collection.forEach(
-          function(model) {
+          function (model) {
             this.createPlayerBackboneView(model);
           }.bind(this)
         );
       }
     },
-    handleOnPlayerEnter: function(playerInstance) {
-      var id = playerInstance.id;
-      this.playerArr.forEach(function(player) {
-        if (id !== player.id) {
-          player.exitPopout();
-          player.pause();
-        }
+    createPlayerBackboneView: function (model) {
+      new PlayerBackboneView({
+        el: document.getElementById(model.get('containerId')),
+        videoModel: model,
       });
     },
-    createPlayerBackboneView: function(model) {
-      var playerBackboneView = new PlayerBackboneView({
-        el: document.getElementById(model.get('containerId')),
-        videoModel: model
-      });
-      this.playerArr.push(playerBackboneView);
-      playerBackboneView.on('onEnter', this.handleOnPlayerEnter.bind(this));
-    }
   };
 
-  window.addEventListener('nexxplay.ready', function() {
+  window.addEventListener('nexxplay.ready', function () {
     Drupal.behaviors.videos.init();
   });
 })(jQuery, Drupal, drupalSettings, Backbone, window);
