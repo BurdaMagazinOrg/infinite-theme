@@ -59,7 +59,13 @@
   @extend %teaser-presenter--full;
 }
 
-.teaser-presenter--half {
+.teaser-presenter--lg {
+  &.teaser-smart-video,
+  &.teaser-smart-image {
+    .teaser__img-container:after {
+      left: $padding * 2;
+    }
+  }
 }
 
 .teaser-presenter--lg {
