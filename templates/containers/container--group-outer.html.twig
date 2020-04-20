@@ -16,11 +16,12 @@
 
         {{ children }}
 
-        {% block static_nexx_block %}{% endblock %}
 
         {% block content_tags %}
             {{ parent.field_tags }}
         {% endblock %}
+        
+        {% block static_nexx_block %}{% endblock %}
 
         <div class="region-fixed-content socials socials-bar socials-horizontal-bar item-content__block">
             {% block socials_horizontal_bar %}
