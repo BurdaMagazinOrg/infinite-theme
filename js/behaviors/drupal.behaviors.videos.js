@@ -1,8 +1,9 @@
-(function ($, Drupal, drupalSettings, Backbone, window) {
+(function($, Drupal, drupalSettings, Backbone, window) {
   const PlayerBackboneView = Backbone.View.extend({
     config: null,
     hasMutedStart: false,
     hasPopout: false,
+    hasStickyAd: false,
     id: null,
     isIntersecting: false,
     player: null,
@@ -11,24 +12,36 @@
       restrainPopout: false,
     },
     sessionStorageId: null,
+    stickyAdId: 'atf-4x4-slot',
     videoModel: null,
-    initialize: function (options) {
+    initialize: function(options) {
       Object.assign(this, options || {});
       this.id = this.videoModel.get('containerId');
       this.sessionStorageId = `${this.id}-ss-bs`;
       _play.config.addPlaystateListener(this.handlePlaystate.bind(this));
+
+      window.addEventListener(
+        'atf_no_ad_rendered',
+        this.noAdRendered.bind(this),
+        false
+      );
+      window.addEventListener(
+        'atf_ad_rendered',
+        this.adRendered.bind(this),
+        false
+      );
     },
-    overridePlayerConfig: function (config) {
+    overridePlayerConfig: function(config) {
       config.scrollingMode = 0;
       config.autoPlay = 0;
       config.autoPlayIfMutedPossible = 0;
       config.autoPlayMutedAlways = 0;
     },
-    playerAdded: function () {
+    playerAdded: function() {
       this.overridePlayerConfig(this.config);
       this.appendPopoutCloseIcon(this.el);
     },
-    play: function () {
+    play: function() {
       if (this.hasMutedStart) {
         this.videoModel.set({ isPaused: false });
       } else {
@@ -36,10 +49,10 @@
         _play.control.interact.startMuted(this.id);
       }
     },
-    pause: function () {
+    pause: function() {
       this.videoModel.set({ isPaused: true });
     },
-    enterPopout: function () {
+    enterPopout: function() {
       var isPlaying = _play.control.instanceIsPlaying(this.id);
       var adIsPlaying = _play.control.instanceIsPlayingAd(this.id);
 
@@ -49,44 +62,52 @@
       //stop autoplay in popout when video was paused by user
       !isPlaying && !adIsPlaying && setTimeout(this.pause.bind(this));
     },
-    exitPopout: function (continuePlay) {
+    exitPopout: function(continuePlay) {
       _play.control.interact.exitPopout(this.id, continuePlay);
       this.hasPopout = false;
     },
-    appendPopoutCloseIcon: function (el) {
+    appendPopoutCloseIcon: function(el) {
       var container = el.querySelector('.cl_nxp_sector');
       var closeIcon = document.createElement('div');
       closeIcon.classList.add('nexx__close-icon', 'nxp_bg');
       container.appendChild(closeIcon);
       closeIcon.addEventListener('click', this.handlePopoutClose.bind(this));
     },
-    getSessionStorageValue: function (value) {
+    getSessionStorageValue: function(value) {
       var sessionStorageObj = this.getSessionStorageObj();
       return !!sessionStorageObj[value] ? sessionStorageObj[value] : null;
     },
-    getSessionStorageObj: function () {
+    getSessionStorageObj: function() {
       var sessionStorageObj = !!window.sessionStorage
         ? JSON.parse(window.sessionStorage.getItem(this.sessionStorageId))
         : null;
       return Object.assign({}, this.sessionStorageDefaults, sessionStorageObj);
     },
-    setSessionStorage: function (obj) {
+    setSessionStorage: function(obj) {
       var sessionStorageObj = Object.assign(this.getSessionStorageObj(), obj);
       window.sessionStorage.setItem(
         this.sessionStorageId,
         JSON.stringify(sessionStorageObj)
       );
     },
-    handleObserverEnter: function () {
+    willShowPopout: function() {
+      var stickyAd = document.getElementById(this.stickyAdId);
+      var style = window.getComputedStyle(stickyAd);
+      var stickyAdIsVisible = !!style && style.display !== 'none';
+      var restrainPopout = !!this.getSessionStorageValue('restrainPopout');
+
+      return (this.hasStickyAd && stickyAdIsVisible) || restrainPopout;
+    },
+    handleObserverEnter: function() {
       this.play();
       this.hasMutedStart && this.hasPopout && this.exitPopout(true);
     },
-    handleObserverExit: function () {
-      var restrainPopout = this.getSessionStorageValue('restrainPopout');
+    handleObserverExit: function() {
+      var restrainPopout = this.willShowPopout();
       this.hasMutedStart && !restrainPopout && this.enterPopout();
       this.hasMutedStart && restrainPopout && this.pause();
     },
-    handlePopoutClose: function (event) {
+    handlePopoutClose: function(event) {
       event.stopPropagation();
       this.exitPopout(false);
 
@@ -94,7 +115,7 @@
         this.setSessionStorage({ restrainPopout: true });
       }
     },
-    handlePlaystate: function (event) {
+    handlePlaystate: function(event) {
       var player = null;
       var percentageVisible = null;
       if (event.playerContainer === this.id) {
@@ -133,6 +154,17 @@
         this.exitPopout(false);
       }
     },
+    noAdRendered: function(e) {
+      if (e.element_id === this.stickyAdId) {
+        this.hasStickyAd = false;
+      }
+    },
+    adRendered: function(e) {
+      if (e.element_id === this.stickyAdId) {
+        this.hasStickyAd = true;
+        if (this.hasPopout) this.exitPopout(false);
+      }
+    },
   });
 
   /**
@@ -142,19 +174,19 @@
    */
   Drupal.behaviors.videos = {
     collection: null,
-    init: function () {
+    init: function() {
       if (Drupal.nexxPLAY && Drupal.nexxPLAY.collection) {
         this.collection = Drupal.nexxPLAY.collection;
         this.collection.on('add', this.createPlayerBackboneView.bind(this));
 
         this.collection.forEach(
-          function (model) {
+          function(model) {
             this.createPlayerBackboneView(model);
           }.bind(this)
         );
       }
     },
-    createPlayerBackboneView: function (model) {
+    createPlayerBackboneView: function(model) {
       new PlayerBackboneView({
         el: document.getElementById(model.get('containerId')),
         videoModel: model,
@@ -162,7 +194,7 @@
     },
   };
 
-  window.addEventListener('nexxplay.ready', function () {
+  window.addEventListener('nexxplay.ready', function() {
     Drupal.behaviors.videos.init();
   });
 })(jQuery, Drupal, drupalSettings, Backbone, window);
