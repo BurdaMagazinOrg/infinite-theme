@@ -1,0 +1,8 @@
+{% if outbrain.widget_ids %}
+    {{ attach_library('infinite_blocks/consent_js') }}
+    <div class="outbrain_div_container">
+        {% for widget_id in outbrain.widget_ids %}
+            <div class="{{ outbrain.class }}" data-ob-template="{{ outbrain.template }}" data-src="{{ outbrain.node_url }}" data-widget-id="{{ widget_id }}"></div>
+        {% endfor %}
+    </div>
+{% endif %}
