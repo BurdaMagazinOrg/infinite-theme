@@ -40,19 +40,19 @@
 {% extends "paragraph.html.twig" %}
 
 {% block content_block %}
-    {{ attach_library('infinite/instagram') }}
     {% block title %}
         {% if content.field_title %}
             {{ content.field_title }}
         {% endif %}
     {% endblock %}
-
-    {% if content.field_media %}
-        {{ content.field_media }}
-    {% else %}
-        {{ content.instagram }}
-    {% endif %}
-
+    <div class="item-media__wrapper">
+      {% if content.field_media %}
+          {{ content.field_media }}
+      {% else %}
+          {{ content.instagram }}
+      {% endif %}
+      <div class="item-media__consent"></div>
+    </div>
     {{ content.field_embed_description }}
 
 {% endblock %}
