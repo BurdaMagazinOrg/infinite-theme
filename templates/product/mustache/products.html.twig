@@ -10,12 +10,6 @@
         <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
     </div>
   {% endif %}
-
-  {% if view_mode != 'single' %}
-      <div class="shopit-badge" data-view-type="shopitStickyView">
-          <img src="/sites/instyle.de/themes/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
-      </div>
-  {% endif %}
 {% endblock %}
 
 [[#docs]]
@@ -24,12 +18,6 @@
         {% if showAffiliateLinkLabel and view_mode == 'single' %}
           <div class="affiliatelinks">
               <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
-          </div>
-        {% endif %}
-
-        {% if view_mode == 'single' %}
-          <div class="shopit-badge" data-view-type="shopitStickyView">
-              <img src="/sites/instyle.de/themes/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
           </div>
         {% endif %}
       {% endblock %}
