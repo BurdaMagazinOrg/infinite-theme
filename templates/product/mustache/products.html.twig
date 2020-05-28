@@ -13,7 +13,7 @@
 
   {% if view_mode != 'single' %}
       <div class="shopit-badge" data-view-type="shopitStickyView">
-          <img src="/themes/custom/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
+          <img src="/sites/instyle.de/themes/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
       </div>
   {% endif %}
 {% endblock %}
@@ -26,10 +26,10 @@
               <a href="/affiliatelinks" rel="nofollow" target="_self">Affiliatelinks</a>
           </div>
         {% endif %}
-        
+
         {% if view_mode == 'single' %}
           <div class="shopit-badge" data-view-type="shopitStickyView">
-              <img src="/themes/custom/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
+              <img src="/sites/instyle.de/themes/instyle_infinite/svgs/shop-it-vert-round.svg" alt="Shop it" />
           </div>
         {% endif %}
       {% endblock %}
@@ -43,7 +43,7 @@
         "[[#is_slider_product]]item-product-slider swiper-slide[[/is_slider_product]]",
         "[[^stock_availability]]item-product--sold-out[[/stock_availability]]",
       ] %}
-      
+
       {% set provider_url_addition %}
         [[#is_provider]]
           [[#tracdelight]]
