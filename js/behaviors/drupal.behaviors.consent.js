@@ -1,34 +1,49 @@
 (function (Drupal, window) {
   Drupal.behaviors.consent = {
+    NO_ID_EXISTS_ATM: 10019,
     getSettings: function () {
-      return {
-        vendors: [
-          {
-            init: function () {
-              twttr.widgets.load();
-            },
-            data: [{ vendorId: 10006 }],
-            src: '//platform.twitter.com/widgets.js',
+      window.consentVendors = window.consentVendors || [];
+      window.consentVendors.push(
+        {
+          init: function () {
+            twttr.widgets.load();
           },
-          {
-            init: function () {
-              instgrm.Embeds.process();
-            },
-            data: [{ vendorId: 10019 }],
-            src: '//platform.instagram.com/en_US/embeds.js',
+          data: [{ vendorId: 10006 }],
+          script: { src: '//platform.twitter.com/widgets.js' },
+        },
+        {
+          init: function () {
+            instgrm.Embeds.process();
           },
-          {
-            init: this.setIframesSrc.bind(this, '.embed-youtube iframe'),
-            data: [{ vendorId: 10020 }],
-            src: undefined,
+          data: [{ vendorId: 10019 }],
+          script: { src: '//platform.instagram.com/en_US/embeds.js' },
+        },
+        {
+          init: this.setIframesSrc.bind(this, '.embed-youtube iframe'),
+          data: [{ vendorId: 10020 }],
+          script: { src: undefined },
+        },
+        {
+          init: function () {},
+          data: [{ vendorId: 10031 }],
+          script: { src: '//assets.pinterest.com/js/pinit.js' },
+        },
+        {
+          init: function () {},
+          data: [{ vendorId: this.NO_ID_EXISTS_ATM }],
+          script: {
+            src: '//static.cleverpush.com/channel/loader/YGtyGPovWHkyjZ6tN.js',
           },
-          {
-            init: function () {},
-            data: [{ vendorId: 10031 }],
-            src: '//assets.pinterest.com/js/pinit.js',
+        },
+        {
+          init: function () {},
+          data: [{ vendorId: this.NO_ID_EXISTS_ATM }],
+          script: {
+            src: `https://static.hotjar.com/c/hotjar-${AppConfig.hotjarId}.js`,
           },
-        ],
-      };
+        }
+      );
+      return { vendors: window.consentVendors };
     },
     attach: function (context) {
       if (context !== window.document) return;
@@ -36,6 +51,7 @@
     },
     init: function () {
       var settings = this.getSettings();
+      console.log('>>> settings', settings);
       var checkVendors = this.checkVendors.bind(this, settings.vendors);
 
       checkVendors();
@@ -60,13 +76,16 @@
       );
     },
     checkConsent: function (vendor, consentData) {
-      if (consentData) vendor.src ? this.loadScript(vendor) : vendor.init();
+      var script = vendor.script;
+      if (consentData) script.src ? this.loadScript(vendor) : vendor.init();
     },
     loadScript: function (vendor) {
-      var script = document.createElement('script');
-      script.onload = vendor.init;
-      script.src = vendor.src;
-      document.head.appendChild(script);
+      var script = vendor.script;
+      var js = document.createElement('script');
+      js.onload = vendor.init;
+      if (script.id) js.id = script.id;
+      js.src = script.src;
+      document.head.appendChild(js);
     },
     setIframesSrc: function (cssSelector) {
       var iframes = document.querySelectorAll(cssSelector);
