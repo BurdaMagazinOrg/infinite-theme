@@ -20,7 +20,6 @@
         {
           init: this.setIframesSrc.bind(this, '.embed-youtube iframe'),
           data: [{ vendorId: 10020 }],
-          script: { src: undefined },
         },
         {
           init: function () {},
@@ -38,7 +37,14 @@
           init: function () {},
           data: [{ vendorId: 10008 }],
           script: {
-            src: `https://static.hotjar.com/c/hotjar-${AppConfig.hotjarId}.js`,
+            innerHTML: `(function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:${AppConfig.hotjarId},hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
           },
         }
       );
@@ -53,7 +59,6 @@
       var checkVendors = this.checkVendors.bind(this, settings.vendors);
 
       checkVendors();
-      window.__tcfapi('addEventListener', 'consentChanged', checkVendors);
       this.initPlaceholderListener();
     },
     initPlaceholderListener: function () {
@@ -68,21 +73,22 @@
       vendors.forEach(
         function (vendor) {
           var checkConsent = this.checkConsent.bind(this, vendor);
-          var data = { data: vendor.data };
+          var data = { data: vendor.data, recheckConsentOnChange: true };
           window.__tcfapi('checkConsent', 2, checkConsent, data);
         }.bind(this)
       );
     },
     checkConsent: function (vendor, consentData) {
       var script = vendor.script;
-      if (consentData) script.src ? this.loadScript(vendor) : vendor.init();
+      if (consentData) !!script ? this.loadScript(vendor) : vendor.init();
     },
     loadScript: function (vendor) {
       var script = vendor.script;
       var js = document.createElement('script');
       js.onload = vendor.init;
       if (script.id) js.id = script.id;
-      js.src = script.src;
+      if (script.src) js.src = script.src;
+      if (script.innerHTML) js.innerHTML = script.innerHTML;
       document.head.appendChild(js);
     },
     setIframesSrc: function (cssSelector) {
