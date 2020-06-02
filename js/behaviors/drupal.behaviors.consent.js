@@ -1,6 +1,5 @@
 (function (Drupal, window) {
   Drupal.behaviors.consent = {
-    NO_ID_EXISTS_ATM: 10019,
     getSettings: function () {
       window.consentVendors = window.consentVendors || [];
       window.consentVendors.push(
@@ -30,14 +29,14 @@
         },
         {
           init: function () {},
-          data: [{ vendorId: this.NO_ID_EXISTS_ATM }],
+          data: [{ vendorId: 10179 }],
           script: {
             src: '//static.cleverpush.com/channel/loader/YGtyGPovWHkyjZ6tN.js',
           },
         },
         {
           init: function () {},
-          data: [{ vendorId: this.NO_ID_EXISTS_ATM }],
+          data: [{ vendorId: 10008 }],
           script: {
             src: `https://static.hotjar.com/c/hotjar-${AppConfig.hotjarId}.js`,
           },
@@ -51,7 +50,6 @@
     },
     init: function () {
       var settings = this.getSettings();
-      console.log('>>> settings', settings);
       var checkVendors = this.checkVendors.bind(this, settings.vendors);
 
       checkVendors();
