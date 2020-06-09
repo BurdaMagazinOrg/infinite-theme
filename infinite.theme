@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\block\Entity\Block;
 use Drupal\Core\TypedData\Exception\MissingDataException;
