@@ -12,6 +12,7 @@ db_offline ? 'db-offline',
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://gdpr-wrapper.privacymanager.io/gdpr/bf5aacfd-21e2-460d-be98-5f81fba9e555/gdpr-liveramp.js"></script>
         <script src="/themes/contrib/infinite/js/infinite/utils/head-cookie-utils.js"></script>
+        {% block head_block_top %}{% endblock %}
         {{ page.head_top }}
         <head-placeholder token="{{ placeholder_token|raw }}">
         <title>{{ head_title|safe_join(' | ') }}</title>

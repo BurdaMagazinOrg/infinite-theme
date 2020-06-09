@@ -30,7 +30,7 @@
           init: function () {},
           data: [{ vendorId: 10179 }],
           script: {
-            src: '//static.cleverpush.com/channel/loader/YGtyGPovWHkyjZ6tN.js',
+            src: `//static.cleverpush.com/channel/loader/${AppConfig.cleverPush}.js`,
           },
         },
         {

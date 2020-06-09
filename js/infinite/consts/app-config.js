@@ -4,6 +4,7 @@ const AppConfig = {
   ad_orbyd: 'orbyd',
   amazonURLTrId: 'ins0c-21',
   articleReadedDelay: 1000,
+  cleverPush: undefined,
   feedTrackingOffset: 150,
   gtmEventName: 'gtm_event',
   gtmIndexEvent: 'gtm_index_event',

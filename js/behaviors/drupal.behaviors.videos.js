@@ -53,7 +53,6 @@
       });
     },
     checkConsent: function (data) {
-      console.log('>>> data', data);
       if (data) this.addPlayer();
     },
     addPlayer: function () {
