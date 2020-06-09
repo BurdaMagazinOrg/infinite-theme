@@ -114,12 +114,14 @@
 
     &:before {
       align-items: center;
+      background-image: url(/themes/contrib/infinite/images/static/play_icon.png);
+      background-position: center center;
+      background-size: 12px;
       border-radius: 50%;
       border: 1px solid $color-white;
       color: white;
-      content: '\ed82';
+      content: ' ';
       display: flex;
-      font-family: 'nxp_icomoon' !important;
       justify-content: center;
     }
 
