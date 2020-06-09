@@ -1,6 +1,6 @@
 {% if content %}
     <div class="item-media item-media--nexx-video">
-        <div class="embed-responsive embed-responsive-16by9 video-container" itemscope="" itemtype="http://schema.org/videoObject">
+        <div class="embed-responsive embed-responsive-16by9" itemscope="" itemtype="http://schema.org/videoObject">
             {% spaceless %}
                 <meta itemprop="description" content="{{ content.field_description | render | striptags | trim | replace({"\n":' ', "\r":' '})}}" />
                 <meta itemprop="name" content="{{ content.name | render | striptags | trim }}" />
