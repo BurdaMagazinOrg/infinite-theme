@@ -129,10 +129,15 @@
         {% endblock %}
 
         {% block author_articles_title_block %}
-            <h3 class="text-headline item-author__article-title"><span>Artikel von {{ content.field_full_name }}</span></h3>
+            {% set articles = drupal_view_result('infinite_author', 'embed_1')|length %}
+            {% if articles > 0 %}
+                <h3 class="text-headline item-author__article-title"><span>Artikel von {{ content.field_full_name }}</span></h3>
+            {% endif %}
         {% endblock %}
     </div>
 </div>
 
 {# Display node teaser authored by this user. #}
-{{ drupal_view('infinite_author', 'embed_1', user.id()) }}
+{% if articles > 0 %}
+    {{ drupal_view('infinite_author', 'embed_1', user.id()) }}
+{% endif %}
