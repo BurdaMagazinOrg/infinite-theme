@@ -18,7 +18,7 @@
     @include button();
     @include button--md();
     @include button--white();
-    content: 'Embed laden';
+    content: 'Inhalt laden';
     margin-top: $grid-unit-2;
   }
 }
@@ -121,6 +121,10 @@
       display: flex;
       font-family: 'nxp_icomoon' !important;
       justify-content: center;
+    }
+
+    &:after {
+      content: 'Video laden';
     }
   }
 }
