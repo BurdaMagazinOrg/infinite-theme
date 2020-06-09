@@ -1,0 +1,126 @@
+@mixin placeholder() {
+  align-items: center;
+  border: 1px solid rgb(204, 214, 221);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  visibility: visible;
+
+  &:before {
+    content: ' ';
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+  }
+
+  &:after {
+    @include button();
+    @include button--md();
+    @include button--white();
+    content: 'Embed laden';
+    margin-top: $grid-unit-2;
+  }
+}
+
+.item-paragraph--pinterest,
+.item-paragraph--twitter {
+  .item-media__wrapper {
+    min-height: 519px;
+  }
+}
+
+.item-media__wrapper {
+  position: relative;
+}
+
+.item-media__consent {
+  @include placeholder();
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.instagram-media {
+  &:not(.instagram-media-rendered) {
+    box-shadow: none !important;
+
+    [style='padding-top: 8px;'] {
+      & > div {
+        display: none;
+      }
+    }
+
+    svg {
+      display: none;
+    }
+
+    & + .item-media__consent {
+      display: flex;
+
+      &:before {
+        background-image: url(/themes/contrib/infinite/images/static/instagram.png);
+      }
+    }
+  }
+}
+
+.embed-youtube {
+  &:not(.rendered) {
+    background-color: $black;
+
+    & + .item-media__consent {
+      display: flex;
+
+      &:before {
+        background-image: url(/themes/contrib/infinite/images/static/youtube.png);
+        width: 150px;
+      }
+    }
+  }
+}
+
+[data-pin-do='embedPin'] {
+  & + .item-media__consent {
+    display: flex;
+
+    &:before {
+      background-image: url(/themes/contrib/infinite/images/static/pinterest.png);
+    }
+  }
+}
+
+.twitter-tweet.element-hidden {
+  & + .item-media__consent {
+    display: flex;
+
+    &:before {
+      background-image: url(/themes/contrib/infinite/images/static/twitter.png);
+    }
+  }
+}
+
+.nexx-video.element-hidden {
+  padding-bottom: 56%;
+  height: 0;
+  overflow: hidden;
+  background-color: $black;
+
+  & + .item-media__consent {
+    display: flex;
+
+    &:before {
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid $color-white;
+      color: white;
+      content: '\ed82';
+      display: flex;
+      font-family: 'nxp_icomoon' !important;
+      justify-content: center;
+    }
+  }
+}

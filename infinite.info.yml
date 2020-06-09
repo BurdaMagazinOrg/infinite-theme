@@ -117,5 +117,10 @@ libraries-override:
 
   media_entity_twitter/integration: false
   paragraphs_starterkit_twitter/integration: false
-  # media_entity_youtube/integration: false
-  # paragraphs_starterkit_youtube/integration: false
+
+  nexx_integration/base:
+    js:
+      js/nexxplay.js: false
+      js/models/PlayerModel.js: false
+      js/views/SwiperObserverView.js: false
+      js/views/PlayerView.js: false
