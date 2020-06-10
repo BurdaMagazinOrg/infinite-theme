@@ -4,8 +4,8 @@
             {{ children }}
 
             {% block acquia_lift_article_bottom_block %}
-                {% if drupal_block('promotion_teaser_block_footer') %}
-                    {% set promo_teaser_block = drupal_block('promotion_teaser_block_footer') %}
+                {% if drupal_entity('block', 'promotion_teaser_block_footer') %}
+                    {% set promo_teaser_block = drupal_entity('block', 'promotion_teaser_block_footer') %}
 
                     {% if parent['#node'] and parent['#node'].hasField('field_promotion_teaser_disable') %}
                         {% set block_is_disabled = parent['#node'].get('field_promotion_teaser_disable').value %}
