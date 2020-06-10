@@ -74,7 +74,6 @@
 
       this.addClass('rendered');
       this.removeClass('element-hidden');
-      this.appendPopoutCloseIcon(this.el);
     },
     play: function () {
       if (this.hasMutedStart) {
@@ -166,6 +165,9 @@
             break;
           case 'play':
             this.hasMutedStart = true;
+            break;
+          case 'playeradded':
+            this.appendPopoutCloseIcon(this.el);
             break;
           case 'playerready':
             this.playerReady = true;
