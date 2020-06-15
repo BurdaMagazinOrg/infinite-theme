@@ -63,7 +63,12 @@
     },
     attach: function (context) {
       if (context !== window.document) return;
-      if (window.__tcfapi) this.init();
+      this.addListeners();
+    },
+    addListeners: function () { 
+      if (window.__tcfapi) {
+        __tcfapi('addEventListener', 2, this.init.bind(this), ['cmpReady']);
+      }
     },
     init: function () {
       var settings = this.getSettings();
