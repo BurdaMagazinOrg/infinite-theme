@@ -47,7 +47,7 @@
         this.model.set('productId', '' + this.$el.data('product-id'));
         this.model.set('brand', this.$el.data('brand'));
         this.model.set('viewType', this.$el.data('view-type'));
-        this.model.set('productCategory', this.$el.data('product-category'));
+        this.model.set('productCategory', this.$el.data('category'));
         this.model.set('soldOut', !!this.$el.data('sold-out'));
 
         if (this.$el.hasClass('item-product--single')) {
@@ -232,7 +232,7 @@
           price: this.model.get('price'),
           brand: this.model.get('brand'),
           provider: this.model.get('provider'),
-          productCategory: this.model.get('productCategory'),
+          productCategory: this.model.get('category'),
           componentType: this.model.get('componentType') || '',
           soldOut: this.model.get('soldOut')
         };
