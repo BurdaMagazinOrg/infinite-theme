@@ -86,7 +86,8 @@
     prepareJsonData: function(data) {
       !!data &&
         Object.values(data).forEach(
-          function(element) {
+          function(element, index) {
+            element.index = index;
             element.is_slider_product = this.isInSlider;
           }.bind(this)
         );
