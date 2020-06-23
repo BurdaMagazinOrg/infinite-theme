@@ -14,8 +14,11 @@
 #}
 {% if content %}
     <div class="item-media">
-        <div class="embed-responsive embed-responsive-16by9 video-container" itemscope="" itemtype="http://schema.org/videoObject">
-            <iframe src="https://www.youtube.com/embed/{{ content.field_video_id }}" frameborder="0" allowfullscreen></iframe>
+        <div class="item-media__wrapper">
+          <div class="embed-responsive embed-responsive-16by9 video-container embed-youtube" itemscope="" itemtype="http://schema.org/videoObject">
+              <iframe src="about:blank" data-src="https://www.youtube.com/embed/{{ content.field_video_id }}" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="item-media__consent"></div>
         </div>
         <div class="caption">
             {% block copyright_block %}

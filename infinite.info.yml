@@ -10,6 +10,7 @@ libraries:
   - infinite/blockadblock
   - infinite/swiper
   - infinite/intersectionobserver
+  - infinite/consent
   - infinite/infinite.libs
   - infinite/infinite.init
   - infinite/infinite.manager.tracking-manager
@@ -40,8 +41,8 @@ libraries:
   - infinite/infinite.views.article-view
   - infinite/infinite.views.gallery-view
   - infinite/infinite.views.sticky-view
-#  - infinite/infinite.views.products-view
-#  - infinite/infinite.views.anchor-navigation-view
+  #  - infinite/infinite.views.products-view
+  #  - infinite/infinite.views.anchor-navigation-view
   - infinite/infinite.views.marketing-view
   - infinite/infinite.views.spinner
   - infinite/infinite.views.teaser-feed-view
@@ -52,7 +53,7 @@ regions:
   head_top: 'Head Top'
   header_large: 'Header large'
   header: 'Header'
-#  primary_menu: 'Primary menu'
+  #  primary_menu: 'Primary menu'
   secondary_menu: 'Secondary menu'
   sidebar: 'Sidebar'
   help: Help
@@ -66,6 +67,7 @@ regions:
   dyn_blocks_node: 'Dynamic blocks for nodes'
   body_bottom: 'Body Bottom'
   hidden: Hidden
+
 stylesheets-remove:
   - core/modules/system/css/system.module.css
   - core/modules/system/css/system.theme.css
@@ -95,13 +97,30 @@ stylesheets-remove:
   - core/modules/system/css/components/system-status-report-counters.css
   - core/modules/system/css/components/system-status-report-general-info.css
   - profiles/contrib/thunder/modules/thunder_media/css/bartik_slick_fix.css
-  - "@paragraphs_starterkit/css/paragraphs_starterkit.css"
-  - "@nexx_integration/css/styles.css"
-  - "@hm_newsletter/css/hm_newsletter.css"
-  - "@blazy/css/components/blazy.loading.css"
-  - "@imagepin/css/extensions/imagepin.slick.css"
-  - "@imagepin/css/imagepin.css"
+  - '@paragraphs_starterkit/css/paragraphs_starterkit.css'
+  - '@nexx_integration/css/styles.css'
+  - '@hm_newsletter/css/hm_newsletter.css'
+  - '@blazy/css/components/blazy.loading.css'
+  - '@imagepin/css/extensions/imagepin.slick.css'
+  - '@imagepin/css/imagepin.css'
 
 libraries-override:
- blazy/blazy: infinite/blazy
+  blazy/blazy: infinite/blazy
 
+  media_entity_instagram/integration: false
+  media_entity_instagram/instagram.embeds: false
+  paragraphs_starterkit_instagram/integration: false
+  paragraphs_starterkit_instagram/instagram.embeds: false
+
+  media_entity_pinterest/integration: false
+  paragraphs_starterkit_pinterest/integration: false
+
+  media_entity_twitter/integration: false
+  paragraphs_starterkit_twitter/integration: false
+
+  nexx_integration/base:
+    js:
+      js/nexxplay.js: false
+      js/models/PlayerModel.js: false
+      js/views/SwiperObserverView.js: false
+      js/views/PlayerView.js: false
