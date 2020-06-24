@@ -229,7 +229,7 @@
           category: this.model.get('shop'),
           name: this.model.get('title'),
           id: this.model.get('productId'),
-          price: this.model.get('price') * 1,
+          price: this.model.get('price'),
           brand: this.model.get('brand'),
           provider: this.model.get('provider'),
           productCategory: this.model.get('category'),
