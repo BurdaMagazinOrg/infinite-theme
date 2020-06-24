@@ -36,16 +36,18 @@
 
         jsonData = this.prepareJsonData(jsonData);
         Mustache.parse(template);
-        rendered = Mustache.render(template, { docs: jsonData.docs });
+        rendered = Mustache.render(template, jsonData);
         templateContainer.innerHTML = rendered;
       }
 
       products = templateContainer.querySelectorAll('.item-ecommerce');
-      Array.from(products).forEach(product => {
-        product.classList.contains('item-product-slider')
-          ? this.createProductSliderView(product)
-          : this.createProductView(product);
-      });
+      Array.from(products).forEach(
+        function(product) {
+          product.classList.contains('item-product-slider')
+            ? this.createProductSliderView(product)
+            : this.createProductView(product);
+        }.bind(this)
+      );
 
       !!Drupal && Drupal.attachBehaviors(templateContainer);
       this.rendered();
@@ -53,7 +55,7 @@
     createProductView: function(el) {
       var model = new Backbone.Model({
         viewType: 'productView',
-        infiniteBlockDataModel: this.model.get('infiniteBlockDataModel')
+        infiniteBlockDataModel: this.model.get('infiniteBlockDataModel'),
       });
       var params = { el: jQuery(el), model: model };
       var productView = new ProductView(params);
@@ -63,7 +65,7 @@
     createProductSliderView: function(el) {
       var model = new Backbone.Model({
         viewType: 'productSliderView',
-        infiniteBlockDataModel: this.model.get('infiniteBlockDataModel')
+        infiniteBlockDataModel: this.model.get('infiniteBlockDataModel'),
       });
       var params = { el: jQuery(el), model: model };
       var productSliderView = new ProductSliderView(params);
@@ -75,29 +77,22 @@
 
       if (this.isInSlider) {
         sliderView = this.model.get('parentModel').get('view');
-        //need to force a reInit.
+        // need to force a reInit.
         sliderView.reInit();
       }
 
       this.el[0].classList.add('rendered');
     },
-    prepareJsonData: function(jsonData) {
-      var data = Object.assign({}, jsonData);
-      !!data.docs &&
-        data.docs.forEach(element => {
-          var elementData = element._source;
-          if (elementData) {
-            elementData.is_slider_product = this.isInSlider;
-            elementData.image_style = elementData.image_style_product_300x324;
-            if (
-              this.el[0].classList.contains('item-paragraph--single-product')
-            ) {
-              elementData.image_style = elementData.image_style_product_600x648;
-            }
-          }
-        });
+    prepareJsonData: function(data) {
+      !!data &&
+        Object.values(data).forEach(
+          function(element, index) {
+            element.index = index;
+            element.is_slider_product = this.isInSlider;
+          }.bind(this)
+        );
       return data;
-    }
+    },
   });
 
   window.ProductsView =
