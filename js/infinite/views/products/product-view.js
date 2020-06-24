@@ -19,7 +19,7 @@
         this.inview = this.$el.find('.img-container').inview({
           offset: 'bottom',
           enter: _.bind(this.onInviewEnterHandler, this),
-          exit: _.bind(this.onInviewExitHandler, this)
+          exit: _.bind(this.onInviewExitHandler, this),
         });
       },
       onInviewEnterHandler: function(pDirection) {
@@ -229,12 +229,12 @@
           category: this.model.get('shop'),
           name: this.model.get('title'),
           id: this.model.get('productId'),
-          price: this.model.get('price'),
+          price: this.model.get('price') * 1,
           brand: this.model.get('brand'),
           provider: this.model.get('provider'),
           productCategory: this.model.get('category'),
           componentType: this.model.get('componentType') || '',
-          soldOut: this.model.get('soldOut')
+          soldOut: this.model.get('soldOut'),
         };
 
         if (this.model.has('productIndex')) {
@@ -280,7 +280,7 @@
         // BaseInviewView.prototype.onEnterHandler.call(this, pDirection);
         this.trackImpression();
         this.inview.destroy();
-      }
+      },
     },
     {
       PROVIDER_TRACDELIGHT: 'tracdelight',
@@ -288,7 +288,7 @@
       PROVIDER_GENERIC: 'generic',
       COMPONENT_TYPE_SLIDER: 'slider',
       COMPONENT_TYPE_GRID: 'grid',
-      COMPONENT_TYPE_SINGLE: 'single'
+      COMPONENT_TYPE_SINGLE: 'single',
     }
   );
 
