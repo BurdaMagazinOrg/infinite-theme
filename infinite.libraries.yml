@@ -31,8 +31,6 @@ mustache:
   js:
     /libraries/mustache/mustache.min.js: { }
 
-
-
 intersectionobserver:
   remote: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
   version: 1.0
@@ -42,6 +40,11 @@ intersectionobserver:
     gpl-compatible: true
   js:
     /themes/contrib/infinite/js/infinite/libs/intersection-observer.js: { }
+
+consent:
+  version: 1.0
+  js:
+    js/behaviors/drupal.behaviors.consent.js: {}
 
 coupons:
   version: 1.0
@@ -82,18 +85,6 @@ blazy:
     gpl-compatible: true
   js:
     /libraries/blazy/blazy.min.js: { weight: -4, minified: true }
-
-pinterest:
-  js:
-    //assets.pinterest.com/js/pinit.js: { type: external, attributes: { async: true} }
-
-instagram:
-  js:
-    //platform.instagram.com/en_US/embeds.js: { type: external, minified: true, attributes: { async: true} }
-
-twitter:
-  js:
-    //platform.twitter.com/widgets.js: { type: external, minified: true, attributes: { async: true} }
 
 infinite.libs:
   js:
