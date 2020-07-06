@@ -63,7 +63,7 @@
             window.hasABLyftConsent = true;
             if (window.ablyft) window.ablyft.reInit();
           },
-          data: [{ vendorId: 10019 }],
+          data: [{ vendorId: 10181 }],
         }
       );
       return { vendors: window.consentVendors };
