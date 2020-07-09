@@ -1,17 +1,17 @@
-(function (Drupal, window) {
+(function(Drupal, window) {
   Drupal.behaviors.consent = {
-    getSettings: function () {
+    getSettings: function() {
       window.consentVendors = window.consentVendors || [];
       window.consentVendors.push(
         {
-          init: function () {
+          init: function() {
             twttr.widgets.load();
           },
           data: [{ vendorId: 10006 }],
           script: { src: '//platform.twitter.com/widgets.js' },
         },
         {
-          init: function () {
+          init: function() {
             instgrm.Embeds.process();
           },
           data: [{ vendorId: 10019 }],
@@ -22,19 +22,19 @@
           data: [{ vendorId: 10020 }],
         },
         {
-          init: function () {},
+          init: function() {},
           data: [{ vendorId: 10031 }],
           script: { src: '//assets.pinterest.com/js/pinit.js' },
         },
         {
-          init: function () {},
+          init: function() {},
           data: [{ vendorId: 10179 }],
           script: {
             src: `//static.cleverpush.com/channel/loader/${AppConfig.cleverPush}.js`,
           },
         },
         {
-          init: function () {},
+          init: function() {},
           data: [{ vendorId: 10008 }],
           script: {
             innerHTML: `(function(h,o,t,j,a,r){
@@ -48,7 +48,7 @@
           },
         },
         {
-          init: function () {},
+          init: function() {},
           data: [{ vendorId: 10211 }],
           script: {
             innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -57,48 +57,55 @@
               '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer', '${window.gtm_id}');`,
           },
+        },
+        {
+          init: function() {
+            window.hasABLyftConsent = true;
+            if (window.ablyft) window.ablyft.reInit();
+          },
+          data: [{ vendorId: 10181 }],
         }
       );
       return { vendors: window.consentVendors };
     },
-    attach: function (context) {
+    attach: function(context) {
       if (context !== window.document) return;
       this.addListeners();
     },
-    addListeners: function () { 
+    addListeners: function() {
       if (window.__tcfapi) {
         __tcfapi('addEventListener', 2, this.init.bind(this), ['cmpReady']);
       }
     },
-    init: function () {
+    init: function() {
       var settings = this.getSettings();
       var checkVendors = this.checkVendors.bind(this, settings.vendors);
 
       checkVendors();
       this.initPlaceholderListener();
     },
-    initPlaceholderListener: function () {
+    initPlaceholderListener: function() {
       var placeholder = document.querySelectorAll('.item-media__consent');
-      placeholder.forEach(function (element) {
-        element.addEventListener('click', function () {
+      placeholder.forEach(function(element) {
+        element.addEventListener('click', function() {
           __tcfapi('showConsentManager', 2);
         });
       });
     },
-    checkVendors: function (vendors) {
+    checkVendors: function(vendors) {
       vendors.forEach(
-        function (vendor) {
+        function(vendor) {
           var checkConsent = this.checkConsent.bind(this, vendor);
           var data = { data: vendor.data, recheckConsentOnChange: true };
           window.__tcfapi('checkConsent', 2, checkConsent, data);
         }.bind(this)
       );
     },
-    checkConsent: function (vendor, consentData) {
+    checkConsent: function(vendor, consentData) {
       var script = vendor.script;
       if (consentData) !!script ? this.loadScript(vendor) : vendor.init();
     },
-    loadScript: function (vendor) {
+    loadScript: function(vendor) {
       var script = vendor.script;
       var js = document.createElement('script');
       js.onload = vendor.init;
@@ -107,9 +114,9 @@
       if (script.innerHTML) js.innerHTML = script.innerHTML;
       document.head.appendChild(js);
     },
-    setIframesSrc: function (cssSelector) {
+    setIframesSrc: function(cssSelector) {
       var iframes = document.querySelectorAll(cssSelector);
-      iframes.forEach(function (iframe) {
+      iframes.forEach(function(iframe) {
         !!iframe.parentElement &&
           iframe.parentElement.classList.add('rendered');
         iframe.setAttribute('src', iframe.getAttribute('data-src'));
